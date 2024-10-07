@@ -1,0 +1,22 @@
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.gz
+*.toc
+*.bbl
+*.blg
+*.tmp
+*.fls
+*.fdb*
+.vscode
+*.vrb
+*.synctex*
+*.listing
+/slides/*.pdf
+build
+
+# emacs auctex
+.auctex-auto
+

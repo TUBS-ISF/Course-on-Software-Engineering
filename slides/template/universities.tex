@@ -1,0 +1,46 @@
+% UNIVERSITY-SPECIFIC ADJUSTMENTS
+% usage: \def\university{ulm}
+
+\ifdefined\university
+\else
+\def\university{}
+\fi
+
+\newcommand{\ifuniversity}[3][]{\ifthenelse{\equal{\university}{#2}}{#3}{#1}}
+\newcommand{\unlessuniversity}[3][]{\ifuniversity[#3]{#2}{#1}}
+\newcommand{\inputuniversity}[1]{\IfFileExists{#1-\university}{\input{#1-\university}}{}}
+
+% TITLE
+\title{Introduction to Software Engineering} % default title for the course
+\ifuniversity{tubs}{\title[SE1]{Software Engineering 1}}
+
+% LECTURERS AND TUTORS
+\makeatletter
+\let\author@old\author
+\renewcommand{\author}[1]{
+	\ifuniversity{tubs}{\author@old{Thomas Thüm, Sebastian Krieter}}
+	\ifuniversity{recording}{\author@old{#1}}
+	\ifuniversity{anonymous}{\author@old{Anonymous Authors}}
+	\ifuniversity{}{\author@old{#1}}
+}
+\makeatother
+
+% COLOR SCHEME, LOGOS, PICTURES
+\ifuniversity{recording}{
+	\renewcommand{\deutsch}[1]{} % no German in English recordings
+	\mode<beamer>{\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}} % avoid annoying tool tips during the recording
+%	\setpicture[550]{jun22-clouds3} % default picture
+}{
+	\hypersetup{linkcolor=foreground, citecolor=red, filecolor=red, runcolor=red, urlcolor=red, colorlinks=true} % emphasizing links, but not when recording
+}
+
+\ifuniversity{tubs}{
+	% TODO add logos \fancylogos{tubs,isf}
+}
+
+\ifuniversity{anonymous}{
+	\fancylogos{}
+	\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}
+	\renewcommand{\deutsch}[1]{}
+	\renewcommand{\deutschertitel}[1]{}
+}

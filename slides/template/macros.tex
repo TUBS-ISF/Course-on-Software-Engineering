@@ -1,0 +1,210 @@
+% TYPICAL COMMANDS FOR LECTURES
+
+\renewcommand{\emph}[1]{{\color{blue}\textbf{#1}}}
+%\ifdarkmode
+%	\renewcommand{\emph}[1]{{\color{orange}\textbf{#1}}} % workaround for better readability
+%\fi
+
+\newcommand{\deutsch}[1]{{\color{gray}(#1)}}
+\ifdarkmode
+	\renewcommand{\deutsch}[1]{{\color{lightgray}(#1)}}
+\fi
+\newcommand{\deutschertitel}[1]{{\tiny\deutsch{#1}}}
+
+\newcommand{\mycite}[1]{``#1''}
+\newcommand{\mycitebegin}{``}
+\newcommand{\myciteend}{''}
+\newcommand{\mytitlesource}[1]{{\tiny\normalfont\mbox{[#1]}}}
+\newcommand{\mysource}[1]{\ifthenelse{\equal{#1}{}}{}{\phantom{.}~\hfill~\mytitlesource{#1}}}
+\newcommand{\mychapter}[1]{, Chapter~#1}
+\newcommand{\mysection}[1]{, Section~#1}
+\newcommand{\mypage}[1]{, p.~#1}
+\newcommand{\mypages}[1]{, pp.~#1}
+
+%\newcommand{\todo}[1]{{\color{red}\textbf{[#1]}}}
+%\newcommand{\fodo}[1]{\todo{\footnote{\todo{#1}}}}
+%\newcommand{\todots}{\todo{\ldots}}
+
+\newcommand{\textheightoftitle}{.125\textheight}
+\newcommand{\textheightwithtitle}{.825\textheight}
+\newcommand{\textheightwithouttitle}{.95\textheight}
+
+\newcommand{\lessonslearned}[3]{
+	\subsection{Summary}
+	\begin{frame}{\insertsection{} -- \myframetitle}
+		\begin{fancycolumns}[animation=none]
+			\begin{definition}{Lessons Learned}
+				\begin{itemize}
+					#1
+				\end{itemize}
+			\end{definition}
+			\uncover<2->{\begin{note}{Further Reading}
+				\small % references take space, can be a little smaller
+				\begin{itemize}
+					#2
+				\end{itemize}
+			\end{note}}
+		\nextcolumn
+			\uncover<3->{\begin{example}{Practice}
+				#3
+			\end{example}}
+		\end{fancycolumns}
+	\end{frame}
+}
+
+% TODO would be great to also show the section titles on this slide, but not sure how to do this
+\newcommand{\faq}[3]{
+	\subsection{FAQ}
+	\begin{frame}{\emph{FAQ} -- \insertsubtitle{}}
+		\small
+		\begin{fancycolumns}[t,columns=3,widths={33,33,33},animation=none]
+			\emph{\large Lecture~\insertlecturenumber\parta}
+			\begin{itemize}
+				#1
+			\end{itemize}
+		\nextcolumn
+			\emph{\large Lecture~\insertlecturenumber\partb}
+			\begin{itemize}
+				#2
+			\end{itemize}
+		\nextcolumn
+			\emph{\large Lecture~\insertlecturenumber\partc}
+			\begin{itemize}
+				#3
+			\end{itemize}
+		\end{fancycolumns}
+	\end{frame}
+}
+
+% REFERENCES TO OTHER LECTURES
+
+\newcommand{\emphifequal}[3]{\ifthenelse{\equal{#1}{#2}}{\bfseries}{}\hyperlink{lecture#2}{#3}}
+\newcommand{\lectureseriesoverview}[1][]{ % shown at the start and end of each lecture
+	\setlength{\leftmargini}{3.5ex}
+	\begin{fancycolumns}[t,columns=3,animation=none]
+		\mydefinition{\emphifequal{#1}{I}{Part I: Development of \emph{Correct} Software}}{
+			\begin{enumerate}
+				\item {\emphifequal{#1}{1}{Introduction}}
+				\item {\emphifequal{#1}{2}{Implementation}}
+				\item {\emphifequal{#1}{3}{Testing}}
+				\item {\emphifequal{#1}{4}{Software Changes}}
+				\item {\emphifequal{#1}{5}{Version Control}}
+			\end{enumerate}
+		}
+	\nextcolumn
+		\mydefinition{\emphifequal{#1}{II}{Part II: Development in \emph{Schedule} \& \emph{Budget}}}{
+			\begin{enumerate}
+				\setcounter{enumi}{5}
+				\item {\emphifequal{#1}{6}{Project Management}}
+				\item {\emphifequal{#1}{7}{Development Process}}
+			\end{enumerate}
+		}
+	\nextcolumn
+		\mydefinition{\emphifequal{#1}{III}{Part III: Development of \emph{Needed} Software}}{
+			\begin{enumerate}
+				\setcounter{enumi}{7}
+				\item {\emphifequal{#1}{8}{Requirements}}
+				\item {\emphifequal{#1}{9}{System Modeling}}
+				\item {\emphifequal{#1}{10}{Software Architecture}}
+				\item {\emphifequal{#1}{11}{Software Design}}
+				\item {\emphifequal{#1}{12}{Software Reuse}}
+				\item {\emphifequal{#1}{13}{Summary}}
+			\end{enumerate}
+		}
+	\end{fancycolumns}
+}
+
+\newcommand{\reflecture}[1]{\hyperlink{lecture#1}{Lecture~#1}}
+\newcommand{\parta}{a}
+\newcommand{\partb}{b}
+\newcommand{\partc}{c}
+% TODO how to handle different numberings for different universities?
+
+% COMMANDS FOR PROPOSITIONAL FORMULAS AND MATHEMATICAL NOTATIONS
+
+\newcommand{\sem}[1]{\ensuremath{\llbracket #1 \rrbracket}} % semantics brackets
+\newcommand{\pand}{\wedge} % conjunction
+\newcommand{\por}{\vee} % disjunction
+\newcommand{\pnot}{\neg} % negation
+\newcommand{\pequals}{\leftrightarrow} % biconditional
+\newcommand{\npequals}{\nleftrightarrow} % exclusive disjunction
+\newcommand{\mequals}{\Leftrightarrow} % equivalence (meta-level)
+\newcommand{\pimplies}{\rightarrow} % conditional
+\newcommand{\mimplies}{\Rightarrow} % implication (meta-level)
+\newcommand{\defeq}{\vcentcolon=} % defining equals
+\newcommand{\power}[1]{\mathcal{P}(#1)} % power set
+\newcommand{\refslide}[1]{\hyperlink{#1}{(see Slide \autoref{#1})}} % link to slide
+\newcommand{\fs}[1]{\ensuremath{{\color{green}#1}}} % selected feature
+\newcommand{\fd}[1]{\ensuremath{{\color{red}#1}}} % deselected feature
+\newcommand{\clause}[1]{\ensuremath{{\color{red}#1}}} % clause in a CNF
+\newcommand{\cfg}[3][0]{\ensuremath({{\only<#1>{\color{green}}\{#2\}}, {\only<#1>{\color{red}}\{#3\}})}} % configuration
+
+\usepackage{mathtools} % required for absolute value in modeling lecture
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
+
+% COMMANDS TO INCLUDE XKCDs
+
+\newcommand{\xkcd}[2]{\picDark[#2]{#1}}
+\newcommand{\xkcdframe}[1]{
+	\begin{frame}
+		\centering%
+		\xkcd{#1}{height=80mm}
+	\end{frame}
+}
+\newcommand{\widexkcdframe}[1]{
+	\begin{frame}
+		\xkcd{#1}{width=\linewidth}
+	\end{frame}
+}
+
+% COMMANDS TO SIMPLIFY USAGE OF THE PROJECT CARTOON
+
+\newcommand{\projectcartoonwidth}{.19} % default value for 5 tiles
+\newcommand{\projectcartoon}[2]{\projectcartoonimage{sepia/cell_#1}{#2}}
+\newcommand{\hprojectcartoon}[2]{\projectcartoonimage{alpha/cell_#1}{#2}}
+\newcommand{\projectcartoonimage}[2]{
+	\begin{minipage}[t]{\projectcartoonwidth\linewidth}
+		\centering
+		\pic[width=\linewidth]{#1}\\#2
+	\end{minipage}\hfill
+}
+\newcommand{\waterfallcartoon}{
+	\hprojectcartoon{02}{Analysis}%
+	\hprojectcartoon{03}{Design}%
+	\hprojectcartoon{04}{Implementation}%
+	\hprojectcartoon{05}{Testing}%
+	\hprojectcartoon{10}{Maintenance}%
+}
+%\uncover<1->{\hprojectcartoon{01}{how the customer explained it}} % requirements
+%\uncover<1->{\hprojectcartoon{02}{how the project leader understood it}} % modeling
+%\uncover<1->{\hprojectcartoon{03}{how the analyst designed it}} % architecture and design
+%\uncover<1->{\hprojectcartoon{04}{how the programmer implemented it}} % implementation
+%\uncover<1->{\hprojectcartoon{05}{what the beta testers received}} % testing
+%\uncover<1->{\hprojectcartoon{06}{how the business consultant described it}} % process
+%\uncover<1->{\hprojectcartoon{07}{how the project was documented}} % documentation?
+%\uncover<1->{\hprojectcartoon{08}{what operations installed}} % devops/continuous integration?
+%\uncover<1->{\hprojectcartoon{09}{how the customer was billed}} % management (pricing)
+%\uncover<1->{\hprojectcartoon{10}{how it was supported}} % maintenance
+%\uncover<1->{\hprojectcartoon{11}{what marketing advertised}} % product lines. marketing? reuse?
+%\uncover<1->{\hprojectcartoon{12}{when it was delivered}} % configuration management. continous delivery?
+%\uncover<1->{\hprojectcartoon{13}{what the customer really needed}} % customer / SE II
+%\uncover<1->{\hprojectcartoon{14}{what the digg effect can do to your site}} % ???
+%\uncover<1->{\hprojectcartoon{15}{the disaster recover plan}} % ???
+%\uncover<1->{\hprojectcartoon{16}{the open source version}} % open source (licensing)
+%\uncover<1->{\hprojectcartoon{17}{how it performed under load}} % compilation and static analyses. quality assurance? performance?
+%\uncover<1->{\hprojectcartoon{18}{how patches were applied}} % evolution
+
+% COMMANDS BASED ON TIKZ
+
+\newcommand{\mglass}[1]{
+	\scalebox{#1}{
+		\begin{tikzpicture}[overlay]
+			\node[circle,draw=gray,line width=1,fill=blue,fill opacity=.2,inner sep=2mm] {} edge[draw=gray,line width=1,double distance=1pt,shorten <= -.2pt] (.33,-.33);
+		\end{tikzpicture}
+	}
+}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+% OTHER COMMANDS
+

@@ -1,0 +1,3 @@
+[submodule "submodules/FancyBeamer"]
+	path = submodules/FancyBeamer
+	url = https://github.com/SEatUPB/FancyBeamer

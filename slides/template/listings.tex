@@ -1,0 +1,41 @@
+\usepackage{listings}
+\usepackage[normalem]{ulem}
+\tcbuselibrary{listings}
+
+\newcommand{\definelanguage}[2]{
+	\lstdefinelanguage{#1}{#2}
+	\lstnewenvironment{#1}[1][]{\lstset{language=#1,##1}}{}
+	\newtcblisting{#1tight}[2][]{fancy@tightboxstyle={top=-6pt,bottom=-6pt}{##2}{fancy@box@example}{example},listing only,listing options={language=#1,##1}}
+}
+
+% listing style inherited by all languages
+\lstset{
+	numbers=none, % where to put the line-numbers
+	showspaces=false, % show spaces with underscores
+	showstringspaces=false, % underline spaces within strings
+	showtabs=false, % show tabs within strings with underscores
+	tabsize=2, % sets default tabsize to 2 spaces
+	breaklines=true, % sets automatic line breaking
+	breakatwhitespace=false,
+	columns=fullflexible,
+	commentstyle=\color{green},
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+}
+
+% easy font size selection
+\lstdefinestyle{small}{basicstyle=\sf\small\selectfont}
+\lstdefinestyle{footnotesize}{basicstyle=\sf\footnotesize\selectfont}
+\lstdefinestyle{scriptsize}{basicstyle=\sf\scriptsize\selectfont}
+\lstdefinestyle{tiny}{basicstyle=\sf\tiny\selectfont}
+
+% language-specific styles
+\definelanguage{code}{
+	style=small,
+	language=Java,
+	keywordstyle=\bf,
+	moredelim=**[is][\color{red}]{@}{@},
+	moredelim=**[is][\color{green}]{?}{?},
+	moredelim=**[is][\color{blue}]{~}{~},
+	moredelim=[is][\sout]{|}{|},
+}

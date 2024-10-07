@@ -1,0 +1,31 @@
+\usepackage{../submodules/FancyBeamer/fancybeamer} % use the fancy beamer package
+%\fancylogos{,uulm,,unibe,,ovgu-blue,}
+\setfancycolumnsdefault{animation=keep} % animate all columns per default
+
+% GRAPHICSPATH
+
+\setpaths{
+	{../pics/}
+}
+
+% IMPORTED PACKAGES
+
+\usepackage{multicol} % used temporarily for the lecture overview
+\usepackage{stmaryrd} % \lightning in modeling lecture
+\usepackage{catchfile} % read picture sources from files
+\usepackage{silence} % ignore some warnings
+\WarningFilter{latex}{You have requested package} % ignore warning for loading packages from submodules
+%\usepackage{../EagleoutIce-fancyqr/fancyqr} % QR codes for practice task, credits to Florian Sihler
+%\fancyqrset{gradient=true,gradient angle=-45,l color=black,r color=blue}
+\usepackage{ifthen} % \ifuniversity
+\usepackage{booktabs} % tables
+%\usepackage{colortbl} % \rowcolor used in Lecture 8 in SPL
+%\usepackage{algpseudocode} % used in Lecture 10 in SPL
+
+% INCLUDED TEMPLATE FILES
+
+\input{template/macros}
+\input{template/listings} % TODO merge into template?
+\input{template/slidetemplate} % TODO merge into template?
+\input{template/universities}
+\input{content/literature}
