@@ -6,7 +6,6 @@
 
 \setpaths{
 	{../pics/}
-	{../pics/people/}
 	{../pics/tubs/}
 }
 
@@ -31,3 +30,10 @@
 \input{template/slidetemplate} % TODO merge into template?
 \input{template/universities}
 \input{content/literature}
+
+% HOPEFULLY NON-PERMANENT HACKS
+
+\usepackage{pgf, tikz}
+\usetikzlibrary{arrows, arrows.meta, positioning, shapes, calc, decorations.text, shadows.blur, matrix, fit, mindmap, backgrounds}
+\tikzset{ >=stealth'} % define standard arrow tip
+\usepackage{tikz-qtree}

@@ -1,0 +1,155 @@
+% TODO several ideas illustrating impact with consequences, but then hard to distinguish from next part
+
+\subsection{Software (Products)}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Software \mysource{adapted from \sommerville}}
+			Software stands for one or several computer programs and all associated documentation, libraries, support websites, and configuration data that are needed to make these programs useful.
+		\end{definition}
+		\begin{example}{Explanation}
+			The term program is used in a broader sense here. Software may also include source code, software models, or binaries.
+		\end{example}
+	\nextcolumn
+		\begin{definition}{Software Product and Professional Software}
+			A \emph{software product} is a software that can be sold to a customer. \emph{Professional software} is software intended for use by someone apart from its developer and it is usually developed by teams rather than individuals. \mysource{adapted from \sommerville}
+		\end{definition}
+		\pic[width=\linewidth]{misc/ms-office-cropped}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Characteristics of Software}
+\begin{frame}{\insertsubsection}
+	\centering\tikz[grow cyclic,
+	mindmap, every node/.style=concept,concept color=red!10!background,
+	%text width=20mm,align=flush center,
+	level 1/.append style={level distance=27mm,sibling angle=360/8}]
+	\node {Characteristics of Software}
+	child { node {abstract\\(no physical\\laws)} }
+	child { node {intangible \deutsch{immateriell}} }
+	child { node {hard to measure} }
+	child { node {aging} }
+	child { node {no \phantom{abc}deterioration} }
+	child { node {no spare parts} }
+	child { node {easier to adapt than hardware} }
+	child { node {frequent adaptation\phantom{;}} }
+	;
+\end{frame}
+%   abstract and intagible (immatriell): not constrained by the properties of materials, nor are they governed by physical laws or by manufacturing processes. [\sommerville]
+%   good as what we can built is a matter of our imagination (and computing power)
+%   bad as software can get arbitrarily complex [\sommerville]
+
+\subsection{Application and System Software}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[T]
+		\begin{definition}{Application Software or Application}
+			Software that is designed for end users and applied for certain purposes. \deutsch{Anwendungssoftware oder Anwendung}
+		\end{definition}
+
+		\begin{example}{Examples}
+			web browsers, media players, email or chat clients, text or photo editors, games
+		\end{example}
+	\nextcolumn
+		\begin{definition}{System Software}
+			Software that is not application software and typically being designed to provide a platform for other software.
+		\end{definition}
+
+		\begin{example}{Examples}
+			operating systems, firmware, basic input/output system (BIOS), device drivers, game engines, GUI frameworks
+		\end{example}
+	\end{fancycolumns}
+
+	\uncover<3->{
+		\begin{note}{Classification Not Always Unique}
+			e.g., web browsers and chat clients take over more and more features of operating systems
+		\end{note}
+	}
+\end{frame}
+% mention windows being in court because IE could not be uninstalled?
+
+\subsection{Where Does Software Run?}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={43}]
+		\begin{example}{World-Wide PC Sales}
+			\picDark[width=\linewidth]{history/PCsales}
+		\end{example}
+		\nextcolumn
+		\begin{example}{World-Wide Mobile Phone Subscriptions}
+			\picDark[width=\linewidth]{history/mobile-phone-subscriptions}
+		\end{example}
+	\end{fancycolumns}	
+\end{frame}
+% hardware getting smaller and smaller, portable even for bees https://www.bbc.com/news/articles/cj9jzv27lv2o
+
+\begin{frame}{Application Software}
+	\begin{fancycolumns}[T,widths={46}]
+		\begin{example}{Desktop Application or Desktop App}
+			Windows 1.0 released in 1985
+		\end{example}
+		\pic[width=\linewidth]{history/windows1.0}
+	\nextcolumn
+		\begin{example}{Web Application or Web App}
+			Ebay was born in 1995
+		\end{example}
+		\pic[height=32mm]{history/flohmarkt}
+		\hfill\pause
+		\pic[height=32mm]{history/iPhone1stGen}
+		\begin{example}{Mobile Application or Mobile App or App}
+			First iPhone released in 2007
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+% history of computing/software
+% * easy delivery + distribution by the internet, internet of things
+% * as it is so "easy" to change software, it is changed more frequently and is typically getting more complex with every change until it dies
+%		\myexample{Progressive Web Application}{since 2016, not yet popular}
+% "The "brain" [computer] may one day come down to our level [of the common people] and help with our income-tax and book-keeping calculations. But this is speculation and there is no sign of it so far." 1949 Quelle "Tutorial Guide to the EDSAC Simulator" (PDF). The EDSAC Replica Project.
+%  ENIAC which became operational in 1946 could be run by a single, albeit highly trained, person.
+
+% TODO \xkcd{2212}
+% cash vs credit/debit card vs paypal/mobile phone: more and more software involved
+
+\subsection{Downloads of Android Apps}
+\begin{frame}{Android Apps with 5 Billion Downloads \deutschertitel{5 Milliarden}}
+	\centering\picDark[height=65mm]{diagrams/android-downloads-5b}
+\end{frame}
+
+\begin{frame}{Android Apps with 5 Billion Downloads \deutschertitel{5 Milliarden}}
+	\centering\picDark[height=65mm]{diagrams/android-downloads-5b-np}
+\end{frame}
+% TODO add facebook,whatsapp,instagram outtage from October 2021?
+
+\begin{frame}{Android Apps with 1 Billion Downloads \deutschertitel{1 Milliarde}}
+	\centering\picDark[height=65mm]{diagrams/android-downloads-1b-p}
+\end{frame}
+
+\begin{frame}{Android Apps with 1 Billion Downloads \deutschertitel{1 Milliarde}}
+	\centering\picDark[height=65mm]{diagrams/android-downloads-1b-np}
+\end{frame}
+
+\begin{frame}{Android Apps with 500 Million Downloads}
+	\centering\picDark[height=65mm]{diagrams/android-downloads-500m-np}
+\end{frame}
+
+\subsection{Properties of Software}
+\begin{frame}{\insertsubsection}
+	\centering\tikz[grow cyclic,
+	mindmap, every node/.style=concept,concept color=blue!10!background,
+	%text width=20mm,align=flush center,
+	level 1/.append style={level distance=27mm,sibling angle=360/8}]
+	\node {Properties of Software}
+	child { node {system vs\phantom{;} application software\phantom{ab}} }
+	child { node {generic vs customized} }
+	child { node {proprietary\\vs open-source} }
+	child { node {freeware\\vs commercial} }
+	child { node {data-intensive vs computation-intensive} }
+	child { node {monolithic vs distributed} }
+	child { node {stand-alone vs integrated} }
+	child { node {user interface vs API\phantom{ab}} }
+	;
+\end{frame}
+% TODO parts of this diagram not readible
+
+% software is eating the world: https://a16z.com/2011/08/20/why-software-is-eating-the-world/
+% data is the new oil
+
+% German E rezept is facing technical challenges
