@@ -1,0 +1,111 @@
+\subsection{History of Programming Languages}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Milestones\mysource{\jonesbestpractice}}
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item controlling behavior of mechanical devices by wiring or with punchcards \deutsch{Lochkarten}
+				\item machine languages used during World War II
+				\uncover<2->{
+					\item assembly languages: distinction between human-readable instructions (source code) and executable instructions (object code)
+					\item birth of compilers and interpreters having a one-to-many mapping between source and object code (opposed to one-to-one mapping in assemblers)
+				}
+				\uncover<3->{
+					\item structured programming pioneered by David Parnas and Edsger Dijkstra
+					\item high-level programming languages: high number of executable for each human-readable instruction
+					\item domain-specific languages, later general-purpose programming languages
+				}
+			\end{itemize}
+		\end{note}
+	\nextcolumn
+		\uncover<4->{
+		\begin{example}{Languages\mysource{\jonesbestpractice\ + \handbuch}}
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item 1945: first high-level language Plankalkül by Konrad Zuse (compiler written in 1998)
+				\item 1954: first professional high-level language FORTRAN (Formula Translator) by IBM
+				\item 1963: Basic as general-purpose language
+				\uncover<5->{
+					\item 1959: functional language Lisp
+					\item 1970: first object-oriented lang.\ Smalltalk-80
+					\item 1970: declarative language SQL
+				}
+				\uncover<6->{
+					\item 1971: Pascal by Niklaus Wirth for teaching
+					\item 1974: very common procedural language C
+					\item 1977: logical language Prolog
+				}
+				\uncover<7->{
+					\item 1980: C++ as object-oriented extension of C
+					\item 1990: object-oriented language Java
+					\item 1990: functional language Haskell
+				}
+				\uncover<8->{
+					\item 1991: multi-paradigm language Python % TODO for machine learning
+					\item 1995: scripting language JavaScript % TODO for web applications
+				}
+			\end{itemize}
+		\end{example}
+	}
+	\end{fancycolumns}
+\end{frame}
+% TODO revise and talk about paradigms and their languages
+
+\subsection{Programming Languages Today}
+\begin{frame}{\insertsubsection}
+	\slideProgrammingLanguagesToday
+\end{frame}
+
+\subsection{Choice of Programming Languages}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{{Desired Properties\mysource{\ludewiglichter}}}
+			\begin{itemize}
+				\item modular implementation
+				\item separation of inferfaces and implementations
+				\item type system: strongly/weakly typed languages
+				\item readable syntax (FORTRAN vs ALGOL60) % designed for fewer characters vs readability
+				\item automatic pointer management (C vs Java)
+				\item exception handling
+			\end{itemize}
+		\end{definition}
+	\nextcolumn
+		\begin{example}{Criteria in Practice}
+			\begin{itemize}
+				\item language required by the company or customer?
+				\item existing infrastructure?
+				\item domain-specific languages available?
+				\item language known/liked by developers?
+				\item available libraries?
+				\item available tool support?
+				\item language popularity?
+				\item what may change in the future?
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Popularity of Programming Languages}
+\begin{frame}[b]{\insertsubsection}
+	\picDark[width=\linewidth]{history/tiobe}
+\end{frame}
+\begin{frame}{\insertsubsection}
+	\centering\picDark[width=.8\linewidth]{history/tiobe-longterm}
+\end{frame}
+
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=0 20 0 20,clip]{people/patrick-mckenzie}
+		\vspace{-7mm}
+		
+		\mynote{Patrick McKenzie \mysource{\href{https://twitter.com/CodeWisdom/status/1182702520696803329}{twitter.com}}}{\mycite{Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.}}
+		% computer scientist, entrepreneur, influencer
+	\nextcolumn
+		\pic[width=\linewidth,trim=0 55 0 10,clip]{people/bill-gates}
+		\vspace{-7mm}
+		
+		\mynote{Bill Gates \mysource{\href{https://code.org/quotes}{code.org}}}{\mycite{Learning to write programs stretches your mind, and helps you think better, creates a way of thinking about things that I think is helpful in all domains.}}
+		% richest person in 15 years between 1994 and 2014
+	\end{fancycolumns}
+\end{frame}
+
