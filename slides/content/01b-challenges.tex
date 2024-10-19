@@ -1,0 +1,130 @@
+\subsection{The Project Cartoon}
+\begin{frame}[b]{\insertsubsection}
+	\vspace{-20mm}\small\renewcommand{\projectcartoonwidth}{.18}
+	\begin{fancycolumns}[widths={30},animation=none]
+		\uncover<11->{\begin{definition}{Why Do Software Projects Fail?}
+			\begin{itemize}
+				\item many stakeholders with different background each
+				\item miscommunication
+				\item implicit or wrong assumptions
+				\item time pressure
+				\item high complexity
+				\item \ldots
+				\item numerous reasons specific to certain phases and roles
+			\end{itemize}
+		\end{definition}}
+		\uncover<12->{\begin{note}{}\centering{}software engineering aims to\\reduce such problems\end{note}}
+	\nextcolumn
+		\centering\hprojectcartoon{01}{how the customer explained it} % se02-10 requirements
+		\uncover<2->{\hprojectcartoon{02}{how the project leader understood it}} % se02-07 modeling
+		\uncover<3->{\hprojectcartoon{03}{how the analyst designed it}} % se04-10 architecture anddesign
+		\uncover<4->{\hprojectcartoon{04}{how the programmer implemented it}} % se02-10 implementation
+		\uncover<5->{\hprojectcartoon{05}{what the beta testers received}} % se08-09 testing
+	
+		\uncover<6->{\hprojectcartoon{06}{how the business consultant described it}} % se02-03 process
+		\uncover<7->{\hprojectcartoon{09}{how the customer was billed}} % se10 management and pricing
+		\uncover<8->{\hprojectcartoon{10}{how it was supported}} % se12 maintenance
+		\uncover<9->{\hprojectcartoon{12}{when it was delivered}} % se13 continous integration/delivery
+		\uncover<10->{\hprojectcartoon{13}{what the customer really needed}} % se02-05
+		%\hspace{-7mm}
+		%\projectcartoon{07}{how the project was documented} % code documentation
+		%\hprojectcartoon{18}{how patches were applied} % se11 evolution
+		%\hprojectcartoon{17}{how it performed under load} % se14 compilation/quality assurance/performance
+		%\hprojectcartoon{11}{what marketing advertised} % se15 reuse/product lines
+		%\hprojectcartoon{16}{how open source version} % se16 open source/licensing
+		%\projectcartoon{08}{what operations installed} % devops?
+		%\projectcartoon{14}{what the digg effect can do to your site} % micro services?
+		%\projectcartoon{15}{the disaster recover plan}
+		%\hspace{-7mm}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Software Engineering}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Software Engineering \mysource{\sommerville}}
+			\mycite{Software engineering is an engineering discipline that is concerned with all aspects of software production from initial conception to operation and maintenance. [...] Software engineering is not just concerned with the technical processes of software development. It also includes activities such as software project management and the development of tools, methods, and theories to support software development.}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+%\subsection{Software Engineering vs Programming}
+\begin{frame}[b]{Software Engineering vs Programming}
+	\slideSEvsProgramming
+\end{frame}
+
+\xkcdframe{2021}
+
+%\subsection{}
+\begin{frame}{Software Engineering vs Computer Science}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{SE vs CS \mysource{\sommerville}}
+			\mycite{Computer science focuses on theory and fundamentals; software engineering is concerned with the practicalities of developing and delivering useful software. [...] Computer science theory, however, is often most applicable to relatively small programs. Elegant theories of computer science are rarely relevant to large, complex problems that require a software solution.}
+		\end{definition}
+	\nextcolumn
+	\end{fancycolumns}
+\end{frame}
+% add picture illustrating other related areas
+
+\subsection{Software and System Engineering}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{System Engineering \mysource{\sommerville}}
+			\mycite{System engineering is concerned with all aspects of computer-based systems development including hardware, software and process engineering. Software engineering is part of this more general process.}
+		\end{definition}
+	\nextcolumn
+		% "System engineering is therefore concerned with hardware development, policy and process design, and system deployment, as well as software engineering." [\sommerville]
+		\pic[width=\linewidth]{misc/lawn-mower-cropped}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{(Software) Engineering}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Engineering \mysource{\sommerville}}
+			\mycite{Engineering is about getting results of the required \emph{quality} within \emph{schedule} and \emph{budget}. [...] Engineers make things work. They apply theories, methods, and tools where these are appropriate. However, they use them selectively and always try to discover solutions to problems even when there are no applicable theories and methods. Engineers also recognize that they must work within organizational and financial constraints, and they must look for solutions within these constraints.}
+		\end{definition}
+		\nextcolumn
+			%\posthandout{\pic[width=\linewidth,trim={0\width} {.25\height} {0\width} {.1\height},clip]{blackboard/spannungsdreieck_240408}} % TODO check blackboard
+	\end{fancycolumns}
+\end{frame}
+
+% TODO in lecture: Magisches Dreieck aufmalen: cost, time, quality
+
+\subsection{Relevance of Software for This Course}
+\begin{frame}{\insertsubsection}
+	\begin{exampletight}{}
+		\picDark[width=\linewidth]{failures/google-scholar2}
+	\end{exampletight}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\centering\picDark[height=\textheightwithtitle]{failures/texstudio}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={54},animation=none]
+		\pic[width=\linewidth]{failures/obs-freeze}
+	\nextcolumn
+		\pic[width=\linewidth]{failures/obs-freeze2}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth]{failures/acrobat-correct-green}
+		\nextcolumn
+		\pic[width=\linewidth]{failures/acrobat-wrong-green}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{1197}
+
+\begin{frame}{\insertsubsection}
+	\centering\pic[height=\textheightwithtitle]{failures/flash}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\centering\pic[height=\textheightwithtitle]{failures/thunderbird}
+\end{frame}
+

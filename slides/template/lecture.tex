@@ -17,7 +17,8 @@
 \usepackage{silence} % ignore some warnings
 \WarningFilter{latex}{You have requested package} % ignore warning for loading packages from submodules
 %\usepackage{../EagleoutIce-fancyqr/fancyqr} % QR codes for practice task, credits to Florian Sihler
-%\fancyqrset{gradient=true,gradient angle=-45,l color=black,r color=blue}
+\usepackage{fancyqr} % QR codes for practice task, credits to Florian Sihler
+\fancyqrset{gradient=true,gradient angle=-45,l color=black,r color=blue}
 \usepackage{ifthen} % \ifuniversity
 \usepackage{booktabs} % tables
 %\usepackage{colortbl} % \rowcolor used in Lecture 8 in SPL
@@ -30,6 +31,7 @@
 \input{template/slidetemplate} % TODO merge into template?
 \input{template/universities}
 \input{content/literature}
+\input{content/sharedslides}
 
 % HOPEFULLY NON-PERMANENT HACKS
 
@@ -37,3 +39,12 @@
 \usetikzlibrary{arrows, arrows.meta, positioning, shapes, calc, decorations.text, shadows.blur, matrix, fit, mindmap, backgrounds}
 \tikzset{ >=stealth'} % define standard arrow tip
 \usepackage{tikz-qtree}
+
+\newcommand{\handoutonly}[1]{}
+\newcommand{\slideonly}[1]{#1}
+\mode<handout>{
+	\renewcommand{\handoutonly}[1]{#1}
+	\renewcommand{\slideonly}[1]{}
+}
+\newcommand{\prehandout}[1]{#1}
+\newcommand{\posthandout}[1]{}
