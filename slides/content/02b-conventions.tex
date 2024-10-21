@@ -1,0 +1,132 @@
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=40 0 100 0,clip]{people/douglas-crockford}
+		\vspace{-7mm}
+		
+		\begin{note}{Douglas Crockford \mysource{\javascript}}
+			\mycite{It turns out that style matters in programming for the same reason that it matters in writing. It makes for better reading.}
+		\end{note}
+		% known for JavaScript, JSON, works at Paypal
+	\nextcolumn
+		\pic[width=\linewidth,trim=0 20 0 25,clip]{people/francois-chollet}
+		\vspace{-7mm}[height=8.5cm]
+		
+		\begin{note}{François Chollet \mysource{\href{https://twitter.com/fchollet/status/1038200379605798912}{twitter.com}}}
+			\mycite{In software, naming matters, because names reflect how you think about a problem. Code is also communication, and naming is a big part of making it work.}
+		\end{note}
+		% AI researcher at Google
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Code Formatting}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item code is read much more often and by more developers than written
+				\item avoid differences by each programmer
+			\end{itemize}
+		\end{note} % TODO add citation
+		\begin{definition}{Code Formatting}
+			\begin{itemize}
+				\item indentation: typically 4 characters per level
+				\item length of a line: often 80 or 100 characters
+				\item extra indentation: typically 8 characters when breaking extra long lines
+				\item empty lines between methods and attributes
+			\end{itemize}
+		\end{definition} % TODO add citation
+	\nextcolumn
+		\begin{example}{Code Formatting in Practice}
+			\begin{itemize}
+				\item automated code formatters available (on demand or when saving the editor)
+				\item typical formatting rules for each language
+				\item automated code formatters are configurable (handle with care)
+			\end{itemize}
+		\end{example} % TODO add citation
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Rules on Naming}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{example}{Unwanted Names}
+			\begin{itemize}
+				\item single character as a name
+				\item very long names
+				\item names consisting only of special chars
+				\item synonyms: delete, remove, clear
+				\item abbreviations (unless very common)
+			\end{itemize}
+		\end{example} % TODO add citation
+	\nextcolumn
+		\begin{definition}{Wanted Names}
+			\begin{itemize}
+				\item nouns for class names: Calculator
+				\item nouns for attribute names: calculateButton
+				\item verbs for method names: getCalculator(), evaluate(), isZero(), hasChildren(), setValue() % TODO consistent use of "method" opposed to "operation"?
+				\item CamelCaseNotation for classes, attributes, methods, local variables, parameters
+				\item UPPER\_CASE\_NOTATION for constants
+				\item lowercasenotation for package names
+			\end{itemize}
+		\end{definition} % TODO add citation
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=0 275 0 25,clip]{people/martin-fowler}
+		\vspace{-7mm}
+		
+		\begin{note}{Martin Fowler (1999) \mysource{\refactoring}}
+			\mycite{Any fool can write code that a computer can understand. Good programmers write code that humans can understand.}
+		\end{note}
+		% known for refactoring and agile development
+	\nextcolumn
+		\pic[width=\linewidth,trim=0 0 0 10,clip]{people/cory-house}
+		\vspace{-7mm}
+		
+		\begin{note}{Cory House \mysource{\href{https://twitter.com/housecor/status/400479246713229312}{twitter.com}}}
+			\mycite{Code is like humor. When you have to explain it, it’s bad.}
+		\end{note}
+		% influencer known for teaching React and JavaScript
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Code Documentation}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Comments \ldots}
+			\begin{itemize}
+				\item in source code are easier to maintain (than in external documents)
+				\item should be written while editing the code
+				\item can be used to generate documentation (e.g., JavaDoc, Doxygen)
+				\item are used to specify classes and public methods (e.g., parameters, exceptions, dependencies)
+				\item document hacks, side effects and unfinished parts (e.g., TODO)
+				\item should not paraphrase the code
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=0 0 0 60,clip]{people/ryan-campbell}
+		\vspace{-7mm}
+		
+		\begin{note}{Ryan Campbell \mysource{\href{https://handbook.problemsolving.io/01-model/03-code.html}{problemsolving.io}}}
+			\mycite{Commenting your code is like cleaning your bathroom - you never want to do it, but it really does create a more pleasant experience for you and your guests.}
+		\end{note}
+		% software developer
+	\nextcolumn
+		\pic[width=\linewidth,trim=90 15 10 20,clip]{people/steve-mcconnell}
+		\vspace{-7mm}
+		
+		\begin{note}{Steve McConnell (2004) \mysource{\codecomplete}}
+			\mycite{Good code is its own best documentation. As you're about to add a comment, ask yourself, \mycite{How can I improve the code so that this comment isn't needed?} Improve the code and then document it to make it even clearer.}
+		\end{note}
+		% author of several textbooks on software development and project management
+	\end{fancycolumns}
+\end{frame}
+
+
+
