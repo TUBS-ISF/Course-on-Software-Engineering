@@ -206,4 +206,23 @@
 
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
+\newcommand{\correct}{%
+	\begin{tikzpicture}[yscale=.1,xscale=.1,xshift=20,yshift=-10,overlay]
+		\draw[line width=3,line join=bevel] (0,1) to [bend left=30] (1,0) to [bend left=15] (3,3);
+		\draw[line width=2,line join=bevel,green] (0,1) to [bend left=30] (1,0) to [bend left=15] (3,3);
+	\end{tikzpicture}%
+}
+\newcommand{\alsocorrect}{%
+	\begin{tikzpicture}[yscale=.1,xscale=.1,xshift=20,yshift=-10,overlay]
+		\draw[line width=3,line join=bevel] (0,1) to [bend left=30] (1,0) to [bend left=15] (3,3);
+		\draw[line width=2,line join=bevel,orange] (0,1) to [bend left=30] (1,0) to [bend left=15] (3,3);
+	\end{tikzpicture}%
+}
+\newcommand{\wrong}{%
+	\begin{tikzpicture}[yscale=.1,xscale=.1,xshift=20,yshift=-10,overlay]
+		\draw[line width=3,line join=bevel] (0,2) to [bend left=5] (2,0) (0,0) to [bend left=15] (2,2);
+		\draw[line width=2,line join=bevel,red] (0,2) to [bend left=5] (2,0) (0,0) to [bend left=15] (2,2);
+	\end{tikzpicture}%
+}
+
 % OTHER COMMANDS

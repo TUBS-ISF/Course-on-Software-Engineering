@@ -1,0 +1,286 @@
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=0 425 0 75,clip]{people/edsger-dijkstra}
+		\vspace{-7mm}
+		
+		\begin{note}{Edsger W. Dijkstra (1972) \mysource{\thehumbleprogrammer}}
+			\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}
+		\end{note}
+		% 1930-2002, ACM Turing Award winner
+		\nextcolumn
+		%\href{}{\includegraphics[width=\linewidth,trim=0 0 0 0,clip]{burt-rutan}}
+		\vspace{56mm}
+		
+		\begin{note}{Burt Rutan \mysource{\href{https://www.routledge.com/Design-of-Biomedical-Devices-and-Systems-4th-edition/King-Fries-Johnson/p/book/9781138723061}{King~et~al.\ 2018}}}
+			\mycite{Testing leads to failure, and failure leads to understanding.}
+		\end{note}
+		% unclear
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Test Cases}
+\begin{frame}{\insertsubsection\ \deutschertitel{Testfälle}}
+	\begin{fancycolumns}[animation=none]
+		\uncover<1->{
+			\begin{definition}{Systematic Test \mysource{\ludewiglichter}}
+				A systematic test is a test, in which
+				\begin{itemize}
+					\item[1.] the setup is defined,
+					\item[2.] the inputs are chosen systematically,
+					\item[3.] the results are documented and evaluated by criteria being defined prior to the test. 
+				\end{itemize}
+			\end{definition}
+		}
+		\uncover<2->{
+			\begin{definition}{Test Case \mysource{\ludewiglichter}}
+				In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
+			\end{definition}
+		}
+		\nextcolumn
+		\uncover<3->{
+			\begin{example}{Exhaustive Testing in Practice?}
+				\texttt{boolean a, b, c;}\\			
+				\texttt{int i, j;}\\~\\
+				\texttt{bla(a,b,c)} \uncover<4->{has $2^3 = 8$ possible inputs}\\
+				\texttt{blub(i,j)} \uncover<5->{has $(2^{32})^2 = 2^{64} \approx 10^{19}$ inputs}
+				\uncover<6->{\begin{itemize}
+						\item assuming $10^9$ test cases can be executed in 1~second (cf.\ CPU with more than 1 GHz)
+						\item exhaustive test of \texttt{blub} takes $\approx 585$ years
+						\item testing for a day would cover less than 0.0005 \% of the inputs
+				\end{itemize}}
+				\uncover<7->{How to test thousands of such methods several times a day?}
+			\end{example}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Test-Case Design}
+\begin{frame}{\insertsubsection\ \deutschertitel{Testfallentwurf}}
+	\begin{fancycolumns}
+		\begin{note}{Goal \mysource{\ludewiglichter}}
+			Detect a large number of failures with a low number of test cases. A test case (execution) is \emph{positive}, if it detects a failure, and \emph{successful} if it detects an unknown failure.
+		\end{note}
+		\begin{definition}{An ideal test case is \ldots \mysource{\ludewiglichter}}
+			\begin{itemize}
+				\item representative: represents a large number of feasible test cases
+				\item failure sensitive: has a high probability to detect a failure
+				\item non-redundant: does not check what other test cases already check
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\\\vspace{-7mm}
+		\hfill
+		\begin{tikzpicture}
+			\path[small mindmap,
+			every node/.style={concept,font=\scriptsize},
+			emph/.style={font=\bfseries\scriptsize},
+			concept color=foreground!20!background]
+			node {Test-Case Design}
+			child[concept color=blue!20!background,visible on={<2->}] { node {experience-based} }
+			child[concept color=green!20!background,visible on={<3->}] { node {structure-based} 
+				child { node {white-box testing} }
+			}
+			child[concept color=orange!20!background,visible on={<4->}] { node {specification-based} 
+				child { node {black-box testing} }
+			}
+			;
+		\end{tikzpicture}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Modulo in Different Programming Languages}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={55}]
+		\begin{exampletight}{Overview by Torsten Curdt:}
+			\centering\picDark[height=60mm]{testing/modulo-negative}
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{An Own Modulo Implementation}
+			\centering\pic[height=60mm]{testing/modulo-with-javadoc-small-nohint} % TODO in 2023 update link
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\tikzset{emph/.style={thick,draw=blue,fill=blue!10!background},e1/.style={},e2/.style={},e3/.style={},e4/.style={},e5/.style={},e6/.style={},e7/.style={},e8/.style={}}
+\renewcommand{\cfg}{ % TODO hack as command already exists, rename consistently
+	\begin{tikzpicture}[yscale=-.5,xscale=.866,every node/.style={draw,semithick,circle,fill=background},to/.style={->,>={Stealth[round]},semithick,}]
+		\node[e1,e2,e3,e4,e5,e6,e7,e8] (1) at (0,0) {1};
+		\node[e1,e4,e5] (2) at (1,1) {2};
+		\node[e1,e2,e4,e5,e6,e7,e8] (3) at (0,2) {3};
+		\node[e1,e2,e4,e5,e6,e7,e8] (4) at (0,4) {4};
+		\node[e1,e5,e7,e8] (5) at (1,5) {5};
+		\node[e1,e2,e8] (6) at (0,6) {6};
+		\draw[to,e1,e4,e5] (1) to (2);
+		\draw[to,e2,e6,e7,e8] (1) to (3);
+		\draw[to,e1,e4,e5] (2) to (3);
+		\draw[to,e1,e2,e4,e5,e6,e7,e8] (3) to (4);
+		\draw[to,e1,e5,e7,e8] (4) to[bend right=20] (5);
+		\draw[to,e1,e2,e8] (4) to (6);
+		\draw[to,e1,e5,e7,e8] (5) to[bend right=20] (4);
+	\end{tikzpicture}
+}
+
+\subsection{White-Box Testing}
+\begin{frame}{\insertsubsection\ \deutschertitel{Strukturtest}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{White-Box Testing \mysource{\ludewiglichter}}
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item inner structure of test object is used
+				\item idea: coverage of structural elements
+				\item code translated into control flow graph
+				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
+			\end{itemize}
+		\end{definition}
+		\uncover<2->{
+			\begin{exampletight}{}
+				\pic[width=\linewidth]{testing/modulo}
+			\end{exampletight}
+		}
+		\nextcolumn
+		\\\vspace{33mm}
+		{\only<4->{\tikzset{e2/.append style={emph}}}\only<3->{\cfg}}
+		%\only<3->{\tikzset{e1/.append style={emph}}\cfg}
+	\end{fancycolumns}
+\end{frame}
+% control flow graphs as activity diagrams: \umluserguide, Chapter~20, Modeling an Operation
+
+\subsection{Coverage Criteria}
+\begin{frame}{\insertsubsection\ \deutschertitel{Überdeckungskriterien}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Coverage Criteria \mysource{\ludewiglichter}}
+			\begin{itemize}
+				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
+				\uncover<3->{\item[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised} % TODO not so easy to define as percentage
+				\uncover<4->{\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)}
+				% TODO discuss path coverage?
+			\end{itemize}
+		\end{definition}
+		\vspace{-1mm}
+		\uncover<2->{\small
+			\begin{example}{In Practice}
+				100\% statement coverage not feasible in presence of dead code or some unreachable error handling
+				
+				\uncover<5->{100\% term coverage not feasible for certain dependencies between choices: \texttt{even() || odd()}}
+			\end{example}
+		}
+		\nextcolumn
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Statement Coverage}
+\begin{frame}
+	\begin{fancycolumns}[t,animation=none]
+		\begin{exampletight}{Statement Coverage for Modulo Example}
+			\pic[width=\linewidth]{testing/modulo}
+		\end{exampletight}
+		\begin{example}{First Test Case}
+			\setlength\tabcolsep{.5mm}
+			\begin{tabularx}{\textwidth}{rl}				
+				path: & \uncover<2->{1}\uncover<3->{, 2, 3, 4}\uncover<4->{, 5, 4}\uncover<5->{, 6}\\
+				logical test case: & \uncover<3->{$b < 0$}\uncover<4->{ $\wedge$ $a > -b$}\uncover<5->{ $\wedge$ $a+b \leq -b$}\\
+				specific test case: & \uncover<6->{$a = 5$, $b = -3$}\\
+				expected result: & \uncover<7->{$m = 2$}
+			\end{tabularx}
+		\end{example}
+		\nextcolumn
+		\\[5mm]
+		\only<1|handout:0>{\cfg}%
+		\only<2|handout:0>{\tikzset{e3/.append style={emph}}\cfg}%
+		\only<3|handout:0>{\tikzset{e4/.append style={emph}}\cfg}%
+		\only<4|handout:0>{\tikzset{e5/.append style={emph}}\cfg}%
+		\only<5->{\tikzset{e1/.append style={emph}}\cfg}%
+		\uncover<8->{\correct}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Branching Coverage}
+\begin{frame}[plain]
+	\begin{fancycolumns}[t,animation=none]
+		\begin{exampletight}{Branching Coverage for Modulo Example}
+			\pic[width=\linewidth]{testing/modulo}
+		\end{exampletight}
+		\vspace{-1mm}
+		\begin{example}{First Test Case}
+			\setlength\tabcolsep{.5mm}
+			\begin{tabularx}{\textwidth}{rl}				
+				path: & 1, 2, 3, 4, 5, 4, 6\\
+				logical test case: & $b < 0$ $\wedge$ $a > -b$ $\wedge$ $a+b \leq -b$\\
+				specific test case: & $a = 5$, $b = -3$ and $m = 2$
+			\end{tabularx}
+		\end{example}
+		\vspace{-1mm}
+		\begin{example}{Second Test Case}
+			\setlength\tabcolsep{.5mm}
+			\begin{tabularx}{\textwidth}{rl}				
+				path: & \uncover<2->{1}\uncover<3->{, 3, 4}\uncover<4->{, 6}\\
+				logical test case: & \uncover<3->{$b \geq 0$}\uncover<4->{ $\wedge$ $0 \leq a \leq b$}\\
+				specific test case: & \uncover<5->{$a = 0$, $b = 5$}\uncover<6->{ and $m = 0$}
+			\end{tabularx}
+		\end{example}
+		\nextcolumn
+		\\[5mm]
+		{\tikzset{e1/.append style={emph}}\cfg}
+		\only<1|handout:0>{\cfg}%
+		\only<2|handout:0>{\tikzset{e3/.append style={emph}}\cfg}%
+		\only<3|handout:0>{\tikzset{e6/.append style={emph}}\cfg}%
+		\only<4->{\tikzset{e2/.append style={emph}}\cfg}%
+		\uncover<7->{\correct}
+		\\[15mm]
+		\uncover<8->{\begin{note}{Ternary Operator in Statement 5}
+				\begin{itemize}
+					\item could also be treated as branching statement
+					\item how to adapt the control flow graph then?
+					\item are the two test cases still sufficient?
+				\end{itemize}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Term Coverage}
+\begin{frame}[plain]
+	\begin{fancycolumns}[t,animation=none]
+		\begin{exampletight}{Term Coverage for Modulo Example}
+			\pic[width=\linewidth]{testing/modulo}
+		\end{exampletight}
+		\vspace{-1mm}
+		\begin{example}{}
+			\setlength\tabcolsep{.5mm}
+			\begin{tabularx}{\textwidth}{rl}				
+				logical test case: & $b < 0$ $\wedge$ $a > -b$ $\wedge$ $a+b \leq -b$\\
+				specific test case: & $a = 5$, $b = -3$ and $m = 2$\uncover<14->{\correct}
+			\end{tabularx}
+		\end{example}
+		\vspace{-1mm}
+		\begin{example}{}
+			\setlength\tabcolsep{.5mm}
+			\begin{tabularx}{\textwidth}{rl}				
+				logical test case: & $b \geq 0$ $\wedge$ $0 \leq a \leq b$\\
+				specific test case: & $a = 0$, $b = 5$ and $m = 0$\uncover<14->{\correct}
+			\end{tabularx}
+		\end{example}
+		\vspace{-1mm}
+		\begin{example}{}
+			\setlength\tabcolsep{.5mm}
+			\begin{tabularx}{\textwidth}{rl}				
+				path: & \uncover<8->{1}\uncover<9->{, 3, 4}\uncover<10->{, 5, 4}\uncover<11->{, 6}\\
+				logical test case: & \uncover<9->{$b \geq 0$}\uncover<10->{ $\wedge$ $a < 0$}\uncover<11->{ $\wedge$ $0 \leq a+b \leq b$}\\
+				specific test case: & \uncover<12->{$a = -2$, $b = 5$}\uncover<13->{ and $m = 3$}\uncover<14->{\correct}
+			\end{tabularx}
+		\end{example}
+		\nextcolumn
+		\\[5mm]
+		{\tikzset{e1/.append style={emph}}\cfg}
+		{\tikzset{e2/.append style={emph}}\cfg}
+		\only<7|handout:0>{\cfg}%
+		\only<8|handout:0>{\tikzset{e3/.append style={emph}}\cfg}%
+		\only<9|handout:0>{\tikzset{e6/.append style={emph}}\cfg}%
+		\only<10|handout:0>{\tikzset{e7/.append style={emph}}\cfg}%
+		\only<11->{\tikzset{e8/.append style={emph}}\cfg}\\[5mm]
+		\uncover<2->{$\neg(m < 0)$}\uncover<3->{ and $m > b$\correct}\\[5mm]
+		\uncover<2->{$\neg(m < 0)$}\uncover<4->{ and $\neg(m > b)$\correct}\\[5mm]
+		\uncover<5->{$m < 0$ and $m > b$}\uncover<6->{ impossible\only<15->{*}\alsocorrect}\\[5mm]
+		\uncover<5->{$m < 0$ and $\neg(m > b)$}\uncover<13->{\correct}\\[3mm]
+		\uncover<15->{\tiny*\,see third part of the lecture}
+	\end{fancycolumns}
+\end{frame}

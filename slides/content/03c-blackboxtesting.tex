@@ -1,0 +1,215 @@
+\subsection{Black-Box Testing}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item source code not always available (e.g., outsourced components, obfuscated code)
+				\item specific test cases derived from logical ones using arbitrary values
+				\item specification not incorporated so far (only for expected results)
+				\item invalid inputs not tested
+				\item errors are not equally distributed
+			\end{itemize}
+		\end{note}
+		\begin{definition}{Black-Box Testing \deutsch{Funktionstest}}
+			\begin{itemize}
+				\item test-case design based on specification
+				\item source code and its inner structure is ignored (assumed as a black-box)
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\vspace{-5mm}
+		\begin{definition}{1. Equivalence Class Testing}
+			\begin{itemize}
+				\item idea: classify inputs and outputs into equivalence classes
+				\item assumption: equivalent test cases detect the same faults, one test case is sufficient
+			\end{itemize}
+		\end{definition}
+		\begin{definition}{2. Boundary Testing}
+			\begin{itemize}
+				\item extension of equivalence class testing
+				\item goal: use experience (e.g., off-by-one errors)
+				\item for every equivalence class: consider smallest, typical, and largest value
+			\end{itemize}
+		\end{definition}
+		\begin{example}{In Practice}
+			\begin{itemize}
+				\item often combinations of white-box and black-box testing
+				\item more techniques with requirements or design
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Equivalence Class Testing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[columns=3,widths={46,4,50},animation=none]
+		\begin{exampletight}{JavaDoc Specification for Modulo Example}
+			\pic[width=\linewidth]{testing/modulo-only-javadoc-small-nohint}
+		\end{exampletight}
+		\begin{example}{Equivalence Classes}
+			\begin{itemize}
+				\item input a: $a < 0$, $a \geq 0$
+				\item input b: $b < 0$, $b \geq 0$
+				\item output: $m = 0$, $m > 0$, exception
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\nextcolumn
+		\uncover<2->{
+			\begin{example}{Test Cases}
+				\begin{tabular}{c c c c}	% temp
+					% TODO: fix M{c}{num-}
+					%\begin{tabular}{M{c}{1-} M{c}{4-} M{c}{5-} M{c}{6-}}
+					& TC1 & TC2 & TC3 \\
+					\toprule
+					$a < 0$ & X &  &  \\
+					$a \geq 0$ &  & X & X \\
+					\midrule
+					$b < 0$ & X &  &  \\
+					$b > 0$ &  & X &  \\
+					$b = 0$ &  &  & X \\
+					\midrule
+					$m = 0$ & X &  &  \\
+					$m > 0$ &  & X &  \\
+					exception &  &  & X \\
+					\midrule
+					\uncover<3->{input a & -3 & 1 & 2} \\
+					\uncover<3->{input b & -3 & 2 & 0} \\
+					\uncover<3->{expected output & 0 & 1 & exception} \\
+					\midrule
+					\uncover<4->{result & 0\correct & 1\correct & timeout\wrong} \\
+					\bottomrule
+				\end{tabular}
+			\end{example}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Boundary Testing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[columns=3,widths={4,92}]
+		\nextcolumn
+		\begin{example}{Test Cases}
+			\begin{tabular}{c c c c c c c c}	% temp
+				% TODO: fix M{c}{num-}
+				%\begin{tabular}{M{c}{1-} M{c}{1-} M{c}{1-} M{c}{1-} M{c}{2-} M{c}{3-} M{c}{4-} M{c}{5-}}
+				& TC1 & TC2 & TC3 & TC4 & TC5 & TC6 & TC7 \\
+				\toprule
+				$a < 0$ & X &  &  & min & max &  &  \\
+				$a \geq 0$ &  & X & X &  &  & min & max \\
+				\midrule
+				$b < 0$ & X &  &  & max &  & min &  \\
+				$b > 0$ &  & X &  &  & max &  & min \\
+				$b = 0$ &  &  & X &  &  &  &  \\
+				\midrule
+				$m = 0$ & X &  &  & X &  & X & X \\
+				$m > 0$ &  & min &  &  & max &  &  \\
+				exception &  &  & X &  &  &  &  \\
+				\midrule
+				\uncover<1->{input a & -3 & 1 & 2 & minInt & -1 & 0 & maxInt }\\
+				\uncover<1->{input b & -3 & 2 & 0 & -1 & maxInt & minInt & 1 }\\
+				\uncover<1->{expected output & 0 & 1 & exception & 0 & maxInt-1 & 0 & 0 }\\
+				\midrule
+				\uncover<2->{result & 0\correct & 1\correct & timeout\wrong & 0\correct & maxInt-1\correct & timeout\wrong & 1\wrong }\\
+				\bottomrule
+			\end{tabular}
+		\end{example}
+		\nextcolumn
+	\end{fancycolumns}
+\end{frame}
+%// a smallest negative, b largest negative, smallest result
+%assertEquals(0,ModuloExample.modulo(Integer.MIN_VALUE,-1));
+%// a largest negative, b largest positive, largest result
+%assertEquals(Integer.MAX_VALUE-1,ModuloExample.modulo(-1,Integer.MAX_VALUE));
+%// a smallest positive, b smallest negative, smallest result
+%//assertEquals(0,ModuloExample.modulo(0,Integer.MIN_VALUE)); // leads to endless loop for every a
+%assertEquals(0,ModuloExample.modulo(0,Integer.MIN_VALUE+1));
+%// a largest positive, b smallest positive, smallest result
+%assertEquals(0,ModuloExample.modulo(Integer.MAX_VALUE,1));
+
+\subsection{Detected Faults in Modulo Example}
+\begin{frame}
+	\begin{fancycolumns}[animation=none]
+		\uncover<1->{
+			\begin{exampletight}{Detected Faults in Modulo Example}
+				\pic[width=\linewidth]{testing/modulo}
+			\end{exampletight}
+			\vspace{-1mm}
+			\begin{example}{}
+				\wrong~~~~TC3: infinite loop for $b = 0$,\\ missing exception compared to JavaDoc
+			\end{example}
+		}
+		\vspace{-1mm}
+		\uncover<2->{
+			\begin{example}{}
+				\wrong~~~~TC6: $b$ remains negative as\\ \texttt{-Integer.MIN\_VALUE == Integer.MIN\_VALUE}\\ and the loop condition is fulfilled for any integer
+			\end{example}
+		}
+		\vspace{-1mm}
+		\uncover<3->{
+			\begin{example}{}
+				\wrong~~~~TC7: indicates that $m > b$ in the loop condition should be fixed to $m \geq b$
+			\end{example}
+		}
+		\nextcolumn
+		\uncover<4->{
+			\begin{exampletight}{Improved Modulo Example}
+				\pic[width=\linewidth]{testing/modulo-fixed}
+			\end{exampletight}
+		}
+		\vspace{-1mm}
+		\uncover<5->{
+			\begin{example}{Passes All Test Cases}
+				\vspace{3mm}
+				\correct~~~~~\correct~~~~~\correct~~~~~\correct~~~~~\correct~~~~~\correct~~~~~\correct~~~~~\correct~~~~~\correct~~~~~\correct~~~~~ 
+			\end{example}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Reasons for Positive Test Cases}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Reasons for Positive Test Cases}
+			\begin{itemize}
+				\item actual fault
+				\uncover<2->{\item wrong test case (input and expected results do not match)}
+				\uncover<3->{\item interaction with other programs/libraries
+					\item fault in the compiler
+					\item fault in the operating system / device drivers
+					\item fault in the hardware or hardware defect
+					\item not enough memory
+					\item does not halt (cf.\ undecidability of the halting problem)
+					\item bitflip due to cosmic ray
+					\item \ldots}
+			\end{itemize}
+		\end{note}
+		%		\mynote{Reasons for Negative Test Cases}{
+			%			\begin{itemize}
+				%				\setlength\itemsep{.5em}
+				%				\item program correct
+				%				\item see above
+				%			\end{itemize}
+			%		}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=0 425 0 75,clip]{people/edsger-dijkstra}
+		\vspace{-7mm}
+		
+		\begin{note}{Edsger W. Dijkstra \mysource{\goodliffe}}
+			\mycite{If debugging is the process of removing software bugs, then programming must be the process of putting them in.}
+		\end{note}
+		% 1930-2002, ACM Turing Award winner
+		\nextcolumn
+		\pic[width=\linewidth,trim=250 0 0 0,clip]{people/brian-kernighan}
+		\vspace{-7mm}
+		
+		\begin{note}{Brian Kernighan (1978) \mysource{\elementsofprogrammingstyle}}
+			\mycite{Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever as you can be when you write it, how will you ever debug it?}
+		\end{note}
+		% known for books on C and Go
+	\end{fancycolumns}
+\end{frame}

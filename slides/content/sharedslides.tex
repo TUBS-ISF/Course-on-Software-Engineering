@@ -37,3 +37,43 @@
 	\end{fancycolumns}
 }
 
+% introduced: testing
+% reused: ?
+\newcommand{\slideMindmapQualityAssurance}[7]{
+	\vspace{-7mm}\hfill
+	\begin{tikzpicture}
+		\path[small mindmap,
+		every node/.style={concept,font=\scriptsize},
+		emph/.style={font=\bfseries\scriptsize},
+		concept color=foreground!20!background,
+		level 1/.append style={level distance=25mm,sibling angle=360/6},
+		level 2/.append style={level distance=20mm,sibling angle=360/6},
+		level 3/.append style={level distance=20mm,sibling angle=360/8},
+		]
+		node {Quality Assurance \deutsch{Qualitätssicherung}}
+		[counterclockwise from=210]
+		child[#1] { node {constructive} 
+			[clockwise from=225]
+			child[concept color=blue!20!background,#4] { node {Coding Guidelines} }
+		}
+		child[#2] { node {analytical} 
+			[counterclockwise from=240]
+			child[concept color=green!20!background,#5] { node {analysis}
+				[counterclockwise from=180]
+				child { node {Compilation} }
+				child { node {Code Reviews} }
+			}
+			child[concept color=red!20!background,#6] { node {execution}
+				[counterclockwise from=315]
+				child { node {White-Box Testing} }
+				child { node {Black-Box Testing} }
+			}
+		}
+		child[#3] { node {organizational} 
+			[clockwise from=-45]
+			child[concept color=orange!20!background,#7] { node {Software Project Management} }
+		}
+		;
+	\end{tikzpicture}
+}
+

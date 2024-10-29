@@ -190,44 +190,100 @@
 
 % TODO L03 Testing
 
+\ifuniversity{tubs}{\date{October 29, 2024}}
+
 \author{Thomas Thüm}
 \lecture{Testing}{testing}
 
-\section{}
-%\input{content/}
+\begin{frame}{\insertsubtitle}
+	\renewcommand{\projectcartoonwidth}{.18}
+	\alt<2->{
+		\projectcartoon{01}{how the customer explained it}
+		\projectcartoon{02}{how the project leader understood it}
+		\projectcartoon{03}{how the analyst designed it}
+		\projectcartoon{04}{how the programmer implemented it}
+	}{
+		\hprojectcartoon{01}{how the customer explained it}
+		\hprojectcartoon{02}{how the project leader understood it}
+		\hprojectcartoon{03}{how the analyst designed it}
+		\hprojectcartoon{04}{how the programmer implemented it}
+	}%
+	\hprojectcartoon{05}{what the beta testers received}
+\end{frame}
+
+\section{Quality Assurance}
+\input{content/03a-qualityassurance}
 \lessonslearned{
-	\item Next: ...
+	\item What is quality, quality assurance, product quality, quality in use?
+	\item Terms: software testing, validation / defect testing, validation / verification, development / release / user testing, manual / automated testing, constructive / analytical / organizational quality assurance
+	\item Code reviews
+	\item Next: How to cover all parts of a program?
 }{
-	\item ...
+	\item \sommerville, Chapter 8 Software Testing
+	\item \ludewiglichter, Chapter 5 \deutsch{Software-Qualität} and Chapter 13 \deutsch{Software-Qualitätssicherung und -Prüfung}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form in groups of 2--3 students
+		\item<+-> Discuss own examples for insufficient product quality
+		\item<+-> Do you find an example for every kind of product quality?\\~\\functional suitability, security, reliability, usability, compatibility, performance efficiency, maintainability, portability (see Slide~\ref{slide:productquality})
 	\end{enumerate}
+}
+	%	\item Open your favorite IDE and write a small example program illustrating one error detected by the Java compiler
+	%	\item Upload a screenshot of your program in Moodle including a brief description of the error: \url{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=2127}
+	%	\item Do a code review for another example (i.e., comment on possible improvements)
+	%	\item See \href{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=3866}{Moodle} % TODO in 2023 update link
+	%	\item Think of a change to the modulo method (cf.\ previous slide) that would be classified as error or warning by the Java compiler
+	%	\item Do a code review of the \href{https://github.com/tthuem/2020WS-SWT-Calculator/blob/testinglecturev0/ModuloExample/src/de/uulm/sp/swt/moduloexample/ModuloExample.java}{modulo method} (i.e., comment on possible improvements) % TODO in 2023 update link
+	%	\item Submit your results in Moodle and inspect other submissions
+	%\item[] Answer the quiz in Moodle to track your learning progress of this chapter
+	%\\\hfill\fancyqr{https://moodle.uni-ulm.de/course/view.php?id=42562\#section-7}
+
+\slideonly{
+	\addtocounter{framenumber}{-1}
+	\againframe<7>{productquality}
 }
 
-\section{}
-%\input{content/}
+\section{White-Box Testing}
+\input{content/03b-whiteboxtesting}
 \lessonslearned{
-	\item Next: ...
+	\item Systematic test, exhaustive testing
+	\item Test case: representative, failure sensitive, non-redundant
+	\item Test-case design: experience-/structure-/specification-based
+	\item Coverage in white-box testing: statement/branching/term coverage
+	\item Next: How to cover all parts of the specification?
 }{
-	\item ...
+	\item \ludewiglichter, Chapter 19 \deutsch{Programmtest}
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-	\end{enumerate}
+	\pic[width=\linewidth]{testing/modulo}
+	
+	Determine the coverage of a test suite.
 }
+	%	\item See \href{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=3867}{Moodle} % TODO in 2023 update link
+	%	\item Watch screencast on how to do white-box testing with JUnit
+	%	\item Implement a new operation in the calculator and update the white-box tests accordingly: \url{https://github.com/tthuem/2020WS-SWT-Calculator/tree/testinglecturev1} % TODO in 2023 update link
+	%	\item Post your code changes and tests in Moodle
+	%\item[] Determine the coverages of certain Modulo Test Cases in Moodle
+	%\\\hfill\fancyqr{https://moodle.uni-ulm.de/course/view.php?id=42562\#section-7}
 
-\section{}
-%\input{content/}
+\section{Black-Box Testing}
+\input{content/03c-blackboxtesting}
 \lessonslearned{
-	\item Next: ...
+	\item Black-box testing: equivalence class testing and boundary testing
+	\item Even systematic testing cannot ensure finding all faults
+	\item Next: Never change a running system! How realistic is that?
 }{
-	\item ...
+	\item \ludewiglichter, Chapter 19 \deutsch{Programmtest}
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-	\end{enumerate}
+	Any questions?
 }
+	%	\item See \href{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=3868}{Moodle} % TODO in 2023 update link
+	%	\item Watch screencast on how to do black-box testing with JUnit
+	%	\item Extend the black-box tests of the calculator for your new operation: \url{https://github.com/tthuem/2020WS-SWT-Calculator/tree/testinglecturev2}
+	%	\item Post your changed code and tests in Moodle
+	%	\item[] Live Coding Exercise for JUnit, see Moodle for instructions and solutions
+	%\\\hfill\fancyqr{https://moodle.uni-ulm.de/course/view.php?id=42562\#section-7}
+%	\item[] Answer the quiz in \panda{} to track your learning progress of this chapter
+%	\\\hfill\fancyqr{https://panda.uni-paderborn.de/mod/quiz/view.php?id=2744505} 
 
 %\faq{
 %	\item
