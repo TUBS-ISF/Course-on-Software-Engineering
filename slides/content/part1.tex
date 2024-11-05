@@ -298,39 +298,89 @@
 \author{Thomas Thüm}
 \lecture{Software Changes}{changes}
 
-\section{}
-%\input{content/}
+\begin{frame}{\insertsubtitle}
+	\renewcommand{\projectcartoonwidth}{.18}
+	\alt<3->{
+		\projectcartoon{01}{how the customer explained it}
+		\projectcartoon{02}{how the project leader understood it}
+		\projectcartoon{03}{how the analyst designed it}
+		\projectcartoon{04}{how the programmer implemented it}
+	}{
+		\hprojectcartoon{01}{how the customer explained it}
+		\hprojectcartoon{02}{how the project leader understood it}
+		\hprojectcartoon{03}{how the analyst designed it}
+		\hprojectcartoon{04}{how the programmer implemented it}
+	}%
+	\uncover<2->{\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}}}
+\end{frame}
+
+\section{Software Maintenance}
+\input{content/04a-maintenance}
 \lessonslearned{
-	\item Next: ...
+	\item Maintenance problems caused by leap seconds
+	%\item Solutions: consider negative intervals, leap second smearing
+	%\item Time pressure for maintenance
+	%\item Develop software for maintenance
+	\item Maintenance (Phase)
+	\item Kinds of maintenance: adaptive, corrective, perfective, preventive
+	%\item Reengineering = reverse engineering + restructuring + forward engineering
+	\item Next: How to develop software that can be maintained?
 }{
-	\item ...
+	\item \ludewiglichter, Chapter 22 \deutsch{Software-Wartung} %and 23 \\deutsch{Reengineering}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2-3 students for Think-Pair
+		\item Think (2 min): choose a kind of maintenace (e.g., preventive) and think of an example
+		\item Pair (5 min): explain example to your group and let collegues guess whether it is adaptive, corrective, perfective or preventive maintenance
+		%\item<+-> Which software maintenance has affected you? How long did it take to fix it?
+		%\item<+-> Discuss your examples with your colleagues
 	\end{enumerate}
 }
 
-\section{}
-%\input{content/}
-\lessonslearned{
-	\item Next: ...
-}{
-	\item ...
-}{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-	\end{enumerate}
-}
+% TODO skipped lecture part to make room for black-box testing
+%\section{}
+%%\input{content/}
+%\lessonslearned{
+%	\item Next: ...
+%}{
+%	\item ...
+%}{
+%	\begin{enumerate}
+%		\item<+-> Form groups of 2-3 students
+%	\end{enumerate}
+%}
 
-\section{}
-%\input{content/}
+\section{Software Evolution}
+\input{content/04b-evolution}
 \lessonslearned{
+	\item Evolution vs maintenance
+	%\item Incremental development and changed requirements cause evolution
+	%\item Sources for complexity: workarounds, unnecessary code, performance tweaks
+	\item Lehman's laws: software is modified and gets more complex
+	%\item Regression testing incorporates results of new \\emph{and old} version
+	\item Smells (anti patterns): %structures to avoid \item Examples: 
+		mysterious name, duplicated code, long method
+	\item Refactorings: %clean-up of structures before and after every change \item Examples: 
+		rename X refactoring, extract/pull-up method refactoring
 	\item Next: Why is it not sufficient to store the latest version of each software?
 }{
-	\item ...
+	\item \sommerville, 2.3 Coping with Change and 3.2.2 Refactoring and 4.6 Requirements Change
+	\item \ludewiglichter, 23.1 \deutsch{Software-Evolution}
+	%\item \ludewiglichter, 19.1.3 \deutsch{Der Regressionstest}
+	\item \refactoring{} and \cleancode
 }{
 	\begin{enumerate}
 		\item<+-> Form groups of 2-3 students
+		\item<+-> Find an example software evolution for each of Lehman's laws: 
+			\begin{itemize}
+				\item continuing change
+				\item increasing complexity
+				\item conservation of familarity
+				\item continuing growth
+				\item declining quality
+			\end{itemize}
+		\item<+-> Discuss the examples with your colleagues
+		\item<+-> Can you also find counter examples?
 	\end{enumerate}
 }
 

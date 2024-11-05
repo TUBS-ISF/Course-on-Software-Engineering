@@ -1,0 +1,165 @@
+\subsection{Evolution and Maintenance}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\slideEvolutionAndMaintenance
+\end{frame}
+
+\subsection{Avoiding Complexity}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=10 0 10 0,clip]{people/richard-pattis}
+		\vspace{-7mm}
+		
+		\begin{note}{Richard E.\ Pattis \mysource{\href{https://www.cs.cmu.edu/~pattis/quotations.html}{cmu.edu}}}
+			\mycite{When debugging, novices insert corrective code; experts remove defective code.}
+		\end{note}
+		% American professor, author of the educational programming language Karel
+		\nextcolumn
+		\pic[width=\linewidth,trim=0 120 0 30,clip]{people/ken-thompson}
+		\vspace{-7mm}
+		
+		\begin{note}{Ken Thompson (born 1943) \mysource{\href{https://twitter.com/CodeWisdom/status/1386049811800109056}{twitter.com}}}
+			\mycite{One of my most productive days was throwing away 1,000 lines of code.}
+		\end{note}
+		% Turing Award 1983, inventor of the programming language B (predecessor of C) and Go, UTF-8 encoding
+	\end{fancycolumns}
+\end{frame}
+
+\widexkcdframe{1667} % complexity comes with changes over time
+
+\subsection{Increasing Complexity}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 200 0 600,clip]{people/tony-hoare}
+		\vspace{-7mm}
+		
+		\begin{note}{Tony Hoare (born 1934) \mysource{\href{https://twitter.com/CodeWisdom/status/893532377586302977}{twitter.com}}}
+			\mycite{Inside every large program, there is a small program trying to get out.}
+		\end{note}
+		% quicksort, hoare logic
+		\nextcolumn
+		\pic[width=\linewidth,trim=50 85 200 120,clip]{people/manny-lehman}
+		\vspace{-7mm}
+		
+		\begin{note}{{Meir \mycite{Manny} Lehman (1925--2010) \mysource{\href{https://twitter.com/CodeWisdom/status/921139649661284352}{twitter.com}}}}
+			\mycite{An evolving system increases its complexity unless work is done to reduce it.}
+		\end{note}
+		% known for laws on software evolution
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Lehman's Laws of Software Evolution}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://ieeexplore.ieee.org/iel3/5031/13795/00637156.pdf}{Lehman et al.\ 1997}}}
+	\begin{fancycolumns}
+		\begin{definition}{Lehman's Laws (excerpt)}
+			\begin{itemize}
+				\item Continuing Change: systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
+				\item Increasing Complexity: complexity increases during evolution unless work is done to maintain or reduce it % As an E-type system evolves its complexity increases unless work is done to maintain or reduce it.
+				%\item Self Regulation: %E-type system evolution process is self regulating with distribution of product and process measures close to normal.
+				%\item Conservation of Organizational Stability (invariant work rate): %The average effective global activity rate in an evolving E-type system is invariant over product lifetime.
+				\item Conservation of Familiarity: satisfactory evolution excludes excessive growth %As an E-type system evolves all associated with it, developers, sales personnel, users, for example, must maintain mastery of its content and behaviour to achieve satisfactory evolution. Excessive growth diminishes that mastery. Hence the average incremental growth remains invariant as the system evolves.
+				\item Continuing Growth: functionality must be continually increased to maintain user satisfaction %The functional content of E-type systems must be continually increased to maintain user satisfaction over their lifetime.
+				\item Declining Quality: quality will decline unless rigorously maintained and adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
+				%\item Feedback System: %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Essence of the Laws}
+			\begin{itemize}
+				\item software that is used will be modified
+				\item when modified, its complexity will increase (unless one does actively work against it)
+			\end{itemize}
+		\end{note}
+		\begin{example}{Consequences}
+			\begin{itemize}
+				\item functional changes are inevitable
+				\item changes are not necessarily a consequence of errors (e.g., in requirements engineering or programming)
+				\item there are limits to what a development team can achieve (cf.\ Continuing Growth)
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Simple and Clean}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 35 0 40,clip]{people/grady-booch}
+		\vspace{-7mm}
+		
+		\begin{note}{Grady Booch (born 1955) \mysource{\href{https://twitter.com/Grady_Booch/status/1035409406068813824}{twitter.com}}}
+			\mycite{The function of good software is to make the complex appear to be simple.}
+		\end{note}
+		% known for UML
+		\nextcolumn
+		\pic[width=\linewidth,trim=800 700 800 600,clip]{people/robert-martin}
+		\vspace{-7mm}
+		
+		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
+			Boy Scouts Rule: \mycite{Leave the campground cleaner than the way you found it.} \mysource{\href{https://learning.oreilly.com/library/view/97-things-every/9780596809515/ch08.html}{oreilly.com}}
+		\end{note}
+		% agile manifesto, book author
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Code Refactoring}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item anticipating changes is typically infeasible
+				\item anticipated changes may not materialize and unanticipated changes are required
+				\item make changes easier by constantly refactoring the code
+			\end{itemize}
+		\end{note}
+		\begin{definition}{Refactoring}
+			\mycite{Refactoring means that the programming team looks for possible improvements to the software and implements them immediately. When team members see code that can be improved, they make these improvements even in situations where there is no immediate need for them.}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Structure of the Software}
+			\mycite{A fundamental problem of incremental development is that local changes tend to \textbf{degrade the software structure}. Consequently, further changes to the software become harder and harder to implement. Essentially, the development proceeds by finding workarounds to problems, with the result that code is often duplicated, parts of the software are reused in inappropriate ways, and the overall structure degrades as code is added to the system. \textbf{Refactoring improves the software structure and readability and so avoids the structural deterioration that naturally occurs when software is changed.}}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Refactoring in Practice}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{example}{Theory vs Practice \mysource{\sommerville}}
+			\mycite{In principle, when refactoring is part of the development process, the software should always be easy to understand and change as new requirements are proposed. In practice, this is not always the case. Sometimes \textbf{development pressure means that refactoring is delayed} because the time is devoted to the implementation of new functionality. Some new features and changes cannot readily be accommodated by code-level refactoring and \textbf{require that the architecture of the system be modified}.}
+		\end{example}
+		\nextcolumn
+		\begin{note}{{Grandma Beck's Child-Rearing Philosophy}}
+			\mycite{If it stinks, change it.} \mysource{\href{https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/ch03.xhtml}{oreilly.com}}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Smells}
+\begin{frame}{\insertsubsection\ \mytitlesource{\refactoring}}
+	\begin{fancycolumns}
+		\begin{definition}{Mysterious Name}
+			\mycite{Puzzling over some text to understand what’s going on is a great thing if you’re reading a detective novel, but not when you’re reading code. [...] One of the most important parts of clear code is good names, so we put a lot of thought into naming functions, modules, variables, classes, so they clearly communicate what they do and how to use them.}\\--- Rename Method/Field/Variable Refactoring
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Duplicated Code (aka.\ Code Clones)}
+			\mycite{If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them. Duplication means that every time you read these copies, you need to read them carefully to see if there’s any difference. If you need to change the duplicated code, you have to find and catch each duplication.}\\--- Extract/Pull-Up Method Refactoring
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\refactoring}}
+	\begin{fancycolumns}
+		\begin{definition}{Long Method}
+			\mycite{Since the early days of programming, people have realized that the longer a function is, the more difficult it is to understand. Older languages carried an overhead in subroutine calls, which deterred people from small functions. [...] [T]he real key to making it easy to understand small functions is good naming. If you have a good name for a function, you mostly don’t need to look at its body. [...] A heuristic we follow is that whenever we feel the need to comment something, we write a function instead.}\\--- Extract Method Refactoring
+		\end{definition}
+		\nextcolumn
+		%\mydefinition{}{\mycite{}\\---  Refactoring}
+		\pic[width=\linewidth,trim=800 800 800 600,clip]{people/robert-martin}
+		\vspace{-7mm}
+		
+		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
+			\mycite{Functions should do one thing. They should do it well. They should do it only.} \mysource{\href{https://learning.oreilly.com/library/view/clean-code-a/9780136083238/}{oreilly.com}}
+		\end{note}
+		% agile manifesto, book author
+	\end{fancycolumns}
+\end{frame}
+
