@@ -26,6 +26,8 @@
 \makeatother
 
 % COLOR SCHEME, LOGOS, PICTURES
+\newcommand*{\lectureqr}[2][]{} % as default there is no qr code
+
 \ifuniversity{recording}{
 	\renewcommand{\deutsch}[1]{} % no German in English recordings
 	\mode<beamer>{\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}} % avoid annoying tool tips during the recording
@@ -35,6 +37,17 @@
 }
 
 \ifuniversity{tubs}{
+	\setpaths{
+		{../pics/tubs/}
+		{../pics/tubs/2024wt/}
+	}
+	
+	\renewcommand*{\lectureqr}[2][width=.33\linewidth]{
+		\begin{flushright}
+			\picDark[#1]{qr#2}
+		\end{flushright}
+	}
+	
 	\usepackage{tubscolors}
 	% redefine colors used in fancybeamer
 	% Orange, OrangeLight (Yellow), OrangeDark (tubsRed)
