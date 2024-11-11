@@ -1,0 +1,375 @@
+\subsection{Clone, Fetch, Commit, and Push}
+\begin{frame}{Clone and Fetch}
+	\begin{fancycolumns}[animation=none,T]
+		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{empty}{empty}{Repository: Revision 1-10}{~}{~}{}}%
+		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{empty}{empty}{Repository: Revision 1-10}{Repository Clone: 1-10}{Repository Clone: 1-10}{
+				\draw[kante] (server) to node[swap] {Clone Repository} (client1);
+				\draw[kante, bend right, <-] (client2) to node[swap] {Clone Repository} (server);
+		}}%
+		\only<3|handout:0>{\peertopeer{ordner1}{tonne}{ordner1}{ordner1}{Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw [innerekante, <-, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Working Copy: 10} ([xshift = -10pt] client1.north east);
+				
+				\draw [innerekante, <-, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Working Copy: 5} ([xshift = -10pt] client2.north east);
+		}}%
+		\only<4-|handout:0>{\peertopeer{ordner1}{tonne}{ordner1}{ordner1}{Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}%
+		\only<1-|handout:1>{
+			\begin{note}{Clone}
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item create a local repository clone 
+					\item use local repository to create a working copy
+					\item specify folders for the clone
+					\item specify revision or head (latest revision)
+				\end{itemize}
+			\end{note}
+		}
+		\nextcolumn
+		\only<5|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{}}	
+		\only<6|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw[kante, ->] (server) to node[swap, above right] {Fetch Repository} (client2);
+		}}
+		\only<7|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-\emph{11}}{
+		}}
+		\only<5-7|handout:1>{
+			\begin{note}{Fetch}
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item download the remote repository
+					\item note: working copy remains unchanged
+				\end{itemize}
+			\end{note}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Commit and Push}
+	\begin{fancycolumns}[animation=none,T]
+		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: 10 \emph{(changed)}\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}
+		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw [innerekante, ->, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Commit "Change message"} ([xshift = -10pt] client1.north east);
+		}}
+		\only<3-|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: \emph{11}\\Repository Clone: 1-\emph{11}}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}
+		
+		\only<1-|handout:1>{
+			\begin{note}{Commit}
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item commit changes to local repository
+					\item commits are atomic (all or nothing)
+					\item specify changed folders and files
+					\item mandatory message describing your change
+				\end{itemize}
+			\end{note}
+		}
+		\nextcolumn
+		\only<4|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Repository Clone: 1-\emph{11}}{Working Copy: 5}{}}%
+		\only<5|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Repository Clone: 1-11}{Working Copy: 5}{
+				\draw[kante, <-] (server) to node[swap] {Push Repository} (client1);
+		}}%
+		\only<6|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-\emph{11}}{Repository Clone: 1-11}{Working Copy: 5}{
+		}}%
+		\only<4-6|handout:1>{
+			\begin{note}{Push}		
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item push local repository to server
+					\item condition: local repository is up to date (might require previous pull)
+				\end{itemize}
+			\end{note}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Commit Messages}
+\xkcdframe{1296} % commit messages
+
+\begin{frame}{How to Write Good Commit Messages?}
+	\begin{fancycolumns}
+		\begin{definition}{Structure of Commit Messages \mysource{\href{https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53}{github.com}}}
+			Subject Line (required)
+			\vspace{-1mm}
+			\begin{itemize}
+				\item short summary (72 chars or less)
+				\item should complete the following sentence:\\
+				\mycite{If applied, this commit will \ldots}
+			\end{itemize}
+			
+			Message Body (optional)
+			\vspace{-1mm}
+			\begin{itemize}
+				\item blank line followed by message body
+				\item explain what has changed and why
+			\end{itemize}
+		\end{definition}
+		\vspace{-1mm}
+		\begin{note}{Integration with Issues \mysource{\href{https://docs.github.com/en/enterprise/2.16/user/github/managing-your-work-on-github/closing-issues-using-keywords}{github.com}, \href{https://docs.gitlab.com/ee/user/project/issues/managing_issues.html}{gitlab.com}}}
+			\begin{itemize}
+				\item write \textbf{\#42} to refer to issue -- Github/Gitlab will create links in both ways
+				\item \textbf{close/fix/resolve/\ldots\ \#42} -- issue automatically closed when commit is pushed to default branch
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Conventional Commits \mysource{\href{https://www.conventionalcommits.org/}{conventionalcommits.org}}}
+			\begin{itemize}
+				\item Machine readable subject line
+				%\item <type>(<optional scope>): <subject line>
+				\item \textbf{fix:} patches a bug (\textbf{patch})
+				\item \textbf{feat:} introduces a new feature (\textbf{minor} change)
+				\item \textbf{BREAKING CHANGE:} introduces a breaking API change (\textbf{major} change)
+				\item \textbf{refactor:} applies a refactoring
+				\item \ldots
+				\item semantic versioning: major.minor.patch (e.g., v2.6.0)
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Examples for Conventional Commit Messages}
+	\centering\picDark[width=.8\linewidth,trim={.05\width} {0\height} {0\width} {.25\height},clip]{versioncontrol/profcalc-commits}
+\end{frame}
+
+\subsection{Merge, Pull, and Ignore}
+\begin{frame}{Merge and Pull}
+	\vspace{-1.5mm}
+	\begin{fancycolumns}[animation=none,T]
+		\only<1|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
+				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
+		}}%
+		\only<2-|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repositoy Clone: 1-11}{
+		}}%
+		\only<1-|handout:1>{
+			\begin{note}{Merge}
+				\begin{itemize}
+					\item update working copy with local repository
+					\item integrate new commits from other branch
+					\item fast forward / automatic merge / manual merge
+				\end{itemize}
+			\end{note}
+		}
+		\nextcolumn
+		\only<3|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-\emph{11}}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw[kante, ->] (server) to node[swap] {Fetch Repository} (client2);
+		}}
+		\only<4|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-\emph{11}}{
+		}}
+		\only<5|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
+				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
+		}}
+		\only<6|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repository Clone: 1-11}{
+		}}	
+		\only<-0|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repository Clone: 1-\emph{11}}{
+				\draw[kante, ->] (server) to node[swap] {Fetch Repository} (client2);
+				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
+		}}
+		\only<3-6|handout:1>{
+			\begin{note}{Pull}
+				\begin{itemize}
+					\item pull = fetch + merge
+					\item download and merge in one step!
+				\end{itemize}
+			\end{note}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ignore}
+	\begin{fancycolumns}[widths={55},animation=none]
+		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 10 \emph{(changed)}\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}
+		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw [innerekante, ->, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Ignore Foo.class + Commit} ([xshift=-10pt]client1.north east);
+		}}
+		\only<3|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy \emph{11}\\Repository Clone: 1-\emph{11}}{Working Copy: Revision 5\\Repository Clone: 1-10}{
+		}}
+		\only<4|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw[kante, <-] (server) to node[swap] {Push repository} (client1);
+		}}
+		\only<5|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-\emph{11}}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}		
+		\begin{note}{.gitignore}
+			\begin{itemize}
+				\item resources will be ignored on commit
+				\item user-specific files or derived/generated resources
+				\item specify files and folders (e.g., *.log files)
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Branching and Merging}
+\begin{frame}{\insertsubsection}
+	\slideBranchingAndMerging
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Automatic Merge}	
+	\begin{columns}[onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+		print("\n");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Foo");
+		print("Bar");
+		print("\n");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Foo");
+		print("Bar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision, automatically merged
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Git Merge in Pictures}
+	\begin{fancycolumns}[animation=none]
+		\only<1|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge1}}%
+		\only<2|handout:1>{\pic[width=\linewidth]{versioncontrol/gitmerge2}}%
+		\only<3|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge3}}%
+		\only<4|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge4}}%
+		\only<5|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge5}}%
+		\nextcolumn
+		\only<-0>{\pic[width=\linewidth]{versioncontrol/gitmerge5}}%
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Merge Conflicts}	
+	\begin{columns}[T, onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar\n");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {		
+		<<<<<<< .mine
+		print("Bar\n");
+		=======
+		print("FooBar");
+		>>>>>>> .r11
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("FooBar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision results in conflict
+					\item<4-> Automatic merge fails: user has to provide a fix
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}

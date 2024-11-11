@@ -1,0 +1,95 @@
+\subsection{System Building}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{definition}{System Building}
+			\mycite{\emph{System building} is the process of creating a complete, executable system by compiling and linking the system components, external libraries, configuration files, and other information.}
+		\end{definition}
+		\begin{definition}{Building Involves Three Platforms}
+			\begin{itemize}
+				\item \emph{development system}: compilers and editors used on the developer's system to test prior to commit
+				\item \emph{build server}: server to build and distribute executable versions, triggered by commits or schedule (i.e., nightly builds)
+				\item \emph{target environment}: intended platform for executable system (e.g., ECU in a car)
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Tooling for Building and System Integration}
+			\begin{itemize}
+				\item build script generation: identify dependent components, automated generation or tool support for creation and editing
+				\item version control system integration: checkout required versions of components
+				\item minimal recompilation: determine which parts need to be recompiled
+				\item executable system creation: compilation and linking
+				\item test automation: run automated tests (e.g., unit tests)
+				\item reporting: reports about success or failure of builds and tests
+				\item documentation generation: release notes, help pages
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Continuous Integration}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{Continuous Integration}
+			\mycite{Agile methods recommend that very frequent system builds should be carried out, with automated testing used to discover software problems. Frequent builds are part of a process of continuous integration [...].}
+		\end{note}
+		\begin{definition}{Continuous Integration Tools}
+			\begin{itemize}
+				\item \href{https://en.wikipedia.org/wiki/CruiseControl}{CruiseControl} (2001--2010) --- first open-source tool
+				\item \href{https://en.wikipedia.org/wiki/TeamCity}{TeamCity} (2006--)
+				\item \href{https://en.wikipedia.org/wiki/Hudson_(software)}{Hudson} (2008--2017)
+				\item \href{https://en.wikipedia.org/wiki/Jenkins_(software)}{Jenkins} (2011--) --- fork of Hudson
+				\item \href{https://en.wikipedia.org/wiki/Travis_CI}{Travis CI} (2011--) --- made in Germany
+				\item \href{https://en.wikipedia.org/wiki/GitLab}{GitLab} (2014--)
+				% TODO add more tools? go continuous delivery, codehsip, circleci, codefresh, bamboo
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Steps in Continuous Integration}
+			\begin{itemize}
+				\item clone/fetch from version control
+				\item if feasible: build and run automated tests, if it fails others are responsible
+				\item apply changes
+				\item build and run automated tests locally, if it fails continue editing
+				\item if local tests pass, commit to feature branch in version control
+				\item commit triggers build server, if it fails continue editing
+				\item if tests pass (and code review approves changes), merge branch into main development branch
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{2224} % versioning
+
+\subsection{DevOps}
+\begin{frame}{\insertsubsection\ \mytitlesource{\handbuch}}
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item if software fails: 
+				\begin{itemize}
+					\item programmers blame administrators for misconfiguration
+					\item administrators blame programmers for erroneous software
+				\end{itemize}
+				\item programmers want frequent updates
+				\item administrators follow the slogan: \mycite{never change a running system}
+				\item customers and users want a single responsibility
+				\item shorter and shorter update cycles
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{DevOps}
+			\begin{itemize}
+				\item promoted in agile development
+				\item \emph{Dev}: development by programmers
+				\item \emph{Ops}: operation \deutsch{Betrieb} by administrators
+				\item \emph{DevOps}: teams that are responsible for both, development and operations
+				\item goal: avoid blaming each other by shared responsibility
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\centering\picDark[width=.75\linewidth]{versioncontrol/devops}
+\end{frame}
+

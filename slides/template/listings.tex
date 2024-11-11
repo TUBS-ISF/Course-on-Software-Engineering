@@ -39,3 +39,32 @@
 	moredelim=**[is][\color{blue}]{~}{~},
 	moredelim=[is][\sout]{|}{|},
 }
+
+\lstdefinestyle{java}{ % check whether this style is needed at all
+	%code formatting
+	language=Java,
+	tabsize=4,
+	breaklines=false,
+	basicstyle=\sf\selectfont,%\small
+	commentstyle=\fontshape{it}\color{darkgray}\selectfont,
+	keywordstyle=\fontseries{b}\selectfont,%\color{orange3}
+	stringstyle=\selectfont,
+	columns=fullflexible, 
+	%basicstyle=\fontfamily{pcr}\footnotesize\selectfont,
+	%commentstyle=\fontshape{it}\color{darkgray}\selectfont,
+	%keywordstyle=\fontseries{b}\selectfont,
+	%stringstyle=\fontfamily{pcr}\selectfont,
+	%line numbering
+	numbers=none,%left, right, none
+	numberstyle=\footnotesize,
+	%frame properties
+	captionpos=b,
+	frame=single,%trblTRBL
+	framesep=3pt,
+	xleftmargin=4pt,
+	xrightmargin=4pt,
+	rulecolor=\color{background},
+	%	escapechar=|,
+	firstnumber=auto,
+	showstringspaces=false,
+}

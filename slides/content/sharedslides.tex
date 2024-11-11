@@ -109,3 +109,26 @@
 		\end{example}
 	\end{fancycolumns}
 }
+
+% introduced: versioncontrol
+% reused: ?
+\newcommand{\slideBranchingAndMerging}{
+	\begin{fancycolumns}[animation=none,b,widths={58}]
+		\only<1|handout:0>{\trunkbranch{}{}}%
+		\only<2|handout:0>{\trunkbranch{,draw=green}{}}%
+		\only<3-|handout:1>{\trunkbranch{,draw=green}{,draw=orange}}%
+		\only<1->{
+			\begin{note}{}
+				\begin{itemize}
+					\item simultaneous, independent development
+					\item option to merge in the future
+					\item main development on branch \texttt{main} (formerly \texttt{master})
+					\item parallel developments on branches for new features, bug fixes, multiple versions, \ldots
+					\item avoiding name \texttt{master} for branches:\\\texttt{git config --global init.defaultBranch main}
+				\end{itemize}
+			\end{note}
+		}
+		\nextcolumn
+		\uncover<4-|handout:1>{\picDark[width=\linewidth]{versioncontrol/master-main-github}}%
+	\end{fancycolumns}
+}

@@ -159,7 +159,7 @@
 
 % COMMANDS TO SIMPLIFY USAGE OF THE PROJECT CARTOON
 
-\newcommand{\projectcartoonwidth}{.19} % default value for 5 tiles
+\newcommand{\projectcartoonwidth}{.18} % default value for 5 tiles
 \newcommand{\projectcartoon}[2]{\projectcartoonimage{sepia/cell_#1}{#2}}
 \newcommand{\hprojectcartoon}[2]{\projectcartoonimage{alpha/cell_#1}{#2}}
 \newcommand{\projectcartoonimage}[2]{
@@ -223,6 +223,78 @@
 		\draw[line width=3,line join=bevel] (0,2) to [bend left=5] (2,0) (0,0) to [bend left=15] (2,2);
 		\draw[line width=2,line join=bevel,red] (0,2) to [bend left=5] (2,0) (0,0) to [bend left=15] (2,2);
 	\end{tikzpicture}%
+}
+
+% reusable tikz pictures
+\tikzset{
+	versioncontrol/.style={xscale=.55,font=\footnotesize,auto,knoten/.style={circle,inner sep=0,outer sep=0},
+		kante/.style={overlay,->,thick,bend right=5,shorten >=-5pt,shorten <=-5pt},
+		innerekante/.style={overlay,->,thick,bend right=60,shorten >=-10pt,shorten <=-10pt}}
+}
+\newcommand{\clientserver}[7]{
+	\begin{center}
+		\begin{tikzpicture}[versioncontrol]
+			\node[knoten] (server) at (0,0) {\picDark[scale=.15]{versioncontrol/#1} \pic[scale=.3]{versioncontrol/tonne}};
+			\node[knoten] (client1) at (-3,-2) {~~~~~\picDark[scale=.1]{versioncontrol/#2}~~~~~};
+			\node[knoten] (client2) at (3,-2) {~~~~~\picDark[scale=.1]{versioncontrol/#3}~~~~~};
+			#7
+			\node[overlay] at (0,.8) {#4};
+			\node[overlay] at (-3,-2.65) {#5};
+			\node[overlay] at (3,-2.65) {#6};
+		\end{tikzpicture}
+	\end{center}
+}
+
+%scale 0.15 = 30pt
+\newcommand{\peertopeer}[8]{
+	\vspace{-2mm}
+	\begin{center}
+		\begin{tikzpicture}[versioncontrol]
+			\node[knoten] (server) at (0,0) {\picDark[height=30pt]{versioncontrol/#1} \pic[height=20pt]{versioncontrol/#2}};
+			\node[knoten] (client1) at (-3,-2) {\picDark[height=20pt]{versioncontrol/#3} \pic[height=15pt]{versioncontrol/#2}};
+			\node[knoten] (client2) at (3,-2) {\picDark[height=20pt]{versioncontrol/#4} \pic[height=15pt]{versioncontrol/#2}};
+			\node[knoten] (client21) at (3.6,-1.75) {};
+			#8
+			\node[above = -12pt of server, overlay] {#5};
+			\node[text width = 0.45\linewidth, align = center, below = 2pt of client1, overlay] {#6};
+			\node[text width = 0.45\linewidth, align = center, below = 2pt of client2, overlay] {#7};
+		\end{tikzpicture}
+	\end{center}
+	\vspace{5mm}
+}
+
+\newcommand{\trunkbranch}[2]{
+	\begin{tikzpicture}[auto,xscale=.75,font=\footnotesize,trunk/.style={circle,draw,thick,minimum size=2mm,inner sep=0mm,outer sep=.5mm},branch1/.style={trunk,fill=blue,yshift=1cm},branch2/.style={trunk,fill=blue,yshift=2cm},change/.style={overlay,->,thick},main/.style={trunk}, branch/.style={change#1},merge/.style={change#2}]
+		\node[main,label=below:r1,label=left:main] at (0,0) (rev1) {};
+		\node[branch1,label=above:r2] at (1,0) (rev2) {};
+		\node[branch1,label=above:r3] at (2,0) (rev3) {};
+		\node[main,label=below:r4] at (3,0) (rev4) {};
+		\node[branch2,label=above:r5,label=left:a branch] at (4,0) (rev5) {};
+		\node[branch1,label=above:r6] at (5,0) (rev6) {};
+		\node[branch1,label=above:r7] at (6,0) (rev7) {};
+		\node[branch2,label=above:r8] at (7,0) (rev8) {};
+		\node[main,label=below:r9] at (8,0) (rev9) {};
+		\node[branch2,label=above:r10] at (9,0) (rev10) {};
+		\node[main,label=below:r11] at (10,0) (rev11) {};
+		\node[main,label=below:r12] at (11,0) (rev12) {};
+		\node[branch2,label=above:r13] at (12,0) (rev13) {};
+		\draw[branch] (rev1) to (rev2);
+		\draw[change] (rev1) to (rev4);
+		\draw[change] (rev2) to (rev3);
+		\draw[merge] (rev3) to (rev4);
+		\draw[branch] (rev4) to (rev5);
+		\draw[branch] (rev4) to (rev6);
+		\draw[change] (rev4) to (rev9);
+		\draw[change] (rev5) to (rev8);
+		\draw[change] (rev6) to (rev7);
+		\draw[merge] (rev7) to (rev9);
+		\draw[change] (rev8) to (rev10);
+		\draw[merge] (rev9) to (rev10);
+		\draw[change] (rev9) to (rev11);
+		\draw[merge] (rev10) to node {merge} (rev11);
+		\draw[change] (rev10) to (rev13);
+		\draw[change] (rev11) to (rev12);
+	\end{tikzpicture}
 }
 
 % OTHER COMMANDS

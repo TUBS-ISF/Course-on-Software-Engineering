@@ -94,7 +94,6 @@
 \lecture{Implementation}{implementation}
 
 \begin{frame}{\insertsubtitle}
-	\renewcommand{\projectcartoonwidth}{.19}
 	\alt<2->{
 		\projectcartoon{01}{how the customer explained it}
 		\projectcartoon{02}{how the project leader understood it}
@@ -196,7 +195,6 @@
 \lecture{Testing}{testing}
 
 \begin{frame}{\insertsubtitle}
-	\renewcommand{\projectcartoonwidth}{.18}
 	\alt<2->{
 		\projectcartoon{01}{how the customer explained it}
 		\projectcartoon{02}{how the project leader understood it}
@@ -298,11 +296,12 @@
 
 % TODO L04 SOFTWARE CHANGES
 
+\ifuniversity{tubs}{\date{November 4, 2024}}
+
 \author{Thomas Thüm}
 \lecture{Software Changes}{changes}
 
 \begin{frame}{\insertsubtitle}
-	\renewcommand{\projectcartoonwidth}{.18}
 	\alt<3->{
 		\projectcartoon{01}{how the customer explained it}
 		\projectcartoon{02}{how the project leader understood it}
@@ -399,43 +398,76 @@
 
 % TODO L05 VERSION CONTROL
 
+\ifuniversity{tubs}{\date{November 11, 2024}}
+
 \author{Thomas Thüm}
 \lecture{Version Control}{versioncontrol}
 
-\section{}
-%\input{content/}
+\begin{frame}{\insertsubtitle}
+	\hfill%
+	\alt<3->{%
+		\projectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+		\projectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
+		\projectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
+	}{%
+		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
+		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
+	}%
+	\uncover<2->{\hprojectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}}} % se05 version control
+\end{frame}
+
+\section{Introduction to Version Control}
+\input{content/05a-versioncontrol}
 \lessonslearned{
-	\item Next: ...
+	\item Configuration management: 4 activities and 3 development stages
+	\item Version control: goals, centralized and distributed
+	\item Next: What are typical operations for version control?
 }{
-	\item ...
+	\item \sommerville\mychapter{25} Configuration Management
 }{
 	\begin{enumerate}
 		\item<+-> Form groups of 2-3 students
+%		\item Choose a project on Github (see link to famous projects in \panda) % TODO 2024st link to best rated repos (for Java projects)?
+%		%\item What is name and purpose of the software?
+%		\item What is the main programming language?
+%		\item What is the number of commits?
+%		\item What is the number of branches?
+%		\item Share your insights in \pingo{03}
 	\end{enumerate}
 }
 
-\section{}
-%\input{content/}
+\section{Operations of Version Control}
+\input{content/05b-operations}
 \lessonslearned{
-	\item Next: ...
+	\item Version control with clone, fetch, commit, push, merge, pull, ignore
+	\item Commit messages
+	\item Branching, merging, merge conflicts
+	\item Next: How can version control speed up release cycles?
 }{
-	\item ...
+	\item \sommerville\mychapter{25} Configuration Management % TODO replace with better literature pointer?
 }{
 	\begin{enumerate}
 		\item<+-> Form groups of 2-3 students
+		\item<+-> Why does it matter whether developers use conventional commits or not?
+		\item<+-> Should commits be rejected if they do not comply with the conventions?
 	\end{enumerate}
 }
 
-\section{}
-%\input{content/}
+\section{Continuous Integration}
+\input{content/05c-ci}
 \lessonslearned{
-	\item Next: ...
+	\item System building: 3 platforms, requirements on tooling
+	\item Continuous integration: tools, steps
+	\item DevOps
+	\item Next: What can possibly go wrong when leading a software project?
 }{
-	\item ...
+	\item \sommerville\mychapter{25} Configuration Management
+	\item \handbuch\mychapter{9.3} DevOps
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-	\end{enumerate}
+	Fill out the quiz
+	%	\item What is better? if test fail (a) reject commits or (b) notify developers via email asynchronously
+	%	\item Discuss the two options and share experiences
 }
 
 %\faq{
