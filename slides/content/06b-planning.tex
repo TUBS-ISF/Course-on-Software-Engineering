@@ -1,0 +1,170 @@
+\subsection{Project Planning}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{{Anonymous}} % TODO add citation?
+			\mycite{A goal without a plan is just a wish.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{At the Proposal Stage}
+			\begin{itemize}
+				\item when bidding for a contract
+				\item enough resources?
+				\item price for the bidding?
+				\item not all requirements known (i.e., system requirements) $\Rightarrow$ inevitable speculative
+			\end{itemize}
+		\end{note}
+		\pause
+		\begin{example}{Software Pricing}
+			\begin{itemize}
+				\item effort costs (software engineers / managers)
+				\item hardware and software costs (incl.\ hardware maintenance and software support)
+				\item travel and training costs
+				\item price = estimated costs + profit + contingency (extra effort, 30--50\%)
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\pause
+		\begin{note}{On Project Startup}
+			\begin{itemize}
+				\item who will work on the project?
+				\item how to split into increments?
+				\item refine initial estimates
+			\end{itemize}
+		\end{note}
+		\pause
+		\begin{note}{Throughout the Project}
+			\begin{itemize}
+				\item update plan based on new insights
+				\item learn about the software and team capabilities
+				\item estimates get more accurate
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{1425} % cost estimation
+
+\subsection{Gantt Chart}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter, \sommerville}}
+	\begin{fancycolumns}[widths={40,58}]
+		\begin{definition}{Gantt Chart}
+			\begin{itemize}
+				\item named after Henry L. Gantt (1861--1919)
+				\item bar chart with timeline on x axis and activities on the y axis
+				\item optional: progress bars and marker for observation date
+				\item optional: dependencies between tasks
+				\item optional, not shown: highlight dependencies on the critical path
+				\item \emph{critical path}: tasks whose delay also delays the project
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{exampletight}{}
+			\picDark[width=\linewidth]{management/gantt-chart}
+		\end{exampletight}
+		\pause[3]
+		\begin{example}{}\centering
+			What is wrong in the above picture?
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\newcommand{\forwardpass}[1]{#1}
+\newcommand{\backwardpass}[1]{#1}
+\newcommand{\buffer}[1]{#1}
+\newcommand{\networknode}[7]{
+	\begin{tikzpicture}[every node/.style={draw=black,anchor=base,minimum height=5mm,text width=7.5mm,align=center},inner xsep=0mm,line width=.5pt,node distance=-.5pt]
+		\node[text width=22.5mm] (task) {#1};
+		\node (d) [above=of task] {#3};
+		\node (es) [left=of d] {\forwardpass{#2}};
+		\node (ef) [right=of d] {\forwardpass{#4}};
+		\node (b) [below=of task] {\buffer{#6}};
+		\node (ls) [left=of b] {\backwardpass{#5}};
+		\node (lf) [right=of b] {\backwardpass{#7}};
+	\end{tikzpicture}
+}
+
+\subsection{Network Diagram}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter, \sommerville}}
+	\begin{fancycolumns}
+		\begin{definition}{Network Diagram \deutsch{Netzplan}}
+			\begin{itemize}
+				\item aka.\ PERT charts
+				\item directed, acyclic graph
+				\item nodes represent tasks
+				\item edges represent dependencies
+			\end{itemize}
+		\end{definition}
+		\pause
+		\begin{definition}{Metra Potential Method}
+			Given project start date and \emph{duration} of each activity we can compute:
+			\begin{itemize}
+				\item \emph{earliest start} and \emph{earliest finish} time with \emph{forward pass}
+				\item \emph{latest start} and \emph{latest finish} time with \emph{backwards pass}
+				\item \emph{buffer} (time span between earliest and latest start/finish)
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\pause
+		\begin{exampletight}{Example Network for a Bachelor's Thesis}
+			\centering\vspace{1mm}
+			\only<-3|handout:0>{\renewcommand{\forwardpass}[1]{}}
+			\only<-4|handout:0>{\renewcommand{\backwardpass}[1]{}}
+			\only<-5|handout:0>{\renewcommand{\buffer}[1]{}}
+			\only<-6|handout:0>{\tikzset{emph/.style={}}}
+			\only<7->{\tikzset{emph/.style={draw=red}}}
+			\begin{tikzpicture}[xscale=3,yscale=-2.1,inner sep=0,edge/.style={->,>={Stealth[round]},semithick}]
+				\node[fill=red!30!background,font=\tiny] (legend) at (1,0) {\networknode{\normalsize Task}{earliest start}{duration}{earliest finish}{latest start}{buffer}{latest finish}};
+				\node (intro) at (1,1) {\networknode{Introduction}{0}{1}{1}{10}{10}{11}};
+				\node (background) at (0,0) {\networknode{Background}{0}{3}{3}{0}{0}{3}};
+				\node (concept) at (0,1) {\networknode{Concept}{3}{4}{7}{3}{0}{7}};
+				\node (eval) at (0,2) {\networknode{Evaluation}{7}{4}{11}{7}{0}{11}};
+				\node (summary) at (1,2) {\networknode{Summary}{11}{1}{12}{11}{0}{12}};
+				\draw[edge,emph] (background) to (concept);
+				\draw[edge,emph] (concept) to (eval);
+				\draw[edge,emph] (eval) to (summary);
+				\draw[edge] (intro) to (summary);
+			\end{tikzpicture}
+			\vspace{1mm}
+		\end{exampletight}
+		% TODO fix example: thesis over 13 weeks, no critical path if spread over 12 weeks (only summary is critical)
+		% TODO include network-bachelor-thesis.pdf? separate version for dark mode?
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Gantt Charts vs Network Diagrams}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}} % TODO check source
+	\begin{fancycolumns}
+		\begin{note}{Gantt Chart}
+			\begin{itemize}
+				\item very common technique
+				\item many tools available
+				\item great visualization of timing and progress
+			\end{itemize}
+		\end{note}
+		\begin{exampletight}{}
+			\centering\picDark[width=.85\linewidth]{management/gantt-chart}
+		\end{exampletight}
+		\nextcolumn
+		\begin{note}{Network Diagram \deutsch{Netzplan}}
+			\begin{itemize}
+				\item clear visualization of dependencies
+				\item explicitly includes buffer times\\(cf.\ metra potential method)
+			\end{itemize}
+		\end{note}
+		\begin{exampletight}{}
+			\centering
+			\begin{tikzpicture}[xscale=3,yscale=-2.1,inner sep=0,edge/.style={->,>={Stealth[round]},semithick}]
+				\node[fill=red!30!background,font=\tiny] (legend) at (1,0) {\networknode{\normalsize Task}{earliest start}{duration}{earliest finish}{latest start}{buffer}{latest finish}};
+				\node (intro) at (1,1) {\networknode{Introduction}{0}{1}{1}{10}{10}{11}};
+				\node (background) at (0,0) {\networknode{Background}{0}{3}{3}{0}{0}{3}};
+				\node (concept) at (0,1) {\networknode{Concept}{3}{4}{7}{3}{0}{7}};
+				\draw[edge] (background) to (concept);
+			\end{tikzpicture}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+

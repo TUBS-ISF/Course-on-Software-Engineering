@@ -1,0 +1,55 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty % remove the default navigation symbols
+%\input{../../slides/template/colorscheme}
+
+\makeatletter
+    \setlength\beamer@paperwidth{54mm}%
+    \setlength\beamer@paperheight{58mm}%
+    \geometry{papersize={\beamer@paperwidth,\beamer@paperheight}}
+\makeatother
+\setbeamersize{text margin left=0mm,text margin right=0mm}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, arrows.meta, positioning}
+\tikzset{ >=stealth'} % define standard arrow tip
+
+\newcommand{\forwardpass}[1]{#1}
+\newcommand{\backwardpass}[1]{#1}
+\newcommand{\buffer}[1]{#1}
+\newcommand{\networknode}[7]{
+	\begin{tikzpicture}[every node/.style={draw=black,anchor=base,minimum height=5mm,text width=7.5mm,align=center},inner xsep=0mm,line width=.5pt,node distance=-.5pt]
+		\node[text width=22.5mm] (task) {#1};
+		\node (d) [above=of task] {#3};
+		\node (es) [left=of d] {\forwardpass{#2}};
+		\node (ef) [right=of d] {\forwardpass{#4}};
+		\node (b) [below=of task] {\buffer{#6}};
+		\node (ls) [left=of b] {\backwardpass{#5}};
+		\node (lf) [right=of b] {\backwardpass{#7}};
+	\end{tikzpicture}
+}
+
+\begin{document}
+
+\begin{frame}[plain]
+	\centering
+	\only<-2|handout:0>{\renewcommand{\forwardpass}[1]{}}
+	\only<-3|handout:0>{\renewcommand{\backwardpass}[1]{}}
+	\only<-4|handout:0>{\renewcommand{\buffer}[1]{}}
+	\only<-5|handout:0>{\tikzset{emph/.style={}}}
+	\only<6->{\tikzset{emph/.style={draw=red}}}
+	\begin{tikzpicture}[xscale=3,yscale=-2.1,inner sep=0,edge/.style={->,>={Stealth[round]},semithick}]
+		\node[fill=red!30!white,font=\tiny] (legend) at (1,0) {\networknode{\normalsize Task}{earliest start}{duration}{earliest finish}{latest start}{buffer}{latest finish}};
+		\node (intro) at (1,1) {\networknode{Introduction}{0}{1}{1}{10}{10}{11}};
+		\node (background) at (0,0) {\networknode{Background}{0}{3}{3}{0}{0}{3}};
+		\node (concept) at (0,1) {\networknode{Concept}{3}{4}{7}{3}{0}{7}};
+		\node (eval) at (0,2) {\networknode{Evaluation}{7}{4}{11}{7}{0}{11}};
+		\node (summary) at (1,2) {\networknode{Summary}{11}{1}{12}{11}{0}{12}};
+		\draw[edge,emph] (background) to (concept);
+		\draw[edge,emph] (concept) to (eval);
+		\draw[edge,emph] (eval) to (summary);
+		\draw[edge] (intro) to (summary);
+	\end{tikzpicture}
+\end{frame}
+
+\end{document}
+

@@ -5,60 +5,71 @@
 \author{Thomas Thüm}
 \lecture{Project Management}{management}
 
-\begin{frame}[plain]{Project Management}
-	\alt<3->{
-		\projectcartoon{01}{how the customer explained it}
-		\projectcartoon{02}{how the project leader understood it}
-		\projectcartoon{03}{how the analyst designed it}
-		\projectcartoon{04}{how the programmer implemented it}
-	}{
-		\hprojectcartoon{01}{how the customer explained it}
-		\hprojectcartoon{02}{how the project leader understood it}
-		\hprojectcartoon{03}{how the analyst designed it}
-		\hprojectcartoon{04}{how the programmer implemented it}
+\begin{frame}{\insertsubtitle}
+	\alt<3->{%
+		\projectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+		\projectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
+		\projectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
+		\projectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}} % se05 version control
+	}{%
+		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
+		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
+		\hprojectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}} % se05 version control
 	}%
 	\uncover<2->{\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}}} 
 \end{frame}
 
-\section{}
-%\input{content/0a-}
+\section{Introduction to Project Management}
+\input{content/06a-projectmanagement}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Software development projects
+	\item Project management: goals, influences, activities
+	\item Risk and people management
+	\item Next: How to create realistic project plans?
 }{
-	\item %\sommerville\mychapter{1.1}\mypages{19--28}
+	\item \sommerville\mychapter{22} Project Management
+	\item \ludewiglichter\mychapter{7.2} \deutsch{Software-Projekte}
 }{
 	\begin{enumerate}
 		\item<+-> Form groups of 2-3 students
-		\item<+-> ?
+		\item<+-> Risk identification and analysis: Give an example for a risk of a messenger app and specify probability, severity, and classification
+		\item<+-> Risk planning and monitoring: How to address the risk mentioned by one of your colleagues? What could change during the project?
+		\item<+-> Repeat 2. and 3. with other examples
 	\end{enumerate}
 }
 
-\section{}
-%\input{content/0a-}
+\section{Project Planning and Scheduling}
+\input{content/06b-planning}
 \lessonslearned{
-	\item ?
+	\item Project planning (incl. software pricing)
+	\item Project scheduling with Gantt charts and network diagrams
 	\item Next: ?
 }{
-	\item %\sommerville\mychapter{1.1}\mypages{19--28}
+	\item \sommerville\mychapter{23} Project Planning
+	\item \ludewiglichter\mychapter{8.3.2} \deutsch{Projektphasen}
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-		\item<+-> ?
-	\end{enumerate}
+	Fill out the network diagram in Stud.IP
+	\lectureqr{06}
 }
 
-\section{}
-%\input{content/0a-}
+\section{Cost Estimation}
+\input{content/06c-costestimation}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Manageable units with \emph{user stories}
+	\item Effort/cost estimation with \emph{planning poker}
+	\item Tracking progress with \emph{burndown charts}
+	\item Cost estimation is an iterative process
+	\item Next: How to manage the process beyond implementation (e.g., testing)?
 }{
-	\item %\sommerville\mychapter{1.1}\mypages{19--28}
+	\item \sommerville\mychapter{23} Project Planning % TODO check citation
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-		\item<+-> ?
+		\item<+-> Form groups of 3-4 students
+		\item<+-> Choose a feature of an app of your choice
+		\item<+-> In isolation: estimate effort in weeks to develop that feature
+		\item<+-> In group: name your estimate and discuss outliers
+		\item<+-> Repeat 3--4 until consensus is reached
 	\end{enumerate}
 }
 

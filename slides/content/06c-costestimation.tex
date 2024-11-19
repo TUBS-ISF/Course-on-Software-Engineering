@@ -1,0 +1,122 @@
+\subsection{Costs of the Corona-Warn-App}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://dip.bundestag.de/vorgang/kosten-f\%C3\%BCr-die-corona-warn-app-im-vergleich-zu-\%C3\%A4hnlichen-anwendungen-in/294397?f.deskriptor=App\&rows=25\&pos=21}{bundestag.de}}}
+	\centering\picDark[width=.6\linewidth]{management/cwa-welt}
+\end{frame}
+
+\subsection{User Stories}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Motivation for User Stories}
+			\begin{itemize}
+				\item split development\\ into manageable parts
+				\item split cost estimation\\ into manageable parts
+				\item unit of change used in change/release management (cf.~Lecture~5)
+				\item keep track of progress / schedule
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{User Story \mysource{\sommerville}}
+			\begin{itemize}
+				\item a scenario of use that might be experienced by a system user
+				\item aka.\ \emph{story card} as user stories are sometimes written on physical cards
+				\item user stories are typically prioritized by the customer
+				\item subset of all user stories is chosen for the next release
+				%\item used in many agile methods
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Corona-Warn-App User Stories}
+\begin{frame}{\insertsubsection}
+	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue65}
+\end{frame}
+\begin{frame}{\insertsubsection}
+	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue24}
+\end{frame}
+\begin{frame}{\insertsubsection}
+	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue235}
+\end{frame}
+
+\subsection{Planning Poker}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Planning Poker \mysource{\href{https://dl.acm.org/doi/abs/10.5555/1036751}{Cohn 2005}}}
+			\emph{Purpose} Estimate the relative effort required to complete user stories.
+			\begin{itemize}
+				\item introduce the user story
+				\item each team member puts down a card with their estimate (face down)
+				\item all team members reveal a card at the same time
+				\item outliers justify their estimate
+				\item repeat until consensus is reached
+			\end{itemize}
+			Cards use a \emph{modified Fibonacci sequence}: forces developers to take into account the uncertainty of the estimate
+		\end{definition}
+	\nextcolumn
+		\pic[width=\linewidth]{management/planning-poker}
+		\pause
+		\begin{note}{Why not using \ldots}
+			\begin{itemize}
+				\item the numbers from 0 to 10?
+				\item concrete time intervals (e.g., days)?
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Burndown Chart}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={75}]
+		\begin{exampletight}{}
+			\picDark[width=\linewidth]{management/burndown-chart}
+		\end{exampletight}
+	\nextcolumn
+		\begin{definition}{Burndown Chart}
+			\begin{itemize}
+				\item visualization of the development progress
+				\item used by project management to track progress
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap: Software Pricing}
+\begin{frame}<4>{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{At the Proposal Stage}
+			\begin{itemize}
+				\item when bidding for a contract
+				\item enough resources?
+				\item price for the bidding?
+				\item not all requirements known (i.e., system requirements) $\Rightarrow$ inevitable speculative
+			\end{itemize}
+		\end{note}
+		\pause
+		\begin{example}{Software Pricing}
+			\begin{itemize}
+				\item effort costs (software engineers / managers)
+				\item hardware and software costs (incl.\ hardware maintenance and software support)
+				\item travel and training costs
+				\item price = estimated costs + profit + contingency (extra effort, 30--50\%)
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\pause
+		\begin{note}{On Project Startup}
+			\begin{itemize}
+				\item who will work on the project?
+				\item how to split into increments?
+				\item refine initial estimates
+			\end{itemize}
+		\end{note}
+		\pause
+		\begin{note}{Throughout the Project}
+			\begin{itemize}
+				\item update plan based on new insights
+				\item learn about the software and team capabilities
+				\item estimates get more accurate
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
