@@ -1,0 +1,193 @@
+\subsection{Motivation for Agile Development}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Motivation \mysource{\sommerville}}
+			\begin{itemize}
+				\item businesses operate globally and in a rapidly changing environment
+				\item software is part of almost all business operations
+				\item new software has to be developed quickly
+				\item often infeasible to derive a complete set of stable requirements
+				\item plan-driven process models (e.g., waterfall) deliver software long after originally specified
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Agile (Development) Methods \mysource{\sommerville}}
+			Development of agile methods since late 1990s:
+			\begin{itemize}
+				\item[1.] specification, design, implementation are interleaved
+				\item[2.] each increment is specified and evaluated by stakeholders (e.g., end-users)
+				\item[3.] extensive tool support is used
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Manifesto of Agile Software Development}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://agilemanifesto.org/}{agilemanifesto.org}}}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 250 0 0,clip]{people/agile-manifesto}
+		\vspace{-7mm}
+		
+		\begin{note}{Ski Resort in Utah (February 2001)}
+			\small 17 experts on software development:\\~\\Kent Beck, Mike Beedle, Arie van Bennekum, Alistair Cockburn, Ward Cunningham, Martin Fowler, James Grenning, Jim Highsmith, Andrew Hunt, Ron Jeffries, Jon Kern, Brian Marick, Robert C. Martin, Steve Mellor, Ken Schwaber, Jeff Sutherland, Dave Thomas
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Manifesto}
+			\mycite{We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:
+				\begin{itemize}
+					\item {\large individuals and interactions}\\\hfill over processes and tools
+					\item {\large working software}\\\hfill over comprehensive documentation
+					\item {\large customer collaboration}\\\hfill over contract negotiation
+					\item {\large responding to change}\\\hfill over following a plan
+				\end{itemize}
+				That is, while there is value in the items on the right, we value the items on the left more.}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Principles behind the Agile Manifesto}
+\begin{frame}[b]{\insertsubsection\ \mytitlesource{\href{https://agilemanifesto.org/}{agilemanifesto.org}}}
+	\setlength\leftmargini{4mm}\vspace{-5mm}%
+	\begin{fancycolumns}[widths={54},b,animation=none]
+		\begin{definition}{Principles 1--6}
+			\begin{itemize}
+				\item[1.]<+-> \mycite{Our highest priority is to \emph{satisfy the customer} through early and continuous delivery of valuable software.
+					\item[2.]<+-> \emph{Welcome changing requirements}, even late in development. Agile processes harness change for the customer's competitive advantage.
+					\item[3.]<+-> \emph{Deliver working software frequently}, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
+					\item[4.]<+-> Business people and developers must \emph{work together daily} throughout the project.
+					\item[5.]<+-> Build projects around \emph{motivated individuals}. Give them the environment and support they need, and trust them to get the job done.
+					\item[6.]<+-> The most efficient and effective method of conveying information to and within a development team is \emph{face-to-face conversation}.}
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Principles 7--12}
+			\begin{itemize}
+				\item[7.]<+-> \mycite{\emph{Working software} is the primary measure of progress.
+					\item[8.]<+-> Agile processes promote \emph{sustainable development}. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
+					\item[9.]<+-> Continuous attention to \emph{technical excellence and good design} enhances agility.
+					\item[10.]<+-> \emph{Simplicity}--the art of maximizing the amount of work not done--is essential.
+					\item[11.]<+-> The best architectures, requirements, and designs emerge from \emph{self-organizing teams}.
+					\item[12.]<+-> At regular intervals, the \emph{team reflects} on how to become more effective, then tunes and adjusts its behavior accordingly.}
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Scrum}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={45}]
+		\definitionuserstory{Recap: }
+		\begin{note}{}
+				many agile methods rely on user stories: Scrum, Kanban, Extreme Programming (XP)
+		\end{note}
+		\nextcolumn
+		\vspace{-10mm}
+		\begin{definition}{Scrum \mysource{\sommerville}}
+			\begin{itemize}
+				% TODO add original authors and publication
+				\item an agile method, most-widely used method
+				\item no special development techniques (like pair programming, test-driven development)
+				\item \emph{product backlog}: list of user stories, collected and priorized by the \emph{product owner}
+				\item \emph{sprint backlog}: user stories selected by the scrum team for the next \emph{sprint}
+			\end{itemize}
+		\end{definition}
+		\begin{exampletight}{}
+			\diagramScrum
+		\end{exampletight}
+		% TODO better scrum visualization?
+		%\myexampletight{}{\href{https://commons.wikimedia.org/wiki/File:Scrum_Framework.png}{\includegraphics[width=\linewidth]{scrum2}}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Scrum Roles}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Development Team \mysource{\sommerville}}
+			\mycite{A self-organizing group of software developers, which should be \emph{no more than seven people}. They are responsible for developing the software and other essential project documents.}
+		\end{definition}
+		\begin{exampletight}{}
+			\diagramScrum
+		\end{exampletight}
+		\nextcolumn
+		\begin{definition}{Product Owner \mysource{\sommerville}}
+			\mycite{An individual (or possibly a small group) whose job is to identify product features or requirements, prioritize these for development, and \emph{continuously review the product backlog} to ensure that the project continues to meet critical business needs. The product owner can be a customer but might also be a product manager in a software company or other stakeholder representative.}
+		\end{definition}
+		\uncover<3->{\begin{definition}{Scrum Master \mysource{\sommerville}}
+				\mycite{The scrum master is responsible for ensuring that the scrum process is followed and \emph{guides the team} in the effective use of scrum. He or she is responsible for interfacing with the rest of the company and for ensuring that the scrum team is not diverted by outside interference.% The scrum developers are adamant that the scrum master should not be thought of as a project manager. Others, however, may not always find it easy to see the difference.
+				}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Scrum Terms}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={45}]
+		\begin{definition}{(Potentially Shippable) Product Increment}
+			\mycite{The software increment that is delivered from a sprint. The idea is that this should be potentially shippable, which means that it is in a \emph{finished state} and no further work, such as testing, is needed to incorporate it into the final product.% In practice, this is not always achievable.
+			}\mysource{\sommerville}
+		\end{definition}
+		\uncover<2->{\begin{definition}{Product Backlog \mysource{\sommerville}}
+				\mycite{This is a list of \emph{to-do items} that the scrum team must tackle. They may be feature definitions for the software, software requirements, user stories, or descriptions of supplementary tasks that are needed, such as architecture definition or user documentation.}
+		\end{definition}}
+		\nextcolumn
+		\uncover<3->{\begin{definition}{Daily Scrum \mysource{\sommerville}}
+				\mycite{A daily meeting (cf.\ stand-up meeting) of the scrum team that \emph{reviews progress and prioritizes work} to be done that day. Ideally, this should be a short face-to-face meeting that includes the whole team.}
+		\end{definition}}
+		\uncover<4->{\begin{definition}{Sprint \mysource{\sommerville}}
+				\mycite{A development iteration. Sprints are usually \emph{2 to 4 weeks} long.}
+		\end{definition}}
+		\uncover<5->{\begin{definition}{Velocity \mysource{\sommerville}}
+				\mycite{An estimate of how much product backlog effort a team can cover in a single sprint. Understanding a team’s velocity helps them estimate what can be covered in a sprint and provides a basis for \emph{measuring and improving performance}.}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap: Planning Poker and Burndown Chart}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={35}]
+		\pic[width=\linewidth]{management/planning-poker}
+		\begin{note}{Planning Poker}
+			\begin{itemize}
+				\item used to estimate effort for new user stories arriving in the \emph{product backlog}
+				\item estimation relative to the \emph{velocity}
+			\end{itemize}
+		\end{note}
+	\nextcolumn
+		\pic[width=\linewidth]{management/burndown-chart}
+		\begin{note}{Burndown Chart}
+			\begin{itemize}
+				\item used for each \emph{sprint} (here three weeks)
+				\item used by \emph{scrum master} to track progress
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO necessary to add examples? would be consistent to other two parts
+
+\subsection{Scrum -- Discussion}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item product is broken down into manageable and \emph{understandable chunks}
+				\item \emph{unstable requirements} can be easily incorporated
+				\item good \emph{team communication} and transparency
+				\item \emph{customers can inspect increments} and understand how the product works
+				\item establishes \emph{trust} between customers and developers
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{note}{Disadvantages}
+			\begin{itemize}
+				\item unclear how scale to \emph{larger teams}
+				\item problematic when \emph{contract negotiation} is required (as customer pays for development time rather then set of requirements)
+				\item \emph{documentation and testing} not explicitly covered (requires extra story cards)
+				\item requires \emph{continuous customer input}
+				\item \emph{tacit knowledge} not available during maintenance (of long-life systems)
+				\item detailed documentation required for \emph{external regulation} and \emph{outsourcing}
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
