@@ -1,0 +1,97 @@
+% TODO explain the difference between requirements elicitation and system model + architecture design vs software design
+
+\subsection{V-Model}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{V-Model \mysource{\ludewiglichter}}
+			\begin{itemize}
+				\item developed by the German Ministry of Defense \deutsch{Verteidigungsministerium} and required since 1992
+				\item extension of the waterfall model: project-aligned activities such as quality assurance, configuration management, project management
+				\item 1997 V-model 97: incremental development, inclusion of hardware, object-oriented development
+				\item 2004 V-model XT (for extreme tailoring): adaptability, application beyond software
+				% four project types of V-model XT
+				\item integration of four testing stages
+				%\item distinction between validation (right product) and verification (product correct)
+				% fake? proposed 1979 by Barry Boehm
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\diagramVModel
+		% TODO find reference for this kind of V model
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Stages of Testing}
+\begin{frame}{\insertsubsection\ \deutsch{Teststufen}\ \mytitlesource{\ludewiglichter, \sommerville}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{1. Unit Testing \deutsch{Komponententest}}
+			\uncover<2->{\begin{itemize}
+					\item each component is tested independently
+					\item unit may stand for a component or smaller entities (package, class, method)
+					\item tests created by the developers
+					\item automation is common (e.g., JUnit)
+			\end{itemize}}
+		\end{definition}
+		\begin{definition}{2. Integration Testing \deutsch{Integrationstest}}
+			\uncover<3->{\begin{itemize}
+					\item some components are integrated (e.g., into subsystems) and tested together
+					\item detects inconsistencies in interfaces and communication between components
+					\item top-down vs bottom-up integration
+			\end{itemize}}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{3. System Testing \deutsch{Systemtest}}
+			\uncover<4->{\begin{itemize}
+					\item all components are integrated to the complete system
+					\item detects further inconsistencies and unanticipated interactions
+					\item system is tested against system requirements
+			\end{itemize}}
+		\end{definition}
+		\begin{definition}{4. Acceptance Testing \deutsch{Abnahmetest}}
+			\uncover<5->{\begin{itemize}
+					\item final stage in the testing process before accepted for operational use
+					\item system is tested against user requirements and with real data
+					\item performed by (potential) customer
+			\end{itemize}}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+% TODO split on several slides and give examples for errors that should / should not be found in this phase (and why)
+
+\subsection{V-Model -- Discussion}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\begin{fancycolumns}
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item quality assurance in several testing stages
+				\item completeness helps to not miss activities
+				%\item distinction between validation and verification
+				\item V-model 97/XT are widely applicable (e.g., hardware, incremental)
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{note}{Disadvantages}
+				\begin{itemize}
+					\item complex and extensive process
+					\item adaptations often required (cf.\ XT for extreme tailoring)
+					\item overhead useful only for large software systems
+					\item changes in requirements are problematic
+				\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{V-Model -- Examples}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\begin{fancycolumns}[animation=none]
+		\begin{example}{Example Domains}
+				\begin{itemize}
+					\item since 1992 V-model required by German government (e.g., Bundeswehr), since 2004 V-model XT
+					\item embedded, critical, and large software systems as for the waterfall model
+				\end{itemize}
+		\end{example}
+		\nextcolumn
+			% TODO picture associated with German government
+	\end{fancycolumns}
+\end{frame}
+
