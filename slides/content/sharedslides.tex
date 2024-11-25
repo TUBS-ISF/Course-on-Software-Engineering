@@ -189,7 +189,7 @@
 % introduced: process
 % reused: ?
 \newcommand{\diagramVModel}{
-	{\color{black}\begin{tikzpicture}[yscale=-1.45,xscale=.45,phase/.style={draw,thick,rounded rectangle,fill=blue!10,align=center,text width=17mm},to/.style={->,>={Stealth[round]},thick}]
+	{\color{black}\begin{tikzpicture}[yscale=-1.45,xscale=.45,phase/.style={draw,thick,rounded rectangle,fill=blue!10,align=center,text width=17mm},label/.style={midway,anchor=west},to/.style={->,>={Stealth[round]},thick}]
 			\node[phase,visible on=<2->] (1) at (0,0) {Requirements Elicitation};
 			\node[phase,visible on=<3->] (2) at (1,1) {System Modeling};
 			\node[phase,visible on=<4->] (3) at (2,2) {Architecture Design};
@@ -199,18 +199,18 @@
 			\node[phase,visible on=<8->] (7) at (10,2) {Integration Testing};
 			\node[phase,visible on=<9->] (8) at (11,1) {System Testing};
 			\node[phase,visible on=<10->] (9) at (12,0) {Acceptance Testing};
-			\draw[to,visible on=<3->,blue] (1) to (2);
-			\draw[to,visible on=<4->,blue] (2) to (3);
-			\draw[to,visible on=<5->,blue] (3) to (4);
-			\draw[to,visible on=<6->,blue] (4) to (5.165);
-			\draw[to,visible on=<7->,blue] (5.15) to (6);
-			\draw[to,visible on=<8->,blue] (6) to (7);
-			\draw[to,visible on=<9->,blue] (7) to (8);
-			\draw[to,visible on=<10->,blue] (8) to (9);
-			\draw[to,visible on=<11->,red,dashed] (1) to node[auto] {test cases} (9);
-			\draw[to,visible on=<12->,red,dashed] (2) to (8);
-			\draw[to,visible on=<13->,red,dashed] (3) to (7);
-			\draw[to,visible on=<14->,red,dashed] (4) to (6);
+			\draw[to,visible on=<3->,blue] (1) to node[label] {Requirements Specification} (2);
+			\draw[to,visible on=<4->,blue] (2) to node[label] {System Specification} (3);
+			\draw[to,visible on=<5->,blue] (3) to node[label] {Architecture Spec.} (4);
+			\draw[to,visible on=<6->,blue] (4) to node[label] {Design Spec.} (5.165);
+			\draw[to,visible on=<7->,blue] (5.15) to node[label] {Component} (6);
+			\draw[to,visible on=<8->,blue] (6) to node[label] {Components} (7);
+			\draw[to,visible on=<9->,blue] (7) to node[label] {System} (8);
+			\draw[to,visible on=<10->,blue] (8) to node[label] {System} (9);
+			\draw[to,visible on=<11->,orange,dashed] (1) to node[auto] {test cases} (9);
+			\draw[to,visible on=<12->,orange,dashed] (2) to (8);
+			\draw[to,visible on=<12->,orange,dashed] (3) to (7);
+			\draw[to,visible on=<12->,orange,dashed] (4) to (6);
 	\end{tikzpicture}}
 }
 
