@@ -1,0 +1,138 @@
+\subsection{Software Development Process}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item how to \emph{structure} the project?
+				\item what are \emph{activities} and phases?\\analysis (requirements elicitation + system modeling), design (architectural + software design), implementation, test, deployment
+				\item how to organize \emph{communication}?
+				\item who has which \emph{responsibilities}?
+				\item did we \emph{forget} anything?
+				\item can we \emph{predict} the project result?
+				\item how to \emph{manage and control} progress?
+				\item how to share and elicit \emph{experience}?
+				\item how to synchronize \emph{hardware} and software development?
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Software Process \mysource{\sommerville}}
+			\mycite{A \emph{software process} is a set of related activities that leads to the production of a software system. [...] \emph{Products} or deliverables are the outcomes of a process activity. [...] \emph{Roles} reflect the responsibilities of the people involved in the process. [...] Pre- and postconditions are \emph{conditions} that must hold before and after a process
+				activity.}
+		\end{definition}
+		\uncover<3->{\begin{note}{Why Different Processes? \mysource{\sommerville}}
+				\mycite{The process used in different companies depends on the type of software being developed, the requirements of the software customer, and the skills of the people writing the software.}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap}
+\begin{frame}<12>[b]{\insertsubsection}
+	\vspace{-20mm}\small\renewcommand{\projectcartoonwidth}{.18}
+	\begin{fancycolumns}[widths={30},animation=none]
+		\uncover<11->{\begin{definition}{Why Do Software Projects Fail?}
+				\begin{itemize}
+					\item many stakeholders with different background each
+					\item miscommunication
+					\item implicit or wrong assumptions
+					\item time pressure
+					\item high complexity
+					\item \ldots
+					\item numerous reasons specific to certain phases and roles
+				\end{itemize}
+		\end{definition}}
+		\uncover<12->{\begin{note}{}\centering{}software engineering aims to\\reduce such problems\end{note}}
+		\nextcolumn
+		\centering\hprojectcartoon{01}{how the customer explained it} % se02-10 requirements
+		\uncover<2->{\hprojectcartoon{02}{how the project leader understood it}} % se02-07 modeling
+		\uncover<3->{\hprojectcartoon{03}{how the analyst designed it}} % se04-10 architecture anddesign
+		\uncover<4->{\hprojectcartoon{04}{how the programmer implemented it}} % se02-10 implementation
+		\uncover<5->{\hprojectcartoon{05}{what the beta testers received}} % se08-09 testing
+		
+		\uncover<6->{\hprojectcartoon{06}{how the business consultant described it}} % se02-03 process
+		\uncover<7->{\hprojectcartoon{09}{how the customer was billed}} % se10 management and pricing
+		\uncover<8->{\hprojectcartoon{10}{how it was supported}} % se12 maintenance
+		\uncover<9->{\hprojectcartoon{12}{when it was delivered}} % se13 continous integration/delivery
+		\uncover<10->{\hprojectcartoon{13}{what the customer really needed}} % se02-05
+		%\hspace{-7mm}
+		%\projectcartoon{07}{how the project was documented} % code documentation
+		%\hprojectcartoon{18}{how patches were applied} % se11 evolution
+		%\hprojectcartoon{17}{how it performed under load} % se14 compilation/quality assurance/performance
+		%\hprojectcartoon{11}{what marketing advertised} % se15 reuse/product lines
+		%\hprojectcartoon{16}{how open source version} % se16 open source/licensing
+		%\projectcartoon{08}{what operations installed} % devops?
+		%\projectcartoon{14}{what the digg effect can do to your site} % micro services?
+		%\projectcartoon{15}{the disaster recover plan}
+		%\hspace{-7mm}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO add slide(s) on requirements and design?
+
+\subsection{Waterfall Model}
+\begin{frame}{\insertsubsection{} \deutsch{Wasserfallmodell} \mytitlesource{\sommerville}}
+	\slideWaterfallModel
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{1. Requirements Analysis}
+			\mycite{The system’s services, constraints, and goals are established by consultation with system users. They are then defined in detail and serve as a \emph{system specification}.}
+		\end{definition}
+		\begin{definition}{2. System and Software Design}
+			\mycite{The systems design process allocates the requirements to either hardware or software systems. It establishes an overall \emph{system architecture}. Software design involves identifying and describing the fundamental software system abstractions and their relationships.}
+		\end{definition}
+		\nextcolumn
+		\vspace{-11mm}
+		\begin{definition}{3. Implementation and Unit Testing}
+			\mycite{During this stage, the software design is realized as a set of \emph{programs or program units}. Unit testing involves verifying that each unit meets its specification.}
+		\end{definition}
+		\begin{definition}{4. Integration and System Testing}
+			\mycite{The individual program units or programs are integrated and tested as a complete system to ensure that the software requirements have been met. After testing, the \emph{software system is delivered} to the customer.}
+		\end{definition}
+		\begin{definition}{5. Operation and Maintenance}
+			\mycite{Normally, this is the longest life-cycle phase. The system is installed and put into practical use. Maintenance involves \emph{correcting errors} that were not discovered in earlier stages of the life cycle [...].%, improving the implementation of system units, and enhancing the system’s services as new requirements are discovered.
+			}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Waterfall Model -- Discussion}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item easy to understand, manage, and control
+				\item good for systems development (i.e., with high manufacturing costs for hardware)
+				\item easier to use the same model as for hardware
+				\item combination with formal system development feasible (e.g., B method)
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{note}{Disadvantages}
+				\begin{itemize}
+					\item for software development: stages should feed information to each other
+					\item changes in previous stages are hard to achieve
+					\item problems from previous stages left for later resolution
+					\item freezing of requirements may lead to software not wanted by the user
+					\item freezing of design may lead to bad structure and implementation tricks
+					\item requires clear and stable requirements and good design upfront
+				\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Waterfall Model -- Examples}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}[animation=none]
+		\begin{example}{Example Domains}
+				\begin{itemize}
+					\item \emph{embedded systems} where software has to interface with hardware systems
+					\item \emph{critical systems} with extensive safety and security analysis of specification and design
+					\item \emph{large software systems} that are typically developed by several companies
+				\end{itemize}
+		\end{example}
+		\nextcolumn
+		\pic[width=\linewidth]{misc/lawn-mower-cropped}
+	\end{fancycolumns}
+\end{frame}
+

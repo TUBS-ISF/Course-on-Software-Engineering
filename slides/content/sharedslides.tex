@@ -132,3 +132,78 @@
 		\uncover<4-|handout:1>{\picDark[width=\linewidth]{versioncontrol/master-main-github}}%
 	\end{fancycolumns}
 }
+
+% introduced: process
+% reused: 
+\newcommand{\slideWaterfallModel}{
+	\begin{fancycolumns}
+		\begin{definition}{Waterfall Model}
+			\begin{itemize}
+				\item first process model, motivated by practice
+				\item by \href{https://scholar.google.de/scholar?cluster=8624196209257442707}{Winston W. Royce 1970}
+				\item each development phase ends by the approval of one or more documents (document-driven process model)
+				\item phases do not overlap
+				\item numerous variants with varying number of phases: 5--7
+				\item here: simplified variant by Sommerville
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\diagramWaterfallModel
+	\end{fancycolumns}
+}
+\newcommand{\diagramWaterfallModel}{
+	{\color{black}\begin{tikzpicture}[yscale=-1.2,xscale=.75,phase/.style={draw,thick,rounded rectangle,fill=blue!10,align=center,text width=21mm},label/.style={auto,bend right,align=left},to/.style={->,>={Stealth[round]},thick}]
+			\node[phase,visible on=<2->] (1) at (0,0) {Requirements Analysis};
+			\node[phase,visible on=<3->] (2) at (1,1) {System and Software Design};
+			\node[phase,visible on=<4->] (3) at (2,2) {Implementation and Unit Testing};
+			\node[phase,visible on=<5->] (4) at (3,3) {Integration and System Testing};
+			\node[phase,visible on=<6->] (5) at (4,4) {Operation and Maintenance};
+			\draw[to,visible on=<3->,blue] (1) -| node[label] {System\\Specification} (2.30);
+			\draw[to,visible on=<4->,blue] (2) -| node[label] {Design\\Specification} (3.30);
+			\draw[to,visible on=<5->,blue] (3) -| node[label] {Program\\Documentation} (4.30);
+			\draw[to,visible on=<6->,blue] (4) -| node[label] {Test\\Documentation} (5.30);
+			\draw[to,visible on=<7|handout:0>,red] (5) -| (1.210);
+			\draw[to,visible on=<7|handout:0>,red] (5) -| (2.210);
+			\draw[to,visible on=<7|handout:0>,red] (5) -| (3.210);
+			\draw[to,visible on=<7|handout:0>,red] (5) -| (4.210);
+			\draw[to,visible on=<8->,orange] (2) -| (1.210);
+			\draw[to,visible on=<8->,orange] (3) -| (2.210);
+			\draw[to,visible on=<8->,orange] (4) -| (3.210);
+			\draw[to,visible on=<8->,orange] (5) -| (4.210);
+	\end{tikzpicture}}
+}
+
+% introduced: process
+% reused: ?
+\newcommand{\diagramVModel}{
+	{\color{black}\begin{tikzpicture}[yscale=-1.45,xscale=.45,phase/.style={draw,thick,rounded rectangle,fill=blue!10,align=center,text width=17mm},to/.style={->,>={Stealth[round]},thick}]
+			\node[phase,visible on=<2->] (1) at (0,0) {Requirements Elicitation};
+			\node[phase,visible on=<3->] (2) at (1,1) {System Modeling};
+			\node[phase,visible on=<4->] (3) at (2,2) {Architecture Design};
+			\node[phase,visible on=<5->] (4) at (3,3) {Software Design};
+			\node[phase,visible on=<6->] (5) at (6,4) {Implemen-tation};
+			\node[phase,visible on=<7->] (6) at (9,3) {Unit\\Testing};
+			\node[phase,visible on=<8->] (7) at (10,2) {Integration Testing};
+			\node[phase,visible on=<9->] (8) at (11,1) {System Testing};
+			\node[phase,visible on=<10->] (9) at (12,0) {Acceptance Testing};
+			\draw[to,visible on=<3->,blue] (1) to (2);
+			\draw[to,visible on=<4->,blue] (2) to (3);
+			\draw[to,visible on=<5->,blue] (3) to (4);
+			\draw[to,visible on=<6->,blue] (4) to (5.165);
+			\draw[to,visible on=<7->,blue] (5.15) to (6);
+			\draw[to,visible on=<8->,blue] (6) to (7);
+			\draw[to,visible on=<9->,blue] (7) to (8);
+			\draw[to,visible on=<10->,blue] (8) to (9);
+			\draw[to,visible on=<11->,red,dashed] (1) to node[auto] {test cases} (9);
+			\draw[to,visible on=<12->,red,dashed] (2) to (8);
+			\draw[to,visible on=<13->,red,dashed] (3) to (7);
+			\draw[to,visible on=<14->,red,dashed] (4) to (6);
+	\end{tikzpicture}}
+}
+
+% introduced: process
+% reused: ?
+\newcommand{\diagramScrum}{
+	\pic[width=\linewidth]{process/scrum}
+}
+
