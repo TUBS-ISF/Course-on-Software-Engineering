@@ -259,31 +259,48 @@
 \author{Thomas Thüm}
 \lecture{Software Design}{design}
 
-\section{Part 1}
-%\input{content/a-}
+\begin{frame}{\insertsubtitle}
+	\alt<2->{%
+		\projectcartoon{01}{how the customer explained it}
+		\projectcartoon{02}{how the project leader understood it}
+	}{%
+		\hprojectcartoon{01}{how the customer explained it}
+		\hprojectcartoon{02}{how the project leader understood it}
+	}%
+	\hprojectcartoon{03}{how the analyst designed it}
+	\hprojectcartoon{04}{how the programmer implemented it}
+	\alt<2->{%
+		\projectcartoon{13}{what the customer really needed}
+	}{%
+		\hprojectcartoon{13}{what the customer really needed}
+	}%
+\end{frame}
+
+\section{Introduction to Software Design}
+\input{content/11a-design}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Software design
+	\item Connection to requirements and architecture
+	% TODO \item Next: ?
 }{
-	\item \sommerville\mychapter{?} 
+	\item[] \sommerville\mychapter{7.0--7.1} % TODO identify which of the pages are relevant to this part 196--209
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Fill in the cloze \deutsch{Lückentext} on object-oriented programming
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Modeling Structure with Class Diagrams}
+\input{content/11b-classdiagrams}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item UML class diagrams
+	\item Notation and semantics of association, role, multiplicity, (static) attribute, (static/abstract) operation, visibility modifiers, aggregation, composition, generalization, abstract class, interface, realization
+	% TODO \item Next: ?
 }{
-	\item \sommerville\mychapter{?} 
+	\item[] \umluserguide\mychapter{4, 5, 9, 10} 
 }{
 	\begin{enumerate}
 		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item In isolation: Sketch a class diagram with 3--5 classes for a software of your choice. However, add exactly three errors violating the rules of class diagrams. \deutsch{Fehlersuchbild}
+		\item Group work: Exchange your diagrams with each other. Find and mark the errors with another color.
 	\end{enumerate}
 }
 
