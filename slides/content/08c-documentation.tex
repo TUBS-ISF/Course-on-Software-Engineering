@@ -1,0 +1,139 @@
+\subsection{Natural Language Specification}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={55}]
+		\begin{definition}{}
+			\begin{itemize}
+				\item used since 1950s
+				\item since programmer is not necessarily the user
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Style Guidelines}
+			\begin{itemize}
+				\item one or two short sentences of natural language
+				\item one message per sentence
+				\item use active voice (e.g., \mycite{the system \ldots})
+				\item consistent use of language (i.e., avoid synonyms)
+				\item use shall for mandatory and should for desirable requirements
+				\item use text highlighting
+				\item avoid jargon, abbreviations, acronyms
+				\item provide a rationale
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{note}{Pros}
+			\begin{itemize}
+				\item expressive
+				\item intuitive
+				\item universal
+			\end{itemize}
+		\end{note}
+		\begin{note}{Cons}
+			\begin{itemize}
+				\item vague \deutsch{vage}
+				\item ambiguous \deutsch{mehrdeutig}
+				\item interpretation depends on reader's background
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Structured Specifications}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={55}]
+		\begin{definition}{}
+			\begin{itemize}
+				\item use of templates rather than free-form text
+				\item distinguishes between function, description, input (origin), output (destination), pre- and postconditions, side effects, rationale, dependencies to other requirements, \ldots
+				\item or any subset thereof
+				\item user stories are typically structured specifications
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Example}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}
+				Function & Exchange of IDs\\
+				Description & Two devices send their IDs to each other.\\
+				Precondition & Devices have been within a distance of 2m for at least 15 minutes.\\
+				Postcondition & IDs are stored in the local database.\\
+				Rationale & Contact tracing requires to temporarily identify the device of contacts.
+			\end{tabularx}
+		\end{example}
+		\nextcolumn
+		\begin{note}{Pros}
+			\begin{itemize}
+				\item {\color{gray} expressive}
+				\item {\color{gray} intuitive}
+				\item information easier to find
+				\item less likely to forget certain information (e.g., rationale)
+			\end{itemize}
+		\end{note}
+		\begin{note}{Cons}
+			\begin{itemize}
+				\item {\color{gray} vague}
+				\item {\color{gray} ambiguous}
+				\item {\color{gray} interpretation depends on reader's background}
+				\item same structure can be too restrictive
+				\item multiple structures can be confusing
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Use Case Diagrams}
+\begin{frame}[label=usecaseslide]{\insertsubsection\ \normalsize(since 1993)}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Use Case Diagram \deutsch{Anwendungsfalldiagramm}}
+			Use case diagrams are a means to capture the requirements of systems, i.e., what systems are supposed to do. The key concepts specified in this diagram are actors, use cases, and subjects:%\\~
+			\begin{itemize}
+				\item Each \emph{subject} represents a system under consideration to which the use case applies. \deutsch{System}
+				\item Each users and any other system that may interact with a subject is represented as an \emph{actor}. \deutsch{Akteur}
+				\item A \emph{use case} is a specification of behavior in terms of verb and noun. \deutsch{Anwendungsfall}
+			\end{itemize}
+			\mysource{adapted from \umlspec}
+		\end{definition}
+		\nextcolumn
+		%\posthandout{\pic[width=\linewidth,trim=0 50 25 40,clip]{blackboard/blackboard_use_case1_23_24}}
+		%\posthandout{\pic[page=44,width=\linewidth,trim={.5\width} {.1\height} {.02\width} {.2\height},clip]{se09-requirements-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Example}
+\end{frame}
+
+\subsection{Include and Extend Relationships}
+\begin{frame}[label=includeandextendslide]{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Include Relationship}
+			\textbf{Motivation}: make common parts of multiple use cases explicit%\\[1mm]
+			
+			\textbf{Relationship}: a \emph{base use case} may define an include relationship to an \emph{included use case}%\\[1mm]
+			
+			\textbf{Meaning}: included use case is always executed when the base use case is
+		\end{definition}
+		\begin{definition}{Extend Relationship}
+			\textbf{Motivation}: make explicit that some use cases only happen under certain circumstances%\\[1mm]
+			
+			\textbf{Relationship}: an \emph{extend use case} may define an extend relationship to a \emph{base use case}%\\[1mm]
+			
+			\textbf{Meaning}: when the base use case is executed, the extend use case may or may not be executed
+		\end{definition}
+		\nextcolumn
+		%\posthandout{\pic[page=53,width=\linewidth,trim=225 20 15 50,clip]{se02-requirements-print}}
+		%\posthandout{\pic[page=46,width=\linewidth,trim={.5\width} {.2\height} {.02\width} {.2\height},clip]{se09-requirements-print}}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO add rules for use case diagrams
+
+% TODO discuss advantages/disadvantages of use case diagrams
+
+% TODO combination of textual and visual requirements
+
+\pictureframe{
+	\pic[width=\paperwidth]{emotions/walking-on-water}
+}{
+	\vspace{65mm}
+	\begin{note}{Edward V. Berard (1993) \mysource{\href{https://en.wikiquote.org/wiki/Edward_V._Berard}{wikiquote.org}}}
+		\mycite{Walking on water and developing software from a specification are easy if both are frozen.}
+	\end{note}
+}

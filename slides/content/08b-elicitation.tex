@@ -1,0 +1,158 @@
+\subsection{Imprecise Requirements}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{note}{\sommerville:}
+			\mycite{Imprecision in the requirements specification can lead to disputes between customers and software developers. It is natural for a system developer to interpret an ambiguous requirement in a way that simplifies its implementation. Often, however, this is not what the customer wants. New requirements have to be established and changes made to the system. Of course, this delays system delivery and increases costs.}
+		\end{note}
+		\nextcolumn
+		\renewcommand{\projectcartoonwidth}{.3}
+		\pause\hprojectcartoon{02}{how the project leader understood it}
+		\hprojectcartoon{04}{how the programmer implemented it}
+		\hprojectcartoon{13}{what the customer really needed}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Complete and Consistent Requirements}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Completeness and Consistency \mysource{\sommerville}}
+			\mycite{Ideally, the functional requirements specification of a system should be both complete and consistent. \emph{Completeness} means that all services and information required by the user should be defined. \emph{Consistency} means that requirements should not be contradictory.}
+		\end{definition}	
+		\begin{note}{Further Desired Properties}
+			clear, easy to understand, unambiguous, correct, verifiable, prioritized, changeable, traceable %\deutsch{eindeutig, korrekt, überprüfbar, priorisiert, änderbar, nachvollziehbar}
+		\end{note}
+		\nextcolumn
+		\begin{example}{Often not Feasible in Practice}
+			mistakes, omission, implicit knowledge, many stakeholders \deutsch{Akteure} with different backgrounds / expectations / inconsistent needs
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[b]
+	\begin{fancycolumns}
+		\vspace{2mm}
+		\pic[width=\linewidth,trim=0 175 0 75,clip]{people/fred-brooks}
+		\vspace{-7mm}
+		
+		\begin{note}{Fred Brooks (1931--2022) \mysource{\href{https://ieeexplore.ieee.org/document/1663532}{Brooks 1987}}}
+			\mycite{Much of the essence of building a program is in fact the debugging of the specification.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Requirements Engineering Process}
+\begin{frame}{\insertsubsection} % TODO define term requirements engineering?
+	\begin{fancycolumns}[columns=3,widths={80}]
+		\begin{definition}{Requirements Elicitation and Analysis \mysource{adapted from \sommerville}}
+			Requirements elicitation and analysis is the process of deriving the system requirements through observation of existing systems, discussions with potential users, or development of prototypes. \deutsch{Anforderungsermittlung und -analyse} 
+		\end{definition}
+		\nextcolumn
+		\nextcolumn
+	\end{fancycolumns}
+	\begin{fancycolumns}[columns=3,widths={10,80,10}]
+		\nextcolumn
+		\begin{definition}{Requirements Specification \mysource{\sommerville}}
+			\mycite{Requirements specification is the process of writing down the user and system requirements in a requirements document (aka. requirements specification).} \deutsch{Anforderungsspezifikation}
+		\end{definition}
+		%Requirements specification is the activity of translating the information gathered during requirements analysis into a document that defines a set of requirements (incl. user and system requirements).
+		\nextcolumn
+	\end{fancycolumns}
+	\begin{fancycolumns}[columns=3,widths={10,10,80}]
+		\nextcolumn
+		\nextcolumn
+		\begin{definition}{Requirements Validation \mysource{\sommerville}}
+			\mycite{Requirements validation  is an activity that checks the requirements for realism, consistency, and completeness.} \deutsch{Anforderungsvalidierung}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+% TODO replace picture with tikz? simplify it? add in SE2 in more detail?
+%\pause\pic[width=\linewidth]{sommerville/p55-f2.4}
+
+\subsection{Why is Requirements Elicitation so Hard?}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none,widths={66}]
+		\begin{example}{}
+			\begin{itemize}
+				\item Stakeholders have difficulties to articulate what they want
+				\item Stakeholders do not know what is (in)feasible
+				\item Implicit knowledge and jargon in the customer's domain
+				\item Dynamic business environment (e.g., new stakeholders)
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Example Dialog by Ludewig and Lichter}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{itemize}
+			\item At the morning you unlock the door at the main entrance?
+			\item Every morning?
+			\item Even at the weekend?
+			\item And during the plant shutdown?
+			\item And if you are sick or in holidays?
+			\item And if Mr. X is off?
+			\item What does \mycite{morning} mean?
+		\end{itemize}
+		\nextcolumn\vspace{5mm}
+		\begin{itemize}
+			\item Yes, as I said.
+			\item Of course.
+			\item No, at weekend the entrance remains closed.
+			\item Clearly, it is then closed as well.
+			\item Mr. X opens the door in this case.
+			\item Then, a client knocks at the window to tell that the door is closed.
+			\item \ldots
+		\end{itemize}
+	\end{fancycolumns}
+	\vspace{5mm}
+	
+	Source: \ludewiglichter
+	
+	\href{https://youtu.be/NEUNEmJQGMw?t=1156}{Skit on Youtube (in German)}
+\end{frame}
+
+\subsection{Requirements Elicitation Techniques}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[keep]
+		\begin{definition}{Techniques for Requirement Elicitation}
+			\begin{itemize}
+				\item Open interviews: talk to users what they do
+				\item Closed interviews: stakeholders answer predefined questions
+				\item Ethnography: observation of stakeholder's work
+				\item Prototyping
+				\item Feedback loops
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{\sommerville:}
+			\mycite{You need to spend time understanding how people work,
+				what they produce, how they use other systems, and how they may need to change to accommodate a new system.}
+		\end{note}
+		\begin{example}{In Practice}
+			Combinations of numerous techniques used
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Requirements Validation}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none,widths={75}]
+		\begin{note}{Motivation}
+			The later problems with requirements are detected, the more costly it will be to fix them.
+		\end{note}
+		\begin{definition}{Requirements Validation}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}
+				\emph{Validity checks} & do requirements (still) reflect real needs?\\
+				\emph{Consistency checks} & are there contradictory/redundant requirements?\\
+				\emph{Completeness checks} & are all functions and constrains documented?\\
+				\emph{Realism checks} & is it feasible within budget and schedule?\\
+				\emph{Verifiability} & can we test the requirements?
+			\end{tabularx}
+			
+			~\\Checked by reviews, prototyping, and test-case creation
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+

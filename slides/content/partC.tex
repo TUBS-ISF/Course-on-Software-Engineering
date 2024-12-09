@@ -5,46 +5,76 @@
 \author{Thomas Thüm}
 \lecture{Requirements}{requirements}
 
-\section{Part 1}
-%\input{content/a-}
+\begin{frame}{\insertsubtitle}
+	\hprojectcartoon{01}{how the customer explained it}
+	\hprojectcartoon{02}{how the project leader understood it}
+	\alt<3->{%
+		\projectcartoon{03}{how the analyst designed it}
+		\projectcartoon{04}{how the programmer implemented it}
+	}{%
+		\hprojectcartoon{03}{how the analyst designed it}
+		\hprojectcartoon{04}{how the programmer implemented it}
+	}%
+	\uncover<2->{\hprojectcartoon{13}{what the customer really needed}}
+\end{frame}
+
+\section{Introduction to Requirements}
+\input{content/08a-requirements}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item What kind of requirements exist and why?
+	\item User and System Requirements Document \deutsch{Lasten- und Pflichtenheft}
+	\item Next: Where do requirements come from?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \sommerville\mychapter{2.2.1}\mypages{54--55}
+	\item \sommerville\mychapter{4.1}\mypages{101--111}
+	\item \sommerville\mychapter{4.4.4}\mypages{126--128}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students
+		\item On your own: write down 1--2 own examples for a requirement
+		\item Group work: classify each others requirements in groups of 2--3 students
+		\item Try to find an example for each of the four categories: functional, non-functional (product, organizational, and external)
 	\end{enumerate}
+	Hint: Keep written requirements for a later interaction
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Elicitation of Requirements}
+\input{content/08b-elicitation}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Desired properties for requirements
+	\item Requirements engineering process?
+	\item Techniques for requirements elicitation
+	\item Next: How to document requirements graphically?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \sommerville\mychapter{4.2--4.3}\mypages{111--119}
+	\item \sommerville\mychapter{4.5}\mypages{129f}
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-		\item<+-> ?
+	\begin{enumerate}% TODO animation of practical tasks does not work. remove animations everywhere?
+		\item Form groups of 2--3 students
+		\item On your own: reconsider your written examples and write down improved versions
+		\item Group work: let your colleagues guess what property you aimed to improve
 	\end{enumerate}
+	Hint: Recap on desired properties: complete, consistent, clear, easy to understand, unambiguous, correct, verifiable, prioritized, changeable, traceable
 }
 
-\section{Part 3}
-%\input{content/c-}
+\section{Documentation of Requirements}
+\input{content/08c-documentation}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Natural language and structured specification of requirements
+	\item Graphical specification with use case diagrams \deutsch{Anwendungsfalldiagramme}
+	\item Next: How to model the system behavior in more detail?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \sommerville\mychapter{4.4}\mypages{120--126}
+	\item \sommerville\mychapter{5.2.1}\mypages{144--146}
+	\item \umlspec\mychapter{18}
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-		\item<+-> ?
-	\end{enumerate}
+	Quiz in Stud.IP
+%	\lectureqr{08}
+%	\begin{enumerate}
+%		\item Form groups of 2--3 students
+%		\item On your own: draw a small use case diagram related to your requirements
+%		\item Group work: switch your diagrams and mark mistakes (e.g., wrong syntax) with another color
+%	\end{enumerate}
 }
 
 %\faq{
@@ -73,7 +103,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -87,7 +117,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -101,7 +131,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -132,7 +162,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -146,7 +176,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -160,7 +190,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -191,7 +221,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -205,7 +235,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -219,7 +249,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -250,7 +280,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -264,7 +294,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -278,7 +308,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -309,7 +339,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -323,7 +353,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }
@@ -337,7 +367,7 @@
 	\item \sommerville\mychapter{?} 
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
+		\item<+-> Form groups of 2--3 students
 		\item<+-> ?
 	\end{enumerate}
 }

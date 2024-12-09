@@ -220,3 +220,206 @@
 	\pic[width=\linewidth]{process/scrum}
 }
 
+% introduced: requirements
+% reused: summary
+\newcommand{\slideMindmapNonFunctionalRequirements}{
+	{\newcommand{\requirements}{requirements}%
+		\begin{tikzpicture}
+			\path[%grow cyclic,
+			small mindmap,
+			%every node/.style=concept,
+			concept color=green!20!background,
+			%	text width=20mm,align=flush center,
+			%	level 1/.append style={level distance=27mm,sibling angle=360/3},
+			]
+			node[concept] {non-functional \requirements}
+			[counterclockwise from=195]
+			child[concept color=blue!20!background] { node[concept] {product \requirements} 
+				[counterclockwise from=75]
+				child[visible on=<2->] { node[concept] {usability \requirements} }
+				child[visible on=<3->] { node[concept] {efficiency \requirements} 
+					[counterclockwise from=165]
+					child { node[concept] {performance \requirements} }
+					child { node[concept] {space \requirements} }
+				}
+				child[visible on=<4->] { node[concept] {dependability \requirements} }
+				child[visible on=<5->] { node[concept] {security \requirements} }
+			}
+			child[concept color=red!20!background] { node[concept] {organizational \requirements} 
+				[counterclockwise from=210]
+				child[visible on=<6->] { node[concept] {environmental \requirements} }
+				child[visible on=<7->] { node[concept] {operational \requirements} }
+				child[visible on=<8->] { node[concept] {development \requirements} }
+			}
+			child[concept color=orange!20!background] { node[concept] {external \requirements} 
+				[counterclockwise from=285]
+				child[visible on=<9->] { node[concept] {regulatory \requirements} }
+				child[visible on=<10->] { node[concept] {ethical \requirements} }
+				child[visible on=<11->] { node[concept] {legislative \requirements}
+					[counterclockwise from=-15]
+					child { node[concept] {accounting \requirements} }
+					child { node[concept] {safety/security \requirements} }
+				}
+			}
+			;
+	\end{tikzpicture}}
+}
+
+% introduced: modeling
+% reused: architecture, design, summary
+% 
+% legend: gray (will not be taught), bold (taught in this lecture), normal font (will be taught)
+% 02-requirements: use case diagrams
+% 03-modeling: UML, activity diagrams, state machine diagrams
+% 04-architecture: component diagrams
+% 05-design: class diagrams, sequence diagrams
+%
+% parameters: use case, activity, state machine, component, class, sequence, structure, behavior, interactions
+\tikzset{notTaughtUMLDiagrams/.style={text=gray}}
+\newcommand{\slideMindmapUMLdiagrams}[9]{
+	{\centering
+		\begin{tikzpicture}
+			\path[small mindmap,
+			every node/.style={concept,font=\footnotesize},
+			emph/.style={font=\bfseries\footnotesize},
+			blue/.style={emph,text=blue},
+			red/.style={emph,text=red},
+			concept color=green!20!background,
+			level 1/.append style={level distance=35mm,sibling angle=360/3},
+			level 2/.append style={level distance=20mm,sibling angle=360/8},
+			level 3/.append style={level distance=20mm,sibling angle=360/8},
+			]
+			node {UML Diagrams}
+			[clockwise from=150]
+			child[concept color=blue!20!background,#7] { node {Structure Diagrams} 
+				[counterclockwise from=15]
+				child { node[#4] {Component Diagram} }
+				child { node[#5] {Class Diagram} }
+				child[notTaughtUMLDiagrams] { node {Profile Diagram} }
+				child[notTaughtUMLDiagrams] { node {Composite Structure Diagram} }
+				child[notTaughtUMLDiagrams] { node {Deployment Diagram} }
+				child[notTaughtUMLDiagrams] { node {Object Diagram} }
+				child[notTaughtUMLDiagrams] { node {Package Diagram} }
+			}
+			child[concept color=red!20!background,#8] { node {Behavior Diagrams} 
+				[clockwise from=135]
+				child { node[#1] {Use Case Diagram} }
+				child { node[#2] {Activity Diagram} }
+				child { node[#3] {State Machine Diagram} }
+				child[concept color=orange!20!background,#9] { node {Interaction Diagrams} 
+					[clockwise from=30]
+					child { node[#6] {Sequence Diagram} }
+					child[notTaughtUMLDiagrams] { node {Communi-cation Diagram} }
+					child[notTaughtUMLDiagrams] { node {Interaction Overview Diagram} }
+					child[notTaughtUMLDiagrams] { node {Timing Diagram} }
+				}
+			}
+			;
+	\end{tikzpicture}}
+}
+
+% introduced: architecture
+% reused: summary
+\newcommand{\slideArchitecturalPattern}{
+	\begin{fancycolumns}
+		\centering
+		\begin{definition}{Architectural Pattern\mysource{\sommerville}}
+			\mycite{Architectural patterns capture the essence of an architecture that has been used in different software systems. [...] Architectural patterns are a means of reusing knowledge about generic system architectures.}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Goals}
+			\partofpage{35}{
+				\pic[width=\textwidth]{database}
+			}
+			\partofpage{60}{
+				\begin{itemize}
+					\item preserve knowledge of software architects
+					\item reuse of established architectures
+					\item enable efficient communication
+				\end{itemize}
+			}
+		\end{note}
+	\end{fancycolumns}
+}
+
+% introduced: architecture
+% reused: compilation?
+\newcommand{\slidePipeAndFilter}{
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Pipe-and-Filter Architecture \mysource{\sommerville}}
+			\begin{itemize}
+				\item \emph{Problem}: data is processed in numerous processing steps, which are prone to change
+				\item \emph{Idea}: modularization of each processing step into a component
+				\item filter components process a stream of data continously
+				\item pipes transfer data unchanged from filter output to filter input
+			\end{itemize}
+		\end{definition}
+		\uncover<2->{
+			\begin{example}{Pipe Operator in UNIX}
+				\mycite{\texttt{ls -al | grep '2020' | grep -v 'Nov' | more}} searches files in a folder from the year 2020 except those from November and delivers the results in pages.
+			\end{example}
+		}
+		\nextcolumn%
+		\uncover<3->{\hfill\href{https://commons.wikimedia.org/wiki/File:Pipeline-notitle.svg}{\picDark[width=.8\textwidth]{pipe-and-filter}}}%
+	\end{fancycolumns}
+}
+
+% introduced: reuse
+% reused: summary
+%
+% legend: gray (will not be taught), bold (taught in this lecture), normal font (will be taught)
+% 
+% parameters: object adapter, composite, decorator, singleton, abstract factory, observer, structural, creational, behavioral
+\tikzset{notTaughtDesignPatterns/.style={text=gray}}
+\newcommand{\slideMindmapDesignPatterns}[9]{
+	{\centering
+		\begin{tikzpicture}
+			\path[small mindmap,
+			every node/.style={concept,font=\scriptsize},
+			emph/.style={font=\bfseries\scriptsize},
+			blue/.style={emph,text=blue},
+			red/.style={emph,text=red},
+			concept color=green!20!background,
+			level 1/.append style={level distance=35mm,sibling angle=65},
+			level 2/.append style={level distance=20mm,sibling angle=360/12},
+			level 3/.append style={level distance=20mm,sibling angle=360/8},
+			]
+			node {Design Patterns}
+			[clockwise from=155]
+			child[concept color=blue!20!background,#7] { node {Structural Patterns} 
+				[clockwise from=215]
+				child[#1] { node {Object Adapter} }
+				child[notTaughtDesignPatterns] { node {Class Adapter} }
+				child[notTaughtDesignPatterns] { node {Bridge} }
+				child[#2] { node {Composite} }
+				child[#3] { node {Decorator} }
+				child[notTaughtDesignPatterns] { node {Facade} }
+				child[notTaughtDesignPatterns] { node {Flyweight} }
+				child[notTaughtDesignPatterns] { node {Proxy} }
+			}
+			child[concept color=red!20!background,#8] { node {Creational Patterns} 
+				[clockwise from=150]
+				child[#5] { node {Abstract Factory} }
+				child[notTaughtDesignPatterns] { node {Builder} }
+				child[notTaughtDesignPatterns] { node {Factory Method} }
+				child[notTaughtDesignPatterns] { node {Prototype} }
+				child[#4] { node {Singleton} }
+			}
+			child[concept color=orange!20!background,#9] { node {Behavioral Patterns} 
+				[clockwise from=175]
+				child[notTaughtDesignPatterns] { node {Chain of Responsibility} }
+				child[notTaughtDesignPatterns] { node {Command} }
+				child[notTaughtDesignPatterns] { node {Interpreter} }
+				child[notTaughtDesignPatterns] { node {Iterator} }
+				child[notTaughtDesignPatterns] { node {Mediator} }
+				child[notTaughtDesignPatterns] { node {Memento} }
+				child[#6] { node {Observer} }
+				child[notTaughtDesignPatterns] { node {State} }
+				child[notTaughtDesignPatterns] { node {Strategy} }
+				child[notTaughtDesignPatterns] { node {Template Method} }
+				child[notTaughtDesignPatterns] { node {Visitor} }
+			}
+			;
+	\end{tikzpicture}}
+}
+

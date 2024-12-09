@@ -144,7 +144,7 @@
 \usepackage{mathtools} % required for absolute value in modeling lecture
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
 
-% COMMANDS TO INCLUDE XKCDs
+% COMMANDS TO INCLUDE XKCDs AND PICS
 
 \newcommand{\xkcd}[2]{\picDark[#2]{xkcd/#1}}
 \newcommand{\xkcdframe}[1]{
@@ -157,6 +157,15 @@
 	\begin{frame}
 		\xkcd{#1}{width=\linewidth}
 	\end{frame}
+}
+
+\newcommand{\pictureframe}[2]{
+	{
+		\usebackgroundtemplate{#1}
+		\begin{frame}[plain]
+			#2
+		\end{frame}
+	}
 }
 
 % COMMANDS TO SIMPLIFY USAGE OF THE PROJECT CARTOON

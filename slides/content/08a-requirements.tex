@@ -1,0 +1,110 @@
+\subsection{User Requirements}
+\begin{frame}{\insertsubsection\ \deutsch{Benutzeranforderungen}}
+	\begin{fancycolumns}
+		\begin{definition}{User Requirement \mysource{\sommerville}}
+			\mycite{User requirements are statements, in a natural language plus diagrams, of what services the system is expected to provide to system users and the constraints under which it must operate. The user requirements may vary from broad statements of the system features required to detailed, precise descriptions of the system functionality.}
+		\end{definition}
+		\begin{note}{User Requirements Document \deutsch{Lastenheft}}
+			System description from user's point of view. What? For what? \deutsch{Was? Wofür?}
+		\end{note}
+		\nextcolumn
+		\begin{example}{Example}
+			The Corona app should track contacts by means of random IDs and should store them locally for two weeks.
+		\end{example}
+		\begin{example}{Example}
+			If a user has a positive test result, he or she can inform tracked contacts about their increased risk by means of a QR code.
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[b]
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 100 0 0,clip]{people/tony-hoare}
+		\vspace{-7mm}
+		
+		\begin{note}{Tony Hoare (1969) \mysource{\href{https://dl.acm.org/doi/10.1145/363235.363259}{Hoare 1969}}}
+			\mycite{The most important property of a program is whether it accomplishes the intention of its user.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{System Requirements}
+\begin{frame}{\insertsubsection\ \deutsch{Systemanforderungen}}
+	\begin{fancycolumns}
+		\begin{definition}{System Requirement \mysource{adapted from \sommerville}}
+			System requirements are more detailed descriptions of the software system’s functions, services, and operational constraints. The system requirements document (aka.\ functional specification) should define exactly what is to be implemented. It may be part of the contract between the system buyer and the software developers.
+		\end{definition}
+		\begin{note}{System Requirements Document \deutsch{Pflichtenheft}}
+			System description from technical point of view. How? Whereby? \deutsch{Wie? Womit?}
+		\end{note}
+		\nextcolumn
+		\begin{example}{Example}
+			If two devices are within a distance of 2m for at least 15 minutes they exchange their IDs via Bluetooth.
+		\end{example}
+		\begin{example}{Example}
+			After IDs have been exchanged, they are stored for two weeks.
+		\end{example}
+		\begin{example}{Example}
+			A new ID is generated every 24 hours and old IDs are stored for two weeks.
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Functional Requirements}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Functional Requirement \mysource{\sommerville}}
+			\mycite{Functional requirements are statements of services the system should provide, how the system should react to particular inputs, and how the system should behave in particular situations. In some cases, the functional requirements may also explicitly state what the system should not do.}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Non-Functional Requirements}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Non-Functional Requirement \mysource{\sommerville}}
+			\mycite{Non-functional requirements are constraints on the services or functions offered by the system. They include timing constraints, constraints on the development process, and constraints imposed by standards. Non-functional requirements often apply to the system as a whole rather than individual system features or services.}
+		\end{definition}
+		%\myexample{Generic Examples}{reliability, response time, memory consumption}
+		\begin{note}{Note}
+			often more critical than functional requirements
+		\end{note}
+		\nextcolumn
+		\begin{example}{Example}
+			The app consumes less than 10MB of RAM.
+		\end{example}
+		\begin{example}{Example}
+			The app has no access to private data of the user.
+		\end{example}
+		\begin{example}{Example}
+			The app conforms to the GDPR. \deutsch{DSGVO}
+		\end{example}
+		\begin{example}{Example}
+			The source code of the app is open source.
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\slideMindmapNonFunctionalRequirements
+\end{frame}
+
+\subsection{Structure of a Requirements Document}
+\begin{frame}{\insertsubsection}
+	\begin{definition}{Typical Structure \mysource{\sommerville}}
+		\setlength\tabcolsep{1mm}
+		\begin{tabularx}{\textwidth}{rX}
+			\emph{Preface} & expected readers, version history\\
+			\emph{Introduction} &  motivation/needs, collaboration with other system, strategic objectives\\
+			\emph{Glossary} & technical terms\\
+			\emph{User Requirements Definition} & functional and non-functional user requirements\\
+			\emph{System Architecture} & distribution of functions across system modules, potential reuse\\
+			\emph{System Requirements Specification} & detailed requirements, interfaces to other systems\\
+			\emph{System Models} & graphical models illustrating the system with its environment\\
+			\emph{System Evolution} & anticipated changes due to hardware evolution or changing needs\\
+			\emph{Appendices} & hardware and database requirements, minimal/optimal system configuration\\
+			\emph{Index} & index of diagrams/functions/terms/\ldots
+		\end{tabularx}
+	\end{definition}
+\end{frame}
