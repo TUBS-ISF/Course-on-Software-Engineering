@@ -1,0 +1,125 @@
+\subsection{Motivation for Modeling}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{\umluserguide:}
+			\mycite{A successful software organization is one that consistently deploys \emph{quality software} that meets the needs of its users. An organization that can develop such software in a \emph{timely and predictable} fashion, with an \emph{efficient and effective use of resources}, both human and material, is one that has a sustainable business.
+				
+				[...]
+				
+				Modeling is a central part of all the activities that lead up to the deployment of good software. We build models to \emph{communicate} the desired structure and behavior of our system. We build models to \emph{visualize and control} the system's architecture. We build models to better \emph{understand} the system we are building, often exposing opportunities for \emph{simplification and reuse}. And we build models to \emph{manage risk}.}
+		\end{note}
+		\nextcolumn
+		\begin{note}{\umluserguide:}
+			\mycite{We build models of complex systems because we cannot comprehend such a system in its entirety.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[b]{Recap: Software Engineering vs Programming}
+	\slideSEvsProgramming
+\end{frame}
+
+\begin{frame}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 300 0 80,clip]{people/bjarne-stroustrup}
+		\vspace{-7mm}
+		
+		\begin{note}{Bjarne Stroustrup (2000) \mysource{\cpp}}
+			\mycite{The most important single aspect of software development is to be clear about what you are trying to build.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{What is System Modeling?}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{System Modeling \mysource{\sommerville}}
+			\mycite{\emph{System modeling} is the process of developing abstract models of a system, with each model presenting a different view or perspective of that system. [...] Models are used during the requirements engineering process to help derive the \emph{detailed requirements} for a system, during the design process to \emph{describe the system to engineers} implementing the system, and after implementation to \emph{document the system}’s structure and operation.}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{What is a Model?}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{\umluserguide:}
+			\mycite{A \emph{model} is a simplification of reality.}
+		\end{definition}
+		\begin{definition}{\sommerville:}
+			\mycite{A \emph{model} is an abstract view of a system that deliberately ignores some system details.}
+		\end{definition}
+		\begin{note}{{Goals of Models \mysource{\umluserguide}}}
+			\begin{itemize}
+				\item visualize a system as it is (wanted)
+				\item specify the structure or behavior of a system
+				\item template to guide construction of a system
+				\item document the decisions we have made
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{note}{\sommerville:}
+			\mycite{It is important to understand that a system model is \emph{not a complete representation} of system. It purposely leaves out detail to make it \emph{easier to understand}. A model is an abstraction of the system being studied rather than an alternative representation of that system. A representation of a system should maintain all the information about the entity being represented. An abstraction \emph{deliberately simplifies a system} design and picks out the most salient characteristics.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{What Language to Use for Modeling?}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\myexample{Towards a Common Language}{
+			\begin{itemize}
+				\item Natural language? hard to abstract from details, already used in requirements
+				\item Programming language? unfamiliar to people without programming skills in that language, too early to decide for the programming language
+				\item Textual language? harder to understand
+				\item Graphical language? makes use of our visual abilities, requires common understanding
+				\item Problem: engineers need to be aware of all languages being used
+				\item Solution: use a graphical language independent of company and domain
+			\end{itemize}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO new slides on History of Modeling Languages?
+
+\xkcdframe{927} % 14+1 standards
+
+\subsection{The Unified Modeling Language (UML)}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{UML \mysource{\umlrefman}}
+			\mycite{The Unified Modeling Language (UML) is a general-purpose visual modeling language that is used to specify, visualize, construct, and document the artifacts of a software system.}
+		\end{definition}
+		\pause
+		\begin{note}{\umluserguide:}
+			\mycite{Modeling yields an understanding of a system. No one model is ever sufficient. Rather, you often need multiple models that are connected to one another [...].}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Different Kinds of UML Diagrams}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Structure Diagrams \deutsch{Strukturdiagramme}}
+			\mycite{\emph{Structure diagrams} show the static structure of the objects in a system. That is, they depict those elements in a specification that are irrespective of time. The elements in a structure diagram represent the meaningful concepts of an application, and may include abstract, real-world and implementation concepts.}\mysource{\umlspec}
+		\end{definition}	
+		\nextcolumn
+		\begin{definition}{Behavior Diagrams \deutsch{Verhaltensdiagramme}}
+			\mycite{\emph{Behavior diagrams} show the dynamic behavior of the objects in a system, including their methods, collaborations, activities, and state histories. The dynamic behavior of a system can be described as a series of changes to the system over time.}\mysource{\umlspec}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+% TODO add paragraph on interaction diagrams?
+
+\subsection{14 Types of UML Diagrams}
+\begin{frame}{\insertsubsection\ \mytitlesource{\umlspec}}
+	\only<-4>{\tikzset{notTaughtUMLDiagrams/.style={}}}%
+	\only<-5|handout:0>{\slideMindmapUMLdiagrams{}{}{}{}{}{}{visible on={<2->}}{visible on=<3->}{visible on=<4->}}%
+	\only<6|handout:0>{\slideMindmapUMLdiagrams{blue}{}{}{}{}{}{}{}{}}%
+	\only<7->{\slideMindmapUMLdiagrams{blue}{red}{red}{}{}{}{}{}{}}%
+	
+	\uncover<5->{Six most important UML diagrams* discussed in this course
+		
+		*\tiny\href{https://dl.acm.org/doi/10.1145/1278201.1278205}{John Erickson and Keng Siau. 2007. Theoretical and practical complexity of modeling methods. Commun. ACM 50, 8 (August 2007), 46–51.}}
+\end{frame}
+
+% TODO talk about SysML? or at least mention in the slides?

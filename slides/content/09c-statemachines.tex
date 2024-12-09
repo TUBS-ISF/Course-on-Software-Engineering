@@ -1,0 +1,62 @@
+\subsection{Activity and State Machine Diagrams}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{\umluserguide:}
+			We can visualize the dynamics of execution in two ways: by emphasizing the flow of control from activity to activity (\emph{activity diagrams}) or by emphasizing the potential states and transitions among those states (\emph{state machine diagrams}).
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{State Machine Diagrams}
+\begin{frame}[label=statemachineslide]{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{State Machine Diagram \deutsch{Zustandsdiagramm}}
+			A \emph{state machine diagram} specifies the sequences of states the (a part of) the system goes through during its lifetime in response to events, together with its responses to those events. Every \emph{state} (rectangle with rounded corners) is characterized by a condition or situation. An \emph{event} is an occurrence of a stimulus that can trigger a state transition. A \emph{transition} (solid arrow) is a relationship between two states. \deutsch{Zustand, Ereignis, Zustandsübergang} \mysource{adapted from \umluserguide}
+		\end{definition}
+		\pause%
+		\begin{note}{Rules for State Machine Diagrams}
+			there is a single \emph{initial state} (filled circle) and a single \emph{final state} (bull's eye) \deutsch{Start- und Zielzustand} --- see exception below
+		\end{note}
+		\nextcolumn
+		\posthandout{\pic[page=28,width=\linewidth,trim=225 20 25 40,clip]{se03-modeling-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\prehandout{
+	\begin{frame}{Example of a State Machine Diagram}
+	\end{frame}
+}
+\posthandout{
+	\begin{frame}{Example of a State Machine Diagram}
+		\pic[page=29,width=\linewidth,trim=0 20 0 40,clip]{se03-modeling-print}
+	\end{frame}
+}
+
+% TODO introduce notation for actions?
+
+\subsection{Hierarchical State Machine Diagrams}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{{Simple and Composite States \mysource{\umluserguide}}}
+			\textbf{Motivation}: avoid duplicated transitions, improve overview in complex state machine diagrams
+			
+			\textbf{Simple State}: \mycite{A \emph{simple state} is a state that has no substructure.} \deutsch{einfacher Zustand}
+			
+			\textbf{Composite State}: \mycite{A state that has substates (i.e., nested states) is called a \emph{composite state}.} \deutsch{komplexer Zustand}
+		\end{definition}
+		\pause
+		\begin{note}{Rules for State Machine Diagrams}
+			\begin{itemize}
+				\item every composite state has its own single \emph{initial state} \deutsch{Startzustand}
+				\item substates may be nested to any level
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\posthandout{\pic[page=30,width=\linewidth,trim=225 20 25 40,clip]{se03-modeling-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Recap: 14 Types of UML Diagrams\ \mytitlesource{\umlspec}}
+	\slideMindmapUMLdiagrams{blue}{blue}{blue}{red}{}{}{}{}{}
+\end{frame}
+

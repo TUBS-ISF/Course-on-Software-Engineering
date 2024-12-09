@@ -69,12 +69,7 @@
 	\item \umlspec\mychapter{18}
 }{
 	Quiz in Stud.IP
-%	\lectureqr{08}
-%	\begin{enumerate}
-%		\item Form groups of 2--3 students
-%		\item On your own: draw a small use case diagram related to your requirements
-%		\item Group work: switch your diagrams and mark mistakes (e.g., wrong syntax) with another color
-%	\end{enumerate}
+	\lectureqr{08}
 }
 
 %\faq{
@@ -94,46 +89,70 @@
 \author{Thomas Thüm}
 \lecture{System Modeling}{modeling}
 
-\section{Part 1}
-%\input{content/a-}
+% TODO blackboard on graphical notation: use case vs system vs activity vs state
+
+\begin{frame}{\insertsubtitle}
+	\hprojectcartoon{01}{how the customer explained it}
+	\hprojectcartoon{02}{how the project leader understood it}
+	\alt<3->{%
+		\projectcartoon{03}{how the analyst designed it}
+		\projectcartoon{04}{how the programmer implemented it}
+	}{%
+		\hprojectcartoon{03}{how the analyst designed it}
+		\hprojectcartoon{04}{how the programmer implemented it}
+	}%
+	\uncover<2->{\hprojectcartoon{13}{what the customer really needed}}
+\end{frame}
+
+\section{Introduction to Modeling}
+\input{content/09a-modeling}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item System modeling
+	\item Models as abstractions
+	\item UML and its visual languages
+	\item Next: How to model activities of a system?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \umluserguide\mychapter{1} --- great introduction to modeling
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students
+		\item In isolation: Practice abstraction by sketching this lecture hall in \href{https://webuhr.de/timer-auf-1-minute/}{1 minute} (not more!).
+		\item Groupwork: Show the sketch to your group and discuss what details are not shown in your visualizations. (5 min)
 	\end{enumerate}
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Modeling Behavior with Activity Diagrams}
+\input{content/09b-activitydiagrams}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item UML activity diagrams
+	\item Branching and merging
+	\item Forking and joining
+	\item Swimlanes
+	\item Next: How to model states of a system?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \umluserguide\mychapter{20}
+	% less suited introduction: \sommerville, Chapter 5.1 (p.\ 141--144)
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students
+		\item Draw a activity diagram for an instant messenger by yourself.
+		\item It should contain at least one branch or fork. You are free to use swimlanes.
+		\item Exchange your diagrams within your group and look for mistakes.
 	\end{enumerate}
 }
 
-\section{Part 3}
-%\input{content/c-}
+\section{Modeling Behavior with State Machines}
+\input{content/09c-statemachines}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item UML state machine diagrams
+	\item Hierarchical state machines
+	\item Next: How to structure a system into subsystems?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \umluserguide\mychapter{22} 
+	% less suited introduction: \sommerville, Chapter 5.4.2 (p.\ 156--158)
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Quiz in Stud.IP
+	\lectureqr{09}
 }
 
 %\faq{
@@ -325,52 +344,52 @@
 
 % TODO L13
 
-\ifuniversity{tubs}{\date{January 21, 2025}}
-
-\author{Thomas Thüm}
-\lecture{Summary}{summary}
-
-\section{Part 1}
-%\input{content/a-}
-\lessonslearned{
-	\item ?
-	\item Next: ?
-}{
-	\item \sommerville\mychapter{?} 
-}{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
-}
-
-\section{Part 2}
-%\input{content/b-}
-\lessonslearned{
-	\item ?
-	\item Next: ?
-}{
-	\item \sommerville\mychapter{?} 
-}{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
-}
-
-\section{Part 3}
-%\input{content/c-}
-\lessonslearned{
-	\item ?
-	\item Next: ?
-}{
-	\item \sommerville\mychapter{?} 
-}{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
-}
+%\ifuniversity{tubs}{\date{January 21, 2025}}
+%
+%\author{Thomas Thüm}
+%\lecture{Summary}{summary}
+%
+%\section{Part 1}
+%%\input{content/a-}
+%\lessonslearned{
+%	\item ?
+%	\item Next: ?
+%}{
+%	\item \sommerville\mychapter{?} 
+%}{
+%	\begin{enumerate}
+%		\item<+-> Form groups of 2--3 students
+%		\item<+-> ?
+%	\end{enumerate}
+%}
+%
+%\section{Part 2}
+%%\input{content/b-}
+%\lessonslearned{
+%	\item ?
+%	\item Next: ?
+%}{
+%	\item \sommerville\mychapter{?} 
+%}{
+%	\begin{enumerate}
+%		\item<+-> Form groups of 2--3 students
+%		\item<+-> ?
+%	\end{enumerate}
+%}
+%
+%\section{Part 3}
+%%\input{content/c-}
+%\lessonslearned{
+%	\item ?
+%	\item Next: ?
+%}{
+%	\item \sommerville\mychapter{?} 
+%}{
+%	\begin{enumerate}
+%		\item<+-> Form groups of 2--3 students
+%		\item<+-> ?
+%	\end{enumerate}
+%}
 
 %\faq{
 	%	\item
