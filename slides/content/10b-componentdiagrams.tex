@@ -1,0 +1,67 @@
+\begin{frame}{Recap: 14 Types of UML Diagrams\ \mytitlesource{\umlspec}}
+	\slideMindmapUMLdiagrams{blue}{blue}{blue}{red}{}{}{visible on={<2->}}{}{}
+\end{frame}
+
+\subsection{Component Diagrams}
+\begin{frame}[label=componentslide]{\insertsubsection\ \deutsch{Komponentendiagramm}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Component Diagram \mysource{adapted from \umluserguide}}
+			A \emph{component} is a replaceable part of a system that conforms to and provides the realization of a set of interfaces. An \emph{interface} is a collection of operations that specify a service that is provided by or requested from a class or component. An interface that a component realizes is called a \emph{provided interface}, meaning an interface that the component provides as a service to other components. The interface that a component uses is called a \emph{required interface}, meaning an interface that the component conforms to when requesting services from other components. \deutsch{Komponente, angebotene/benötigte Schnittstelle}
+		\end{definition}
+		\nextcolumn
+		\posthandout{\pic[page=16,width=\linewidth,trim=225 20 25 40,clip]{se04-architecture-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Example of a Component Diagram}
+	\posthandout{\pic[page=17,width=\linewidth,trim=0 20 0 40,clip]{se04-architecture-print}}
+\end{frame}
+
+% TODO all current examples are missing situations in which a provided interface is to more than 1 required interfaces
+
+\subsection{Hierarchical Component Diagrams}
+\begin{frame}[label=nestedcomponentsslide]{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Nesting of Components\mysource{adapted from \umluserguide}}
+			\textbf{Motivation}: decompose/structure large systems
+			
+			\textbf{Nesting} \deutsch{Verschachtelung}: A component may contain any number of \emph{subcomponents}. \deutsch{Teilkomponenten}
+			
+			\textbf{Ports and Delegates}: A \emph{port} is an explicit window into an encapsulated component. A \emph{delegate} connects provided or required interfaces with ports. 
+		\end{definition}
+		\nextcolumn
+		\posthandout{\pic[page=18,width=\linewidth,trim=225 20 25 40,clip]{se04-architecture-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Rules for Component Diagrams}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Rules for Component Diagrams}
+			\begin{itemize}
+				\item component names are unique
+				\item a component may have any number of required or provided interfaces
+				\item every required interface is connected to provided interface
+				\item every component is directly or indirectly connected to every other component
+				\item subcomponents may be nested to any level
+				\item when subcomponents communicate to a higher-level component, they need to communicate via ports
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=175 0 0 0,clip]{people/gordon-bell}
+		\vspace{-7mm}
+		
+		\begin{note}{Gordon Bell \mysource{\href{https://dl.acm.org/doi/10.1145/1968.381154}{Bentley 1984}}}
+			\mycite{The cheapest, fastest, and most reliable components are those that aren’t there.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Recap: 14 Types of UML Diagrams\ \mytitlesource{\umlspec}}
+	\only<1|handout:0>{\slideMindmapUMLdiagrams{blue}{blue}{blue}{blue}{}{}{}{}{}}%
+	\only<2->{\slideMindmapUMLdiagrams{blue}{blue}{blue}{blue}{red}{red}{}{}{}}%
+\end{frame}

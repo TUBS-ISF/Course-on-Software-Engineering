@@ -1,0 +1,128 @@
+\subsection{Architectural Patterns}
+\begin{frame}{\insertsubsection\ \deutsch{Architekturmuster}}
+	\slideArchitecturalPattern
+\end{frame}
+
+\subsection{Layered Architecture}
+\begin{frame}{\insertsubsection\ \normalsize\deutsch{Schichtenarchitektur}}
+	%\includegraphics[width=.3\textwidth]{schichten}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{{Layered Architecture \mysource{\sommerville}}}
+			\begin{itemize}
+				\item \emph{Problem}: subsystems are hard to adapt and replace
+				\item \emph{Idea}: decomposition into layers \deutsch{Schichten}
+				\item layer provides services to layers above
+				\item layer delegates subtasks to layers below
+				\item strict layers: every layer can only access the next layer
+				\item relaxed layers: every layer can access all layers below % TODO translation
+				\item information hiding: layers hide implementation details behind interface
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\posthandout{\pic[page=24,width=\linewidth,trim=225 20 25 40,clip]{se04-architecture-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Client-Server Architecture}
+\begin{frame}{\insertsubsection\ \normalsize\deutsch{2-Schichten-Architektur}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Client-Server Architecture \mysource{\sommerville}}% TODO further literature needed?
+			\begin{itemize}
+				\item aka.\ 2-tier architecture
+				\item \emph{Problem}: several clients need to access the same data
+				\item \emph{Idea}: separation of application (client) and data management (server)
+				\item clients initiate the communication with a server
+				\item typical: multiple clients of the same kind
+				\item optional: multiple clients of different kinds
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Example}
+			a browser uses a URL to connect to a server in the world wide web and receives an HTML page
+		\end{example}
+		\nextcolumn
+		\posthandout{\pic[page=25,width=\linewidth,trim=225 20 25 40,clip]{se04-architecture-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{3-Tier Architecture}
+\begin{frame}{\insertsubsection\ \normalsize\deutsch{3-Schichten-Architektur}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{3-Tier Architecture}
+			\begin{itemize}
+				\item \emph{Problem}: clients with same functionality but different presentation needed
+				\item \emph{Idea}: separation of data presentation, application logic, and data management
+				\item thin-client application: application logic on the server
+				\item rich-client application: application logic in the client
+			\end{itemize}
+		\end{definition}% TODO add source
+		\begin{example}{Rule of Thumb}
+			If you can use the application offline, then it is most likely a rich-client application.
+		\end{example}
+		\nextcolumn
+		\posthandout{\pic[page=26,width=\linewidth,trim=225 20 25 40,clip]{se04-architecture-print}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Peer-to-Peer Architecture}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Peer-to-Peer Architecture}
+			\begin{itemize}
+				\item \emph{Problem}: high load on server and high risk of failure when transmitting all client data to the server
+				\item \emph{Idea}: decentralized transmission of data
+				\item peers connect to each other and transfer data directly
+				\item peers take over client or server roles
+				\item arbitrary, dynamic topology
+			\end{itemize}
+		\end{definition}% TODO add source
+		\uncover<4->{
+			\begin{example}{In Practice}
+				often combined with a client-server architecture
+			\end{example}
+		}
+		\vspace{5mm}
+		\nextcolumn
+		\only<2|handout:0>{\pic[width=\textwidth,trim=110 180 110 180,clip]{architecture/peer-to-peer-nolines}}%
+		\only<3->{\pic[width=\textwidth,trim=110 180 110 180,clip]{architecture/peer-to-peer}}%
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ in Windows 10}
+	\begin{fancycolumns}
+		\centering\picDark[height=65mm]{architecture/peer-to-peer-windows10a}
+		\nextcolumn
+		\centering\picDark[height=65mm]{architecture/peer-to-peer-windows10b}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Model-View-Controller Architecture}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Model-View-Controller Architecture \mysource{\sommerville}}
+			\begin{itemize}
+				\item \emph{Context}: data is presented and manipulated over several views
+				\item \emph{Problem}: data inconsistent and new views hard to add
+				\item \emph{Idea}: separation into three components
+				\item model: stores the relevant data independent of their presentation
+				\item view: shows (a part of) the data independent of manipulations
+				\item controller: user interface for the manipulation of data
+			\end{itemize}
+		\end{definition}
+		\vspace{-1mm}
+		\uncover<2->{
+			\begin{example}{Example}
+				In a spreadsheet, data is presented in tables and diagrams. Changing values in a table leads to an update of affected diagrams and tables.
+			\end{example}
+		}
+		\nextcolumn
+		\uncover<3->{\posthandout{\pic[page=29,width=\linewidth,trim=225 20 20 40,clip]{se04-architecture-print}}}
+	\end{fancycolumns}
+\end{frame}
+% TODO selection update not well explained in the video: https://youtu.be/nfbsaGvQ7n4?t=2042
+% not only to update the selection after a deletion, but also to find out which elements to delete when pressing the button
+
+\subsection{Pipe-and-Filter Architecture}
+\begin{frame}{\insertsubsection}
+	\slidePipeAndFilter
+\end{frame}
+

@@ -112,7 +112,7 @@
 	\item UML and its visual languages
 	\item Next: How to model activities of a system?
 }{
-	\item \umluserguide\mychapter{1} --- great introduction to modeling
+	\item[] \umluserguide\mychapter{1} --- great introduction to modeling
 }{
 	\begin{enumerate}
 		\item Form groups of 2--3 students
@@ -130,7 +130,7 @@
 	\item Swimlanes
 	\item Next: How to model states of a system?
 }{
-	\item \umluserguide\mychapter{20}
+	\item[] \umluserguide\mychapter{20}
 	% less suited introduction: \sommerville, Chapter 5.1 (p.\ 141--144)
 }{
 	\begin{enumerate}
@@ -148,7 +148,7 @@
 	\item Hierarchical state machines
 	\item Next: How to structure a system into subsystems?
 }{
-	\item \umluserguide\mychapter{22} 
+	\item[] \umluserguide\mychapter{22} 
 	% less suited introduction: \sommerville, Chapter 5.4.2 (p.\ 156--158)
 }{
 	Quiz in Stud.IP
@@ -172,46 +172,74 @@
 \author{Thomas Thüm}
 \lecture{Software Architecture}{architecture}
 
-\section{Part 1}
-%\input{content/a-}
+\begin{frame}{\insertsubtitle}
+	\alt<2->{%
+		\projectcartoon{01}{how the customer explained it}
+		\projectcartoon{02}{how the project leader understood it}
+	}{%
+		\hprojectcartoon{01}{how the customer explained it}
+		\hprojectcartoon{02}{how the project leader understood it}
+	}%
+	\hprojectcartoon{03}{how the analyst designed it}
+	\alt<2->{%
+		\projectcartoon{04}{how the programmer implemented it}
+		\projectcartoon{13}{what the customer really needed}
+	}{%
+		\hprojectcartoon{04}{how the programmer implemented it}
+		\hprojectcartoon{13}{what the customer really needed}
+	}%
+\end{frame}
+
+\section{Introduction to Software Architecture}
+\input{content/10a-architecture}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Software architecture: decomposition into subsystems
+	\item Goals: communication, reuse, critical requirements
+	\item Views: physical, logical, process, development
+	\item Next: How to model the components of a system?
 }{
-	\item \sommerville\mychapter{?} 
+	\item[] \sommerville\mychapter{6.0--6.2}\mypages{167--175}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Invest five minutes trying to understand the Signal messenger by inspecting the \href{https://github.com/signalapp/Signal-Android}{source code of the Android client}
+		\item Answer questionaire
+	\end{enumerate}
+}
+%\only<3->{
+%  \item[A] Ich habe ein gutes Verständnis wie die App funktioniert.
+%  \item[B] Ich habe ein grobes Verständnis wie die App aufgebaut ist.
+%  \item[C] Ich habe einen kleinen Teil der App verstanden.
+%  \item[D] Ich habe genug verstanden, um morgen an der App zu entwickeln.
+%  \item[E] Ich habe nichts wesentliches verstanden und möchte die 5 Minuten Lebenszeit zurück.
+%}
+
+\section{Modeling Structure with Component Diagrams}
+\input{content/10b-componentdiagrams}
+\lessonslearned{
+	\item UML component diagrams
+	\item Decompose of large systems with nesting
+	\item Next: What architectures have been successful?
+}{
+	\item[] \umluserguide\mychapter{15} 
+	% less suited: \sommerville, Chapter 5.4.2 (p.\ 156--158)
+}{
+	\begin{enumerate}
+		\item Form groups of 2--3 students
+		\item Design the architecture of a messenger with a component diagram with \emph{exactly one} mistake.
+		\item Exchange diagrams with each other, and try to identify and mark the mistake.
 	\end{enumerate}
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Common Architectural Patterns}
+\input{content/10c-architecturalpatterns}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item[] Common architectural patterns: layered architecture, client-server, 3-tier, peer-to-peer, model-view-controller, pipe-and-filter
+	% TODO \item Next: ?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \sommerville\mychapter{6.3}\mypages{175--184}
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
-}
-
-\section{Part 3}
-%\input{content/c-}
-\lessonslearned{
-	\item ?
-	\item Next: ?
-}{
-	\item \sommerville\mychapter{?} 
-}{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Quiz in Stud.IP
+	% TODO \lectureqr{10}
 }
 
 %\faq{
