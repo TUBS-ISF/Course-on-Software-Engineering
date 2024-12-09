@@ -33,10 +33,9 @@
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Overview on Design Patterns}
+\subsection{Creational Design Patterns}
 \begin{frame}{\insertsubsection{} \mytitlesource{\gof}}
-	\only<-4|handout:0>{\tikzset{notTaughtDesignPatterns/.style={}}}%
-	\slideMindmapDesignPatterns{}{}{}{}{}{}{visible on={<1,4,5->}}{visible on={<2,4->}}{visible on={<3->}}
+	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<-0|handout:0>}}{}{visible on={<-0|handout:0>}}
 \end{frame}
 
 \subsection{Singleton Pattern}
@@ -69,6 +68,21 @@
 	\end{fancycolumns}
 \end{frame}
 
+\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}}
+	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=4}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
+	
+	\vspace{-70mm}
+	\begin{fancycolumns}[widths={70},animation=none]
+		\nextcolumn
+		\mynotetight{Singleton Pattern}{\singleton{width=\linewidth}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Structural Design Patterns}
+\begin{frame}{\insertsubsection{} \mytitlesource{\gof}}
+	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<2->}}{}{visible on={<-0|handout:0>}}
+\end{frame}
+
 \subsection{Object Adapter Pattern}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
@@ -84,6 +98,21 @@
 		\nextcolumn
 		\objectadapter{width=\linewidth}
 	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}}
+	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=2}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
+	
+	\vspace{-75mm}
+	\begin{fancycolumns}[widths={65},animation=none]
+		\nextcolumn
+		\mynotetight{Object Adapter Pattern}{\objectadapter{width=\linewidth}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Behavioral Design Patterns}
+\begin{frame}{\insertsubsection{} \mytitlesource{\gof}}
+	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{}{}{visible on={<2->}}
 \end{frame}
 
 \subsection{Observer Pattern}
@@ -103,4 +132,10 @@
 		\observer{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
+
+%\subsection{Overview on Design Patterns}
+%\begin{frame}{\insertsubsection{} \mytitlesource{\gof}}
+%	\only<-4|handout:0>{\tikzset{notTaughtDesignPatterns/.style={}}}%
+%	\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<1,4,5->}}{visible on={<2,4->}}{visible on={<3->}}
+%\end{frame}
 
