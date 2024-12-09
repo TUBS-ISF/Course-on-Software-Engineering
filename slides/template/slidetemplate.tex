@@ -173,6 +173,11 @@
 
 % ENVIRONMENTS FOR PICTURES NOT READY FOR DARKMODE
 
+\newcommand{\picWhite}[2][]{\pic[#1]{#2}}
+\ifdarkmode
+\renewcommand{\picWhite}[2][]{\mywhite{}{\pic[#1]{#2}}}
+\fi
+
 \newcommand{\mywhite}[2]{
 	\begin{tcolorbox}[title=#1,colback=white,colframe=white,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
 		\begin{flushleft}

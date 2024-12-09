@@ -1,0 +1,88 @@
+\begin{frame}
+	\begin{fancycolumns}[height=8.5cm]
+		\pic[width=\linewidth,trim=0 20 0 0,clip]{people/louis-srygley}
+		\vspace{-7mm}
+		
+		\begin{note}{Louis Srygley \mysource{\href{https://twitter.com/codewisdom/status/956225177439866882}{twitter.com}}}
+			\mycite{Without requirements or design, programming is the art of adding bugs to an empty text file.}
+		\end{note}
+		\nextcolumn
+		\pic[width=\linewidth,trim=0 75 0 75,clip]{people/alistair-cockburn}
+		\vspace{-7mm}
+		
+		\begin{note}{Alistair Cockburn \mysource{\href{https://twitter.com/CompSciFact/status/934100633539567618}{twitter.com}}}
+			\mycite{If it's your decision, it's design; if not, it's a requirement.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap: Process Models}
+\begin{frame}[10]{\insertsubsection}
+	\begin{fancycolumns}
+		\diagramWaterfallModel
+		\nextcolumn
+		\diagramVModel
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{1741} % design decisions
+
+\subsection{Recap: 14 Types of UML Diagrams}
+\begin{frame}{\insertsubsection\ \mytitlesource{\umlspec}}
+	\only<1|handout:0>{\slideMindmapUMLdiagrams{blue}{blue}{blue}{blue}{}{}{}{}{}}%
+	\only<2->{\slideMindmapUMLdiagrams{blue}{blue}{blue}{blue}{red}{red}{}{}{}}%
+\end{frame}
+
+% TODO add more content (e.g., brief introduction/recap on OOP)
+
+\begin{frame}{Recap: 14 Types of UML Diagrams\ \mytitlesource{\umlspec}}
+	\slideMindmapUMLdiagrams{blue}{blue}{blue}{blue}{blue}{red}{visible on={<-0>}}{}{visible on={<2->}}
+\end{frame}
+
+\subsection{Sequence Diagrams}
+\begin{frame}{\insertsubsection{} \deutschertitel{Sequenzdiagramme}}
+	\begin{fancycolumns}
+		\begin{definition}{{Sequence Diagram \mysource{\umlrefman}}}
+			\mycite{A sequence diagram displays an interaction as a two-dimensional chart. The \emph{vertical dimension} is the time axis; time proceeds down the page. The \emph{horizontal dimension} shows the roles that represent individual objects in the collaboration. 
+				\uncover<2->{Each role is represented by a vertical column containing a head symbol and a vertical line -- a \emph{lifeline}. During the time an object exists, it is shown by a dashed line. During the time an execution specification of a procedure on the \emph{object is active}, the lifeline is drawn as a double line. [...]} 
+				\uncover<3->{A \emph{message} is shown as an arrow from the lifeline of one object to that of another. The arrows are arranged in time sequence down the diagram. An \emph{asynchronous message} is shown with a stick arrowhead.}} \uncover<3->{\deutsch{Lebenslinie, Aktivierungsbalken, (a)synchrone Nachricht}}
+		\end{definition}
+		% TODO add nesting, split over several slides: Aktivierungsbalken (Beginn, Ende, Ausführung, Verschachtelung), Nachrichten (synchron, return, asynchron), Objekterzeugung und -löschung
+		% \mycite{You can show the nesting of a focus of control (caused by recursion, a call to a self-operation, or by a callback from another object) by stacking another focus of control slightly to the right of its parent (and can do so to an arbitrary depth).} \umluserguide
+		% deliberately ignored: specific objects underlined, structured control, 
+		\nextcolumn
+		\posthandout{\pic[width=\linewidth,trim=20 180 30 160,clip]{blackboard/blackboard_sequence_23_24}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Example of a Sequence Diagram}
+	\posthandout{\pic[page=24,width=\linewidth,trim=20 20 20 40,clip]{se05-design-print}}
+\end{frame}
+
+\subsection{Rules for Sequence Diagrams}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Rules for Sequence Diagrams}
+			\begin{itemize}
+				\item Activity of objects begins at the role or with a message
+				\item Only active objects can send messages
+				\item Every synchronous message has its own return (in this lecture, optional in UML)
+				\item Every return has its own synchronous message
+				\item Activities can be stacked to arbitrary, but finite depth
+				\item A destroyed object is dead forever
+				\item Ordering of messages for each single lifetime matters
+				\item Distance of messages in the diagram does not imply timing constraints
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection*{Recap: 14 Types of UML Diagrams}
+\begin{frame}{\insertsubsection\ \mytitlesource{\umlspec}}
+	\centering\slideMindmapUMLdiagrams{blue}{blue}{blue}{blue}{blue}{blue}{visible on={<2->}}{}{visible on={<3->}}
+	
+	\uncover<4->{Six most important UML diagrams* discussed in this course
+		
+		*\tiny\href{https://dl.acm.org/doi/10.1145/1278201.1278205}{John Erickson and Keng Siau. 2007. Theoretical and practical complexity of modeling methods. Commun. ACM 50, 8 (August 2007), 46–51.}}
+\end{frame}
+
