@@ -346,8 +346,23 @@
 \author{Thomas Thüm}
 \lecture{Software Reuse}{reuse}
 
-\section{Part 1}
-%\input{content/a-}
+\begin{frame}{\insertsubtitle}
+	\alt<3->{%
+		\projectcartoon{01}{how the customer explained it}
+		\projectcartoon{02}{how the project leader understood it}
+		\projectcartoon{03}{how the analyst designed it}
+		\projectcartoon{04}{how the programmer implemented it}
+	}{%
+		\hprojectcartoon{01}{how the customer explained it}
+		\hprojectcartoon{02}{how the project leader understood it}
+		\hprojectcartoon{03}{how the analyst designed it}
+		\hprojectcartoon{04}{how the programmer implemented it}
+	}%
+	\uncover<2->{\hprojectcartoon{16}{the open source version}}
+\end{frame}
+
+\section{Techniques for Reuse}
+\input{content/12a-reuse}
 \lessonslearned{
 	\item ?
 	\item Next: ?
@@ -360,8 +375,8 @@
 	\end{enumerate}
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Open-Source Software}
+\input{content/12b-opensource}
 \lessonslearned{
 	\item ?
 	\item Next: ?

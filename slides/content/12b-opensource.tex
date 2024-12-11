@@ -1,0 +1,321 @@
+\subsection{Open-Source Development}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{definition}{Open-Source Development}
+			\mycite{\emph{Open-source development} is an approach to software development in which the source code of a software system is published and volunteers are invited to participate in the development process.} % Raymond 2001
+		\end{definition}
+		\begin{note}{Open-Source Development}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item assumption in the early days: code developed by small core group
+				\item today: Internet to recruit volunteer developers (often users)
+				\item volunteers contribute with bug reports, feature requests, changes to the software (cf.\ pull requests)
+				\item core group controls changes to main repo
+				\item opposite: proprietary software / closed-source development
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{note}{Internet iff Open Source}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item Internet used to distribute source code and recruit developers
+				\item Internet builds on open-source software
+			\end{itemize}
+		\end{note}
+		\begin{example}{Examples} % TODO separate slides with images?
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item operating system Linux (for most servers)
+				\item operating system Android (for most clients)
+				\item web server Apache
+				\item database management system mySQL
+				\item browser Firefox
+				% TODO \item e-mail client Thunderbird
+				\item image editor GIMP
+				\item media player VLC
+				\item screen recording software OBS
+				\item video editing software Shotcut
+				\item runtime env.\ and standard library OpenJDK
+				\item development environment Eclipse
+			\end{itemize} % 
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Central Questions for Each Software Project}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{First Question}
+			\mycite{Should the product that is being developed make use of open-source components?}
+		\end{note}
+		\begin{example}{Example Criteria}
+			\begin{itemize}
+				\item are related open-source components available?
+				\item is their quality sufficient?
+				\item will they be maintained?
+				\item what is the effort to integrate them?
+				\item is it cheaper to modify or redevelop them?
+				\item how are they licensed?
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{note}{Second Question}
+			\mycite{Should an open-source approach be used for its own software development?}
+		\end{note}
+		\begin{example}{Example Criteria}
+			\begin{itemize}
+				\item business model: how to earn money then? % TODO does not mean it is free
+				\item support? consulting? proprietary extensions? -- \textit{rich relatives or friends? unconditional basic income \deutsch{bedingungsloses Grundeinkommen}?}
+				\item what additional value do you have from opening the source?
+				\item more customers, recognition, collaborations?
+				\item does it reveal confidential business knowledge?
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Rights and Duties}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Who owns the code? \mysource{\sommerville}}
+			\mycite{Although a fundamental principle of open-source development is that source code should be freely available, this does not mean that anyone can do as they wish with that code. Legally, the developer of the code (either a company or an individual) owns the code. They can place restrictions on how it is used by including legally binding conditions in an \emph{open-source software license}.} % St. Laurent 2004
+		\end{definition}
+		\begin{note}{What if there is no license?}
+			\begin{itemize}
+				\item you are allowed to read the code
+				\item you are \emph{not allowed} to use, modify, distribute it
+				\item you need to contact the owners to negotiate
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Understanding Software Licenses \mysource{\href{https://fossa.com/blog/open-source-licenses-101-mit-license/}{fossa.com}}}
+			\mycite{Anyone who works with open-source software (OSS), whether as a developer, a contributor, or a business, has to know at least a little bit about open source licenses. In a nutshell, an open source license tells you what you can and can’t do with the open source code. And if using the code comes with any requirements and/or responsibilities, the license outlines those as well.}
+		\end{definition}
+		\begin{example}{What's Next?}
+			\begin{itemize}
+				\item principles of software licenses
+				\item examples of famous software licenses
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Copyleft and Copyright}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[reverse,T]
+		\begin{definition}{{Copyleft \hfill\tikz[overlay] \node[anchor=-10,xshift=2mm] {\pic[width=.13\linewidth]{opensource/copyleft}};}}
+			\begin{itemize}
+				\item right to freely distribute and modify intellectual property
+				\item obligation that the same rights (license) apply to derivative work
+				\begin{itemize}
+					\item \emph{weak copyleft}: only applies to formerly-licensed parts (e.g., a library)
+					\item \emph{strong copyleft}: applies to the complete software (deprecatory: viral effect)
+				\end{itemize}
+				\item license without copyleft is called \emph{permissive}
+				\item implemented with copyright laws
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Examples for Copyleft Licenses}
+			\small
+			\begin{itemize}
+				\item GNU General Public License (GPL) for software
+				\item Creative Commons share-alike license for documents and pictures
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{definition}{{\tikz[overlay] \node[anchor=190,xshift=-2mm] {\pic[width=.13\linewidth]{opensource/copyright}};\hfill Copyright \deutsch{Urheberrecht}}}
+			\begin{itemize}
+				\item kind of intellectual property, such as patents and trademarks \deutsch{gestiges Eigentum, Patent, Marke}
+				\item owner of creative work has exclusive right over copies for a limited time
+				\item includes distribution, reproduction, public performance, derivative work
+				\item copyright is often granted by national laws
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Decision for copyleft is independent of:}
+			\begin{itemize}
+				\item decision to allow/forbid commercial use
+				\item decision about the fee to get the source code
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{MIT License}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://fossa.com/blog/open-source-licenses-101-mit-license/}{fossa.com}}}
+	\begin{fancycolumns}
+		\begin{definition}{Profile}
+			\begin{itemize}
+				\item released: about 1987
+				\item publisher: Massachusetts Institute of Technology
+				\item classification: permissive
+				\item most popular license % TODO provide evidence https://en.wikipedia.org/wiki/MIT_License
+				\item prominent use: Ruby on Rails (server-side web application framework), Node.js (JavaScript runtime environment)
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Selected Terms and Conditions}
+			\begin{itemize}
+				\item permits reuse within proprietary software
+				\item license shipped with distribution or relicensing (even to proprietary licenses)
+				\item \mycite{provided as-is, without warranty}
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/mit-logo}
+		\end{exampletight}
+		\begin{note}{The Full License Text}
+			\tiny\mycite{Copyright (c) \textless year\textgreater \textless copyright holders\textgreater
+				
+				Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+				
+				The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+				
+				THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{GPL: GNU General Public License}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.gnu.org/licenses/gpl-3.0.html}{gnu.org}}}
+	\begin{fancycolumns}
+		\begin{definition}{Profile}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item releases: 1989 (GPLv1), 1991 (GPLv2), 2007 (GPLv3)
+				\item author/publisher: Richard Stallman, Free Software Foundation
+				\item classification: strong copyleft
+				\item prominent use: Linux kernel (GPL-2.0-only), GNU Compiler Collection (GCC)
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Selected Terms and Conditions}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item software using (modified) GPL software must be released under GPL (copyleft) % TODO find better formulation
+				\item for any sale or distribution: binaries must be accompanied by source code
+				\item for private/interal use: no obligations
+				\item commercial redistribution allowed
+				\item GPL software (Linux/GCC) may be used for commercial purposes
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/gplv3-logo}
+		\end{exampletight}
+		\begin{note}{Three Main Versions}
+			\begin{itemize}
+				\item GPL-1.0-only and GPL-1.0-or-later
+				\begin{itemize}
+					\item publishing binary only was allowed
+					\item applies to whole distributable
+				\end{itemize}
+				\item GPL-2.0-only and GPL-2.0-or-later
+				\begin{itemize}
+					\item fixed above problems
+					\item relaxed version LGPL, motivated by C standard library (libc)
+				\end{itemize}
+				\item GPL-3.0-only and GPL-3.0-or-later
+				\begin{itemize}
+					\item improved compatibility with other licenses (e.g., Apache)
+				\end{itemize}
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{LGPL: GNU Lesser General Public License}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.gnu.org/licenses/lgpl-3.0.html}{gnu.org}}}
+	\begin{fancycolumns}
+		\begin{definition}{Profile}
+			\begin{itemize}
+				\item releases: 1991 (LGPLv2), 1999 (LGPLv2.1), 2007 (LGPLv3)
+				\item formerly known as: GNU Library General Public License
+				\item publisher: Free Software Foundation
+				\item classification: weak copyleft
+				%\item prominent use: 
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Selected Terms and Conditions}
+			\begin{itemize}
+				\item similar to GPL, but less restrictive
+				\item software using (modified) LGPL software components \emph{does not have to} be released under LGPL
+				\item modifications of LGPL software components \emph{must} be released under LGPL % TODO does not have to be released!
+				\item freedom only for LGPL components
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/lgplv3-logo}
+		\end{exampletight}
+		\begin{note}{Three Main Versions}
+			\begin{itemize}
+				\item LGPL-2.0-only and LGPL-2.0-or-later
+				%				\begin{itemize}
+					%					\item publishing binary only was allowed
+					%					\item applies to whole distributable
+					%				\end{itemize}
+				\item LGPL-2.1-only and LGPL-2.1-or-later
+				%				\begin{itemize}
+					%					\item fixed above problems
+					%					\item relaxed version LGPL, motivated by C standard library (libc)
+					%				\end{itemize}
+				\item LGPL-3.0-only and LGPL-3.0-or-later
+				%				\begin{itemize}
+					%					\item improved compaitibility with other licenses (e.g., Apache)
+					%				\end{itemize}
+			\end{itemize}
+		\end{note}
+		\begin{example}{What's the main problem of LGPL?}
+			\centering It contains \mycite{GPL}!\\[2mm]LGPL often confused with GPL in industry.
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{The Impact of Licensing Issues}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.heise.de/news/Ruby-on-Rails-Durch-Lizenzproblem-entfallene-Library-erzeugt-Dominoeffekt-5999197.html}{heise.de}}}
+	\begin{fancycolumns}
+		\begin{exampletight}{}
+			\pic[width=\linewidth]{opensource/heise-ruby-on-rails-license-problem} % TODO in German. translate? replace?
+		\end{exampletight}
+		\nextcolumn
+		\begin{example}{March 2021: The Story of mimemagic}
+			\begin{itemize}
+				\item Ruby library mimemagic is part of Ruby on Rails and was licensed under MIT license
+				\item 580,000 repositories on Github use Ruby on Rails under the same license
+				\item mimemagic is using another library under GPL license
+				\item GPL has a copyleft: mimemagic must be published under GPL too
+				\item old versions of mimemagic have been removed
+				\item new versions use GPL license
+				\item 580,000 projects would need to change from MIT to GPL and upgrade to the new version
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\widexkcdframe{306} % orphaned projects
+
+\subsection{Recommendations for Companies}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item basically every company needs software
+				\item even non-software companies need software
+				\item more and more companies even transition into software companies (e.g., car manufacturers)
+				\item large amounts of money spend on software licenses (e.g., Microsoft Windows and Office, Adobe Acrobat)
+				\item even if open-source software is for free, resources are necessary to prevent license violations within a company
+				\item and who does the maintenance? who pays for it?
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Bayersdorfer 2007: \mysource{\sommerville}}
+			\begin{itemize}
+				\item track information about downloaded and used open-source components (e.g., storing licenses)
+				\item understand how a component is licensed before it is used
+				\item study the open-source project to predict its future evolution
+				\item educate developers about open source and open-source licensing \correct
+				\item auditing of open-source software to detect violations
+				\item if you rely on open-source products, support their development
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
