@@ -20,8 +20,7 @@
 			% source: \umlrefman and https://coderanch.com/t/100225/engineering/defualt-multiplicity
 		}
 		\nextcolumn
-		%\posthandout{\pic[page=13,width=\linewidth,trim=225 20 20 40,clip]{se05-design-print}}
-		\posthandout{\pic[width=\linewidth]{class-diagram1-2024s}}
+		\posthandout{\pic[page=13,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/design}}
 		%\mynote{\umluserguide:}{\mycite{Class diagrams are the most common diagram found in modeling object-oriented systems.}}
 		% deliberatively ignore: fully qualified names such as java::awt::Rectangle, active classes, packages, dependencies, association names
 	\end{fancycolumns}
@@ -48,10 +47,7 @@
 		% TODO add primitive types? Int, Float, Boolean
 		% deliberatively ignore: responsibilities, modeling of own primitive types
 		\nextcolumn
-		%\posthandout{\pic[page=14,width=\linewidth,trim=225 20 20 40,clip]{se05-design-print}}
-		\centering\posthandout{\pic[width=\linewidth]{class-diagram2-2024s}}
-		
-		\posthandout{\pic[width=.6\linewidth]{class-diagram3-2024s}}
+		\posthandout{\pic[page=14,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/design}}
 	\end{fancycolumns}
 \end{frame}
 	
@@ -70,13 +66,13 @@
 		\begin{definition}{{Aggregation \mysource{adapted from \umluserguide}}}
 			\emph{Aggregation} is a special association in which one class represents a larger thing (the whole), which consists of smaller things (the parts) (i.e., has-a relationship). In contrast, a plain association between two classes represents a structural relationship between peers, meaning that both classes are conceptually at the same level.
 		\end{definition}
-		\pause
-		\begin{definition}{{Composition \mysource{\umluserguide}}}
-			\mycite{\emph{Composition} is a form of aggregation, with strong ownership and coincident lifetime as part of the whole. Parts with non-fixed multiplicity may be created after the composite itself, but once created they live and die with it. Such parts can also be explicitly removed before the death of the composite.}
-		\end{definition}
+		\uncover<2->{
+			\begin{definition}{{Composition \mysource{\umluserguide}}}
+				\mycite{\emph{Composition} is a form of aggregation, with strong ownership and coincident lifetime as part of the whole. Parts with non-fixed multiplicity may be created after the composite itself, but once created they live and die with it. Such parts can also be explicitly removed before the death of the composite.}
+			\end{definition}
+		}
 		\nextcolumn
-		%\posthandout{\pic[page=16,width=\linewidth,trim=225 20 20 40,clip]{se05-design-print}}
-		\posthandout{\pic[width=\linewidth]{class-diagram4-2024s}}
+		\posthandout{\pic[page=16,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/design}}
 	\end{fancycolumns}
 \end{frame}
 
@@ -88,13 +84,13 @@
 		\begin{definition}{Generalization and Abstract Classes}
 			\mycite{A \emph{generalization} is a relationship between a general kind of thing (called the superclass or parent) and a more specific kind of thing (called the subclass or child). Generalization is sometimes called an is-a-kind-of relationship: one thing is-a-kind-of a more general thing.} If a superclass cannot be instantiated it is an \emph{abstract class} (also denoted with \textit{italic name}). \deutsch{Generali-\\sierung, abstrakte Klasse}\mysource{\umluserguide}
 		\end{definition}
-		\pause
-		\begin{definition}{Interfaces and Realization}
-			An \emph{interface} is a special class that only has static non-private attributes, abstract non-private operations, cannot be instantiated, and not be in a generalization relationship. Classes may \emph{realize} an interface. \deutsch{Schnittstelle, Realisierung}
-		\end{definition}
+		\uncover<2->{
+			\begin{definition}{Interfaces and Realization}
+				An \emph{interface} is a special class that only has static non-private attributes, abstract non-private operations, cannot be instantiated, and not be in a generalization relationship. Classes may \emph{realize} an interface. \deutsch{Schnittstelle, Realisierung}
+			\end{definition}
+		}
 		\nextcolumn
-		%\posthandout{\pic[page=18,width=\linewidth,trim=225 20 20 40,clip]{se05-design-print}}
-		\posthandout{\pic[width=\linewidth]{class-diagram5-2024s}}
+		\posthandout{\pic[page=18,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/design}}
 	\end{fancycolumns}
 \end{frame}
 

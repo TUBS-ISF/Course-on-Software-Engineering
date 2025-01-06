@@ -18,7 +18,7 @@
 
 \subsection{Recap: Process Models}
 \begin{frame}[10]{\insertsubsection}
-	\begin{fancycolumns}
+	\begin{fancycolumns}[widths={45}]
 		\diagramWaterfallModel
 		\nextcolumn
 		\diagramVModel
@@ -35,7 +35,7 @@
 
 \subsection{Sequence Diagrams}
 \begin{frame}{\insertsubsection{} \deutschertitel{Sequenzdiagramme}}
-	\begin{fancycolumns}
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{{Sequence Diagram \mysource{\umlrefman}}}
 			\mycite{A sequence diagram displays an interaction as a two-dimensional chart. The \emph{vertical dimension} is the time axis; time proceeds down the page. The \emph{horizontal dimension} shows the roles that represent individual objects in the collaboration. 
 				\uncover<2->{Each role is represented by a vertical column containing a head symbol and a vertical line -- a \emph{lifeline}. During the time an object exists, it is shown by a dashed line. During the time an execution specification of a procedure on the \emph{object is active}, the lifeline is drawn as a double line. [...]} 
@@ -45,12 +45,13 @@
 		% \mycite{You can show the nesting of a focus of control (caused by recursion, a call to a self-operation, or by a callback from another object) by stacking another focus of control slightly to the right of its parent (and can do so to an arbitrary depth).} \umluserguide
 		% deliberately ignored: specific objects underlined, structured control, 
 		\nextcolumn
-		\posthandout{\pic[width=\linewidth,trim=20 180 30 160,clip]{blackboard/blackboard_sequence_23_24}}
+		\posthandout{\includegraphics[page=23,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/design}}
+		%\posthandout{\pic[width=\linewidth,trim=20 180 30 160,clip]{blackboard/blackboard_sequence_23_24}}
 	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Example of a Sequence Diagram}
-	\posthandout{\pic[page=24,width=\linewidth,trim=20 20 20 40,clip]{se05-design-print}}
+	\posthandout{\pic[page=24,width=\linewidth,trim=20 20 20 40,clip]{printedslides/2021wt/design}}
 \end{frame}
 
 \subsection{Rules for Sequence Diagrams}
