@@ -1,0 +1,103 @@
+\subsection{Software Projects}
+\subsubsection{Lecture 1+12: Software and Reuse}
+\begin{frame}{Lecture 1: Software (Engineering) vs Program(ming)}
+	\slideSEvsProgramming
+\end{frame}
+\begin{frame}{Lecture 12: How to avoid software development?}
+	\begin{fancycolumns}[animation=none]
+		\begin{note}{First Question}
+			\mycite{Should the product that is being developed make use of open-source components?}
+		\end{note}
+		\begin{note}{Second Question}
+			\mycite{Should an open-source approach be used for its own software development?}
+		\end{note}
+		\pic[width=.25\linewidth]{opensource/copyleft}\hfill\pic[width=.25\linewidth]{opensource/copyright}
+	\nextcolumn
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/mit-logo}
+		\end{exampletight}
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/gplv3-logo}
+		\end{exampletight}
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/lgplv3-logo}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\subsubsection{Lecture 6+7: Management}
+\begin{frame}[2]{Lecture 6: How to manage software development?}
+	\slideGanttAndNetwork
+\end{frame}
+\begin{frame}[10]{Lecture 7: How to structure software development?}
+	\centering\diagramVModel
+\end{frame}
+
+\subsection{Analysis and Design}
+\subsubsection{Lecture 8+9: Analysis}
+\begin{frame}[1]{Lecture 8: What software is required?}
+	\slideMindmapNonFunctionalRequirements
+\end{frame}
+\begin{frame}{Lecture 9: How to model the planned software?}
+	\centering\slideMindmapUMLdiagrams{}{}{}{}{}{}{}{}{}
+\end{frame}
+
+\subsubsection{Lecture 10+11: Design}
+\begin{frame}{Lecture 10: What is the high-level structure?}
+	\begin{fancycolumns}[animation=none]
+		\pic[page=16,width=\linewidth,trim=225 20 25 40,clip]{printedslides/2021wt/architecture}
+	\nextcolumn
+		\pic[page=26,width=\linewidth,trim=225 20 25 40,clip]{printedslides/2021wt/architecture}
+	\end{fancycolumns}
+\end{frame}
+\begin{frame}{Lecture 11: What is the low-level structure?}
+	\begin{fancycolumns}[animation=none]
+		\pic[page=13,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/design}
+	\nextcolumn
+		\objectadapter{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Implementation, Test, and Maintenance}
+
+\subsubsection{Lecture 2+3: Implementation and Testing}
+\begin{frame}[2]{Lecture 2: How to implement the software?}
+	%\slideProgrammingLanguagesToday
+	\pic[width=\linewidth]{history/tiobe}
+\end{frame}
+\begin{frame}{Lecture 3: How to test the software?}
+	\slideMindmapQualityAssurance{}{}{}{}{}{}{}
+\end{frame}
+
+\subsubsection{Lecture 4+5: Change Control}
+\begin{frame}[2]{Lecture 4: How to change the software?}
+	\slideEvolutionAndMaintenance
+\end{frame}
+\begin{frame}{Lecture 5: How to control changes?}
+	\centering\picDark[width=.75\linewidth]{versioncontrol/devops}
+\end{frame}
+
+%\begin{frame}{Software Engineering I}
+%	\vspace{-5mm}
+%	\renewcommand{\projectcartoonwidth}{.13}
+%	\small\hfill
+%	\hprojectcartoon{01}{requirements}
+%	\hprojectcartoon{02}{modeling}
+%	\hprojectcartoon{03}{architecture and design} % architecture/design
+%	\hprojectcartoon{04}{implementation}\\\hfill
+%	\hprojectcartoon{05}{testing} % testing
+%	\hprojectcartoon{06}{process}
+%	%\hprojectcartoon{07}{how the project was documented} % code documentation
+%	%\hprojectcartoon{08}{what operations installed} % devops/continuous integration
+%	\hprojectcartoon{09}{management and pricing} % pricing
+%	%\hprojectcartoon{10}{how it was supported}
+%	%\hprojectcartoon{11}{what marketing advertised}
+%	%\hprojectcartoon{12}{when it was delivered} % continous delivery
+%	\uncover<2->{\hprojectcartoon{13}{Software Engineering II}}
+%	%\hprojectcartoon{14}{what the digg effect can do to your site} % ???
+%	%\hprojectcartoon{15}{the disaster recover plan}
+%	%\hprojectcartoon{16}{how open source version} % open source/licensing
+%	%\hprojectcartoon{17}{how it performed under load} % quality assurance/performance
+%	%\hprojectcartoon{18}{how patches were applied} % software maintenance
+%	
+%\end{frame}

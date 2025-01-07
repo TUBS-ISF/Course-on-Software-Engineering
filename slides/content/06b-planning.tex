@@ -72,21 +72,6 @@
 	\end{fancycolumns}
 \end{frame}
 
-\newcommand{\forwardpass}[1]{#1}
-\newcommand{\backwardpass}[1]{#1}
-\newcommand{\buffer}[1]{#1}
-\newcommand{\networknode}[7]{
-	\begin{tikzpicture}[every node/.style={draw=black,anchor=base,minimum height=5mm,text width=7.5mm,align=center},inner xsep=0mm,line width=.5pt,node distance=-.5pt]
-		\node[text width=22.5mm] (task) {#1};
-		\node (d) [above=of task] {#3};
-		\node (es) [left=of d] {\forwardpass{#2}};
-		\node (ef) [right=of d] {\forwardpass{#4}};
-		\node (b) [below=of task] {\buffer{#6}};
-		\node (ls) [left=of b] {\backwardpass{#5}};
-		\node (lf) [right=of b] {\backwardpass{#7}};
-	\end{tikzpicture}
-}
-
 \subsection{Network Diagram}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter, \sommerville}}
 	\begin{fancycolumns}
@@ -137,34 +122,6 @@
 
 \subsection{Gantt Charts vs Network Diagrams}
 \begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}} % TODO check source
-	\begin{fancycolumns}
-		\begin{note}{Gantt Chart}
-			\begin{itemize}
-				\item very common technique
-				\item many tools available
-				\item great visualization of timing and progress
-			\end{itemize}
-		\end{note}
-		\begin{exampletight}{}
-			\centering\picDark[width=.85\linewidth]{management/gantt-chart}
-		\end{exampletight}
-		\nextcolumn
-		\begin{note}{Network Diagram \deutsch{Netzplan}}
-			\begin{itemize}
-				\item clear visualization of dependencies
-				\item explicitly includes buffer times\\(cf.\ metra potential method)
-			\end{itemize}
-		\end{note}
-		\begin{exampletight}{}
-			\centering
-			\begin{tikzpicture}[xscale=3,yscale=-2.1,inner sep=0,edge/.style={->,>={Stealth[round]},semithick}]
-				\node[fill=red!30!background,font=\tiny] (legend) at (1,0) {\networknode{\normalsize Task}{earliest start}{duration}{earliest finish}{latest start}{buffer}{latest finish}};
-				\node (intro) at (1,1) {\networknode{Introduction}{0}{1}{1}{10}{10}{11}};
-				\node (background) at (0,0) {\networknode{Background}{0}{3}{3}{0}{0}{3}};
-				\node (concept) at (0,1) {\networknode{Concept}{3}{4}{7}{3}{0}{7}};
-				\draw[edge] (background) to (concept);
-			\end{tikzpicture}
-		\end{exampletight}
-	\end{fancycolumns}
+	\slideGanttAndNetwork
 \end{frame}
 
