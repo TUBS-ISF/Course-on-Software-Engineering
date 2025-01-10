@@ -7,7 +7,7 @@
 # and <nr> is the number of the lecture you want to compile.
 # The output will be written to the value stored in "slide_path" below.
 # Example, to compile the lecture 3 and also prepare the overview slides (i.e., a big pdf containing lectures 1-3), you can run
-#   ./compile_paderborn.sh -lo 3
+#   ./compile_braunschweig.sh -lo 3
 # Important: Run this script from the directory the script is in. Otherwise paths for output pdfs might be wrong.
 
 ## Colors for pretty printing in console output
@@ -15,11 +15,11 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NOCOLOR='\033[0m'
 
-university=braunschweig
+university=tubs
 semester=2024w
 lecture_short_name=se1
 
-archive_path="./"
+archive_path="../../SE1-Slide-Archive/"
 
 build_tex () {
     if latexmk -pdf -pdflatex='pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error "\def\ismake{}$2\def\university{$(university)}\input{%S}"' "$1.tex" > /dev/null 2>&1 ; then
