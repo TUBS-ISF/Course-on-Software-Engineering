@@ -22,7 +22,12 @@ lecture_short_name=se1
 archive_path="../../SE1-Slide-Archive/"
 
 build_tex () {
-    if latexmk -pdf -pdflatex='pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error "\def\ismake{}$2\def\university{$(university)}\input{%S}"' "$1.tex" > /dev/null 2>&1 ; then
+    parameters='pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error "\def\ismake{}\def\university{'
+    parameters+="${university}"
+    parameters+='}'
+    parameters+="$2"
+    parameters+='\input{%S}"'
+    if latexmk -pdf -pdflatex="${parameters}" "$1.tex" > /dev/null 2>&1 ; then
         echo -e "${GREEN}OK${NOCOLOR}"
     else
         echo -e "${RED}fail${NOCOLOR}" >&2
