@@ -1,0 +1,154 @@
+\subsection{Development of Similar Products: Elevators}
+\begin{frame}{\insertsubsection}
+	\uncover<5->{\begin{note}{}
+		\centering All these elevators are different but also share similarities.
+	\end{note}}
+
+	~
+
+	\begin{fancycolumns}[columns=4,T]
+		\centering\pic[width=\linewidth]{elevators/elevator1-out}
+		
+		two buttons
+	\nextcolumn
+		\centering\pic[width=\linewidth]{elevators/elevator2-out2}
+		
+		one button
+	\nextcolumn
+		\centering\pic[width=\linewidth]{elevators/elevator3-out}
+		
+		keyhole
+	\nextcolumn
+		\centering\pic[width=\linewidth]{elevators/elevator2-out1}
+		
+		floor display
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\uncover<5->{\begin{note}{}
+			\centering Shall we implement each product from scratch or can we reuse parts thereof?
+	\end{note}}
+
+	~
+
+	\begin{fancycolumns}[columns=4,widths={28,21,28,21},T]
+		\centering\pic[width=\linewidth]{elevators/elevator1-in2}
+		
+		no button to close door
+	\nextcolumn
+		\centering\pic[width=\linewidth]{elevators/elevator3-in1}
+		
+		two keyholes
+	\nextcolumn
+		\centering\pic[width=\linewidth]{elevators/elevator4-in}
+		
+		keycard
+	\nextcolumn
+		\centering\pic[width=\linewidth]{elevators/elevator2-in2}
+		
+		double tap for~undo
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Reuse with Components}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\pic[page=25,width=\linewidth,trim={.5\width} {.1\height} {.05\width} {.2\height},clip]{printedslides/2021wt/architecture}
+	\nextcolumn
+		\begin{definition}{Reuse with Client-Server Architectures}
+			Different client components can communicate with the same server component
+		\end{definition}
+		\uncover<2->{\begin{note}{Discussion}
+			\begin{itemize}
+				\item Reuse of server component for multiple clients
+				\item Lower effort than developing multiple servers
+				\item Unit testing: only one server needs to be tested
+				\item Integration testing: any change to the server may break an existing client
+				\item Changing a client may require changes to the server or its interface (API); changing the server may require changes to all clients
+				\item Challenge: how to design stable APIs?
+			\end{itemize}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\pic[page=24,width=\linewidth,trim={.5\width} {.1\height} {.05\width} {.2\height},clip]{printedslides/2021wt/architecture}
+		\nextcolumn
+		\begin{definition}{Reuse with Layered Architectures}
+			Layer can be replaced by compatible one with same interface (e.g., IP v4 by IP v6)
+		\end{definition}
+		\uncover<2->{\begin{note}{Discussion}
+			\begin{itemize}
+				\item Replacing some layers and reusing others
+				\item Ideally only new layers need to be implemented
+				\item In practice: adaptations to existing layers may be necessary
+				\item Again: interplay needs to be checked with integration testing
+				\item Challenge: how to design interoperable layers?
+			\end{itemize}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO add log4j exploit here illustrating how often it was reused and how often it was vulnerable
+
+\subsection{Reuse with Runtime Parameters}
+\begin{frame}{\insertsubsection}
+	\uncover<3->{\begin{definition}{}
+		\centering All functionality implemented in one product. Parameters used to activate varying behavior.
+	\end{definition}}
+	\begin{fancycolumns}
+		\pic[width=\linewidth]{reuse/runtime-parameters-win10-cmd-dir2}
+	\nextcolumn
+		\pic[width=\linewidth]{reuse/runtime-parameters-win10-cmd-dir}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\picDark[width=\linewidth,trim={.35\width} {.12\height} {.1\width} {.45\height},clip]{reuse/runtime-parameters} % \mysource{\featureide}
+	\nextcolumn
+		\begin{definition}{Reuse with Runtime Parameters}
+			Complete product is reused and extended with new behavior (e.g., features on demand in cars)
+		\end{definition}
+		\uncover<2->{\begin{note}{Discussion}
+				\begin{itemize}
+					\item Configuration: reuse with new combination of existing parameters
+					\item Extension: implementation of new parameters and parameter values
+					\item Challenges:
+						\begin{itemize}
+							\item larger binaries compared to excluded components
+							\item safety and security risks by unused functionality
+							\item side effects: any change to a parameter may break other parameters
+						\end{itemize}
+				\end{itemize}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Ad-Hoc Reuse with Clone-and-Own}
+\begin{frame}{\insertsubsection}
+	\centering\trunkbranch{}{}
+	\begin{fancycolumns}[T,widths={30}]
+		\begin{definition}{Clone-and-Own}
+			Complete product is copied (cloned) and modified as needed (owned)
+			
+			aka. cloning in the large
+		\end{definition}
+	\nextcolumn
+		\begin{note}{Discussion}
+				\begin{itemize}
+					\item Copying often done by branching or forking in version control
+					\item Fast and flexible implementation strategy for adaptation
+					\item Challenges:
+					\begin{itemize}
+						\item features and adaptations lost in the implementation
+						\item consistent changes of clones hardly possible in practice
+						\item clones are an obstacle during evolution and maintenance
+						\item no actual reuse, often considered an anti pattern
+					\end{itemize}
+				\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
