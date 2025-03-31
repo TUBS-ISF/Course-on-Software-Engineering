@@ -19,6 +19,7 @@ university=tubs
 semester=2025w
 lecture_short_name=se1
 
+template_path="../se1/template/"
 archive_path="../../SE1-Slide-Archive/"
 
 build_tex () {
@@ -65,7 +66,7 @@ make_overview () {
     rm ${lecture_short_name}.tex
 
     # Generate new tex file for the overview
-    content="\input{template/lecture_header.tex}\includeonlylecture{$cur_lectures}\input{template/lecture_body.tex}"
+    content="\input{${template_path}lecture_header.tex}\includeonlylecture{$cur_lectures}\input{${template_path}lecture_body.tex}"
     echo "${content}" > ${lecture_short_name}.tex
 
     echo -e -n "${GREEN}Building overview...${NOCOLOR}"

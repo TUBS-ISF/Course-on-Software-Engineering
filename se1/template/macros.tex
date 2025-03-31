@@ -79,42 +79,6 @@
 % REFERENCES TO OTHER LECTURES
 
 \newcommand{\emphifequal}[3]{\ifthenelse{\equal{#1}{#2}}{\bfseries}{}\hyperlink{lecture#2}{#3}}
-\newcommand{\lectureseriesoverview}[1][]{ % shown at the start and end of each lecture
-	\setlength{\leftmargini}{3.5ex}
-	\begin{fancycolumns}[t,columns=3,animation=none]
-		\mydefinition{\emphifequal{#1}{I}{Part A: Development of \mbox{\emph{Correct} Software}}}{
-			\begin{enumerate}
-				\item {\emphifequal{#1}{1}{Introduction}}
-				\item {\emphifequal{#1}{2}{Implementation}}
-				\item {\emphifequal{#1}{3}{Testing}}
-				\item {\emphifequal{#1}{4}{Software Changes}}
-				\item {\emphifequal{#1}{5}{Version Control}}
-			\end{enumerate}
-		}
-	\nextcolumn
-		\mydefinition{\emphifequal{#1}{II}{Part B: Development in \emph{Schedule} \& \emph{Budget}}}{
-			\begin{enumerate}
-				\setcounter{enumi}{5}
-				\item {\emphifequal{#1}{6}{Project Management}}
-				\item {\emphifequal{#1}{7}{Development Process}}
-			\end{enumerate}
-		}
-	\nextcolumn
-		\mydefinition{\emphifequal{#1}{III}{Part C: Development of \mbox{\emph{Needed} Software}}}{
-			\begin{enumerate}
-				\setcounter{enumi}{7}
-				\item {\emphifequal{#1}{8}{Requirements}}
-				\item {\emphifequal{#1}{9}{System Modeling}}
-				\item {\emphifequal{#1}{10}{Software Architecture}}
-				\item {\emphifequal{#1}{11}{Software Design}}
-				\item {\emphifequal{#1}{12}{Software Reuse}}
-				%\item {\emphifequal{#1}{13}{Summary}}
-			\end{enumerate}
-		}
-	\end{fancycolumns}
-}
-\newcommand{\skipPartA}{\addtocounter{lecture}{5}}
-\newcommand{\skipPartB}{\addtocounter{lecture}{2}}
 
 \newcommand{\reflecture}[1]{\hyperlink{lecture#1}{Lecture~#1}}
 \newcommand{\parta}{a}
