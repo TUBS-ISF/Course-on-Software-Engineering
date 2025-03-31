@@ -16,7 +16,7 @@ GREEN='\033[0;32m'
 NOCOLOR='\033[0m'
 
 university=tubs
-semester=2024w
+semester=2025w
 lecture_short_name=se1
 
 archive_path="../../SE1-Slide-Archive/"
@@ -65,7 +65,7 @@ make_overview () {
     rm ${lecture_short_name}.tex
 
     # Generate new tex file for the overview
-    content="\input{lecture_header.tex}\includeonlylecture{$cur_lectures}\input{lecture_body.tex}"
+    content="\input{template/lecture_header.tex}\includeonlylecture{$cur_lectures}\input{template/lecture_body.tex}"
     echo "${content}" > ${lecture_short_name}.tex
 
     echo -e -n "${GREEN}Building overview...${NOCOLOR}"

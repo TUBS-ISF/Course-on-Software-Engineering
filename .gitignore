@@ -14,7 +14,8 @@
 *.vrb
 *.synctex*
 *.listing
-/slides/*.pdf
+/se1/*.pdf
+/se2/*.pdf
 build
 
 # emacs auctex
