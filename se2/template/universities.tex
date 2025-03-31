@@ -1,0 +1,131 @@
+% UNIVERSITY-SPECIFIC ADJUSTMENTS
+% usage: \def\university{ulm}
+
+\ifdefined\university
+\else
+\def\university{}
+\fi
+
+\newcommand{\ifuniversity}[3][]{\ifthenelse{\equal{\university}{#2}}{#3}{#1}}
+\newcommand{\unlessuniversity}[3][]{\ifuniversity[#3]{#2}{#1}}
+\newcommand{\inputuniversity}[1]{\IfFileExists{#1-\university}{\input{#1-\university}}{}}
+
+% TITLE
+\title{Advanced Software Engineering} % default title for the course
+\ifuniversity{tubs}{\title[SE1]{Software Engineering 2}}
+
+% LECTURERS AND TUTORS
+\makeatletter
+\let\author@old\author
+\renewcommand{\author}[1]{
+	\ifuniversity{tubs}{\author@old{Thomas Thüm, Chico Sundermann, Raphael Dunkel}}
+	\ifuniversity{recording}{\author@old{#1}}
+	\ifuniversity{anonymous}{\author@old{Anonymous Authors}}
+	\ifuniversity{}{\author@old{#1}}
+}
+\makeatother
+
+% CONTENT OVERVIEW
+\newcommand{\lectureseriesoverview}[1][]{ % shown at the start and end of each lecture
+	\setlength{\leftmargini}{3.5ex}
+	\begin{fancycolumns}[t,columns=3,animation=none]
+		\mydefinition{\emphifequal{#1}{I}{Part A: Development of \mbox{\emph{Correct} Software}?}}{
+			\begin{enumerate}
+				\item {\emphifequal{#1}{1}{Introduction}}
+				\item {\emphifequal{#1}{2}{Implementation}}
+				\item {\emphifequal{#1}{3}{Testing}}
+				\item {\emphifequal{#1}{4}{Software Changes}}
+				\item {\emphifequal{#1}{5}{Version Control}}
+			\end{enumerate}
+		}
+		\nextcolumn
+		\mydefinition{\emphifequal{#1}{II}{Part B: Development in \emph{Schedule} \& \emph{Budget}?}}{
+			\begin{enumerate}
+				\setcounter{enumi}{5}
+				\item {\emphifequal{#1}{6}{Project Management}}
+				\item {\emphifequal{#1}{7}{Development Process}}
+			\end{enumerate}
+		}
+		\nextcolumn
+		\mydefinition{\emphifequal{#1}{III}{Part C: Development of \mbox{\emph{Needed} Software}?}}{
+			\begin{enumerate}
+				\setcounter{enumi}{7}
+				\item {\emphifequal{#1}{8}{Requirements}}
+				\item {\emphifequal{#1}{9}{System Modeling}}
+				\item {\emphifequal{#1}{10}{Software Architecture}}
+				\item {\emphifequal{#1}{11}{Software Design}}
+				\item {\emphifequal{#1}{12}{Software Reuse}}
+			\end{enumerate}
+		}
+	\end{fancycolumns}
+}
+\newcommand{\skipPartA}{\addtocounter{lecture}{5}}
+\newcommand{\skipPartB}{\addtocounter{lecture}{2}}
+
+% COLOR SCHEME, LOGOS, PICTURES
+\newcommand*{\lectureqr}[2][]{} % as default there is no qr code
+
+\ifuniversity{recording}{
+	\renewcommand{\deutsch}[1]{} % no German in English recordings
+	\mode<beamer>{\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}} % avoid annoying tool tips during the recording
+%	\setpicture[550]{jun22-clouds3} % default picture
+}{
+	\hypersetup{linkcolor=foreground, citecolor=red, filecolor=red, runcolor=red, urlcolor=red, colorlinks=true} % emphasizing links, but not when recording
+}
+
+\ifuniversity{tubs}{
+	\setpaths{
+		{../pics/tubs/}
+		{../pics/tubs/2024wt/}
+	}
+	
+	\renewcommand*{\lectureqr}[2][width=.33\linewidth]{
+		\begin{flushright}
+			\picDark[#1]{qr#2}
+		\end{flushright}
+	}
+	
+	\usepackage{tubscolors}
+	% redefine colors used in fancybeamer
+	% Orange, OrangeLight (Yellow), OrangeDark (tubsRed)
+	% Green, GreenLight, GreenDark
+	% Blue, BlueLight, BlueDark
+	% Violet, VioletLight, VioletDark
+	% tubsGray (tubsGray60), tubsLightGray (tubsGray20)
+	% tubsSecondaryLight, tubsSecondaryMedium, tubsSecondary, tubsSecondaryDark
+	% x20, x40, x60, x80, x100
+
+	\AtEndPreamble{
+		\colorlet{red}{tubsRed}
+		\colorlet{accent}{background}
+		\colorlet{accenttwo}{red}
+		\setbeamercolor{logobox}{bg=background}
+		\setbeamercolor{myfooter}{fg=foreground,bg=accent}
+		\setbeamercolor{subtitlebox}{fg=foreground,bg=accent}
+		\fancylogos{tubs,isf}
+		\ifdarkmode
+			\colorlet{red}{red!90!white}
+			\colorlet{green}{green!90!white}
+			\colorlet{blue}{blue!90!white}
+			\colorlet{orange}{orange!90!white}
+			\colorlet{accenttwo}{accenttwo!25!darkgray}
+			\setbeamercolor{mypagenumber}{fg=foreground,bg=accenttwo}
+			\setbeamercolor{titlebox}{fg=foreground,bg=accenttwo}
+			\fancylogos{tubs-black,isf}
+		\fi
+
+		% hack to force use of changed colors
+		\UpdateBoxColor{definition}{orange}
+		\UpdateBoxColor{example}{blue}
+		\UpdateBoxColor{note}{red}
+	}
+
+	\setpicture[75]{iz} % default picture
+}
+
+\ifuniversity{anonymous}{
+	\fancylogos{}
+	\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}
+	\renewcommand{\deutsch}[1]{}
+	\renewcommand{\deutschertitel}[1]{}
+}
