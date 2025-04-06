@@ -12,7 +12,7 @@
 
 % TITLE
 \title{Advanced Software Engineering} % default title for the course
-\ifuniversity{tubs}{\title[SE1]{Software Engineering 2}}
+\ifuniversity{tubs}{\title[SE2]{Software Engineering 2}}
 
 % LECTURERS AND TUTORS
 \makeatletter
@@ -80,6 +80,10 @@
 		{../pics/tubs/2024wt/}
 	}
 	
+	% TODO replace links each year
+	\newcommand{\StudIPLink}{https://studip.tu-braunschweig.de/dispatch.php/course/details?sem_id=635f5186b364a369979d0f45ab2ace1d}
+	\newcommand{\StudIP}{\href{\StudIPLink}{Stud.IP}}
+
 	\renewcommand*{\lectureqr}[2][width=.33\linewidth]{
 		\begin{flushright}
 			\picDark[#1]{qr#2}
