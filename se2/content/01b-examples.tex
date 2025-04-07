@@ -41,15 +41,60 @@
 
 % https://maestro.acm.org/trk/click?ref=z16l2snue3_2-31717_0x342b62x0101340
 
+% 2021 Facebook outage https://en.wikipedia.org/wiki/2021_Facebook_outage
+
+\subsection{Switzerland Goes Open Source}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{EMBAG\mysource{\href{https://www.zdnet.com/article/switzerland-now-requires-all-government-software-to-be-open-source/}{zdnet.com}, \href{https://datenrecht.ch/en/bundesgesetz-ueber-den-einsatz-elektronischer-mittel-zur-erfuellung-von-behoerdenaufgaben-embag-in-schlussabstimmung-angenommen/}{datenrecht.ch}}}
+			\begin{itemize}
+				\item Federal Law on the Use of Electronic Means for the Fulfillment of Government Tasks \deutsch{Einsatz elektronischer Mittel zur Erfüllung von Behördenaufgaben}
+				\item official since March 13, 2023
+				\item goal: enable collaboration within Switzerland and to other countries
+				\item vision: public money, public code
+				\item means: source code and data is published
+				\item envisioned: transparency, security, efficiency
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{EMBAG\hfill\tikz[overlay] \node[anchor=-10,xshift=2mm] {\pic[width=.2\linewidth]{misc/switzerland}};}
+			\begin{itemize}
+				\item \mycite{the use of Open Source Software - to the extent possible, the federal government should \emph{disclose the source code} of software that it develops or has developed \emph{for free reuse}}
+				\item \mycite{the gradual public \emph{provision of data} obtained or generated for the fulfillment of statutory tasks (Open Government Data)}
+				\item \mycite{the provision or purchase of \emph{Shared Services} by the federal authorities}
+				\item \mycite{the implementation of \emph{Pilot testing}} \mysource{\href{https://datenrecht.ch/en/bundesgesetz-ueber-den-einsatz-elektronischer-mittel-zur-erfuellung-von-behoerdenaufgaben-embag-in-schlussabstimmung-angenommen/}{datenrecht.ch}} 
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Saxony Election Glitch}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{\insertsubsection\mysource{\href{https://www.sueddeutsche.de/politik/landtagswahl-softwarepanne-bei-wahl-in-sachsen-ergebnis-korrigiert-dpa.urn-newsml-dpa-com-20090101-240902-930-220429}{sueddeutsche.de}, \href{https://www.heise.de/news/Nach-Landtagswahl-Panne-CCC-will-an-Quellcode-der-saechsischen-Wahlsoftware-9861099.html}{heise.de}}}
+			\begin{itemize}
+				\item Saxony state parliament election in September 2024
+				\item software glitch resulted in wrong seat distribution
+				\item software replaced by manual computation
+				\item after correction: one seat more for SPD and Grüne, one seat less for CDU and AfD
+				\item without correction: AfD would have had blocking minority \deutsch{Sperrminorität}
+				\item CCC criticizes that name and version of election software is kept confidential, asking for source code and documentation
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\centering\pic[width=.9\linewidth]{misc/saxony}
+	\end{fancycolumns}
+\end{frame}
+
 \xkcdframe{2961}
 
-\subsection{CrowdStrike}
+\subsection{CrowdStrike Outage}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}[b]
 		\begin{definition}{\insertsubsection\mysource{\href{https://en.wikipedia.org/wiki/CrowdStrike}{wikipedia.org}, \href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
 			\begin{itemize}
 				\item CrowdStrike: American cybersecurity company
-				\item Falcon: Windows kernel extension to prevent against new threat
+				\item Falcon: Windows kernel extension to prevent against threats
 				\item about 10 patches released each days
 				\item update on July 19, 2024 affected 8.5 million devices running Windows 10 or 11
 				\item blue screen of death
@@ -70,31 +115,6 @@
 		\end{note}
 		\begin{note}{Apology in US Congress\mysource{\href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
 			\mycite{On behalf of everyone at CrowdStrike, I want to apologize. We are \emph{deeply sorry} and we are determined to prevent this from ever happening again. [\ldots] I want to underscore that this was \emph{not a cyberatack}.}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{Switzerland Goes Open Source}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{EMBAG\mysource{\href{https://www.zdnet.com/article/switzerland-now-requires-all-government-software-to-be-open-source/}{zdnet.com}, \href{https://datenrecht.ch/en/bundesgesetz-ueber-den-einsatz-elektronischer-mittel-zur-erfuellung-von-behoerdenaufgaben-embag-in-schlussabstimmung-angenommen/}{datenrecht.ch}}}
-			\begin{itemize}
-				\item Federal Law on the Use of Electronic Means for the Fulfillment of Government Tasks \deutsch{Einsatz elektronischer Mittel zur Erfüllung von Behördenaufgaben}
-				\item official since March 13, 2023
-				\item goal: enable collaboration within Switzerland and to other countries
-				\item vision: public money, public code
-				\item means: source code and data is published
-				\item envisioned: transparency, security, efficiency
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\begin{note}{EMBAG\hfill\tikz[overlay] \node[anchor=-10,xshift=2mm] {\pic[width=.13\linewidth]{opensource/copyleft}};}
-			\begin{itemize}
-				\item \mycite{the use of Open Source Software - to the extent possible, the federal government should \emph{disclose the source code} of software that it develops or has developed \emph{for free reuse}}
-				\item \mycite{the gradual public \emph{provision of data} obtained or generated for the fulfillment of statutory tasks (Open Government Data)}
-				\item \mycite{the provision or purchase of \emph{Shared Services} by the federal authorities}
-				\item \mycite{the implementation of \emph{Pilot testing}} \mysource{\href{https://datenrecht.ch/en/bundesgesetz-ueber-den-einsatz-elektronischer-mittel-zur-erfuellung-von-behoerdenaufgaben-embag-in-schlussabstimmung-angenommen/}{datenrecht.ch}} 
-			\end{itemize}
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
