@@ -1,0 +1,170 @@
+\subsection{Writing Requires Reading}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=800 800 800 600,clip]{people/robert-martin}
+		\vspace{-7mm}
+		
+		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
+			\mycite{So if you want to go fast, if you want to get done quickly, if you want your code to be easy to write, make it easy to read.} \mysource{\href{https://learning.oreilly.com/library/view/clean-code-a/9780136083238/}{oreilly.com}}
+		\end{note}
+		% agile manifesto, book author
+		\nextcolumn
+		\pic[width=\linewidth,trim=100 0 250 0,clip]{architecture/source-code2}
+		\vspace{-7mm}
+		
+		\begin{note}{Eagleson's Law \mysource{\href{https://www.comp.nus.edu.sg/~damithch/pages/SE-quotes.htm?type=maintenanceQuotes}{nus.edu.sg}}}
+			\mycite{Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.}
+		\end{note}
+		% TODO find complete author name, picture, source
+	\end{fancycolumns}
+\end{frame}
+
+% TODO software aging (see Parnas-SoftwareAging, GodfreyGerman-LehmansLaws)
+
+% TODO software erosion/rot/decay/entropy:  https://en.wikipedia.org/wiki/Software_rot
+% examples: y2k/2038 problem, 1989 zip code union, 1999/2002 euro, 
+% What happens on January 19, 2038? On this date the Unix Time Stamp will cease to work due to a 32-bit overflow. https://www.unixtimestamp.com/
+
+\widexkcdframe{2038} % y2k bug vs 2038 bug
+
+% TODO add technical debt: https://en.wikipedia.org/wiki/Technical_debt
+% related to John Carmack's quote in lecture on product lines
+
+% "Shipping first time code is like going into debt. A little debt speeds development so long as it is paid back promptly with a rewrite... The danger occurs when the debt is not repaid. Every minute spent on not-quite-right code counts as interest on that debt. Entire engineering organizations can be brought to a stand-still under the debt load of an unconsolidated implementation, object-oriented or otherwise." Ward Cunningham, 1992
+
+% Fowler's quadrant: https://martinfowler.com/bliki/TechnicalDebtQuadrant.html
+
+% technical depth in numbers, see TornhillBorg-CodeRed, Krasner-CostPoorSoftware
+
+% causes, consequences, limitations of the metapher
+
+% giving devs more time?
+% Adding manpower to a late software project makes it later. https://en.wikipedia.org/wiki/Brooks%27s_law
+% "work expands so as to fill the time available for its completion" https://en.wikipedia.org/wiki/Parkinson%27s_law
+
+% code smells: https://en.wikipedia.org/wiki/Code_smell
+% Fowler, Martin (1999). Refactoring. Improving the Design of Existing Code. Addison-Wesley. ISBN 978-0-201-48567-7.
+% Martin, Robert C. (2009). "17: Smells and Heuristics". Clean Code: A Handbook of Agile Software Craftsmanship. Prentice Hall. ISBN 978-0-13-235088-4.
+
+
+% TODO add cyclomatic complexity https://en.wikipedia.org/wiki/Cyclomatic_complexity
+
+
+
+
+% anti-patterns: https://en.wikipedia.org/wiki/Anti-pattern
+% spaghetti code: https://en.wikipedia.org/wiki/Spaghetti_code
+
+\widexkcdframe{292} % goto
+
+\subsection{Spaghetti or Lasagne?}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 500 0 150,clip]{people/edsger-dijkstra}
+		\vspace{-7mm}
+		
+		\begin{note}{Edsger W. Dijkstra (1968) \mysource{\href{https://dl.acm.org/doi/pdf/10.1145/362929.362947}{acm.org}}}
+			\mycite{Go-To Statement Considered Harmful}\\(today known as spaghetti code)
+		\end{note}
+		% 1930-2002, ACM Turing Award winner
+		\nextcolumn
+		\pic[width=\linewidth,trim=0 240 0 310,clip]{emotions/lasagne}
+		\vspace{-7mm}
+		
+		\begin{note}{Roberto Waltman \mysource{\href{https://twitter.com/codewisdom/status/1105462704947580928}{twitter.com}}}
+			\mycite{In the one and only true way. The object-oriented version of 'Spaghetti code' is, of course, 'Lasagna code'. (Too many layers).} % TODO check citation within https://www.google.de/books/edition/Introduction_to_Programming_Using_Proces/el2jBgAAQBAJ?hl=en&gbpv=0
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+
+
+
+
+
+
+
+\subsection{Simple and Clean}
+\begin{frame}{\insertsubsection} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 35 0 40,clip]{people/grady-booch}
+		\vspace{-7mm}
+		
+		\begin{note}{Grady Booch (born 1955) \mysource{\href{https://twitter.com/Grady_Booch/status/1035409406068813824}{twitter.com}}}
+			\mycite{The function of good software is to make the complex appear to be simple.}
+		\end{note}
+		% known for UML
+		\nextcolumn
+		\pic[width=\linewidth,trim=800 700 800 600,clip]{people/robert-martin}
+		\vspace{-7mm}
+		
+		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
+			Boy Scouts Rule: \mycite{Leave the campground cleaner than the way you found it.} \mysource{\href{https://learning.oreilly.com/library/view/97-things-every/9780596809515/ch08.html}{oreilly.com}}
+		\end{note}
+		% agile manifesto, book author
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Code Refactoring}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item anticipating changes is typically infeasible
+				\item anticipated changes may not materialize and unanticipated changes are required
+				\item make changes easier by constantly refactoring the code
+			\end{itemize}
+		\end{note}
+		\begin{definition}{Refactoring}
+			\mycite{Refactoring means that the programming team looks for possible improvements to the software and implements them immediately. When team members see code that can be improved, they make these improvements even in situations where there is no immediate need for them.}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Structure of the Software}
+			\mycite{A fundamental problem of incremental development is that local changes tend to \textbf{degrade the software structure}. Consequently, further changes to the software become harder and harder to implement. Essentially, the development proceeds by finding workarounds to problems, with the result that code is often duplicated, parts of the software are reused in inappropriate ways, and the overall structure degrades as code is added to the system. \textbf{Refactoring improves the software structure and readability and so avoids the structural deterioration that naturally occurs when software is changed.}}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Refactoring in Practice}
+\begin{frame}{\insertsubsection} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\begin{example}{Theory vs Practice \mysource{\sommerville}}
+			\mycite{In principle, when refactoring is part of the development process, the software should always be easy to understand and change as new requirements are proposed. In practice, this is not always the case. Sometimes \textbf{development pressure means that refactoring is delayed} because the time is devoted to the implementation of new functionality. Some new features and changes cannot readily be accommodated by code-level refactoring and \textbf{require that the architecture of the system be modified}.}
+		\end{example}
+		\nextcolumn
+		\begin{note}{{Grandma Beck's Child-Rearing Philosophy}}
+			\mycite{If it stinks, change it.} \mysource{\href{https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/ch03.xhtml}{oreilly.com}}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Smells and Refactorings} % TODO add examples for refactorings and smells
+\begin{frame}{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Mysterious Name}
+			\mycite{Puzzling over some text to understand what’s going on is a great thing if you’re reading a detective novel, but not when you’re reading code. [...] One of the most important parts of clear code is good names, so we put a lot of thought into naming functions, modules, variables, classes, so they clearly communicate what they do and how to use them.}\\--- Rename Method/Field/Variable Refactoring
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Duplicated Code (aka.\ Code Clones)}
+			\mycite{If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them. Duplication means that every time you read these copies, you need to read them carefully to see if there’s any difference. If you need to change the duplicated code, you have to find and catch each duplication.}\\--- Extract/Pull-Up Method Refactoring
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Long Method}
+			\mycite{Since the early days of programming, people have realized that the longer a function is, the more difficult it is to understand. Older languages carried an overhead in subroutine calls, which deterred people from small functions. [...] [T]he real key to making it easy to understand small functions is good naming. If you have a good name for a function, you mostly don’t need to look at its body. [...] A heuristic we follow is that whenever we feel the need to comment something, we write a function instead.}\\--- Extract Method Refactoring
+		\end{definition}
+		\nextcolumn
+		%\mydefinition{}{\mycite{}\\---  Refactoring}
+		\pic[width=\linewidth,trim=800 800 800 600,clip]{people/robert-martin}
+		\vspace{-7mm}
+		
+		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
+			\mycite{Functions should do one thing. They should do it well. They should do it only.} \mysource{\href{https://learning.oreilly.com/library/view/clean-code-a/9780136083238/}{oreilly.com}}
+		\end{note}
+		% agile manifesto, book author
+	\end{fancycolumns}
+\end{frame}
+

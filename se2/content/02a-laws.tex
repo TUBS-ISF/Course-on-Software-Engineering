@@ -1,0 +1,146 @@
+\subsection{Change is Inevitable}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{\sommerville:}
+			\mycite{Change is inevitable in all large software projects. The \textbf{system requirements change} as businesses respond to external pressures, competition, and changed management priorities. As \textbf{new technologies become available}, new approaches to design and implementation become possible. Therefore whatever software process model is used, it is essential that it can \textbf{accommodate changes} to the software being developed. [...] It may then be necessary to \textbf{redesign} the system to deliver the new requirements, \textbf{change any programs} that have been developed, and \textbf{retest} the system.}
+		\end{definition}
+		\nextcolumn
+		\pic[width=\linewidth]{failures/swu-evolution}
+	\end{fancycolumns}
+\end{frame}
+
+\pictureframe{
+	\pic[width=\paperwidth]{emotions/walking-on-water}
+}{
+	\vspace{65mm}
+	\begin{note}{Edward V. Berard (1993) \mysource{\href{https://en.wikiquote.org/wiki/Edward_V._Berard}{wikiquote.org}}}
+		Recap: \mycite{Walking on water and developing software from a specification are easy if both are frozen.}
+	\end{note}
+}
+
+\subsection{Changes to Requirements}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Motivation \mysource{\sommerville}}
+			\begin{itemize}
+				\item changed problem understanding for all stakeholders
+				\item new or updated hardware
+				\item interfacing to other systems
+				\item new legislation and regulations
+				\item new compromise on conflicting requirements of different stakeholders
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap: Process Models}
+\begin{frame}<8>{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{exampletight}{Waterfall Model}
+			\centering
+			\diagramWaterfallModel
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Scrum}
+			\diagramScrum
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap: Project Management}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\nextcolumn
+		\begin{exampletight}{Gantt Charts}
+			\centering\picDark[width=\linewidth]{management/gantt-chart}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+
+
+
+% TODO \widexkcdframe{1667} % complexity comes with changes over time, copied from se1-04b
+
+\subsection{Increasing Complexity}
+\begin{frame}{\insertsubsection} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 200 0 600,clip]{people/tony-hoare}
+		\vspace{-7mm}
+		
+		\begin{note}{Tony Hoare (born 1934) \mysource{\href{https://twitter.com/CodeWisdom/status/893532377586302977}{twitter.com}}}
+			\mycite{Inside every large program, there is a small program trying to get out.}
+		\end{note}
+		% quicksort, hoare logic
+		\nextcolumn
+		\pic[width=\linewidth,trim=50 85 200 120,clip]{people/manny-lehman}
+		\vspace{-7mm}
+		
+		\begin{note}{{Meir \mycite{Manny} Lehman (1925--2010) \mysource{\href{https://twitter.com/CodeWisdom/status/921139649661284352}{twitter.com}}}}
+			\mycite{An evolving system increases its complexity unless work is done to reduce it.}
+		\end{note}
+		% known for laws on software evolution
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Lehman's Laws of Software Evolution}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://ieeexplore.ieee.org/iel3/5031/13795/00637156.pdf}{Lehman et al.\ 1997}}} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Lehman's Laws (excerpt)}
+			\begin{itemize}
+				\item Continuing Change: systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
+				\item Increasing Complexity: complexity increases during evolution unless work is done to maintain or reduce it % As an E-type system evolves its complexity increases unless work is done to maintain or reduce it.
+				%\item Self Regulation: %E-type system evolution process is self regulating with distribution of product and process measures close to normal.
+				%\item Conservation of Organizational Stability (invariant work rate): %The average effective global activity rate in an evolving E-type system is invariant over product lifetime.
+				\item Conservation of Familiarity: satisfactory evolution excludes excessive growth %As an E-type system evolves all associated with it, developers, sales personnel, users, for example, must maintain mastery of its content and behaviour to achieve satisfactory evolution. Excessive growth diminishes that mastery. Hence the average incremental growth remains invariant as the system evolves.
+				\item Continuing Growth: functionality must be continually increased to maintain user satisfaction %The functional content of E-type systems must be continually increased to maintain user satisfaction over their lifetime.
+				\item Declining Quality: quality will decline unless rigorously maintained and adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
+				%\item Feedback System: %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Essence of the Laws}
+			\begin{itemize}
+				\item software that is used will be modified
+				\item when modified, its complexity will increase (unless one does actively work against it)
+			\end{itemize}
+		\end{note}
+		\begin{example}{Consequences}
+			\begin{itemize}
+				\item functional changes are inevitable
+				\item changes are not necessarily a consequence of errors (e.g., in requirements engineering or programming)
+				\item there are limits to what a development team can achieve (cf.\ Continuing Growth)
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+% TODO read paper again? separate slide on each law? see Lehman-LawsSoftwareEvolution, Herraiza-EvolutionLawsSoftwareEvolution
+
+% TODO add Elias' graphs on Linux increase
+
+% TODO counter example: massive removal of functionality: see Rust-DefeatingFeatureFatigue
+% Antoine de Saint-Exupéry's "It seems that perfection is reached not when there is nothing left to add, but when there is nothing left to take away";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% TODO alpha, beta, ... versions
+
+% TODO stages: software maturity, phase-out, close-down (see Vaclav and Keith)
+
+% TODO read \ludewiglichter, 23.1 Software-Evolution
+
+% TODO read Harry M. Sneed, Richard Seidl: Softwareevolution. 1. Auflage. dpunkt.verlag, Heidelberg 2013, ISBN 978-3-86490-041-9, S. 284.
+
+% TODO read Tom Mens, Serge Demeyer: Software Evolution. 1. Auflage. Springer-Verlag, Berlin / Heidelberg 2008, ISBN 978-3-540-76439-7, S. 347 (englisch).
