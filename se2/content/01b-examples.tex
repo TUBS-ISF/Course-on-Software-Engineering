@@ -6,8 +6,6 @@
 
 % 4096 more votes
 
-% longer in space
-
 % Why the Vasa sank: 10 problems and some antidotes for software projects
 % https://ieeexplore.ieee.org/document/1184161
 
@@ -43,6 +41,24 @@
 
 % 2021 Facebook outage https://en.wikipedia.org/wiki/2021_Facebook_outage
 
+\subsection{Saxony Election Glitch}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{\insertsubsection\mysource{\href{https://www.sueddeutsche.de/politik/landtagswahl-softwarepanne-bei-wahl-in-sachsen-ergebnis-korrigiert-dpa.urn-newsml-dpa-com-20090101-240902-930-220429}{sueddeutsche.de}, \href{https://www.heise.de/news/Nach-Landtagswahl-Panne-CCC-will-an-Quellcode-der-saechsischen-Wahlsoftware-9861099.html}{heise.de}}}
+			\begin{itemize}
+				\item Saxony state parliament election in September 2024
+				\item software glitch resulted in wrong seat distribution
+				\item software replaced by manual computation
+				\item after correction: one seat more for SPD and Grüne, one seat less for CDU and AfD
+				\item without correction: AfD would have had blocking minority \deutsch{Sperrminorität}
+				\item CCC criticizes that name and version of election software is kept confidential, asking for source code and documentation
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\centering\pic[width=.9\linewidth]{misc/saxony}
+	\end{fancycolumns}
+\end{frame}
+
 \subsection{Switzerland Goes Open Source}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
@@ -65,24 +81,6 @@
 				\item \mycite{the implementation of \emph{Pilot testing}} \mysource{\href{https://datenrecht.ch/en/bundesgesetz-ueber-den-einsatz-elektronischer-mittel-zur-erfuellung-von-behoerdenaufgaben-embag-in-schlussabstimmung-angenommen/}{datenrecht.ch}} 
 			\end{itemize}
 		\end{note}
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{Saxony Election Glitch}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{\insertsubsection\mysource{\href{https://www.sueddeutsche.de/politik/landtagswahl-softwarepanne-bei-wahl-in-sachsen-ergebnis-korrigiert-dpa.urn-newsml-dpa-com-20090101-240902-930-220429}{sueddeutsche.de}, \href{https://www.heise.de/news/Nach-Landtagswahl-Panne-CCC-will-an-Quellcode-der-saechsischen-Wahlsoftware-9861099.html}{heise.de}}}
-			\begin{itemize}
-				\item Saxony state parliament election in September 2024
-				\item software glitch resulted in wrong seat distribution
-				\item software replaced by manual computation
-				\item after correction: one seat more for SPD and Grüne, one seat less for CDU and AfD
-				\item without correction: AfD would have had blocking minority \deutsch{Sperrminorität}
-				\item CCC criticizes that name and version of election software is kept confidential, asking for source code and documentation
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\centering\pic[width=.9\linewidth]{misc/saxony}
 	\end{fancycolumns}
 \end{frame}
 
@@ -119,16 +117,23 @@
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Example}
+\subsection{Ariane 5 Software Failure}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{\insertsubsection}
+	\begin{fancycolumns}[widths={35}]
+		\pic[width=\linewidth]{failures/ariane5}
+	\nextcolumn
+		\centering\pic[width=.5\linewidth]{failures/ariane5-explosion} {\tiny\copyright{} ESA} % TODO how to add copyright? ESA
+		\begin{definition}{\insertsubsection\mysource{\href{https://doi.ieeecomputersociety.org/10.1109/2.562936}{J{\'e}z{\'e}quel and Meyer, 1997}}}
 			\begin{itemize}
-				\item 
+				\item Ariane 5 is a European space launch vehicle
+				\item 117 launches between 1996 and 2023
+				\item maiden flight in June 1996
+				\item explosion about 40 seconds after takeoff, no personal injury
+				\item software component of Ariane 4 was reused
+				\item value exceeding 16-bit signed integer due to Ariane 5 trajectory
+				\item damage of 500 million dollar + one year postponed research
 			\end{itemize}
 		\end{definition}
-		\nextcolumn
-		% TODO add picture
 	\end{fancycolumns}
 \end{frame}
 
