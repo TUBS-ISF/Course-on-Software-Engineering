@@ -75,3 +75,16 @@
 }
 
 \usepackage{tabularx}
+
+
+
+% QR Code handling
+\usepackage{fancyqr}
+\makeatletter
+\let\oldfancyqr\fancyqr
+\renewcommand{\fancyqr}[2]{\renewcommand{\@minipagerestore}{\setlength{\parskip}{0pt}}\oldfancyqr[#1]{#2}} % TODO: enable []
+\makeatother
+
+\newcommand{\studipqr}{
+	\fancyqr{color=black,height=3.5cm}{\StudIPLink}
+}
