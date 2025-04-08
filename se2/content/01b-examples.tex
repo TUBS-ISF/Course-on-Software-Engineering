@@ -1,41 +1,3 @@
-% Heartbleed
-
-% too high x-ray
-
-% 4096 more votes
-
-% Why the Vasa sank: 10 problems and some antidotes for software projects
-% https://ieeexplore.ieee.org/document/1184161
-
-% obama care website: motivation for agil, operations 
-% https://www.nuna.com/wp-content/uploads/2022/08/TimeMagazine-Code-Red.pdf
-% https://content.time.com/time/covers/0,16641,20140310,00.html
-
-% Software update mission critical https://www.space.com/spacex-crew-6-dragon-docking-space-station\
-
-% Cyber Resilience Act (CRA)  
-
-% Log4J
-
-% CVE-2021-44228
-
-% https://www.heise.de/news/Sicherheitsbehoerden-draengen-Softwarehersteller-zu-sicheren-Programmiersprachen-9573379.html
-
-% crash of assisted driving killing three people
-% https://www.nytimes.com/2025/04/01/business/xiaomi-driverless-electric-car-china.html
-
-% Microsoft Calculator showing wrong formulas for years
-% https://github.com/Microsoft/calculator
-
-% TVs watch what you watch
-% https://maestro.acm.org/trk/click?ref=z16l2snue3_2-3170a_0x342a63x0103451
-
-% https://apnews.com/article/v2x-infrastructure-cars-streets-utah-michigan-texas-4609b3f43768f6726bbb4e5442f40f21
-
-% https://maestro.acm.org/trk/click?ref=z16l2snue3_2-31717_0x342b62x0101340
-
-% 2021 Facebook outage https://en.wikipedia.org/wiki/2021_Facebook_outage
-
 \subsection{Saxony Election Glitch} % motivation for 10-opensource
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
@@ -132,17 +94,91 @@
 	\end{fancycolumns}
 \end{frame}
 
-% motivation for 04-designpatterns, 05-compilation, 06-staticanalysis, 11-productlines, 12-automotive
-\subsection{Example}
+\subsection{Xiaomi SU7 Crash} % motivation for 12-automotive
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{\insertsubsection}
+	\begin{fancycolumns}[widths={45},animation=none]
+		\begin{definition}{\insertsubsection\mysource{\href{https://www.nytimes.com/2025/04/01/business/xiaomi-driverless-electric-car-china.html}{nytimes.com}}}
 			\begin{itemize}
-				\item 
+				\item 200,000+ sold cars in first year
+				\item promoted with assisted-driving: \mycite{car can automatically accelerate or decelerate, change lanes, enter and exit a highway, and avoid construction}
+				\item accident on March 29, 2025 (Saturday)
+				\item car was driving at 116 km/h
+				\item advanced driver assistance was turned on
+				\item road closed due to reconstruction and traffic rerouted to reverse lane
+				\item electric car crashed into highway guardrail with 97 km/h and caught fire
+				\item three female students killed
+				\item Xiaomi's stock reduced by 9\%
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
-		% TODO add picture
+		\vspace{-10mm}
+		
+		\small\centering\pic[width=.7\linewidth]{automotive/xiaomi-su7}
+		\begin{note}{Log of the Car\mysource{\href{https://weibo.com/5136788508/5150602603790529}{weibo.com}}}
+			22:27:17 NOA activation, speed 116km/h
+			
+			22:28:17 Mild distraction alarm
+			
+			22:36:48 NOA issued a warning prompt "please hold the steering wheel"
+			
+			22:44:24 NOA issues a risk alert "Please note that there are obstacles ahead", make a deceleration request, and start to slow down.
+			
+			22:44:25 NOA was taken over and entered the human-driven state, the steering wheel turned to the left 22.0625 degrees, the brake pedal was turned on 31\%.
+			
+			22:44:26 Turn right steering wheel 1.0625 degrees, brake pedal open 38\%
+			
+			22:44:26-28 Collision between vehicle and cement guardrail
+
+			22:44:28 Ecall trigger
+		\end{note}
 	\end{fancycolumns}
 \end{frame}
 
+% motivation for 04-designpatterns, 05-compilation, 06-staticanalysis, 11-productlines
+%\subsection{Example}
+%\begin{frame}{\insertsubsection}
+%	\begin{fancycolumns}
+%		\begin{definition}{\insertsubsection}
+%			\begin{itemize}
+%				\item 
+%			\end{itemize}
+%		\end{definition}
+%		\nextcolumn
+%		% TODO add picture
+%	\end{fancycolumns}
+%\end{frame}
+
+% Heartbleed
+
+% too high x-ray
+
+% 4096 more votes
+
+% Why the Vasa sank: 10 problems and some antidotes for software projects
+% https://ieeexplore.ieee.org/document/1184161
+
+% obama care website: motivation for agil, operations 
+% https://www.nuna.com/wp-content/uploads/2022/08/TimeMagazine-Code-Red.pdf
+% https://content.time.com/time/covers/0,16641,20140310,00.html
+
+% Software update mission critical https://www.space.com/spacex-crew-6-dragon-docking-space-station\
+
+% Cyber Resilience Act (CRA)  
+
+% Log4J
+
+% CVE-2021-44228
+
+% https://www.heise.de/news/Sicherheitsbehoerden-draengen-Softwarehersteller-zu-sicheren-Programmiersprachen-9573379.html
+
+% Microsoft Calculator showing wrong formulas for years
+% https://github.com/Microsoft/calculator
+
+% TVs watch what you watch
+% https://maestro.acm.org/trk/click?ref=z16l2snue3_2-3170a_0x342a63x0103451
+
+% https://apnews.com/article/v2x-infrastructure-cars-streets-utah-michigan-texas-4609b3f43768f6726bbb4e5442f40f21
+
+% https://maestro.acm.org/trk/click?ref=z16l2snue3_2-31717_0x342b62x0101340
+
+% 2021 Facebook outage https://en.wikipedia.org/wiki/2021_Facebook_outage
