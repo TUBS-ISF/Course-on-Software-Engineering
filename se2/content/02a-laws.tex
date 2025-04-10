@@ -13,11 +13,11 @@
 	\begin{fancycolumns}
 		\begin{definition}{Reasons for Changes \mysource{\sommerville}}
 			\begin{itemize}
-				\item costly implementation, longer usage that costs pay off, make better use of it by small improvements
 				\item changes to the environment (e.g., other systems) require changes to the software
 				\item new laws may require adaptations
 				\item corrections of errors
 				\item iterative development (e.g., with Scrum)
+				\item costly implementation, longer usage that costs pay off, make better use of it by small improvements
 				\item \ldots
 			\end{itemize}
 		\end{definition}
@@ -25,7 +25,7 @@
 			\begin{itemize}
 				\item stick to old version (e.g., feature freeze)
 				\item replace system by new implementation
-				\item abandom the system without replacement
+				\item abandom the system without replacement (e.g., end of service)
 			\end{itemize}
 		\end{note}
 	\nextcolumn
@@ -119,9 +119,9 @@
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
 		\begin{definition}{Law of Continuing Change\mysource{\lehmanslaws}}
+			\deutsch{Gesetz der kontinuierlichen Veränderung}
 			\begin{itemize}
-				\item \deutsch{Kontinuierliche Veränderung}
-				\item systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
+				\item software systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
 				\item explanation: an unchanged system will loose its benefits when the real environment changes
 			\end{itemize}
 		\end{definition}
@@ -138,10 +138,35 @@
 			\end{fancycolumns}
 		\end{example}
 		\nextcolumn
-		\begin{definition}{Law of \mysource{\lehmanslaws}}
+		\begin{definition}{Law of Increasing Complexity\mysource{\lehmanslaws}}
+			 \deutsch{Gesetz der zunehmenden Komplexität}
 			\begin{itemize}
-				\item \deutsch{}
-				\item 
+				\item complexity increases during evolution unless work is done to maintain or reduce it % As an E-type system evolves its complexity increases unless work is done to maintain or reduce it.
+				\item explanation: changes tend to make structures more complex and it takes extra efforts to improve structures to enable future changes
+			\end{itemize}
+		\end{definition}
+		\begin{example}{}
+			feature model class in FeatureIDE
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Law of Conservation of Familiarity\mysource{\lehmanslaws}}
+			 \deutsch{Gesetz der Bewahrung der Vertrautheit}
+			\begin{itemize}
+				\item satisfactory evolution excludes excessive growth %As an E-type system evolves all associated with it, developers, sales personnel, users, for example, must maintain mastery of its content and behaviour to achieve satisfactory evolution. Excessive growth diminishes that mastery. Hence the average incremental growth remains invariant as the system evolves.
+				\item explanation: 
+			\end{itemize}
+		\end{definition}
+		\begin{example}{}
+		\end{example}
+		\nextcolumn
+		\begin{definition}{Law of Continuing Growth\mysource{\lehmanslaws}}
+			 \deutsch{Gesetz des kontinuierlichem Wachstums}
+			\begin{itemize}
+				\item functionality must be continually increased to maintain user satisfaction %The functional content of E-type systems must be continually increased to maintain user satisfaction over their lifetime.
 				\item explanation: 
 			\end{itemize}
 		\end{definition}
@@ -152,20 +177,20 @@
 
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
-		\begin{definition}{Law of \mysource{\lehmanslaws}}
+		\begin{definition}{Law of Declining Quality\mysource{\lehmanslaws}}
+			\deutsch{Gesetz der abnehmenden Qualität}
 			\begin{itemize}
-				\item \deutsch{}
-				\item 
+				\item quality will decline unless rigorously maintained and adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
 				\item explanation: 
 			\end{itemize}
 		\end{definition}
 		\begin{example}{}
 		\end{example}
 		\nextcolumn
-		\begin{definition}{Law of \mysource{\lehmanslaws}}
+		\begin{definition}{Law of Feedback System\mysource{\lehmanslaws}}
+			\deutsch{Gesetz über den Umgang mit Rückmeldungen}
 			\begin{itemize}
-				\item \deutsch{}
-				\item 
+				\item %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
 				\item explanation: 
 			\end{itemize}
 		\end{definition}
@@ -174,42 +199,21 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{Law of \mysource{\lehmanslaws}}
-			\begin{itemize}
-				\item \deutsch{}
-				\item 
-				\item explanation: 
-			\end{itemize}
-		\end{definition}
-		\begin{example}{}
-		\end{example}
-		\nextcolumn
-		\begin{definition}{Law of \mysource{\lehmanslaws}}
-			\begin{itemize}
-				\item \deutsch{}
-				\item 
-				\item explanation: 
-			\end{itemize}
-		\end{definition}
-		\begin{example}{}
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
+% Further Laws
+%\item Self Regulation: %E-type system evolution process is self regulating with distribution of product and process measures close to normal.
+%\item Conservation of Organizational Stability (invariant work rate): %The average effective global activity rate in an evolving E-type system is invariant over product lifetime.
 
-\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://ieeexplore.ieee.org/iel3/5031/13795/00637156.pdf}{Lehman et al.\ 1997}}} % slided copied from se1-04b. reuse?
+\begin{frame}{\insertsubsection{} \mytitlesource{\lehmanslaws, \sommerville}}
 	\begin{fancycolumns}
-		\begin{definition}{Lehman's Laws (excerpt)}
+		\begin{definition}{\insertsubsection}
 			\begin{itemize}
-				\item Continuing Change: systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
-				\item Increasing Complexity: complexity increases during evolution unless work is done to maintain or reduce it % As an E-type system evolves its complexity increases unless work is done to maintain or reduce it.
-				%\item Self Regulation: %E-type system evolution process is self regulating with distribution of product and process measures close to normal.
-				%\item Conservation of Organizational Stability (invariant work rate): %The average effective global activity rate in an evolving E-type system is invariant over product lifetime.
-				\item Conservation of Familiarity: satisfactory evolution excludes excessive growth %As an E-type system evolves all associated with it, developers, sales personnel, users, for example, must maintain mastery of its content and behaviour to achieve satisfactory evolution. Excessive growth diminishes that mastery. Hence the average incremental growth remains invariant as the system evolves.
-				\item Continuing Growth: functionality must be continually increased to maintain user satisfaction %The functional content of E-type systems must be continually increased to maintain user satisfaction over their lifetime.
-				\item Declining Quality: quality will decline unless rigorously maintained and adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
-				%\item Feedback System: %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
+				\item Continuing Change
+				\item Increasing Complexity
+				\item Conservation of Familiarity
+				\item Continuing Growth
+				\item Declining Quality
+				\item Feedback System
+				\item laws not discussed in this course: Self Regulation, Conservation of Organizational Stability, \ldots
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
@@ -228,7 +232,7 @@
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
-% TODO read paper again? separate slide on each law? see Lehman-LawsSoftwareEvolution, Herraiza-EvolutionLawsSoftwareEvolution
+% TODO read paper again? see Lehman-LawsSoftwareEvolution, Herraiza-EvolutionLawsSoftwareEvolution
 
 % TODO add Elias' graphs on Linux increase
 
