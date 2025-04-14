@@ -1,116 +1,3 @@
-\subsection{Evolution and Maintenance}
-\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-	\slideEvolutionAndMaintenance
-\end{frame}
-
-\subsection{Software Maintenance in Practice}
-
-\subsubsection{New Year's Eve for Maintainers}
-\begin{frame}{New Year's Eve: Party Time?!?} % slided copied from se1-04a. reuse?
-	\begin{fancycolumns}
-		\pic[width=\linewidth,trim=0 230 0 140,clip]{changes/london-fireworks}
-		\vspace{-7mm}
-		
-		\begin{example}{}
-			London Eye on January 1st, \sout{2008} 2017
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
-
-\begin{frame}{\insertsubsubsection} % slided copied from se1-04a. reuse?
-	\begin{fancycolumns}
-		\begin{exampletight}{Meanwhile in the Internet}
-			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-offline}
-		\end{exampletight}
-		\nextcolumn
-		\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-dns-control-panel}
-		\vspace{-7mm}
-		
-		\begin{example}{Meanwhile in San Francisco \mysource{\href{https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/}{cloudflare.com}}}
-			\mycite{\emph{At midnight UTC} on New Year’s Day, deep inside Cloudflare’s custom RRDNS software, a number went negative when it should always have been, at worst, zero. [\ldots] %A little later this negative value caused RRDNS to panic. This panic was caught using the recover feature of the Go language. The net effect was that some DNS resolutions to some Cloudflare managed web properties failed.
-				%The problem only affected customers who use CNAME DNS records with Cloudflare, and only affected a small number of machines across Cloudflare's 102 data centers.
-				At peak approximately \emph{0.2\% of DNS queries} to Cloudflare were affected and less than \emph{1\% of all HTTP requests to Cloudflare encountered an error}.}
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
-
-\subsubsection{Maintenance at Work}
-\begin{frame}{\insertsubsubsection\ \mytitlesource{\href{https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/}{cloudflare.com}}} % slided copied from se1-04a. reuse?
-	\begin{fancycolumns}
-		\begin{example}{Meanwhile in San Francisco}
-			\mycite{This problem was quickly identified. The most affected machines were \emph{patched in 90 minutes} and the fix was \emph{rolled out worldwide by 06:45 UTC}. We are sorry that our customers were affected, but we thought it was worth writing up the root cause for others to understand.}
-		\end{example}
-		
-		\begin{exampletight}{The Timeline}
-			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-timeline}
-		\end{exampletight}
-		\nextcolumn
-		\begin{exampletight}{Monitoring}
-			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-timeline-diagram}
-		\end{exampletight}
-		
-		\begin{note}{Fun Fact}
-			San Francisco's standard time zone is UTC-8
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{Wisdom on Debugging}
-\begin{frame}{\insertsubsection} % slided copied from se1-04a. reuse? (only comment)
-	\begin{fancycolumns}
-			\pic[width=\linewidth,trim=35 0 0 0,clip]{people/gordon-glegg}
-			\vspace{-7mm}
-			
-			\begin{note}{Gordon Glegg \mysource{\href{https://twitter.com/CodeWisdom/status/1140295217947512833}{twitter.com}}}
-					\mycite{Sometimes the problem is to discover what the problem is.}
-				\end{note}
-			\nextcolumn
-			\pic[width=\linewidth,trim=0 80 0 25,clip]{people/jessica-joy-kerr}
-			\vspace{-7mm}
-			
-			\begin{note}{Jessica Joy Kerr (2020) \mysource{\href{https://jessitron.com/2020/02/07/smaller-pieces-lower-pain/}{jessitron.com}}}
-					\mycite{In programming, it’s dangerous to work near your working memory threshold. You get more mistakes and more complicated code.}
-				\end{note}
-		\end{fancycolumns}
-\end{frame}
-
-\subsubsection{The One-Character-Fix}
-\begin{frame}{\insertsubsubsection\ \mytitlesource{\href{https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/}{cloudflare.com}}} % slided copied from se1-04a. reuse?
-	\begin{fancycolumns}
-		\begin{exampletight}{The Patch}
-			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-fix}
-		\end{exampletight}
-		\nextcolumn
-		\begin{example}{A Falsehood Programmers Believe About Time}
-			\mycite{The root cause of the bug that affected our DNS service was the belief that \emph{time cannot go backwards}. In our case, some code assumed that the difference between two times would always be, at worst, zero.
-				
-				~
-				
-				RRDNS is written in Go and uses Go’s time.Now() function to get the time. Unfortunately, this function does not guarantee monotonicity.}
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
-
-\subsubsection{Leap Seconds}
-\begin{frame}{\insertsubsubsection\ \deutsch{Schaltsekunden}} % slided copied from se1-04a. reuse?
-	\begin{fancycolumns}
-		\centering\pic[width=.7\linewidth,trim=0 0 0 0,clip]{changes/leap-second}
-		
-		\begin{exampletight}{Leap Second 37 \mysource{\href{https://www.spinellis.gr/blog/20170101/}{spinellis.gr}}}
-			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/leap-second-37}
-		\end{exampletight}
-		\nextcolumn
-		\begin{exampletight}{27 Leap Seconds since 1972 \mysource{\href{https://en.wikipedia.org/wiki/Leap_second}{wikipedia.org}}}
-			\hfill\picDark[width=.25\linewidth,trim=0 0 0 0,clip]{changes/leap-seconds1}
-			\hfill\picDark[width=.25\linewidth,trim=0 0 0 0,clip]{changes/leap-seconds2}
-			\hfill\picDark[width=.25\linewidth,trim=0 0 0 0,clip]{changes/leap-seconds3}
-			\hfill{}
-		\end{exampletight} % 190% screenshots with 20 lines
-	\end{fancycolumns}
-\end{frame}
-
-\xkcdframe{2266} % leap second/day smearing
-
 \subsection{Wisdom on Maintenance}
 \begin{frame}{\insertsubsection} % slided copied from se1-04a. reuse?
 	\begin{fancycolumns}
@@ -129,8 +16,6 @@
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
-
-% Old Part 2
 
 \subsection{Software Maintenance}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}} % slided copied from se1-04a. reuse?
@@ -152,6 +37,14 @@
 	\end{fancycolumns}
 \end{frame}
 % TODO Operations
+
+\subsection{Adaptive Maintenance}
+
+\subsection{Corrective Maintenance}
+
+\subsection{Perfective Maintenance}
+
+\subsection{Preventive Maintenance}
 
 \subsection{Kinds of Maintenance}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}} % slided copied from se1-04a. reuse?
@@ -184,7 +77,6 @@
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
-% TODO add links to original literature, separate slide each?
 
 \xkcdframe{1172} % No more CPU heating as breaking change
 
@@ -198,135 +90,131 @@
 
 % TODO 22.4.2 Die Behandlung von Problemmeldungen \ludewiglichter
 
-\subsection{Reengineering Tasks}
-\begin{frame}[b]{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-	\vspace{-10mm}
-	\begin{fancycolumns}[b]
-		\begin{definition}{Reverse Engineering \mysource{Chikofsky und Cross}}
-			\mycite{Reverse engineering is the process of analyzing a system to identify the system’s components and their interrelationships and create representations of the system in another form or at a higher level of abstraction.}
-		\end{definition}
-		\begin{example}{}
-			%			updating UML diagrams from source code
-			exploring what are the classes of a calculator and what is their purpose
-		\end{example}
-		\begin{definition}{Forward Engineering \mysource{Chikofsky und Cross}}
-			\mycite{Forward engineering is the traditional process of moving from high-level abstractions and logical, implementation-independent designs to the physical implementation of a system.}
-		\end{definition}
-		\begin{example}{}
-			%			see Software Engineering I
-			implement a new feature in a calculator
-		\end{example}
-		\nextcolumn
-		\begin{definition}{Restructuring \mysource{Chikofsky und Cross}}
-			\mycite{Restructuring is a transformation from one form of representation to another at the same relative level of abstraction. The new representation is meant to preserve the semantics and external behavior of the original.}
-		\end{definition}
-		\begin{example}{}
-			refactorings as introduced in lecture on evolution
-		\end{example}
-		\begin{definition}{Reengineering \mysource{Chikofsky und Cross}}
-			\mycite{Reengineering is the examination and alteration of a subject system to reconstitute it in a new form and the subsequent implementation of the new form.}
-		\end{definition}
-		\begin{example}{}
-			combination of reverse engineering, refactoring, and forward engineering
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
-% TODO add links to original literature
-% TODO Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure. It is a disciplined way to clean up code that minimizes the chances of introducing bugs. In essence when you refactor you are improving the design of the code after it has been written. Martin Fowler
 
-\subsection{Wisdom on Reengineering}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\pic[width=\linewidth,trim=50 0 0 0,clip]{people/kyle-simpson}
-		\vspace{-7mm}
-		
-		\begin{note}{Kyle Simpson \mysource{\href{https://twitter.com/codewisdom/status/857988273674883072}{twitter.com}}}
-			\mycite{There's nothing more permanent than a temporary hack.} \deutsch{Sprichwort: Nichts ist so beständig wie das Provisorium.} % TODO Quelle für deutsches Sprichwort suchen
-		\end{note}
-		\nextcolumn
-		\vspace{11mm}
-		\centering\pic[width=.5\linewidth,trim=0 0 0 0,clip]{people/jeff-sickel}
-		\vspace{-3mm}
-		
-		\begin{note}{Jeff Sickel \mysource{\href{https://twitter.com/codewisdom/status/710046205317873664}{twitter.com}}}
-			\mycite{Deleted code is debugged code.}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
 
-% Old Part 3
 
-\subsection{Legacy Software}
-\begin{frame}{\insertsubsection\ \deutsch{Altsysteme}}
-	\begin{fancycolumns}
-		\begin{definition}{Legacy Software \mysource{\ludewiglichter}}
-			\mycite{A large software system that we don’t know how to cope with but that is vital to our organization.}
-		\end{definition}
-		\begin{exampletight}{Winamp 5.623 on 4k Display in Windows 10}
-			\pic[width=\linewidth,trim=0 0 0 0,clip]{changes/winamp}
-		\end{exampletight}
-		\nextcolumn
-		\begin{note}{Typical Properties \mysource{\ludewiglichter}}
-			\begin{itemize}
-				\item larger than 100k LOC
-				\item older than 10 years
-				\item original developers and architects not available anymore
-				\item outdated programming languages and development concepts
-				\item business-critical
-				\item outdated or missing documentation
-				\item based on outdated hardware and system software
-				\item subject to numerous iterations of corrective and adaptive maintenance
-				\item high costs for maintenance
-			\end{itemize}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
 
-\xkcdframe{2221} % emulated software, long-living
 
-\subsection{Flash Player}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{exampletight}{{End of Life: December 31, 2020}}
-			\centering\pic[width=.85\linewidth,trim=0 0 0 0,clip]{changes/flash-eol}
-		\end{exampletight}
-		\nextcolumn
-		\begin{exampletight}{Online Game Fuchstreff Discontinued}
-			\pic[width=\linewidth,trim=0 0 0 0,clip]{changes/fuchstreff}
-		\end{exampletight}
-	\end{fancycolumns}
-\end{frame}
 
-% TODO 32bit architectures discontinued in many Linux distributions
-% https://www.debugpoint.com/32-bit-linux-distributions/
 
-\subsection{Migration}
-\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-	\begin{fancycolumns}
-		\begin{definition}{Software Migration}
-			\begin{itemize}
-				\item opposed to data and hardware migration
-				\item renewing or replacing legacy software
-				\item new software needs to be downward compatible
-				\item new software meets current functional and non-functional requirements
-				\item data often needs to be migrated
-				\item outage as short as possible
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\begin{note}{Migration Strategies}
-			\begin{itemize}
-				\item wrapping: building a new software around a stable version of the legacy software
-				\item redevelopment: functionality implemented again and replaces legacy software
-				\item incremental migration: stepwise renewal and replacement
-				\item big bang migration: whole legacy software is migrated in a single step
-				\item combinations feasible (except for incremental and big bang)
-			\end{itemize}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
+%\subsection{Software Maintenance in Practice}
+%
+%\subsubsection{New Year's Eve for Maintainers}
+%\begin{frame}{New Year's Eve: Party Time?!?} % slided copied from se1-04a. reuse?
+%	\begin{fancycolumns}
+%		\pic[width=\linewidth,trim=0 230 0 140,clip]{changes/london-fireworks}
+%		\vspace{-7mm}
+%		
+%		\begin{example}{}
+%			London Eye on January 1st, \sout{2008} 2017
+%		\end{example}
+%	\end{fancycolumns}
+%\end{frame}
+%
+%\begin{frame}{\insertsubsubsection} % slided copied from se1-04a. reuse?
+%	\begin{fancycolumns}
+%		\begin{exampletight}{Meanwhile in the Internet}
+%			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-offline}
+%		\end{exampletight}
+%		\nextcolumn
+%		\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-dns-control-panel}
+%		\vspace{-7mm}
+%		
+%		\begin{example}{Meanwhile in San Francisco \mysource{\href{https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/}{cloudflare.com}}}
+%			\mycite{\emph{At midnight UTC} on New Year’s Day, deep inside Cloudflare’s custom RRDNS software, a number went negative when it should always have been, at worst, zero. [\ldots] %A little later this negative value caused RRDNS to panic. This panic was caught using the recover feature of the Go language. The net effect was that some DNS resolutions to some Cloudflare managed web properties failed.
+%				%The problem only affected customers who use CNAME DNS records with Cloudflare, and only affected a small number of machines across Cloudflare's 102 data centers.
+%				At peak approximately \emph{0.2\% of DNS queries} to Cloudflare were affected and less than \emph{1\% of all HTTP requests to Cloudflare encountered an error}.}
+%		\end{example}
+%	\end{fancycolumns}
+%\end{frame}
+%
+%\subsubsection{Maintenance at Work}
+%\begin{frame}{\insertsubsubsection\ \mytitlesource{\href{https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/}{cloudflare.com}}} % slided copied from se1-04a. reuse?
+%	\begin{fancycolumns}
+%		\begin{example}{Meanwhile in San Francisco}
+%			\mycite{This problem was quickly identified. The most affected machines were \emph{patched in 90 minutes} and the fix was \emph{rolled out worldwide by 06:45 UTC}. We are sorry that our customers were affected, but we thought it was worth writing up the root cause for others to understand.}
+%		\end{example}
+%		
+%		\begin{exampletight}{The Timeline}
+%			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-timeline}
+%		\end{exampletight}
+%		\nextcolumn
+%		\begin{exampletight}{Monitoring}
+%			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-timeline-diagram}
+%		\end{exampletight}
+%		
+%		\begin{note}{Fun Fact}
+%			San Francisco's standard time zone is UTC-8
+%		\end{note}
+%	\end{fancycolumns}
+%\end{frame}
+%
+%\subsection{Wisdom on Debugging}
+%\begin{frame}{\insertsubsection} % slided copied from se1-04a. reuse? (only comment)
+%	\begin{fancycolumns}
+%			\pic[width=\linewidth,trim=35 0 0 0,clip]{people/gordon-glegg}
+%			\vspace{-7mm}
+%			
+%			\begin{note}{Gordon Glegg \mysource{\href{https://twitter.com/CodeWisdom/status/1140295217947512833}{twitter.com}}}
+%					\mycite{Sometimes the problem is to discover what the problem is.}
+%				\end{note}
+%			\nextcolumn
+%			\pic[width=\linewidth,trim=0 80 0 25,clip]{people/jessica-joy-kerr}
+%			\vspace{-7mm}
+%			
+%			\begin{note}{Jessica Joy Kerr (2020) \mysource{\href{https://jessitron.com/2020/02/07/smaller-pieces-lower-pain/}{jessitron.com}}}
+%					\mycite{In programming, it’s dangerous to work near your working memory threshold. You get more mistakes and more complicated code.}
+%				\end{note}
+%		\end{fancycolumns}
+%\end{frame}
+%
+%\subsubsection{The One-Character-Fix}
+%\begin{frame}{\insertsubsubsection\ \mytitlesource{\href{https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/}{cloudflare.com}}} % slided copied from se1-04a. reuse?
+%	\begin{fancycolumns}
+%		\begin{exampletight}{The Patch}
+%			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/cloudflare-fix}
+%		\end{exampletight}
+%		\nextcolumn
+%		\begin{example}{A Falsehood Programmers Believe About Time}
+%			\mycite{The root cause of the bug that affected our DNS service was the belief that \emph{time cannot go backwards}. In our case, some code assumed that the difference between two times would always be, at worst, zero.
+%				
+%				~
+%				
+%				RRDNS is written in Go and uses Go’s time.Now() function to get the time. Unfortunately, this function does not guarantee monotonicity.}
+%		\end{example}
+%	\end{fancycolumns}
+%\end{frame}
+%
+%\subsubsection{Leap Seconds}
+%\begin{frame}{\insertsubsubsection\ \deutsch{Schaltsekunden}} % slided copied from se1-04a. reuse?
+%	\begin{fancycolumns}
+%		\centering\pic[width=.7\linewidth,trim=0 0 0 0,clip]{changes/leap-second}
+%		
+%		\begin{exampletight}{Leap Second 37 \mysource{\href{https://www.spinellis.gr/blog/20170101/}{spinellis.gr}}}
+%			\picDark[width=\linewidth,trim=0 0 0 0,clip]{changes/leap-second-37}
+%		\end{exampletight}
+%		\nextcolumn
+%		\begin{exampletight}{27 Leap Seconds since 1972 \mysource{\href{https://en.wikipedia.org/wiki/Leap_second}{wikipedia.org}}}
+%			\hfill\picDark[width=.25\linewidth,trim=0 0 0 0,clip]{changes/leap-seconds1}
+%			\hfill\picDark[width=.25\linewidth,trim=0 0 0 0,clip]{changes/leap-seconds2}
+%			\hfill\picDark[width=.25\linewidth,trim=0 0 0 0,clip]{changes/leap-seconds3}
+%			\hfill{}
+%		\end{exampletight} % 190% screenshots with 20 lines
+%	\end{fancycolumns}
+%\end{frame}
+%
+%\xkcdframe{2266} % leap second/day smearing
 
-% TODO reasons/requirements/process for migration
+
+
+
+
+
+
+
+
+
+
 
 % TODO software estimation (bewertung)
 % 	motivation, metrics for OOP
@@ -336,11 +224,5 @@
 
 % TODO APIs: every observable behavior will eventually be used by users
 
-% TODO release, maintenance, end of life / alternatives to maintenance https://en.wikipedia.org/wiki/Software_maintenance
-
-% TODO end of life: "the perfect race car crosses the finish line in first place and immediately falls into pieces" Ferdinand Porsche, https://www.fahrtraum.at/en/the-best-quotes-and-sayings-from-ferdinand-porsche/
-
 % TODO new example of Tesla: https://www.heise.de/news/Tesla-Autos-duerfen-nicht-mehr-furzen-Rueckruf-in-den-USA-6441936.html
-
-% TODO new quote? 'No matter how slow you are writing clean code, you will always be slower if you make a mess.' - @UncleBobMartin https://twitter.com/compscifact/status/1565365181529694208?s=11&t=PswBWUZCpLycqL2eSDFo6w
 

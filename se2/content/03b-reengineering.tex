@@ -1,0 +1,64 @@
+\subsection{Forward Engineering}
+
+\subsection{Reverse Engineering}
+
+\subsection{Refactoring}
+
+\subsection{Reengineering}
+
+\subsection{Reengineering Tasks}
+\begin{frame}[b]{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\vspace{-10mm}
+	\begin{fancycolumns}[b]
+		\begin{definition}{Reverse Engineering \mysource{Chikofsky und Cross}}
+			\mycite{Reverse engineering is the process of analyzing a system to identify the system’s components and their interrelationships and create representations of the system in another form or at a higher level of abstraction.}
+		\end{definition}
+		\begin{example}{}
+			%			updating UML diagrams from source code
+			exploring what are the classes of a calculator and what is their purpose
+		\end{example}
+		\begin{definition}{Forward Engineering \mysource{Chikofsky und Cross}}
+			\mycite{Forward engineering is the traditional process of moving from high-level abstractions and logical, implementation-independent designs to the physical implementation of a system.}
+		\end{definition}
+		\begin{example}{}
+			%			see Software Engineering I
+			implement a new feature in a calculator
+		\end{example}
+		\nextcolumn
+		\begin{definition}{Restructuring \mysource{Chikofsky und Cross}}
+			\mycite{Restructuring is a transformation from one form of representation to another at the same relative level of abstraction. The new representation is meant to preserve the semantics and external behavior of the original.}
+		\end{definition}
+		\begin{example}{}
+			refactorings as introduced in lecture on evolution
+		\end{example}
+		\begin{definition}{Reengineering \mysource{Chikofsky und Cross}}
+			\mycite{Reengineering is the examination and alteration of a subject system to reconstitute it in a new form and the subsequent implementation of the new form.}
+		\end{definition}
+		\begin{example}{}
+			combination of reverse engineering, refactoring, and forward engineering
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+% TODO add links to original literature
+% TODO Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure. It is a disciplined way to clean up code that minimizes the chances of introducing bugs. In essence when you refactor you are improving the design of the code after it has been written. Martin Fowler
+
+\subsection{Wisdom on Reengineering}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=50 0 0 0,clip]{people/kyle-simpson}
+		\vspace{-7mm}
+		
+		\begin{note}{Kyle Simpson \mysource{\href{https://twitter.com/codewisdom/status/857988273674883072}{twitter.com}}}
+			\mycite{There's nothing more permanent than a temporary hack.} \deutsch{Sprichwort: Nichts ist so beständig wie das Provisorium.} % TODO Quelle für deutsches Sprichwort suchen
+		\end{note}
+		\nextcolumn
+		\vspace{11mm}
+		\centering\pic[width=.5\linewidth,trim=0 0 0 0,clip]{people/jeff-sickel}
+		\vspace{-3mm}
+		
+		\begin{note}{Jeff Sickel \mysource{\href{https://twitter.com/codewisdom/status/710046205317873664}{twitter.com}}}
+			\mycite{Deleted code is debugged code.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+

@@ -1,0 +1,84 @@
+\subsection{Legacy Software}
+\begin{frame}{\insertsubsection\ \deutsch{Altsysteme}}
+	\begin{fancycolumns}
+		\begin{definition}{Legacy Software \mysource{\ludewiglichter}}
+			\mycite{A large software system that we don’t know how to cope with but that is vital to our organization.}
+		\end{definition}
+		\begin{exampletight}{Winamp 5.623 on 4k Display in Windows 10}
+			\pic[width=\linewidth,trim=0 0 0 0,clip]{changes/winamp}
+		\end{exampletight}
+		\nextcolumn
+		\begin{note}{Typical Properties \mysource{\ludewiglichter}}
+			\begin{itemize}
+				\item larger than 100k LOC
+				\item older than 10 years
+				\item original developers and architects not available anymore
+				\item outdated programming languages and development concepts
+				\item business-critical
+				\item outdated or missing documentation
+				\item based on outdated hardware and system software
+				\item subject to numerous iterations of corrective and adaptive maintenance
+				\item high costs for maintenance
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{2221} % emulated software, long-living
+
+\subsection{Software Migration}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\begin{fancycolumns}
+		\begin{definition}{Software Migration}
+			\begin{itemize}
+				\item opposed to data and hardware migration
+				\item renewing or replacing legacy software
+				\item new software needs to be downward compatible
+				\item new software meets current functional and non-functional requirements
+				\item data often needs to be migrated
+				\item outage as short as possible
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Migration Strategies}
+			\begin{itemize}
+				\item big bang migration: whole legacy software is migrated in a single step
+				\item incremental migration: stepwise renewal and replacement
+				\item wrapping: building a new software around a stable version of the legacy software
+				\item redevelopment: functionality implemented again and replaces legacy software
+				\item combinations feasible (except for incremental and big bang)
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Big Bang Migration}
+
+\subsection{Migration by Wrapping}
+
+\subsection{Incremental Migration}
+
+\subsection{Redevelopment?}
+
+% TODO reasons/requirements/process for migration
+
+\subsection{End of Service}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{exampletight}{{End of Life: December 31, 2020}}
+			\centering\pic[width=.85\linewidth,trim=0 0 0 0,clip]{changes/flash-eol}
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Online Game Fuchstreff Discontinued}
+			\pic[width=\linewidth,trim=0 0 0 0,clip]{changes/fuchstreff}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO 32bit architectures discontinued in many Linux distributions
+% https://www.debugpoint.com/32-bit-linux-distributions/
+
+% TODO release, maintenance, end of life / alternatives to maintenance https://en.wikipedia.org/wiki/Software_maintenance
+
+% TODO end of life: "the perfect race car crosses the finish line in first place and immediately falls into pieces" Ferdinand Porsche, https://www.fahrtraum.at/en/the-best-quotes-and-sayings-from-ferdinand-porsche/
+
