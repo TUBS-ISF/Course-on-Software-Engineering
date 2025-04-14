@@ -4,3 +4,6 @@
 [submodule "submodules/Title-Pictures"]
 	path = submodules/Title-Pictures
 	url = git@github.com:TUBS-ISF/Title-Pictures.git
+[submodule "submodules/Course-on-Software-Product-Lines"]
+	path = submodules/Course-on-Software-Product-Lines
+	url = git@github.com:SoftVarE-Group/Course-on-Software-Product-Lines.git

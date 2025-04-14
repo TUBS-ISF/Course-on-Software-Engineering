@@ -21,6 +21,7 @@
 				\item \ldots
 			\end{itemize}
 		\end{definition}
+	\nextcolumn
 		\begin{note}{Alternatives to Changes}
 			\begin{itemize}
 				\item stick to old version (e.g., feature freeze)
@@ -28,7 +29,6 @@
 				\item abandom the system without replacement (e.g., end of service)
 			\end{itemize}
 		\end{note}
-	\nextcolumn
 		\begin{definition}{Change Activities \mysource{\sommerville}}
 			\begin{itemize}
 				\item change specification
@@ -65,34 +65,31 @@
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Recap: Process Models}
-\begin{frame}<8>{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{exampletight}{Waterfall Model}
-			\centering
-			\diagramWaterfallModel
-		\end{exampletight}
-		\nextcolumn
-		\begin{exampletight}{Scrum}
-			\diagramScrum
-		\end{exampletight}
-	\end{fancycolumns}
-\end{frame}
+%\subsection{Recap: Process Models}
+%\begin{frame}<8>{\insertsubsection}
+%	\begin{fancycolumns}
+%		\begin{exampletight}{Waterfall Model}
+%			\centering
+%			\diagramWaterfallModel
+%		\end{exampletight}
+%		\nextcolumn
+%		\begin{exampletight}{Scrum}
+%			\diagramScrum
+%		\end{exampletight}
+%	\end{fancycolumns}
+%\end{frame}
+%
+%\subsection{Recap: Project Management}
+%\begin{frame}{\insertsubsection}
+%	\begin{fancycolumns}[animation=none]
+%		\nextcolumn
+%		\begin{exampletight}{Gantt Charts}
+%			\centering\picDark[width=\linewidth]{management/gantt-chart}
+%		\end{exampletight}
+%	\end{fancycolumns}
+%\end{frame}
 
-\subsection{Recap: Project Management}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[animation=none]
-		\nextcolumn
-		\begin{exampletight}{Gantt Charts}
-			\centering\picDark[width=\linewidth]{management/gantt-chart}
-		\end{exampletight}
-	\end{fancycolumns}
-\end{frame}
-
-
-
-
-% TODO \widexkcdframe{1667} % complexity comes with changes over time, copied from se1-04b
+\widexkcdframe{1667} % complexity comes with changes over time, copied from se1-04b
 
 \subsection{Increasing Complexity}
 \begin{frame}{\insertsubsection} % slided copied from se1-04b. reuse?
@@ -151,10 +148,16 @@
 				\item explanation: changes tend to make structures more complex and it takes extra efforts to improve structures to enable future changes
 			\end{itemize}
 		\end{definition}
-		\begin{example}{}
-			feature model class in FeatureIDE
+		\begin{example}{Evolution of the Linux Kernel}
+			\begin{itemize}
+				\item about $60,000$ commits per year
+				\item in peak weeks: new commit every 5 minutes
+				\item in average weeks: every 9 minutes
+			\end{itemize}
 		\end{example}
+		%\twodimensionalanalysislink{\pic[width=.8\linewidth,page=1,trim=80 420 80 260,clip]{2019/2019-VariVolution-Thuem}}
 		\nextcolumn
+		\picDark[width=\linewidth,trim=100 70 110 80,clip]{linux/linux-stack-plot}
 	\end{fancycolumns}
 \end{frame}
 
