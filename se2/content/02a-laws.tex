@@ -117,12 +117,12 @@
 
 \subsection{Lehman's Laws of Software Evolution}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
+	\begin{fancycolumns}[widths={60}]
 		\begin{definition}{Law of Continuing Change\mysource{\lehmanslaws}}
 			\deutsch{Gesetz der kontinuierlichen Veränderung}
 			\begin{itemize}
 				\item software systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
-				\item explanation: an unchanged system will loose its benefits when the real environment changes
+				\item explanation: an unchanged system will loose its benefits when the (real) environment changes
 			\end{itemize}
 		\end{definition}
 		\begin{example}{Driver Assistance vs New Traffic Signs}
@@ -138,8 +138,14 @@
 			\end{fancycolumns}
 		\end{example}
 		\nextcolumn
+		\centering\pic[width=\linewidth]{automotive/bike-street-explained}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
 		\begin{definition}{Law of Increasing Complexity\mysource{\lehmanslaws}}
-			 \deutsch{Gesetz der zunehmenden Komplexität}
+			\deutsch{Gesetz der zunehmenden Komplexität}
 			\begin{itemize}
 				\item complexity increases during evolution unless work is done to maintain or reduce it % As an E-type system evolves its complexity increases unless work is done to maintain or reduce it.
 				\item explanation: changes tend to make structures more complex and it takes extra efforts to improve structures to enable future changes
@@ -148,6 +154,7 @@
 		\begin{example}{}
 			feature model class in FeatureIDE
 		\end{example}
+		\nextcolumn
 	\end{fancycolumns}
 \end{frame}
 

@@ -111,6 +111,27 @@
 
 \xkcdframe{2266} % leap second/day smearing
 
+\subsection{Wisdom on Maintenance}
+\begin{frame}{\insertsubsection} % slided copied from se1-04a. reuse?
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 360 0 50,clip]{people/karolina-szczur}
+		\vspace{-7mm}
+		
+		\begin{note}{Karolina Szczur \mysource{\href{https://twitter.com/codewisdom/status/1141686386103332864}{twitter.com}}}
+			\mycite{Writing software as if we are the only person that ever has to comprehend it is one of the biggest mistakes and false assumptions that can be made.}
+		\end{note}
+		\nextcolumn
+		\pic[width=\linewidth,trim=450 235 450 120,clip]{changes/psychopath}
+		\vspace{-7mm}
+		
+		\begin{note}{John F. Woods \mysource{\href{https://groups.google.com/g/comp.lang.c++/c/rYCO5yn4lXw/m/oITtSkZOtoUJ}{google.com}}}
+			\mycite{Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+% Old Part 2
+
 \subsection{Software Maintenance}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}} % slided copied from se1-04a. reuse?
 	\begin{fancycolumns}
@@ -165,26 +186,161 @@
 \end{frame}
 % TODO add links to original literature, separate slide each?
 
-\subsection{Wisdom on Maintenance}
-\begin{frame}{\insertsubsection} % slided copied from se1-04a. reuse?
+\xkcdframe{1172} % No more CPU heating as breaking change
+
+\subsection{Evolution and Maintenance}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\slideEvolutionAndMaintenance
+\end{frame}
+% Changelog (honest?)
+% vgl. Release Management, Semantic Versioning
+% Problems: time pressure, results in new failures, unpopular task
+
+% TODO 22.4.2 Die Behandlung von Problemmeldungen \ludewiglichter
+
+\subsection{Reengineering Tasks}
+\begin{frame}[b]{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\vspace{-10mm}
+	\begin{fancycolumns}[b]
+		\begin{definition}{Reverse Engineering \mysource{Chikofsky und Cross}}
+			\mycite{Reverse engineering is the process of analyzing a system to identify the system’s components and their interrelationships and create representations of the system in another form or at a higher level of abstraction.}
+		\end{definition}
+		\begin{example}{}
+			%			updating UML diagrams from source code
+			exploring what are the classes of a calculator and what is their purpose
+		\end{example}
+		\begin{definition}{Forward Engineering \mysource{Chikofsky und Cross}}
+			\mycite{Forward engineering is the traditional process of moving from high-level abstractions and logical, implementation-independent designs to the physical implementation of a system.}
+		\end{definition}
+		\begin{example}{}
+			%			see Software Engineering I
+			implement a new feature in a calculator
+		\end{example}
+		\nextcolumn
+		\begin{definition}{Restructuring \mysource{Chikofsky und Cross}}
+			\mycite{Restructuring is a transformation from one form of representation to another at the same relative level of abstraction. The new representation is meant to preserve the semantics and external behavior of the original.}
+		\end{definition}
+		\begin{example}{}
+			refactorings as introduced in lecture on evolution
+		\end{example}
+		\begin{definition}{Reengineering \mysource{Chikofsky und Cross}}
+			\mycite{Reengineering is the examination and alteration of a subject system to reconstitute it in a new form and the subsequent implementation of the new form.}
+		\end{definition}
+		\begin{example}{}
+			combination of reverse engineering, refactoring, and forward engineering
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+% TODO add links to original literature
+% TODO Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure. It is a disciplined way to clean up code that minimizes the chances of introducing bugs. In essence when you refactor you are improving the design of the code after it has been written. Martin Fowler
+
+\subsection{Wisdom on Reengineering}
+\begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
-		\pic[width=\linewidth,trim=0 360 0 50,clip]{people/karolina-szczur}
+		\pic[width=\linewidth,trim=50 0 0 0,clip]{people/kyle-simpson}
 		\vspace{-7mm}
 		
-		\begin{note}{Karolina Szczur \mysource{\href{https://twitter.com/codewisdom/status/1141686386103332864}{twitter.com}}}
-			\mycite{Writing software as if we are the only person that ever has to comprehend it is one of the biggest mistakes and false assumptions that can be made.}
+		\begin{note}{Kyle Simpson \mysource{\href{https://twitter.com/codewisdom/status/857988273674883072}{twitter.com}}}
+			\mycite{There's nothing more permanent than a temporary hack.} \deutsch{Sprichwort: Nichts ist so beständig wie das Provisorium.} % TODO Quelle für deutsches Sprichwort suchen
 		\end{note}
 		\nextcolumn
-		\pic[width=\linewidth,trim=450 235 450 120,clip]{changes/psychopath}
-		\vspace{-7mm}
+		\vspace{11mm}
+		\centering\pic[width=.5\linewidth,trim=0 0 0 0,clip]{people/jeff-sickel}
+		\vspace{-3mm}
 		
-		\begin{note}{John F. Woods \mysource{\href{https://groups.google.com/g/comp.lang.c++/c/rYCO5yn4lXw/m/oITtSkZOtoUJ}{google.com}}}
-			\mycite{Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.}
+		\begin{note}{Jeff Sickel \mysource{\href{https://twitter.com/codewisdom/status/710046205317873664}{twitter.com}}}
+			\mycite{Deleted code is debugged code.}
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
 
+% Old Part 3
+
+\subsection{Legacy Software}
+\begin{frame}{\insertsubsection\ \deutsch{Altsysteme}}
+	\begin{fancycolumns}
+		\begin{definition}{Legacy Software \mysource{\ludewiglichter}}
+			\mycite{A large software system that we don’t know how to cope with but that is vital to our organization.}
+		\end{definition}
+		\begin{exampletight}{Winamp 5.623 on 4k Display in Windows 10}
+			\pic[width=\linewidth,trim=0 0 0 0,clip]{changes/winamp}
+		\end{exampletight}
+		\nextcolumn
+		\begin{note}{Typical Properties \mysource{\ludewiglichter}}
+			\begin{itemize}
+				\item larger than 100k LOC
+				\item older than 10 years
+				\item original developers and architects not available anymore
+				\item outdated programming languages and development concepts
+				\item business-critical
+				\item outdated or missing documentation
+				\item based on outdated hardware and system software
+				\item subject to numerous iterations of corrective and adaptive maintenance
+				\item high costs for maintenance
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{2221} % emulated software, long-living
+
+\subsection{Flash Player}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{exampletight}{{End of Life: December 31, 2020}}
+			\centering\pic[width=.85\linewidth,trim=0 0 0 0,clip]{changes/flash-eol}
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Online Game Fuchstreff Discontinued}
+			\pic[width=\linewidth,trim=0 0 0 0,clip]{changes/fuchstreff}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO 32bit architectures discontinued in many Linux distributions
+% https://www.debugpoint.com/32-bit-linux-distributions/
+
+\subsection{Migration}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\begin{fancycolumns}
+		\begin{definition}{Software Migration}
+			\begin{itemize}
+				\item opposed to data and hardware migration
+				\item renewing or replacing legacy software
+				\item new software needs to be downward compatible
+				\item new software meets current functional and non-functional requirements
+				\item data often needs to be migrated
+				\item outage as short as possible
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Migration Strategies}
+			\begin{itemize}
+				\item wrapping: building a new software around a stable version of the legacy software
+				\item redevelopment: functionality implemented again and replaces legacy software
+				\item incremental migration: stepwise renewal and replacement
+				\item big bang migration: whole legacy software is migrated in a single step
+				\item combinations feasible (except for incremental and big bang)
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO reasons/requirements/process for migration
+
+% TODO software estimation (bewertung)
+% 	motivation, metrics for OOP
+% 14 Metriken und Bewertungen \ludewiglichter
+
+% New Content
+
+% TODO APIs: every observable behavior will eventually be used by users
+
 % TODO release, maintenance, end of life / alternatives to maintenance https://en.wikipedia.org/wiki/Software_maintenance
 
 % TODO end of life: "the perfect race car crosses the finish line in first place and immediately falls into pieces" Ferdinand Porsche, https://www.fahrtraum.at/en/the-best-quotes-and-sayings-from-ferdinand-porsche/
+
+% TODO new example of Tesla: https://www.heise.de/news/Tesla-Autos-duerfen-nicht-mehr-furzen-Rueckruf-in-den-USA-6441936.html
+
+% TODO new quote? 'No matter how slow you are writing clean code, you will always be slower if you make a mess.' - @UncleBobMartin https://twitter.com/compscifact/status/1565365181529694208?s=11&t=PswBWUZCpLycqL2eSDFo6w
 
