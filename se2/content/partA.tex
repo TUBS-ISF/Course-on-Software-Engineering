@@ -19,7 +19,7 @@
 	
 	~
 	
-	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural_element/420577}
+	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421044}
 }
 
 \section{Motivating Examples}
@@ -57,7 +57,7 @@
 
 			~
 
-			\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural_element/420577}
+			\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421044}
 	\end{itemize}
 }
 
@@ -81,44 +81,62 @@
 \section{Laws on Software Evolution}
 \input{content/02a-laws}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Incremental development and changed requirements cause evolution
+	\item Lehman's laws: software is modified and gets more complex\\
+		Continuing Change, Increasing Complexity, Conservation of Familiarity, Continuing Growth, Declining Quality, Feedback System
+	\item Next: How to reduce the complexity?
 }{
+	\item \sommerville\mychapter{2.3 Coping with Change}
+	\item \sommerville\mychapter{4.6 Requirements Change}
 	\item \sommerville\mychapter{9 Software Evolution}
 	\item \lehmanslaws
+	%\item \ludewiglichter, 23.1 \deutsch{Software-Evolution}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students
+		\item Try to find a (counter) example for each of Lehman's laws
+		\item Discuss the example with your colleagues -- does it fulfill further laws?
 	\end{enumerate}
 }
 
-\section{Technical Debt}
+\section{Smells and Refactorings}
 \input{content/02b-debt}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Smells / antipatterns: structures to avoid
+	\item Examples: mysterious name, duplicated code, long method
+	\item Refactorings: clean-up of structures before and after every change
+	\item Examples: rename X refactoring, extract/pull-up method refactoring
+	\item Next: What are principles against smells?
 }{
-	\item \sommerville\mychapter{?}
+	\item \refactoring
+	\item \cleancode
+	% book on antipatterns
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students
+		\item What further smells and refactorings do you know?
+		\item Enter these smells and refactorings using the link in \StudIP
+
+		~
+		
+		\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421045}
 	\end{enumerate}
 }
 
 \section{Principles for Software Evolution}
 \input{content/02c-principles}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item KISS --- Keep it simple, stupid!
+	\item DRY --- Don't Repeat Yourself
+	\item Next: How to maintain software?
 }{
-	\item \sommerville\mychapter{?}
+	\item \thepragmaticprogrammer
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Quiz in \StudIP
+
+	~
+	
+	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421045}
 }
 
 %\faq{

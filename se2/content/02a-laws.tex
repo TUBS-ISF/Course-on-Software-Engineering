@@ -1,6 +1,6 @@
 \subsection{Change is Inevitable}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{\sommerville:}
 			\mycite{Change is inevitable in all large software projects. The \textbf{system requirements change} as businesses respond to external pressures, competition, and changed management priorities. As \textbf{new technologies become available}, new approaches to design and implementation become possible. Therefore whatever software process model is used, it is essential that it can \textbf{accommodate changes} to the software being developed. [...] It may then be necessary to \textbf{redesign} the system to deliver the new requirements, \textbf{change any programs} that have been developed, and \textbf{retest} the system.}
 		\end{definition}
@@ -9,15 +9,26 @@
 	\end{fancycolumns}
 \end{frame}
 
+\pictureframe{
+	\pic[width=\paperwidth]{emotions/walking-on-water}
+}{
+	\vspace{65mm}
+	\begin{note}{Edward V. Berard (1993) \mysource{\href{https://en.wikiquote.org/wiki/Edward_V._Berard}{wikiquote.org}}}
+		Recap: \mycite{Walking on water and developing software from a specification are easy if both are frozen.}
+	\end{note}
+}
+
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
 		\begin{definition}{Reasons for Changes \mysource{\sommerville}}
 			\begin{itemize}
-				\item changes to the environment (e.g., other systems) require changes to the software
-				\item new laws may require adaptations
 				\item corrections of errors
-				\item iterative development (e.g., with Scrum)
 				\item costly implementation, longer usage that costs pay off, make better use of it by small improvements
+				\item changes to the environment (e.g., other software or hardwar) require changes to the software
+				\item new legislation and regulations
+				\item iterative development (e.g., with Scrum)
+				\item new compromise on conflicting requirements of different stakeholders
+				\item changed problem understanding for all stakeholders
 				\item \ldots
 			\end{itemize}
 		\end{definition}
@@ -38,30 +49,6 @@
 				\item release of the changed version
 			\end{itemize}
 		\end{definition}
-	\end{fancycolumns}
-\end{frame}
-
-\pictureframe{
-	\pic[width=\paperwidth]{emotions/walking-on-water}
-}{
-	\vspace{65mm}
-	\begin{note}{Edward V. Berard (1993) \mysource{\href{https://en.wikiquote.org/wiki/Edward_V._Berard}{wikiquote.org}}}
-		Recap: \mycite{Walking on water and developing software from a specification are easy if both are frozen.}
-	\end{note}
-}
-
-\subsection{Changes to Requirements}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{note}{Motivation \mysource{\sommerville}}
-			\begin{itemize}
-				\item changed problem understanding for all stakeholders
-				\item new or updated hardware
-				\item interfacing to other systems
-				\item new legislation and regulations
-				\item new compromise on conflicting requirements of different stakeholders
-			\end{itemize}
-		\end{note}
 	\end{fancycolumns}
 \end{frame}
 
@@ -112,9 +99,24 @@
 	\end{fancycolumns}
 \end{frame}
 
+\newcommand{\newtrafficsignsexample}{
+	\begin{example}{Driver Assistance vs New Traffic Signs}
+		\begin{fancycolumns}[b,columns=3,animation=none]
+			\centering\pic[width=\linewidth]{automotive/StVO-2019-escooter}
+			2019-06-06
+			\nextcolumn
+			\centering\pic[width=\linewidth]{automotive/StVO-2020-carsharing}
+			2020-08-31
+			\nextcolumn
+			\centering\pic[width=\linewidth]{automotive/StVO-2022-charging}
+			2022-08-15
+		\end{fancycolumns}
+	\end{example}
+}
+
 \subsection{Lehman's Laws of Software Evolution}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[widths={60}]
+	\begin{fancycolumns}[widths={60}] % TODO check why animation=keep is not working here
 		\begin{definition}{Law of Continuing Change\mysource{\lehmanslaws}}
 			\deutsch{Gesetz der kontinuierlichen Veränderung}
 			\begin{itemize}
@@ -122,18 +124,7 @@
 				\item explanation: an unchanged system will loose its benefits when the (real) environment changes
 			\end{itemize}
 		\end{definition}
-		\begin{example}{Driver Assistance vs New Traffic Signs}
-			\begin{fancycolumns}[b,columns=3,animation=none]
-				\centering\pic[width=\linewidth]{automotive/StVO-2019-escooter}
-				2019-06-06
-			\nextcolumn
-				\centering\pic[width=\linewidth]{automotive/StVO-2020-carsharing}
-				2020-08-31
-			\nextcolumn
-				\centering\pic[width=\linewidth]{automotive/StVO-2022-charging}
-				2022-08-15
-			\end{fancycolumns}
-		\end{example}
+		\newtrafficsignsexample
 		\nextcolumn
 		\centering\pic[width=\linewidth]{automotive/bike-street-explained}
 	\end{fancycolumns}
@@ -213,21 +204,24 @@
 		\begin{definition}{Law of Declining Quality\mysource{\lehmanslaws}}
 			\deutsch{Gesetz der abnehmenden Qualität}
 			\begin{itemize}
-				\item quality will decline unless rigorously maintained and adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
-				\item explanation: 
+				\item quality declines unless rigorously maintained \& adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
+				\item explanation: due to changes in the envionment, the quality will decrease without adaptation + every adaptation may have side effects reducing other aspects of quality
 			\end{itemize}
 		\end{definition}
-		\begin{example}{}
-		\end{example}
+		\newtrafficsignsexample
 		\nextcolumn
 		\begin{definition}{Law of Feedback System\mysource{\lehmanslaws}}
 			\deutsch{Gesetz über den Umgang mit Rückmeldungen}
 			\begin{itemize}
-				\item %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
-				\item explanation: 
+				\item significant improvements require to systematically incorporate feedback %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
+				\item explanation: user feedback needs to be treated systematically to guide the evolution
 			\end{itemize}
 		\end{definition}
-		\begin{example}{}
+		\begin{example}{Alpha and Beta Testing}
+			\begin{itemize}
+				\item alpha test: acceptance test by customer, iterations until final acceptance
+				\item beta test: selected users have access to an unreleased software, depending on feedback further beta test or release
+			\end{itemize}
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
@@ -240,13 +234,13 @@
 	\begin{fancycolumns}
 		\begin{definition}{\insertsubsection}
 			\begin{itemize}
-				\item Continuing Change
-				\item Increasing Complexity
-				\item Conservation of Familiarity
-				\item Continuing Growth
-				\item Declining Quality
-				\item Feedback System
-				\item laws not discussed in this course: Self Regulation, Conservation of Organizational Stability, \ldots
+				\item Continuing Change (1974)
+				\item Increasing Complexity (1974)
+				\item Conservation of Familiarity (1980)
+				\item Continuing Growth (1980)
+				\item Declining Quality (1996)
+				\item Feedback System (1996)
+				\item laws not discussed in this course:\\Self Regulation,\\Conservation of Organizational Stability,\\\ldots
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
@@ -267,26 +261,8 @@
 \end{frame}
 % TODO read paper again? see Lehman-LawsSoftwareEvolution, Herraiza-EvolutionLawsSoftwareEvolution
 
-% TODO add Elias' graphs on Linux increase
-
 % TODO counter example: massive removal of functionality: see Rust-DefeatingFeatureFatigue
 % Antoine de Saint-Exupéry's "It seems that perfection is reached not when there is nothing left to add, but when there is nothing left to take away";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% TODO alpha, beta, ... versions
 
 % TODO stages: software maturity, phase-out, close-down (see Vaclav and Keith)
 

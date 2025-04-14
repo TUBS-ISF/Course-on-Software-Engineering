@@ -19,9 +19,57 @@
 	\end{fancycolumns}
 \end{frame}
 
+\subsection{KISS Principle}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 0 0 0,clip]{people/kelly-johnson}
+		\vspace{-7mm}
+		
+		\begin{note}{Kelly Johnson (1910--1990)\mysource{\href{https://www.nasonline.org/wp-content/uploads/2024/06/johnson-clarence.pdf}{nasaonline.org}}}
+			\mycite{KISS --- Keep it simple, stupid!}
+		\end{note}
+	\nextcolumn
+		\begin{definition}{\insertsubsection}
+			\begin{itemize}
+				\item Johnson leading engineers building jets
+				\item goal was to make jets easily repairable by average mechanic
+				\item analogy: build software systems that are easy to maintain and repair
+			\end{itemize}
+		\end{definition}
+		\uncover<3->{\begin{example}{Russian Invasion of Ukraine (since 2022)}
+			German weapons hard to repair; broken for long time before they can be used again \mysource{\href{https://www.tagesschau.de/multimedia/video/video-1454812.html}{tagesschau.de}}
+		\end{example}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{DRY Principle}
+\begin{frame}{\insertsubsection{} \mytitlesource{\thepragmaticprogrammer}}
+	\begin{fancycolumns}[widths={35},animation=none]
+		\pic[width=\linewidth,trim=0 0 0 0,clip]{books/the-pragmatic-programmer}
+		\nextcolumn
+		\begin{note}{DRY --- Don't Repeat Yourself}
+			\mycite{Every piece of knowledge must have a single, unambiguous, authoritative, representation within a system.}
+		\end{note}
+		\uncover<2->{\begin{definition}{\insertsubsection}
+			\begin{itemize}
+				\item knowledge documented in specifications, code, and tests
+				\item knowledge not stable, changes frequently
+				\item duplicate representations are altered inconsistently
+				\item means: extract method refactoring
+			\end{itemize}
+		\end{definition}}
+		\uncover<3->{\begin{example}{Reasons for Duplication}
+			\begin{itemize}
+				\item imposed duplication: devs feel that they have no other choice
+				\item inadvertent duplication: devs do not realize that they duplicate
+				\item impatient duplication: duplication seems easier
+				\item interdeveloper duplication: multiple devs duplicate
+			\end{itemize}
+		\end{example}}
+	\end{fancycolumns}
+\end{frame}
+
 % TODO add principles
-% KISS: https://en.wikipedia.org/wiki/KISS_principle
-% DRY: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 % SOLID: https://en.wikipedia.org/wiki/SOLID
 % RERO: https://en.wikipedia.org/wiki/Release_early,_release_often
 %    "Release early. Release often. And listen to your customers". This philosophy was popularized by Eric S. Raymond in his 1997 essay The Cathedral and the Bazaar,
