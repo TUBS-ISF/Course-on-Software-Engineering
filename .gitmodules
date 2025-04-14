@@ -1,3 +1,6 @@
 [submodule "submodules/FancyBeamer"]
 	path = submodules/FancyBeamer
 	url = https://github.com/SEatUPB/FancyBeamer
+[submodule "submodules/Title-Pictures"]
+	path = submodules/Title-Pictures
+	url = git@github.com:TUBS-ISF/Title-Pictures.git
