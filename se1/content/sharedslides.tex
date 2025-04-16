@@ -151,7 +151,7 @@
 \newcommand{\backwardpass}[1]{#1}
 \newcommand{\buffer}[1]{#1}
 \newcommand{\networknode}[7]{
-	\begin{tikzpicture}[every node/.style={draw=black,anchor=base,minimum height=5mm,text width=7.5mm,align=center},inner xsep=0mm,line width=.5pt,node distance=-.5pt]
+	\begin{tikzpicture}[every node/.style={draw=foreground,fill=background,anchor=base,minimum height=5mm,text width=7.5mm,align=center},inner xsep=0mm,line width=.5pt,node distance=-.5pt]
 		\node[text width=22.5mm] (task) {#1};
 		\node (d) [above=of task] {#3};
 		\node (es) [left=of d] {\forwardpass{#2}};
@@ -225,7 +225,7 @@
 	\end{fancycolumns}
 }
 \newcommand{\diagramWaterfallModel}{
-	{\color{black}\begin{tikzpicture}[yscale=-1.2,xscale=.75,phase/.style={draw,thick,rounded rectangle,fill=blue!10,align=center,text width=21mm},label/.style={auto,bend right,align=left},to/.style={->,>={Stealth[round]},thick}]
+	\begin{tikzpicture}[yscale=-1.2,xscale=.75,phase/.style={draw=foreground,thick,rounded rectangle,fill=blue!10!background,align=center,text width=21mm},label/.style={auto,bend right,align=left},to/.style={->,>={Stealth[round]},thick}]
 			\node[phase,visible on=<6->] (1) at (0,0) {Requirements Analysis};
 			\node[phase,visible on=<7->] (2) at (1,1) {System and Software Design};
 			\node[phase,visible on=<2->] (3) at (2,2) {Implementation and Unit Testing};
@@ -243,7 +243,7 @@
 			\draw[to,visible on=<10->,orange] (3) -| (2.210);
 			\draw[to,visible on=<10->,orange] (4) -| (3.210);
 			\draw[to,visible on=<10->,orange] (5) -| (4.210);
-	\end{tikzpicture}}
+	\end{tikzpicture}
 }
 
 % introduced: process
