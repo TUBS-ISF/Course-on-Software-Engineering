@@ -27,16 +27,85 @@
 				\item modification and reconstruction
 			\end{itemize}
 		\end{note}
-		\nextcolumn
-		\begin{definition}{Operation and Maintenance Phase \mysource{\ieeesixten}}
+		\uncover<2->{\begin{definition}{Operation and Maintenance Phase \mysource{\ieeesixten}}
 			\mycite{The period of time in the software life cycle during which a software product is employed in its operational environment, monitored for satisfactory performance, and modified as necessary to correct problems or to respond to changing requirements.}
-		\end{definition}
-		\begin{definition}{Maintenance \mysource{\ieeesixten}}
+		\end{definition}}
+		\nextcolumn
+		\uncover<3->{\begin{definition}{Maintenance \mysource{\ieeesixten}}
 			\mycite{The process of modifying a software system or component after delivery to correct faults, improve performance or other attributes, or adapt to a changed environment.}
-		\end{definition}
+		\end{definition}}
+		\uncover<3->{\begin{note}{Kinds of Maintenance \mysource{\ludewiglichter}}
+			corrective maintanance, perfective maintenance, adaptive maintenance, preventive maintenance
+		\end{note}}
 	\end{fancycolumns}
 \end{frame}
 % TODO Operations
+
+\subsection{Corrective Maintenance}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{\insertsubsection\mysource{\lientzswanson}}
+			\mycite{Maintenance performed to correct faults in software.} \hfill \deutsch{korrektive Wartung}
+		\end{definition}
+		\begin{example}{Xiaomi SU7 Crash\mysource{\href{https://www.nytimes.com/2025/04/01/business/xiaomi-driverless-electric-car-china.html}{nytimes.com}}}
+			\begin{itemize}
+				\item car crashed into guardrail with 97 km/h and caught fire
+				\item despite advanced driver assistance turned on
+				\item investigation may reveal need for corrections
+			\end{itemize}
+			\centering\pic[width=.7\linewidth]{automotive/xiaomi-su7}
+		\end{example}
+	\nextcolumn
+		\begin{example}{Ariane 5 Software Failure\mysource{\href{https://doi.ieeecomputersociety.org/10.1109/2.562936}{J{\'e}z{\'e}quel and Meyer, 1997}}}
+			\begin{itemize}
+				\item explosion about 40 seconds after takeoff
+				\item software component of Ariane 4 was reused
+				\item value exceeding 16-bit signed integer
+				\item unnecessary component removed for launch one year later with new hardware
+			\end{itemize}
+			\centering\pic[width=.85\linewidth]{failures/ariane5-explosion} {\tiny\copyright{} ESA} % TODO how to add copyright? ESA
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{1172} % No more CPU heating as breaking change
+
+\subsection{Perfective Maintenance}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{\insertsubsection\mysource{\lientzswanson}}
+			\mycite{Software maintenance performed to improve the performance, maintainability, or other attributes of a computer program.} \hfill \deutsch{perfektive Wartung}
+		\end{definition}
+		\begin{example}{Examples}
+			\begin{itemize}
+				\item better handling of large files in a text editor
+				\item more efficient memory layout (e.g., in Linux)
+				\item reduction of smells by means of refactorings
+			\end{itemize}
+		\end{example}
+		\uncover<2->{\begin{example}{Meltdown/Spectre}
+			\begin{itemize}
+				\item January 2018 discovered
+				\item caused by branch prediction in microprocessors
+				\item fixed by software patches
+				\item performance loss of up-to 30\%
+			\end{itemize}
+		\end{example}}
+		\nextcolumn
+			\uncover<3->{\begin{example}{CrowdStrike Outage\mysource{\href{https://en.wikipedia.org/wiki/CrowdStrike}{wikipedia.org}, \href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
+				\begin{itemize}
+					\item CrowdStrike's Falcon received update to improve \emph{security}
+					\item update on July 19, 2024 affected 8.5 million devices running Windows 10 or 11
+					\item systems were indeed more secure ;-)
+					\item follow-up corrective maintenance was required including manual reboot
+				\end{itemize}
+				\picDark[width=\linewidth]{failures/crowdstrike} % TODO better identifying picture for crowdstrike?
+			\end{example}}
+	\end{fancycolumns}
+\end{frame}
+% TODO it is annoying that perfective maintenance has an overlap with preventive maintenance, as better maintainability typically also results in fewer problems
+
+% TODO software aging (see Parnas-SoftwareAging, GodfreyGerman-LehmansLaws)
 
 \subsection{Adaptive Maintenance}
 \begin{frame}{\insertsubsection}
@@ -45,42 +114,14 @@
 			\mycite{Software maintenance performed to make a computer program usable in a changed environment.} \hfill \deutsch{adaptive Wartung}
 		\end{definition}
 		\begin{example}{}
-			desktop application for a new version of an operating system (e.g., from Windows 8.1 to 10)
+			desktop application for a new version of an operating system (e.g., from Windows 10 to 11)
 		\end{example}
 		\nextcolumn
+		\picDark[width=\linewidth]{changes/windows7-11}
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Corrective Maintenance}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{\insertsubsection\mysource{\lientzswanson}}
-			\mycite{Maintenance performed to correct faults in software.} \hfill \deutsch{korrektive Wartung}
-		\end{definition}
-		\begin{example}{}
-			Windows calculator showing wrong formulas
-		\end{example}
-		\nextcolumn
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{Perfective Maintenance}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{\insertsubsection\mysource{\lientzswanson}}
-			\mycite{Software maintenance performed to improve the performance, maintainability, or other attributes of a computer program.} \hfill \deutsch{perfektive Wartung}
-		\end{definition}
-		\begin{example}{}
-			better handling of very large files in a text editor
-		\end{example}
-		\nextcolumn
-	\end{fancycolumns}
-\end{frame}
-% TODO it is annoying that perfective maintenance has an overlap with preventive maintenance, as better maintainability typically also results in fewer problems
-
-% TODO software aging (see Parnas-SoftwareAging, GodfreyGerman-LehmansLaws)
-
-\subsection{Y2K and 2038}
+\subsection{Y2K and Y2038}
 \widexkcdframe{2038} % y2k bug vs 2038 bug
 
 \begin{frame}{Y2K Problem \mytitlesource{\href{https://en.wikipedia.org/wiki/Year_2000_problem}{wikipedia.org}}}
@@ -98,15 +139,15 @@
 	\nextcolumn
 		\vspace{-15mm}
 		
-		\centering\pic[width=.5\linewidth]{failures/y2k}
+		\uncover<3->{\centering\pic[width=.5\linewidth]{failures/y2k}}
 		\begin{example}{Selected Y2K Failures}
 			\begin{itemize}
-				\item 1999-01-01: computers for temporary passports in Sweden crashed
-				\item 1999-12-28: credit and debit card transactions rejected because they could not be completed within four working days
+				\item<4-> 1999-01-01: computers for temporary passports in Sweden crashed
+				\item<5-> 1999-12-28: credit and debit card transactions rejected because they could not be completed within four working days
 				%\item 2000-01-01: date 2036-02-06 shown in nuclear power plant in Fukushima
-				\item 2000-01-01: German bank accidentially transferred 6 million euro issued 1899-12-30
-				\item 2000-01-03: french school showing wrong date
-				\item 2020-01-01: New York City parking meters refuse credit cards
+				\item<2-> 2000-01-01: German bank accidentially transferred 6 million euro issued 1899-12-30
+				\item<3-> 2000-01-03: french school showing wrong date
+				\item<6-> 2020-01-01: New York City parking meters refuse credit cards
 			\end{itemize}
 		\end{example}
 	\end{fancycolumns}
@@ -131,7 +172,7 @@
 				\item it used 1 billion seconds extra to state that database transactions do not timeout
 				\item \emph{temporary} solution: set the timeout to a lower value in configuration file
 			\end{itemize}
-			embedded systems without over-the-air updates are likely to be affected (e.g., ECUs in most automotive systems)
+			future failures? embedded systems without over-the-air updates are likely to be affected (e.g., ECUs in most automotive systems)
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
@@ -169,15 +210,6 @@
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
-
-\subsection{Kinds of Maintenance}
-\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-	\begin{fancycolumns}
-		\nextcolumn
-	\end{fancycolumns}
-\end{frame}
-
-\xkcdframe{1172} % No more CPU heating as breaking change
 
 \subsection{Evolution and Maintenance}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}

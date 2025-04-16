@@ -107,6 +107,18 @@
 		\begin{example}{Patch Release}
 			new patch version: 2.3.1 $\Rightarrow$ 2.3.2
 		\end{example}
+		\begin{example}{Linux Kernel Releases\mysource{\href{https://en.wikipedia.org/wiki/Linux_kernel_version_history}{wikipedia.org}}}
+			\begin{itemize}
+				%\item 6.13.0 -- 6.13.11
+				%\item 6.12.0 -- 6.12.23
+				%\item 6.11.0 (Sep 24) -- 6.11.11 (Dec 24)
+				%\item 6.10.0 (Jul 24) -- 6.10.14 (Oct 24)
+				\item 6.9.0 (May 24) -- 6.9.10 (Jul 24)
+				\item 6.8.0 (Mar 24) -- 6.8.12 (May 24)
+				\item 6.7.0 (Jan 24) -- 6.7.12 (Apr 24)
+				\item 6.6.0 (Oct 23) -- 6.6.87+ (Dec 26) LTS
+			\end{itemize}
+		\end{example}
 	\end{fancycolumns}
 }
 
@@ -235,9 +247,9 @@
 }
 
 % introduced: process
-% reused: ?
+% reused: maintenance
 \newcommand{\diagramVModel}{
-	{\color{black}\begin{tikzpicture}[yscale=-1.45,xscale=.45,phase/.style={draw,thick,rounded rectangle,fill=blue!10,align=center,text width=17mm},label/.style={midway,anchor=west},to/.style={->,>={Stealth[round]},thick}]
+	\begin{tikzpicture}[yscale=-1.45,xscale=.45,phase/.style={draw=foreground,thick,rounded rectangle,fill=blue!10!background,align=center,text width=17mm},label/.style={midway,anchor=west},to/.style={->,>={Stealth[round]},thick}]
 			\node[phase,visible on=<2->] (1) at (0,0) {Requirements Elicitation};
 			\node[phase,visible on=<3->] (2) at (1,1) {System Modeling};
 			\node[phase,visible on=<4->] (3) at (2,2) {Architecture Design};
@@ -259,7 +271,37 @@
 			\draw[to,visible on=<12->,orange,dashed] (2) to (8);
 			\draw[to,visible on=<12->,orange,dashed] (3) to (7);
 			\draw[to,visible on=<12->,orange,dashed] (4) to (6);
-	\end{tikzpicture}}
+	\end{tikzpicture}
+}
+\newcommand{\diagramForwardEngineering}{
+	\begin{tikzpicture}[yscale=-1.45,xscale=.45,phase/.style={draw=foreground,thick,rounded rectangle,fill=blue!10!background,align=center,text width=17mm},label/.style={midway,anchor=west},to/.style={->,>={Stealth[round]},thick}]
+			\node[phase,visible on={<1-2,6>}] (1) at (0,0) {Requirements Elicitation};
+			\node[phase,visible on={<1-3>}] (2) at (1,1) {System Modeling};
+			\node[phase,visible on={<1,3-4>}] (3) at (2,2) {Architecture Design};
+			\node[phase,visible on={<1,4-5>}] (4) at (3,3) {Software Design};
+			\node[phase,visible on={<1,5-6>}] (5) at (4,4) {Implemen-tation};
+			\draw[to,visible on={<1-2>},blue] (1) to node[label] {Requirements Specification} (2);
+			\draw[to,visible on={<1,3>},blue] (2) to node[label] {System Specification} (3);
+			\draw[to,visible on={<1,4>},blue] (3) to node[label] {Architecture Specification} (4);
+			\draw[to,visible on={<1,5>},blue] (4) to node[label] {Design Specification} (5);
+			\draw[to,visible on={<6|handout:0>},blue] (1) to node[label] {Minor Change Request} (5);
+	\end{tikzpicture}
+}
+\newcommand{\diagramReverseEngineering}{
+	\begin{tikzpicture}[yscale=-1.45,xscale=.8,phase/.style={draw=foreground,thick,rounded rectangle,fill=blue!10!background,align=center,text width=17mm},label/.style={midway,anchor=west},to/.style={->,>={Stealth[round]},thick}]
+			\node[phase,visible on={<1,2,6>}] (1) at (0,0) {Requirements Elicitation};
+			\node[phase,visible on={<1,4,6>}] (2) at (1,1) {System Modeling};
+			\node[phase,visible on={<1,5->}] (3) at (2,2) {Architecture Design};
+			\node[phase,visible on={<1,3,6>}] (4) at (3,3) {Software Design};
+			\node[phase,visible on={<1->}] (5) at (4,4) {Implemen-tation};
+			\draw[to,visible on={<1,6>},orange] (2) to (1);
+			\draw[to,visible on={<1,6>},orange] (3) to (2);
+			\draw[to,visible on={<1,6>},orange] (4) to (3);
+			\draw[to,visible on={<2|handout:0>},orange] (5) to (1);
+			\draw[to,visible on={<4|handout:0>},orange] (5) to (2);
+			\draw[to,visible on={<5|handout:0>},orange] (5) to (3);
+			\draw[to,visible on={<1,3,6>},orange] (5) to (4);
+	\end{tikzpicture}
 }
 
 % introduced: process
