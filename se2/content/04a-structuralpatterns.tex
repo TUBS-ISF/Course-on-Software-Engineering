@@ -12,7 +12,7 @@
 \end{frame}
 
 \subsection{Design Patterns}
-\begin{frame}{\insertsubsection\ \mytitlesource{\gofen}} % TODO copied from SE1. reuse?
+\begin{frame}{\insertsubsection\ \mytitlesource{\gof}} % TODO copied from SE1. reuse?
 	\begin{fancycolumns}
 		\begin{note}{Motivation}
 			\mycite{Designing object-oriented software is hard, and designing \emph{reusable} object-oriented software is even harder. [...]  It takes a long time for novices to learn what good object-oriented design is all about. Experienced designers evidently know something inexperienced ones don't. What is it?}
@@ -34,14 +34,14 @@
 \end{frame}
 
 \subsection{Structural Design Patterns}
-\begin{frame}{\insertsubsection{} \mytitlesource{\gof}} % TODO copied from SE1. reuse?
-	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<2->}}{}{visible on={<-0|handout:0>}}
+\begin{frame}[label=structuralpatterns]{Overview on Design Patterns \mytitlesource{\gof}}
+	\centering\slideMindmapDesignPatterns{}{}{}{}{}{}{visible on={<2->}}{visible on={<-0|handout:0>}}{visible on={<-0|handout:0>}}
 \end{frame}
 
 \subsection{Object Adapter Pattern}
 \begin{frame}{\insertsubsection} % TODO copied from SE1. reuse?
 	\begin{fancycolumns}
-		\begin{definition}{Object Adapter \mysource{\gofen}}
+		\begin{definition}{Object Adapter \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
 			\begin{tabularx}{\textwidth}{rX}				
 				intent & \mycite{Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.}\\
@@ -55,13 +55,80 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}} % TODO copied from SE1. reuse?
-	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=2}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
-	
-	\vspace{-75mm}
-	\begin{fancycolumns}[widths={65},animation=none]
+\subsection{Composite Pattern}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[height=2cm]
+		\begin{definition}{Composite \mysource{\gof}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				intent & \mycite{Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.}\\
+				% aka. & \\
+				motivation & avoid case distinctions for primitive and compound objects\\
+				idea & create a common abstract super class enabling a unified access
+			\end{tabularx}
+		\end{definition}
 		\nextcolumn
-		\mynotetight{Object Adapter Pattern}{\objectadapter{width=\linewidth}}
+		\composite{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
+
+\subsection{Decorator Pattern}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Decorator \mysource{\gof}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				intent & \mycite{Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.}\\
+				aka. & wrapper (again)\\
+				motivation & avoid explosion of static classes when combining all additional behaviors with all applicable classes\\
+				idea & create decorators and components with the same interface, whereas decorators forward behavior whenever feasible
+			\end{tabularx}
+		\end{definition}
+		\nextcolumn
+		\decorator{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+	\centering\decoratorexample{height=60mm}
+\end{frame}
+
+\againframe{structuralpatterns}
+
+%\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}} % TODO copied from SE1. reuse?
+%	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=2}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
+%	
+%	\vspace{-75mm}
+%	\begin{fancycolumns}[widths={65},animation=none]
+%		\nextcolumn
+%		\mynotetight{Object Adapter Pattern}{\objectadapter{width=\linewidth}}
+%	\end{fancycolumns}
+%\end{frame}
+
+% TODO create a separate video for each design pattern. would result in shorter, more manageable videos and more flexible usage also in other courses.
+% TODO idea: much more modular videos that we can mix and match between numerous lectures. would require to not write the lecture on each slide. could result in a network of material on youtube, in which videos link to each other rather flexible and we could also remove or add parts without breaking the slide numbering.
+% TODO open question: shall we have a consecutive running example or should each design pattern rather start from the same base implementation? would enable feature branches and their merging into releases with several design patterns. could also be nice to illustrate VCS and release management.
+
+% TODO missing on slides!
+%\subsection{Welche der folgenden Aussagen stimmen?}
+%\begin{itemize}
+%    \richtig Ein Entwurfsmuster ist eine generische, bewährte Lösung für ein wiederkehrendes Entwurfsproblem
+%    \falsch Entwurfsmuster sind nur Jargon, Regeln, und Programmiertricks
+%    \falsch Die Anwendung von Entwurfsmustern erzeugt eine komplette Systemarchitektur
+%    \richtig Entwurfsmuster werden in Strukturmuster, Erzeugungsmuster und Verhaltensmuster unterteilt
+%\end{itemize}
+
+% design patterns, cohesion, Kopplung, ...
+% TODO sequence diagrams: better explanation needed why activities are always enclosed in the synchronous case
+% Mehrfachvererbung: \mycite{A class that has exactly one parent is said to use single inheritance; a class with more than one parent is said to use multiple inheritance.} \umluserguide
+% TODO live coding on design patterns (43min)
+% 32:37..35:45 + 36:10..37:15 + 37:36..38:33 complex expressions (composite pattern and object adapter 8min)
+% 38:55 function (observer pattern 9min) - replace slide at 43:02 and 45:25 - implement observer pattern completely
+% 46:08 delete
+% 46:12 logging (singleton pattern 10min) - replace slide at 56:25
+% 56:46 font size (abstract factory 10min) - replace slide at 1:05:20 - implement abstract factory
+% 1:06:50 brackets (decorator pattern 6min) - replace slide at 1:10:50 - implement decorator pattern
+% 1:12:48 coverage
+% 1:14:25 delete
+% TODO add UML notation for design patterns (i.e., collaborations)
 

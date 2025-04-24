@@ -1,12 +1,12 @@
 \subsection{Creational Design Patterns}
-\begin{frame}{\insertsubsection{} \mytitlesource{\gof}} % TODO copied from SE1. reuse?
-	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<-0|handout:0>}}{}{visible on={<-0|handout:0>}}
+\begin{frame}[label=creationalpatterns]{Overview on Design Patterns \mytitlesource{\gof}}
+	\centering\slideMindmapDesignPatterns{}{}{}{}{}{}{}{}{visible on={<-0|handout:0>}}
 \end{frame}
 
 \subsection{Singleton Pattern}
 \begin{frame}{\insertsubsection} % TODO copied from SE1. reuse?
 	\begin{fancycolumns}
-		\begin{definition}{Singleton \mysource{\gofen}}
+		\begin{definition}{Singleton \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
 			\begin{tabularx}{\textwidth}{rX}				
 				intent & \mycite{Ensure a class [has only] one instance, and provide a global point of access to it.}\\
@@ -33,13 +33,32 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}} % TODO copied from SE1. reuse?
-	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=4}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
-	
-	\vspace{-70mm}
-	\begin{fancycolumns}[widths={70},animation=none]
+%\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}} % TODO copied from SE1. reuse?
+%	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=4}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
+%	
+%	\vspace{-70mm}
+%	\begin{fancycolumns}[widths={70},animation=none]
+%		\nextcolumn
+%		\mynotetight{Singleton Pattern}{\singleton{width=\linewidth}}
+%	\end{fancycolumns}
+%\end{frame}
+
+\subsection{Abstract Factory Pattern}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Abstract Factory \mysource{\gof}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				intent & \mycite{Provide an interface for creating families of related or dependent objects without specifying their concrete classes.}\\
+				aka. & kit\\
+				motivation & avoid case distinctions when creating objects of certain kind, consistently create objects of a particular kind\\
+				idea & create classes for the consistent creation of objects
+			\end{tabularx}
+		\end{definition}
 		\nextcolumn
-		\mynotetight{Singleton Pattern}{\singleton{width=\linewidth}}
+		\abstractfactory{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
+
+\againframe{creationalpatterns}
 
