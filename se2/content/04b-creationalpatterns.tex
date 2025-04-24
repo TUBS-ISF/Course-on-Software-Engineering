@@ -1,0 +1,45 @@
+\subsection{Creational Design Patterns}
+\begin{frame}{\insertsubsection{} \mytitlesource{\gof}} % TODO copied from SE1. reuse?
+	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<-0|handout:0>}}{}{visible on={<-0|handout:0>}}
+\end{frame}
+
+\subsection{Singleton Pattern}
+\begin{frame}{\insertsubsection} % TODO copied from SE1. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Singleton \mysource{\gofen}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				intent & \mycite{Ensure a class [has only] one instance, and provide a global point of access to it.}\\
+				% aka. & \\
+				motivation & avoid the uncontrolled creation of multiple instances\\
+				idea & a private constructor is called on class initialization and a public static method is used for access to that single instance
+			\end{tabularx}
+		\end{definition}
+		\nextcolumn
+		\centering\only<2|handout:0>{\singleton{width=.1\linewidth}}
+		\only<3->{\singleton{width=.5\linewidth}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection: Example} % TODO copied from SE1. reuse?
+	\begin{fancycolumns}
+		\begin{definitiontight}{Pattern}
+			\centering\singleton{width=.5\linewidth}		
+		\end{definitiontight}
+		\nextcolumn
+		\begin{exampletight}{Example Application}
+			\centering\singletonexample{width=.5\linewidth}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}} % TODO copied from SE1. reuse?
+	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=4}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
+	
+	\vspace{-70mm}
+	\begin{fancycolumns}[widths={70},animation=none]
+		\nextcolumn
+		\mynotetight{Singleton Pattern}{\singleton{width=\linewidth}}
+	\end{fancycolumns}
+\end{frame}
+

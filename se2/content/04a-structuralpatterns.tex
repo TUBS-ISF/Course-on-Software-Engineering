@@ -1,0 +1,67 @@
+\subsection{Gang of Four}
+\begin{frame}{\insertsubsection\ \mytitlesource{\gof}} % TODO copied from SE1. reuse?
+	\begin{fancycolumns}[animation=none]
+		\centering\pic[width=.66\linewidth]{books/gof}
+		\nextcolumn
+		\centering\pic[height=27mm,trim=185 0 184 0,clip]{people/erich-gamma}
+		\pic[height=27mm]{people/richard-helm}
+		
+		\pic[height=27mm,trim=0 0 5 0,clip]{people/ralph-johnson}
+		\pic[height=27mm,trim=0 0 160 0,clip]{people/john-vlissides}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Design Patterns}
+\begin{frame}{\insertsubsection\ \mytitlesource{\gofen}} % TODO copied from SE1. reuse?
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\mycite{Designing object-oriented software is hard, and designing \emph{reusable} object-oriented software is even harder. [...]  It takes a long time for novices to learn what good object-oriented design is all about. Experienced designers evidently know something inexperienced ones don't. What is it?}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Design Patterns \deutsch{Entwurfsmuster}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				pattern name & for communication and high-level abstraction\\
+				problem & when to apply the pattern\\
+				solution & template on how to arrange classes and objects\\
+				consequences & trade-offs of applying the pattern
+			\end{tabularx}
+		\end{definition}
+		\begin{note}{Kinds of Patterns}
+			\mycite{Creational patterns \deutsch{Erzeugungsmuster} concern the process of object creation. Structural patterns \deutsch{Strukturmuster} deal with the composition of classes or objects. Behavioral patterns \deutsch{Verhaltensmuster} characterize the ways in which classes or objects interact and distribute responsibility.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Structural Design Patterns}
+\begin{frame}{\insertsubsection{} \mytitlesource{\gof}} % TODO copied from SE1. reuse?
+	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<2->}}{}{visible on={<-0|handout:0>}}
+\end{frame}
+
+\subsection{Object Adapter Pattern}
+\begin{frame}{\insertsubsection} % TODO copied from SE1. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Object Adapter \mysource{\gofen}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				intent & \mycite{Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.}\\
+				aka. & wrapper\\
+				motivation & enable reuse of classes even though incompatible interfaces cannot be made compatible\\
+				idea & create a new class with a compatible interface that forwards all requests
+			\end{tabularx}
+		\end{definition}
+		\nextcolumn
+		\objectadapter{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}} % TODO copied from SE1. reuse?
+	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=2}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
+	
+	\vspace{-75mm}
+	\begin{fancycolumns}[widths={65},animation=none]
+		\nextcolumn
+		\mynotetight{Object Adapter Pattern}{\objectadapter{width=\linewidth}}
+	\end{fancycolumns}
+\end{frame}
+

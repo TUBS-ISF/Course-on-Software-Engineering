@@ -1,0 +1,29 @@
+\subsection{Behavioral Design Patterns}
+\begin{frame}{\insertsubsection{} \mytitlesource{\gof}} % TODO copied from SE1. reuse?
+	\centering\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{}{}{visible on={<2->}}
+\end{frame}
+
+\subsection{Observer Pattern}
+\begin{frame}{\insertsubsection} % TODO copied from SE1. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Observer \mysource{\gofen}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				intent & \mycite{Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.}\\
+				aka. & dependents, publish-subscribe\\
+				motivation & avoid coupling of classes (i.e., explicit references such as imports)\\
+				example & no coupling between model and view in model-view-controller architectures\\
+				idea & data object (model) has a list of observers (views) that are notified about changes
+			\end{tabularx}
+		\end{definition}
+		\nextcolumn
+		\observer{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+%\subsection{Overview on Design Patterns}
+%\begin{frame}{\insertsubsection{} \mytitlesource{\gof}}
+%	\only<-4|handout:0>{\tikzset{notTaughtDesignPatterns/.style={}}}%
+%	\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<1,4,5->}}{visible on={<2,4->}}{visible on={<3->}}
+%\end{frame}
+
