@@ -37,6 +37,18 @@
 	\end{fancycolumns}
 }
 
+% introduced: implementation
+% reused: designpatterns
+\newcommand{\slideWindowsCalculator}{
+	\begin{frame}{Calc on Windows 10\ \mytitlesource{\href{https://youtu.be/LKDbQfzzGJo?t=1544}{youtube.de}}}
+		\begin{fancycolumns}
+			\centering\picDark[width=.66\linewidth]{failures/win10-calc-scientific}
+			\nextcolumn
+			\centering\picDark[width=.66\linewidth]{failures/win10-calc-standard}
+		\end{fancycolumns}
+	\end{frame}
+}
+
 % introduced: testing
 % reused: summary
 \newcommand{\slideMindmapQualityAssurance}[7]{
@@ -454,8 +466,49 @@
 	\end{fancycolumns}
 }
 
-% introduced: reuse
-% reused: 
+% introduced: se1-reuse
+% reused: se2-designpatterns
+\newcommand{\slideGangOfFour}{
+	\begin{frame}{\insertsubsection\ \mytitlesource{\gof}}
+	\begin{fancycolumns}[animation=none]
+		\centering\pic[width=.66\linewidth]{books/gof}
+		\nextcolumn
+		\centering\pic[height=27mm,trim=185 0 184 0,clip]{people/erich-gamma}
+		\pic[height=27mm]{people/richard-helm}
+		
+		\pic[height=27mm,trim=0 0 5 0,clip]{people/ralph-johnson}
+		\pic[height=27mm,trim=0 0 160 0,clip]{people/john-vlissides}
+	\end{fancycolumns}
+\end{frame}
+}
+
+% introduced: se1-reuse
+% reused: se2-designpatterns
+\newcommand{\slideDesignPatterns}{
+	\begin{frame}{\insertsubsection\ \mytitlesource{\gofen}}
+		\begin{fancycolumns}
+			\begin{note}{Motivation}
+				\mycite{Designing object-oriented software is hard, and designing \emph{reusable} object-oriented software is even harder. [...]  It takes a long time for novices to learn what good object-oriented design is all about. Experienced designers evidently know something inexperienced ones don't. What is it?}
+			\end{note}
+			\nextcolumn
+			\begin{definition}{Design Patterns \deutsch{Entwurfsmuster}}
+				\setlength\tabcolsep{1mm}
+				\begin{tabularx}{\textwidth}{rX}				
+					pattern name & for communication and high-level abstraction\\
+					problem & when to apply the pattern\\
+					solution & template on how to arrange classes and objects\\
+					consequences & trade-offs of applying the pattern
+				\end{tabularx}
+			\end{definition}
+			\begin{note}{Kinds of Patterns}
+				\mycite{Creational patterns \deutsch{Erzeugungsmuster} concern the process of object creation. Structural patterns \deutsch{Strukturmuster} deal with the composition of classes or objects. Behavioral patterns \deutsch{Verhaltensmuster} characterize the ways in which classes or objects interact and distribute responsibility.}
+			\end{note}
+		\end{fancycolumns}
+	\end{frame}
+}
+
+% introduced: se1-reuse
+% reused: se2-designpatterns
 %
 % legend: gray (will not be taught), bold (taught in this lecture), normal font (will be taught)
 % 
