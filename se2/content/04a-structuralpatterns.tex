@@ -57,7 +57,7 @@
 
 \subsection{Composite Pattern}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[height=2cm]
+	\begin{fancycolumns}
 		\begin{definition}{Composite \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
 			\begin{tabularx}{\textwidth}{rX}				
@@ -67,10 +67,22 @@
 				idea & create a common abstract super class enabling a unified access
 			\end{tabularx}
 		\end{definition}
+		\uncover<3->{\begin{example}{Java GUIs with Swing\mysource{\href{https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html}{oracle.com}}}
+			\begin{itemize}
+				\item Component: javax.swing.JComponent
+				\item Leaf: JLabel, JButton, JTextField, \ldots
+				\item Composite: JPanel, JTable, JTree, \ldots
+			\end{itemize}
+		\end{example}}
 		\nextcolumn
 		\composite{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
+
+% TODO better composite example
+%\begin{frame}{Example of the Composite Pattern}
+%	\centering\compositeexample{height=60mm}
+%\end{frame}
 
 \subsection{Decorator Pattern}
 \begin{frame}{\insertsubsection}
