@@ -560,7 +560,7 @@
 				child[notTaughtDesignPatterns] { node {State} }
 				child[notTaughtDesignPatterns] { node {Strategy} }
 				child[notTaughtDesignPatterns] { node {Template Method} }
-				child[notTaughtDesignPatterns] { node {Visitor} }
+				child[#6] { node {Visitor} } % TODO check how to parameterize that for SE1
 			}
 			;
 	\end{tikzpicture}}
@@ -578,7 +578,9 @@
 \newcommand{\abstractfactory}[1]{\picWhite[#1,page=8,trim=200 355 280 65,clip]{design/diagramsnet-designpatterns}}
 
 \newcommand{\observer}[1]{\picWhite[#1,page=9,trim=285 350 320 55,clip]{design/diagramsnet-designpatterns}}
+\newcommand{\visitor}[1]{\picWhite[#1,page=10,trim=80 205 420 85,clip]{design/diagramsnet-designpatterns-new}}
 
+% TODO integrate separate file for the calculator example
 \newcommand{\profcalculator}[1]{\picWhite[#1,trim=190 185 130 105,clip]{design/diagramsnet-designpatterns}}
 \newcommand{\profcalculatorcollaboration}[1]{\picWhite[#1,trim=70 0 20 90,clip]{design/diagramsnet-designpatterns-collaborations}}
 

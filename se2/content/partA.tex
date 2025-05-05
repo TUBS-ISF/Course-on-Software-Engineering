@@ -238,6 +238,11 @@
 	\item User Story 5: Layout all buttons in the GUI horizontally instead of vertically.
 	\item User Story 6: Implement a dark mode of the calculator by means of a feature flag.
 }
+\newcommand{\userstoriesC}{
+	\item User Story 7: Display brackets only when needed.
+	\item User Story 8: If there is no error message, show seconds elapsed since last input.
+	\item User Story 9: Toggle in GUI to let users choose between brackets and evaluation of subterms.
+}
 
 \section{Structural Patterns}
 \input{content/04a-structuralpatterns}
@@ -273,18 +278,43 @@
 }
 
 \section{Behavioral Patterns}
-%\input{content/04c-behavioralpatterns}
-%\lessonslearned{
-%	\item ?
-%	\item Next: ?
-%}{
-%	\item \sommerville\mychapter{?}
-%}{
-%	\begin{enumerate}
-%		\item<+-> Form groups of 2--3 students
-%		\item<+-> ?
-%	\end{enumerate}
-%}
+\input{content/04c-behavioralpatterns}
+\lessonslearned{
+	\item Observer pattern
+	\item Visitor pattern
+	\item Next lecture: What do software engineers need to know about compilers?
+}{
+	\item \sommerville\mychapter{5}
+}{
+	Continue implementing the FancyCalculator:\\see next slide
+}
+
+\begin{frame}
+	\begin{fancycolumns}[widths={65}]
+		\begin{example}{FancyCalculator - 3rd Exercise on Design Patterns}
+			\begin{itemize}
+				\userstoriesA
+				\userstoriesB
+				\userstoriesC
+			\end{itemize}
+		\end{example}
+	\nextcolumn
+		\begin{definition}{Design Patterns}
+			\begin{itemize}
+				\item Structural patterns:\\object adapter, composite, decorator
+				\item Creational patterns:\\singleton, abstract factory
+				\item Behavioral patterns:\\observer
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Hints}
+			\begin{itemize}
+				\item User Story 1/2: fix DRY first
+				\item User Story 3: try composite
+				\item User Story 4: try singleton
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
 
 %\faq{
 %	\item

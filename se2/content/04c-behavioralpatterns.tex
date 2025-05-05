@@ -1,3 +1,6 @@
+\subsection{Recap: Design Patterns}
+\slideDesignPatterns
+
 \subsection{Behavioral Design Patterns}
 \begin{frame}[label=behavioralpatterns]{Overview on Design Patterns \mytitlesource{\gof}}
 	\centering\slideMindmapDesignPatterns{}{}{}{}{}{}{}{}{visible on={<2->}}
@@ -18,6 +21,24 @@
 		\end{definition}
 		\nextcolumn
 		\observer{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Visitor Pattern}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Visitor \mysource{\gof}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				intent & \mycite{Represent an operation to be performed on the elements of an object structure.}\\
+				%aka. & \\
+				motivation & avoid that the implementation of an operation is spread over several classes\\
+				example & compiler operates on code in a tree structure, but has numerous operations (e.g., code generation, checking for names and type errors)\\
+				idea & each data object has a generic method to pass a visitor object and each operation is implemented in a dedicated visitor
+			\end{tabularx}
+		\end{definition}
+		\nextcolumn
+		\visitor{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
 
