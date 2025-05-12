@@ -1,0 +1,845 @@
+%\lstset{style=java,style=featurehouse,style=jml,tabsize=2,escapechar=|,style=scriptsize,frame=none}%style=slides,
+\newcommand{\featuremodule}[1]{\hfill#1~~~}
+
+% TODO use resize box to fill code to available width \resizebox{60mm}{!}{}
+\lstset{style=java,tabsize=2,escapechar=|,frame=none,style=small,backgroundcolor=}%style=featurehouse,style=jml,style=slides,
+\newcommand{\centeredlisting}[1]{
+	\begin{center}
+		\begin{tikzpicture}[every node/.style={rounded corners,draw,thick,fill=white},listing/.style={inner xsep=4pt,inner ysep=3pt}]
+			\node[listing] at (0,0) {\makebox{\usebox{#1}}};
+		\end{tikzpicture}
+	\end{center}
+}
+
+%%%%%%%%%% source code with bugs %%%%%%%%%%
+
+\newsavebox{\edgelexicalerror}
+\begin{lrbox}{\edgelexicalerror}
+	\begin{lstlisting}
+class Node {
+}
+
+class Edge {
+	Node node, node|\tpkt{a1}´\tpkt{a2}|;
+}|\errorunderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgelexicalerrorfix}
+\begin{lrbox}{\edgelexicalerrorfix}
+	\begin{lstlisting}
+class Node {
+}
+
+class Edge {
+	Node |\tpkt{a1}|first, second|\tpkt{a2}|;
+}|\infounderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgesyntaxerror}
+\begin{lrbox}{\edgesyntaxerror}
+	\begin{lstlisting}
+class Node {
+}
+
+class Edge {
+	Node first, second;
+
+	Edge(Node first, Node second|\tpkt{a1}|)|\tpkt{a2}|
+		this.first = first;
+		this.second = second;
+	}
+}|\errorunderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgesyntaxerrorfix}
+\begin{lrbox}{\edgesyntaxerrorfix}
+	\begin{lstlisting}
+class Node {
+}
+
+class Edge {
+	Node first, second;
+
+	Edge(Node first, Node second|\tpkt{a1}|) {|\tpkt{a2}|
+		this.first = first;
+		this.second = second;
+	}
+}|\infounderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgetypeerror}
+\begin{lrbox}{\edgetypeerror}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	public static void main(String[] args) {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = |\tpkt{a1}|new Edge()|\tpkt{a2}|;
+		System.out.println(e);
+	}
+}|\errorunderline{a}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgetypeerrorfix}
+\begin{lrbox}{\edgetypeerrorfix}
+\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	public static void main(String[] args) {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = new Edge(|\tpkt{a1}|a,b|\tpkt{a2}|);
+		System.out.println(e);
+	}
+}|\infounderline{a}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgeruntimeerror}
+\begin{lrbox}{\edgeruntimeerror}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(|\tpkt{a1}|e.first|\tpkt{a2}|) && second.equals(e.first);
+	}
+	public static void main(String[] args) {
+		Edge e = new Edge(new Node(), new Node());
+		System.out.println(e.equals(null));
+	}
+}|\errorunderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgeruntimeerrorfix}
+\begin{lrbox}{\edgeruntimeerrorfix}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.first);
+	}
+	public static void main(String[] args) {
+		Edge e = new Edge(new Node(), new Node());
+		System.out.println(e.equals(|\tpkt{a1}|e|\tpkt{a2}|));
+	}
+}|\infounderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgelogicalerror}
+\begin{lrbox}{\edgelogicalerror}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.first);
+	}
+	public static void main(String[] args) {
+		Edge e = new Edge(new Node(), new Node());
+		System.out.println(e.equals(e));
+	}
+}
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\edgelogicalerrorfix}
+\begin{lrbox}{\edgelogicalerrorfix}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.|\tpkt{a1}|second|\tpkt{a2}|);
+	}
+	public static void main(String[] args) {
+		Edge e = new Edge(new Node(), new Node());
+		System.out.println(e.equals(e));
+	}
+}|\infounderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\codeone}
+\begin{lrbox}{\codeone}
+\begin{lstlisting}
+class Edge {
+  Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+  boolean |\tpkt{b1}|equals(Edge e)|\tpkt{b2}| {
+    return first.equals(e.first) && second.equals(e.first);
+  }
+	public static void main(String[] args) {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = new Edge(a, b);
+		System.out.println(e.|\tpkt{a1}|equals()|\tpkt{a2}|);
+	}
+}
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\bugone}
+\begin{lrbox}{\bugone}
+\begin{lstlisting}
+class Edge {
+  Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+  boolean |\tpkt{b1}|equals(Edge e)|\tpkt{b2}| {
+    return first.equals(e.first) && second.equals(e.first);
+  }
+	public static void main(String[] args) {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = new Edge(a, b);
+		System.out.println(e.|\tpkt{a1}|equals()|\tpkt{a2}|);
+	}
+}|\errorunderline{a}\warningunderline{b}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\codetwo}
+\begin{lrbox}{\codetwo}
+\begin{lstlisting}
+class Edge {
+  Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+  boolean equals(Edge e) {
+    return first.equals(|\tpkt{a1}|e.first|\tpkt{a2}|) && second.equals(e.first);
+  }
+	public static void main(String[] args) {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = new Edge(a, b);
+		System.out.println(e.equals(|\tpkt{b1}|null|\tpkt{b2}|));
+	}
+}|\infounderline{b}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\bugtwo}
+\begin{lrbox}{\bugtwo}
+\begin{lstlisting}
+class Edge {
+  Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+  boolean equals(Edge e) {
+    return first.equals(|\tpkt{a1}|e.first|\tpkt{a2}|) && second.equals(e.first);
+  }
+	public static void main(String[] args) {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = new Edge(a, b);
+		System.out.println(e.equals(|\tpkt{b1}|null|\tpkt{b2}|));
+	}
+}|\errorunderline{a}\warningunderline{b}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\bugtwoagain}
+\begin{lrbox}{\bugtwoagain}
+\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first; this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(|\tpkt{a1}|e.first|\tpkt{a2}|) && second.equals(e.first);
+	}
+}
+|\tpkt{d1}|import org.junit.Test;|\tpkt{d2}|
+|\tpkt{e1}|public class TEdge {|\tpkt{e2}|
+	|\tpkt{c1}|@Test|\tpkt{c2}|
+	|\tpkt{f1}|public|\tpkt{f2}| void test1() {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = new Edge(a, b);
+		System.out.println(e.equals(|\tpkt{b1}|null|\tpkt{b2}|));
+	}
+}|\errorunderline{a}\warningunderline{b}\infounderline{c,d,e,f}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\codethree}
+\begin{lrbox}{\codethree}
+\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first; this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(|\tpkt{a1}|e.first|\tpkt{a2}|) && second.equals(e.first);
+	}
+}
+|\tpkt{d1}|import org.junit.Test;|\tpkt{d2}|
+|\tpkt{e1}|public class TEdge {|\tpkt{e2}|
+	|\tpkt{c1}|@Test|\tpkt{c2}|
+	|\tpkt{f1}|public|\tpkt{f2}| void test1() {
+		Node a = new Node();
+		Node b = new Node();
+		Edge e = new Edge(a, b);
+		System.out.println(e.equals(|\tpkt{b1}|e|\tpkt{b2}|));
+	}
+}|\infounderline{b}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\bugthree}
+\begin{lrbox}{\bugthree}
+\begin{lstlisting}
+class Node {}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first; this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.|\tpkt{a1}|first|\tpkt{a2}|);
+	}
+}
+|\tpkt{d1}|import org.junit.Test;|\tpkt{d2}|
+|\tpkt{e1}|public class TEdge {|\tpkt{e2}|
+	|\tpkt{c1}|@Test|\tpkt{c2}|
+	|\tpkt{f1}|public|\tpkt{f2}| void test1() {
+		Node a = new Node();
+		Node b = new Node();
+		|\tpkt{b1}|System.out.println(new Edge(a, b).equals(new Edge(a, b)));|\tpkt{b2}|
+	}
+}|\errorunderline{b}\warningunderline{a}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\codefour}
+\begin{lrbox}{\codefour}
+\begin{lstlisting}
+class Node {}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first; this.second = second;
+	}
+	boolean equals(Edge e) {
+	    return first.equals(e.first) && second.equals(e.|\tpkt{a1}|first|\tpkt{a2}|);
+	}
+}
+|\tpkt{d1}|import org.junit.*;|\tpkt{d2}|
+|\tpkt{e1}|public class TEdge {|\tpkt{e2}|
+	|\tpkt{c1}|@Test|\tpkt{c2}|
+	|\tpkt{f1}|public|\tpkt{f2}| void test1() {
+		Node a = new Node();
+		Node b = new Node();
+		|\tpkt{b1}|Assert.assertTrue|\tpkt{b2}|(new Edge(a, b).equals(new Edge(a, b)));
+	}
+}|\infounderline{b,d}|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\bugfour}
+\begin{lrbox}{\bugfour}
+	\begin{lstlisting}
+class Node {}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first; this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.|\tpkt{a1}|first|\tpkt{a2}|);
+	}
+}
+|\tpkt{d1}|import org.junit.*;|\tpkt{d2}|
+|\tpkt{e1}|public class TEdge {|\tpkt{e2}|
+	|\tpkt{c1}|@Test|\tpkt{c2}|
+	|\tpkt{f1}|public|\tpkt{f2}| void test1() {
+		Node a = new Node();
+		Node b = new Node();
+		|\tpkt{b1}|Assert.assertTrue(new Edge(a, b).equals(new Edge(a, b)));|\tpkt{b2}|
+	}
+}|\warningunderline{a}\errorunderline{b}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\codefive}
+\begin{lrbox}{\codefive}
+	\begin{lstlisting}
+class Node {}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first; this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.|\tpkt{a1}|second|\tpkt{a2}|);
+	}
+}
+|\tpkt{d1}|import org.junit.*;|\tpkt{d2}|
+|\tpkt{e1}|public class TEdge {|\tpkt{e2}|
+	|\tpkt{c1}|@Test|\tpkt{c2}|
+	|\tpkt{f1}|public|\tpkt{f2}| void test1() {
+		Node a = new Node();
+		Node b = new Node();
+		|\tpkt{b1}|Assert.assertTrue|\tpkt{b2}|(new Edge(a, b).equals(new Edge(a, b)));
+	}
+}|\infounderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\dbc}
+\begin{lrbox}{\dbc}
+\begin{lstlisting}
+class Node {}
+class Edge {
+  //@ invariant first != null && second != null;
+  Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+  /*@ requires e != null;
+    @ ensures \result <==> first.equals(e.first) &&
+    @   second.equals(e.second); @*/
+  boolean equals(Edge e) {
+    return first.equals(e.first) && second.equals(e.first);
+  }
+	public static void main(String[] args) {
+		Node a = new Node();
+		Node b = new Node();
+		System.out.println(new Edge(a, b).equals(null));
+	}
+}
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\callee}
+\begin{lrbox}{\callee}
+\begin{lstlisting}
+
+boolean equals(Edge e) {
+	return first.equals(e.first)
+	  && second.equals(e.first);
+}
+|~|
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\caller}
+\begin{lrbox}{\caller}
+\begin{lstlisting}
+static void main(String[] args) {
+	Node a = new Node();
+	Node b = new Node();
+	System.out.println(
+	  new Edge(a, b).equals(null));
+}
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\blamepre}
+\begin{lrbox}{\blamepre}
+\begin{lstlisting}
+/*@ requires e != null; @*/
+\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\blamepost}
+\begin{lrbox}{\blamepost}
+\begin{lstlisting}
+/*@ ensures \result <==>
+  @ first.equals(e.first) &&
+  @ second.equals(e.second); @*/
+\end{lstlisting}
+\end{lrbox}
+
+%%%%%%%%%% source code for fop %%%%%%%%%%
+
+\newsavebox{\fopbase}
+\begin{lrbox}{\fopbase}
+	\begin{minipage}{72mm}
+\begin{lstlisting}
+class Edge {|\featuremodule{Base}|
+  Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+  boolean equals(Edge e) {
+    return first.equals(e.first) &&
+      second.equals(e.second);
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\fopweight}
+\begin{lrbox}{\fopweight}
+	\begin{minipage}{72mm}
+\begin{lstlisting}
+class Edge {|\featuremodule{Weighted}|
+  Integer weight = 0;
+	void setWeight(Integer weight) {
+		this.weight = weight;
+	}
+  boolean equals(Edge e) {
+    return original(e) && weight == e.weight;
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+%%%%%%%%%% source code for plain contracting %%%%%%%%%%
+
+\newsavebox{\pcbase}
+\begin{lrbox}{\pcbase}
+	\begin{minipage}{72mm}
+\begin{lstlisting}
+class Edge {|\featuremodule{Base}|
+  //@ invariant first != null && second != nulljml;
+  Node first, second;
+  /*@ requires e != null;|\tpkt{a2}\tpkt{b2}\tpkt{d2}|
+    @ ensures \result ==> first.equals(e.first) &&
+    @ |~| second.equals(e.second); @*/
+  boolean equals(Edge e) {
+    return first.equals(e.first) &&
+      second.equals(e.second);
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\pcweight}
+\begin{lrbox}{\pcweight}
+	\begin{minipage}{72mm}
+\begin{lstlisting}
+class Edge {|\featuremodule{Weighted}|
+  Integer weight = 0;
+  boolean equals(Edge e) {
+    return original(e) && weight == e.weight;
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+%%%%%%%%%% source code for behavioral subtyping %%%%%%%%%%
+
+\newsavebox{\bhsuper}
+\begin{lrbox}{\bhsuper}
+	\begin{minipage}{55mm}
+\begin{lstlisting}
+class Edge {
+  //@ invariant first != null && second != null;
+  Node first, second;
+  /*@ requires e != null;|\tpkt{a2}\tpkt{b2}\tpkt{d2}|
+    @ ensures \result ==> first.equals(e.first) &&
+    @ |~| second.equals(e.second); @*/
+  boolean equals(Edge e) {
+    return first.equals(e.first) &&
+      second.equals(e.second);
+  }
+  [...]
+}
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\bhsub}
+\begin{lrbox}{\bhsub}
+	\begin{minipage}{55mm}
+\begin{lstlisting}
+class WeightedEdge extends Edge {
+  Integer weight = 0;
+  /*@ also
+    @ requires e != null && weight != null;|\tpkt{c2}\tpkt{e2}|
+    @ ensures \result ==> weight == e.weight; @*/
+  boolean equals(WeightedEdge e) {
+    return super(e) && weight.equals(e.weight);
+  }
+  [...]
+}
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\bhone}
+\begin{lrbox}{\bhone}
+	\begin{minipage}{40mm}
+\begin{lstlisting}
+|\tpkt{a1}|new Edge([...]).equals([...]);
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\bhtwo}
+\begin{lrbox}{\bhtwo}
+	\begin{minipage}{40mm}
+\begin{lstlisting}
+Edge e = new WeightedEdge([...]);
+|\tpkt{d1}\tpkt{e1}|e.equals([...]);
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\bhthree}
+\begin{lrbox}{\bhthree}
+	\begin{minipage}{40mm}
+\begin{lstlisting}
+|\tpkt{b1}\tpkt{c1}|new WeightedEdge([...]).equals([...]);
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+%%%%%%%%%% source code for explicit contract refinement %%%%%%%%%%
+
+\newsavebox{\ecrbase}
+\begin{lrbox}{\ecrbase}
+	\begin{minipage}{62mm}
+\begin{lstlisting}
+class Graph {|\featuremodule{Base}|
+  //@ invariant edges != null;
+  Collection<Edge> edges;
+  /*@ requires e != null;
+    @ ensures edges.contains(e); @*/
+  void add(Edge e) {
+    edges.add(e);
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\ecrmaxoc}
+\begin{lrbox}{\ecrmaxoc}
+	\begin{minipage}{62mm}
+\begin{lstlisting}
+class Graph {|\featuremodule{MaxEdges}|
+  Integer maxEdges = 10;
+
+
+
+
+  void add(Edge e) {
+    if (countEdges() < maxEdges)
+		  original(e);
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\ecrmaxco}
+\begin{lrbox}{\ecrmaxco}
+	\begin{minipage}{62mm}
+\begin{lstlisting}
+class Graph {|\featuremodule{MaxEdges}|
+  Integer maxEdges = 10;
+  /*@ requires e != null
+	  @ |~| && maxEdges != null;
+    @ ensures \old(edges.size()) < maxEdges
+		@ |~| ==> edges.contains(e); @*/
+  void add(Edge e) {
+    if (countEdges() < maxEdges)
+		  original(e);
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\ecrmax}
+\begin{lrbox}{\ecrmax}
+	\begin{minipage}{62mm}
+\begin{lstlisting}
+class Graph {|\featuremodule{MaxEdges}|
+  Integer maxEdges = 10;
+  /*@ requires original
+	  @ |~| && maxEdges != null;
+    @ ensures \old(edges.size()) < maxEdges
+		@ |~| ==> original; @*/
+  void add(Edge e) {
+    if (countEdges() < maxEdges)
+		  original(e);
+  }
+[...] }
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+%%%%%%%%%% variability encoding %%%%%%%%%%
+
+\newsavebox{\variables}
+\begin{lrbox}{\variables}
+	\begin{minipage}{50mm}
+\begin{lstlisting}
+boolean directed = false;
+boolean weighted = false;
+boolean optimalConnection = false;
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\variablesd}
+\begin{lrbox}{\variablesd}
+	\begin{minipage}{50mm}
+\begin{lstlisting}
+boolean directed = true;
+boolean weighted = false;
+boolean optimalConnection = false;
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\variablesw}
+\begin{lrbox}{\variablesw}
+	\begin{minipage}{50mm}
+\begin{lstlisting}
+boolean directed = false;
+boolean weighted = true;
+boolean optimalConnection = false;
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+\newsavebox{\variableso}
+\begin{lrbox}{\variableso}
+	\begin{minipage}{50mm}
+\begin{lstlisting}
+boolean directed = true;
+boolean weighted = true;
+boolean optimalConnection = true;
+\end{lstlisting}
+	\end{minipage}
+\end{lrbox}
+
+%%%%%%%%%% miniatures %%%%%%%%%%
+
+\newsavebox{\contracts}
+\begin{lrbox}{\contracts}
+	\begin{minipage}{\textwidth}
+	\newcommand{\callercolor}{white}
+	\newcommand{\calleecolor}{red}
+	\vspace{15mm}\hspace{54mm}\begin{tikzpicture}[remember picture,overlay,xscale=3.5,yscale=3,every node/.style={rounded corners,draw,thick},listing/.style={preaction={fill=white},inner xsep=-1pt,inner ysep=-2pt},assumption/.style={shorten <= 2pt,shorten >= 2pt,->,line width=1pt,bend right=60}]
+		\node[listing,name=callee,preaction={fill=\calleecolor!25!white,path fading=north,fading angle=15},label=above left:callee] at (-1,0) {\usebox{\callee}};
+		\node[listing,name=caller,preaction={fill=\callercolor!25!white,path fading=north,fading angle=15},label=above right:caller] at (1,0) {\usebox{\caller}};
+		\path[assumption] (caller) edge node[listing,label=above:precondition] {\usebox{\blamepre}} (callee);
+		\path[assumption] (callee) edge node[listing,label=above:postcondition] {\usebox{\blamepost}} (caller);
+	\end{tikzpicture}
+	\end{minipage}
+\end{lrbox}
+
+%\newsavebox{\productline}
+%\begin{lrbox}{\productline}
+%	\begin{minipage}{\textwidth}
+%	\vspace{15mm}\hspace{54mm}\begin{tikzpicture}[remember picture,overlay,xscale=3,yscale=1.6,node/.style={rounded corners,draw,thick,fill=white},gen/.style={->,thick,shorten <= 2pt,shorten >= -2pt},valid/.style={->,gray,dashed,thick,shorten <= 2pt,shorten >= 2pt},conf/.style={node,pos=.7}]
+%		\node[node,name=codebase] at (-.7,1.5) {\includegraphics[height=.15\textwidth]{../../../pics/featureide/cd-gpl}};
+%		\uncover<1->{\node[name=pgraph] at (-1.5,-1.5) {\pgraph};\draw[gen] (codebase) -- node[conf,name=c] {\config{}} (pgraph);}
+%		\uncover<1->{\node[name=pdgraph] at (-.5,-1.5) {\pdgraph};\draw[gen] (codebase) -- node[conf,name=cd] {\config{-d}} (pdgraph);}
+%		\uncover<1->{\node[name=pwgraph] at (.5,-1.5) {\pwgraph};\draw[gen] (codebase) -- node[conf,name=cw] {\config{-w}} (pwgraph);}
+%		\uncover<1->{\node[name=pograph] at (1.5,-1.5) {~~~\pograph~~~};\draw[gen] (codebase) -- node[conf,name=co] {\config{-dwo}} (pograph);}
+%		\uncover<1->{\node[node,name=fm] at (.7,1.5) {\fm};\draw[valid] (fm) -- (c);\draw[valid] (fm) -- (cd);\draw[valid] (fm) -- (cw);\draw[valid] (fm) -- (co);}
+%	\end{tikzpicture}
+%	\end{minipage}
+%\end{lrbox}
+%
+%\newsavebox{\foc}
+%\begin{lrbox}{\foc}
+%	\begin{minipage}{\textwidth}
+%		\vspace{10mm}\hspace{54mm}\begin{tikzpicture}[remember picture,overlay,xscale=6,yscale=1.5,every node/.style={rounded corners,draw,thick,preaction={fill=white}},mechanism/.style={anchor=east},used/.style={shorten <= 2pt,shorten >= 2pt,->,line width=1pt}]
+%			\node at (0,0) {\includegraphics[width=\textwidth]{../../../pics/featureide/cd-gpl-contracts.pdf}};
+%			\node[name=ecr,mechanism,preaction={fill=blue!25!white,path fading=north,fading angle=15}] at (1,-2) {Explicit contract refinement};
+%			\uncover<1->{\node[name=pc,mechanism,preaction={fill=orange!25!white,path fading=north,fading angle=15}] at (1,0) {Plain contracting};
+%			\node[name=bs,mechanism,preaction={fill=green!25!white,path fading=north,fading angle=15}] at (1,-1) {Behavioral subtyping};
+%			\path[used] (pc) edge (.2,.7);
+%			\path[used] (pc) edge (.7,.8);
+%			\path[used] (bs) edge (.1,.1);
+%			\path[used] (bs) edge (-.5,.9);
+%			\path[used] (bs) edge (-.4,-.5);
+%			\path[used] (ecr) edge (-.3,-1.2);
+%			\path[used] (ecr) edge (-.35,-.3);}
+%		\end{tikzpicture}
+%	\end{minipage}
+%\end{lrbox}
+%
+%\newsavebox{\proofcomp}
+%\begin{lrbox}{\proofcomp}
+%	\begin{minipage}{\textwidth}
+%		\vspace{0mm}\hspace{54mm}\begin{tikzpicture}[remember picture,overlay,xscale=3,yscale=.8,node/.style={rounded corners,draw,thick,fill=white},gen/.style={->,thick,shorten <= 2pt,shorten >= -2pt},neg/.style={->,thick,shorten <= -2pt,shorten >= 2pt},do/.style={gen,shorten >= 2pt,dashed},label/.style={preaction={fill=white,opacity=.66}}]
+%			\node[node,name=codebase] at (-.7,1.5) {\includegraphics[height=.15\textwidth]{../../../pics/featureide/cd-gpl}};
+%			\node[label] at (-.7,1.5) {+ partial proofs};
+%			\node[name=pgraph] at (-1.5,-1.5) {\pgraph};\draw[gen] (codebase) -- (pgraph);
+%			\node[name=pdgraph] at (-.5,-1.5) {\pdgraph};\draw[gen] (codebase) -- (pdgraph);
+%			\node[name=pwgraph] at (.5,-1.5) {\pwgraph};\draw[gen] (codebase) -- (pwgraph);
+%			\node[name=pograph] at (1.5,-1.5) {\pograph};\draw[gen] (codebase) -- (pograph);
+%			\node[label] at (-1.5,-1.5) {+ proofs};
+%			\node[label] at (-.5,-1.5) {+ proofs};
+%			\node[label] at (.5,-1.5) {+ proofs};
+%			\node[label] at (1.5,-1.5) {+ proofs};
+%			\node[node,name=pgraphx,align=center] at (-1.5,-4) {theorems\\+ proofs};\draw[neg] (pgraph) -- (pgraphx);
+%			\node[node,name=pdgraphx,align=center] at (-.5,-4) {theorems\\+ proofs};\draw[neg] (pdgraph) -- (pdgraphx);
+%			\node[node,name=pwgraphx,align=center] at (.5,-4) {theorems\\+ proofs};\draw[neg] (pwgraph) -- (pwgraphx);
+%			\node[node,name=pographx,align=center] at (1.5,-4) {theorems\\+ proofs};\draw[neg] (pograph) -- (pographx);
+%			\node[name=pgraphz] at (-1.25,-5) {\richtig};
+%			\node[name=pdgraphz] at (-.25,-5) {\richtig};
+%			\node[name=pwgraphz] at (.75,-5) {\falsch};
+%			\node[name=pographz] at (1.75,-5) {\richtig};
+%		\end{tikzpicture}
+%	\end{minipage}
+%\end{lrbox}
+%
+%\newsavebox{\varenc}
+%\begin{lrbox}{\varenc}
+%	\begin{minipage}{\textwidth}
+%		\vspace{5mm}\hspace{54mm}\begin{tikzpicture}[remember picture,overlay,xscale=3,yscale=1.6,node/.style={rounded corners,draw,thick,fill=white},gen/.style={->,thick,shorten <= 2pt,shorten >= -2pt},conf/.style={node,pos=.5},listing/.style={node,inner xsep=-1pt,inner ysep=-2pt}]
+%			\node[node,name=codebase] at (0,1.5) {\includegraphics[height=.15\textwidth]{../../../pics/featureide/cd-gpl}};
+%			\node[name=simulator,label=below:metaproduct] at (-1.5,-1.5) {\pmeta};\draw[gen] (codebase) -- node[conf,name=fm] {\fm} (simulator);
+%			\node[name=product,label=below:product] at (1.5,-1.5) {\pwgraph};\draw[gen] (codebase) -- node[conf,name=cw] {\config{-w}} (product);
+%			\draw[->,green,dashed,thick,shorten <= 2pt,shorten >= 2pt] (simulator) -- node[listing,label=below:product simulation] {\usebox{\variablesw}} (product);
+%		\end{tikzpicture}
+%	\end{minipage}
+%\end{lrbox}
+%

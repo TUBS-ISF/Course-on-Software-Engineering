@@ -1,3 +1,5 @@
+\input{../se1/content/code}
+
 % TODO L05 Compilation
 
 \ifuniversity{tubs}{\date{May 12, 2025}}
@@ -5,46 +7,94 @@
 \author{Thomas Thüm}
 \lecture{Compilation}{compilation}
 
-\section{Part 1}
-%\input{content/a-}
+\section{Fundamentals on Compilation}
+\input{content/05a-compilation}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item 2020 Turing Award for high-level programming languages
+	\item Compilation vs interpretation
+	\item Type safety and correctness
+	\item Next: How do compilers work?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \dragonbook
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students for Think-Pair-Share
+		\item What are chances and risks of high-level programming languages (i.e., an increasing gap between high-level instructions and low-level machine code)?
 	\end{enumerate}
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Architecture of Compilers}
+\input{content/05b-compilerarchitecture}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Compiler architecture
+	\item Compile time vs run time: goals of optimizations
+	\item Just-in-time compilation
+	\item Compiler optimizations
+	\item Intermediate languages
+	\item Next: What are common misunderstandings of developers related to compilation?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \dragonbook
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
-}
+	Quiz in \StudIP
 
-\section{Part 3}
-%\input{content/c-}
+	~
+
+	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421048}
+}
+\begin{frame}[fragile]{Illustration of Compiler Optimizations}
+	\begin{fancycolumns}
+		\begin{example}{Example Java Program}
+			\begin{lstlisting}[style=java]
+class A {
+	public static void main(String[] args) {
+		A x = new B();
+		Object y = new String();
+		System.out.print(x.m(y));
+	}
+	int m(Object o) { return 1; }
+	int m(String s) { return 2; }
+}
+class B extends A {
+	int m(Object o) { return 3; }
+	int m(String s) { return 4; }
+}
+			\end{lstlisting}
+		\end{example}
+		\nextcolumn
+		\uncover<2->{\begin{example}{What is the output?}
+			\begin{enumerate}
+				\item program as shown left % 3
+				\item if we change type of x to B % 3
+				\item if we change type of y to String % 4
+				\item if we remove method m(Object o) in class B % 1
+				\item if we remove method m(Object o) in class A % undefined
+			\end{enumerate}
+		\end{example}}
+		\uncover<3->{\begin{note}{Hint}
+			Java uses dynamic dispatch for overriding (e.g., x)\\ and static dispatch for overloading (e.g., y)
+			
+			~
+			
+			the former is required for inheritance, the latter a design decision of Java
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\section{Misunderstandings on Performance}
+\input{content/05c-misunderstandings}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item What are common misunderstandings about performance?
+	\item Why are array, loops, method calls, objects, and garbage collection slow?
+	\item What is the connection between compiler optimizations, smells, and refactorings?
+	\item Next: How do static analyses work?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \dragonbook
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Content of last part rather subjective as based on Thomas' experiences.
+	
+	~
+	
+	Any feedback or comments or questions?
 }
 
 %\faq{

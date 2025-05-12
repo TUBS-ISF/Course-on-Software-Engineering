@@ -13,7 +13,7 @@
 }
 
 % introduced: implementation
-% reused: summary
+% reused: summary, se2-compilation
 \newcommand{\slideProgrammingLanguagesToday}{
 	\begin{fancycolumns}
 		\begin{example}{Today\mysource{\jonesbestpractice\ + \handbuch}}
@@ -27,7 +27,7 @@
 				\item languages used for more than 25 years: Ada, C, C++, COBOL, Java, Objective C, PL/I, SQL, Visual Basic, \ldots
 			\end{itemize}
 		\end{example}
-	\nextcolumn
+		\nextcolumn
 		\begin{note}{Many Languages\mysource{\jonesbestpractice}}
 			\begin{itemize}
 				\item good: fit for every use case
@@ -35,6 +35,19 @@
 			\end{itemize}
 		\end{note}
 	\end{fancycolumns}
+}
+
+% introduced: implementation
+% reused: se2-compilation
+\newcommand{\slideTiobeDiagram}{
+	\only<1,6->{\picDark[width=\linewidth]{history/tiobe}}%
+	\only<2|handout:0>{\picDark[width=\linewidth]{history/tiobe-python}}%
+	\only<3|handout:0>{\picDark[width=\linewidth]{history/tiobe-cpp}}%
+	\only<4|handout:0>{\picDark[width=\linewidth]{history/tiobe-c}}%
+	\only<5|handout:0>{\picDark[width=\linewidth]{history/tiobe-java}}%
+}
+\newcommand{\slideTiobeTable}{
+	\centering\picDark[width=.9\linewidth]{history/tiobe-longterm}
 }
 
 % introduced: implementation
@@ -604,5 +617,302 @@
 		\end{note}
 		% known for design of Java platform
 	\end{fancycolumns}
+}
+
+\newcommand{\figcompilerarchfull}{
+	\begin{tikzpicture}[every node/.style = {align = center, text depth = 0pt}]       
+		\node[fill = background] (A) {Source Code\\as String};
+		
+		\node[below = 20pt of A, minimum width=2.25cm, draw, fill=background] (An1) {Scanner};
+		\node[below = of An1, minimum width=2.25cm, draw, fill =background] (An2) {Parser};
+		\node[below = of An2, minimum width=2.25cm, draw, fill = background] (An3) {Name and Type\\Analysis};        
+		
+		\begin{scope}[on background layer]
+			\fill[fill = blue!25!background] ([xshift = -5pt, yshift = 5pt]An1.north west) rectangle node (H1) {} ([xshift = 5pt, yshift = -5pt]An3.south east);
+		\end{scope}
+		
+		\node [left = 1.4cm of H1.center, color = blue, rotate=90, anchor = south, fill=background, inner sep = 0pt] {Analysis};
+		
+		\path[-latex]
+		(A) edge ([yshift = 5pt]An1.north)
+		(An1) edge node[align = right, left, font = \small] {Token\\Stream} (An2)           
+		(An2) edge node[align = right, left, font = \small] {Syntax\\Tree} (An3);
+		
+		\node[right = 1.5cm of A, fill = background] (tgt) {Target Code\\as String};
+		
+		
+		\node[below = 20pt of tgt, minimum width=2.25cm, draw, fill=background] (syn2) {Code Generator};
+		\node[below = of syn2, minimum width=2.25cm, draw, fill=background] (syn1) {Translator};
+		
+		\node[below = of syn1, fill = background] (ast) {Abstract\\SyntaxTree};
+		
+		\path[]
+		([yshift = -5pt]An3.south) edge ([yshift = -10pt] An3.south)
+		([yshift = -10pt] An3.south) edge[-latex, to path={-| (\tikztotarget)}] (ast);  
+		
+		\path[-latex]
+		(ast) edge ([yshift = -5pt] syn1.south)
+		([xshift = -15pt]syn1.north) edge node[align = left, right, font = \small] (il) {Intermediate\\Language} ([xshift = -15pt]syn2.south)
+		([yshift = 5pt]syn2.north) edge (tgt);
+		;
+		
+		\begin{scope}[on background layer]
+			\fill[fill = red!25!background] ([xshift = -5pt, yshift = 5pt]syn2.north west) rectangle node (H2) {} ([xshift = 5pt, yshift = -5pt]syn1.south east);
+		\end{scope}
+		
+		\node [left = 1.4cm of H2.center, color = red, rotate=90, anchor = south, inner sep=0pt, fill=background] {Synthesis};
+		
+		
+		\node[right = 20pt of il.east, fill = background] (op2) {Attribution \&\\Optimization};
+		
+		\draw (intersection cs:
+		first line={(op2.center) -- ([yshift = 3cm] op2.center)},
+		second line={(tgt.center) -- ([xshift = 3cm] tgt.center)}) node[fill = background] (op1) {Peep Hole\\Optimization}; 
+		
+		\draw (intersection cs:
+		first line={(op2.center) -- ([yshift = 3cm] op2.center)},
+		second line={(ast.center) -- ([xshift = 3cm] ast.center)}) node[fill = background] (op3) {Attribution \&\\Optimization}; 
+		
+		\path[]         
+		([xshift = -18pt, yshift = 3pt]op1.west) edge[-latex] ([xshift = -3pt, yshift = 3pt]op1.west)   
+		([xshift = -18pt, yshift = -3pt]op1.west) edge[latex-] ([xshift = -3pt, yshift = -3pt]op1.west) 
+		
+		([xshift = -18pt, yshift = 3pt]op2.west) edge[-latex] ([xshift = -3pt, yshift = 3pt]op2.west)   
+		([xshift = -18pt, yshift = -3pt]op2.west) edge[latex-] ([xshift = -3pt, yshift = -3pt]op2.west) 
+		
+		([xshift = -18pt, yshift = 3pt]op3.west) edge[-latex] ([xshift = -3pt, yshift = 3pt]op3.west)   
+		([xshift = -18pt, yshift = -3pt]op3.west) edge[latex-] ([xshift = -3pt, yshift = -3pt]op3.west)     
+		;       
+	\end{tikzpicture}       
+}
+
+\newcommand{\figcompilerarchnoop}{
+	\begin{tikzpicture}[every node/.style = {align = center, text depth = 0pt}]       
+		\node[fill = background] (A) {Source Code\\as String};
+		
+		\node[below = 20pt of A, minimum width=2.25cm, draw, fill=background] (An1) {Scanner};
+		\node[below = of An1, minimum width=2.25cm, draw, fill = background] (An2) {Parser};
+		\node[below = of An2, minimum width=2.25cm, draw, fill = background] (An3) {Name and Type\\Analysis};        
+		
+		\begin{scope}[on background layer]
+			\fill[fill = blue!25!background] ([xshift = -5pt, yshift = 5pt]An1.north west) rectangle node (H1) {} ([xshift = 5pt, yshift = -5pt]An3.south east);
+		\end{scope}
+		
+		\node [left = 1.4cm of H1.center, color = blue, rotate=90, anchor = south, fill=background, inner sep = 0pt] {Analysis};
+		
+		\path[-latex]
+		(A) edge ([yshift = 5pt]An1.north)
+		(An1) edge node[align = right, left, font = \small] {Token\\Stream} (An2)           
+		(An2) edge node[align = right, left, font = \small] {Syntax\\Tree} (An3);
+		
+		\node[right = 1.5cm of A, fill = background] (tgt) {Target Code\\as String};
+		
+		
+		\node[below = 20pt of tgt, minimum width=2.25cm, draw, fill=background] (syn2) {Code Generator};
+		\node[below = of syn2, minimum width=2.25cm, draw, fill=background] (syn1) {Translator};
+		
+		\node[below = of syn1, fill = background] (ast) {Abstract\\SyntaxTree};
+		
+		\path[]
+		([yshift = -5pt]An3.south) edge ([yshift = -10pt] An3.south)
+		([yshift = -10pt] An3.south) edge[-latex, to path={-| (\tikztotarget)}] (ast);  
+		
+		\path[-latex]
+		(ast) edge ([yshift = -5pt] syn1.south)
+		([xshift = -15pt]syn1.north) edge node[align = left, right, font = \small] (il) {Intermediate\\Language} ([xshift = -15pt]syn2.south)
+		([yshift = 5pt]syn2.north) edge (tgt);
+		;
+		
+		\begin{scope}[on background layer]
+			\fill[fill = red!25!background] ([xshift = -5pt, yshift = 5pt]syn2.north west) rectangle node (H2) {} ([xshift = 5pt, yshift = -5pt]syn1.south east);
+		\end{scope}
+		
+		\node [left = 1.4cm of H2.center, color = red, rotate=90, anchor = south, inner sep=0pt, fill=background] {Synthesis};
+	\end{tikzpicture}       
+}
+
+\newcommand{\figcompilerarchbase}{
+	\begin{tikzpicture}[every node/.style = {align = center, text depth = 0pt}]       
+		\node[fill = background] (A) {Source Code\\as String};
+		
+		\node[below = 20pt of A, minimum width=2.25cm] (An1) {\phantom{Scanner}};
+		\node[below = of An1, minimum width=2.25cm] (An2) {\phantom{Parser}};
+		\node[below = of An2, minimum width=2.25cm] (An3) {\phantom{Name and Type}\\\phantom{Analysis}};        
+		
+		\begin{scope}[on background layer]
+			\fill[fill = blue!25!background] ([xshift = -5pt, yshift = 5pt]An1.north west) rectangle node (H1) {} ([xshift = 5pt, yshift = -5pt]An3.south east);
+		\end{scope}
+		
+		\node [left = 1.4cm of H1.center, color = blue, rotate=90, anchor = south, fill=background, inner sep = 0pt] {Analysis};
+		
+		\path[-latex]
+		(A) edge ([yshift = 5pt]An1.north);
+		
+		\node[right = 1.5cm of A, fill = background] (tgt) {Target Code\\as String};
+		
+		\node[below = 20pt of tgt, minimum width=2.25cm] (syn2) {\phantom{Code Generator}};
+		\node[below = of syn2, minimum width=2.25cm] (syn1) {\phantom{Translator}};
+		
+		\node[below = of syn1, fill = background] (ast) {Abstract\\SyntaxTree};
+		
+		\path[]
+		([yshift = -5pt]An3.south) edge ([yshift = -10pt] An3.south)
+		([yshift = -10pt] An3.south) edge[-latex, to path={-| (\tikztotarget)}] (ast);  
+		
+		\path[-latex]
+		(ast) edge ([yshift = -5pt] syn1.south)
+		([yshift = 5pt]syn2.north) edge (tgt)
+		;
+		
+		\begin{scope}[on background layer]
+			\fill[fill = red!25!background] ([xshift = -5pt, yshift = 5pt]syn2.north west) rectangle node (H2) {} ([xshift = 5pt, yshift = -5pt]syn1.south east);
+		\end{scope}
+		
+		\node [left = 1.4cm of H2.center, color = red, rotate=90, anchor = south, inner sep=0pt, fill=background] {Synthesis};
+	\end{tikzpicture}    
+}
+
+\newcommand{\figCompiler}{
+	\begin{tikzpicture}[every node/.style = {align = center, fill = background}, node distance = 1cm and 0.5cm]       
+		\node[] (A) {Source Code};
+		
+		\node[right = of A, fill = black, text=white, minimum width=2cm] (Compiler) {Compiler};
+		
+		\node[right = of Compiler] (tgt) {Target Code};
+		
+		\path[-latex]
+		(A) edge (Compiler)
+		(Compiler) edge (tgt);
+	\end{tikzpicture}       
+}
+
+\newcommand{\figInterpreter}{
+	\begin{tikzpicture}[every node/.style = {align = center, fill = background}]     
+		\node[] (A) {Source Code};
+		
+		\node[below = of A] (B) {Input Data};
+		
+		\path (A.center) -- node (H) {} (B.center);
+		
+		\node[right = of H, fill = black, text=white, minimum width=2cm] (Compiler) {Interpreter};
+		
+		\node[right = 0.5cm of Compiler] (tgt) {Output Data};
+		
+		\path[-latex]
+		(A) edge[out = -90, in = 180] ([yshift = 2pt]Compiler.west)
+		(B) edge[out = 90, in = 180] ([yshift = -2pt]Compiler.west)
+		(Compiler) edge (tgt);
+	\end{tikzpicture}       
+}
+
+\newcommand{\figCompilerWithAnalysisOut}{
+	\begin{tikzpicture}[every node/.style = {align = center, fill = background}] 
+		
+		\node[fill = black, text=white, minimum width=2cm] (Compiler) {Compiler};
+		
+		\node[left = of Compiler] (H1) {};		 
+		\node[right = of Compiler] (H2) {};
+		
+		\node[above = 10pt of H1.center] (A) {Source Code};
+		
+		\node[above = 10pt of H2.center] (X) {Target Code};
+		\node[below = 10pt of H2.center] (Y) {Analysis Result};
+		
+		\path[-latex, looseness = 0.7]
+		(A) edge[out = -90, in = 180] ([yshift = 2pt]Compiler.west)
+		([yshift = 2pt]Compiler.east) edge[out = 0, in = -90] (X)
+		([yshift = -2pt]Compiler.east) edge[out = 0, in = 90] (Y);
+	\end{tikzpicture}       
+}
+
+\newcommand{\figInterpreterWithAnalysisOut}{
+	\begin{tikzpicture}[every node/.style = {align = center, fill = background}]      
+		
+		\node[fill = black, text=white, minimum width=2cm] (Compiler) {Interpreter};
+		
+		\node[left = of Compiler] (H1) {};		 
+		\node[right = of Compiler] (H2) {};
+		
+		\node[above = 10pt of H1.center] (A) {Source Code};
+		\node[below = 10pt of H1.center] (B) {Input Data};
+		
+		\node[above = 10pt of H2.center] (X) {Output Data};
+		\node[below = 10pt of H2.center] (Y) {Analysis Result};
+		
+		\path[-latex, looseness = 0.7]
+		(A) edge[out = -90, in = 180] ([yshift = 2pt]Compiler.west)
+		(B) edge[out = 90, in = 180] ([yshift = -2pt]Compiler.west)
+		([yshift = 2pt]Compiler.east) edge[out = 0, in = -90] (X)
+		([yshift = -2pt]Compiler.east) edge[out = 0, in = 90] (Y);
+	\end{tikzpicture}       
+}
+
+\newcommand{\drawFileSymbol}[3][]{
+	
+	\fill[draw, fill=background,#1] (#2,#3) -- (#2+0.75,#3) -- (#2+1, #3-0.25) -- (#2+1, #3-1.5) -- (#2, #3-1.5) -- (#2,#3) (#2+0.75, #3) -- (#2+0.75, #3-0.25) -- (#2+1, #3-0.25) (#2+0.2, #3-0.6) -- (#2+0.8, #3-0.6) (#2+0.2, #3-0.8) -- (#2+0.8, #3-0.8) (#2+0.2, #3-1) -- (#2+0.8, #3-1);
+}
+
+\newcommand{\figJIT}{
+	\begin{tikzpicture}[every node/.style = {text depth = 0pt}]
+		
+		\node[draw = blue, anchor = north west, fill = blue!30!background] (F) {
+			\begin{tikzpicture}
+				\node[minimum width=5cm, minimum height = 1cm, fill = gray!10!background, draw = gray!30!background] (HW) {};
+				\node[below left = 0pt and 0pt of HW.north east, font = \small, align=right] {Real Machine /\\Hardware};
+				
+				\node[right = 5pt of HW.west, fill = background, draw, inner sep=4pt, rounded corners=4pt] (MC) {Machine Code};
+				
+				\node[above = 20pt of MC.north, align=center, fill = background, draw, inner sep=4pt] (Y) {JIT Translator};	
+				
+				\node[above = 14pt of Y.north, align=center, fill = background, draw, rounded corners = 4pt, inner sep=4pt] (X) {Java Byte\\Code};
+				
+				\path[-latex] 
+				(X) edge (Y)
+				(Y) edge ([yshift = 7pt]MC.north)
+				;
+			\end{tikzpicture}
+		};
+		
+		\node[below left = 0pt and 0pt of F.north east, font = \small, align=right] {Java Virtual Machine};
+		
+		\node[above = 15pt of F.north, align=center, fill = background, draw, rounded corners = 4pt, inner sep=4pt, xshift = 1.5cm] (ID) {Input Data};
+		
+		
+		\node[above = 13pt of F, xshift = -1.5cm] (D) {
+			\begin{tikzpicture}
+				\drawFileSymbol[scale = 0.5]{0.9}{0.45}
+				\drawFileSymbol[scale = 0.5]{0.6}{0.3}
+				\drawFileSymbol[scale = 0.5]{0.3}{0.15}
+				\drawFileSymbol[scale = 0.5]{0}{0}
+			\end{tikzpicture}
+		};
+		
+		\node[yshift = -8pt, align=center, fill = background, draw, rounded corners = 4pt, inner sep=4pt] at (D) (E) {Class Files};
+		
+		
+		\node[above = 15pt of D, align = center, draw, inner sep=4pt, fill = background] (C) {Analyzer \&\\Translator};
+		\node[left = 2pt of C, rotate=90, anchor=south, fill = background] {\texttt{javac}};
+		
+		\node[above = 38pt of ID] (A) {
+			\begin{tikzpicture}
+				\drawFileSymbol[scale = 0.5]{0.9}{0.45}
+				\drawFileSymbol[scale = 0.5]{0.6}{0.3}
+				\drawFileSymbol[scale = 0.5]{0.3}{0.15}
+				\drawFileSymbol[scale = 0.5]{0}{0}
+			\end{tikzpicture}
+		};
+		\node[yshift = -10pt, align=center, fill = background, draw, rounded corners = 4pt, inner sep=4pt] at (A) (B) {Java Source\\Code Unit};
+		
+		\node[left = 15pt of F.west, align=center, fill = background, draw, rounded corners = 4pt, inner sep=4pt] (OD) {Output Data};
+		
+		\path[-latex]
+		(B) edge (C)
+		(C) edge (D)
+		(E) edge ([xshift = -1.5cm]F.north)
+		(ID) edge ([xshift = 1.5cm]F.north)
+		(F) edge (OD)
+		;
+		
+	\end{tikzpicture}
 }
 

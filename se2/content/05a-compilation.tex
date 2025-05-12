@@ -1,0 +1,216 @@
+\subsection{Programming Languages}
+\begin{frame}{And the 2020 Turing Award Goes To \ldots\ \mytitlesource{\href{https://awards.acm.org/about/2020-turing}{awards.acm.org}}}
+	\begin{fancycolumns}[animation=none]
+		\uncover<2->{
+			\pic[width=.485\linewidth,trim=45 2 45 2,clip]{people/alfred-v-aho}\hfill
+			\pic[width=.485\linewidth,trim=2 2 2 2,clip]{people/jeffrey-d-ullman}
+			
+			Alfred V.\ Aho \hfill Jeffrey D. Ullman%
+		}%
+		\nextcolumn
+		\uncover<3>{
+			\pic[width=.485\linewidth]{books/aho-hopcroft-ullman-design-and-analysis-of-computer-algorithms}\hfill
+			\pic[width=.485\linewidth]{books/aho-ullman-principles-of-compiler-design}
+			
+			1974 \hfill \mycite{Dragon Book}, 1977%
+		}%
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}<2>{Recap: Programming Languages Today}
+	\slideProgrammingLanguagesToday
+\end{frame}
+
+\begin{frame}{Recap: Popularity of Programming Languages}
+	\slideTiobeDiagram
+\end{frame}
+
+\subsection{Compilation, Interpretation, and Performance}
+\begin{frame}{Compilation vs Interpretation}
+	\begin{fancycolumns}[T]
+		\begin{definition}{Compilation}
+			\begin{itemize}
+				\item C/C++/Go/Rust/Swift to machine code
+				\item Java/Groovy/Kotlin/Scala/Clojure to Java bytecode
+			\end{itemize}
+		\end{definition}
+		\vspace{6mm}
+		\begin{center}
+			\figCompiler
+		\end{center}
+		\nextcolumn
+		\begin{definition}{Interpretation}
+			\begin{itemize}
+				\item of source code: Ruby/Python/Perl/PHP/Matlab
+				\item of bytecode: Java Virtual Machine (JVM)
+			\end{itemize}
+		\end{definition}
+		\begin{center}
+			\figInterpreter
+		\end{center}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Reporting Errors and Warnings}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Warnings and Errors}
+			\begin{itemize}
+				\item errors indicate that compilation failed (target code is incomplete)
+				\item warnings indicate potential problems or that compilation may fail in the future (cf.\ deprecated methods)
+			\end{itemize}
+		\end{note}
+		
+		~
+		
+		\begin{example}{Common Types of Errors}
+			lexical errors, syntax errors, type errors, runtime errors, logical errors
+		\end{example}
+		\nextcolumn
+		\figCompilerWithAnalysisOut
+		
+		~\\~
+		
+		\figInterpreterWithAnalysisOut
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Examples for Error Types}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[t]
+		\begin{exampletight}{Lexical Error}
+			\centering\makebox{\usebox{\edgelexicalerror}}
+		\end{exampletight}
+		\uncover<2->{\begin{note}{Error message by the Java compiler}
+			\mycite{Syntax error on token "Invalid Character", delete this token}
+		\end{note}}
+	\nextcolumn
+		\uncover<3->{\begin{exampletight}{Fixed Program}
+				\centering\makebox{\usebox{\edgelexicalerrorfix}}
+		\end{exampletight}}
+		\uncover<4->{\begin{definition}{Explanation}
+			\begin{itemize}
+				\item lexing refers to the transformation of a character stream to a token stream
+				\item errors during lexing avoided in Java compiler by declaring a token class called "Invalid Character"
+				\item nevertheless invalid characters are examples of lexical errors
+			\end{itemize}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[t]
+		\begin{exampletight}{Syntax Error}
+			\centering\makebox{\usebox{\edgesyntaxerror}}
+		\end{exampletight}
+		\uncover<2->{\begin{note}{Error message by the Java compiler}
+			\mycite{Syntax error on token ")", \{ expected after this token}
+		\end{note}}
+	\nextcolumn
+		\uncover<3->{\begin{exampletight}{Fixed Program}
+				\centering\makebox{\usebox{\edgesyntaxerrorfix}}
+		\end{exampletight}}
+		\uncover<4->{\begin{definition}{Explanation}
+			\begin{itemize}
+				\item parsing refers to the transformation of a token stream to a syntax tree
+				\item tree is easier to process by a compiler
+			\end{itemize}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[t]
+		\begin{exampletight}{Type Error}
+			\centering\makebox{\usebox{\edgetypeerror}}
+		\end{exampletight}
+		\uncover<2->{\begin{note}{Error message by the Java compiler}
+			\mycite{The constructor Edge() is undefined}
+		\end{note}}
+	\nextcolumn
+		\uncover<3->{\begin{exampletight}{Fixed Program}
+				\centering\makebox{\usebox{\edgetypeerrorfix}}
+		\end{exampletight}}
+		\uncover<4->{\begin{definition}{Explanation}
+			\begin{itemize}
+				\item name and type analysis checks that all identifiers are defined and have the correct type
+				\item typically no distinction between name and type errors, all considered type errors
+			\end{itemize}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\vspace{-1mm}
+	\begin{fancycolumns}[t]
+		\begin{exampletight}{Runtime Error}
+			\centering\makebox{\usebox{\edgeruntimeerror}}
+		\end{exampletight}
+		\uncover<2->{\begin{note}{Error message by the Java runtime environment}
+			\mycite{Exception in thread "main" java.lang.\\NullPointerException: Cannot read field "first" because "e" is null}
+		\end{note}}
+	\nextcolumn
+		\uncover<3->{\begin{exampletight}{Fixed Program}
+				\centering\makebox{\usebox{\edgeruntimeerrorfix}}
+		\end{exampletight}}
+		\uncover<4->{\begin{definition}{Explanation}
+			\begin{itemize}
+				\item exception thrown during execution
+				\item occurence typically depends on the input
+				\item some compilers detect trivial cases statically
+			\end{itemize}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[t]
+		\begin{exampletight}{Logical Error}
+			\centering\makebox{\usebox{\edgelogicalerror}}
+		\end{exampletight}
+		\uncover<2->{\begin{note}{No explicit error during compilation or execution}
+			error can be identified by inspecting the program's output or by means of assertions
+		\end{note}}
+	\nextcolumn
+		\uncover<3->{\begin{exampletight}{Fixed Program}
+				\centering\makebox{\usebox{\edgelogicalerrorfix}}
+		\end{exampletight}}
+		\uncover<4->{\begin{definition}{Explanation}
+			\begin{itemize}
+				\item no explicit exception as for runtime errors
+				\item tests need comparison with expected outcomes
+			\end{itemize}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Type Safety and Type Correctness}
+	\begin{fancycolumns}[widths={45}]
+		\begin{definition}{Type Safety}
+			A \emph{type} characterizes properties of program elements, for example:
+			\begin{itemize}
+				\item a variable can only store particular values
+				\item an expression returns particular values
+				\item an object has a method with a certain signature (name and parameter types)
+			\end{itemize}
+			
+			A \emph{type error} occurs if properties are not met. A program is \emph{type safe} if its execution cannot lead to type errors.
+		\end{definition}
+		\begin{example}{Type Errors}
+			undefined identifier, assignment of incompatible type, method call with incompatible parameter
+		\end{example}
+		\nextcolumn
+		\begin{definition}{Type Correctness}
+			\begin{itemize}
+				\item The language specification defines type rules checked by the compiler (\emph{statically typed language} such as Java or Rust) or by the interpreter (\emph{dynamically typed language} such as Python or JavaScript).
+				\item All type rules together constitute the \emph{type system}.
+				\item A program is \emph{type correct} if it satisfies the type rules.
+				\item A programming language is \emph{strongly typed} if every type correct program is type safe (\emph{weakly typed} otherwise).
+			\end{itemize}
+		\end{definition}
+		\begin{example}{In Practice}
+			continuum between strongly (e.g., Java, Python) and weakly typed (e.g., JavaScript, C) languages
+		\end{example}
+	\end{fancycolumns}
+\end{frame}

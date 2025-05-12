@@ -1,0 +1,130 @@
+\begin{frame}<3>{Recap: Pipe-and-Filter Architecture}
+	\slidePipeAndFilter
+\end{frame}
+
+\begin{frame}{Compiler Architecture}
+	\begin{fancycolumns}[animation=none]
+		\uncover<3->{%
+			\begin{definition}{Application of the Chomsky Hierarchy}
+				\begin{itemize}
+					\item scanning/lexing: regular expression for each token class
+					\item parsing: context-free grammars (e.g., a class has fields, methods, and inner classes)
+					\item name and type analysis: context-sensitive analysis (e.g., lookup type for identifier)
+				\end{itemize}
+				\begin{center}
+					\begin{tikzpicture}[xscale=.7,yscale=.5]
+						\draw[color=foreground, fill=background, very thick](0,1.7) ellipse (3.5 and 2.9);
+						\draw[color=foreground, fill=background, very thick](0,1) ellipse (2.6 and 2.1);
+						\draw[color=foreground, fill=background, very thick](0,0.5) ellipse (1.8 and 1.5);
+						\draw[color=foreground, fill=background, very thick](0,0) ellipse (1.1 and 0.9);
+						
+						\node[] at (0,0) {regular};
+						\node[] at (0,1.3) {context-free};
+						\node[] at (0,2.4) {context-sensitive};
+						\node[] at (0,3.6) {recursively enumerable};
+					\end{tikzpicture}
+				\end{center}
+			\end{definition}
+		}
+		\nextcolumn
+		\vspace{3mm}
+		\only<1|handout:0>{\figcompilerarchbase}%
+		\only<2->{\figcompilerarchnoop}%
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Compilation and Performance}
+	\vspace{-10mm}
+	\begin{fancycolumns}
+		\vspace{15mm}
+		\begin{note}{Goals of Compiler Optimizations}
+			\begin{itemize}
+				\item fast execution
+				\item low memory / energy consumption
+				\item small binaries (fast start/download/updates)
+				\item desired for both compiler (compile time) and compiled program (run time)
+			\end{itemize}
+		\end{note}
+		
+		%~
+		
+		\begin{definition}{Compile Time vs Run Time}
+			run time: when program or software is executed
+			
+			compile time: during \uncover<3->{(ahead-of-time) }compilation
+		\end{definition}
+		\nextcolumn
+		\hfill\resizebox{60mm}{!}{\figJIT}
+		
+		\begin{definition}{Just-in-Time Compilation}
+			\begin{itemize}
+				\item often executed code is compiled at run time
+				\item warm-up time: execution is slower when new code is executed (partly also for new data)
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Compiler Optimizations}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={64},animation=none]
+		%\only<1|handout:0>{\figcompilerarchbase}%
+		\only<1|handout:0>{\figcompilerarchnoop}%
+		\only<2->{\figcompilerarchfull}%
+		\nextcolumn
+		\uncover<3->{
+			\begin{definition}{Kinds of Optimizations}
+				\begin{itemize}
+					
+					\item machine-dependent optimizations: exploit properties of a particular machine
+					\item machine-independent optimizations: applicable to several machines
+					\item local optimizations: e.g., switch order of two statements
+					\item intra-procedural optimizations: affect only one method
+					\item inter-procedural optimizations: affect several methods or require global knowledge
+				\end{itemize}
+			\end{definition}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{The Power of Intermediate Languages}
+	\begin{fancycolumns}[widths={40}]
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item hard to establish \emph{new programming languages} as compilers needed for many architectures
+				\item hard to establish \emph{new architectures} as as compilers needed for many programming languages
+				\item high-level programming languages are complex to analyze and translated
+				\item idea: reuse effort across languages and architectures
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\small
+		\begin{tikzpicture}[every node/.style = {align = center, text depth = 0, fill=background}, node distance = 15mm and 2mm]
+			\node[align = center, fill=red!10!background, inner sep=4pt, draw = red!30, rounded corners=4pt] (M) {Intermediate Language\\(e.g., Java bytecode)};
+			
+			\node[above = of M] (H1) {$\ldots$};
+			
+			\node[left = of H1] (u2) {Source Language $2$\\(e.g., Scala)};
+			\node[left = of u2] (u1) {Source Language $1$\\(e.g., Java)};
+			\node[right = of H1] (u3) {Source Language $m$\\(e.g., Clojure)};
+			
+			\node[below = of M] (H2) {$\ldots$};
+			\node[left = of H2] (l2) {Target Language $2$\\(e.g., Linux)};
+			\node[left = of l2] (l1) {Target Language $1$\\(e.g., Windows)};
+			\node[right = of H2] (l3) {Target Language $n$\\(e.g., MacOS)};
+			
+			\path[-latex, in = 90, out = -90, looseness = 0.5] 
+			(u1) edge[looseness = 0.3] (M.north)
+			(u2) edge (M)
+			(u3) edge (M.north)
+			;
+			
+			\path[-latex, in = 90, out = -90, looseness = 0.5] 
+			(M) edge [looseness = 0.3] (l1)
+			(M) edge (l2)
+			(M) edge (l3)
+			;
+		\end{tikzpicture}
+	\end{fancycolumns}
+\end{frame}
+

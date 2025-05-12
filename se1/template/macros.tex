@@ -273,3 +273,18 @@
 }
 
 % OTHER COMMANDS
+
+\usetikzlibrary{snakes}
+\newcommand{\tpkt}[1]{\tikz[remember picture] \coordinate(#1);}
+\newcommand{\myunderline}[2]{
+	\begin{tikzpicture}[remember picture,overlay]
+		\foreach \x in {#1} {
+			\node[yshift=.5mm] (x1) at (\x 1) {};
+			\node[yshift=.5mm] (x2) at (\x 2) {};
+			\draw[#2,thick,snake=snake,segment amplitude=.2mm,segment length=1mm] (x1.south) -- (x2.south);
+		}
+	\end{tikzpicture}
+}
+\newcommand{\errorunderline}[1]{\myunderline{#1}{red}}
+\newcommand{\warningunderline}[1]{\myunderline{#1}{orange}}
+\newcommand{\infounderline}[1]{\myunderline{#1}{blue}}

@@ -1,0 +1,228 @@
+\subsection{Common Misunderstandings}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{example}{Misunderstanding \#1}
+			\mycite{I've heard array access is slow.\\Now I try to avoid them.}
+		\end{example}
+		
+		\begin{example}{Misunderstanding \#2}
+			\mycite{I've heard loops are slow.\\Now I try to avoid them.}
+		\end{example}
+		
+		\begin{example}{Misunderstanding \#3}
+			\mycite{I've heard method calls are slow.\\Now I try to avoid them.}
+		\end{example}
+		\nextcolumn
+		\begin{example}{Misunderstanding \#4}
+			\mycite{I've heard objects are slow.\\Now I try to avoid them.}
+		\end{example}
+		
+		\begin{example}{Misunderstanding \#5}
+			\mycite{I've heard garbage collection is slow.\\Now I try to avoid it.}
+		\end{example}
+		
+		\begin{example}{Misunderstanding \#6}
+			\mycite{I'm new to programming and think that every instruction takes equally long.}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Arrays, Loops, and Method Calls}
+\begin{frame}{No Array Access?}
+	\begin{fancycolumns}
+		\begin{example}{Misunderstanding \#1}
+			\mycite{I've heard array access is slow.\\Now I try to avoid them.}
+		\end{example}
+		\begin{definition}{{Tasks for Array Access a[b]}}
+			\begin{itemize}
+				\item evaluate the expression b (could be arbitrarily complex)
+				\item compute offset = b * size of each field
+				\item compute memory location = position of a + offset
+				\item access memory location
+				\item only for objects: use value as memory location
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{example}{Example}
+			a[b.n()] = a[b.n()-1] * a[b.n()-1];
+		\end{example}
+		\begin{example}{Simplified Example}
+			Assumption 1: method n has no side-effects\\Assumption 2: method n cannot be overridden (e.g., a private method)\\~\\int n = b.n();\\a[n] = a[n-1] * a[n-1];
+		\end{example}
+		\begin{note}{Note}
+			arrays are very common, compilers and hardware have plenty of optimizations
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{No Loops?}
+	\begin{fancycolumns}
+		\begin{example}{Misunderstanding \#2}
+			\mycite{I've heard loops are slow.\\Now I try to avoid them.}
+		\end{example}
+		\begin{definition}{{Tasks for Loops}}
+			\begin{itemize}
+				\item create and initialize loop variable
+				\item check loop condition
+				\item \emph{run loop body}
+				\item increment loop variable
+				\item repeat from check loop condition
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{example}{Example Loop}
+			for (int i = 0; i++; i \textless\  3) \{ a[i] = i; \}
+		\end{example}
+		\begin{example}{Loop Unrolling}
+			a[0] = 0; a[1] = 1; a[2] = 2;
+		\end{example}
+		\begin{note}{Do Not Avoid Loops!}
+			\textbf{smells}: duplicated code, long method\\\textbf{compiler optimization}: loop unrolling (if number of runs is statically known and small enough)
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{No Method Calls?}
+	\begin{fancycolumns}
+		\begin{example}{Misunderstanding \#3}
+			\mycite{I've heard method calls are slow.\\Now I try to avoid them.}
+		\end{example}
+		\begin{definition}{Tasks for Each Method Call}
+			\begin{itemize}
+				\item pass parameters and return address
+				\item save registers
+				\item run method body, pass return value
+				\item restore registers, return to caller
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Do Not Avoid Method Calls!}
+			\textbf{smells}: duplicated code, long method\\\textbf{refactoring}: extract method\\\textbf{compiler optimization}: method inlining
+		\end{note}
+		\nextcolumn
+		\begin{exampletight}{Memory Layout: The Method Stack}
+			\begin{tikzpicture}[every node/.style = {outer sep = 0pt, minimum width = 2cm, text depth = 0pt, draw}]
+				\node[minimum height=1cm] (A) {};
+				
+				\node[below = 0pt of A] (B) {dynamic};
+				\node[below = 0pt of B] (C) {static};
+				\node[below = 0pt of C, minimum height=1cm] (D) {};
+				\node[below = 0pt of D] (E) {return address};
+				\node[below = 0pt of E] (F) {1$^\text{st}$ parameter};
+				\node[below = 0pt of F] (G) {2$^\text{nd}$ parameter};
+				\node[below = 0pt of G] (H) {$\ldots$};
+				\node[below = 0pt of H] (I) {n$^\text{th}$ parameter};
+				
+				\node[left = -10pt of I.south west, align = right, font = \small, draw = none] {high\\addresses};
+				
+				\node[left = -10pt of A.north west, align = right, font = \small, draw = none] {low\\addresses};
+				
+				\path[-latex, gray]
+				([xshift = 5pt, yshift = 5pt]A.north west) edge node[right, font=\small, draw = none] {next stack frame} ([xshift = 5pt, yshift = 15pt] A.north west)
+				
+				([xshift = 5pt, yshift = -5pt]I.south west) edge node[right, font=\small, draw = none] {previous stack frame} ([xshift = 5pt, yshift = -15pt] I.south west)
+				;
+				
+				\path[line width = 2pt]
+				
+				([xshift = 5pt, yshift = -2pt]A.north east) edge[blue] node[align=left, right, font = \small, draw = none] {stack for evaluation\\of expressions} ([xshift = 5pt, yshift = 2pt]A.south east)
+				
+				([xshift = 5pt, yshift = -2pt]B.north east) edge[green] node[align=left, right, font = \small, draw = none] {local variables} ([xshift = 5pt, yshift = 2pt]C.south east)	
+				
+				([xshift = 5pt, yshift = -2pt]D.north east) edge[red] node[align=left, right, font = \small, draw = none] {saved registers} ([xshift = 5pt, yshift = 2pt]D.south east)	
+				;
+			\end{tikzpicture}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Objects and Garbage Collection}
+\begin{frame}{No Objects?}
+	\begin{fancycolumns}
+		\begin{example}{Misunderstanding \#4}
+			\mycite{I've heard objects are slow.\\Now I try to avoid them.}
+		\end{example}
+		\begin{definition}{Memory Layout for Objects}
+			\begin{itemize}
+				\item if life time not bound to a method, cannot be stored on method stack
+				\item stored in free position on the heap
+				\item pointer and derefence required
+				\item need to store class information
+				\item pointer to virtual method table for dynamic dispatch
+				\item all fields, even inherited fields
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Do Not Avoid Objects!}
+			unless performance or memory consumption is a problem, then identify which objects (a) consume most memory and (b) have the shortest life time
+		\end{note}
+		\begin{example}{Thomas' Experience with LinkedList in Java}
+			LinkedList can be problematic, as there is a list object for every entry in the list and list manipulations lead to new list objects\\~\\solution: use arrays or ArrayList instead\\~\\large speed-ups in FeatureIDE: \href{https://github.com/FeatureIDE/FeatureIDE/blob/b7732df29da1652c74b4342cd087bba436919815/plugins/de.ovgu.featureide.fm.core/src/org/prop4j/Node.java\#L46}{github.com}\\~\\also reported by others: \href{https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist-in-java}{stackoverflow.com}
+		\end{example}
+		% TODO search for link to commit removing linked lists in prop4j
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[b]{No Garbage Collection?}
+	\vspace{-10mm}
+	\begin{fancycolumns}[b]
+		\begin{example}{Misunderstanding \#5}
+			\mycite{I've heard garbage collection is slow.\\Now I try to avoid it.}
+		\end{example}
+		\begin{definition}{Garbage Collection}
+			\begin{itemize}
+				\item find objects not referenced anymore
+				\item free memory space assigned by them
+				\item algorithms: reference counting, mark-and-sweep, copying collection
+				\item causes random delays
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Reasons for Automatic Memory Management}
+			\begin{itemize}
+				\item simplified programming, programs
+				\item fewer memory leaks
+				\item improved safety, security, reliability
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\hfill
+		\pic[width=.6\linewidth]{emotions/fridge}\pause
+		\begin{example}{Avoiding Garbage Collection}
+			\begin{itemize}
+				\item switch to a language with manual memory allocation (e.g., C/C++)
+				\item use ownership and borrowing as in Rust
+				\item deactivate garbage collection completely (only for programs with short runtime and low memory consumption)
+				\item web services: do garbage collection when service is idle
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+%For language implementation, this means that
+%• the set of reachable objects has to be known
+%• objects/record variables must be suitable for garbage collection
+%• garbage collection must be implemented
+%The first two aspects concern the compiler.
+
+\subsection{Simplicity and Performance}
+\begin{frame}{Speed = Instructions per Minute?}
+	\begin{fancycolumns}
+		\begin{example}{Misunderstanding \#6}
+			\mycite{I'm new to programming and think that every instruction takes equally long.}
+		\end{example}
+		
+		\begin{example}{Misunderstanding \#7}
+			\mycite{I'm new to computers / smartphones and think that every instruction takes equally long.}
+		\end{example}
+		\nextcolumn
+		\begin{note}{Hint}
+			Use all language constructs and let compilers do their job.
+			
+			If performance is not sufficient, inspect bottleneck.
+			
+			Only reduce code quality in favor of performance where necessary.
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}<2>{Simplicity over Performance}
+	\slideSimplicityOverPerformance
+\end{frame}
