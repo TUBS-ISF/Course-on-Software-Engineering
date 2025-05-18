@@ -1,0 +1,1305 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{1}
+  \datalist[entry]{anyt/global//global/global/global}
+    \entry{DBLP:journals/csur/BaldoniCDDF18}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=22a28bd4c4375f650b7bc5ca7e1def0b}{%
+           family={Baldoni},
+           familyi={B\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+        {{hash=838313855b1318a89487737723f117a9}{%
+           family={Coppa},
+           familyi={C\bibinitperiod},
+           given={Emilio},
+           giveni={E\bibinitperiod}}}%
+        {{hash=15733f28f5b2f56920a80612e2344d89}{%
+           family={D'Elia},
+           familyi={D\bibinitperiod},
+           given={Daniele\bibnamedelima Cono},
+           giveni={D\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=0d818aa3e968cd8759e8d31211dc6382}{%
+           family={Demetrescu},
+           familyi={D\bibinitperiod},
+           given={Camil},
+           giveni={C\bibinitperiod}}}%
+        {{hash=988d2602b6318807e4481ff5c673bbd5}{%
+           family={Finocchi},
+           familyi={F\bibinitperiod},
+           given={Irene},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{e61bf9b5a1d08d8f9562b57211fe1ff7}
+      \strng{fullhash}{5ef0b297c6acf997e66cabfade4fc840}
+      \strng{fullhashraw}{5ef0b297c6acf997e66cabfade4fc840}
+      \strng{bibnamehash}{e61bf9b5a1d08d8f9562b57211fe1ff7}
+      \strng{authorbibnamehash}{e61bf9b5a1d08d8f9562b57211fe1ff7}
+      \strng{authornamehash}{e61bf9b5a1d08d8f9562b57211fe1ff7}
+      \strng{authorfullhash}{5ef0b297c6acf997e66cabfade4fc840}
+      \strng{authorfullhashraw}{5ef0b297c6acf997e66cabfade4fc840}
+      \field{labelalpha}{Bal+18}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{ACM} Comput. Surv.}
+      \field{number}{3}
+      \field{title}{A Survey of Symbolic Execution Techniques}
+      \field{volume}{51}
+      \field{year}{2018}
+      \field{pages}{50:1\bibrangedash 50:39}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1145/3182657
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3182657
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3182657
+      \endverb
+    \endentry
+    \entry{DBLP:series/txtcs/BertotC04}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=877cbf536bf77c23de7f6116228e348d}{%
+           family={Bertot},
+           familyi={B\bibinitperiod},
+           given={Yves},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=1c95425453d3c022a6509fa0bd5cb7c4}{%
+           family={Castéran},
+           familyi={C\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \strng{fullhash}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \strng{fullhashraw}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \strng{bibnamehash}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \strng{authorbibnamehash}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \strng{authornamehash}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \strng{authorfullhash}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \strng{authorfullhashraw}{d6e19ed99b2f19fc95c0c2f4d1428684}
+      \field{labelalpha}{BC04}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-642-05880-6}
+      \field{series}{Texts in Theoretical Computer Science. An {EATCS} Series}
+      \field{title}{Interactive Theorem Proving and Program Development - Coq'Art: The Calculus of Inductive Constructions}
+      \field{year}{2004}
+      \verb{doi}
+      \verb 10.1007/978-3-662-07964-5
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-662-07964-5
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-662-07964-5
+      \endverb
+    \endentry
+    \entry{DBLP:conf/relsoft/BoyerEL75}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=dabd33e11f5ba5674b65a34943eabb3f}{%
+           family={Boyer},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima S.},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=306eb63b36320f01473493765893e104}{%
+           family={Elspas},
+           familyi={E\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fb981a0ae024187c74677159eba7e78c}{%
+           family={Levitt},
+           familyi={L\bibinitperiod},
+           given={Karl\bibnamedelima N.},
+           giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=21869fd686f6bbc72c6ba3ac0155900a}{%
+           family={Shooman},
+           familyi={S\bibinitperiod},
+           given={Martin\bibnamedelima L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=bcf17e33ce14d5b155186fcc812b99ac}{%
+           family={Yeh},
+           familyi={Y\bibinitperiod},
+           given={Raymond\bibnamedelima T.},
+           giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{fullhash}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{fullhashraw}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{bibnamehash}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{authorbibnamehash}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{authornamehash}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{authorfullhash}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{authorfullhashraw}{cf69d85e69e90b412e2ddfd002751891}
+      \strng{editorbibnamehash}{402bac026bc9bc3eb55be70d3e05f614}
+      \strng{editornamehash}{402bac026bc9bc3eb55be70d3e05f614}
+      \strng{editorfullhash}{402bac026bc9bc3eb55be70d3e05f614}
+      \strng{editorfullhashraw}{402bac026bc9bc3eb55be70d3e05f614}
+      \field{labelalpha}{BEL75}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the International Conference on Reliable Software 1975, Los Angeles, California, USA, April 21-23, 1975}
+      \field{title}{{SELECT} - a formal system for testing and debugging programs by symbolic execution}
+      \field{year}{1975}
+      \field{pages}{234\bibrangedash 245}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/800027.808445
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/800027.808445
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/800027.808445
+      \endverb
+    \endentry
+    \entry{birkhoff1967lattice}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=e918925b040af510f7ef9152977d8b93}{%
+           family={Birkhoff},
+           familyi={B\bibinitperiod},
+           given={Garrett},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{e918925b040af510f7ef9152977d8b93}
+      \strng{fullhash}{e918925b040af510f7ef9152977d8b93}
+      \strng{fullhashraw}{e918925b040af510f7ef9152977d8b93}
+      \strng{bibnamehash}{e918925b040af510f7ef9152977d8b93}
+      \strng{authorbibnamehash}{e918925b040af510f7ef9152977d8b93}
+      \strng{authornamehash}{e918925b040af510f7ef9152977d8b93}
+      \strng{authorfullhash}{e918925b040af510f7ef9152977d8b93}
+      \strng{authorfullhashraw}{e918925b040af510f7ef9152977d8b93}
+      \field{labelalpha}{Bir67}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Publications of AMS}
+      \field{title}{Lattice theory}
+      \field{year}{1967}
+    \endentry
+    \entry{DBLP:conf/popl/CousotC77}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=8e278ac48d46529580f34189ce35f505}{%
+           family={Cousot},
+           familyi={C\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5b51b0ccb1532c740cef8c8045f0911f}{%
+           family={Cousot},
+           familyi={C\bibinitperiod},
+           given={Radhia},
+           giveni={R\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=3a5e2ce7f7205aa78412c136bf12644b}{%
+           family={Graham},
+           familyi={G\bibinitperiod},
+           given={Robert\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d4ee1c864fedd9bc87f9b6a94cc7e794}{%
+           family={Harrison},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b0e677112f976b0ff780553fcb888351}{%
+           family={Sethi},
+           familyi={S\bibinitperiod},
+           given={Ravi},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{fullhash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{fullhashraw}{8aded87411c28c264da8bc9283b227f5}
+      \strng{bibnamehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{authorbibnamehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{authornamehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{authorfullhash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{authorfullhashraw}{8aded87411c28c264da8bc9283b227f5}
+      \strng{editorbibnamehash}{a9238febcb31da77be8d5eff20fcca82}
+      \strng{editornamehash}{a9238febcb31da77be8d5eff20fcca82}
+      \strng{editorfullhash}{a9238febcb31da77be8d5eff20fcca82}
+      \strng{editorfullhashraw}{a9238febcb31da77be8d5eff20fcca82}
+      \field{labelalpha}{CC77}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Conference Record of the Fourth {ACM} Symposium on Principles of Programming Languages, Los Angeles, California, USA, January 1977}
+      \field{title}{Abstract Interpretation: {A} Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints}
+      \field{year}{1977}
+      \field{pages}{238\bibrangedash 252}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1145/512950.512973
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/512950.512973
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/512950.512973
+      \endverb
+    \endentry
+    \entry{DBLP:conf/osdi/CadarDE08}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=ae88f84413db03b7b72010c8c37881cf}{%
+           family={Cadar},
+           familyi={C\bibinitperiod},
+           given={Cristian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d0a5b63a808f9ac24a5a40eacd92ba48}{%
+           family={Dunbar},
+           familyi={D\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d76a03f639d0f198710bebcbc03463a8}{%
+           family={Engler},
+           familyi={E\bibinitperiod},
+           given={Dawson\bibnamedelima R.},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=f7e2e3efbcea3e1d89daa4d354e22072}{%
+           family={Draves},
+           familyi={D\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=7de73d504819377b46756a56172262bf}{%
+           family={Renesse},
+           familyi={R\bibinitperiod},
+           given={Robbert},
+           giveni={R\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{USENIX} Association}%
+      }
+      \strng{namehash}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{fullhash}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{fullhashraw}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{bibnamehash}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{authorbibnamehash}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{authornamehash}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{authorfullhash}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{authorfullhashraw}{37e9de27d1a4af81d1f6d7c6a832afa2}
+      \strng{editorbibnamehash}{9e8c4c6d735578c28c479fedaa062562}
+      \strng{editornamehash}{9e8c4c6d735578c28c479fedaa062562}
+      \strng{editorfullhash}{9e8c4c6d735578c28c479fedaa062562}
+      \strng{editorfullhashraw}{9e8c4c6d735578c28c479fedaa062562}
+      \field{labelalpha}{CDE08}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{8th {USENIX} Symposium on Operating Systems Design and Implementation, {OSDI} 2008, December 8-10, 2008, San Diego, California, USA, Proceedings}
+      \field{title}{{KLEE:} Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs}
+      \field{year}{2008}
+      \field{pages}{209\bibrangedash 224}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb http://www.usenix.org/events/osdi08/tech/full\_papers/cadar/cadar.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.usenix.org/events/osdi08/tech/full%5C_papers/cadar/cadar.pdf
+      \endverb
+    \endentry
+    \entry{DBLP:journals/toplas/ClarkeES86}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=1822cd554880ea55fd66357a96bca03e}{%
+           family={Clarke},
+           familyi={C\bibinitperiod},
+           given={Edmund\bibnamedelima M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b7b243f4e5d206feb3fa65de14f3a97e}{%
+           family={Emerson},
+           familyi={E\bibinitperiod},
+           given={E.\bibnamedelimi Allen},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=40318bc73cd0979c85ff356f55ac4e4a}{%
+           family={Sistla},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi Prasad},
+           giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{7263340f60be0ec6e46aba08bf9b7b49}
+      \strng{fullhash}{7263340f60be0ec6e46aba08bf9b7b49}
+      \strng{fullhashraw}{7263340f60be0ec6e46aba08bf9b7b49}
+      \strng{bibnamehash}{7263340f60be0ec6e46aba08bf9b7b49}
+      \strng{authorbibnamehash}{7263340f60be0ec6e46aba08bf9b7b49}
+      \strng{authornamehash}{7263340f60be0ec6e46aba08bf9b7b49}
+      \strng{authorfullhash}{7263340f60be0ec6e46aba08bf9b7b49}
+      \strng{authorfullhashraw}{7263340f60be0ec6e46aba08bf9b7b49}
+      \field{labelalpha}{CES86}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{ACM} Trans. Program. Lang. Syst.}
+      \field{number}{2}
+      \field{title}{Automatic Verification of Finite-State Concurrent Systems Using Temporal Logic Specifications}
+      \field{volume}{8}
+      \field{year}{1986}
+      \field{pages}{244\bibrangedash 263}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1145/5397.5399
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/5397.5399
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/5397.5399
+      \endverb
+    \endentry
+    \entry{clarke2004tool}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=76fe4736f1859a02499e11e8122c3d3b}{%
+           family={Clarke},
+           familyi={C\bibinitperiod},
+           given={Edmund},
+           giveni={E\bibinitperiod}}}%
+        {{hash=b4aa934119a9d2ed6e4c21b1a7f20424}{%
+           family={Kroening},
+           familyi={K\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=42ef4b1884754f5512308b4467aa915b}{%
+           family={Lerda},
+           familyi={L\bibinitperiod},
+           given={Flavio},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \strng{fullhash}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \strng{fullhashraw}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \strng{bibnamehash}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \strng{authorbibnamehash}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \strng{authornamehash}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \strng{authorfullhash}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \strng{authorfullhashraw}{9b8f6ae24afaf7b66be9d9cac513c1b8}
+      \field{labelalpha}{CKL04}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Tools and Algorithms for the Construction and Analysis of Systems: 10th International Conference, TACAS 2004, Held as Part of the Joint European Conferences on Theory and Practice of Software, ETAPS 2004, Barcelona, Spain, March 29-April 2, 2004. Proceedings 10}
+      \field{title}{A tool for checking ANSI-C programs}
+      \field{year}{2004}
+      \field{pages}{168\bibrangedash 176}
+      \range{pages}{9}
+    \endentry
+    \entry{cousout2012casual}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=8e278ac48d46529580f34189ce35f505}{%
+           family={Cousot},
+           familyi={C\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{fullhash}{8e278ac48d46529580f34189ce35f505}
+      \strng{fullhashraw}{8e278ac48d46529580f34189ce35f505}
+      \strng{bibnamehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authorbibnamehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authornamehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authorfullhash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authorfullhashraw}{8e278ac48d46529580f34189ce35f505}
+      \field{extraname}{1}
+      \field{labelalpha}{Cou12}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CMACS Workshop on Systems Biology and Formals Methods (SBFM'12)}
+      \field{title}{A casual introduction to Abstract Interpretation}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://pcousot.github.io/talks/PCousot-SBFM-2012-1-1.pdf
+      \endverb
+      \verb{url}
+      \verb https://pcousot.github.io/talks/PCousot-SBFM-2012-1-1.pdf
+      \endverb
+    \endentry
+    \entry{cousout2021principles}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=8e278ac48d46529580f34189ce35f505}{%
+           family={Cousot},
+           familyi={C\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{fullhash}{8e278ac48d46529580f34189ce35f505}
+      \strng{fullhashraw}{8e278ac48d46529580f34189ce35f505}
+      \strng{bibnamehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authorbibnamehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authornamehash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authorfullhash}{8e278ac48d46529580f34189ce35f505}
+      \strng{authorfullhashraw}{8e278ac48d46529580f34189ce35f505}
+      \field{extraname}{2}
+      \field{labelalpha}{Cou21}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0262044905}
+      \field{title}{Principles of Abstract Interpretation}
+      \field{year}{2021}
+    \endentry
+    \entry{DBLP:conf/pldi/FerraraNAC21}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=04abe0009fedd8e939eb61a687e57d5b}{%
+           family={Ferrara},
+           familyi={F\bibinitperiod},
+           given={Pietro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=15227231bd3e0976331e98b49b8dc903}{%
+           family={Negrini},
+           familyi={N\bibinitperiod},
+           given={Luca},
+           giveni={L\bibinitperiod}}}%
+        {{hash=fb9c0d68a8d0b5fde2e73367d1862519}{%
+           family={Arceri},
+           familyi={A\bibinitperiod},
+           given={Vincenzo},
+           giveni={V\bibinitperiod}}}%
+        {{hash=e57bd7ce3f16e31c83246778ded14abb}{%
+           family={Cortesi},
+           familyi={C\bibinitperiod},
+           given={Agostino},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=5a37d07dc9f7f24becfd183c61fdfe21}{%
+           family={Do},
+           familyi={D\bibinitperiod},
+           given={Lisa\bibnamedelimb Nguyen\bibnamedelima Quang},
+           giveni={L\bibinitperiod\bibinitdelim N\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=6bce83f5d3329685daf03ee6a00d928b}{%
+           family={Urban},
+           familyi={U\bibinitperiod},
+           given={Caterina},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{92d3f913d03547d47971c1f958afde34}
+      \strng{fullhash}{4cd84e869a182e68c934a9825625f156}
+      \strng{fullhashraw}{4cd84e869a182e68c934a9825625f156}
+      \strng{bibnamehash}{92d3f913d03547d47971c1f958afde34}
+      \strng{authorbibnamehash}{92d3f913d03547d47971c1f958afde34}
+      \strng{authornamehash}{92d3f913d03547d47971c1f958afde34}
+      \strng{authorfullhash}{4cd84e869a182e68c934a9825625f156}
+      \strng{authorfullhashraw}{4cd84e869a182e68c934a9825625f156}
+      \strng{editorbibnamehash}{8a6e76f78aea7c6df7a0d468efe46978}
+      \strng{editornamehash}{8a6e76f78aea7c6df7a0d468efe46978}
+      \strng{editorfullhash}{8a6e76f78aea7c6df7a0d468efe46978}
+      \strng{editorfullhashraw}{8a6e76f78aea7c6df7a0d468efe46978}
+      \field{labelalpha}{Fer+21}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{SOAP@PLDI 2021: Proceedings of the 10th {ACM} {SIGPLAN} International Workshop on the State Of the Art in Program Analysis, Virtual Event, Canada, 22 June, 2021}
+      \field{title}{Static analysis for dummies: experiencing LiSA}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/3460946.3464316
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3460946.3464316
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3460946.3464316
+      \endverb
+    \endentry
+    \entry{floyd1967assigning}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=6a7319445e476f9e3f352261abd48a4a}{%
+           family={Floyd},
+           familyi={F\bibinitperiod},
+           given={Robert\bibnamedelima W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{6a7319445e476f9e3f352261abd48a4a}
+      \strng{fullhash}{6a7319445e476f9e3f352261abd48a4a}
+      \strng{fullhashraw}{6a7319445e476f9e3f352261abd48a4a}
+      \strng{bibnamehash}{6a7319445e476f9e3f352261abd48a4a}
+      \strng{authorbibnamehash}{6a7319445e476f9e3f352261abd48a4a}
+      \strng{authornamehash}{6a7319445e476f9e3f352261abd48a4a}
+      \strng{authorfullhash}{6a7319445e476f9e3f352261abd48a4a}
+      \strng{authorfullhashraw}{6a7319445e476f9e3f352261abd48a4a}
+      \field{labelalpha}{Flo67}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proc. of the American Mathematical Society Symposia on Applied Mathematics}
+      \field{title}{Assigning Meanings to Programs}
+      \field{volume}{19}
+      \field{year}{1967}
+      \field{pages}{19\bibrangedash 32}
+      \range{pages}{14}
+    \endentry
+    \entry{DBLP:journals/annals/GiacobazziR22}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6d8cb6af4a5b9439461ca60b0f177f91}{%
+           family={Giacobazzi},
+           familyi={G\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+        {{hash=fbe3c60694a9f910124f28e7c0527fc4}{%
+           family={Ranzato},
+           familyi={R\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{65f95b450e495b959e0516f80d01d1fa}
+      \strng{fullhash}{65f95b450e495b959e0516f80d01d1fa}
+      \strng{fullhashraw}{65f95b450e495b959e0516f80d01d1fa}
+      \strng{bibnamehash}{65f95b450e495b959e0516f80d01d1fa}
+      \strng{authorbibnamehash}{65f95b450e495b959e0516f80d01d1fa}
+      \strng{authornamehash}{65f95b450e495b959e0516f80d01d1fa}
+      \strng{authorfullhash}{65f95b450e495b959e0516f80d01d1fa}
+      \strng{authorfullhashraw}{65f95b450e495b959e0516f80d01d1fa}
+      \field{labelalpha}{GR22}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{IEEE} Ann. Hist. Comput.}
+      \field{number}{2}
+      \field{title}{History of Abstract Interpretation}
+      \field{volume}{44}
+      \field{year}{2022}
+      \field{pages}{33\bibrangedash 43}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/MAHC.2021.3133136
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/MAHC.2021.3133136
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/MAHC.2021.3133136
+      \endverb
+    \endentry
+    \entry{DBLP:journals/cacm/Hoare69}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=d6facc8397f631d3ef01dd70be993640}{%
+           family={Hoare},
+           familyi={H\bibinitperiod},
+           given={C.\bibnamedelimi A.\bibnamedelimi R.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{fullhash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{fullhashraw}{d6facc8397f631d3ef01dd70be993640}
+      \strng{bibnamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorbibnamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authornamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorfullhash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorfullhashraw}{d6facc8397f631d3ef01dd70be993640}
+      \field{labelalpha}{Hoa69}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Commun. {ACM}}
+      \field{number}{10}
+      \field{title}{An Axiomatic Basis for Computer Programming}
+      \field{volume}{12}
+      \field{year}{1969}
+      \field{pages}{576\bibrangedash 580}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1145/363235.363259
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/363235.363259
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/363235.363259
+      \endverb
+    \endentry
+    \entry{DBLP:conf/cav/JeannetM09}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=5ef59970614f7e099c2ccc2c1d6c336f}{%
+           family={Jeannet},
+           familyi={J\bibinitperiod},
+           given={Bertrand},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f5a65e353c1f698c5b75db2a0914d504}{%
+           family={Miné},
+           familyi={M\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=65fd10b3d7dd2ade022e03b03455122a}{%
+           family={Bouajjani},
+           familyi={B\bibinitperiod},
+           given={Ahmed},
+           giveni={A\bibinitperiod}}}%
+        {{hash=7f463f1763196d47be4efcdb27cf0f83}{%
+           family={Maler},
+           familyi={M\bibinitperiod},
+           given={Oded},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{fullhash}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{fullhashraw}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{bibnamehash}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{authorbibnamehash}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{authornamehash}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{authorfullhash}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{authorfullhashraw}{f592fbdfd485ed462e99cf2d96b8d097}
+      \strng{editorbibnamehash}{c45d6124967ab9e982c74d99ce871a79}
+      \strng{editornamehash}{c45d6124967ab9e982c74d99ce871a79}
+      \strng{editorfullhash}{c45d6124967ab9e982c74d99ce871a79}
+      \strng{editorfullhashraw}{c45d6124967ab9e982c74d99ce871a79}
+      \field{labelalpha}{JM09}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Aided Verification, 21st International Conference, {CAV} 2009, Grenoble, France, June 26 - July 2, 2009. Proceedings}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Apron: {A} Library of Numerical Abstract Domains for Static Analysis}
+      \field{volume}{5643}
+      \field{year}{2009}
+      \field{pages}{661\bibrangedash 667}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1007/978-3-642-02658-4\_52
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-642-02658-4\_52
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-642-02658-4%5C_52
+      \endverb
+    \endentry
+    \entry{DBLP:conf/vstte/JournaultMMO19}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=cc04c2ddbc59a4a49812a9b64defd06a}{%
+           family={Journault},
+           familyi={J\bibinitperiod},
+           given={Matthieu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f5a65e353c1f698c5b75db2a0914d504}{%
+           family={Miné},
+           familyi={M\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+        {{hash=fb33273082447e653b642dfdbed47381}{%
+           family={Monat},
+           familyi={M\bibinitperiod},
+           given={Raphaël},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a50de8db9bfc6c34441bac75ff6d7357}{%
+           family={Ouadjaout},
+           familyi={O\bibinitperiod},
+           given={Abdelraouf},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=1d91481572da633e3df868cfba6da94a}{%
+           family={Chakraborty},
+           familyi={C\bibinitperiod},
+           given={Supratik},
+           giveni={S\bibinitperiod}}}%
+        {{hash=4e9200fe691023f0810f6323f8013cb5}{%
+           family={Navas},
+           familyi={N\bibinitperiod},
+           given={Jorge\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{539f47d2fef5bafb58a5d511bff65418}
+      \strng{fullhash}{b95ce3471bf29b73a792c2fb48d63a94}
+      \strng{fullhashraw}{b95ce3471bf29b73a792c2fb48d63a94}
+      \strng{bibnamehash}{539f47d2fef5bafb58a5d511bff65418}
+      \strng{authorbibnamehash}{539f47d2fef5bafb58a5d511bff65418}
+      \strng{authornamehash}{539f47d2fef5bafb58a5d511bff65418}
+      \strng{authorfullhash}{b95ce3471bf29b73a792c2fb48d63a94}
+      \strng{authorfullhashraw}{b95ce3471bf29b73a792c2fb48d63a94}
+      \strng{editorbibnamehash}{283ba1b0788166c4e9b7b0c6ec697499}
+      \strng{editornamehash}{283ba1b0788166c4e9b7b0c6ec697499}
+      \strng{editorfullhash}{283ba1b0788166c4e9b7b0c6ec697499}
+      \strng{editorfullhashraw}{283ba1b0788166c4e9b7b0c6ec697499}
+      \field{labelalpha}{Jou+19}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Verified Software. Theories, Tools, and Experiments - 11th International Conference, {VSTTE} 2019, New York City, NY, USA, July 13-14, 2019, Revised Selected Papers}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Combinations of Reusable Abstract Domains for a Multilingual Static Analyzer}
+      \field{volume}{12031}
+      \field{year}{2019}
+      \field{pages}{1\bibrangedash 18}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1007/978-3-030-41600-3\_1
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-030-41600-3\_1
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-030-41600-3%5C_1
+      \endverb
+    \endentry
+    \entry{DBLP:conf/ibm/King74}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=044c5f31c0f35174741bf63d60de9e7d}{%
+           family={King},
+           familyi={K\bibinitperiod},
+           given={James\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=3f663e2c2dbd0827425e6c5f72d078bf}{%
+           family={Hackl},
+           familyi={H\bibinitperiod},
+           given={Clemens},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{fullhash}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{fullhashraw}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{bibnamehash}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{authorbibnamehash}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{authornamehash}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{authorfullhash}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{authorfullhashraw}{044c5f31c0f35174741bf63d60de9e7d}
+      \strng{editorbibnamehash}{3f663e2c2dbd0827425e6c5f72d078bf}
+      \strng{editornamehash}{3f663e2c2dbd0827425e6c5f72d078bf}
+      \strng{editorfullhash}{3f663e2c2dbd0827425e6c5f72d078bf}
+      \strng{editorfullhashraw}{3f663e2c2dbd0827425e6c5f72d078bf}
+      \field{labelalpha}{Kin74}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Programming Methodology, 4th Informatik Symposium, {IBM} Germany, Wildbad, September 25-27, 1974}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{A New Approach to Program Testing}
+      \field{volume}{23}
+      \field{year}{1974}
+      \field{pages}{278\bibrangedash 290}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1007/3-540-07131-8\_30
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/3-540-07131-8\_30
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/3-540-07131-8%5C_30
+      \endverb
+    \endentry
+    \entry{kleene1952introduction}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=6434a399c2a8d759b93b6e4868299e63}{%
+           family={Kleene},
+           familyi={K\bibinitperiod},
+           given={Stephen\bibnamedelima Cole},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{6434a399c2a8d759b93b6e4868299e63}
+      \strng{fullhash}{6434a399c2a8d759b93b6e4868299e63}
+      \strng{fullhashraw}{6434a399c2a8d759b93b6e4868299e63}
+      \strng{bibnamehash}{6434a399c2a8d759b93b6e4868299e63}
+      \strng{authorbibnamehash}{6434a399c2a8d759b93b6e4868299e63}
+      \strng{authornamehash}{6434a399c2a8d759b93b6e4868299e63}
+      \strng{authorfullhash}{6434a399c2a8d759b93b6e4868299e63}
+      \strng{authorfullhashraw}{6434a399c2a8d759b93b6e4868299e63}
+      \field{labelalpha}{Kle52}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to metamathematics}
+      \field{year}{1952}
+    \endentry
+    \entry{10.5555/1592955}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=8fccab0834e0d1d5a00235147263e915}{%
+           family={Khedker},
+           familyi={K\bibinitperiod},
+           given={Uday},
+           giveni={U\bibinitperiod}}}%
+        {{hash=32566da436c3e693dfc128969115072f}{%
+           family={Sanyal},
+           familyi={S\bibinitperiod},
+           given={Amitabha},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9b02c21fbc0f6e404e32f1e48ec681c0}{%
+           family={Karkare},
+           familyi={K\bibinitperiod},
+           given={Bageshri},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press, Inc.}%
+      }
+      \strng{namehash}{0c3ab9c04a215af6e8d772020f33332e}
+      \strng{fullhash}{0c3ab9c04a215af6e8d772020f33332e}
+      \strng{fullhashraw}{0c3ab9c04a215af6e8d772020f33332e}
+      \strng{bibnamehash}{0c3ab9c04a215af6e8d772020f33332e}
+      \strng{authorbibnamehash}{0c3ab9c04a215af6e8d772020f33332e}
+      \strng{authornamehash}{0c3ab9c04a215af6e8d772020f33332e}
+      \strng{authorfullhash}{0c3ab9c04a215af6e8d772020f33332e}
+      \strng{authorfullhashraw}{0c3ab9c04a215af6e8d772020f33332e}
+      \field{labelalpha}{KSK09}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This work provides an in-depth treatment of data flow analysis technique. Apart from including interprocedural data flow analysis, this book is the first to extend detailed coverage of analysis beyond bit vectors. Supplemented by numerous examples, it equips readers with a combination of mutually supportive theory and practice, presenting mathematical foundations and including study of data flow analysis implementation through use of the GNU Compiler Collection (GCC). Readers can experiment with the analyses described in the book by accessing the authors web page, where they will find the source code of gdfa (generic data flow analyzer).}
+      \field{edition}{1st}
+      \field{isbn}{0849328802}
+      \field{title}{Data Flow Analysis: Theory and Practice}
+      \field{year}{2009}
+    \endentry
+    \entry{DBLP:conf/sac/LogozzoF08}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=b14303f4e3cf85428115c6ba5f862e24}{%
+           family={Logozzo},
+           familyi={L\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=dcba735adc043e55f5e4362f297962e1}{%
+           family={Fähndrich},
+           familyi={F\bibinitperiod},
+           given={Manuel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=ab6f661943bc658f13db85c5cf553f44}{%
+           family={Wainwright},
+           familyi={W\bibinitperiod},
+           given={Roger\bibnamedelima L.},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=f5b713523aeeb4c9550103d9df094bdc}{%
+           family={Haddad},
+           familyi={H\bibinitperiod},
+           given={Hisham},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{d31886c0960ec7a2942214031c03e627}
+      \strng{fullhash}{d31886c0960ec7a2942214031c03e627}
+      \strng{fullhashraw}{d31886c0960ec7a2942214031c03e627}
+      \strng{bibnamehash}{d31886c0960ec7a2942214031c03e627}
+      \strng{authorbibnamehash}{d31886c0960ec7a2942214031c03e627}
+      \strng{authornamehash}{d31886c0960ec7a2942214031c03e627}
+      \strng{authorfullhash}{d31886c0960ec7a2942214031c03e627}
+      \strng{authorfullhashraw}{d31886c0960ec7a2942214031c03e627}
+      \strng{editorbibnamehash}{792d15691d11932c95d0c442a2af8441}
+      \strng{editornamehash}{792d15691d11932c95d0c442a2af8441}
+      \strng{editorfullhash}{792d15691d11932c95d0c442a2af8441}
+      \strng{editorfullhashraw}{792d15691d11932c95d0c442a2af8441}
+      \field{labelalpha}{LF08}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2008 {ACM} Symposium on Applied Computing (SAC), Fortaleza, Ceara, Brazil, March 16-20, 2008}
+      \field{title}{Pentagons: a weakly relational abstract domain for the efficient validation of array accesses}
+      \field{year}{2008}
+      \field{pages}{184\bibrangedash 188}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1145/1363686.1363736
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/1363686.1363736
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/1363686.1363736
+      \endverb
+    \endentry
+    \entry{DBLP:conf/ifip/Mauborgne04}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=5375e8a64bef59ee60839fb757f23756}{%
+           family={Mauborgne},
+           familyi={M\bibinitperiod},
+           given={Laurent},
+           giveni={L\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=be3790ea239b525579ad8b1074599975}{%
+           family={Jacquart},
+           familyi={J\bibinitperiod},
+           given={René},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer/Springer}%
+      }
+      \strng{namehash}{5375e8a64bef59ee60839fb757f23756}
+      \strng{fullhash}{5375e8a64bef59ee60839fb757f23756}
+      \strng{fullhashraw}{5375e8a64bef59ee60839fb757f23756}
+      \strng{bibnamehash}{5375e8a64bef59ee60839fb757f23756}
+      \strng{authorbibnamehash}{5375e8a64bef59ee60839fb757f23756}
+      \strng{authornamehash}{5375e8a64bef59ee60839fb757f23756}
+      \strng{authorfullhash}{5375e8a64bef59ee60839fb757f23756}
+      \strng{authorfullhashraw}{5375e8a64bef59ee60839fb757f23756}
+      \strng{editorbibnamehash}{be3790ea239b525579ad8b1074599975}
+      \strng{editornamehash}{be3790ea239b525579ad8b1074599975}
+      \strng{editorfullhash}{be3790ea239b525579ad8b1074599975}
+      \strng{editorfullhashraw}{be3790ea239b525579ad8b1074599975}
+      \field{labelalpha}{Mau04}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Building the Information Society, {IFIP} 18th World Computer Congress, Topical Sessions, 22-27 August 2004, Toulouse, France}
+      \field{series}{{IFIP}}
+      \field{title}{Astrée: verification of absence of run-time error}
+      \field{volume}{156}
+      \field{year}{2004}
+      \field{pages}{385\bibrangedash 392}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/978-1-4020-8157-6\_30
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-1-4020-8157-6_30
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-1-4020-8157-6_30
+      \endverb
+    \endentry
+    \entry{DBLP:journals/ftpl/Mine17}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f5a65e353c1f698c5b75db2a0914d504}{%
+           family={Miné},
+           familyi={M\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{fullhash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{fullhashraw}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{bibnamehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{authorbibnamehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{authornamehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{authorfullhash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{authorfullhashraw}{f5a65e353c1f698c5b75db2a0914d504}
+      \field{labelalpha}{Min17}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Found. Trends Program. Lang.}
+      \field{number}{3-4}
+      \field{title}{Tutorial on Static Inference of Numeric Invariants by Abstract Interpretation}
+      \field{volume}{4}
+      \field{year}{2017}
+      \field{pages}{120\bibrangedash 372}
+      \range{pages}{253}
+      \verb{doi}
+      \verb 10.1561/2500000034
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1561/2500000034
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1561/2500000034
+      \endverb
+    \endentry
+    \entry{DBLP:journals/iandc/MidtgaardJ12}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=83c443e3345a1f3a36b2de6609f323a2}{%
+           family={Midtgaard},
+           familyi={M\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c40329c67b6396ba6ff7b033e764a4bb}{%
+           family={Jensen},
+           familyi={J\bibinitperiod},
+           given={Thomas\bibnamedelima P.},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{1c68916901dec019e79ef773475a693a}
+      \strng{fullhash}{1c68916901dec019e79ef773475a693a}
+      \strng{fullhashraw}{1c68916901dec019e79ef773475a693a}
+      \strng{bibnamehash}{1c68916901dec019e79ef773475a693a}
+      \strng{authorbibnamehash}{1c68916901dec019e79ef773475a693a}
+      \strng{authornamehash}{1c68916901dec019e79ef773475a693a}
+      \strng{authorfullhash}{1c68916901dec019e79ef773475a693a}
+      \strng{authorfullhashraw}{1c68916901dec019e79ef773475a693a}
+      \field{labelalpha}{MJ12}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Inf. Comput.}
+      \field{title}{Control-flow analysis of function calls and returns by abstract interpretation}
+      \field{volume}{211}
+      \field{year}{2012}
+      \field{pages}{49\bibrangedash 76}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1016/J.IC.2011.11.005
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.ic.2011.11.005
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.ic.2011.11.005
+      \endverb
+    \endentry
+    \entry{DBLP:conf/cade/OwreRS92}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=869450a708fc0c121c3c46d11d01685d}{%
+           family={Owre},
+           familyi={O\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=81f6451eab12ecf9ab4f29d7bc662429}{%
+           family={Rushby},
+           familyi={R\bibinitperiod},
+           given={John\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=5553cb073d2f3ac295ec4dec8ea41dfc}{%
+           family={Shankar},
+           familyi={S\bibinitperiod},
+           given={Natarajan},
+           giveni={N\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=79ae193c185dc98fb2b7f4ece0ec1fb4}{%
+           family={Kapur},
+           familyi={K\bibinitperiod},
+           given={Deepak},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{32d858a98611a4808bc9457aabde9d47}
+      \strng{fullhash}{32d858a98611a4808bc9457aabde9d47}
+      \strng{fullhashraw}{32d858a98611a4808bc9457aabde9d47}
+      \strng{bibnamehash}{32d858a98611a4808bc9457aabde9d47}
+      \strng{authorbibnamehash}{32d858a98611a4808bc9457aabde9d47}
+      \strng{authornamehash}{32d858a98611a4808bc9457aabde9d47}
+      \strng{authorfullhash}{32d858a98611a4808bc9457aabde9d47}
+      \strng{authorfullhashraw}{32d858a98611a4808bc9457aabde9d47}
+      \strng{editorbibnamehash}{79ae193c185dc98fb2b7f4ece0ec1fb4}
+      \strng{editornamehash}{79ae193c185dc98fb2b7f4ece0ec1fb4}
+      \strng{editorfullhash}{79ae193c185dc98fb2b7f4ece0ec1fb4}
+      \strng{editorfullhashraw}{79ae193c185dc98fb2b7f4ece0ec1fb4}
+      \field{labelalpha}{ORS92}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Automated Deduction - CADE-11, 11th International Conference on Automated Deduction, Saratoga Springs, NY, USA, June 15-18, 1992, Proceedings}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{{PVS:} {A} Prototype Verification System}
+      \field{volume}{607}
+      \field{year}{1992}
+      \field{pages}{748\bibrangedash 752}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1007/3-540-55602-8\_217
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/3-540-55602-8\_217
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/3-540-55602-8%5C_217
+      \endverb
+    \endentry
+    \entry{rice1953classes}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f90cabc304a16dc176463dd52cef5aca}{%
+           family={Rice},
+           familyi={R\bibinitperiod},
+           given={Henry\bibnamedelima Gordon},
+           giveni={H\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{f90cabc304a16dc176463dd52cef5aca}
+      \strng{fullhash}{f90cabc304a16dc176463dd52cef5aca}
+      \strng{fullhashraw}{f90cabc304a16dc176463dd52cef5aca}
+      \strng{bibnamehash}{f90cabc304a16dc176463dd52cef5aca}
+      \strng{authorbibnamehash}{f90cabc304a16dc176463dd52cef5aca}
+      \strng{authornamehash}{f90cabc304a16dc176463dd52cef5aca}
+      \strng{authorfullhash}{f90cabc304a16dc176463dd52cef5aca}
+      \strng{authorfullhashraw}{f90cabc304a16dc176463dd52cef5aca}
+      \field{labelalpha}{Ric53}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transactions of the American Mathematical society}
+      \field{number}{2}
+      \field{title}{Classes of recursively enumerable sets and their decision problems}
+      \field{volume}{74}
+      \field{year}{1953}
+      \field{pages}{358\bibrangedash 366}
+      \range{pages}{9}
+    \endentry
+    \entry{rival2020introduction}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=c2dcd44d74658704f0b5afac3a529bb5}{%
+           family={Rival},
+           familyi={R\bibinitperiod},
+           given={Xavier},
+           giveni={X\bibinitperiod}}}%
+        {{hash=ad33911cfe40976e3794282954b2b027}{%
+           family={Yi},
+           familyi={Y\bibinitperiod},
+           given={Kwangkeun},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{123c45aba6236c6ca4e174b9571c5531}
+      \strng{fullhash}{123c45aba6236c6ca4e174b9571c5531}
+      \strng{fullhashraw}{123c45aba6236c6ca4e174b9571c5531}
+      \strng{bibnamehash}{123c45aba6236c6ca4e174b9571c5531}
+      \strng{authorbibnamehash}{123c45aba6236c6ca4e174b9571c5531}
+      \strng{authornamehash}{123c45aba6236c6ca4e174b9571c5531}
+      \strng{authorfullhash}{123c45aba6236c6ca4e174b9571c5531}
+      \strng{authorfullhashraw}{123c45aba6236c6ca4e174b9571c5531}
+      \field{labelalpha}{RY20}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0262043410}
+      \field{title}{Introduction to Static Analysis: An Abstract Interpretation Perspective}
+      \field{year}{2020}
+    \endentry
+    \entry{tarski1955lattice}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1d9d32785708836ac3a223ad31f277fe}{%
+           family={Tarski},
+           familyi={T\bibinitperiod},
+           given={Alfred},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1d9d32785708836ac3a223ad31f277fe}
+      \strng{fullhash}{1d9d32785708836ac3a223ad31f277fe}
+      \strng{fullhashraw}{1d9d32785708836ac3a223ad31f277fe}
+      \strng{bibnamehash}{1d9d32785708836ac3a223ad31f277fe}
+      \strng{authorbibnamehash}{1d9d32785708836ac3a223ad31f277fe}
+      \strng{authornamehash}{1d9d32785708836ac3a223ad31f277fe}
+      \strng{authorfullhash}{1d9d32785708836ac3a223ad31f277fe}
+      \strng{authorfullhashraw}{1d9d32785708836ac3a223ad31f277fe}
+      \field{labelalpha}{Tar55}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pacific Journal of Mathematics}
+      \field{number}{2}
+      \field{title}{A lattice-theoretical fixpoint theorem and its applications.}
+      \field{volume}{5}
+      \field{year}{1955}
+      \field{pages}{285\bibrangedash 309}
+      \range{pages}{25}
+    \endentry
+    \entry{turing1989checking}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=d6d9f41ce7ab57b0d45edbe153331923}{%
+           family={Turing},
+           familyi={T\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{d6d9f41ce7ab57b0d45edbe153331923}
+      \strng{fullhash}{d6d9f41ce7ab57b0d45edbe153331923}
+      \strng{fullhashraw}{d6d9f41ce7ab57b0d45edbe153331923}
+      \strng{bibnamehash}{d6d9f41ce7ab57b0d45edbe153331923}
+      \strng{authorbibnamehash}{d6d9f41ce7ab57b0d45edbe153331923}
+      \strng{authornamehash}{d6d9f41ce7ab57b0d45edbe153331923}
+      \strng{authorfullhash}{d6d9f41ce7ab57b0d45edbe153331923}
+      \strng{authorfullhashraw}{d6d9f41ce7ab57b0d45edbe153331923}
+      \field{labelalpha}{Tur49}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Report of a Conference on High Speed Automatic Calculating Machines}
+      \field{title}{Checking a large routine}
+      \field{year}{1949}
+      \field{pages}{67\bibrangedash 69}
+      \range{pages}{3}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

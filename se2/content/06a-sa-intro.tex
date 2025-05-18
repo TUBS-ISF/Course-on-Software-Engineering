@@ -1,0 +1,600 @@
+\pgfsetlayers{very-background,background,main,middle,foreground}
+\tikzset{
+    bottom note/.style={font=\tiny,color=gray},
+    path image shift/.style={}, % scale patch just for white padding
+    path image/.style={path picture={\node[scale=.98] at ([path image shift]path picture bounding box.center) {#1};}}
+}
+\def\I#1#2{\footnotesize\absexpr{\IntCC{#1}{#2}}}
+
+\newsavebox\SimpleSignLattice
+\begin{lrbox}{\SimpleSignLattice}
+\scriptsize
+\begin{tikzpicture}[line cap=round,x=6.5mm,y=6.5mm]
+   \node (top) at (0,0) {\absexpr{\top}};
+   \node (pos) at (-1,-1) {\absexpr{\geq 0}};
+   \node (neg) at (1,-1) {\absexpr{\leq 0}};
+   \node (zero) at (0,-2) {\absexpr{0}};
+   \node (bot) at (0,-3) {\absexpr{\bot}};
+   \draw (top) -- (pos) -- (zero) -- (neg) -- (top) (zero) -- (bot);
+\end{tikzpicture}
+\end{lrbox}
+
+\subsection{The Why}
+\subsubsection[Motivation]{Initial Motivation}
+\begin{frame}[fragile,label=main-example]{\insertsection}
+\AnimateCode{onslide={o2:{3,...,7},-,-,-,-,-,-},handout=2/1,first slide=2}
+\begin{minted}[escapeinside=||,lineskip=1pt]{java}
+public static void main(String[] args) {
+    int a = 1; |\tikzmarknode{@a1}{\strut}|
+    double r = Math.random() * 10; |\tikzmarknode{@r1}{\strut}|
+    if (r > 5) { |\tikzmarknode{@r2}{\strut}|
+       a = 2; |\tikzmarknode{@a2}{\strut}|
+    }
+    System.out.println(a); |\tikzmarknode{@a3}{\strut}|
+}
+\end{minted}
+\endAnimateCode
+\begin{tikzpicture}[overlay,remember picture]
+   \onslide<3->{%
+      \coordinate[yshift=2pt] (@a1) at (pic cs:@a1);
+      \node[right=4cm] (@a1) at (@a1) {\AbstractInfo{a \in \Set{1}}};
+   }%
+   \onslide<4->{%
+      \coordinate[yshift=2pt] (@r1) at (pic cs:@r1);
+      \node[right] at (@r1-|@a1.west) {\AbstractInfo{r \in \IntCO{0}{10}}};
+   }%
+   \onslide<5->{%
+      \coordinate[yshift=2pt] (@a2) at (pic cs:@a2);
+      \node[right] at (@a2-|@a1.west) {\AbstractInfo{a \in \Set{2}}};
+   }%
+   \onslide<6->{%
+      \coordinate[yshift=2pt] (@a3) at (pic cs:@a3);
+      \node[right] (@set) at (@a3-|@a1.west) {\AbstractInfo{a \in \Set{1, 2}}};
+      \onslide<7->{%
+         \node[right] at (@set.east) {\(\to\)~\;Valid? Ok? Safe?};
+      }
+   }
+\end{tikzpicture}
+
+\begin{uncoverenv}<8->
+\begin{definition}{Static Analysis\hfill\small\cite{rival2020introduction}}
+   Discover semantic properties of a program without running it.
+\end{definition}
+\end{uncoverenv}
+\end{frame}
+
+\subsubsection{Origins}
+\def\Mixin{}%
+\tikzset{%
+   history-line/.style={line width=1.85mm,gray!30!white\Mixin,line cap=round,rounded corners=2pt},
+   history-line skip/.style={history-line, line width=.75mm,loosely dotted},
+   history-event/.style={history-line,gray\Mixin,line width=1mm,{Circle[length=1.85mm]}-,shorten <= -1.85mm/2},
+   history@box/.style={yshift=.675\baselineskip,black\Mixin,text width=5.75cm,font=\small},
+   history-range/.style={history-line, gray!60!white\Mixin,line cap=round,-{Triangle Cap}}   
+}
+
+% #1 left/right
+% #2 when
+% #3 what
+% #4 optional comment
+\def\historybox#1#2#3#4{node[history@box,below #1] (@) {\textbf{#2}: #3\ifx!#4!\else\\\footnotesize\itshape#4\par\fi}}
+\begin{frame}[c]{\insertsubsubsection}
+\centering\vspace*{-12.5mm}\begin{tikzpicture}
+   \only<-4|handout:1>{\draw[history-line] (-.33,-.33) -- ++(.33,.33) -- ++(2,0) coordinate (@2)++(1,0) -- ++(9,0) node[above left,gray] {Static Analysis };}
+   \onslide<5|handout:0>{
+      \draw[history-line] (-.33,-.33) -- ++(.33,.33) -- ++(2,0) coordinate (@2)++(1,0) -- ++(0.5,0) coordinate (@l) -- ++(1,3) -- ++(7.5,0) node[above left,lightgray,yshift=-3pt] {\vphantom{y}Deductive Methods};
+      \draw[history-line] (@l) -- ++(1,1) -- ++(7.5,0)  node[above left,lightgray,yshift=-3pt] {Model Checking};
+      \draw[history-line] (@l) -- ++(1,-1) -- ++(7.5,0) node[above left,lightgray,yshift=-3pt] {Symbolic Execution};  % 
+      \draw[history-line] (@l) -- ++(1,-3) -- ++(7.5,0) node[above left,lightgray,yshift=-3pt] {Abstract Interpretation};
+   }
+   \only<6-|handout:2->{
+      \draw[history-line] (-.33,-.33) -- ++(.33,.33) -- ++(.5,0) coordinate (@2)++(1,0) -- ++(0.5,0) coordinate (@l) -- ++(1,3) -- ++(9,0) node[above left,lightgray,yshift=-3pt] {\vphantom{y}Deductive Methods};
+      \draw[history-line] (@l) -- ++(1,1) -- ++(9,0) node[above left,lightgray,yshift=-3pt] {Model Checking};
+      \draw[history-line] (@l) -- ++(1,-1) -- ++(9,0) node[above left,lightgray,yshift=-3pt] {Symbolic Execution};
+      \draw[history-line] (@l) -- ++(1,-3) -- ++(9,0) node[above left,lightgray,yshift=-3pt] {Abstract Interpretation};
+   }
+   \draw[history-line skip] (@2)++(.15,0) -- ++(.85,0);
+   \begin{onlyenv}<-5|handout:1>
+\pause
+   \draw[history-event] (.5,0) -- ++(.25,2) -- ++(.25,0) \historybox{right}{1949}{First Checks}{\citeauthor*{turing1989checking}~\cite{turing1989checking}};
+\pause
+   \draw[history-event] (1,0) -- ++(.25,1.15) -- ++(.25,0) \historybox{right}{1953}{Rice Theorem}{Non-trivial Properties\\are undecidable~\cite{rice1953classes}};
+\pause
+   \draw[history-event] (1.5,0) -- ++(.25,-.45) -- ++(.25,0) \historybox{right}{1967\,\&\,69}{Logical Foundation}{\citeauthor*{floyd1967assigning}~\cite{floyd1967assigning}, \citeauthor*{DBLP:journals/cacm/Hoare69}~\cite{DBLP:journals/cacm/Hoare69}\\But: No Automation};
+   \end{onlyenv}
+\only<6-|handout:2->{%
+   \node[above right,lightgray] at(0,0) {\footnotesize\cite{turing1989checking,rice1953classes}};
+   \node[below right,lightgray] at(0,-1pt) {\footnotesize\cite{floyd1967assigning,DBLP:journals/cacm/Hoare69}};
+}
+% DBLP:conf/cade/OwreRS92
+\begin{onlyenv}<7-|handout:2->
+   \tikzset{@/.style={}}\only<9-|handout:0>{\tikzset{@/.style={lightgray}}}
+   \draw[history-event,@] (4,3) -- ++(.25,1.45) -- ++(.25,0) \historybox{right,@}{1992}{Theorem Prover}{PVS, \citeauthor*{DBLP:conf/cade/OwreRS92}~\cite{DBLP:conf/cade/OwreRS92}};
+   \onslide<8->{%
+   \draw[history-event,@] (4.4,3) -- ++(.25,.75) -- ++(.25,0) \historybox{right,@}{2004}{Proof Asisstant}{Coq, \citeauthor*{DBLP:series/txtcs/BertotC04}~\cite{DBLP:series/txtcs/BertotC04}}; % isabelle, agda, ...
+   }
+   \tikzset{@/.style={}}\only<11-|handout:0>{\tikzset{@/.style={lightgray}}}
+   % DBLP:journals/toplas/ClarkeES86
+   \onslide<9->{%
+   \draw[history-event,@] (3.5,1) -- ++(.25,1.45) -- ++(.25,0) \historybox{right,@}{1986}{Foundations}{\citeauthor*{DBLP:journals/toplas/ClarkeES86}~\cite{DBLP:journals/toplas/ClarkeES86}};
+   }
+   \onslide<10->{%
+   \draw[history-event,@] (4.4,1) -- ++(.25,.75) -- ++(.25,0) \historybox{right,@}{2004}{Bounded MC}{\citeauthor*{clarke2004tool}~\cite{clarke2004tool}};
+   }
+   \tikzset{@/.style={}}\only<13-|handout:0>{\tikzset{@/.style={lightgray}}}
+   \onslide<11->{%
+   \draw[history-event,@] (3.15,-1) -- ++(.25,1.45) -- ++(.25,0) \historybox{right,@}{1974\,\&\,75}{Foundations}{\citeauthor*{DBLP:conf/relsoft/BoyerEL75}~\cite{DBLP:conf/relsoft/BoyerEL75}, \citeauthor*{DBLP:conf/ibm/King74}~\cite{DBLP:conf/ibm/King74}};
+   }
+   \onslide<12->{%
+   \draw[history-event,@] (4.5,-1) -- ++(.25,.75) -- ++(.25,0) \historybox{right,@}{2008}{Automation}{KLEE, \citeauthor*{DBLP:conf/osdi/CadarDE08}~\cite{DBLP:conf/osdi/CadarDE08}};
+   }
+   \onslide<13->{%
+      \draw[history-event] (3.2,-3) -- ++(.25,1.45) -- ++(.25,0) \historybox{right}{1977}{Fixpoints on Lattices}{\citeauthor{DBLP:conf/popl/CousotC77}~\cite{DBLP:conf/popl/CousotC77}};
+   }
+   
+   \onslide<14->{%
+      \draw[history-event] (4.4,-3) -- ++(.25,.75) -- ++(.25,0) \historybox{right}{2004}{Automated Application}{\citeauthor{DBLP:conf/ifip/Mauborgne04}~\cite{DBLP:conf/ifip/Mauborgne04}};
+   }
+\end{onlyenv}
+   \onslide<1->
+\end{tikzpicture}
+\begin{tikzpicture}[overlay,remember picture]
+   \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {Based on the amazing \citetitle{DBLP:journals/ftpl/Mine17} by \citeauthor{DBLP:journals/ftpl/Mine17}~\cite{DBLP:journals/ftpl/Mine17}, \href{https://web.archive.org/web/20241208213653/https://www.di.ens.fr/~cousot/AI/}{https://www.di.ens.fr/\textasciitilde cousot/AI/}, and \cite{DBLP:journals/csur/BaldoniCDDF18,DBLP:journals/annals/GiacobazziR22}};
+\end{tikzpicture}
+\end{frame}
+
+% https://www.youtube.com/watch?v=IBlfJerAcRw&t=2624s
+\begin{frame}{Recommended Resources}
+\strut\hfill\raisebox{\dimexpr-\height+1cm}{\begin{tikzpicture}
+   \onslide<2->{%
+      \draw[darkgray,thick,rounded corners=2pt,path image={\includegraphics[width=4cm]{images/itsa-cover.jpg}}] (0,0) rectangle ++(3.8,5);
+      \node[above] at(current bounding box.north) {\clap{\small\strut Using Analyses~\cite{rival2020introduction}}};
+   }
+\end{tikzpicture}}\hfill\raisebox{\dimexpr-\height+1cm}{\begin{tikzpicture}
+   \onslide<3->{%
+      \draw[darkgray,thick,rounded corners=2pt,path image={\includegraphics[width=4cm]{images/poa-cover.jpg}}] (0,0) rectangle ++(3.9,5.5);
+      \node[above] at(current bounding box.north) {\clap{\small\strut Formal Foundations~\cite{cousout2021principles}}};
+   }
+\end{tikzpicture}}\hfill\raisebox{\dimexpr-\height+1cm}{\begin{tikzpicture}
+   \onslide<4->{%
+      \draw[darkgray,thick,rounded corners=2pt,path image={\includegraphics[width=4cm]{images/dfa-cover.jpg}}] (0,0) rectangle ++(3.9,6);
+      \node[above] at(current bounding box.north) {\clap{\small\strut Dataflow Perspective~\cite{10.5555/1592955}}};
+   }
+\end{tikzpicture}}\hfill\strut
+\begin{tikzpicture}[overlay,remember picture]
+   \node[above right=0.5mm,yshift=3mm,gray,font=\tiny] at (current page.south west) {And for an overview: \citetitle{DBLP:journals/ftpl/Mine17}~\cite{DBLP:journals/ftpl/Mine17}};
+\end{tikzpicture}
+\end{frame}
+
+% \subsection{Areas of Application}
+
+% \begin{frame}{\insertsubsection}
+%    \begin{itemize}[<+(1)->]
+%       \itemsep12pt
+%       \item Linting
+%       \item Program Verification
+%       \item Code Optimization
+%       \item Refactoring
+%       \item Program Comprehension
+%       \item Program Synthesis
+%       \item \ldots
+%    \end{itemize}
+% \end{frame}
+
+
+
+\usetikzlibrary{backgrounds,graphs,arrows.meta,decorations.pathreplacing}
+
+\definecolor{BaseGray}{RGB}{66,66,66} % rgb(66,66,66)
+
+\colorlet{SoftGray}{BaseGray!40}
+\colorlet{BackGray}{BaseGray!5}
+\colorlet{SoftTextGray}{BackGray!60!SoftGray}
+
+
+\tikzset{
+   Soft/.style={line join=round,line cap=round},
+   All Soft/.style={every path/.append style={Soft}},
+   FunctionDef/.style={
+      draw=BaseGray,
+      fill=BaseGray,
+      minimum width=1.55cm,
+      minimum height=1cm,
+      text=white,
+      font=\bfseries,
+      text centered,
+      inner sep=0pt,
+      rounded corners=1mm,
+      outer sep=2pt
+   },
+   Blob/.style={
+      draw=SoftGray,
+      fill=SoftGray,
+      minimum size=4mm,
+      text=white,
+      circle,
+      font=\bfseries,
+      text centered,
+      inner sep=0pt,
+      outer sep=2pt
+   },
+   Def/.style={
+      Blob,
+      rectangle, rounded corners=1mm
+   },
+   ActiveBlob/.style={
+      Blob,
+      draw=BaseGray!80!white, fill=BaseGray!80!white
+   },
+   FunctionBack/.style={
+      fill=BackGray,
+      % draw=SoftGray,
+      rounded corners=2mm,
+      rectangle
+   },
+   href/.style={
+      draw=SoftGray,
+      line width=1.5pt,
+      line cap=round,
+      line join=round,
+      -%
+   },
+   Funchref/.style={
+      href,
+      draw=SoftGray,
+      dotted
+   },
+   Cursor/.style={
+      fill=BackGray,
+      draw=BaseGray,
+      line join=round,
+      line cap=round
+   },
+   Hover-Over/.style={
+      fill=BackGray,
+      draw=SoftGray,
+      opacity=.5,
+      draw opacity=1,
+      rounded corners=1mm,
+      line join=round,
+      line cap=round
+   },
+   Line-Of-Text/.style={
+      fill=#1,
+      draw=none,
+      rounded corners=1.5pt,
+      inner sep=1pt,
+      minimum width=1cm,
+      minimum height=6.5pt
+   },
+   Input-Base/.style={
+      fill=BackGray,
+      draw=SoftGray,
+      rounded corners=1mm,
+      inner sep=1pt,
+      minimum width=2cm,
+      minimum height=12pt
+   },
+   % code sub-styles
+   A/.style={Line-Of-Text=SoftTextGray},
+   B/.style={},
+   C/.style={Line-Of-Text=SoftGray},
+   path image shift/.style={},
+   path image/.style 2 args={path picture={\node at ([path image shift]path picture bounding box.center) {\includegraphics[width=#2]{#1}};}},
+}
+
+\newsavebox\CodeFile
+\begin{lrbox}{\CodeFile}
+\scalebox{1.45}{%
+\begin{tikzpicture}
+   \draw[rounded corners=1.5pt,fill=white] (0,0) |- ++(.6,-.8) [sharp corners] -- ++(0,.6) -- ++(-.2,.2) coordinate (@rl) [rounded corners=2pt] -- cycle (@rl) |- ++(.2,-.2);
+   \draw[thick,line cap=round,lightgray] (.1,-.1) -- ++(.2,0)
+      % for what have I written random code generation? :C 
+      (.1,-.15) -- ++(.1,0) ++(.05,0) -- ++(.1,0)
+      (.125,-.2) -- ++(.15,0)++(.05,0)--++(.025,0)
+      (.1,-.25) -- ++(.3,0)
+      (.125,-.3) --++(.2,0)++(.05,0)--++(.05,0)
+      (.125,-.35) --++(.15,0)++(.05,0)--++(.1,0)
+      (.15,-.4)--++(.2,0)
+      (.15,-.4)--++(.1,0)++(.05,0)--++(.05,0)
+      (.125,-.45)--++(.05,0)
+      (.1,-.5)--++(.066,0)++(.05,0)--++(.15,0)
+      (.1,-.6)--++(.15,0)++(.05,0)--++(.15,0)
+      (.1,-.65)--++(.2,0)
+      (.1,-.7)--++(.1,0)++(.05,0)--++(.15,0)
+   ;
+\end{tikzpicture}}
+\end{lrbox}
+
+\newcommand\Back[4][]{
+   \pgfonlayer{background}
+   \fill[FunctionBack,#1] ([xshift=-2mm,yshift=-2mm]#2.south west) rectangle ([xshift=2mm,yshift=2mm]#3.north east);
+   \coordinate (#4@north) at([yshift=2mm]0,0|-#3.north);
+   \coordinate (#4@west) at([xshift=-2.5mm]0,0-|#2.west);
+\endpgfonlayer
+}
+\newsavebox\UiBox
+\begin{lrbox}{\UiBox}
+\begin{tikzpicture}
+   \node[FunctionDef] (F) at (0,0) {};
+
+   \scope[shift={(F.south)},yshift=-1.5cm]
+      \node[Def] (a1) at (-1,0) {};
+      \node[Blob] (b1) at (.5,-.25) {};
+      \node[ActiveBlob] (c1) at (1.55,-1.35) {};
+      \node[Blob] (d1) at (-0.5,-1.6) {};
+      \node[Blob] (e1) at (1.8,.25) {};
+      \node[Blob] (f1) at (-2.2,-1.5) {};
+
+      \graph[edges={href}] {
+         (a1) -> { (b1), (c1) } -> (d1) -> (e1) -> (a1),
+         (f1) -> { (a1), (d1) }
+      };
+
+      \Back{f1}{e1}{f1}
+
+      \draw[Funchref] (f1@north) -- (F.south);
+   \endscope
+
+   \node[Blob] (a) at (2.5,0) {};
+   \node[Blob] (b) at (1.5,1) {};
+   \node[Blob] (c) at (3,2) {};
+   \node[Blob] (d) at (-2.5,0.5) {};
+   \node[Def] (e) at (-2.5,1.5) {};
+   \node[Blob] (f) at (-3,2.5) {};
+   \node[Blob] (g) at (-3.5,-1) {};
+   \node[Blob] (h) at (-3,-2.5) {};
+
+   \node[FunctionDef] (F2) at(5,-.5) {};
+   \node[Blob] (u) at(5.5,1) {};
+
+   \scope[shift={(F2.east)},xshift=1.5cm]
+
+      \node[Blob] (a2) at (0,1.15) {};
+      \node[Def] (b2) at (.75,1.85) {};
+      \node[Blob] (c2) at (-.5,-.85) {};
+
+      \node[Blob] (d2) at (1.33,0.25) {};
+      \node[FunctionDef] (e2) at (2,-.75) {};
+
+      \node[Blob] (f2) at (3.75,1.5) {};
+      \node[Blob] (g2) at (2.75,2.5) {};
+
+      \scope[shift=(e2.south), yshift=-1cm]
+         \node[ActiveBlob] (a3) at (-1,0) {};
+         \node[Blob] (b3) at (1,0) {};
+         \draw[href] (a3) -- (b3);
+         \Back[white]{a3}{b3}{a3} % for coordinate
+      \endscope
+
+      \coordinate (ll) at ([yshift=-2mm]a3.south west-|c2.west);
+      \coordinate (ur) at (f2.north east|-g2.north);
+
+      \Back{ll}{ur}{e2}
+      \draw[Funchref] (e2@west) -- (F2.east);
+
+      % draw inner later
+      \Back[white]{a3}{b3}{xx} % for the overlay :D
+      \draw[Funchref] (a3@north) -- (e2.south);
+
+      \graph[edges={href}] {
+         (a2) -> (b2) -> { (c2) , (d2) },
+         (d2) -> { (e2), (f2) },
+         (f2) -> (g2),
+         (c2) -> (a3)
+      };
+   \endscope
+
+   \graph[edges={href}] {
+      (F) -> { (a), (b) },
+      (a) -> (e1),
+      (b) -> (c) -> (b2),
+      (b) -> (d) -> { (F), (e) },
+      (e) -> (f) -> (c),
+      (d) -> (g) -> (h) -> (f1),
+      (u) -> (F2)
+   };
+
+   \coordinate (cursor-pos) at ([xshift=-1.65mm,yshift=2mm]F2.south east);
+   \draw[Cursor,rotate around={28:(cursor-pos)}]  [rounded corners=2.25pt] (cursor-pos)  [rounded corners=2.25pt] -- ++(4pt,-9.5pt) [rounded corners=2pt] -- ++(-4pt,3pt) [rounded corners=2.25pt]-- ++(-4pt,-3pt) -- cycle;
+   \node[below left,xshift=-1mm,yshift=1.15mm,Hover-Over,minimum width=1.25cm,minimum height=6mm] (hoverover) at(cursor-pos) {%
+      %
+   };
+   % \scope[opacity=.95,transparency group]
+      \fill[Line-Of-Text=SoftGray] ([shift={(2pt,-2pt)}]hoverover.north west) rectangle ++(7.5mm,-4pt);
+      \fill[Line-Of-Text=SoftTextGray] ([shift={(2pt,-7.5pt)}]hoverover.north west) rectangle ++(11mm,-3pt);
+      \fill[Line-Of-Text=SoftTextGray] ([shift={(2pt,-7.5pt-4.5pt)}]hoverover.north west) rectangle ++(8mm,-3pt);
+   % \endscope
+
+   % TODO: outsource window?
+   \coordinate (wul) at ([shift={(-5mm,6mm)}]current bounding box.north west);
+   \coordinate (wur) at ([shift={(5mm,6mm)}]current bounding box.north east);
+   \draw[thin,rounded corners=3pt,SoftGray] ([shift={(-5mm,-5mm)}]current bounding box.south west) rectangle (wur);
+   % just "overlay" the top :D
+   \filldraw[SoftGray] ([yshift=-1mm]wul) coordinate (@) -- (wur|-@) [rounded corners] |- ([yshift=2.5mm]wul) [sharp corners] -- cycle;
+
+   \fill[Line-Of-Text=BackGray] ([yshift=1.35mm,xshift=4pt]wul) rectangle ++(2cm,-1.27mm);
+   \node[above left,BackGray] at([yshift=-1.33mm,xshift=-1mm]wur) {\smash{\scalebox{.9}{\scriptsize\faAngleDown~~\faAngleUp~~\faTimesCircle}}};
+
+   \coordinate (root control window) at(current bounding box.south west);
+
+   \scope[shift={(current bounding box.south east)},shift={(-7cm,4.5mm)}]
+      \coordinate (wul) at (0,0);
+      \coordinate (wur) at (8.5,0);
+
+      \draw[thin,rounded corners=3pt,SoftGray,fill=white] (0,-5) rectangle (wur);
+
+      % code line
+      \draw[thin,BackGray] ([xshift=1cm,yshift=-1mm]wul) coordinate (@) -- (@|-0,-5);
+      % line numbers and code
+      \foreach[count=\i from 0] \Code in {
+         {1/A,0.5/A,5/C,2/A},
+         {1.5/B,3/A,0.5/A,2/A},
+         {},
+         {1.5/B,0.5/A,3/A},
+         {1/A},
+         {},
+         {5/A,0.5/A,2/A},%
+         {0.5/A,5/A,3/A,0.5/A,2/A,5.5/A},
+         {},
+         {1/C,0.5/A,1/A,0.5/A,1/A,0.5/A,0.15/B,0.5/A},
+         {1.5/B,3/A,0.5/A,1/C,2/A,1.5/A,1/C,1.5/A},
+         {1.5/B,0.75/A,0.5/A,1.5/A,0.5/A,1/A},
+         {1.5/B,3/A,0.5/A,2/A},
+         {1.5/B,2/A,0.5/A,2/A},
+         {1/A}%
+      } {
+         \ifnum\i<6 \def\Width{4mm} \else \def\Width{6mm} \fi
+         \fill[Line-Of-Text=BackGray] ([yshift=-1mm,xshift=8mm]wul|-0,-\i*0.33*10mm+1mm) rectangle ++(-\Width,-2mm);
+         \def\XShift{5}
+         \foreach \CW/\Style in \Code {
+            \ifstrequal{\Style}{B}{\def\RandomSuffix{0}}{\def\RandomSuffix{(rand*0.4mm+0.75mm)}}
+            \pgfmathsetmacro\w{3*\CW mm+\RandomSuffix}
+            \path[\Style] ([yshift=-1mm,xshift=1cm+\XShift pt]wul|-0,-\i*0.33*10mm+1mm) rectangle ++(\w pt,-2mm);
+
+            \pgfmathsetmacro{\XShift}{\XShift+\w pt+1.5mm}
+            \xdef\XShift{\XShift}
+         }
+      }
+
+      % slider
+      \draw[Line-Of-Text=SoftTextGray,rounded corners=.325mm] ([yshift=-4cm+5mm,xshift=-1mm]wur) rectangle ++(-.75mm,-1cm);
+
+      % just redraw the frame :D
+      \draw[thin,rounded corners=3pt,SoftGray] (0,-5) rectangle (wur);
+
+      \filldraw[SoftGray] ([yshift=-1mm]wul) coordinate (@) -- (wur|-@) [rounded corners] |- ([yshift=2.5mm]wul) [sharp corners] -- cycle;
+
+      \fill[Line-Of-Text=BackGray] ([yshift=1.35mm,xshift=4pt]wul) rectangle ++(1.66cm,-1.27mm);
+      \node[above left,BackGray] at([yshift=-1.33mm,xshift=-1mm]wur) {\smash{\scalebox{.9}{\scriptsize\faAngleDown~~\faAngleUp~~\faTimesCircle}}};
+
+   \endscope
+
+   % window for controls
+   \scope[shift={(root control window)},shift={(-1cm,-5mm)}]
+      \draw[thin,rounded corners=3pt,SoftGray,fill=white] (0,-4) rectangle ++(8.33cm,4cm);
+      \coordinate (wul) at (0,0);
+      \coordinate (wur) at (8.33,0);
+
+      \node[Input-Base,minimum width=6cm,below right=3mm] (slice-criterion-input) at (wul) {};
+      \fill[Line-Of-Text=SoftTextGray] ([yshift=1mm,xshift=4pt]slice-criterion-input.west) rectangle ++(1.25cm,-2mm);
+      \fill[Line-Of-Text=SoftTextGray] ([yshift=1mm,xshift=4pt+1.25cm+2mm]slice-criterion-input.west) rectangle ++(1cm,-2mm);
+
+      % frame stuff
+      \filldraw[SoftGray] ([yshift=-1mm]wul) coordinate (@) -- (wur|-@) [rounded corners] |- ([yshift=2.5mm]wul) [sharp corners] -- cycle;
+      \node[right=1mm,SoftGray,] at(slice-criterion-input.east) {\tiny\faChevronRight~~~~~\faPieChart~~\faUpload~~\faDownload};
+
+      % logging window
+      \draw[rounded corners=3pt,BackGray,fill=white] ([xshift=3mm,yshift=-1cm]wul) rectangle ([xshift=-3mm,yshift=-3.7cm]wur);
+
+      % log
+      \foreach[count=\i from 0] \Code in {
+         {1/A,2/A,6/A,1/B,3/A},
+         {1.5/B,3/A,2/A,2/A,1/A},
+         {1.5/B,2/A,3/A,1/A,2/A,3/A,1/A},
+         {1.5/B,4/A,1/A},
+         {1.5/B,3/A,2/A,2/A,1/A},
+         {1.5/B,3/A,1/A,4/A,1/A},
+         {},
+         {1/A,2/A,6/A},
+         {1/A,2/A,3/A,1.5/A,2.5/A},
+      } {
+         \def\XShift{5}
+         \foreach \CW/\Style in \Code {
+            \ifstrequal{\Style}{B}{\def\RandomSuffix{0}}{\def\RandomSuffix{(rand*0.4mm+0.75mm)}}
+            \pgfmathsetmacro\w{3*\CW mm+\RandomSuffix}
+            \path[\Style] ([yshift=-2.5mm-1cm,xshift=3.25mm+\XShift pt]wul|-0,-\i*0.28*10mm+1mm) rectangle ++(\w pt,-1.75mm);
+
+            \pgfmathsetmacro{\XShift}{\XShift+\w pt+1mm}
+            \xdef\XShift{\XShift}
+         }
+      }
+
+      % slider
+      \draw[Line-Of-Text=SoftTextGray,rounded corners=.325mm] ([yshift=-2cm+3mm,xshift=-4mm]wur) rectangle ++(-.75mm,-1cm);
+
+      % head
+      \fill[Line-Of-Text=BackGray] ([yshift=1.35mm,xshift=4pt]wul) rectangle ++(5mm,-1.27mm);
+      \fill[Line-Of-Text=BackGray] ([yshift=1.35mm,xshift=4pt+6.5mm]wul) rectangle ++(1cm,-1.27mm);
+      \node[above left,BackGray] at([yshift=-1.33mm,xshift=-1mm]wur) {\smash{\scalebox{.9}{\scriptsize\faAngleDown~~\faAngleUp~~\faTimesCircle}}};
+   \endscope
+\end{tikzpicture}
+\end{lrbox}
+
+\subsection{Conducting Static Analysis}
+\begin{frame}{\strut What do they\ldots~do?}
+% they take input, textual, syntactical, semantic (call graphs, pdg, ...), metadata, historical information, requirements, annotations (types, contracts), ...
+\hspace*{-3.5mm}
+\begin{tikzpicture}[o/.style={outer sep=0pt,inner sep=0pt}]
+   \onslide<2->{%
+      \node[o] (@) at (0,0) {\usebox\CodeFile};
+      \node[above=2.5mm,xshift=1.15mm,gray] at(@.north) {\tiny They take \textbf{\normalsize Input}};
+   }
+   \pgfonlayer{background}
+   \onslide<2->{%
+   \scope[transparency group,opacity=.4]
+   \node[o,rotate around={-30:(@.south east)},anchor=south east] at(@.south east) {\usebox\CodeFile};
+   \node[o,rotate around={-12:(@.south east)},anchor=south east] at(@.south east) {\usebox\CodeFile};
+   \endscope}
+   \endpgfonlayer
+   \begin{uncoverenv}<3->
+   \coordinate (@) at(@.east);
+   \foreach[count=\i] \usecase/\targeti in {{\raisebox{1pt}{Textual}}/4,Syntactical/5, Semantical/6, Historical/7, Annotated/8, {\only<-9|handout:0>{\ldots}\only<10->{\raisebox{-3pt}{Metadata,~\ldots}}}/9} { % program spectra, hardware, contexts, ...
+   \pgfmathsetmacro\rot{-24*\i+66}
+      \onslide<\targeti->{
+         \path ([xshift=.5mm]@.east)++(\rot+10:1mm) coordinate (@a);
+         \fill[opacity=.18,gray] (@a.east) -- ++(\rot:1.5cm) arc (\rot:\rot+20:1.5cm) -- cycle;
+         \draw[thick,gray] (@a.east)++(\rot:1.5cm) arc (\rot:\rot+20:1.5cm);
+         \path (@a.east) -- ++(1.05*\rot+10:1.6cm) node[right,font=\small,darkgray] (@uc-\i) {\vphantom{a}\smash{\usecase}};
+      }
+   }
+   \node[above=1.65mm,xshift=1mm,gray] at(current bounding box.north) {\tiny And use \textbf{\normalsize Perspectives} \rlap{(often combined)}};
+   \end{uncoverenv}
+   \onslide<11->{%
+      \draw[Kite-,gray] ([xshift=6.25mm,yshift=-1mm]current bounding box.south) to[out=-90,in=0] ++(-4.5mm,-5mm) node[below left,yshift=.42\baselineskip,align=right,text width=2.5cm,font=\tiny] {Some of those are the result of other static or dynamic analyses};
+   }
+   \begin{uncoverenv}<12->
+      \node[right,yshift=-2mm,xshift=1cm,align=left,font=\small,darkgray,text width=3.25cm] (@techn) at(current bounding box.east){{\onslide<13->{\subnode{tc-search}{Text/Code Search}\strut}}~\\[4mm]\strut{\onslide<14->{\subnode{clustering}{Clustering}}}~\\[4mm]\strut{\onslide<15->{\subnode{ai}{Abstract Domains}}}~\\[4mm]\strut{\onslide<16->{\subnode{df-constraints}{Dataflow Constraints}}}~\\[1mm]\strut{\onslide<16->{\centerline{\footnotesize\(\vdots\)}}}};
+      \onslide<12->{
+         \node[above=2.5mm,gray,xshift=-4.5mm] at(@techn.north) {\tiny To apply \textbf{\normalsize Theory}};
+      }
+   \end{uncoverenv}
+   \scope[gray,line cap=round]
+   \only<17->{
+      \draw ([yshift=1.5pt]@uc-1.east) -- ([yshift=-2.5mm]@techn.north west);
+      \draw ([yshift=1.5pt]@uc-2.east) -- ([yshift=-2.5mm]@techn.north west);
+      \draw[densely dotted] ([yshift=1.5pt]@uc-3.east) -- ([yshift=-2.5mm]@techn.north west);
+   }
+   \only<18->{
+      \draw ([yshift=1.5pt]@uc-1.east) -- ([yshift=-10.5mm]@techn.north west);
+      \draw ([yshift=0pt]@uc-2.east) -- ([yshift=-10.5mm]@techn.north west);
+      \draw ([yshift=1.5pt]@uc-4.east) -- ([yshift=-10.5mm]@techn.north west);
+      
+      \draw ([yshift=-1pt]@uc-2.east) -- ([yshift=-18.5mm]@techn.north west);
+      \draw ([yshift=-1pt]@uc-3.east) -- ([yshift=-18.5mm]@techn.north west);
+      \draw ([yshift=1.5pt]@uc-5.east) -- ([yshift=-18.5mm]@techn.north west);
+      
+      \draw ([yshift=-1pt]@uc-2.east) -- ([yshift=-26mm]@techn.north west);
+      \draw ([yshift=-1pt]@uc-3.east) -- ([yshift=-26mm]@techn.north west);
+   }
+   \endscope
+   \begin{uncoverenv}<19->
+      
+      \onslide<20->{\node[right=7.5mm] (@) at(current bounding box.east) {\resizebox*!{2.85cm}{\usebox\UiBox}};
+      % coordinate based set fails on tubs slides :/
+      \scope[transparency group,opacity=.5,every path/.append style={line cap=round,line width=.5pt}]
+         \draw[-Kite,gray] ([yshift=-2.5mm,xshift=-11.5mm]@techn.north east) to[out=0,in=180] ([xshift=1.5mm,yshift=-6.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-8.5mm,xshift=-22.5mm]@techn.north east) to[out=0,in=180] ([xshift=7.15mm,yshift=-1.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-16.5mm,xshift=-10.25mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-22mm,xshift=-8.5mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
+      \endscope
+      }
+      \node[above, gray] at(@.north) {\tiny And \textbf{\normalsize Communicate} or \textbf{\normalsize Use} results};
+   \end{uncoverenv}
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+TODO: explain perspectives
+\end{frame}
