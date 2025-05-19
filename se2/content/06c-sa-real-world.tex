@@ -234,9 +234,9 @@
 \def\mark{\bfseries\large}
 \definecolor{infercolor}{RGB}{123, 40, 227}
 \def\getsecond#1#2{#2}
-\begin{frame}<-16|handout:1,2>[label=tool-slide]{Let's Look at Tools}
+\begin{frame}<-11|handout:1,2>[label=tool-slide]{Let's Look at Tools}
 \vspace*{-2.95\baselineskip}%
-\only<16-|handout:2->{\let\href\getsecond}% avoid behind hrefs on these slides
+\only<11-|handout:2->{\let\href\getsecond}% avoid behind hrefs on these slides
 \begin{tikzpicture}[remember picture]
    \tikzset{@/.style={}}
    \only<2->{\tikzset{@/.style={opacity=0}}}
@@ -460,10 +460,10 @@ System.out.print(x);
    
    \node[right=7.5mm] (@) at(current bounding box.east) {\resizebox*!{2.85cm}{\usebox\UiBox}};
    \scope[transparency group,opacity=.5,every path/.append style={line cap=round,line width=.5pt}]
-      \draw[-Kite,gray] ([yshift=-2.5mm,xshift=-6.5mm]@techn.north east) to[out=0,in=180] ([xshift=1.5mm,yshift=-6.35mm]@.west);
-      \draw[-Kite,gray] ([yshift=-10.5mm,xshift=-18.5mm]@techn.north east) to[out=0,in=180] ([xshift=7.15mm,yshift=-1.35mm]@.west);
-      \draw[-Kite,gray] ([yshift=-18.5mm,xshift=-6.25mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
-      \draw[-Kite,gray] ([yshift=-26mm,xshift=-2.5mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
+      \draw[-Kite,gray] ([yshift=-2.5mm,xshift=-11.5mm]@techn.north east) to[out=0,in=180] ([xshift=1.5mm,yshift=-6.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-8.5mm,xshift=-22.5mm]@techn.north east) to[out=0,in=180] ([xshift=7.15mm,yshift=-1.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-16.5mm,xshift=-10.25mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-22mm,xshift=-8.5mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
    \endscope
    \node[above, gray] at(@.north) {\tiny \textbf{\normalsize Communicate} or \textbf{\normalsize Use}};
 \end{onlyenv}
@@ -681,10 +681,10 @@ for (int targetArgumentIndex : method.indices) {
    
    \node[right=7.5mm] (@) at(current bounding box.east) {\resizebox*!{2.85cm}{\usebox\UiBox}};
    \scope[transparency group,opacity=.5,every path/.append style={line cap=round,line width=.5pt}]
-      \draw[-Kite,gray] ([yshift=-2.5mm,xshift=-6.5mm]@techn.north east) to[out=0,in=180] ([xshift=1.5mm,yshift=-6.35mm]@.west);
-      \draw[-Kite,gray] ([yshift=-10.5mm,xshift=-18.5mm]@techn.north east) to[out=0,in=180] ([xshift=7.15mm,yshift=-1.35mm]@.west);
-      \draw[-Kite,gray] ([yshift=-18.5mm,xshift=-6.25mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
-      \draw[-Kite,gray] ([yshift=-26mm,xshift=-2.5mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
+      \draw[-Kite,gray] ([yshift=-2.5mm,xshift=-11.5mm]@techn.north east) to[out=0,in=180] ([xshift=1.5mm,yshift=-6.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-8.5mm,xshift=-22.5mm]@techn.north east) to[out=0,in=180] ([xshift=7.15mm,yshift=-1.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-16.5mm,xshift=-10.25mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
+         \draw[-Kite,gray] ([yshift=-22mm,xshift=-8.5mm]@techn.north east) to[out=0,in=180] ([xshift=26.15mm,yshift=-9.35mm]@.west);
    \endscope
    \node[above, gray] at(@.north) {\tiny \textbf{\normalsize Communicate} or \textbf{\normalsize Use}};
 \end{onlyenv}
