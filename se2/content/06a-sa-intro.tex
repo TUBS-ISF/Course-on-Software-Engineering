@@ -1,9 +1,16 @@
 \pgfsetlayers{very-background,background,main,middle,foreground}
+\colorlet{black}{foreground}
+\colorlet{white}{background}
+\ifdarkmode
+\colorlet{darkgray}{black!80!background}
+\colorlet{lightgray}{black!40!background}
+\fi
 \tikzset{
     bottom note/.style={font=\tiny,color=gray},
     path image shift/.style={}, % scale patch just for white padding
     path image/.style={path picture={\node[scale=.98] at ([path image shift]path picture bounding box.center) {#1};}}
 }
+\colorlet{ca@base@color}{foreground}
 \def\I#1#2{\footnotesize\absexpr{\IntCC{#1}{#2}}}
 
 \newsavebox\SimpleSignLattice
@@ -95,11 +102,11 @@ public static void main(String[] args) {
 \subsubsection{Origins}
 \larger\def\Mixin{}%
 \tikzset{%
-   history-line/.style={line width=1.85mm,gray!30!white\Mixin,line cap=round,rounded corners=2pt},
+   history-line/.style={line width=1.85mm,gray!30!background\Mixin,line cap=round,rounded corners=2pt},
    history-line skip/.style={history-line, line width=.75mm,loosely dotted},
    history-event/.style={history-line,gray\Mixin,line width=1mm,{Circle[length=1.85mm]}-,shorten <= -1.85mm/2},
-   history@box/.style={yshift=.675\baselineskip,black\Mixin,text width=5.75cm,font=\small},
-   history-range/.style={history-line, gray!60!white\Mixin,line cap=round,-{Triangle Cap}}   
+   history@box/.style={yshift=.675\baselineskip,foreground\Mixin,text width=5.75cm,font=\small},
+   history-range/.style={history-line, gray!60!background\Mixin,line cap=round,-{Triangle Cap}}   
 }
 
 % #1 left/right
@@ -229,7 +236,7 @@ public static void main(String[] args) {
       fill=BaseGray,
       minimum width=1.55cm,
       minimum height=1cm,
-      text=white,
+      text=foreground,
       font=\bfseries,
       text centered,
       inner sep=0pt,
@@ -240,7 +247,7 @@ public static void main(String[] args) {
       draw=SoftGray,
       fill=SoftGray,
       minimum size=4mm,
-      text=white,
+      text=foreground,
       circle,
       font=\bfseries,
       text centered,
@@ -253,7 +260,7 @@ public static void main(String[] args) {
    },
    ActiveBlob/.style={
       Blob,
-      draw=BaseGray!80!white, fill=BaseGray!80!white
+      draw=BaseGray!80!foreground, fill=BaseGray!80!foreground
    },
    FunctionBack/.style={
       fill=BackGray,
@@ -316,7 +323,7 @@ public static void main(String[] args) {
 \begin{lrbox}{\CodeFile}
 \scalebox{1.45}{%
 \begin{tikzpicture}
-   \draw[rounded corners=1.5pt,fill=white] (0,0) |- ++(.6,-.8) [sharp corners] -- ++(0,.6) -- ++(-.2,.2) coordinate (@rl) [rounded corners=2pt] -- cycle (@rl) |- ++(.2,-.2);
+   \draw[rounded corners=1.5pt,fill=foreground] (0,0) |- ++(.6,-.8) [sharp corners] -- ++(0,.6) -- ++(-.2,.2) coordinate (@rl) [rounded corners=2pt] -- cycle (@rl) |- ++(.2,-.2);
    \draw[thick,line cap=round,lightgray] (.1,-.1) -- ++(.2,0)
       % for what have I written random code generation? :C 
       (.1,-.15) -- ++(.1,0) ++(.05,0) -- ++(.1,0)
@@ -393,7 +400,7 @@ public static void main(String[] args) {
          \node[ActiveBlob] (a3) at (-1,0) {};
          \node[Blob] (b3) at (1,0) {};
          \draw[href] (a3) -- (b3);
-         \Back[white]{a3}{b3}{a3} % for coordinate
+         \Back[background]{a3}{b3}{a3} % for coordinate
       \endscope
 
       \coordinate (ll) at ([yshift=-2mm]a3.south west-|c2.west);
@@ -403,7 +410,7 @@ public static void main(String[] args) {
       \draw[Funchref] (e2@west) -- (F2.east);
 
       % draw inner later
-      \Back[white]{a3}{b3}{xx} % for the overlay :D
+      \Back[background]{a3}{b3}{xx} % for the overlay :D
       \draw[Funchref] (a3@north) -- (e2.south);
 
       \graph[edges={href}] {
@@ -451,7 +458,7 @@ public static void main(String[] args) {
       \coordinate (wul) at (0,0);
       \coordinate (wur) at (8.5,0);
 
-      \draw[thin,rounded corners=3pt,SoftGray,fill=white] (0,-5) rectangle (wur);
+      \draw[thin,rounded corners=3pt,SoftGray,fill=background] (0,-5) rectangle (wur);
 
       % code line
       \draw[thin,BackGray] ([xshift=1cm,yshift=-1mm]wul) coordinate (@) -- (@|-0,-5);
@@ -501,7 +508,7 @@ public static void main(String[] args) {
 
    % window for controls
    \scope[shift={(root control window)},shift={(-1cm,-5mm)}]
-      \draw[thin,rounded corners=3pt,SoftGray,fill=white] (0,-4) rectangle ++(8.33cm,4cm);
+      \draw[thin,rounded corners=3pt,SoftGray,fill=background] (0,-4) rectangle ++(8.33cm,4cm);
       \coordinate (wul) at (0,0);
       \coordinate (wur) at (8.33,0);
 
@@ -514,7 +521,7 @@ public static void main(String[] args) {
       \node[right=1mm,SoftGray,] at(slice-criterion-input.east) {\tiny\faChevronRight~~~~~\faPieChart~~\faUpload~~\faDownload};
 
       % logging window
-      \draw[rounded corners=3pt,BackGray,fill=white] ([xshift=3mm,yshift=-1cm]wul) rectangle ([xshift=-3mm,yshift=-3.7cm]wur);
+      \draw[rounded corners=3pt,BackGray,fill=background] ([xshift=3mm,yshift=-1cm]wul) rectangle ([xshift=-3mm,yshift=-3.7cm]wur);
 
       % log
       \foreach[count=\i from 0] \Code in {
