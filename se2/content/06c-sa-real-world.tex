@@ -408,7 +408,7 @@ System.out.print(x);
       }
    \end{tikzpicture}
 \end{itemize}
-\noindent
+\noindent\vspace*{-\baselineskip}%
 \begin{uncoverenv}<7->
 \begin{lrbox}{\SonarLintShow}
 \begin{tikzpicture}[o/.style={outer sep=0pt,inner sep=0pt},remember picture]
@@ -529,7 +529,7 @@ System.out.print(x);
 \end{lrbox}
 \global\setbox\SonarLintShow=\copy\SonarLintShow
 \begin{tikzpicture}[overlay,remember picture]
-   \node[above=-1mm,xshift=.33mm] at(current page.south) {\usebox\SonarLintShow};
+   \node[above=2.35mm,xshift=.33mm] at(current page.south) {\usebox\SonarLintShow};
 \end{tikzpicture}
 \end{uncoverenv}
 \begin{tikzpicture}[overlay,remember picture]
@@ -617,7 +617,7 @@ for (int targetArgumentIndex : method.indices) {
 \savebox\pinguLook{\scalebox{.65}{\tikz{\pingu[left eye wink,right wing wave,magnifier right,small,tie,deer hat]}}} 
 
 \subsubsection{LiSA}
-\againframe<7,18|handout:4>{tool-slide}
+\againframe<7,13|handout:3>{tool-slide}
 \begin{frame}{LiSA}
 \begin{itemize}
    \itemsep6.5pt
@@ -830,9 +830,18 @@ for (int targetArgumentIndex : method.indices) {
 \end{frame}
 
 \subsubsection{flowR}
+
 \let\T\texttt
 \def\Content#1#2{#1\\[-.6ex]\smaller\textit{\color{gray}#2}}
-\againframe<7,21|handout:7>{tool-slide}
+
+\def\LeftArrow{\text{\BeginAccSupp{method=escape,ActualText={<-}}\(\leftarrow\)\EndAccSupp{}}}
+\def\RightArrow{\text{\BeginAccSupp{method=escape,ActualText={->}}\(\rightarrow\)\EndAccSupp{}}}
+\def\DoubleLeftArrow{\text{\BeginAccSupp{method=escape,ActualText={<<-}}\(\twoheadleftarrow\)\EndAccSupp{}}}
+\def\DoubleRightArrow{\text{\BeginAccSupp{method=escape,ActualText={->>}}\(\twoheadrightarrow\)\EndAccSupp{}}}
+
+
+\againframe<7,14|handout:4>{tool-slide}
+
 \newsavebox\ShookPingu
 \savebox\ShookPingu{\tikz{\pingu[wings shock,eyes shock,tie]}}
 
@@ -844,7 +853,7 @@ for (int targetArgumentIndex : method.indices) {
    \begin{itemize}
       \itemsep6pt
       \item<2-> A static analysis framework for R
-      \item<3-> Developed here, at Ulm University \onslide<4->{\smash{\raisebox{-4pt}{\resizebox*!{1.5\baselineskip}{\usebox\PartyPingu}}}}\\*[1mm]
+      \item<3-> Developed at Ulm University \onslide<4->{\smash{\raisebox{-4pt}{\resizebox*!{1.5\baselineskip}{\usebox\PartyPingu}}}}\\*[1mm]
          \onslide<5->{\color{gray}{\only<6->{\bfseries\color{black}}Florian Sihler}, \color{gray}Julian Schubert, Lars Pfrenger, Johanna Scheck, Lukas Pietzschmann,\\Ruben Dunkel, Felix Schlegel, Pascal Deusch,~\ldots}%
       \item<7-> Let's get back to R:
 \begin{uncoverenv}<8->
@@ -880,122 +889,338 @@ x <- 21 # 42
       \node[above right,yshift=4mm,bottom note] at(current page.south west) {\href{https://github.com/flowr-analysis/flowr}{github.com/flowr-analysis/flowr}};
    \end{tikzpicture}
 \end{frame}
-
+\colorlet{@}{black}
 \def\SwitchTo#1#2{#1}
 \def\GrayBack{\fill[white,opacity=.7] (current bounding box.south west) rectangle (current bounding box.north east);}
+\let\RectAtBegin\strut
+\tikzset{
+   Soft/.style={line join=round,line cap=round},
+   All Soft/.style={every path/.append style={Soft}},
+   Blob/.style={
+      draw=@,
+      circle,
+      outer sep=2pt,
+      minimum size=1.8em
+   },
+   Blobs/.style={
+      every node/.append style={Blob}
+   },
+   Use/.style={Blob},
+   RectRounding/.style={rounded corners=3pt},
+   RawRect/.style={
+      draw=@,
+      rectangle,
+      RectRounding,
+      % outer sep=2pt,
+      minimum size=1.8em,
+      inner sep=5pt,
+      fill=white,
+      execute at begin node={\RectAtBegin},
+   },
+   RectShadow/.style={
+      drop shadow={fill=lightgray!42},
+   },
+   Rect/.style={
+      RawRect,
+      RectShadow
+   },
+   Def/.style={Rect},
+   Rects/.style={
+      every node/.append style={Rect,minimum width=#1}
+   },
+   Rects/.default={1.5em},
+   Link/.style={
+      draw,
+      RectRounding,
+      Soft,
+      -Kite
+   },
+   Links/.style={
+      every path/.append style={Link}
+   },
+   % for dataflow graphs
+   comm/.style={rectangle,draw=gray,text width=9mm,align=center,minimum height=5mm,font=\ttfamily,fill=white,fill opacity=1,drop shadow={fill=lightgray!42}},
+   d/.style={comm,rounded corners=2pt}, % variable def
+   u/.style={comm,rounded corners=2.5mm}, % variable use % rounded rectangle breaks anchors
+   e/.style={comm,rounded corners=2.5mm,densely dotted,thick,fill=white}, % exit point
+   F/.style={comm,draw=gray,rounded corners=2pt,fill=white,inner xsep=.5em},
+   fc/.style={comm,double,rounded corners=2pt},
+   w-back/.style={fill=white,inner sep=1pt},
+   T/.style={font=\footnotesize\ttfamily,text=gray},
+   code/.style={font=\ttfamily},
+   dfidn/.style={
+      circle,darkgray,fill opacity=.925,xshift=-1mm,yshift=.15mm,fill=white,draw,minimum size=1.8em,scale=.8,inner sep=-1pt
+   },
+   olabel/.style={midway,fill=white,rounded corners=2pt,inner sep=2pt,font=\scriptsize\sffamily},
+   pos at/.style={above #1=-.5mm,yshift=-.4\baselineskip},
+	Line-Of-Text/.style={
+      fill=#1,
+      draw=none,
+      rounded corners=1.5pt,
+      inner sep=1pt,
+      minimum width=1cm,
+      minimum height=6.5pt
+   },
+   % code sub-styles
+   A/.style={Line-Of-Text=SoftTextGray!93!black},
+   B/.style={},
+   C/.style={Line-Of-Text=SoftGray!93!black},
+	ActiveBlob/.style={
+      Blob,
+      draw=BaseGray, fill=BaseGray
+   }
+}
+\definecolor{BaseGray}{RGB}{66,66,66} % rgb(66,66,66)
+
+\colorlet{SoftGray}{BaseGray!60}
+\colorlet{BackGray}{BaseGray!2}
+\colorlet{SoftTextGray}{BackGray!60!SoftGray}
+
+\forestset{T/.style={for tree={font=\ttfamily,align=center,l sep=0pt,l sep-=5mm,child anchor=north}}}
+\newsavebox\ArchitectureBox
+\setbox\ArchitectureBox=\hbox{\tikz[baseline={([yshift=-2mm]current bounding box.center)},scale=1.35]{\draw[rounded corners=.5mm,fill=white,opacity=.8]
+(0,0) -| ++(-6mm,8mm) -- ++(4mm,0) |- ++(2mm,-2mm) coordinate (@) -- cycle
+([yshift=-1mm]@) -- ++(0,1mm) -- ++(-2mm,2mm) -- ++(-1mm,0);}}
+\newsavebox\Parsing
+\setbox\Parsing=\hbox{\scalebox{.5}{\begin{tikzpicture}
+   \foreach[count=\i from 0] \Code in {
+         {1/C,2/A,3/A},
+         {.5/B,1/A,2/A,1/A,1/A},
+         {.5/B,2/A,3/A},
+         {1/A},
+         {},
+         {1/A,2/A,6/A},
+         {1.5/A,1/A,2/A,.5/B,1/A},
+      } {
+         \def\XShift{5}
+         \foreach \CW/\Style in \Code {
+            \ifstrequal{\Style}{B}{\def\RandomSuffix{0}}{\def\RandomSuffix{(rand*0.4mm+0.75mm)}}
+            \pgfmathsetmacro\w{3*\CW mm+\RandomSuffix}
+            \path[\Style] ([yshift=-2.5mm-1cm,xshift=3.25mm+\XShift pt]0,-\i*0.28*10mm+1mm) rectangle ++(\w pt,-1.75mm);
+
+            \pgfmathsetmacro{\XShift}{\XShift+\w pt+1mm}
+            \xdef\XShift{\XShift}
+         }
+      }
+\end{tikzpicture}}}
+
+\errorcontextlines9999
+
+\newsavebox\FirstAst
+\setbox\FirstAst=\hbox{\resizebox*!{1.25cm}{\begin{forest}
+   for tree={Blob,edge={Soft,-}}
+   [[[][,phantom]][[[][,phantom]][]]]
+\end{forest}}}
+\newsavebox\DataFlow
+\setbox\DataFlow=\hbox{\resizebox*!{1.25cm}{\color{lightgray!80!BaseGray}\begin{tikzpicture}[Link/.style={draw,line cap=round,gray,thick},comm/.append style={very thick}]
+   \node[d] (0) at (0,0) {};
+   \node[u,right=4mm] (1) at (0.east) {};
+   \node[u,above=4mm] (2) at (0.north) {};
+   \node[u,below=4mm] (3) at (0.south) {};
+   \draw[Link,-Kite] (3) -- (0);
+   \draw[Link,-Kite] (0) -- (1);
+   \draw[Link,dotted] (1) to[bend right] (2);
+\end{tikzpicture}}}
+\newsavebox\Slicing
+\setbox\Slicing=\hbox{\resizebox*!{1.25cm}{\color{lightgray!80!BaseGray}\begin{tikzpicture}[Link/.style={draw,line cap=round,gray,thick},m/.style={draw=black,very thick,fill=lightgray!50!white},comm/.append style={very thick}]
+   \node[d,m] (0) at (0,0) {};
+   \node[u,m,right=4mm] (1) at (0.east) {};
+   \node[u,above=4mm] (2) at (0.north) {};
+   \node[u,m,below=4mm] (3) at (0.south) {};
+   \draw[Link,-Kite] (3) -- (0);
+   \draw[Link,-Kite] (0) -- (1);
+   \draw[Link,dotted] (1) to[bend right] (2);
+\end{tikzpicture}}}
+\newsavebox\Reconstruct
+\setbox\Reconstruct=\hbox{\scalebox{.5}{\begin{tikzpicture}
+   \foreach[count=\i from 0] \Code in {
+         {1/C,2/A,3/A},
+         {.5/B,2/A,3/A},
+         {1/A},
+         {},
+         {1/A,2/A,4/A},
+      } {
+         \def\XShift{5}
+         \foreach \CW/\Style in \Code {
+            \ifstrequal{\Style}{B}{\def\RandomSuffix{0}}{\def\RandomSuffix{(rand*0.4mm+0.75mm)}}
+            \pgfmathsetmacro\w{3*\CW mm+\RandomSuffix}
+            \path[\Style] ([yshift=-2.5mm-1cm,xshift=3.25mm+\XShift pt]0,-\i*0.28*10mm+1mm) rectangle ++(\w pt,-1.75mm);
+
+            \pgfmathsetmacro{\XShift}{\XShift+\w pt+1mm}
+            \xdef\XShift{\XShift}
+         }
+      }
+\end{tikzpicture}}}
+
+\tikzset{br/.style={fill=white,draw=black,drop shadow={fill=lightgray!42},minimum width=2.5cm,minimum height=1.5cm,signal,signal from=west,signal to=east,signal pointer angle=125,rounded corners=2pt}}
+
+\newif\ifoverviewParse \overviewParsetrue
+\newif\ifoverviewNormalize \overviewNormalizetrue
+\newif\ifoverviewDataflow \overviewDataflowtrue
+\newif\ifoverviewSlice \overviewSlicetrue
+\newif\ifoverviewReconstruct \overviewReconstructtrue
+
+\newsavebox\Overview
+\def\StoreOverview#1{%
+\setbox\Overview=\hbox{\begin{tikzpicture}[All Soft,k/.style={below,font=\footnotesize,xshift=-.33mm,color=darkgray},m/.style={above,font=\scriptsize,xshift=-.33mm,color=gray},BaseGray,Link/.style={
+   draw=SoftGray,
+   line width=1.5pt,
+   line cap=round,
+   line join=round,
+   -%
+},base/.style={opacity=.35},a/.style={base},b/.style={base},c/.style={base},d/.style={base},e/.style={base},f/.style={base},#1]
+   \ifoverviewParse
+   \scope[transparency group,b]
+   \node[br,right=3mm] (@) at (@.east) {};
+   \node (r-conv) at (@) {\usebox\Parsing};
+   \node[k] at (@.south) {Parse};
+   \endscope
+   \fi
+
+   \ifoverviewNormalize
+   \scope[transparency group,c]
+   \node[br,right=3mm] (@) at (@.east) {};
+   \node (first-ast) at (@) {\usebox\FirstAst};
+   \node[k] at (@.south) {Normalize};
+   \endscope
+   \fi
+   \ifoverviewDataflow
+   \scope[transparency group,d]
+   \node[br,right=3mm] (@) at (@.east) {};
+   \node (dataflow) at (@) {\usebox\DataFlow};
+   \node[k] at (@.south) {Dataflow};
+   \endscope
+   \fi
+   \ifoverviewSlice
+   \scope[transparency group,e]
+   \node[br,right=3mm] (@) at (@.east) {};
+   \node (slicing) at (@) {\usebox\Slicing};
+   \node[k] at (@.south) {Slice};
+   \endscope
+   \fi
+   \ifoverviewReconstruct
+   \scope[transparency group,f]
+   \node[br,right=3mm] (@) at (@.east) {};
+   \node (reconstruct) at (@) {\usebox\Reconstruct};
+   \node[k] at (@.south) {Reconstruct};
+   \endscope
+   \fi
+\end{tikzpicture}}}
+
+\def\ShowOverview{\node[below left=3.25mm,scale=.6] at(current page.north east) {\usebox\Overview};}
 \def\XShift{3.5mm}%
 \newsavebox\CodeBoxA
-% \begin{frame}[fragile,c]{\textcolor{gray}{flowR ---} Architecture}
-% \centering
-% \begin{tikzpicture}[All Soft, br/.style={fill=white,draw=black,drop shadow={fill=lightgray!50},minimum width=2.5cm,minimum height=1.5cm,signal,signal from=west,signal to=east,signal pointer angle=125,rounded corners=2pt},k/.style={below,font=\footnotesize,xshift=-.33mm,color=darkgray},m/.style={above,font=\scriptsize,xshift=-.33mm,color=gray},BaseGray,Link/.style={
-%    draw=SoftGray,
-%    line width=1.5pt,
-%    line cap=round,
-%    line join=round,
-%    -%
-% }]
-%    \tikzset{a/.style={opacity=.5}}
-%    \coordinate (@) at (0,0);
+\begin{frame}[fragile,c]{\textcolor{gray}{flowR ---} Architecture}
+\centering
+\begin{tikzpicture}[All Soft, br/.style={fill=white,draw=black,drop shadow={fill=lightgray!50},minimum width=2.5cm,minimum height=1.5cm,signal,signal from=west,signal to=east,signal pointer angle=125,rounded corners=2pt},k/.style={below,font=\footnotesize,xshift=-.33mm,color=darkgray},m/.style={above,font=\scriptsize,xshift=-.33mm,color=gray},BaseGray,Link/.style={
+   draw=SoftGray,
+   line width=1.5pt,
+   line cap=round,
+   line join=round,
+   -%
+}]
+   \tikzset{a/.style={opacity=.5}}
+   \coordinate (@) at (0,0);
 
-%    \onslide<2->{
-%       \node[br,right=\XShift] (@) at (@.east) {};
-%       \coordinate (@parse) at (@.north west);
-%       \coordinate (@parse-l) at (@.south west);
-%       \node (r-conv) at (@) {\SwitchTo{\usebox\Parsing}{\,Parse}};
-%       \pgfinterruptboundingbox\node[k] at (@.south) {\SwitchTo{Parse}{}};\endpgfinterruptboundingbox
-%    }
-%       % \onslide<4->{\node[m] at (@.north) {\texttt{parse}\,\(\to\)\,XML};}
+   \onslide<2->{
+      \node[br,right=\XShift] (@) at (@.east) {};
+      \coordinate (@parse) at (@.north west);
+      \coordinate (@parse-l) at (@.south west);
+      \node (r-conv) at (@) {\SwitchTo{\usebox\Parsing}{\,Parse}};
+      \pgfinterruptboundingbox\node[k] at (@.south) {\SwitchTo{Parse}{}};\endpgfinterruptboundingbox
+   }
+      % \onslide<4->{\node[m] at (@.north) {\texttt{parse}\,\(\to\)\,XML};}
 
-%    \onslide<3->{
-%       \node[br,right=\XShift] (@) at (@.east) {};
-%       \node[align=center] (first-ast) at (@) {\SwitchTo{\usebox\FirstAst}{Normalize}};
-%       \coordinate (@normalize) at (@.north west);
-%       \pgfinterruptboundingbox\node[k,align=center] at (@.south) {\SwitchTo{Normalize}{}};\endpgfinterruptboundingbox
-%       % \onslide<6->{\node[m] at (@.north) {in TypeScript};}
-%       \coordinate (@l) at(@.south west);
-%    }
-%    \scope
-%    \onslide<4->{
-%       \node[br,right=\XShift] (@) at (@.east) {};
-%       \coordinate (@dataflow) at (@.north east);
-%       \coordinate (@dataflow-l) at (@.south east);
-%       \node (dataflow) at (@) {\SwitchTo{\usebox\DataFlow}{\;Dataflow}};
-%       \pgfinterruptboundingbox\node[k] at (@.south) {\SwitchTo{Dataflow}{}};\endpgfinterruptboundingbox
-%    }
-%    \endscope
-%    \scope
-%    \onslide<5->{
-%       \node[br,right=\XShift] (@) at (@.east) {};
-%       \pgfinterruptboundingbox\node (slicing) at (@) {\SwitchTo{\usebox\Slicing}{\,Slice}};\endpgfinterruptboundingbox
-%       \node[k] at (@.south) {\SwitchTo{Slice}{}};
-%       \coordinate (@slice) at (@.north west);
-%       \coordinate (@slice-l) at (@.south west);
-%       % \onslide<9->{\node[m] at (@.north) {Weiser~\cite{weiser_program_1984}};}
-%    }
-%    \endscope
-%    \onslide<6->{
-%       \node[br,right=\XShift] (@) at (@.east) {};
-%       \node (reconstruct) at (@) {\SwitchTo{\usebox\Reconstruct}{\; Reconstruct}};
-%       \pgfinterruptboundingbox\node[k] at (@.south) {\SwitchTo{Reconstruct}{}};\endpgfinterruptboundingbox
-%       \coordinate (@r) at(@.south east);
-%       \coordinate (@reconstruct) at (@.north east);
-%       \coordinate (@reconstruct-l) at (@.south east);
-%    }
-% \end{tikzpicture}\medskip
-% \begin{onlyenv}<7->
-% \lstfs{7}
-% \hspace*{1.5cm}%
-% \begin{lrbox}\CodeBoxA
-% \begin{minted}[deletekeywords={sum,prod},escapeinside={/*}{*/}]{R}
-% sum  <- 0
-% prod <- 1
-% n    <- 10
+   \onslide<3->{
+      \node[br,right=\XShift] (@) at (@.east) {};
+      \node[align=center] (first-ast) at (@) {\SwitchTo{\usebox\FirstAst}{Normalize}};
+      \coordinate (@normalize) at (@.north west);
+      \pgfinterruptboundingbox\node[k,align=center] at (@.south) {\SwitchTo{Normalize}{}};\endpgfinterruptboundingbox
+      % \onslide<6->{\node[m] at (@.north) {in TypeScript};}
+      \coordinate (@l) at(@.south west);
+   }
+   \scope
+   \onslide<4->{
+      \node[br,right=\XShift] (@) at (@.east) {};
+      \coordinate (@dataflow) at (@.north east);
+      \coordinate (@dataflow-l) at (@.south east);
+      \node (dataflow) at (@) {\SwitchTo{\usebox\DataFlow}{\;Dataflow}};
+      \pgfinterruptboundingbox\node[k] at (@.south) {\SwitchTo{Dataflow}{}};\endpgfinterruptboundingbox
+   }
+   \endscope
+   \scope
+   \onslide<5->{
+      \node[br,right=\XShift] (@) at (@.east) {};
+      \pgfinterruptboundingbox\node (slicing) at (@) {\SwitchTo{\usebox\Slicing}{\,Slice}};\endpgfinterruptboundingbox
+      \node[k] at (@.south) {\SwitchTo{Slice}{}};
+      \coordinate (@slice) at (@.north west);
+      \coordinate (@slice-l) at (@.south west);
+      % \onslide<9->{\node[m] at (@.north) {Weiser~\cite{weiser_program_1984}};}
+   }
+   \endscope
+   \onslide<6->{
+      \node[br,right=\XShift] (@) at (@.east) {};
+      \node (reconstruct) at (@) {\SwitchTo{\usebox\Reconstruct}{\; Reconstruct}};
+      \pgfinterruptboundingbox\node[k] at (@.south) {\SwitchTo{Reconstruct}{}};\endpgfinterruptboundingbox
+      \coordinate (@r) at(@.south east);
+      \coordinate (@reconstruct) at (@.north east);
+      \coordinate (@reconstruct-l) at (@.south east);
+   }
+\end{tikzpicture}\medskip
+\begin{onlyenv}<7->
+\lstfs{7}
+\hspace*{1.5cm}%
+\begin{lrbox}\CodeBoxA
+\begin{minted}[deletekeywords={sum,prod},escapeinside={/*}{*/}]{R}
+sum  <- 0
+prod <- 1
+n    <- 10
 
-% for (i in 1:(n-1)) {
-%    sum  <- sum + i
-%    prod <- prod * i
-% }
+for (i in 1:(n-1)) {
+   sum  <- sum + i
+   prod <- prod * i
+}
 
-% cat("Sum:"/*\color{black}*/, /*\texttt{\only<8->{\textbf}{sum}}*//*\color{black}*/, "\n")
-% cat/*\color{black}*/("Product:"/*\color{black}*/, prod, "\n"/*\color{black}*/)
-% \end{minted}
-% \end{lrbox}
-% \begin{tikzpicture}
-% \begin{uncoverenv}<7->
-% \node (@) at (0,0) {%
-%    \usebox\CodeBoxA
-% };
-% \end{uncoverenv}
+cat("Sum:"/*\color{black}*/, /*\texttt{\only<8->{\textbf}{sum}}*//*\color{black}*/, "\n")
+cat/*\color{black}*/("Product:"/*\color{black}*/, prod, "\n"/*\color{black}*/)
+\end{minted}
+\end{lrbox}
+\begin{tikzpicture}
+\begin{uncoverenv}<7->
+\node (@) at (0,0) {%
+   \usebox\CodeBoxA
+};
+\end{uncoverenv}
 
-% \begin{uncoverenv}<9->
-%    \node[right=2.5cm] (@2) at (@.east) {%
-% \AnimateCode{onslide={o8:{7,5,4,3,1}}, first slide=9,handout={9/1}}
-% \begin{minted}[deletekeywords={sum,prod},escapeinside={/*}{*/}]{R}
-% sum  <- 0
-% prod <- 1
-% n    <- 10
+\begin{uncoverenv}<9->
+   \node[right=2.5cm] (@2) at (@.east) {%
+\AnimateCode{onslide={o8:{7,5,4,3,1}}, first slide=9,handout={9/1}}
+\begin{minted}[deletekeywords={sum,prod},escapeinside={/*}{*/}]{R}
+sum  <- 0
+prod <- 1
+n    <- 10
 
-% for (i in 1:(n-1)) {
-%    sum  <- sum + i
-%    prod <- prod * i
-% }
+for (i in 1:(n-1)) {
+   sum  <- sum + i
+   prod <- prod * i
+}
 
-% cat("Sum:", sum, "\n")
-% cat("Product:", prod, "\n")
-% \end{minted}
-% \endAnimateCode
-%    };
-% \end{uncoverenv}
-% \onslide<8->{
-%    \draw[-Kite,line cap=round] ([xshift=5mm]@.east) to[edge node={node[above] {\footnotesize\texttt{slice({\xlstGet{linenumbers}{\footnotesize10}}\footnotesize\color{black}, \textbf{sum})}}}] ([xshift=-5mm]@2.west);
-% }
-% \end{tikzpicture}\hspace*{-2cm}
-% \end{onlyenv}
-% \begin{tikzpicture}[overlay,remember picture]
-%    \node[below left=4mm,yshift=2mm] at(current page.north east) {\Logo[2.1cm]{https://github.com/flowr-analysis/flowr}{flowr}};
-%    \node[above right,yshift=4mm,bottom note] at(current page.south west) {\href{https://github.com/flowr-analysis/flowr/tree/main/src/dataflow}{github.com/flowr-analysis/flowr/tree/main/src/dataflow}};
-% \end{tikzpicture}
-% \end{frame}
+cat("Sum:", sum, "\n")
+cat("Product:", prod, "\n")
+\end{minted}
+\endAnimateCode
+   };
+\end{uncoverenv}
+\onslide<8->{
+   \draw[-Kite,line cap=round] ([xshift=5mm]@.east) to[edge node={node[above] {\footnotesize\texttt{slice({\xlstGet{linenumbers}{\footnotesize10}}\footnotesize\color{black}, \textbf{sum})}}}] ([xshift=-5mm]@2.west);
+}
+\end{tikzpicture}\hspace*{-2cm}
+\end{onlyenv}
+\begin{tikzpicture}[overlay,remember picture]
+   \node[below left=4mm,yshift=2mm] at(current page.north east) {\Logo[2.1cm]{https://github.com/flowr-analysis/flowr}{flowr}};
+   \node[above right,yshift=4mm,bottom note] at(current page.south west) {\href{https://github.com/flowr-analysis/flowr/tree/main/src/dataflow}{github.com/flowr-analysis/flowr/tree/main/src/dataflow}};
+\end{tikzpicture}
+\end{frame}
 
 
 
@@ -1044,8 +1269,6 @@ x <- 21 # 42
 \endpgfinterruptboundingbox
 }}
 
-\iffalse
-
 \newsavebox\XUseGraph \savebox\XUseGraph{\WithGraph{\node[u] (@) at (0,0) {x\textsubscript{0}};}}
 \newsavebox\XDefGraph \savebox\XDefGraph{\WithGraph{\node[d] (@) at (0,0) {x\textsubscript{0}};}}
 \newsavebox\YUseGraph \savebox\YUseGraph{\WithGraph{\node[u] (@) at (0,0) {y\textsubscript{0}};}}
@@ -1074,193 +1297,192 @@ x <- 21 # 42
    \draw[densely dotted,-Kite] (y) -- (yb);
    \coordinate(@) at(current bounding box.north);
 }}
+\errorcontextlines=9999
 
-\begin{frame}[fragile]{\textcolor{gray}{flowr ---} Dataflow}
-% TODO: complete from 2.17 with read-graphs propagation
-\hypertarget<1>{@DataFlow}{}%
-\lstfs{8}
-\begin{minted}[escapeinside={/*}{*/},lineskip=4pt]{IndexR}
-/*\onslide<2->*/x_0 <- 21
-y_0 <- 2
-z_0 <- x_1 * y_1/*\onslide<1->*/
-\end{minted}
-\begin{center}
-\begin{onlyenv}<3|handout:0>
-\begin{forest}
-   T, for tree={l sep=2mm,s sep=5mm,font=\footnotesize}
-   [exprlist, s sep=2cm, l sep=0mm
-      [\Content{assignment}{\LeftArrow}, edge label={node[K=above,sloped] {1}}
-         [\Content{symbol}{x}, edge label={node[K=above,sloped] {target}}]
-         [\Content{number}{21}, edge label={node[K=above,sloped] {source}}]
-      ]
-      [\Content{assignment}{\LeftArrow}, edge label={node[K=right] {2}},before computing xy={s/.average={s}{siblings}},
-         [\Content{symbol}{y}, edge label={node[K=above,sloped] {target}}]
-         [\Content{number}{2}, edge label={node[K=above,sloped] {source}}]
-      ]
-      [\Content{assignment}{\LeftArrow}, edge label={node[K=above,sloped] {3}}
-         [\Content{symbol}{z}, edge label={node[K=above,sloped] {target}}]
-         [\Content{binary-op}{\raisebox{-5pt}{\large*}}\vspace*{-3mm}, edge label={node[K=above,sloped] {source}},
-            [\Content{symbol}{x}, edge label={node[K=above,sloped] {lhs}}]
-            [\Content{symbol}{y}, edge label={node[K=above,sloped] {rhs}}]
-         ]
-      ]
-   ]
-\end{forest}
-\end{onlyenv}
-\begin{onlyenv}<4-|handout:1>
-\begin{lrbox}\FinalDataFlow
-\begin{forest}
-   T, for tree={l sep=2mm,s sep=1.5cm, s sep-=5mm,font=\footnotesize}
-   [\MarkAt{5,6,21}{exprlist}, s sep=2cm, l sep=0mm,name=exprlist
-      [\MarkAt{7,11}{\LeftArrow}, edge label={node[K=above,sloped] {1}},name=la1
-         [\MarkAt{8,9}{x\RCodeIndex0}, edge label={node[K=above,sloped] {target}},name=x1]
-         [\MarkAt{10}{21}, edge label={node[K=above,sloped] {source}},name=21]
-      ]
-      [\MarkAt{12,13}{\LeftArrow}, edge label={node[K=right] {2}},name=la2,before computing xy={s/.average={s}{siblings}}
-         [y\RCodeIndex0, edge label={node[K=above,sloped] {target}},name=y1]
-         [2, edge label={node[K=above,sloped] {source}},name=2]
-      ]
-      [\MarkAt{14,20}{\LeftArrow}, edge label={node[K=above,sloped] {3}},name=la3
-         [\MarkAt{15}{z\RCodeIndex0}, edge label={node[K=above,sloped] {target}},name=z1]
-         [\MarkAt{16,19}{\raisebox{-5pt}{\large*}}\vspace*{-3mm}, edge label={node[K=above,sloped] {source}}, name=star,
-            [\MarkAt{17}{x\RCodeIndex1}, edge label={node[K=above,sloped] {lhs}},name=x2]
-            [\MarkAt{18}{y\RCodeIndex1}, edge label={node[K=above,sloped] {rhs}},name=y2]
-         ]
-      ]
-   ]
-\pgfinterruptboundingbox
-   \onslide<6-20|handout:0>{\OpaOn<7->{\node[above,scale=.65] at(exprlist.north) {\usebox\EmptyEnvBox};}}
-   \onslide<7-10|handout:0>{\OpaOn<8->{\node[above left=-1mm,yshift=-1mm,scale=.65] at(la1.north west) {\usebox\EmptyEnvBox};}}
-   % \onslide<8|handout:0>{\node[left,yshift=.5mm,scale=.65] at(x1.west) {\usebox\EmptyEnvBox};}
-   \onslide<8->{\OpaOn<9->{\node[left,yshift=.5mm,scale=.65] (@x) at(x1.west) {\usebox\EmptyEnvBox};}}
-   \onslide<9->{\OpaOn<10->{\node[below=1mm,scale=.65] at(x1.south) {\usebox\XUseGraph};}}
-   \onslide<10->{\OpaOn<11->{\node[below,scale=.65] at(21.south) {\usebox\EmptyEnvBox};}}
-   \onslide<11->{%\OpaOn<13->{
-      \node[above left=-1mm,yshift=-1mm,scale=.65] (@) at(la1.north west) {\usebox\BoxWithX};
-      \node[left,scale=.65] at(@.west) {\usebox\XDefGraph};
-   }
-   \onslide<12|handout:0>{\OpaOn<13->{ \node[left=-1mm,yshift=-1.25mm,scale=.65] (@) at(la2.north west) {\usebox\BoxWithX};}}
-   \onslide<13->{\OpaOn<14->{
-      % \node[left,yshift=.5mm,scale=.65] (@x) at(x1.west) {\usebox\EmptyEnvBox};
-      \node[left,yshift=.5mm,scale=.65] (@x) at(y1.west) {\usebox\BoxWithX};
-      \node[below=1mm,scale=.65] at(y1.south) {\usebox\YUseGraph};
-      \node[below,scale=.65] at(2.south) {\usebox\BoxWithX};
-   }
-      \node[left=-1mm,yshift=-1.25mm,scale=.65] at(la2.north west) {\usebox\YDefGraph};
-      \node[right=-1mm,yshift=-1.25mm,scale=.65] at(la2.north east) {\usebox\BoxWithXY};
-   }
-   \onslide<14-19|handout:0>{\OpaOn<15->{%
-      \node[above right=-1mm,yshift=-1mm,scale=.65] (@la3) at(la3.north east) {\usebox\BoxWithXY};
-      %\node[below=1mm,scale=.65] at(y1.south) {\usebox\YUseGraph};
-      %\node[below,scale=.65] at(2.south) {\usebox\EmptyEnvBox};
-   }}
-   \onslide<15->{\OpaOn<16->{%
-      \node[left,yshift=.5mm,scale=.65] (@x) at(z1.west) {\usebox\BoxWithXY};
-      \node[below,scale=.65] at(z1.south) {\usebox\ZUseGraph};
-   }}
-   \onslide<16-18|handout:0>{\OpaOn<17->{%
-      \node[right,yshift=.5mm,scale=.65] (@x) at(star.east) {\usebox\BoxWithXY};
-      % \node[below=1mm,scale=.65] at(star.south) {\usebox\ZUseGraph};
-   }}
-   \onslide<17->{\OpaOn<18->{%
-      \node[below left,xshift=-.75mm,yshift=-.5mm,scale=.65] (@x) at(x2.south west) {\usebox\BoxWithXY};
-      \node[below,scale=.65] at(x2.south) {\usebox\XBUseGraph};
-   }}
-   \onslide<18->{\OpaOn<19->{%
-      \node[below right,xshift=.75mm,yshift=-.5mm,scale=.65] (@x) at(y2.south east) {\usebox\BoxWithXY};
-      \node[below,scale=.65] at(y2.south) {\usebox\YBUseGraph};
-   }}
-   \onslide<19->{\OpaOn<20->{%
-      \node[right,yshift=.5mm,scale=.65] (@x) at(star.east) {\usebox\BoxWithXY};
-      \node[right,scale=.65] at(@x.east) {\usebox\XYBUseGraph};
-   }}
-   \onslide<20->{%\OpaOn<21->{%
-      \node[above right=-1mm,yshift=-1mm,scale=.65] (@la3) at(la3.north east) {\usebox\BoxWithFull};
-      \node[right,yshift=.5mm,scale=.65] (@x) at(@la3.east) {\usebox\XYYBUseGraph};
-   }%}
-   \onslide<21->{%\OpaOn<22->{
-      \node[above,scale=.65] (@x) at(exprlist.north) {\usebox\BoxWithFull};
-      \node[right,yshift=.5mm,scale=.65] at(@x.east) {\usebox\FullUseGraph};
-   }%}
-\endpgfinterruptboundingbox
-\end{forest}
-\end{lrbox}\usebox\FinalDataFlow
-\global\setbox\FinalDataFlow=\box\FinalDataFlow
-\end{onlyenv}
-\begin{tikzpicture}[overlay,remember picture]
-   \node[above left,yshift=4mm,bottom note] at(current page.south east) {Without Value tracking};
-\end{tikzpicture}%
-\end{center}
-\note[itemize]{%
-\item Erst Code
-\item Normalisierter AST
-\item Vereinfachung für Übersicht
-\item Zuerst Environments **Top**, **Empty**, **Mit Parent** | **Current**
-\item Wird nach unten durchgereicht (lexical)
-\item Fold nach oben [Hylomorphism]
-\item SSA: Static single-assignment form
-}(1)%
-\end{frame}
+% \begin{frame}[fragile]{\textcolor{gray}{flowr ---} Dataflow}
+% % TODO: complete from 2.17 with read-graphs propagation
+% \hypertarget<1>{@DataFlow}{}%
+% \lstfs{8}
+% \begin{minted}[escapeinside={/*}{*/},lineskip=4pt]{IndexR}
+% /*\onslide<2->*/x_0 <- 21
+% y_0 <- 2
+% z_0 <- x_1 * y_1/*\onslide<1->*/
+% \end{minted}
+% \begin{center}
+% \begin{onlyenv}<3|handout:0>
+% \begin{forest}
+%    T, for tree={l sep=2mm,s sep=5mm,font=\footnotesize}
+%    [exprlist, s sep=2cm, l sep=0mm
+%       [\Content{assignment}{\LeftArrow}, edge label={node[K=above,sloped] {1}}
+%          [\Content{symbol}{x}, edge label={node[K=above,sloped] {target}}]
+%          [\Content{number}{21}, edge label={node[K=above,sloped] {source}}]
+%       ]
+%       [\Content{assignment}{\LeftArrow}, edge label={node[K=right] {2}},before computing xy={s/.average={s}{siblings}},
+%          [\Content{symbol}{y}, edge label={node[K=above,sloped] {target}}]
+%          [\Content{number}{2}, edge label={node[K=above,sloped] {source}}]
+%       ]
+%       [\Content{assignment}{\LeftArrow}, edge label={node[K=above,sloped] {3}}
+%          [\Content{symbol}{z}, edge label={node[K=above,sloped] {target}}]
+%          [\Content{binary-op}{\raisebox{-5pt}{\large*}}\vspace*{-3mm}, edge label={node[K=above,sloped] {source}},
+%             [\Content{symbol}{x}, edge label={node[K=above,sloped] {lhs}}]
+%             [\Content{symbol}{y}, edge label={node[K=above,sloped] {rhs}}]
+%          ]
+%       ]
+%    ]
+% \end{forest}
+% \end{onlyenv}
+% \begin{onlyenv}<4-|handout:1>
+% \begin{lrbox}\FinalDataFlow
+% \begin{forest}
+%    T, for tree={l sep=2mm,s sep=1.5cm, s sep-=5mm,font=\footnotesize}
+%    [\MarkAt{5,6,21}{exprlist}, s sep=2cm, l sep=0mm,name=exprlist
+%       [\MarkAt{7,11}{\LeftArrow}, edge label={node[K=above,sloped] {1}},name=la1
+%          [\MarkAt{8,9}{x\RCodeIndex0}, edge label={node[K=above,sloped] {target}},name=x1]
+%          [\MarkAt{10}{21}, edge label={node[K=above,sloped] {source}},name=21]
+%       ]
+%       [\MarkAt{12,13}{\LeftArrow}, edge label={node[K=right] {2}},name=la2,before computing xy={s/.average={s}{siblings}}
+%          [y\RCodeIndex0, edge label={node[K=above,sloped] {target}},name=y1]
+%          [2, edge label={node[K=above,sloped] {source}},name=2]
+%       ]
+%       [\MarkAt{14,20}{\LeftArrow}, edge label={node[K=above,sloped] {3}},name=la3
+%          [\MarkAt{15}{z\RCodeIndex0}, edge label={node[K=above,sloped] {target}},name=z1]
+%          [\MarkAt{16,19}{\raisebox{-5pt}{\large*}}\vspace*{-3mm}, edge label={node[K=above,sloped] {source}}, name=star,
+%             [\MarkAt{17}{x\RCodeIndex1}, edge label={node[K=above,sloped] {lhs}},name=x2]
+%             [\MarkAt{18}{y\RCodeIndex1}, edge label={node[K=above,sloped] {rhs}},name=y2]
+%          ]
+%       ]
+%    ]
+% \pgfinterruptboundingbox
+%    \onslide<6-20|handout:0>{\OpaOn<7->{\node[above,scale=.65] at(exprlist.north) {\usebox\EmptyEnvBox};}}
+%    \onslide<7-10|handout:0>{\OpaOn<8->{\node[above left=-1mm,yshift=-1mm,scale=.65] at(la1.north west) {\usebox\EmptyEnvBox};}}
+%    % \onslide<8|handout:0>{\node[left,yshift=.5mm,scale=.65] at(x1.west) {\usebox\EmptyEnvBox};}
+%    \onslide<8->{\OpaOn<9->{\node[left,yshift=.5mm,scale=.65] (@x) at(x1.west) {\usebox\EmptyEnvBox};}}
+%    \onslide<9->{\OpaOn<10->{\node[below=1mm,scale=.65] at(x1.south) {\usebox\XUseGraph};}}
+%    \onslide<10->{\OpaOn<11->{\node[below,scale=.65] at(21.south) {\usebox\EmptyEnvBox};}}
+%    \onslide<11->{%\OpaOn<13->{
+%       \node[above left=-1mm,yshift=-1mm,scale=.65] (@) at(la1.north west) {\usebox\BoxWithX};
+%       \node[left,scale=.65] at(@.west) {\usebox\XDefGraph};
+%    }
+%    \onslide<12|handout:0>{\OpaOn<13->{ \node[left=-1mm,yshift=-1.25mm,scale=.65] (@) at(la2.north west) {\usebox\BoxWithX};}}
+%    \onslide<13->{\OpaOn<14->{
+%       % \node[left,yshift=.5mm,scale=.65] (@x) at(x1.west) {\usebox\EmptyEnvBox};
+%       \node[left,yshift=.5mm,scale=.65] (@x) at(y1.west) {\usebox\BoxWithX};
+%       \node[below=1mm,scale=.65] at(y1.south) {\usebox\YUseGraph};
+%       \node[below,scale=.65] at(2.south) {\usebox\BoxWithX};
+%    }
+%       \node[left=-1mm,yshift=-1.25mm,scale=.65] at(la2.north west) {\usebox\YDefGraph};
+%       \node[right=-1mm,yshift=-1.25mm,scale=.65] at(la2.north east) {\usebox\BoxWithXY};
+%    }
+%    \onslide<14-19|handout:0>{\OpaOn<15->{%
+%       \node[above right=-1mm,yshift=-1mm,scale=.65] (@la3) at(la3.north east) {\usebox\BoxWithXY};
+%       %\node[below=1mm,scale=.65] at(y1.south) {\usebox\YUseGraph};
+%       %\node[below,scale=.65] at(2.south) {\usebox\EmptyEnvBox};
+%    }}
+%    \onslide<15->{\OpaOn<16->{%
+%       \node[left,yshift=.5mm,scale=.65] (@x) at(z1.west) {\usebox\BoxWithXY};
+%       \node[below,scale=.65] at(z1.south) {\usebox\ZUseGraph};
+%    }}
+%    \onslide<16-18|handout:0>{\OpaOn<17->{%
+%       \node[right,yshift=.5mm,scale=.65] (@x) at(star.east) {\usebox\BoxWithXY};
+%       % \node[below=1mm,scale=.65] at(star.south) {\usebox\ZUseGraph};
+%    }}
+%    \onslide<17->{\OpaOn<18->{%
+%       \node[below left,xshift=-.75mm,yshift=-.5mm,scale=.65] (@x) at(x2.south west) {\usebox\BoxWithXY};
+%       \node[below,scale=.65] at(x2.south) {\usebox\XBUseGraph};
+%    }}
+%    \onslide<18->{\OpaOn<19->{%
+%       \node[below right,xshift=.75mm,yshift=-.5mm,scale=.65] (@x) at(y2.south east) {\usebox\BoxWithXY};
+%       \node[below,scale=.65] at(y2.south) {\usebox\YBUseGraph};
+%    }}
+%    \onslide<19->{\OpaOn<20->{%
+%       \node[right,yshift=.5mm,scale=.65] (@x) at(star.east) {\usebox\BoxWithXY};
+%       \node[right,scale=.65] at(@x.east) {\usebox\XYBUseGraph};
+%    }}
+%    \onslide<20->{%\OpaOn<21->{%
+%       \node[above right=-1mm,yshift=-1mm,scale=.65] (@la3) at(la3.north east) {\usebox\BoxWithFull};
+%       \node[right,yshift=.5mm,scale=.65] (@x) at(@la3.east) {\usebox\XYYBUseGraph};
+%    }%}
+%    \onslide<21->{%\OpaOn<22->{
+%       \node[above,scale=.65] (@x) at(exprlist.north) {\usebox\BoxWithFull};
+%       \node[right,yshift=.5mm,scale=.65] at(@x.east) {\usebox\FullUseGraph};
+%    }%}
+% \endpgfinterruptboundingbox
+% \end{forest}
+% \end{lrbox}\usebox\FinalDataFlow
+% \global\setbox\FinalDataFlow=\box\FinalDataFlow
+% \end{onlyenv}
+% \begin{tikzpicture}[overlay,remember picture]
+%    \node[above left,yshift=4mm,bottom note] at(current page.south east) {Without Value tracking};
+% \end{tikzpicture}%
+% \end{center}
+% % \note[itemize]{%
+% % \item Erst Code
+% % \item Normalisierter AST
+% % \item Vereinfachung für Übersicht
+% % \item Zuerst Environments **Top**, **Empty**, **Mit Parent** | **Current**
+% % \item Wird nach unten durchgereicht (lexical)
+% % \item Fold nach oben [Hylomorphism]
+% % \item SSA: Static single-assignment form
+% % }(1)%
+% \end{frame}
 
-\begin{frame}[fragile]{\textcolor{gray}{flowR ---} There Is More\ldots} %  [TODO: Vscode Extension]
-\begin{onlyenv}<2->
-\begin{center}
-\begin{tikzpicture}[xscale=1.25,Link/.append style={-{Kite[scale=.65]}}]
-\begin{uncoverenv}<3->
-   \node[d] (a0) {\bIndexR{a_0}};
-   \node[d,below=4mm] (b0) at(a0.south) {\bIndexR{b_0}};
-   \node[u,right=1cm] (a1) at(a0.east) {\bIndexR{a\_1}};
-   \node[u,right=1cm] (b1) at(b0.east) {\bIndexR{b\_1}};
-   \node[e,right=1cm] (e+) at(current bounding box.east) {\T{+}};
-   \draw[Link] (a1.west) to[edge node={node[above,T] {\smaller\T{reads}}}] (a0.east);
-   \draw[Link] (b1.west) to[edge node={node[above,T] {\smaller\T{reads}}}] (b0.east);
-   \draw[Soft] (a1.east) to[edge node={node[above right,T] {\smaller\T{relates}}}]
-         (e+) (e+) to[edge node={node[below right,T] {\smaller\T{relates}}}] (b1.east);
+% \begin{frame}[fragile]{\textcolor{gray}{flowR ---} There Is More\ldots} %  [TODO: Vscode Extension]
+% \begin{onlyenv}<2->
+% \begin{center}
+% \begin{tikzpicture}[xscale=1.25,Link/.append style={-{Kite[scale=.65]}}]
+% \begin{uncoverenv}<3->
+%    \node[d] (a0) {\bIndexR{a_0}};
+%    \node[d,below=4mm] (b0) at(a0.south) {\bIndexR{b_0}};
+%    \node[u,right=1cm] (a1) at(a0.east) {\bIndexR{a\_1}};
+%    \node[u,right=1cm] (b1) at(b0.east) {\bIndexR{b\_1}};
+%    \node[e,right=1cm] (e+) at(current bounding box.east) {\T{+}};
+%    \draw[Link] (a1.west) to[edge node={node[above,T] {\smaller\T{reads}}}] (a0.east);
+%    \draw[Link] (b1.west) to[edge node={node[above,T] {\smaller\T{reads}}}] (b0.east);
+%    \draw[Soft] (a1.east) to[edge node={node[above right,T] {\smaller\T{relates}}}]
+%          (e+) (e+) to[edge node={node[below right,T] {\smaller\T{relates}}}] (b1.east);
 
-   \pgfonlayer{background}
-      \onslide<3->{\node[F,fit={(a0)(b0)(a1)(b1)(e+)},inner xsep=2mm,inner ysep=2mm] (g-f){};}
-   \endpgfonlayer
+%    \pgfonlayer{background}
+%       \onslide<3->{\node[F,fit={(a0)(b0)(a1)(b1)(e+)},inner xsep=2mm,inner ysep=2mm] (g-f){};}
+%    \endpgfonlayer
 
-   \node[d,above=4mm] (f0) at(g-f.north) {\bIndexR{f_0}};
-   \draw[Link] (f0.south) to[edge node={node[right,T] {\smaller\T{defined-by}}}] (g-f.north);
+%    \node[d,above=4mm] (f0) at(g-f.north) {\bIndexR{f_0}};
+%    \draw[Link] (f0.south) to[edge node={node[right,T] {\smaller\T{defined-by}}}] (g-f.north);
 
-   \node[u,text width=2.25cm,below,yshift=-2mm] (ua) at(current bounding box.south west) {\scriptsize\textit{unnamed-arg}};
-   \node[fc,right=1cm] (f1) at(g-f.east) {\bIndexR{f_1}};
-   \draw[Link,rounded corners=2pt] (f1.south) |- (ua.east) node[right=-4.5mm,yshift=-.25mm,below,pos=.75,T] {\smaller\T{argument}};
+%    \node[u,text width=2.25cm,below,yshift=-2mm] (ua) at(current bounding box.south west) {\scriptsize\textit{unnamed-arg}};
+%    \node[fc,right=1cm] (f1) at(g-f.east) {\bIndexR{f_1}};
+%    \draw[Link,rounded corners=2pt] (f1.south) |- (ua.east) node[right=-4.5mm,yshift=-.25mm,below,pos=.75,T] {\smaller\T{argument}};
 
-   \pgfonlayer{background}
-   \onslide<3->{\draw[Link,rounded corners=2pt] (f1.north) |- (f0.east) node[above,pos=.75,yshift=.33mm,T] {\smaller\T{reads}};
-      \draw[Link,rounded corners=2pt] ([yshift=-.83mm]f1.west) coordinate (@) -- (@-|g-f.east) node[below=.5mm,pos=.5,T,w-back] {\smaller\T{calls}};}
-   \endpgfonlayer
-      \draw[Link,rounded corners=2pt] (f1.west) -- (e+.east) node[above=.5mm,pos=.5,T,xshift=.5mm,w-back] {\smaller\T{returns}};
+%    \pgfonlayer{background}
+%    \onslide<3->{\draw[Link,rounded corners=2pt] (f1.north) |- (f0.east) node[above,pos=.75,yshift=.33mm,T] {\smaller\T{reads}};
+%       \draw[Link,rounded corners=2pt] ([yshift=-.83mm]f1.west) coordinate (@) -- (@-|g-f.east) node[below=.5mm,pos=.5,T,w-back] {\smaller\T{calls}};}
+%    \endpgfonlayer
+%       \draw[Link,rounded corners=2pt] (f1.west) -- (e+.east) node[above=.5mm,pos=.5,T,xshift=.5mm,w-back] {\smaller\T{returns}};
 
-   \pgfonlayer{background}
-   \onslide<3->{\draw[Link,rounded corners=2pt] ([yshift=1mm]a0.west) -| ([xshift=-6mm]ua.north) node[T,left,pos=.75] {\smaller\T{defined-by-on-call}};
-      \draw[Link,rounded corners=2pt] ([xshift=-4.5mm]ua.north) node[T,above right=.25mm,w-back] {\smaller\T{defines-on-call}} |- ([yshift=-1mm]a0.west);}
-   \endpgfonlayer
-\end{uncoverenv}
+%    \pgfonlayer{background}
+%    \onslide<3->{\draw[Link,rounded corners=2pt] ([yshift=1mm]a0.west) -| ([xshift=-6mm]ua.north) node[T,left,pos=.75] {\smaller\T{defined-by-on-call}};
+%       \draw[Link,rounded corners=2pt] ([xshift=-4.5mm]ua.north) node[T,above right=.25mm,w-back] {\smaller\T{defines-on-call}} |- ([yshift=-1mm]a0.west);}
+%    \endpgfonlayer
+% \end{uncoverenv}
 
-   \node[below right=-2mm,xshift=-1.33cm,text width=7cm] at(current bounding box.north west) {%
-\begin{minted}{IndexR}
-f_0 <- function(a_0, b_0 = 3) {
-   a_1 + b_1
-}
-f_1(39)
-   \end{minted}
-};
-\end{tikzpicture}
-\end{center}
-\end{onlyenv}
-   %    \item<5-> We should treat exit points uniformly
-   %    \item<6-> Our call tracing during program slicing is inefficient
-   % \end{enumerate}
-\note[itemize]{%
-   \item Funtkionsdefinitionen und Calls
-% \item Implicit exit points
-}(1.5)%
-\end{frame}
-
-\fi
+%    \node[below right=-2mm,xshift=-1.33cm,text width=7cm] at(current bounding box.north west) {%
+% \begin{minted}{IndexR}
+% f_0 <- function(a_0, b_0 = 3) {
+%    a_1 + b_1
+% }
+% f_1(39)
+%    \end{minted}
+% };
+% \end{tikzpicture}
+% \end{center}
+% \end{onlyenv}
+%    %    \item<5-> We should treat exit points uniformly
+%    %    \item<6-> Our call tracing during program slicing is inefficient
+%    % \end{enumerate}
+% % \note[itemize]{%
+% %    \item Funtkionsdefinitionen und Calls
+% % % \item Implicit exit points
+% % }(1.5)%
+% \end{frame}
 
 \color{black}
 

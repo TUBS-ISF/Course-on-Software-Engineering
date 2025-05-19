@@ -22,6 +22,7 @@
 \subsection{The Why}
 \subsubsection[Motivation]{Initial Motivation}
 \begin{frame}[fragile,label=main-example]{\insertsection}
+\lstfs{10}%
 \AnimateCode{onslide={o2:{3,...,7},-,-,-,-,-,-},handout=2/1,first slide=2}
 \begin{minted}[escapeinside=||,lineskip=1pt]{java}
 public static void main(String[] args) {
@@ -37,7 +38,7 @@ public static void main(String[] args) {
 \begin{tikzpicture}[overlay,remember picture]
    \onslide<3->{%
       \coordinate[yshift=2pt] (@a1) at (pic cs:@a1);
-      \node[right=4cm] (@a1) at (@a1) {\AbstractInfo{a \in \Set{1}}};
+      \node[right=4.33cm] (@a1) at (@a1) {\AbstractInfo{a \in \Set{1}}};
    }%
    \onslide<4->{%
       \coordinate[yshift=2pt] (@r1) at (pic cs:@r1);
@@ -63,8 +64,8 @@ public static void main(String[] args) {
 \end{uncoverenv}
 \end{frame}
 
-\subsubsection{Origins}
-\def\Mixin{}%
+\subsubsection{Origins [TODO: details für tonspur]}
+\larger\def\Mixin{}%
 \tikzset{%
    history-line/.style={line width=1.85mm,gray!30!white\Mixin,line cap=round,rounded corners=2pt},
    history-line skip/.style={history-line, line width=.75mm,loosely dotted},
@@ -126,7 +127,7 @@ public static void main(String[] args) {
    \draw[history-event,@] (3.15,-1) -- ++(.25,1.45) -- ++(.25,0) \historybox{right,@}{1974\,\&\,75}{Foundations}{\citeauthor*{DBLP:conf/relsoft/BoyerEL75}~\cite{DBLP:conf/relsoft/BoyerEL75}, \citeauthor*{DBLP:conf/ibm/King74}~\cite{DBLP:conf/ibm/King74}};
    }
    \onslide<12->{%
-   \draw[history-event,@] (4.5,-1) -- ++(.25,.75) -- ++(.25,0) \historybox{right,@}{2008}{Automation}{KLEE, \citeauthor*{DBLP:conf/osdi/CadarDE08}~\cite{DBLP:conf/osdi/CadarDE08}};
+   \draw[history-event,@] (4.75,-1) -- ++(.25,.75) -- ++(.25,0) \historybox{right,@}{2008}{Automation}{KLEE, \citeauthor*{DBLP:conf/osdi/CadarDE08}~\cite{DBLP:conf/osdi/CadarDE08}};
    }
    \onslide<13->{%
       \draw[history-event] (3.2,-3) -- ++(.25,1.45) -- ++(.25,0) \historybox{right}{1977}{Fixpoints on Lattices}{\citeauthor{DBLP:conf/popl/CousotC77}~\cite{DBLP:conf/popl/CousotC77}};
@@ -523,6 +524,7 @@ public static void main(String[] args) {
 
 \subsection{Conducting Static Analysis}
 \begin{frame}{\strut What do they\ldots~do?}
+\larger%
 % they take input, textual, syntactical, semantic (call graphs, pdg, ...), metadata, historical information, requirements, annotations (types, contracts), ...
 \hspace*{-3.5mm}
 \begin{tikzpicture}[o/.style={outer sep=0pt,inner sep=0pt}]
@@ -595,6 +597,78 @@ public static void main(String[] args) {
 \end{frame}
 
 
-\begin{frame}
-TODO: explain perspectives
+\newsavebox\SimpleSyntacticalPerspective
+\begin{lrbox}{\SimpleSyntacticalPerspective}
+\begin{forest}
+   for tree={draw,rounded corners=3pt, l sep=0, l sep+=-1.5mm, s sep=4pt,execute at begin node={\strut},execute at end node={\kern1pt\null}}
+   [Program
+      [\bjava{=}
+         [\bjava{int}]
+         [\bjava{x}]
+         [\bjava{0}]
+      ]
+      [\bjava{while}
+         [\bjava{<}
+            [\bjava{x}]
+            [\bjava{2}]
+         ]
+         [Block
+            [\bjava{=}
+               [\bjava{x}]
+               [\bjava{+}
+                  [\bjava{x}]
+                  [\bjava{1}]
+               ]
+            ]
+         ]
+      ]
+   ]
+\end{forest}
+\end{lrbox}
+\newsavebox\SimpleSemanticalPerspective
+\begin{lrbox}{\SimpleSemanticalPerspective}
+\begin{tikzpicture}[every node/.append style={execute at begin node={\vphantom{123456789}},circle,draw}]
+   \node (1) at (0,0) {1};
+   \node[below=3.5mm] (2) at (1.south) {2};
+   \node[below=3.5mm] (3) at (2.south) {3};
+   \node[right=2.5mm,double] (4) at (2.east) {4};
+   \draw[-Kite] (1) -- (2);
+   \draw[-Kite] (2) to[bend right=33] (3);
+   \draw[-Kite] (3) to[bend right=33] (2);
+   \draw[-Kite] (2) -- (4);
+\end{tikzpicture}
+\end{lrbox}
+\newsavebox\SimpleDataflowPerspective
+\begin{lrbox}{\SimpleDataflowPerspective}
+\begin{tikzpicture}[every node/.append style={execute at begin node={\vphantom{123456789}},circle,draw}]
+   \node[rectangle,inner sep=2pt] (1) at (0,0) {\texttt{x}\textsubscript{1}};
+   \node[below=3.5mm] (2) at (1.south) {\texttt{x}\textsubscript{2}};
+   \node[below=3.5mm,rectangle,inner sep=2pt] (3) at (2.south) {\texttt{x}\textsubscript{3}};
+   \node[right=3.5mm] (4) at (3.east) {\texttt{x}\textsubscript{4}};
+   \draw[-Kite] (2) -- (1);
+   \draw[-Kite] (4) to[bend right=25] (1);
+   \draw[-Kite] (4) -- (3);
+\end{tikzpicture}
+\end{lrbox}
+\begin{frame}[fragile]{Perspectives on Programs}
+\xlstsetmintedstyle{plain number}
+\begin{tikzpicture}[overlay,remember picture]
+\begin{uncoverenv}<2->   
+\node[right=2cm] (@text) at(current page.west) {%
+\begin{minted}[escapeinside=||,lineskip=1pt]{java}
+int x = 0;
+while(x < 2) {
+   x = x + 1;
+}
+\end{minted}
+};
+\end{uncoverenv}
+\onslide<4->{\node[right=1.5cm,scale=.75] (@ast) at(@text.east) {\usebox\SimpleSyntacticalPerspective};}
+\onslide<6->{\node[right=1.5cm,scale=.75,yshift=3cm] (@cfg) at (@ast.east) {\usebox\SimpleSemanticalPerspective};}
+\onslide<6->{\node[right=1.5cm,scale=.75,yshift=-1.5cm] (@dfg) at (@ast.east) {\usebox\SimpleDataflowPerspective};}
+\onslide<5->{\node[below] at(@ast.south) {\bfseries Sytactical};}
+\onslide<3->{\node[below] at(@text.south) {\bfseries Textual};}
+\onslide<7->{\node[below] at(@cfg.south) {\bfseries Control-Flow};}
+\onslide<8->{\node[below] at(@dfg.south) {\bfseries Data-Flow};}
+\end{tikzpicture}
 \end{frame}
