@@ -676,6 +676,7 @@ public static void main(String[] args) {
    \node[below=3.5mm,rectangle,inner sep=7pt,rounded corners=2pt] (3) at (2.south) {\texttt{x}\textsubscript{3}};
    \node[right=3.5mm] (4) at (3.east) {\texttt{x}\textsubscript{4}};
    \draw[-Kite] (2) -- (1);
+   \draw[-Kite] (2) -- (3);
    \draw[-Kite] (4) to[bend right=25] (1);
    \draw[-Kite] (4) -- (3);
 \end{tikzpicture}
@@ -696,7 +697,7 @@ while(x < 2) {
 \onslide<4->{\node[right=1.5cm,scale=.75] (@ast) at(@text.east) {\usebox\SimpleSyntacticalPerspective};}
 \onslide<6->{\node[right=1.5cm,scale=.75,yshift=3cm] (@cfg) at (@ast.east) {\usebox\SimpleSemanticalPerspective};}
 \onslide<6->{\node[right=1.5cm,scale=.75,yshift=-1.5cm] (@dfg) at (@ast.east) {\usebox\SimpleDataflowPerspective};}
-\onslide<5->{\node[below] at(@ast.south) {\bfseries Sytactical};}
+\onslide<5->{\node[below] at(@ast.south) {\bfseries Syntactical};}
 \onslide<3->{\node[below] at(@text.south) {\bfseries Textual};}
 \onslide<7->{\node[below] at(@cfg.south) {\bfseries Control-Flow};}
 \onslide<8->{\node[below] at(@dfg.south) {\bfseries Data-Flow};}
