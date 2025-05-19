@@ -1,4 +1,4 @@
-
+\def\DisableCol{\hypersetup{allcolors=.}\setbeamercolor{structure}{fg=black}\setbeamerfont{structure}{series=\mdseries}}
 \subsection{The How}
 
 \begin{frame}[fragile]{Abstract Interpretation}
@@ -39,7 +39,7 @@ public static void main(String[] args) {
          \end{itemize}
       \end{itemize}};
    }%
-   \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {\citetitle{cousout2021principles}~\cite[p.~722]{cousout2021principles},\citetitle{DBLP:journals/annals/GiacobazziR22}~\cite[pp.~37]{DBLP:journals/annals/GiacobazziR22}};
+   \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {\DisableCol\citetitle{cousout2021principles}~\cite[p.~722]{cousout2021principles},\citetitle{DBLP:journals/annals/GiacobazziR22}~\cite[pp.~37]{DBLP:journals/annals/GiacobazziR22}};
 \end{tikzpicture}
 \end{uncoverenv}
 \end{frame}
@@ -84,8 +84,7 @@ public static void main(String[] args) {
       \draw[decorate,thick,decoration={brace,amplitude=5pt,raise=2pt},gray] (big-ghost.north east) -- (big-ghost.south east) node[midway,right=7pt,gray,align=left] (@doc) {Collecting Semantics\textsuperscript{\cite[91]{cousout2021principles}}};
    }
    \onslide<10->{
-      \node[below right,xshift=-2mm,yshift=5mm,font=\footnotesize,text width=6cm,opacity=.5] at (@doc.south west) {\begin{itemize}
-         \itemsep-1pt
+      \node[below right,xshift=0mm,yshift=5mm,font=\small,text width=6cm,opacity=.5] at (@doc.south west) {\begin{itemize}
          \item Maybe impossible to compute statically
          \item \ldots~or very expensive (\faCaretRight~\textit{dynamic})
          \item[\faCaretRight] Abstract Interpretation to the rescue
@@ -123,7 +122,7 @@ public static void main(String[] args) {
 \end{lrbox}
 \begin{tikzpicture}[overlay,remember picture]
    \node[xshift=2.5mm] at(current page.center) {\usebox\GraphHeaven};
-   \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {See \citetitle{cousout2012casual}~\cite{cousout2012casual}};
+   \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {\DisableCol See \citetitle{cousout2012casual}~\cite{cousout2012casual}};
 \end{tikzpicture}
 \end{frame}
 \newsavebox\PowersetZHasse
@@ -187,7 +186,7 @@ public static void main(String[] args) {
       \onslide<13->{\draw[Kite-,gray] ([yshift=2pt]transitive.north) -- ++(0,.3) node[above=-1pt] {\small \absexpr{\forall x, y, z \in X : x \partof y \land y \partof z \implies x \partof z}};}
       \onslide<14->{\draw[Kite-,gray] ([yshift=2pt]antisymmetric.north) to[out=50,in=180] ++(.4,.215) node[right] {\kern-1pt\small\absexpr{\forall x, y \in X : x \partof y \land y \partof x \implies x = y}};}
       
-      \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {\citetitle{cousout2021principles}~\cite[15]{cousout2021principles},\citetitle{DBLP:journals/ftpl/Mine17}~\cite[18]{DBLP:journals/ftpl/Mine17}};
+      \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {\DisableCol\citetitle{cousout2021principles}~\cite[15]{cousout2021principles},\citetitle{DBLP:journals/ftpl/Mine17}~\cite[18]{DBLP:journals/ftpl/Mine17}};
       \onslide<17->{%
       \node[above left,yshift=3.5mm] at(current page.south east) {\scalebox{.65}{\usebox\PowersetZHasse}};
       }
@@ -282,7 +281,7 @@ public static void main(String[] args) {
 \end{tikzpicture}
 \begin{tikzpicture}[overlay,remember picture]
 \onslide<8->{%
-   \node[above left,yshift=4.345mm,text width=5.5cm] at(current page.south east) {\textbf{Complete Lattice} \absexpr{(X, \partof, \lub, \glb, \bot, \top)}\vspace{-1.5mm}\footnotesize
+   \node[above left,yshift=4.345mm,text width=5.5cm] at(current page.south east) {\textbf{Complete Lattice}\\\absexpr{(X, \partof, \lub, \glb, \bot, \top)}\vspace{-1.5mm}\footnotesize
    {\begin{itemize} 
       \itemsep-1pt
       \item<9-> \absexpr{(X, \partof)} is a partial order
@@ -451,14 +450,14 @@ int d = c - b; |\tikzmark{n@d1}|
       \item<13-> Alternatively, we have to use \textit{widening} to reach a fixpoint
    \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
-   \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {\citetitle{tarski1955lattice}~\cite{tarski1955lattice}, \citetitle{kleene1952introduction}~\cite{kleene1952introduction}, \citetitle{cousout2021principles}~\cite[165]{cousout2021principles}};
+   \node[above right,gray,yshift=3.5mm,font=\tiny,text width=.9\paperwidth] at (current page.south west) {\DisableCol\citetitle{tarski1955lattice}~\cite{tarski1955lattice}, \citetitle{kleene1952introduction}~\cite{kleene1952introduction}, \citetitle{cousout2021principles}~\cite[165]{cousout2021principles}};
    \onslide<11->{%
       \draw[-Kite,line cap=round,gray] ([yshift=1.5pt]pic cs:tarski) to[out=0,in=180] ++(.5,.25) node[right,font=\tiny,align=left] {for complete, nonempty lattices\\Tarski's Theorem};
    }
 \end{tikzpicture}
 \end{frame}
 
-\subsubsection{Interval Analysis, I}
+% \subsubsection{Interval Analysis, I}
 
 \begin{lrbox}{\SimpleSignLattice}
 \scriptsize
@@ -475,82 +474,82 @@ int d = c - b; |\tikzmark{n@d1}|
 
 \def\mark{\color{red}\let\I\MarkedI}
 \def\MarkedI#1#2{\footnotesize\absexpr{\mathbf{\IntCC{#1}{#2}}}}
-\begin{frame}[fragile]{\insertsubsubsection}
-\begin{lrbox}{\IntervalLattice}
-\scriptsize
-\begin{tikzpicture}[line cap=round,x=6.5mm,y=6.5mm,gray]
-   \matrix (A) [matrix of nodes, row sep=2.5mm, column sep=-2mm]
-   {
-       & &  & \I{-1}{\infty} & & & \\
-       & & \I{-1}{1} & \ldots & \only<12-|handout:3>{\mark}\I{0}{2} & & \\
-      & \I{-1}{0} & \ldots & \only<9-11|handout:2>{\mark}\I{0}{1} & \ldots & \I{1}{2} & \\
-      \I{-1}{-1} & \ldots & \only<4-8|handout:1>{\mark}\I00 & \ldots & \only<7-8|handout:1>{\mark}\I11 & \ldots & \I22 \\
-      & & & \absexpr{\bot} & & & \\
-   };
-   \scope[line cap=round]
-   \draw (A-2-3) -- (A-3-2) -- (A-4-1) -- (A-5-4);
-   \draw (A-3-6) -- (A-4-7) -- (A-5-4);
-   \draw (A-3-2) -- (A-4-3) -- (A-3-4) (A-3-4) -- (A-4-5) -- (A-3-6);
-   \draw (A-2-3) -- (A-3-4) (A-3-4) -- (A-2-5) -- (A-3-6);
-   \draw (A-4-3) -- (A-5-4) -- (A-4-5);
-   \draw[densely dotted] (A-2-5) -- (A-1-4) -- (A-2-3);
-   \draw[densely dotted] (A-5-4) -- ++(-1,0.05)  (A-5-4) -- ++(1,0.05);
-   \foreach[count=\y] \i in {4,3,2,1} {
-      \draw[densely dotted] (A-\y-\i.north west) -- ++(-.4,0.14);
-      \node[left=3.5mm] at(A-\y-\i.west) {\footnotesize\ldots};
-      \pgfmathsetmacro\other{int(8-\i)}
-      \draw[densely dotted] (A-\y-\other.north east) -- ++(.4,0.14);
-      \node[right=3.5mm] at(A-\y-\other.east) {\footnotesize\ldots};
-   }
-   \node[above=3.5mm] (pz) at(A-1-4.north) {\absexpr{\top}};
-   \draw[densely dotted] (pz) -- ++(-1.25,-0.1) (pz) -- ++(1.25,-0.1);
-   \endscope
-\end{tikzpicture}
-\end{lrbox}\vspace*{-2em}%
-\begin{minted}[escapeinside=||,lineskip=1pt]{java}
-int x = 0; |\tikzmark{int@i1}\medskip|
-while(x < 2) {|\tikzmark{int@i2}\medskip|
-   x = x + 1; |\tikzmark{int@i3}|
-}|\tikzmark{int@i4}|
-\end{minted}
-\begin{tikzpicture}[overlay,remember picture]
-   \onslide<3->{%
-      \coordinate[yshift=2pt] (int@i1) at (pic cs:int@i1);
-      \node[right=2cm] (int@i1) at (int@i1) {\AbstractInfo{x_0 \in \IntCC00 }};
-   }%
-   \onslide<5->{%
-      \coordinate[yshift=2pt] (int@i2) at (pic cs:int@i2);
-      \node[above right,yshift=-1.5pt] (int@i2a) at (int@i2-|int@i1.west) {\AbstractInfo{\only<8-9,12|handout:2,3>{\boldmath}\text{\textcolor{gray}{\scriptsize[pre]}~}x_1 \in \only<-8|handout:1>{\IntCC00}\only<9-11|handout:2>{\IntCC01\quad (\IntCC00 \cup \IntCC11)}\only<12-|handout:3>{\IntCC02\quad (\IntCC01 \cup \IntCC12)}}};
-   }%
-   \onslide<6->{%
-      \node[below right,yshift=1.5pt] (int@i3a) at (int@i2-|int@i1.west) {\AbstractInfo{\only<10|handout:0>{\boldmath}\text{\textcolor{gray}{\scriptsize[in]}~}x_2 \in \only<-9|handout:1>{\IntCC00\quad (\IntCC00 \cap \IntOC{-\infty}1)}\only<10-|handout:2>{\IntCC01\quad (\IntCC01 \cap \IntOC{-\infty}1)}}};
-   }%
-   \onslide<7->{%
-      \coordinate[yshift=2pt] (int@i3) at (pic cs:int@i3);
-      \node[right] (int@i3) at (int@i3-|int@i1.west) {\AbstractInfo{\only<11|handout:0>{\boldmath}\text{}x_3 \in \only<-10|handout:1>{\IntCC11\quad (\IntCC00 \oplus \IntCC11)}\only<11-|handout:2>{\IntCC12\quad (\IntCC01 \oplus \IntCC11)}}};
-   }
-   \onslide<13-|handout:3>{%
-      \coordinate[yshift=2pt] (int@i4) at (pic cs:int@i4);
-      \node[right] (int@i4) at (int@i4-|int@i1.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[post]}~}x_4 \in \IntCC22 \quad (\IntCC02 \cap \IntCO2{\infty})}};
-   }
-   \onslide<14-|handout:3>{
-      \node[right=4.5cm] (int@i1@sign) at (int@i1.east) {\AbstractInfo{x_0 = 0}};
-      \node[right] at (int@i2a-|int@i1@sign.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[pre]}~}x_1 \geq 0}};
-      \node[right] at (int@i3a.east-|int@i1@sign.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[in]}~}x_2 \geq 0}};
-      \node[right] at (int@i3-|int@i1@sign.west) {\AbstractInfo{x_3 \geq 0}};
-      \node[right] at (int@i4-|int@i1@sign.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[post]}~}x_4 \geq 0}};
-      \node[above] at(int@i1@sign.north) {\footnotesize Signs};
-      \node[above] at(int@i1.north) {\footnotesize Intervals};
-   }
-\end{tikzpicture}
+% \begin{frame}[fragile]{\insertsubsubsection}
+% \begin{lrbox}{\IntervalLattice}
+% \scriptsize
+% \begin{tikzpicture}[line cap=round,x=6.5mm,y=6.5mm,gray]
+%    \matrix (A) [matrix of nodes, row sep=2.5mm, column sep=-2mm]
+%    {
+%        & &  & \I{-1}{\infty} & & & \\
+%        & & \I{-1}{1} & \ldots & \only<12-|handout:3>{\mark}\I{0}{2} & & \\
+%       & \I{-1}{0} & \ldots & \only<9-11|handout:2>{\mark}\I{0}{1} & \ldots & \I{1}{2} & \\
+%       \I{-1}{-1} & \ldots & \only<4-8|handout:1>{\mark}\I00 & \ldots & \only<7-8|handout:1>{\mark}\I11 & \ldots & \I22 \\
+%       & & & \absexpr{\bot} & & & \\
+%    };
+%    \scope[line cap=round]
+%    \draw (A-2-3) -- (A-3-2) -- (A-4-1) -- (A-5-4);
+%    \draw (A-3-6) -- (A-4-7) -- (A-5-4);
+%    \draw (A-3-2) -- (A-4-3) -- (A-3-4) (A-3-4) -- (A-4-5) -- (A-3-6);
+%    \draw (A-2-3) -- (A-3-4) (A-3-4) -- (A-2-5) -- (A-3-6);
+%    \draw (A-4-3) -- (A-5-4) -- (A-4-5);
+%    \draw[densely dotted] (A-2-5) -- (A-1-4) -- (A-2-3);
+%    \draw[densely dotted] (A-5-4) -- ++(-1,0.05)  (A-5-4) -- ++(1,0.05);
+%    \foreach[count=\y] \i in {4,3,2,1} {
+%       \draw[densely dotted] (A-\y-\i.north west) -- ++(-.4,0.14);
+%       \node[left=3.5mm] at(A-\y-\i.west) {\footnotesize\ldots};
+%       \pgfmathsetmacro\other{int(8-\i)}
+%       \draw[densely dotted] (A-\y-\other.north east) -- ++(.4,0.14);
+%       \node[right=3.5mm] at(A-\y-\other.east) {\footnotesize\ldots};
+%    }
+%    \node[above=3.5mm] (pz) at(A-1-4.north) {\absexpr{\top}};
+%    \draw[densely dotted] (pz) -- ++(-1.25,-0.1) (pz) -- ++(1.25,-0.1);
+%    \endscope
+% \end{tikzpicture}
+% \end{lrbox}\vspace*{-2em}%
+% \begin{minted}[escapeinside=||,lineskip=1pt]{java}
+% int x = 0; |\tikzmark{int@i1}\medskip|
+% while(x < 2) {|\tikzmark{int@i2}\medskip|
+%    x = x + 1; |\tikzmark{int@i3}|
+% }|\tikzmark{int@i4}|
+% \end{minted}
+% \begin{tikzpicture}[overlay,remember picture]
+%    \onslide<3->{%
+%       \coordinate[yshift=2pt] (int@i1) at (pic cs:int@i1);
+%       \node[right=2cm] (int@i1) at (int@i1) {\AbstractInfo{x_0 \in \IntCC00 }};
+%    }%
+%    \onslide<5->{%
+%       \coordinate[yshift=2pt] (int@i2) at (pic cs:int@i2);
+%       \node[above right,yshift=-1.5pt] (int@i2a) at (int@i2-|int@i1.west) {\AbstractInfo{\only<8-9,12|handout:2,3>{\boldmath}\text{\textcolor{gray}{\scriptsize[pre]}~}x_1 \in \only<-8|handout:1>{\IntCC00}\only<9-11|handout:2>{\IntCC01\quad (\IntCC00 \cup \IntCC11)}\only<12-|handout:3>{\IntCC02\quad (\IntCC01 \cup \IntCC12)}}};
+%    }%
+%    \onslide<6->{%
+%       \node[below right,yshift=1.5pt] (int@i3a) at (int@i2-|int@i1.west) {\AbstractInfo{\only<10|handout:0>{\boldmath}\text{\textcolor{gray}{\scriptsize[in]}~}x_2 \in \only<-9|handout:1>{\IntCC00\quad (\IntCC00 \cap \IntOC{-\infty}1)}\only<10-|handout:2>{\IntCC01\quad (\IntCC01 \cap \IntOC{-\infty}1)}}};
+%    }%
+%    \onslide<7->{%
+%       \coordinate[yshift=2pt] (int@i3) at (pic cs:int@i3);
+%       \node[right] (int@i3) at (int@i3-|int@i1.west) {\AbstractInfo{\only<11|handout:0>{\boldmath}\text{}x_3 \in \only<-10|handout:1>{\IntCC11\quad (\IntCC00 \oplus \IntCC11)}\only<11-|handout:2>{\IntCC12\quad (\IntCC01 \oplus \IntCC11)}}};
+%    }
+%    \onslide<13-|handout:3>{%
+%       \coordinate[yshift=2pt] (int@i4) at (pic cs:int@i4);
+%       \node[right] (int@i4) at (int@i4-|int@i1.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[post]}~}x_4 \in \IntCC22 \quad (\IntCC02 \cap \IntCO2{\infty})}};
+%    }
+%    \onslide<14-|handout:3>{
+%       \node[right=4.5cm] (int@i1@sign) at (int@i1.east) {\AbstractInfo{x_0 = 0}};
+%       \node[right] at (int@i2a-|int@i1@sign.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[pre]}~}x_1 \geq 0}};
+%       \node[right] at (int@i3a.east-|int@i1@sign.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[in]}~}x_2 \geq 0}};
+%       \node[right] at (int@i3-|int@i1@sign.west) {\AbstractInfo{x_3 \geq 0}};
+%       \node[right] at (int@i4-|int@i1@sign.west) {\AbstractInfo{\text{\textcolor{gray}{\scriptsize[post]}~}x_4 \geq 0}};
+%       \node[above] at(int@i1@sign.north) {\footnotesize Signs};
+%       \node[above] at(int@i1.north) {\footnotesize Intervals};
+%    }
+% \end{tikzpicture}
 
-\begin{tikzpicture}[overlay,remember picture]
-   \onslide<2->{\node[above left=.5mm,yshift=3.5mm] at(current page.south east) {\scalebox{.85}{\usebox\IntervalLattice}};}
-   \onslide<15->{
-      \node[above right=.5mm,yshift=3.5mm] at (current page.south west) {\scalebox{.85}{\usebox\SimpleSignLattice}};
-   }
-\end{tikzpicture}
-\end{frame}
+% \begin{tikzpicture}[overlay,remember picture]
+%    \onslide<2->{\node[above left=.5mm,yshift=3.5mm] at(current page.south east) {\scalebox{.85}{\usebox\IntervalLattice}};}
+%    \onslide<15->{
+%       \node[above right=.5mm,yshift=3.5mm] at (current page.south west) {\scalebox{.85}{\usebox\SimpleSignLattice}};
+%    }
+% \end{tikzpicture}
+% \end{frame}
 
 \subsection{Soundness and Completeness}
 \begin{frame}{Rice's Theorem}

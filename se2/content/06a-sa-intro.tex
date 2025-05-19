@@ -19,6 +19,34 @@
 \end{tikzpicture}
 \end{lrbox}
 
+\mode
+<presentation>
+
+\newsavebox\MyImageBox
+
+\begin{frame}{Who is this?}
+\savebox\MyImageBox{\includegraphics[width=3cm]{images/flo.jpg}}%
+\begin{uncoverenv}<2->   
+   \begin{tikzpicture}[overlay,remember picture]
+      \draw[path image=\usebox\MyImageBox,rounded corners=3mm] ([xshift=-2mm,yshift=-2mm]current page.north east) rectangle ++(-.9\wd\MyImageBox,-.9\ht\MyImageBox-.9\dp\MyImageBox);
+   \end{tikzpicture}
+\end{uncoverenv}
+\larger
+\begin{itemize}
+   \itemsep12pt
+   \item<3-> Florian Sihler\\\(1\,1/2\) years into my PhD
+   \item<4-> Working at Ulm University\\Institute of Softwareengineering and Programming Languages
+   \item<5-> Research on hybrid analysis to improve program comprehension of dynamic languages
+\end{itemize}
+\vspace*{4em}
+\begin{center}
+   \onslide<6->{Any Questions?}\\
+   \onslide<6->{\href{mailto:florian.sihler@uni-ulm.de}{florian.sihler@uni-ulm.de}}
+\end{center}
+\end{frame}
+\mode
+<all>
+
 \subsection{The Why}
 \subsubsection[Motivation]{Initial Motivation}
 \begin{frame}[fragile,label=main-example]{\insertsection}
@@ -64,7 +92,7 @@ public static void main(String[] args) {
 \end{uncoverenv}
 \end{frame}
 
-\subsubsection{Origins [TODO: details für tonspur]}
+\subsubsection{Origins}
 \larger\def\Mixin{}%
 \tikzset{%
    history-line/.style={line width=1.85mm,gray!30!white\Mixin,line cap=round,rounded corners=2pt},
@@ -99,7 +127,7 @@ public static void main(String[] args) {
 \pause
    \draw[history-event] (.5,0) -- ++(.25,2) -- ++(.25,0) \historybox{right}{1949}{First Checks}{\citeauthor*{turing1989checking}~\cite{turing1989checking}};
 \pause
-   \draw[history-event] (1,0) -- ++(.25,1.15) -- ++(.25,0) \historybox{right}{1953}{Rice Theorem}{Non-trivial Properties\\are undecidable~\cite{rice1953classes}};
+   \draw[history-event] (1,0) -- ++(.25,1.15) -- ++(.25,0) \historybox{right}{1953}{Rice's Theorem}{Non-trivial Properties\\are undecidable~\cite{rice1953classes}};
 \pause
    \draw[history-event] (1.5,0) -- ++(.25,-.45) -- ++(.25,0) \historybox{right}{1967\,\&\,69}{Logical Foundation}{\citeauthor*{floyd1967assigning}~\cite{floyd1967assigning}, \citeauthor*{DBLP:journals/cacm/Hoare69}~\cite{DBLP:journals/cacm/Hoare69}\\But: No Automation};
    \end{onlyenv}
@@ -526,6 +554,8 @@ public static void main(String[] args) {
 \begin{frame}{\strut What do they\ldots~do?}
 \larger%
 % they take input, textual, syntactical, semantic (call graphs, pdg, ...), metadata, historical information, requirements, annotations (types, contracts), ...
+\bigskip
+
 \hspace*{-3.5mm}
 \begin{tikzpicture}[o/.style={outer sep=0pt,inner sep=0pt}]
    \onslide<2->{%
@@ -641,9 +671,9 @@ public static void main(String[] args) {
 \newsavebox\SimpleDataflowPerspective
 \begin{lrbox}{\SimpleDataflowPerspective}
 \begin{tikzpicture}[every node/.append style={execute at begin node={\vphantom{123456789}},circle,draw}]
-   \node[rectangle,inner sep=2pt] (1) at (0,0) {\texttt{x}\textsubscript{1}};
+   \node[rectangle,inner sep=7pt,rounded corners=2pt] (1) at (0,0) {\texttt{x}\textsubscript{1}};
    \node[below=3.5mm] (2) at (1.south) {\texttt{x}\textsubscript{2}};
-   \node[below=3.5mm,rectangle,inner sep=2pt] (3) at (2.south) {\texttt{x}\textsubscript{3}};
+   \node[below=3.5mm,rectangle,inner sep=7pt,rounded corners=2pt] (3) at (2.south) {\texttt{x}\textsubscript{3}};
    \node[right=3.5mm] (4) at (3.east) {\texttt{x}\textsubscript{4}};
    \draw[-Kite] (2) -- (1);
    \draw[-Kite] (4) to[bend right=25] (1);

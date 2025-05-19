@@ -557,7 +557,7 @@ x = 42;|\onslide<1->|
 \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
    \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{https://www.sonarsource.com/products/sonarlint/}{sonar}};
-   \node[above right,bottom note, yshift=4mm] at(current page.south west) {\href{https://github.com/SonarSource/sonar-java/blob/50b7d48e5764545a78a7ef2bf84b8a5ff1f30b3e/java-checks/src/main/java/org/sonar/java/checks/DeadStoreCheck.java\#L52}{Implementation of Rule S1854}};
+   \node[above right,bottom note, yshift=3mm] at(current page.south west) {\href{https://github.com/SonarSource/sonar-java/blob/50b7d48e5764545a78a7ef2bf84b8a5ff1f30b3e/java-checks/src/main/java/org/sonar/java/checks/DeadStoreCheck.java\#L52}{Implementation of Rule S1854}};
    \begin{uncoverenv}<9-|handout:2>
       \xlstsetmintedstyle{plain number}
       \node[above left=2mm,yshift=5.5mm,text width=.75\paperwidth,fill=white,draw,rounded corners=3pt,inner ysep=0pt,fill opacity=.95,drop shadow={fill=lightgray!50}] at(current page.south east) {\lstfs{8}%
@@ -592,7 +592,7 @@ for(CFG.Block block : cfg.blocks()) {
 \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
    \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{https://www.sonarsource.com/products/sonarlint/}{sonar}};
-   \node[above right,bottom note, yshift=4mm] at(current page.south west) {\href{https://github.com/SonarSource/sonar-java/blob/50b7d48e5764545a78a7ef2bf84b8a5ff1f30b3e/java-checks-aws/src/main/java/org/sonar/java/checks/security/HardCodedCredentialsShouldNotBeUsedCheck.java\#L43}{Implementation of Rule S6437}};
+   \node[above right,bottom note, yshift=3mm] at(current page.south west) {\href{https://github.com/SonarSource/sonar-java/blob/50b7d48e5764545a78a7ef2bf84b8a5ff1f30b3e/java-checks-aws/src/main/java/org/sonar/java/checks/security/HardCodedCredentialsShouldNotBeUsedCheck.java\#L43}{Implementation of Rule S6437}};
    % TODO: mark heuristics: list of signatures and constant check
    \begin{uncoverenv}<10-|handout:2>
       \xlstsetmintedstyle{plain number}
@@ -779,7 +779,7 @@ for (int targetArgumentIndex : method.indices) {
 \onslide<12->{\footnotesize\textit{Widening, Narrowing, Assume, Satisfies,~\ldots}}
 \end{uncoverenv}
 \begin{tikzpicture}[overlay,remember picture]
-   \node[above right,yshift=4mm,bottom note] at(current page.south west) {\cite{cousout2021principles}~\citetitle{cousout2021principles} (\citeauthor{cousout2021principles})};
+   \node[above right,yshift=4mm,bottom note] at(current page.south west) {\hypersetup{allcolors=.}\cite{cousout2021principles}~\citetitle{cousout2021principles} (\citeauthor{cousout2021principles})};
    \onslide<2->{\node[above left,yshift=5mm,scale=.8] (int-latt) at(current page.south east) {\usebox\IntervalLattice};}
    \onslide<3->{%
       \node[above,text width=5cm,font=\scriptsize] at(int-latt.north) {%

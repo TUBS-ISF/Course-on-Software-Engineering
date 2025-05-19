@@ -44,17 +44,17 @@ make_lecture () {
     latexmk -quiet -silent -C ${TEXFILE} > /dev/null 2>&1
 
     # Build pdfs with handout and darkmode
-    # echo -e -n "${GREEN}Building animated pdf...${NOCOLOR}"
-    # build_tex "${lecture}" ""
-    # mv -f "${lecture}.pdf" "${outpath}animated/${lecture}.pdf"
+    echo -e -n "${GREEN}Building animated pdf...${NOCOLOR}"
+    build_tex "${lecture}" ""
+    mv -f "${lecture}.pdf" "${outpath}animated/${lecture}.pdf"
 
     echo -e -n "${GREEN}Building handout pdf...${NOCOLOR}"
     build_tex "${lecture}" "\def\ishandout{}"
     mv -f "${lecture}.pdf" "${outpath}${lecture}.pdf"
 
-    # echo -e -n "${GREEN}Building handout darkmode pdf...${NOCOLOR}"
-    # build_tex "${lecture}" "\def\ishandout{}\def\isdarkmode{}"
-    # mv -f "${lecture}.pdf" "${outpath}${lecture}-dark.pdf"
+    echo -e -n "${GREEN}Building handout darkmode pdf...${NOCOLOR}"
+    build_tex "${lecture}" "\def\ishandout{}\def\isdarkmode{}"
+    mv -f "${lecture}.pdf" "${outpath}${lecture}-dark.pdf"
 }
 
 make_overview () {

@@ -120,14 +120,18 @@ class B extends A {
 %\input{content/a-}
 \input{content/06a-sa-intro}
 \lessonslearned{
-	\item TODO
+	\item What is the basic idea of static analysis?
+	\item How do the approaches differ?
 	\item Next: How does static analysis work?
 }{
 	\item \fullcite{rival2020introduction}
+	\item \fullcite{DBLP:journals/ftpl/Mine17}
 }{
-	TODO: Quiz?
-
-	Any feedback or comments or questions?
+	So far:
+	\begin{enumerate}
+		\item<+-> Feedback, comments, or questions?
+		\item<+-> Which perspective do you think is used for what? 
+	\end{enumerate}
 }
 
 
@@ -146,31 +150,37 @@ class B extends A {
 \section{Theoretical Foundations}
 \input{content/06b-sa-theory}
 \lessonslearned{
-	\item Properties, Lattices, Domains
-	\item Fixpoint Iterations
-	\item Rice's Theorem
-	\item Soundness and Completeness
+	\item What is a Property, a Lattice, a Domains?
+	\item Why are we interested in Fixpoints?
+	\item What is Rice's Theorem?
+	\item What are Soundness and Completeness?
 	\item Next: Static Analysis in the Real World
 }{
 	\item \fullcite{cousout2021principles}
 }{
 	\begin{enumerate}
-		\item<+-> TODO
+		\item<+-> Let's derive the Interval Lattice! \begin{itemize}
+			\item What are \(\top\) and \(\bot\)?
+			\item How can we define the partial order \(\sqsubseteq\)?
+			\item How to define \(\sqcup\) and \(\sqcap\)?
+		\end{itemize}
 	\end{enumerate}
 }
 
 \section{Static Analysis in the Real-World}
 \input{content/06c-sa-real-world}
 \lessonslearned{
-	\item Use of Static Analysis in the Real World
-	\item Real-World trade-offs
+	\item What is Static Analysis used for in the Real World?
+	\item How do Theory and Practice differ?
 	\item Next: Dynamic Analysis
 }{
-	\item TODO: literature
+	\item \fullcite{10.5555/1592955}
+	\item \fullcite{DBLP:conf/pldi/FerraraNAC21}
 }{
 	\begin{enumerate}
-		\item<+-> TODO
-		\item<+-> ?
+		\item<+-> What tools do you use?
+		\item<+-> Have you experienced problems with false positives?
+		\item<+-> How to handle false positives? In what scenarios are they harmful?
 	\end{enumerate}
 }
 
