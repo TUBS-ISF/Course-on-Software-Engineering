@@ -8,6 +8,10 @@
 	{../pics/}
 	{../submodules/Title-Pictures/}
 	{../submodules/Course-on-Software-Product-Lines/pics/}
+	% Florian Sihler's additions
+	{../submodules/abstract-interpretation-ltx}
+	{../submodules/code-animation}
+	{../submodules/xlistings/langs}
 }
 
 % IMPORTED PACKAGES
@@ -25,6 +29,30 @@
 %\usepackage{colortbl} % \rowcolor used in Lecture 8 in SPL
 %\usepackage{algpseudocode} % used in Lecture 10 in SPL
 
+% Florian Sihler's crazy additions because he ported his slides and tries to be a special snowflake
+\usepackage{../submodules/abstract-interpretation-ltx/absint}
+\usepackage{../submodules/code-animation/code-animation}
+\usepackage{../submodules/xlistings/xlistings}
+\makeatletter\LoadLanguages{java,R}
+\usepackage{stmaryrd} % flo's symbols
+\xlstsetmintedstyle{plain}
+\def\Set#1{\ensuremath{\{#1\kern1pt\}}}
+\def\absintstyle#1{#1}
+\def\IntCC#1#2{\ensuremath{[#1\,..\,#2]}}
+\def\IntOC#1#2{\ensuremath{(#1\,..\,#2]}}
+\def\IntCO#1#2{\ensuremath{[#1\,..\,#2)}}
+\def\IntOO#1#2{\ensuremath{(#1\,..\,#2)}}
+\def\AbstractInfo#1{\ensuremath{\mathcolor{gray}{\Lbag}\,#1\,\mathcolor{gray}{\Rbag}}}
+\usepackage{forest}
+
+\usepackage{csquotes}
+\usepackage[style=alphabetic,backend=biber]{biblatex}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamerfont{bibliography entry title}{series=\mdseries}
+\usepackage{multirow}
+\usepackage[glows]{tikzpingus}
+\usepackage{relsize}
+
 % INCLUDED TEMPLATE FILES
 
 \input{../se1/template/macros}
@@ -39,6 +67,8 @@
 
 \usepackage{pgf, tikz}
 \usetikzlibrary{arrows, arrows.meta, positioning, shapes, calc, decorations.text, shadows.blur, matrix, fit, mindmap, backgrounds}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
 \tikzset{ >=stealth'} % define standard arrow tip
 \usepackage{tikz-qtree}
 
