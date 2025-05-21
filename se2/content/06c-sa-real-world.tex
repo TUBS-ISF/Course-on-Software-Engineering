@@ -229,8 +229,8 @@
 \subsection{Real-World Static Analyzers}
 
 % #1 url #2 name
-\newcommand*\Logo[3][3cm]{\href{#2}{\includegraphics[height=#1,width=
-#1,keepaspectratio]{images/#3.png}}}
+\newcommand*\Logo[2][3cm]{\pic[height=#1,width=
+#1,keepaspectratio]{static_analyzers/#2}}
 \def\mark{\bfseries\large}
 \definecolor{infercolor}{RGB}{123, 40, 227}
 \def\getsecond#1#2{#2}
@@ -247,27 +247,27 @@
    \node[@] (sec) at (1.5,-1.75) {\bfseries Usability};
    % TODO: block of compilers; language servers
    \onslide<3->{
-      \node[xshift=-2.5mm,yshift=2mm] (sonar) at (current bounding box.center) {\Logo{https://www.sonarsource.com/}{sonar}};
+      \node[xshift=-2.5mm,yshift=2mm] (sonar) at (current bounding box.center) {\Logo{sonar}};
    }
    \onslide<4->{
-      \node[xshift=-15mm,yshift=12mm] (teamscale) at (current bounding box.center) {\Logo{https://teamscale.com/}{teamscale}};
+      \node[xshift=-15mm,yshift=12mm] (teamscale) at (current bounding box.center) {\Logo{teamscale}};
    }
    \onslide<5->{
-      \node[xshift=20mm,yshift=11mm] (fbinfer) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[8mm]{https://fbinfer.com/}{fb-infer}}~{\color{infercolor}\large\textbf{Infer}}};
-      \node[xshift=32mm,yshift=-19mm] (frama-c) at (current bounding box.center) {\Logo{https://frama-c.com/}{frama-c}};
-      \node[xshift=-22mm,yshift=-10mm] (eslint) at (current bounding box.center) {\Logo[1.25cm]{https://eslint.org/}{eslint}};
-      \node[xshift=56.5mm,yshift=8mm] (lisa) at (current bounding box.center) {\Logo[2cm]{https://github.com/lisa-analyzer/lisa}{lisa}};
-      \node[xshift=-42.5mm,yshift=1mm] (codeql) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[6.25mm]{https://github.com/lisa-analyzer/lisa}{codeql}}~\textbf{CodeQL}};
-      \node[xshift=0mm,yshift=22mm] (astree) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[26.25mm]{https://www.absint.com/astree/index.htm}{astree}}};
-      \node[xshift=7mm,yshift=-16mm] (mopsa) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[16mm]{https://mopsa.lip6.fr/}{mopsa}}};
-      \node[xshift=-38.5mm,yshift=20mm] (liquidhs) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[25mm]{https://ucsd-progsys.github.io/liquidhaskell/}{liquidhaskell}}};
-      \node[xshift=12.5mm,yshift=38mm] (sootup) at (current bounding box.center) {\Logo[22.5mm]{https://github.com/soot-oss/sootup}{sootup}};
-      \node[xshift=40.5mm,yshift=22mm] (flowr) at (current bounding box.center) {\Logo[2.1cm]{https://github.com/flowr-analysis/flowr}{flowR}};
-      \node[xshift=55.5mm,yshift=11mm] (lintr) at (current bounding box.center) {\Logo[1.4cm]{https://github.com/r-lib/lintr}{lintr}};
+      \node[xshift=20mm,yshift=11mm] (fbinfer) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[8mm]{fb-infer}}~{\color{infercolor}\large\textbf{Infer}}};
+      \node[xshift=32mm,yshift=-19mm] (frama-c) at (current bounding box.center) {\Logo{frama-c}};
+      \node[xshift=-22mm,yshift=-10mm] (eslint) at (current bounding box.center) {\Logo[1.25cm]{eslint}};
+      \node[xshift=56.5mm,yshift=8mm] (lisa) at (current bounding box.center) {\Logo[2cm]{lisa}};
+      \node[xshift=-42.5mm,yshift=1mm] (codeql) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[6.25mm]{codeql}}~\textbf{CodeQL}};
+      \node[xshift=0mm,yshift=22mm] (astree) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[26.25mm]{astree}}};
+      \node[xshift=7mm,yshift=-16mm] (mopsa) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[16mm]{mopsa}}};
+      \node[xshift=-38.5mm,yshift=20mm] (liquidhs) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[25mm]{liquidhaskell}}};
+      \node[xshift=12.5mm,yshift=38mm] (sootup) at (current bounding box.center) {\Logo[22.5mm]{sootup}};
+      \node[xshift=40.5mm,yshift=22mm] (flowr) at (current bounding box.center) {\Logo[2.1cm]{flowR}};
+      \node[xshift=55.5mm,yshift=11mm] (lintr) at (current bounding box.center) {\Logo[1.4cm]{lintr}};
    }
    \onslide<6->{
-      \node[xshift=42.5mm,yshift=-9mm] (llvm) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[1.25cm]{https://llvm.org}{llvm}}~\textbf{Clang}};
-      \node[xshift=-40.5mm,yshift=-22mm] (gcc) at (current bounding box.center) {\Logo[1.65cm]{https://gcc.gnu.org/}{gcc}};
+      \node[xshift=42.5mm,yshift=-9mm] (llvm) at (current bounding box.center) {\raisebox{-.25\height}{\Logo[1.25cm]{llvm}}~\textbf{Clang}};
+      \node[xshift=-40.5mm,yshift=-22mm] (gcc) at (current bounding box.center) {\Logo[1.65cm]{gcc}};
    }
    \coordinate (ll) at (current bounding box.south west);
    \coordinate[xshift=.5mm] (ul) at (astree.north west);
@@ -490,7 +490,7 @@ System.out.print(x);
 }
 \begin{uncoverenv}<31->
    \node[right=15.5mm,yshift=-.5mm,gray] (communicate) at(theory.east) {\textbf{\normalsize Communicate}};
-   \node[below=1mm,draw=lightgray,thick,inner sep=0pt,opacity=.9] (sonar-com) at(communicate.south) {\includegraphics[width=3cm]{images/sonarlint-report.png}};
+   \node[below=1mm,draw=lightgray,thick,inner sep=0pt,opacity=.9] (sonar-com) at(communicate.south) {\pic[width=3cm]{static_analyzers/sonarlint-report}};
    \draw[gray,-Kite] ([xshift=6mm]dfg-constraints.south) to[out=-40,in=180] (sonar-com.west);
 \end{uncoverenv}
 \begin{onlyenv}<18-29|handout:2>
@@ -533,7 +533,7 @@ System.out.print(x);
 \end{tikzpicture}
 \end{uncoverenv}
 \begin{tikzpicture}[overlay,remember picture]
-   \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{https://www.sonarsource.com/products/sonarlint/}{sonar}};
+   \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{sonar}};
    \node[above right,yshift=4mm,bottom note] at(current page.south west) {\href{https://github.com/SonarSource}{github.com/SonarSource/sonar-java}};
    \only<23-|handout:2>{
       \node[above left,bottom note,yshift=4mm] at(current page.south east) {\cite{10.5555/1592955}~\citetitle{10.5555/1592955} (\citeauthor{10.5555/1592955})};
@@ -556,7 +556,7 @@ x = 42;|\onslide<1->|
    \item<8-> Minor special handling for \bjava{try-finally} blocks,~\ldots
 \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
-   \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{https://www.sonarsource.com/products/sonarlint/}{sonar}};
+   \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{sonar}};
    \node[above right,bottom note, yshift=3mm] at(current page.south west) {\href{https://github.com/SonarSource/sonar-java/blob/50b7d48e5764545a78a7ef2bf84b8a5ff1f30b3e/java-checks/src/main/java/org/sonar/java/checks/DeadStoreCheck.java\#L52}{Implementation of Rule S1854}};
    \begin{uncoverenv}<9-|handout:2>
       \xlstsetmintedstyle{plain number}
@@ -591,7 +591,7 @@ for(CFG.Block block : cfg.blocks()) {
    \onslide<9->{\textcolor{gray}{visiting the dataflow links and checking for predefined \enquote{plain text}}}
 \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
-   \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{https://www.sonarsource.com/products/sonarlint/}{sonar}};
+   \node[below left=4mm] at(current page.north east) {\Logo[2.5cm]{sonar}};
    \node[above right,bottom note, yshift=3mm] at(current page.south west) {\href{https://github.com/SonarSource/sonar-java/blob/50b7d48e5764545a78a7ef2bf84b8a5ff1f30b3e/java-checks-aws/src/main/java/org/sonar/java/checks/security/HardCodedCredentialsShouldNotBeUsedCheck.java\#L43}{Implementation of Rule S6437}};
    % TODO: mark heuristics: list of signatures and constant check
    \begin{uncoverenv}<10-|handout:2>
@@ -625,7 +625,7 @@ for (int targetArgumentIndex : method.indices) {
    \item<4-> Custom frontends for Rust, Go, Python, EVM,~\ldots
 \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
-   \node[below left=4mm] at(current page.north east) {\Logo[2cm]{https://github.com/lisa-analyzer/lisa}{lisa}};
+   \node[below left=4mm] at(current page.north east) {\Logo[2cm]{lisa}};
    \node[above right,yshift=4mm,bottom note] at(current page.south west) {\href{https://github.com/lisa-analyzer/lisa}{github.com/lisa-analyzer/lisa}};
    \onslide<3->{%
       \draw[-Kite,gray] ([xshift=1.5mm]lisa-alts.east) to[out=0,in=180] ++(6mm,2mm) node[right,bottom note,align=left] {Similar to \href{https://mopsa.lip6.fr/}{Mopsa} or \href{https://github.com/antoinemine/apron}{Apron}};
@@ -885,7 +885,7 @@ x <- 21 # 42
 \item<9-> We have to intertwine dataflow- and control-flow analysis\ldots
 \end{itemize}
    \begin{tikzpicture}[overlay,remember picture]
-      \node[below left=4mm,yshift=2mm] at(current page.north east) {\Logo[2.1cm]{https://github.com/flowr-analysis/flowr}{flowr}};
+      \node[below left=4mm,yshift=2mm] at(current page.north east) {\Logo[2.1cm]{flowr}};
       \node[above right,yshift=4mm,bottom note] at(current page.south west) {\href{https://github.com/flowr-analysis/flowr}{github.com/flowr-analysis/flowr}};
    \end{tikzpicture}
 \end{frame}
@@ -1217,7 +1217,7 @@ cat("Product:", prod, "\n")
 \end{tikzpicture}\hspace*{-2cm}
 \end{onlyenv}
 \begin{tikzpicture}[overlay,remember picture]
-   \node[below left=4mm,yshift=2mm] at(current page.north east) {\Logo[2.1cm]{https://github.com/flowr-analysis/flowr}{flowr}};
+   \node[below left=4mm,yshift=2mm] at(current page.north east) {\Logo[2.1cm]{flowr}};
    \node[above right,yshift=4mm,bottom note] at(current page.south west) {\href{https://github.com/flowr-analysis/flowr/tree/main/src/dataflow}{github.com/flowr-analysis/flowr/tree/main/src/dataflow}};
 \end{tikzpicture}
 \end{frame}

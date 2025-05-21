@@ -32,7 +32,7 @@
 \newsavebox\MyImageBox
 
 \begin{frame}{Who is this?}
-\savebox\MyImageBox{\includegraphics[width=3cm]{images/flo.jpg}}%
+\savebox\MyImageBox{\pic[width=3cm]{people/florian-sihler}}%
 \begin{uncoverenv}<2->   
    \begin{tikzpicture}[overlay,remember picture]
       \draw[path image=\usebox\MyImageBox,rounded corners=3mm] ([xshift=-2mm,yshift=-2mm]current page.north east) rectangle ++(-.9\wd\MyImageBox,-.9\ht\MyImageBox-.9\dp\MyImageBox);
@@ -183,17 +183,17 @@ public static void main(String[] args) {
 \begin{frame}{Recommended Resources}
 \strut\hfill\raisebox{\dimexpr-\height+1cm}{\begin{tikzpicture}
    \onslide<2->{%
-      \draw[darkgray,thick,rounded corners=2pt,path image={\includegraphics[width=4cm]{images/itsa-cover.jpg}}] (0,0) rectangle ++(3.8,5);
+      \draw[darkgray,thick,rounded corners=2pt,path image={\pic[width=4cm]{books/itsa-cover}}] (0,0) rectangle ++(3.8,5);
       \node[above] at(current bounding box.north) {\clap{\small\strut Using Analyses~\cite{rival2020introduction}}};
    }
 \end{tikzpicture}}\hfill\raisebox{\dimexpr-\height+1cm}{\begin{tikzpicture}
    \onslide<3->{%
-      \draw[darkgray,thick,rounded corners=2pt,path image={\includegraphics[width=4cm]{images/poa-cover.jpg}}] (0,0) rectangle ++(3.9,5.5);
+      \draw[darkgray,thick,rounded corners=2pt,path image={\pic[width=4cm]{books/poa-cover}}] (0,0) rectangle ++(3.9,5.5);
       \node[above] at(current bounding box.north) {\clap{\small\strut Formal Foundations~\cite{cousout2021principles}}};
    }
 \end{tikzpicture}}\hfill\raisebox{\dimexpr-\height+1cm}{\begin{tikzpicture}
    \onslide<4->{%
-      \draw[darkgray,thick,rounded corners=2pt,path image={\includegraphics[width=4cm]{images/dfa-cover.jpg}}] (0,0) rectangle ++(3.9,6);
+      \draw[darkgray,thick,rounded corners=2pt,path image={\pic[width=4cm]{books/dfa-cover}}] (0,0) rectangle ++(3.9,6);
       \node[above] at(current bounding box.north) {\clap{\small\strut Dataflow Perspective~\cite{10.5555/1592955}}};
    }
 \end{tikzpicture}}\hfill\strut
@@ -316,7 +316,7 @@ public static void main(String[] args) {
    B/.style={},
    C/.style={Line-Of-Text=SoftGray},
    path image shift/.style={},
-   path image/.style 2 args={path picture={\node at ([path image shift]path picture bounding box.center) {\includegraphics[width=#2]{#1}};}},
+   path image/.style 2 args={path picture={\node at ([path image shift]path picture bounding box.center) {\pic[width=#2]{#1}};}},
 }
 
 \newsavebox\CodeFile
