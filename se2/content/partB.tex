@@ -114,47 +114,84 @@ class B extends A {
 \author{Florian Sihler}
 \lecture{Static Analysis}{staticanalysis}
 
-\section{Part 1}
+\begin{refsection}[references/06-sa-references.bib]
+\begingroup
+\setcounter{tocdepth}{2}
+\section{A Primer in Static Analysis}
 %\input{content/a-}
+\input{content/06a-sa-intro}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item What is the basic idea of static analysis?
+	\item How do the approaches differ?
+	\item Next: How does static analysis work?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \fullcite{rival2020introduction}
+	\item \fullcite{DBLP:journals/ftpl/Mine17}
 }{
+	So far:
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item<+-> Feedback, comments, or questions?
+		\item<+-> Which perspective do you think is used for what? 
 	\end{enumerate}
 }
 
-\section{Part 2}
-%\input{content/b-}
+
+% \lessonslearned{
+% 	\item ?
+% 	\item Next: ?
+% }{
+% 	\item \sommerville\mychapter{?} 
+% }{
+% 	\begin{enumerate}
+% 		\item<+-> Form groups of 2--3 students
+% 		\item<+-> ?
+% 	\end{enumerate}
+% }
+
+\section{Theoretical Foundations}
+\input{content/06b-sa-theory}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item What is a Property, a Lattice, a Domains?
+	\item Why are we interested in Fixpoints?
+	\item What is Rice's Theorem?
+	\item What are Soundness and Completeness?
+	\item Next: Static Analysis in the Real World
 }{
-	\item \sommerville\mychapter{?} 
+	\item \fullcite{cousout2021principles}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item<+-> Let's derive the Interval Lattice! \begin{itemize}
+			\item What are \(\top\) and \(\bot\)?
+			\item How can we define the partial order \(\sqsubseteq\)?
+			\item How to define \(\sqcup\) and \(\sqcap\)?
+		\end{itemize}
 	\end{enumerate}
 }
 
-\section{Part 3}
-%\input{content/c-}
+\section{Static Analysis in the Real-World}
+\input{content/06c-sa-real-world}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item What is Static Analysis used for in the Real World?
+	\item How do Theory and Practice differ?
+	\item Next: Dynamic Analysis
 }{
-	\item \sommerville\mychapter{?} 
+	\item \fullcite{10.5555/1592955}
+	\item \fullcite{DBLP:conf/pldi/FerraraNAC21}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item<+-> What tools do you use?
+		\item<+-> Have you experienced problems with false positives?
+		\item<+-> How to handle false positives? In what scenarios are they harmful?
 	\end{enumerate}
 }
+
+\begin{frame}[allowframebreaks]{References --- Static Analysis}
+\renewcommand*{\bibfont}{\tiny}%
+\urlstyle{same}
+\printbibliography[heading=none]
+\end{frame}
+\endgroup
+\end{refsection}
 
 %\faq{
 %	\item
@@ -163,6 +200,7 @@ class B extends A {
 %}{
 %	\item
 %}
+
 
 \input{../se1/template/footer}
 

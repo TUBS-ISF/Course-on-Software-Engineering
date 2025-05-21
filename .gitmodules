@@ -7,3 +7,12 @@
 [submodule "submodules/Course-on-Software-Product-Lines"]
 	path = submodules/Course-on-Software-Product-Lines
 	url = git@github.com:SoftVarE-Group/Course-on-Software-Product-Lines.git
+[submodule "submodules/xlistings"]
+	path = submodules/xlistings
+	url = https://github.com/EagleoutIce/xlistings.git
+[submodule "submodules/code-animation"]
+	path = submodules/code-animation
+	url = https://github.com/EagleoutIce/code-animation.git
+[submodule "submodules/abstract-interpretation-ltx"]
+	path = submodules/abstract-interpretation-ltx
+	url = https://github.com/EagleoutIce/abstract-interpretation-ltx.git
