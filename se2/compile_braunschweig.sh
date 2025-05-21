@@ -137,7 +137,7 @@ if [ "$#" -ge 2 ]; then
     echo "Using university ${university}"
 fi
 
-outpath="${archive_path}${semester}-${university^}/"
+outpath="${archive_path}${semester}-${university}/"
 mkdir -p "${outpath}animated/"
 
 if test ${is_make_lecture} -gt 0 ; then make_lecture ; fi
