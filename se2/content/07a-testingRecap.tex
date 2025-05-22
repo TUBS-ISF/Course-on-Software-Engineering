@@ -1,13 +1,112 @@
 % !TeX spellcheck = en_US
-\subsection{sdf}
-\begin{frame}{\insertsubsection} % slided copied from se1-04a. reuse?
-	\begin{fancycolumns}
-		test
-		
+\subsection{Motivating Examples}
+\begin{frame}{Recap -- CrowdStrike Outage}
+	\slideCrowdStrike
+\end{frame}
+
+\begin{frame}{Therac-25}
+	\begin{fancycolumns}[b, animation=none]
+		\onslide<1->{
+			\begin{definition}{Therac-25 \mysource{\href{https://ieeexplore.ieee.org/document/274940}{Investigation}}}
+				\begin{itemize}
+					\item Linear accelerator for treating cancer
+					\item First medical accelerator to primarily use a computer-based control system
+					\item 6 deadly incidents between 1985 and 1987
+					\item Texas-Bug: race condition
+					\item Washington-Bug: variable overflow
+				\end{itemize}
+			\end{definition}
+		}
+		\onslide<2->{
+			\small\begin{note}{Later Analysis of Thorac-25 Software \mysource{\href{https://ieeexplore.ieee.org/document/274940}{Investigation}}}
+				\mycite{We know that the software for the Therac-25 was developed by a single person using POP 11 assembly language, over a period of several years. [\ldots] the AECL [manufacturer] response also seems to point out an apparent lack of documentation on software specifications and a software test plan.}
+			\end{note}
+		}
 		\nextcolumn
-		
-		\begin{note}{sdf}
-			asdfsdfs
-		\end{note}
+		\vspace{-10mm}
+		\onslide<1->{
+			\pic[width=\columnwidth]{failures/therac-25}\vspace{-2mm}
+		}
+		\onslide<2->{
+			\small\begin{note}{Fifth Review of the Code Base by the FDA \mysource{\href{https://ieeexplore.ieee.org/document/274940}{FDA Review}}}
+				\mycite{Amazingly, the test data presented to show that the software changes to handle the edit problems in the Therac-25 are appropriate prove the exact opposite result. [\ldots] The	manufacturer should be admonished for this error. Where is the QC [quality control]	review for the test program?}
+			\end{note}
+		}
 	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap -- Software Quality}
+\begin{frame}<4>{\insertsubsection}
+	\slideSoftwareQuality
+\end{frame}
+
+\subsection{Recap -- Software Testing}
+\begin{frame}<6>{\insertsubsection}
+	\slideSoftwareTesting
+\end{frame}
+
+\subsection{Recap -- Quality Assurance}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\slideMindmapQualityAssurance{}{}{}{}{}{}{}
+\end{frame}
+
+\subsection{Recap -- Test Cases}
+\begin{frame}<4>{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\explTestCases
+		\nextcolumn
+		\figTestDesign
+	\end{fancycolumns}
+	
+\end{frame}
+
+\subsection{Recap -- Test Case Types}
+\begin{frame}<3>{\insertsubsection}
+	\small
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{White-Box Testing \mysource{\ludewiglichter}} %Copy from SE1-testing
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item inner structure of test object is used
+				\item idea: coverage of structural elements
+				\item code translated into control flow graph
+				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
+			\end{itemize}
+		\end{definition} \pause
+		\begin{definition}{Coverage Criteria \mysource{\ludewiglichter}} %Copy from SE1-testing
+			\begin{itemize}
+				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
+				\item[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised
+				\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)
+			\end{itemize}
+		\end{definition}
+
+	\nextcolumn
+	\pause
+		\begin{definition}{Black-Box Testing \deutsch{Funktionstest}} %Copy from SE1-testing
+			\begin{itemize}
+				\item test-case design based on specification
+				\item source code and its inner structure is ignored (assumed as a black-box)
+			\end{itemize}
+		\end{definition}
+		\begin{definition}{1. Equivalence Class Testing}
+			\begin{itemize}
+				\item idea: classify inputs and outputs into equivalence classes
+				\item assumption: equivalent test cases detect the same faults, one test case is sufficient
+			\end{itemize}
+		\end{definition}
+		\begin{definition}{2. Boundary Testing}
+			\begin{itemize}
+				\item extension of equivalence class testing
+				\item goal: use experience (e.g., off-by-one errors)
+				\item for every equivalence class: consider smallest, typical, and largest value
+			\end{itemize}
+		\end{definition}
+	
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap -- Stages of Testing}
+\begin{frame}<5>{\insertsubsection}
+	\slideStagesTesting
 \end{frame}

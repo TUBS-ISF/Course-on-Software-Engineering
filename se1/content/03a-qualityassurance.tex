@@ -19,18 +19,7 @@
 
 \subsection{Software Quality}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{Quality \mysource{\ludewiglichter}}
-			Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.
-		\end{definition}
-		\begin{definition}{Quality Assurance \mysource{\ludewiglichter}}
-			Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.
-		\end{definition}
-		\nextcolumn
-		\begin{note}{Expectations on Quality \mysource{\sommerville}}
-			\mycite{Because of their previous experiences with buggy, unreliable software, users sometimes have low expectations of software quality. They are not surprised when their software fails. When a new system is installed, users may tolerate failures because the benefits of use outweigh the costs of failure recovery. However, as a software product becomes more established, users expect it to become more reliable.\uncover<3->{ [...] If a software product or app is very cheap, users may be willing to tolerate a lower level of reliability.}\uncover<4->{ [...] Customers may be willing to accept the software, irrespective of problems, because the costs of not using the software are greater than the costs of working around the problems.}}
-		\end{note}
-	\end{fancycolumns}
+	\slideSoftwareQuality
 \end{frame}
 
 \subsection{Product Quality}
@@ -140,52 +129,7 @@
 
 \subsection{Software Testing}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[height=1cm,animation=none]
-		\uncover<1->{
-			\begin{definition}{Software Testing \mysource{\sommerville}}
-				\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}
-			\end{definition}
-		}
-		\uncover<2->{
-			\begin{definition}{Validation Testing \mysource{\sommerville}}
-				\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}
-			\end{definition}
-		}
-		\uncover<3->{
-			\begin{definition}{Defect Testing \mysource{\sommerville}}
-				\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}
-			\end{definition}
-		}
-		\nextcolumn
-		%\vspace{-12mm}
-		\uncover<4->{
-			\begin{note}{V\&V \mysource{\seeconomics}}
-				\mycite{\emph{Validation}: Are we building the right product?\\\emph{Verification}: Are we building the product right?}
-			\end{note}	
-		} 
-		% TODO better visualization of V&V (see Inas slides). move to V model?
-		\vspace{-.7mm}
-		\uncover<5->{
-			\begin{note}{Stages of Testing \mysource{\sommerville}}
-				\begin{itemize}
-					\setlength\itemsep{.1em}
-					\item[1.] \mycite{\emph{Development testing}, where the system is tested during development to discover
-						bugs and defects}
-					\item[2.] \mycite{\emph{Release testing}, where a separate testing team tests a complete version of the
-						system before it is released to users}
-					\item[3.] \mycite{\emph{User testing}, where users or potential users of a system test the system in their
-						own environment}
-				\end{itemize}
-			\end{note}
-		}
-		\vspace{-.7mm}
-		\uncover<6->{
-			\begin{note}{}
-				\mycite{In \emph{manual testing}, a tester runs the program with some test data and
-					compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.} \mysource{\sommerville}
-			\end{note}
-		}
-	\end{fancycolumns}
+	\slideSoftwareTesting
 \end{frame}
 
 \subsection{Quality Assurance}
