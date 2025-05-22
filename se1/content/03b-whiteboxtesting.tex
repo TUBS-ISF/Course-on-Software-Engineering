@@ -20,22 +20,9 @@
 
 \subsection{Test Cases}
 \begin{frame}{\insertsubsection\ \deutschertitel{Testfälle}}
+	
 	\begin{fancycolumns}[animation=none]
-		\uncover<1->{
-			\begin{definition}{Systematic Test \mysource{\ludewiglichter}}
-				A systematic test is a test, in which
-				\begin{itemize}
-					\item[1.] the setup is defined,
-					\item[2.] the inputs are chosen systematically,
-					\item[3.] the results are documented and evaluated by criteria being defined prior to the test. 
-				\end{itemize}
-			\end{definition}
-		}
-		\uncover<2->{
-			\begin{definition}{Test Case \mysource{\ludewiglichter}}
-				In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
-			\end{definition}
-		}
+		\explTestCases
 		\nextcolumn
 		\uncover<3->{
 			\begin{example}{Exhaustive Testing in Practice?}
@@ -68,23 +55,7 @@
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
-		\\\vspace{-7mm}
-		\hfill
-		\begin{tikzpicture}
-			\path[small mindmap,
-			every node/.style={concept,font=\scriptsize},
-			emph/.style={font=\bfseries\scriptsize},
-			concept color=foreground!20!background]
-			node {Test-Case Design}
-			child[concept color=blue!20!background,visible on={<2->}] { node {experience-based} }
-			child[concept color=green!20!background,visible on={<3->}] { node {structure-based} 
-				child { node {white-box testing} }
-			}
-			child[concept color=orange!20!background,visible on={<4->}] { node {specification-based} 
-				child { node {black-box testing} }
-			}
-			;
-		\end{tikzpicture}
+		\figTestDesign
 	\end{fancycolumns}
 \end{frame}
 
