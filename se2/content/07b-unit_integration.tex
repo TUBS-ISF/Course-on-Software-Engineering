@@ -189,22 +189,77 @@ void PersonSearch() {
 	\slideStagesTesting
 \end{frame}
 
-\begin{frame}{Incremental \insertsubsection}
-	content
-\end{frame}
 
-\begin{frame}{Directions of \insertsubsection}
-	content
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{\insertsubsection \mysource{\sommerville\mychapter{8}}}
+			\begin{itemize}
+				\item After unit testing $\rightarrow$ only concerned with interactions between components
+				\item Goal: component interfaces behave as specified
+				\item Common interfaces
+				\begin{itemize}
+					\item parameter interfaces: data transfer between components
+					\item shared memory interfaces: common in embedded systems
+					\item procedural interfaces: object interfaces, encapsulation
+					\item message passing interfaces: client-server
+				\end{itemize}
+				\item Common interface errors
+				\begin{itemize}
+					\item interface missuse
+					\item interface missunderstanding
+					\item timing errors in real-time systems
+				\end{itemize}
+				\item difficult to test, code reviews can be cheaper
+			\end{itemize}
+		\end{definition}
+		\pause
+		\nextcolumn
+		\begin{definition}{Top-Down Integration Testing}
+			\begin{itemize}
+				\item High-level components are integrated first
+				\item Necessitates stubbing of components
+			\end{itemize}
+		\end{definition} \pause
+		\begin{definition}{Bottom-Up Integration Testing}
+			\begin{itemize}
+				\item Low-level components are integrated first
+				\item Necessitates special test driver
+			\end{itemize}
+		\end{definition} 
+		\begin{definition}{Big-bang Integration Testing}
+			\begin{itemize}
+				\item All or most developed components are integrated at once
+				\item High time savings, but high risk
+			\end{itemize}
+		\end{definition} 
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Coverage Computation}
 \begin{frame}{\insertsubsection}
-	Live Demo
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Coverage Criteria \mysource{\ludewiglichter}} %Copy from SE1-testing
+			\begin{enumerate}
+				\item class coverage: one statement in the class is executed for at least one test case
+				\item method coverage: one statement in the method is executed for at least one test case
+				\item statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
+				\item branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised
+				\item term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)
+			\end{enumerate}
+		\end{definition} \pause
+		\nextcolumn
+		\pic[width=\columnwidth] {testing/coverage}
+		\begin{note}{Real-world application}
+			Computed by IDE or tool (e.g., JaCoCo)
+		\end{note}
+	\end{fancycolumns}
 \end{frame}
 
 
-\subsection{API Evolution}
-\begin{frame}{\insertsubsection}
-	content
-\end{frame}
+%\subsection{API Evolution}
+%\begin{frame}{\insertsubsection}
+%	\begin{environment-name}
+%		content
+%	\end{environment-name}
+%\end{frame}
 
