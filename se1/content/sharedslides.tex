@@ -65,7 +65,7 @@
 % introduced: testing
 % reused: summary
 \newcommand{\slideMindmapQualityAssurance}[7]{
-	\vspace{-7mm}\hfill
+	\vspace{-12mm}\hfill
 	\begin{tikzpicture}
 		\path[small mindmap,
 		every node/.style={concept,font=\scriptsize},
@@ -87,6 +87,46 @@
 				[counterclockwise from=180]
 				child { node {Compilation} }
 				child { node {Code Reviews} }
+			}
+			child[concept color=red!20!background,#6] { node {execution}
+				[counterclockwise from=315]
+				child { node {White-Box Testing} }
+				child { node {Black-Box Testing} }
+			}
+		}
+		child[#3] { node {organizational} 
+			[clockwise from=-45]
+			child[concept color=orange!20!background,#7] { node {Software Project Management} }
+		}
+		;
+	\end{tikzpicture}
+}
+
+% Modification of Mindmap above (\slideMindmapQualityAssurance) for SE2
+\newcommand{\slideMindmapQualityAssuranceMod}[7]{
+	\vspace{-12mm}\hfill
+	\begin{tikzpicture}
+		\path[small mindmap,
+		every node/.style={concept,font=\scriptsize},
+		emph/.style={font=\bfseries\scriptsize},
+		concept color=foreground!20!background,
+		level 1/.append style={level distance=25mm,sibling angle=360/6},
+		level 2/.append style={level distance=20mm,sibling angle=360/6},
+		level 3/.append style={level distance=20mm,sibling angle=360/8},
+		]
+		node {Quality Assurance \deutsch{Qualitätssicherung}}
+		[counterclockwise from=210]
+		child[#1] { node {constructive} 
+			[clockwise from=225]
+			child[concept color=blue!20!background,#4] { node {Coding Guidelines} }
+		}
+		child[#2] { node {analytical} 
+			[counterclockwise from=240]
+			child[concept color=green!20!background,#5] { node {analysis}
+				[counterclockwise from=180]
+				child { node {Compilation} }
+				child { node {Code Reviews} }
+				child { node {Static Analysis} } %added for SE2
 			}
 			child[concept color=red!20!background,#6] { node {execution}
 				[counterclockwise from=315]
@@ -916,3 +956,182 @@
 	\end{tikzpicture}
 }
 
+% introduced: se2-examples
+% reused: se2-dynamic
+\newcommand{\slideCrowdStrike}{
+	\begin{fancycolumns}[b]
+		\begin{definition}{\insertsubsection\mysource{\href{https://en.wikipedia.org/wiki/CrowdStrike}{wikipedia.org}, \href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
+			\begin{itemize}
+				\item CrowdStrike: American cybersecurity company
+				\item Falcon: Windows kernel extension to prevent against threats
+				\item about 10 patches released each days
+				\item update on July 19, 2024 affected 8.5 million devices running Windows 10 or 11
+				\item blue screen of death
+				\item no restart possible without manual intervention
+				\item largest IT outage
+				\item about 5,000 (5 \%) flight cancelled
+				\item Delta Airlines lost 500 million dollar
+				\item overall financial damage of 10 billion dollar
+				\item similar problem affected Linux devices already in April 2024
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\small\vspace{-20mm}
+		\picDark[width=\linewidth]{failures/crowdstrike}
+		\vspace{-4mm}
+		\begin{note}{Opening in US Congress\mysource{\href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
+			\mycite{A global IT outage that impacts \emph{every sector of the economy} is a catastrophe that we would expect to see in a movie [\ldots] we would expect to be carefully executed by a malicious and sophisticated nation-state actor [but] the largest IT outage in history was due to a \emph{mistake}.}
+		\end{note}
+		\begin{note}{Apology in US Congress\mysource{\href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
+			\mycite{On behalf of everyone at CrowdStrike, I want to apologize. We are \emph{deeply sorry} and we are determined to prevent this from ever happening again. [\ldots] I want to underscore that this was \emph{not a cyber attack}.}
+		\end{note}
+	\end{fancycolumns}
+}
+
+% introduced: se1-testing
+% reused: se2-dynamic
+\newcommand{\slideSoftwareQuality}{
+	\begin{fancycolumns}
+		\begin{definition}{Quality \mysource{\ludewiglichter}}
+			Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.
+		\end{definition}
+		\begin{definition}{Quality Assurance \mysource{\ludewiglichter}}
+			Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Expectations on Quality \mysource{\sommerville}}
+			\mycite{Because of their previous experiences with buggy, unreliable software, users sometimes have low expectations of software quality. They are not surprised when their software fails. When a new system is installed, users may tolerate failures because the benefits of use outweigh the costs of failure recovery. However, as a software product becomes more established, users expect it to become more reliable.\uncover<3->{ [...] If a software product or app is very cheap, users may be willing to tolerate a lower level of reliability.}\uncover<4->{ [...] Customers may be willing to accept the software, irrespective of problems, because the costs of not using the software are greater than the costs of working around the problems.}}
+		\end{note}
+	\end{fancycolumns}
+}
+
+
+% introduced: se1-testing
+% reused: se2-dynamic
+\newcommand{\slideSoftwareTesting}{
+\begin{fancycolumns}[height=1cm,animation=none]
+	\uncover<1->{
+		\begin{definition}{Software Testing \mysource{\sommerville}}
+			\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}
+		\end{definition}
+	}
+	\uncover<2->{
+		\begin{definition}{Validation Testing \mysource{\sommerville}}
+			\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}
+		\end{definition}
+	}
+	\uncover<3->{
+		\begin{definition}{Defect Testing \mysource{\sommerville}}
+			\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}
+		\end{definition}
+	}
+	\nextcolumn
+	%\vspace{-12mm}
+	\uncover<4->{
+		\begin{note}{V\&V \mysource{\seeconomics}}
+			\mycite{\emph{Validation}: Are we building the right product?\\\emph{Verification}: Are we building the product right?}
+		\end{note}	
+	} 
+	% TODO better visualization of V&V (see Inas slides). move to V model?
+	\vspace{-.7mm}
+	\uncover<5->{
+		\begin{note}{Stages of Testing \mysource{\sommerville}}
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item[1.] \mycite{\emph{Development testing}, where the system is tested during development to discover
+					bugs and defects}
+				\item[2.] \mycite{\emph{Release testing}, where a separate testing team tests a complete version of the
+					system before it is released to users}
+				\item[3.] \mycite{\emph{User testing}, where users or potential users of a system test the system in their
+					own environment}
+			\end{itemize}
+		\end{note}
+	}
+	\vspace{-.7mm}
+	\uncover<6->{
+		\begin{note}{}
+			\mycite{In \emph{manual testing}, a tester runs the program with some test data and
+				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.} \mysource{\sommerville}
+		\end{note}
+	}
+\end{fancycolumns}
+}
+
+% introduced: se1-testing
+% reused: se2-dynamic
+\newcommand{\explTestCases}{
+	\uncover<1->{
+		\begin{definition}{Systematic Test \mysource{\ludewiglichter}}
+			A systematic test is a test, in which
+			\begin{itemize}
+				\item[1.] the setup is defined,
+				\item[2.] the inputs are chosen systematically,
+				\item[3.] the results are documented and evaluated by criteria being defined prior to the test. 
+			\end{itemize}
+		\end{definition}
+	}
+	\uncover<2->{
+		\begin{definition}{Test Case \mysource{\ludewiglichter}}
+			In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
+		\end{definition}
+	}
+}
+
+% introduced: se1-testing
+% reused: se2-dynamic
+\newcommand{\figTestDesign}{
+\\\vspace{-7mm}
+\hfill
+\begin{tikzpicture}
+	\path[small mindmap,
+	every node/.style={concept,font=\scriptsize},
+	emph/.style={font=\bfseries\scriptsize},
+	concept color=foreground!20!background]
+	node {Test-Case Design}
+	child[concept color=blue!20!background,visible on={<2->}] { node {experience-based} }
+	child[concept color=green!20!background,visible on={<3->}] { node {structure-based} 
+		child { node {white-box testing} }
+	}
+	child[concept color=orange!20!background,visible on={<4->}] { node {specification-based} 
+		child { node {black-box testing} }
+	}
+	;
+\end{tikzpicture}
+}
+
+% introduced: se1-development
+% reused: se2-dynamic
+\newcommand{\slideStagesTesting}{
+\begin{fancycolumns}[animation=none]
+	\begin{definition}{1. Unit Testing \deutsch{Komponententest}}
+		\uncover<2->{\begin{itemize}
+				\item each component is tested independently
+				\item unit may stand for a component or smaller entities (package, class, method)
+				\item tests created by the developers
+				\item automation is common (e.g., JUnit)
+		\end{itemize}}
+	\end{definition}
+	\begin{definition}{2. Integration Testing \deutsch{Integrationstest}}
+		\uncover<3->{\begin{itemize}
+				\item some components are integrated (e.g., into subsystems) and tested together
+				\item detects inconsistencies in interfaces and communication between components
+				\item top-down vs bottom-up integration
+		\end{itemize}}
+	\end{definition}
+	\nextcolumn
+	\begin{definition}{3. System Testing \deutsch{Systemtest}}
+		\uncover<4->{\begin{itemize}
+				\item all components are integrated to the complete system
+				\item detects further inconsistencies and unanticipated interactions
+				\item system is tested against system requirements
+		\end{itemize}}
+	\end{definition}
+	\begin{definition}{4. Acceptance Testing \deutsch{Abnahmetest}}
+		\uncover<5->{\begin{itemize}
+				\item final stage in the testing process before accepted for operational use
+				\item system is tested against user requirements and with real data
+				\item performed by (potential) customer
+		\end{itemize}}
+	\end{definition}
+\end{fancycolumns}
+}

@@ -45,33 +45,7 @@
 
 \subsection{CrowdStrike Outage} % motivation for 02-evolution, 03-maintance, 07-dynamic analysis, 09-configuration
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[b]
-		\begin{definition}{\insertsubsection\mysource{\href{https://en.wikipedia.org/wiki/CrowdStrike}{wikipedia.org}, \href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
-			\begin{itemize}
-				\item CrowdStrike: American cybersecurity company
-				\item Falcon: Windows kernel extension to prevent against threats
-				\item about 10 patches released each days
-				\item update on July 19, 2024 affected 8.5 million devices running Windows 10 or 11
-				\item blue screen of death
-				\item no restart possible without manual intervention
-				\item largest IT outage
-				\item about 5,000 (5 \%) flight cancelled
-				\item Delta Airlines lost 500 million dollar
-				\item overall financial damage of 10 billion dollar
-				\item similar problem affected Linux devices already in April 2024
-			\end{itemize}
-		\end{definition}
-	\nextcolumn
-		\small\vspace{-20mm}
-		\picDark[width=\linewidth]{failures/crowdstrike}
-		\vspace{-4mm}
-		\begin{note}{Opening in US Congress\mysource{\href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
-			\mycite{A global IT outage that impacts \emph{every sector of the economy} is a catastrophe that we would expect to see in a movie [\ldots] we would expect to be carefully executed by a malicious and sophisticated nation-state actor [but] the largest IT outage in history was due to a \emph{mistake}.}
-		\end{note}
-		\begin{note}{Apology in US Congress\mysource{\href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
-			\mycite{On behalf of everyone at CrowdStrike, I want to apologize. We are \emph{deeply sorry} and we are determined to prevent this from ever happening again. [\ldots] I want to underscore that this was \emph{not a cyber attack}.}
-		\end{note}
-	\end{fancycolumns}
+	\slideCrowdStrike
 \end{frame}
 
 \subsection{Ariane 5 Software Failure} % motivation for 08-designbycontract
@@ -133,6 +107,8 @@
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
+
+%TODO include Therac-25 as motivation for dynamic/testing
 
 % motivation for 04-designpatterns, 05-compilation, 06-staticanalysis, 11-productlines
 %\subsection{Example}

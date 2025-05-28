@@ -1,0 +1,225 @@
+% !TeX spellcheck = en_US
+\subsection{System Testing}
+\begin{frame}<4>{\insertsubsection}
+	\slideStagesTesting
+\end{frame}
+
+\subsection{End-to-End Testing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{End-to-End Testing}
+			\begin{itemize}
+				\item Testing of complete system configuration
+				\item All components necessary for one system configuration connected
+				\item often first interaction of components developed by different teams
+				\item $\rightarrow$ check compatibility and compare behavior to specification
+				\item often performed by a dedicated team
+			\end{itemize}
+		\end{definition}\pause
+		\nextcolumn
+		\begin{definition}{Use-Case Testing}
+			\begin{enumerate}
+				\item Identify common use-cases
+				\item Specify using sequence diagram
+				\item Create necessary test cases
+				\item Check interactions
+			\end{enumerate}
+			$\rightarrow$ Disadvantage: uncommon interactions not tested
+		\end{definition}\pause
+		\begin{note}{Other Strategies}
+			\begin{itemize}
+				\item recovery testing
+				\item safety testing
+				\item security testing
+				\item performance testing
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Manual Testing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Manual Testing}
+			\begin{itemize}
+				\item Not every test can easily be automatized
+				\item Test automation has a high initial cost
+				\item Easier non-functional testing
+				\item Also includes static tests, e.g., code reviews
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Stages of Manual Testing}
+			\begin{enumerate}
+				\item Create high-level test plan with general methodology, resources, \dots
+				\item Create detailed test cases with clear steps and expected outcome
+				\item Assign test cases to testers
+				\item Create test report with detailed descriptions and protocols
+			\end{enumerate}
+		\end{note} \pause
+		\nextcolumn
+		\begin{note}{Trade-Off}
+			\textbf{Automated Tests:}
+			\begin{itemize}
+				\item Easier to execute
+				\item Parallelizable
+				\item Better reproducibility
+				\item Complex creation
+			\end{itemize} \pause
+			\textbf{Manual tests:}
+			\begin{itemize}
+				\item Easier to create
+				\item Complex interactions testable
+				\item Allows for subjective feedback
+				\item Expensive to executed $\rightarrow$ limits number of executions
+				\item Bad scalability 
+			\end{itemize}
+		\end{note}
+		
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Fuzz Testing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Fuzzing}
+			\begin{itemize}
+				\item Automated testing of diverse program input
+				\item Especially invalid, unexpected, random input
+				\item Goal: create crashes, assertion fails, or memory leaks
+				\item Input can either be structured or random
+				\item Prioritize user-facing components
+				\item Especially helpful to find corner cases
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Working Principle}
+			\begin{enumerate}
+				\item Create test cases
+				\item Create input specification
+				\item Operate fuzzer with repeated input
+				\item (Reduce input for found issues)
+				\item Replicate found issues with saved inputs
+			\end{enumerate}
+		\end{note} \pause
+		\nextcolumn
+		\pic[width=\columnwidth]{testing/fuzzing} \pause
+		\begin{note}{Jazzer} %----LIVE DEMONSTRATION---- https://github.com/TUBS-ISF/SE2-liveDemo-Dynamic
+			Tool for fuzz testing in Java
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Acceptance Testing}
+\begin{frame}<5>{\insertsubsection}
+	\slideStagesTesting
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{note}{V\&V \mysource{\seeconomics}}
+			\mycite{\emph{Validation}: Are we building the right product?\\\emph{Verification}: Are we building the product right?}
+		\end{note}	\pause
+		\begin{definition}{Release Testing}
+			\begin{itemize}
+				\item Often dedicated team
+				\item Validation $\rightarrow$ against requirements
+				\item Many tests per requirement
+				\item Requirement-based testing: validation against stated requirements
+				\item Scenario-based testing: testing of common usage scenarios
+			\end{itemize}
+		\end{definition}\pause
+		\nextcolumn
+		\begin{definition}{User tests}
+			\begin{itemize}
+				\item Testing using user participation
+				\item Three types:
+				\begin{itemize}
+					\item Alpha tests: small group, direct interaction
+					\item Beta tests: publishing of software release to limited user base
+					\item Acceptance tests: customer decides on software acceptance
+				\end{itemize}
+			\end{itemize} 
+		\end{definition} \pause
+		\begin{note}{Stages of Acceptance \mysource{\sommerville}}
+			\begin{enumerate}
+				\item Create acceptance criteria
+				\item Develop plan for acceptance strategy
+				\item Create tests that check developed criteria
+				\item Perform tests
+				\item Negotiate results
+				\item Accept or reject product
+			\end{enumerate}
+		\end{note}
+		
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{GUI Testing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\onslide<1->{
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item E2E Testing 
+				\item User interacts with GUI $\rightarrow$ realistic testing scenario
+			\end{itemize}
+		\end{note}}
+		\onslide<2->{ \small
+		\begin{note}{Development of GUI Testing}
+			\textbf{1st Generation:}
+			\begin{itemize}
+				\item Replay of exact screen coordinates
+				\item Problem: not robust, high maintenance effort
+			\end{itemize}
+			\onslide<3->{
+			\textbf{2nd Generation:}
+			\begin{itemize}
+				\item Identify elements based on DOM searches
+				\item Actions and expected results encoded in DSL
+				\item Problem: expensive and difficult to create
+			\end{itemize}}
+			\onslide<4->{
+			\textbf{3rd Generation:}
+			\begin{itemize}
+				\item Image recognition and easier DSL to emulate user behavior
+			\end{itemize} }
+		\end{note} }
+		\nextcolumn
+		\onslide<3->{ \small
+		\begin{definition}{XPath}
+			\begin{itemize}
+				\item Tree-navigation with additional conditions
+				\item \texttt{/bookstore/book[price>35]/title} 
+				\item \texttt{//book[@name='Software Engineering']/title}
+			\end{itemize}
+		\end{definition}}
+		\onslide<4->{\centering\pic[width=.6\columnwidth]{testing/selenium_3}}
+		\onslide<5->{
+		\begin{note}{Example: Selenium}
+			Framework for automated testing of web applications
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+%\subsection{Performance Testing}
+%\begin{frame}{\insertsubsection}
+%	\begin{fancycolumns}[animation=none]
+%		\begin{definition}{}
+%			content
+%		\end{definition}\pause
+%		\nextcolumn
+%		
+%		
+%	\end{fancycolumns}
+%\end{frame}
+
+%\subsection{Dependability Testing}
+%\begin{frame}{\insertsubsection}
+%	\begin{fancycolumns}[animation=none]
+%		\begin{definition}{}
+%			content
+%		\end{definition}\pause
+%		\nextcolumn
+%		
+%		
+%	\end{fancycolumns}
+%\end{frame}

@@ -23,38 +23,7 @@
 
 \subsection{Stages of Testing}
 \begin{frame}{\insertsubsection\ \deutsch{Teststufen}\ \mytitlesource{\ludewiglichter, \sommerville}}
-	\begin{fancycolumns}[animation=none]
-		\begin{definition}{1. Unit Testing \deutsch{Komponententest}}
-			\uncover<2->{\begin{itemize}
-					\item each component is tested independently
-					\item unit may stand for a component or smaller entities (package, class, method)
-					\item tests created by the developers
-					\item automation is common (e.g., JUnit)
-			\end{itemize}}
-		\end{definition}
-		\begin{definition}{2. Integration Testing \deutsch{Integrationstest}}
-			\uncover<3->{\begin{itemize}
-					\item some components are integrated (e.g., into subsystems) and tested together
-					\item detects inconsistencies in interfaces and communication between components
-					\item top-down vs bottom-up integration
-			\end{itemize}}
-		\end{definition}
-		\nextcolumn
-		\begin{definition}{3. System Testing \deutsch{Systemtest}}
-			\uncover<4->{\begin{itemize}
-					\item all components are integrated to the complete system
-					\item detects further inconsistencies and unanticipated interactions
-					\item system is tested against system requirements
-			\end{itemize}}
-		\end{definition}
-		\begin{definition}{4. Acceptance Testing \deutsch{Abnahmetest}}
-			\uncover<5->{\begin{itemize}
-					\item final stage in the testing process before accepted for operational use
-					\item system is tested against user requirements and with real data
-					\item performed by (potential) customer
-			\end{itemize}}
-		\end{definition}
-	\end{fancycolumns}
+	\slideStagesTesting
 \end{frame}
 % TODO split on several slides and give examples for errors that should / should not be found in this phase (and why)
 

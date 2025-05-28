@@ -1,0 +1,265 @@
+% !TeX spellcheck = en_US
+\subsection{Unit Testing}
+\begin{frame}<2>{\insertsubsection}
+	\slideStagesTesting
+\end{frame}
+
+
+\subsection{Unit Test Automation}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none, b]
+		\begin{definition}{Test Automation \mysource{\cohnagile}}
+			\begin{itemize}
+				\item Manual tests are expensive $\rightarrow$ infrequent execution
+				\item Automated Testing $\rightarrow$ no human intervention during execution
+				\item Important Keywords
+				\begin{itemize}
+					\item System under Test (SuT)
+					\item Test case (input + expected result)
+					\item Test bed (environment for test execution)
+					\item Test procedure (instructions for execution and evaluation)
+				\end{itemize}
+				\item Not only execution, but also generation, \dots
+				\item Regression Testing: rerunning tests after change
+				\item Important for CI/CD, test-driven development, \dots
+			\end{itemize}
+		\end{definition} \pause
+		\nextcolumn
+		\begin{center}
+			\vspace{-15mm}
+			\begin{fancycolumns}[animation=none]
+				\centering
+				\pic[width=.9\columnwidth]{process/test_automation_pyramid}
+				\nextcolumn
+				\centering
+				\pic[width=.9\columnwidth]{testing/junit5-logo}
+			\end{fancycolumns}
+		\end{center}
+		\begin{definition}{Test Automation Tools}
+			\begin{itemize}
+				\item Java: JUnit, TestNG, Mockito, jqwik, \dots
+				\item Haskell: HUnit, QuickCheck, \dots
+				\item \dots
+			\end{itemize}
+		\end{definition} \pause
+		\begin{note}{JUnit} %----LIVE DEMONSTRATION---- https://github.com/TUBS-ISF/SE2-liveDemo-Dynamic
+			Biggest test automation framework for Java		
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Test Doubles}
+\begin{frame}[fragile]{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item Separation of concerns
+				\item \mycite{How do we only test one thing at a time?}
+				\item Control indirect environment
+			\end{itemize}
+		\end{note}\pause
+		\begin{definition}{Test Doubles}
+			\begin{itemize}
+				\item Dummy Object: no usage
+				\item Test Stub: predefined answers
+				\item Fake Object: working implementation with shortcuts
+				\item Test Spy: logs usage information
+				\item Mock Object: mimics behavior according to specification, runtime modifiable
+			\end{itemize}
+		\end{definition}\pause
+		\nextcolumn
+		\begin{note}{Mockito}%----LIVE DEMONSTRATION---- https://github.com/TUBS-ISF/SE2-liveDemo-Dynamic
+			Mocking Framework for Java
+		\end{note}
+		\begin{minted}[]{java}
+@Test
+public void shouldReturnGivenValue() {
+	Flower flowerMock = mock(Flower.class); 
+	when(flowerMock.getNumberOfLeafs()).thenReturn(TEST_NUMBER_OF_LEAFS);
+	assertEquals(flowerMock.getNumberOfLeafs(), TEST_NUMBER_OF_LEAFS);
+}
+		\end{minted} \vspace{-2mm}
+		\begin{minted}[]{java}
+@Test
+void PersonSearch() {
+	PersonDB personsDB = mock(PersonDB.class);
+	when(personsDB.searchPersonByAll(contains("Alex"),anyInt()).getAge()).thenReturn(43);
+}
+		\end{minted}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Mutation Testing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item \mycite{Quis custodiet ipsos custodes?}
+				\item \mycite{How well do we test?}
+			\end{itemize}
+		\end{note}\pause
+		\begin{definition}{Mutation Testing \mysource{\mutation}}
+			\begin{itemize}
+				\item Introduce modifications into code base
+				\item Mutant: mutated version of program
+				\item \mycite{Killing} a mutant: tests detect mutant
+				\item RIP model
+				\begin{itemize}
+					\item Reach mutated statement
+					\item Infect program state
+					\item Propagate to checked output
+				\end{itemize}
+				\item requires code knowledge $\rightarrow$ white-box
+			\end{itemize}
+		\end{definition}\pause
+		\nextcolumn
+		\small
+		\begin{note}{Types of Mutation Testing}
+			\begin{itemize}
+				\item Statement Mutation: add line, move lines, \dots
+				\item Value Mutation: change constant, \dots
+				\item Decision Mutation: change logical operators, \dots
+			\end{itemize}
+		\end{note}\pause
+		\begin{note}{Mutation Operators}
+			\begin{itemize}
+				\item Statement deletion
+				\item Statement insertion
+				\item Boolean operator replacement
+				\item Arithmetic operator replacement
+				\item Variable mix up
+				\item Constructor calls
+				\item \dots
+			\end{itemize}
+		\end{note}\pause
+		\begin{note}{PitTest}%----LIVE DEMONSTRATION---- https://github.com/TUBS-ISF/SE2-liveDemo-Dynamic
+			Mutation Testing on the Java bytecode
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Flaky Tests}
+\begin{frame}[fragile]{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{note}{Common Problems in Regression Testing}
+			\begin{itemize}
+				\item Tests do not indicate failures
+				\item rotten green: assertions not reached
+				\item coincidental correctness: assertions not triggered
+				\item flaky tests
+			\end{itemize}
+		\end{note}
+		\begin{definition}{Flaky Tests}
+			\begin{itemize}
+				\item non-deterministically pass or fail
+				\item $\rightarrow$ different behavior even without code changes
+				\item Problems
+				\begin{itemize}
+					\item waste developer time
+					\item testing trust reduction
+					\item very hard to identify
+					\item example: 1.5\% flaky tests at Google
+				\end{itemize}
+			\end{itemize}
+		\end{definition}\pause
+		\nextcolumn
+		\begin{note}{Common Flaky Tests \mysource{\idoft}}
+			\begin{itemize}
+				\item Order-Dependent: execution order of test suite
+				\item Implementation-Dependent: e.g., Java version, \dots
+				\item Non-Idempotent-Outcome: pass on first, fail on second execution
+				\item Non-Deterministic
+				\item Environment-Dependent: OS, time zone, \dots
+				\item \dots
+			\end{itemize} 
+		\end{note}
+		\pause
+		\begin{note}{Flaky Test Detection}
+			\begin{itemize}
+				\item Rerunning
+				\item Automated Flaky Test Detection
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+
+\subsection{Integration Testing}
+\begin{frame}<3>{\insertsubsection}
+	\slideStagesTesting
+\end{frame}
+
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{\insertsubsection \mysource{\sommerville\mychapter{8}}}
+			\begin{itemize}
+				\item After unit testing $\rightarrow$ only concerned with interactions between components
+				\item Goal: component interfaces behave as specified
+				\item Common interfaces
+				\begin{itemize}
+					\item parameter interfaces: data transfer between components
+					\item shared memory interfaces: common in embedded systems
+					\item procedural interfaces: object interfaces, encapsulation
+					\item message passing interfaces: client-server
+				\end{itemize}
+				\item Common interface errors
+				\begin{itemize}
+					\item interface missuse
+					\item interface missunderstanding
+					\item timing errors in real-time systems
+				\end{itemize}
+				\item difficult to test, code reviews can be cheaper
+			\end{itemize}
+		\end{definition}
+		\pause
+		\nextcolumn
+		\begin{definition}{Top-Down Integration Testing}
+			\begin{itemize}
+				\item High-level components are integrated first
+				\item Necessitates stubbing of components
+			\end{itemize}
+		\end{definition} \pause
+		\begin{definition}{Bottom-Up Integration Testing}
+			\begin{itemize}
+				\item Low-level components are integrated first
+				\item Necessitates special test driver
+			\end{itemize}
+		\end{definition} 
+		\begin{definition}{Big-bang Integration Testing}
+			\begin{itemize}
+				\item All or most developed components are integrated at once
+				\item High time savings, but high risk
+			\end{itemize}
+		\end{definition} 
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Coverage Computation}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Coverage Criteria \mysource{\ludewiglichter}} %Copy from SE1-testing
+			\begin{enumerate}
+				\item class coverage: one statement in the class is executed for at least one test case
+				\item method coverage: one statement in the method is executed for at least one test case
+				\item statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
+				\item branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised
+				\item term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)
+			\end{enumerate}
+		\end{definition} \pause
+		\nextcolumn
+		\pic[width=\columnwidth] {testing/coverage}
+		\begin{note}{Real-world application}%----LIVE DEMONSTRATION---- https://github.com/TUBS-ISF/SE2-liveDemo-Dynamic
+			Computed by IDE or tool (e.g., JaCoCo)
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+
+%\subsection{API Evolution}
+%\begin{frame}{\insertsubsection}
+%	\begin{environment-name}
+%		content
+%	\end{environment-name}
+%\end{frame}
+
