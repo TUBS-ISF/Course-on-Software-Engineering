@@ -1,0 +1,90 @@
+\subsection{Ideal Documentation of Assumptions}
+\begin{frame}{\insertsubsection}
+	\begin{definition}{Summary on Techniques to Document Developers' Assumptions}
+		\centering\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{cccccc}
+			\toprule
+			Technique & Accessible & Unambiguous & Automated Checks & Overhead / Side-Effects \\
+			\midrule
+			Code Documentation & yes & no & no & no \\
+			Defensive Programming & no & yes & yes & yes \\
+			Runtime Assertions & no & yes & yes & only debugging \\
+			Unit Testing & no & yes & yes & no \\
+			??? & yes & yes & yes & no \\
+			\bottomrule
+		\end{tabular}
+	\end{definition}
+	\only<2->{\begin{note}{Motivation}
+			\begin{itemize}
+				\item no technique that is accessible during development and unambiguous
+				\item further wanted: automated checks, no runtime overhead, no (or controllable) side-effects
+			\end{itemize}
+	\end{note}}
+\end{frame}
+
+\subsection{Design by Contract}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{\insertsubsection\mysource{\lessonsofariane}}
+			\mycite{Design by contract [\ldots] is the principle that interfaces between modules of a software system---especially a mission-critical one---should be governed by precise specifications, similar to contracts between humans or companies.}
+		\end{definition}
+		\nextcolumn
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{...}
+			\begin{itemize}
+				\item ...
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{...}
+			\begin{itemize}
+				\item ...
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{...}
+			\begin{itemize}
+				\item ...
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[t]
+		\begin{exampletight}{Logical Error}
+			\centering\makebox{\usebox{\edgelogicalerror}}
+		\end{exampletight}
+		\uncover<2->{\begin{note}{No explicit error during compilation or execution}
+				error can be identified by inspecting the program's output or by means of assertions
+		\end{note}}
+		\nextcolumn
+		\uncover<3->{\begin{exampletight}{Fixed Program}
+				\centering\makebox{\usebox{\edgelogicalerrorfix}}
+		\end{exampletight}}
+		\uncover<4->{\begin{definition}{Explanation}
+				\begin{itemize}
+					\item no explicit exception as for runtime errors
+					\item tests need comparison with expected outcomes
+				\end{itemize}
+		\end{definition}}
+	\end{fancycolumns}
+\end{frame}
