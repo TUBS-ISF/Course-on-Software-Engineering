@@ -5,7 +5,7 @@
 
 \subsection{The Lessons of Ariane}
 \begin{frame}{\insertsubsection{} \mytitlesource{\lessonsofariane}}
-	\begin{fancycolumns}[widths={25}]
+	\begin{fancycolumns}[widths={25},animation=none]
 		\pic[width=\linewidth]{failures/ariane5}
 	\nextcolumn
 		\begin{example}{What has happened?}
@@ -17,7 +17,7 @@
 				\item but assumption did not hold anymore
 			\end{itemize}
 		\end{example}
-		\begin{example}{Whom to blame?}
+		\uncover<2->{\begin{example}{Whom to blame?}
 			\begin{itemize}
 				\item management? systematic documentation, validation, management
 				\item programming language? Ada enables protection from conversion errors
@@ -25,7 +25,7 @@
 				\item testing? component testing done + maiden flight was indeed a test launch
 				\item documentation? assumption documented in a mission control document
 			\end{itemize}
-		\end{example}
+		\end{example}}
 	\end{fancycolumns}
 \end{frame}
 
@@ -153,14 +153,14 @@
 			\toprule
 			Technique & Accessible & Unambiguous & Automated Checks & Overhead / Side-Effects \\
 			\midrule
-			Code Documentation & yes & no & no & no \\
-			Defensive Programming & no & yes & yes & yes \\
-			Runtime Assertions & no & yes & yes & only debugging \\
-			Unit Testing & no & yes & yes & no \\
+			Code Documentation & \uncover<2->{yes & no & no & no} \\
+			Defensive Programming & \uncover<3->{no & yes & yes & yes} \\
+			Runtime Assertions & \uncover<4->{no & yes & yes & only debugging} \\
+			Unit Testing & \uncover<5->{no & yes & yes & no} \\
 			\bottomrule
 		\end{tabular}
 	\end{definition}
-	\only<2->{\begin{example}{Practice}
+	\uncover<6->{\begin{example}{Practice}
 		\begin{itemize}
 			\item Supporting checks in productive code?
 			\item Supporting method overriding in inheritance?

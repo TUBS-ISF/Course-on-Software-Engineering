@@ -10,16 +10,16 @@
 			Defensive Programming & no & yes & yes & yes \\
 			Runtime Assertions & no & yes & yes & only debugging \\
 			Unit Testing & no & yes & yes & no \\
-			??? & yes & yes & yes & no \\
+			??? & yes & yes & \only<2->{yes & no} \\
 			\bottomrule
 		\end{tabular}
 	\end{definition}
-	\only<2->{\begin{note}{Motivation}
+	\begin{note}{Motivation}
 			\begin{itemize}
 				\item no technique that is accessible during development and unambiguous
-				\item further wanted: automated checks, no runtime overhead, no (or controllable) side-effects
+				\item<2-> further wanted: automated checks, no runtime overhead, no (or controllable) side-effects
 			\end{itemize}
-	\end{note}}
+	\end{note}
 \end{frame}
 
 \subsection{Design by Contract}
@@ -29,62 +29,117 @@
 			\mycite{Design by contract [\ldots] is the principle that interfaces between modules of a software system---especially a mission-critical one---should be governed by precise specifications, similar to contracts between humans or companies.}
 		\end{definition}
 		\nextcolumn
+		\begin{example}{Gentlemen in the Bathroom by Loriot\mysource{\href{https://de.wikipedia.org/wiki/Herren_im_Bad}{wikipedia.org}}}
+			\centering
+			\pic[width=\linewidth,trim=0 500 0 0,clip]{designbycontract/herren-im-bad}
+			
+			Mr. Müller-Lüdenscheidt to Dr. Klöbner:\\
+			\mycite{If you let the duck in, I'll let the water out.}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{...}
+\subsection{Behavioral Interface Specification Languages}
+\begin{frame}{\insertsubsection{} \mytitlesource{\hatcliff}}
+	\begin{fancycolumns}[widths={30}]
+		\begin{note}{Motivation}
 			\begin{itemize}
-				\item ...
+				\item software systems typically composed of reusable components (e.g., libraries)
+				%\item software contracts can be used to specify the interfaces of those components
+				\item increasing scale of software leads to multiple teams and more reuse
+				\item increase reuse comes with challenges when updating libraries
+				\item safety-critical systems need intended behavior for verification %and blame assignment
+			\end{itemize}
+		\end{note}
+	\nextcolumn
+		\begin{definition}{\insertsubsection}
+			\begin{itemize}
+				\item behavorial specification: \mycite{precise description of the intended behavior of some computing system or its components}
+				\item formal specification: \mycite{mathematically precise notation for recording intended properties of software}
+				\item formalization makes specifications unambiguous + \mycite{enables tools to provide automated reasoning about specifications and their relationship to associated code}
+				\item interface specification: \mycite{syntactic interfaces of [...] modules, such as the names and types of methods}
+				\item behavioral interface specification: formal specification of an interface
 			\end{itemize}
 		\end{definition}
-		\nextcolumn
+		\begin{example}{}
+			\begin{itemize}
+				\item Java Modeling Language (JML) for Java
+				\item Spec\# as language extension to C\#
+				\item Eiffel has built-in support
+				\item SPARK as subset + extension of Ada
+			\end{itemize}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{}
+\subsection{Java Modeling Language (JML)}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
-		\begin{definition}{...}
-			\begin{itemize}
-				\item ...
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{definition}{...}
-			\begin{itemize}
-				\item ...
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-	\end{fancycolumns}
-\end{frame}
-
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[t]
-		\begin{exampletight}{Logical Error}
-			\centering\makebox{\usebox{\edgelogicalerror}}
+		\begin{exampletight}{Documenting Assumptions in JML}
+			\centering\makebox{\usebox{\jml}} % TODO listing has weird color for "\r"
 		\end{exampletight}
-		\uncover<2->{\begin{note}{No explicit error during compilation or execution}
-				error can be identified by inspecting the program's output or by means of assertions
-		\end{note}}
 		\nextcolumn
-		\uncover<3->{\begin{exampletight}{Fixed Program}
-				\centering\makebox{\usebox{\edgelogicalerrorfix}}
-		\end{exampletight}}
-		\uncover<4->{\begin{definition}{Explanation}
-				\begin{itemize}
-					\item no explicit exception as for runtime errors
-					\item tests need comparison with expected outcomes
-				\end{itemize}
-		\end{definition}}
+		\begin{definition}{\insertsubsection{} \mysource{\designofjml}}
+			\begin{itemize}
+				\item principle: a behavioral interface specification language for Java
+				\item \emph{\lstinline|requires|}: precondition that needs to hold when method is called
+				\item \emph{\lstinline|ensures|}: postcondition that needs to hold when method returns
+				\item \emph{\lstinline|invariant|}: condition that needs to hold after object creation as well as before and after each method call
+				\item special keywords: \emph{\lstinline|\\result|}, \emph{\lstinline|\\old|}, \ldots
+				\item special operators: \emph{\lstinline|<==>|}, \emph{\lstinline|==>|}, \ldots
+				\item methods can only be called in JML specification if pure (i.e., free of side effect)
+			\end{itemize}
+		\end{definition}
 	\end{fancycolumns}
 \end{frame}
+
+\begin{frame}{A Non-Trivial JML Example}
+	\begin{fancycolumns}[widths={45}]
+		\begin{exampletight}{A Non-Trivial JML Example \mysource{\designofjml}}
+			\centering\makebox{\usebox{\jmlisqrt}}
+		\end{exampletight}
+		\nextcolumn
+		\begin{definition}{\insertsubsection{} cont.{} \mysource{\designofjml}}
+			\begin{itemize}
+				\item \emph{\lstinline|public|}: visibility of the contract
+				\item \emph{\lstinline|normal_behavior|}: method returns normally and no exception is thrown
+				\item \emph{\lstinline|assignable|}: which locations can be modified
+				\item special keywords: \emph{\lstinline|\\nothing|} (for an empty list)
+				\item many more keywords
+			\end{itemize}
+		\end{definition}
+		\begin{note}{JML Tools}
+			\begin{itemize}
+				\item language differs among tools: OpenJML, KeY
+				\item many tools discontinued: KeY's Eclipse extension, ESC/Java2, JMLUnit, Krakatoa/Why, jmlc
+				\item no web tools available yet
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{definition}{Summary on Techniques to Document Developers' Assumptions}
+		\centering\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{cccccc}
+			\toprule
+			Technique & Accessible & Unambiguous & Automated Checks & Overhead / Side-Effects \\
+			\midrule
+			Code Documentation & yes & no & no & no \\
+			Defensive Programming & no & yes & yes & yes \\
+			Runtime Assertions & no & yes & yes & only debugging \\
+			Unit Testing & no & yes & yes & no \\
+			\only<1|handout:0>{??? & yes & yes & yes & no}
+			\only<2->{Design by Contract & \only<3->{yes} & \only<4->{yes} & \only<5|handout:0>{?}\only<6->{yes} & \only<7->{only debugging / no}} \\
+			\bottomrule
+		\end{tabular}
+	\end{definition}
+	\uncover<5->{\begin{note}{Automatically Checking Contracts?}
+			\begin{itemize}
+				\item JML compiler: translates JML specifications into Java assertions
+				\item JML test-case generation: translates JML specifications into JUnit test cases
+				\item formal verification: verifies that code fulfills its specification (e.g., given any valid input, a method produces a valid output)
+			\end{itemize}
+	\end{note}}
+\end{frame}
+

@@ -297,37 +297,49 @@ class B extends A {
 }{
 	\begin{enumerate}
 		\item Form groups of 2--3 students
-		\item Student explains a column to group, repeat with other students/columns
+		\item Student explains a column to their group, repeat with other students/columns
 		\item Try to answer the three questions (resulting in new columns)
 	\end{enumerate}
 }
 
-\section{Design by Contract}
+\section{Design by Contract with JML}
 \input{content/08b-designbycontract}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Design by contract
+	\item Behavioral interface specification languages
+	\item Java Modeling Language (JML): requires, ensures, invariant, assignable, \ldots
+	\item Next: How does design by contract work beyond JML?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \hatcliff{} --- survey on behavioral interface specification languages
+	\item \purity{} --- different notions of pure methods / methods without side-effects % TODO could also be a good extension to the slides to add Figure 1 and Table 3
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	\begin{itemize}
+		\item Form groups of 2--3 students
+		\item Discuss what you learned so far and try to apply that knowledge
+		\item What are advantages and disadvantages of ...?
+			\begin{enumerate}
+				\item class invariants
+				\item assignable clauses
+				\item method calls in contracts
+			\end{enumerate}
+	\end{itemize}
 }
 
-\section{Part 3}
-%\input{content/c-}
+\section{Design by Contract in SPARK}
+\input{content/08c-spark}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Ada vs SPARK
+	\item Design by contract with SPARK
+	\item Live demo with examples
+	\item Next: How is quality assurance embedded in continuous integration?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \href{https://learn.adacore.com/courses/intro-to-spark/chapters/03_Proof_Of_Program_Integrity.html\#contracts}{learn.adacore.com}
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Modify, run, and formally verify example programs with SPARK contracts
+
+	~
+
+	\centering\fancyqr{color=black,height=30mm}{https://learn.adacore.com/courses/intro-to-spark/chapters/03_Proof_Of_Program_Integrity.html\#contracts}
 }
 
 %\faq{

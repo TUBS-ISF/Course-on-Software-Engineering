@@ -222,6 +222,43 @@ class Edge {
 	\end{lstlisting}
 \end{lrbox}
 
+\newsavebox{\jml}
+\begin{lrbox}{\jml}
+	\begin{lstlisting}
+class Edge {
+	//@ invariant first != null && second != null;
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	/*@ requires e != null;
+		@ ensures \result <==> first.equals(e.first) &&
+		@   second.equals(e.second); @*/
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.first);
+	}
+}
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\jmlisqrt}
+\begin{lrbox}{\jmlisqrt}
+	\begin{lstlisting}
+/*@ public normal_behavior
+	@ requires y >= 0;
+	@ assignable \nothing;
+	@ ensures 0 <= \result
+	@   && \result * \result <= y
+	@   && ((0 <= (\result + 1) * (\result + 1))
+	@   ==> y < (\result + 1) * (\result + 1));
+	@*/
+public static int isqrt(int y) {
+	return (int) Math.sqrt(y);
+}
+	\end{lstlisting}
+\end{lrbox}
+
 \newsavebox{\edgeruntimeerrorfix}
 \begin{lrbox}{\edgeruntimeerrorfix}
 	\begin{lstlisting}
