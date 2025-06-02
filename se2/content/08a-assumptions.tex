@@ -1,0 +1,171 @@
+\subsection{Recap: Ariane 5 Software Failure}
+\begin{frame}{\insertsubsection}
+	\slideArianeFailure
+\end{frame}
+
+\subsection{The Lessons of Ariane}
+\begin{frame}{\insertsubsection{} \mytitlesource{\lessonsofariane}}
+	\begin{fancycolumns}[widths={25},animation=none]
+		\pic[width=\linewidth]{failures/ariane5}
+	\nextcolumn
+		\begin{example}{What has happened?}
+			\begin{itemize}
+				\item conversion error in a software component
+				\item component used to compute the horizontal bias
+				\item assumption from Ariane 4: horizontal bias fits in 16-bit signed integer
+				\item in flight software of Ariane 5: component reused from Ariane 4
+				\item but assumption did not hold anymore
+			\end{itemize}
+		\end{example}
+		\uncover<2->{\begin{example}{Whom to blame?}
+			\begin{itemize}
+				\item management? systematic documentation, validation, management
+				\item programming language? Ada enables protection from conversion errors
+				\item design and implementation? exception not monitored as overflow was impossible for Ariane 4 trajectory
+				\item testing? component testing done + maiden flight was indeed a test launch
+				\item documentation? assumption documented in a mission control document
+			\end{itemize}
+		\end{example}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Recap on Error Types}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[columns=3,widths={25,35}]
+		\begin{exampletight}{Lexical Error}
+			\centering\makebox{\usebox{\edgelexicalerror}}
+		\end{exampletight}
+	\nextcolumn
+		\begin{exampletight}{Syntax Error}
+			\centering\makebox{\usebox{\edgesyntaxerror}}
+		\end{exampletight}
+	\nextcolumn
+		\begin{exampletight}{Type Error}
+			\centering\makebox{\usebox{\edgetypeerror}}
+		\end{exampletight}
+	\end{fancycolumns}
+	\begin{note}{Compilers for Java (and Ada)}
+		are able to find lexical, syntax and type errors, but not the failed conversion of Ariane 5
+	\end{note}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{exampletight}{Runtime Error}
+			\centering\makebox{\usebox{\edgeruntimeerror}}
+		\end{exampletight}
+		\nextcolumn
+		\uncover<2->{\begin{definition}{Error message by the Java runtime environment}
+				\mycite{Exception in thread "main" java.lang.\\NullPointerException: Cannot read field "first" because "e" is null}
+		\end{definition}}
+		\uncover<3->{\begin{note}{Whom to blame?}
+				\begin{itemize}
+					\item the main method passing null?
+					\item the equals method not checking its parameters for null?
+					\item not feasible to tell from the code alone
+				\end{itemize}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Code Documentation}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[t]
+		\begin{exampletight}{Documenting Assumptions in JavaDoc}
+			\centering\makebox{\usebox{\javadoc}}
+		\end{exampletight}
+		\nextcolumn
+		\begin{definition}{\insertsubsection}
+			\begin{itemize}
+				\item JavaDoc comments can be used to generate web-based documentation and tooltips in IDEs
+				\item[+] assumptions easily accesible during coding
+				\item[--] ambiguous, no automated checks
+			\end{itemize}
+		\end{definition}
+		\picDark[width=\linewidth]{designbycontract/javadoc}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Defensive Programming}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{exampletight}{Documenting Assumptions in Code}
+			\centering\makebox{\usebox{\defensiveprogramming}}
+		\end{exampletight}
+	\nextcolumn
+		\begin{definition}{\insertsubsection}
+			\begin{itemize}
+				\item principle: check at the beginning of each method that all assumptions hold
+				\item still requires to catch these exceptions at the right abstraction
+				\item[+] unambiguous, automated checks
+				\item[--] not accessible for callers (esp. with overriding)
+				\item[--] implementation cluttered with error handling
+				\item[--] reduced performance due to computational overhead
+				\item[--] problems if checks have side-effects (\lstinline|i++ > 0|)
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Runtime Assertions}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{exampletight}{Documenting Assumptions in Assertions}
+			\centering\makebox{\usebox{\runtimeassertions}}
+		\end{exampletight}
+		\nextcolumn
+		\begin{definition}{\insertsubsection}
+			\begin{itemize}
+				\item principle: explicit checks about assumptions during execution that can be en- or disabled
+				\item[+] unambiguous, automated checks
+				\item[--] not accessible for callers (esp. with overriding)
+				\item[--] problems if checks have side-effects
+				\item[--] only applicable to checks that are not needed during production
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Unit Testing (Revisited)}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{exampletight}{Documenting Assumptions in Test Code}
+			\centering\makebox{\usebox{\unittests}}
+		\end{exampletight}
+		\nextcolumn
+		\begin{definition}{\insertsubsection}
+			\begin{itemize}
+				\item principle: unit tests specify intended behavior
+				\item[+] unambiguous, automated checks, no side effects on productive code
+				\item[--] not accessible for callers
+				\item[--] developer assumptions hidden in test code
+				\item[--] requires many tests to \mycite{tell} developers about the intended behavior
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Documenting Assumptions}
+\begin{frame}{\insertsubsection}
+	\begin{definition}{Summary on Techniques to Document Developers' Assumptions}
+		\centering\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{cccccc}
+			\toprule
+			Technique & Accessible & Unambiguous & Automated Checks & Overhead / Side-Effects \\
+			\midrule
+			Code Documentation & \uncover<2->{yes & no & no & no} \\
+			Defensive Programming & \uncover<3->{no & yes & yes & yes} \\
+			Runtime Assertions & \uncover<4->{no & yes & yes & only debugging} \\
+			Unit Testing & \uncover<5->{no & yes & yes & no} \\
+			\bottomrule
+		\end{tabular}
+	\end{definition}
+	\uncover<6->{\begin{example}{Practice}
+		\begin{itemize}
+			\item Supporting checks in productive code?
+			\item Supporting method overriding in inheritance?
+			\item What about code pollution?
+		\end{itemize}
+	\end{example}}
+\end{frame}
+

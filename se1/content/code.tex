@@ -2,7 +2,7 @@
 \newcommand{\featuremodule}[1]{\hfill#1~~~}
 
 % TODO use resize box to fill code to available width \resizebox{60mm}{!}{}
-\lstset{style=java,tabsize=2,escapechar=|,frame=none,style=small,backgroundcolor=}%style=featurehouse,style=jml,style=slides,
+\lstset{style=java,tabsize=2,escapechar=|,frame=none,style=small,backgroundcolor=,commentstyle=\color{blue}\selectfont}%style=featurehouse,style=jml,style=slides,
 \newcommand{\centeredlisting}[1]{
 	\begin{center}
 		\begin{tikzpicture}[every node/.style={rounded corners,draw,thick,fill=white},listing/.style={inner xsep=4pt,inner ysep=3pt}]
@@ -126,6 +126,186 @@ class Edge {
 		System.out.println(e.equals(null));
 	}
 }|\errorunderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+% warning: any update of the code below may create inconsistencies with screenshot stored in designbycontract/javadoc.png
+\newsavebox{\javadoc}
+\begin{lrbox}{\javadoc}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	/** Comparison of edges depending on connected nodes.
+	 * @param e edge that is not null
+	 * @return true if both edges connect same nodes
+	 */
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.first);
+	}
+	public static void main(String[] args) {
+		Edge e = new Edge(new Node(), new Node());
+		System.out.println(e.equals(null));
+	}
+}
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\defensiveprogramming}
+\begin{lrbox}{\defensiveprogramming}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	boolean equals(Edge e) {
+		|\tpkt{a1}|if (e == null)|\tpkt{a2}|
+			|\tpkt{b1}|throw new RuntimeException(|\tpkt{b2}|
+				|\tpkt{c1}|"non-null parameter expected");|\tpkt{c2}|
+		return first.equals(e.first) && second.equals(e.first);
+	}
+	public static void main(String[] args) {
+		Edge e = new Edge(new Node(), new Node());
+		System.out.println(e.equals(null));
+	}
+}|\infounderline{a,b,c}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\runtimeassertions}
+\begin{lrbox}{\runtimeassertions}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	boolean equals(Edge e) {
+		|\tpkt{a1}|assert (e == null) : "non-null parameter expected";|\tpkt{a2}|
+		return first.equals(e.first) && second.equals(e.first);
+	}
+	public static void main(String[] args) {
+		Edge e = new Edge(new Node(), new Node());
+		System.out.println(e.equals(null));
+	}
+}|\infounderline{a}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\unittests}
+\begin{lrbox}{\unittests}
+	\begin{lstlisting}
+class Edge {
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.first);
+	}
+}
+|\tpkt{d1}|import org.junit.Test;|\tpkt{d2}|
+|\tpkt{e1}|public class TEdge {|\tpkt{e2}|
+	|\tpkt{c1}|@Test|\tpkt{c2}|
+	|\tpkt{f1}|public|\tpkt{f2}| void testEqualsNull() {
+		Edge e = new Edge(new Node(), new Node());
+		assert !e.equals(|\tpkt{b1}|null|\tpkt{b2}|);
+	}
+}|\infounderline{c,d,e,f}|
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\jml}
+\begin{lrbox}{\jml}
+	\begin{lstlisting}
+class Edge {
+	//@ invariant first != null && second != null;
+	Node first, second;
+	Edge(Node first, Node second) {
+		this.first = first;
+		this.second = second;
+	}
+	/*@ requires e != null;
+		@ ensures \result <==> first.equals(e.first) &&
+		@   second.equals(e.second); @*/
+	boolean equals(Edge e) {
+		return first.equals(e.first) && second.equals(e.first);
+	}
+}
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\jmlisqrt}
+\begin{lrbox}{\jmlisqrt}
+	\begin{lstlisting}
+/*@ public normal_behavior
+	@ requires y >= 0;
+	@ assignable \nothing;
+	@ ensures 0 <= \result
+	@   && \result * \result <= y
+	@   && ((0 <= (\result + 1) * (\result + 1))
+	@   ==> y < (\result + 1) * (\result + 1));
+	@*/
+public static int isqrt(int y) {
+	return (int) Math.sqrt(y);
+}
+	\end{lstlisting}
+\end{lrbox}
+
+\lstdefinelanguage{ada} {
+	morekeywords={
+		abort,abs,abstract,accept,access,aliased,all,and,array,at,begin,body,case,
+		constant,declare,delay,delta,digits,do,else,elsif,end,entry,exception,
+		exit,for,function,generic,goto,if,in,is,limited,loop,mod,new,not,null,of,
+		or,others,out,overriding,package,pragma,private,procedure,protected,raise,
+		range,record,rem,renames,requeue,return,reverse,select,separate,subtype,
+		tagged,task,terminate,then,type,use,when,while,with,xor
+	},
+	sensitive=true,
+	morecomment=[l]--,
+	morestring=[b]",
+}
+
+\newsavebox{\sparkincrement}
+\begin{lrbox}{\sparkincrement}
+	\begin{lstlisting}[language=ada]
+procedure Increment
+	(X : in out Integer)
+with
+	Global  => null,
+	Depends => (X => X),
+	Pre     => X < Integer'Last,
+	Post    => X = X'Old + 1;
+is
+begin
+	X := X + 1;
+end Increment;
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\sparkmode}
+\begin{lrbox}{\sparkmode}
+	\begin{lstlisting}[language=ada]
+package P
+with SPARK_Mode => On
+is
+-- package spec is IN SPARK
+-- so can be used by SPARK clients
+end P;
+
+package body P
+with SPARK_Mode => Off
+is
+-- body is NOT IN SPARK
+-- so is ignored by GNATprove
+end P;
 	\end{lstlisting}
 \end{lrbox}
 

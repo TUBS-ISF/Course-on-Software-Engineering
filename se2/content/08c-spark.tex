@@ -1,0 +1,122 @@
+\newcommand{\introtoada}{\href{https://learn.adacore.com/courses/intro-to-ada/}{Introduction to Ada}}
+
+\newcommand{\introtospark}{\href{https://learn.adacore.com/courses/intro-to-spark/}{Introduction to SPARK}}
+
+\subsection{Ada}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{Ada \mysource{\introtoada}}
+			\begin{itemize}
+				\item United States Department of Defense suffered from an explosion of programming languages and dialects
+				\item call for proposals lead to Ada
+				\item 1983: first Ada standard
+				\item revisions: 1995, 2005, 2012
+				\item most similiarities with C++ and Rust
+				\item used for embedded real-time systems
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{example}{Example Domains of Ada \mysource{\introtoada}}
+			\begin{itemize}
+				\item aerospace
+				\item defense
+				\item civil aviation
+				\item rail
+				\item video games
+				\item real-time audio
+				\item kernel modules
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{SPARK Language}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none,widths={60}]
+		\begin{definition}{SPARK Language \mysource{\introtospark}}
+			\begin{itemize}
+				\item programming language targeted at functional specification and static verification
+				\item based on subset of the Ada language
+				\item adding language constructs to specify contracts
+				\item removing language constructs from Ada that would be hard to specify with contracts:
+					\begin{itemize}
+						\item complex control flow (e.g., goto)
+						\item expressions with side-effects
+						\item aliasing (multiple variables pointing to same object)
+					\end{itemize}
+			\end{itemize}
+		\end{definition}
+	\nextcolumn
+		\vspace*{-5mm}
+		\picDark[width=\linewidth]{designbycontract/spark-ada}
+		\vspace*{-4mm}
+		\uncover<2->{\begin{exampletight}{The SPARK Mode}
+			\centering\makebox{\usebox{\sparkmode}}
+		\end{exampletight}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{SPARK Tools}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{definition}{SPARK Tools \mysource{\introtospark}}
+			\begin{itemize}
+				\item development and verification tools
+				\item GNAT Static Analysis Suite: abstract interpretation
+				\item flow analysis: checks initializations of variables, unused assignments, unmodified variables.
+				\item proof: checks for absence of runtime errors, conformance of program and specifications
+			\end{itemize}
+		\end{definition}
+	\nextcolumn
+		\begin{example}{SPARK Online Course \mysource{\introtospark}}
+			\begin{itemize}
+				\item Run: compile the code with assertions enabled and run the executable produced.
+				\item Examine: perform the flow analysis stage of formal verification
+				\item Prove: perform the proof stage of formal verification (which includes flow analysis)
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Design by Contract in SPARK}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={33}]
+		\begin{exampletight}{A Trivial Example in SPARK}
+			\centering\makebox{\usebox{\sparkincrement}}
+		\end{exampletight}
+		\nextcolumn
+		\begin{definition}{\insertsubsection{} \mysource{\introtospark}}
+			\begin{itemize}
+				\item principle: the SPARK language extends Ada by a behavioral interface specification language
+				\item \emph{\lstinline|Global|}: read + written global variables
+				\item \emph{\lstinline|Depend|}: value of X depends only on previous value of X
+				\item \emph{\lstinline|Pre|}: precondition that needs to hold when method is called
+				\item \emph{\lstinline|Post|}: postcondition that needs to hold when method returns
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+% https://learn.adacore.com/courses/intro-to-spark/chapters/03_Proof_Of_Program_Integrity.html#contracts
+
+%\begin{frame}{\insertsubsection}
+%	\begin{fancycolumns}[t]
+	%		\begin{exampletight}{Logical Error}
+		%			\centering\makebox{\usebox{\edgelogicalerror}}
+		%		\end{exampletight}
+	%		\uncover<2->{\begin{note}{No explicit error during compilation or execution}
+			%				error can be identified by inspecting the program's output or by means of assertions
+			%		\end{note}}
+	%		\nextcolumn
+	%		\uncover<3->{\begin{exampletight}{Fixed Program}
+			%				\centering\makebox{\usebox{\edgelogicalerrorfix}}
+			%		\end{exampletight}}
+	%		\uncover<4->{\begin{definition}{Explanation}
+			%				\begin{itemize}
+				%					\item no explicit exception as for runtime errors
+				%					\item tests need comparison with expected outcomes
+				%				\end{itemize}
+			%		\end{definition}}
+	%	\end{fancycolumns}
+%\end{frame}
+

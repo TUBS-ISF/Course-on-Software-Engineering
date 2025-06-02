@@ -956,7 +956,7 @@
 	\end{tikzpicture}
 }
 
-% introduced: se2-examples
+% introduced: se2-introduction
 % reused: se2-dynamic
 \newcommand{\slideCrowdStrike}{
 	\begin{fancycolumns}[b]
@@ -985,6 +985,27 @@
 		\begin{note}{Apology in US Congress\mysource{\href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
 			\mycite{On behalf of everyone at CrowdStrike, I want to apologize. We are \emph{deeply sorry} and we are determined to prevent this from ever happening again. [\ldots] I want to underscore that this was \emph{not a cyber attack}.}
 		\end{note}
+	\end{fancycolumns}
+}
+
+% introduced: se2-introduction
+% reused: se2-designbycontract
+\newcommand{\slideArianeFailure}{
+	\begin{fancycolumns}[widths={35}]
+		\pic[width=\linewidth]{failures/ariane5}
+		\nextcolumn
+		\centering\pic[width=.5\linewidth]{failures/ariane5-explosion} {\tiny\copyright{} ESA} % TODO how to add copyright? ESA
+		\begin{definition}{Ariane 5 Software Failure \mysource{\lessonsofariane}}
+			\begin{itemize}
+				\item Ariane 5 is a European space launch vehicle
+				\item 117 launches between 1996 and 2023
+				\item maiden flight in June 1996
+				\item explosion about 40 seconds after takeoff, no personal injury
+				\item software component of Ariane 4 was reused
+				\item value exceeding 16-bit signed integer due to Ariane 5 trajectory
+				\item damage of 500 million dollar + one year postponed research
+			\end{itemize}
+		\end{definition}
 	\end{fancycolumns}
 }
 
