@@ -55,10 +55,11 @@ build
 *.bbl
 *.bbl-*
 *.bcf
+*.bcf-*
 *.blg
 *-blx.aux
 *-blx.bib
-*.run.xm
+*.run.xml
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
