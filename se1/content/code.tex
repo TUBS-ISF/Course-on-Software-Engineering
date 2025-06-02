@@ -259,6 +259,56 @@ public static int isqrt(int y) {
 	\end{lstlisting}
 \end{lrbox}
 
+\lstdefinelanguage{ada} {
+	morekeywords={
+		abort,abs,abstract,accept,access,aliased,all,and,array,at,begin,body,case,
+		constant,declare,delay,delta,digits,do,else,elsif,end,entry,exception,
+		exit,for,function,generic,goto,if,in,is,limited,loop,mod,new,not,null,of,
+		or,others,out,overriding,package,pragma,private,procedure,protected,raise,
+		range,record,rem,renames,requeue,return,reverse,select,separate,subtype,
+		tagged,task,terminate,then,type,use,when,while,with,xor
+	},
+	sensitive=true,
+	morecomment=[l]--,
+	morestring=[b]",
+}
+
+\newsavebox{\sparkincrement}
+\begin{lrbox}{\sparkincrement}
+	\begin{lstlisting}[language=ada]
+procedure Increment
+	(X : in out Integer)
+with
+	Global  => null,
+	Depends => (X => X),
+	Pre     => X < Integer'Last,
+	Post    => X = X'Old + 1;
+is
+begin
+	X := X + 1;
+end Increment;
+	\end{lstlisting}
+\end{lrbox}
+
+\newsavebox{\sparkmode}
+\begin{lrbox}{\sparkmode}
+	\begin{lstlisting}[language=ada]
+package P
+with SPARK_Mode => On
+is
+-- package spec is IN SPARK
+-- so can be used by SPARK clients
+end P;
+
+package body P
+with SPARK_Mode => Off
+is
+-- body is NOT IN SPARK
+-- so is ignored by GNATprove
+end P;
+	\end{lstlisting}
+\end{lrbox}
+
 \newsavebox{\edgeruntimeerrorfix}
 \begin{lrbox}{\edgeruntimeerrorfix}
 	\begin{lstlisting}
