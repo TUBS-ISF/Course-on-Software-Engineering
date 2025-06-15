@@ -1156,3 +1156,386 @@
 	\end{definition}
 \end{fancycolumns}
 }
+
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\slideVersionControl}{
+\begin{fancycolumns}[animation=none]
+	\begin{note}{Goals of Version Control}
+		\begin{itemize}
+			\item collaborative work: synchronize files and folders with other users
+			\item compare own version with other versions
+			\item merge files edited by several users
+			\item history: access old versions, log changes
+		\end{itemize}
+	\end{note} \pause
+	\begin{definition}{Version Control Systems}
+		\begin{itemize}
+			\item local only: SCCS (1972), RCS (1982), \ldots
+			\item centralized: CVS (1986), SVN (2000), \ldots
+			\item distributed: \emph{git} (2005), mercurial (2005), \ldots
+		\end{itemize}
+		\vspace{2mm}
+		invented for software, useful for most files %(cf.\ agile methods)
+	\end{definition} \pause
+	\begin{example}{}
+		Alternatives? Why not use locks (cf.\ databases)?
+	\end{example} \pause
+	\nextcolumn
+	\picDark[width=\linewidth]{versioncontrol/trends-git} \pause
+	\vspace{-4mm}
+	\begin{example}{Personal Experience}
+		\begin{itemize}
+			\item 2004: started working with CVS in industry
+			\item 2007: initiated research protoype FeatureIDE with SVN
+			\item 2009: published FeatureIDE open source (history neglected)
+			\item 2014: migrated FeatureIDE's code to git
+		\end{itemize}
+	\end{example}
+\end{fancycolumns}
+}
+
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\slideDistributedVC}{
+\vspace{-2mm}
+\begin{fancycolumns}
+	\peertopeer{computer}{tonne}{computer}{computer}{GIT Server}{GIT Server/Client X}{GIT Server/Client Y}{
+		\draw[kante] (client1) to (server);
+		\draw[kante] (server) to (client1);
+		\draw[kante] (client2) to (server);
+		\draw[kante] (server) to (client2);
+		\draw[innerekante] (client1.80) to (client1.100);
+		\draw[innerekante] (client1.-100) to (client1.-80);
+		\draw[innerekante] (client2.80) to (client2.100);
+		\draw[innerekante] (client2.-100) to (client2.-80);
+	}
+	\begin{definition}{Distributed Version Control Systems}
+		\begin{itemize}
+			\item peer-to-peer architecture
+			\item clients use repository clone to synchronize
+			\item version history available on each client
+			%\item comparing client version with server version / history of repository clone
+			%\item merging files edited by several clients using an updated version of the repository clone
+		\end{itemize}
+	\end{definition}
+	\nextcolumn
+	\only<2|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{~}{~}{
+	}}
+	\only<3|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Repository Clone: 1-10}{Repository Clone: 1-10}{
+			\draw[kante] (server) to (client1);
+			\draw[kante] (server) to (client2);
+	}}
+	\only<4|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+			\draw[innerekante] (client1.80) to (client1.100);
+			\draw[innerekante] (client2.80) to (client2.100);
+	}}
+	\only<5|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+	}}
+	\only<6|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+			\draw[innerekante] (client1.-100) to (client1.-80);
+	}}
+	\only<7|handout:1>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+			\draw[kante] (client1) to (server);
+	}}
+	\only<8|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
+			\draw[kante] (server) to (client2);
+	}}
+	\only<9|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 11\\Repository Clone: 1-11}{
+			\draw[innerekante] (client2.80) to (client2.100);
+	}}
+	\begin{note}{Distributed Version Control Systems}
+		\begin{itemize}
+			\item main repository on one or several servers
+			\item clone of the repository on each client 
+			\item new revision on every change on the clients
+			%\item Revisions used to undo changes and to merge files
+		\end{itemize}
+	\end{note}
+\end{fancycolumns}
+}
+
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\slideConfigManagement}{
+	\begin{fancycolumns}
+		\begin{definition}{Configuration Management}
+			\mycite{\emph{Configuration management} is concerned with the policies, processes, and tools for managing changing software systems.} % TODO fix source Aiello and Sachs 2011
+		\end{definition}
+		\begin{definition}{Four Activities in Configuration Management}
+			\begin{itemize}
+				\item version control / management: keeping track of multiple versions, enabling simultaneous changes
+				\item system building: collecting, compiling, and linking components into executable systems
+				\item change management: tracking change requests and planning if/when realized
+				\item release management: preparing new and managing old releases
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Development Stages \deutsch{Entwicklungsphasen}}
+			\begin{itemize}
+				\item \emph{development phase}: adding new functionality
+				\item \emph{system testing phase}: internal release, bug fixes, performance improvements, security fixes, but no new functionality
+				\item \emph{release phase}: bug reports and feature requests by users or customers
+				\item often several versions co-exist at different stages
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}	
+}
+
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\slideCloneFetch}{
+\begin{frame}{Clone and Fetch}
+	\begin{fancycolumns}[animation=none,T]
+		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{empty}{empty}{Repository: Revision 1-10}{~}{~}{}}%
+		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{empty}{empty}{Repository: Revision 1-10}{Repository Clone: 1-10}{Repository Clone: 1-10}{
+				\draw[kante] (server) to node[swap] {Clone Repository} (client1);
+				\draw[kante, bend right, <-] (client2) to node[swap] {Clone Repository} (server);
+		}}%
+		\only<3|handout:0>{\peertopeer{ordner1}{tonne}{ordner1}{ordner1}{Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw [innerekante, <-, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Working Copy: 10} ([xshift = -10pt] client1.north east);
+				
+				\draw [innerekante, <-, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Working Copy: 5} ([xshift = -10pt] client2.north east);
+		}}%
+		\only<4-|handout:0>{\peertopeer{ordner1}{tonne}{ordner1}{ordner1}{Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}%
+		\only<1-|handout:1>{
+			\begin{note}{Clone}
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item create a local repository clone 
+					\item use local repository to create a working copy
+					\item specify folders for the clone
+					\item specify revision or head (latest revision)
+				\end{itemize}
+			\end{note}
+		}
+		\nextcolumn
+		\only<5|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{}}	
+		\only<6|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw[kante, ->] (server) to node[swap, above right] {Fetch Repository} (client2);
+		}}
+		\only<7|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-\emph{11}}{
+		}}
+		\only<5-7|handout:1>{
+			\begin{note}{Fetch}
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item download the remote repository
+					\item note: working copy remains unchanged
+				\end{itemize}
+			\end{note}
+		}
+	\end{fancycolumns}
+\end{frame}
+}
+
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\slideCommitPush}{
+\begin{frame}{Commit and Push}
+	\begin{fancycolumns}[animation=none,T]
+		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: 10 \emph{(changed)}\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}
+		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw [innerekante, ->, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Commit "Change message"} ([xshift = -10pt] client1.north east);
+		}}
+		\only<3-|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: \emph{11}\\Repository Clone: 1-\emph{11}}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}
+		
+		\only<1-|handout:1>{
+			\begin{note}{Commit}
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item commit changes to local repository
+					\item commits are atomic (all or nothing)
+					\item specify changed folders and files
+					\item mandatory message describing your change
+				\end{itemize}
+			\end{note}
+		}
+		\nextcolumn
+		\only<4|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Repository Clone: 1-\emph{11}}{Working Copy: 5}{}}%
+		\only<5|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Repository Clone: 1-11}{Working Copy: 5}{
+				\draw[kante, <-] (server) to node[swap] {Push Repository} (client1);
+		}}%
+		\only<6|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-\emph{11}}{Repository Clone: 1-11}{Working Copy: 5}{
+		}}%
+		\only<4-6|handout:1>{
+			\begin{note}{Push}		
+				\begin{itemize}
+					\setlength{\itemsep}{.1em}
+					\item push local repository to server
+					\item condition: local repository is up to date (might require previous pull)
+				\end{itemize}
+			\end{note}
+		}
+	\end{fancycolumns}
+\end{frame}
+}	
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\slideMergePull}{
+\begin{frame}{Merge and Pull}
+	\vspace{-1.5mm}
+	\begin{fancycolumns}[animation=none,T]
+		\only<1|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
+				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
+		}}%
+		\only<2-|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repositoy Clone: 1-11}{
+		}}%
+		\only<1-|handout:1>{
+			\begin{note}{Merge}
+				\begin{itemize}
+					\item update working copy with local repository
+					\item integrate new commits from other branch
+					\item fast forward / automatic merge / manual merge
+				\end{itemize}
+			\end{note}
+		}
+		\nextcolumn
+		\only<3|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-\emph{11}}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw[kante, ->] (server) to node[swap] {Fetch Repository} (client2);
+		}}
+		\only<4|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-\emph{11}}{
+		}}
+		\only<5|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
+				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
+		}}
+		\only<6|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repository Clone: 1-11}{
+		}}	
+		\only<-0|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repository Clone: 1-\emph{11}}{
+				\draw[kante, ->] (server) to node[swap] {Fetch Repository} (client2);
+				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
+		}}
+		\only<3-6|handout:1>{
+			\begin{note}{Pull}
+				\begin{itemize}
+					\item pull = fetch + merge
+					\item download and merge in one step!
+				\end{itemize}
+			\end{note}
+		}
+	\end{fancycolumns}
+\end{frame}
+}
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\slideIgnore}{
+\begin{frame}
+	\frametitle{Ignore}
+	\begin{fancycolumns}[widths={55},animation=none]
+		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 10 \emph{(changed)}\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}
+		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw [innerekante, ->, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Ignore Foo.class + Commit} ([xshift=-10pt]client1.north east);
+		}}
+		\only<3|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy \emph{11}\\Repository Clone: 1-\emph{11}}{Working Copy: Revision 5\\Repository Clone: 1-10}{
+		}}
+		\only<4|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+				\draw[kante, <-] (server) to node[swap] {Push repository} (client1);
+		}}
+		\only<5|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-\emph{11}}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
+		}}		
+		\begin{note}{.gitignore}
+			\begin{itemize}
+				\item resources will be ignored on commit
+				\item user-specific files or derived/generated resources
+				\item specify files and folders (e.g., *.log files)
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+}
+
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\frameSystemBuilding}{
+\begin{fancycolumns}
+	\begin{definition}{System Building}
+		\mycite{\emph{System building} is the process of creating a complete, executable system by compiling and linking the system components, external libraries, configuration files, and other information.}
+	\end{definition}
+	\begin{definition}{Building Involves Three Platforms}
+		\begin{itemize}
+			\item \emph{development system}: compilers and editors used on the developer's system to test prior to commit
+			\item \emph{build server}: server to build and distribute executable versions, triggered by commits or schedule (i.e., nightly builds)
+			\item \emph{target environment}: intended platform for executable system (e.g., ECU in a car)
+		\end{itemize}
+	\end{definition}
+	\nextcolumn
+	\begin{definition}{Tooling for Building and System Integration}
+		\begin{itemize}
+			\item build script generation: identify dependent components, automated generation or tool support for creation and editing
+			\item version control system integration: checkout required versions of components
+			\item minimal recompilation: determine which parts need to be recompiled
+			\item executable system creation: compilation and linking
+			\item test automation: run automated tests (e.g., unit tests)
+			\item reporting: reports about success or failure of builds and tests
+			\item documentation generation: release notes, help pages
+		\end{itemize}
+	\end{definition}
+\end{fancycolumns}
+}
+
+
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\frameContinousIntegration}{
+	\begin{fancycolumns}
+		\begin{note}{Continuous Integration}
+			\mycite{Agile methods recommend that very frequent system builds should be carried out, with automated testing used to discover software problems. Frequent builds are part of a process of continuous integration [...].}
+		\end{note}
+		\begin{definition}{Continuous Integration Tools}
+			\begin{itemize}
+				\item \href{https://en.wikipedia.org/wiki/CruiseControl}{CruiseControl} (2001--2010) --- first open-source tool
+				\item \href{https://en.wikipedia.org/wiki/TeamCity}{TeamCity} (2006--)
+				\item \href{https://en.wikipedia.org/wiki/Hudson_(software)}{Hudson} (2008--2017)
+				\item \href{https://en.wikipedia.org/wiki/Jenkins_(software)}{Jenkins} (2011--) --- fork of Hudson
+				\item \href{https://en.wikipedia.org/wiki/Travis_CI}{Travis CI} (2011--) --- made in Germany
+				\item \href{https://en.wikipedia.org/wiki/GitLab}{GitLab} (2014--)
+				% TODO add more tools? go continuous delivery, codehsip, circleci, codefresh, bamboo
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Steps in Continuous Integration}
+			\begin{itemize}
+				\item clone/fetch from version control
+				\item if feasible: build and run automated tests, if it fails others are responsible
+				\item apply changes
+				\item build and run automated tests locally, if it fails continue editing
+				\item if local tests pass, commit to feature branch in version control
+				\item commit triggers build server, if it fails continue editing
+				\item if tests pass (and code review approves changes), merge branch into main development branch
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+}
+% introduced: se1-versioncontrol
+% reused: se2-configmanagement
+\newcommand{\frameDevOps}{
+\begin{fancycolumns}
+	\begin{note}{Motivation}
+		\begin{itemize}
+			\item if software fails: 
+			\begin{itemize}
+				\item programmers blame administrators for misconfiguration
+				\item administrators blame programmers for erroneous software
+			\end{itemize}
+			\item programmers want frequent updates
+			\item administrators follow the slogan: \mycite{never change a running system}
+			\item customers and users want a single responsibility
+			\item shorter and shorter update cycles
+		\end{itemize}
+	\end{note}
+	\nextcolumn
+	\begin{definition}{DevOps}
+		\begin{itemize}
+			\item promoted in agile development
+			\item \emph{Dev}: development by programmers
+			\item \emph{Ops}: operation \deutsch{Betrieb} by administrators
+			\item \emph{DevOps}: teams that are responsible for both, development and operations
+			\item goal: avoid blaming each other by shared responsibility
+		\end{itemize}
+	\end{definition}
+\end{fancycolumns}
+}

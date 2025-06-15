@@ -14,65 +14,12 @@
 
 \subsection{Configuration Management}
 \begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
-	\begin{fancycolumns}
-		\begin{definition}{Configuration Management}
-			\mycite{\emph{Configuration management} is concerned with the policies, processes, and tools for managing changing software systems.} % TODO fix source Aiello and Sachs 2011
-		\end{definition}
-		\begin{definition}{Four Activities in Configuration Management}
-			\begin{itemize}
-				\item version control / management: keeping track of multiple versions, enabling simultaneous changes
-				\item system building: collecting, compiling, and linking components into executable systems
-				\item change management: tracking change requests and planning if/when realized
-				\item release management: preparing new and managing old releases
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\begin{definition}{Development Stages \deutsch{Entwicklungsphasen}}
-			\begin{itemize}
-				\item \emph{development phase}: adding new functionality
-				\item \emph{system testing phase}: internal release, bug fixes, performance improvements, security fixes, but no new functionality
-				\item \emph{release phase}: bug reports and feature requests by users or customers
-				\item often several versions co-exist at different stages
-			\end{itemize}
-		\end{definition}
-	\end{fancycolumns}
+	\slideConfigManagement
 \end{frame}
 
 \subsection{Version Control}
 \begin{frame}{\insertsubsection}
-	\begin{fancycolumns}
-		\begin{note}{Goals of Version Control}
-			\begin{itemize}
-				\item collaborative work: synchronize files and folders with other users
-				\item compare own version with other versions
-				\item merge files edited by several users
-				\item history: access old versions, log changes
-			\end{itemize}
-		\end{note}
-		\begin{definition}{Version Control Systems}
-			\begin{itemize}
-				\item local only: SCCS (1972), RCS (1982), \ldots
-				\item centralized: CVS (1986), SVN (2000), \ldots
-				\item distributed: \emph{git} (2005), mercurial (2005), \ldots
-			\end{itemize}
-			\vspace{2mm}
-			invented for software, useful for most files %(cf.\ agile methods)
-		\end{definition}
-		\begin{example}{}
-			Alternatives? Why not use locks (cf.\ databases)?
-		\end{example}
-		\nextcolumn
-		\picDark[width=\linewidth]{versioncontrol/trends-git}
-		\vspace{-4mm}
-		\begin{example}{Personal Experience}
-			\begin{itemize}
-				\item 2004: started working with CVS in industry
-				\item 2007: initiated research protoype FeatureIDE with SVN
-				\item 2009: published FeatureIDE open source (history neglected)
-				\item 2014: migrated FeatureIDE's code to git
-			\end{itemize}
-		\end{example}
-	\end{fancycolumns}
+	\slideVersionControl
 \end{frame}
 
 \subsection{Git vs Mercurial}
@@ -133,59 +80,5 @@
 
 \subsection{Distributed Version Control}
 \begin{frame}{\insertsubsection}
-	\vspace{-2mm}
-	\begin{fancycolumns}
-		\peertopeer{computer}{tonne}{computer}{computer}{GIT Server}{GIT Server/Client X}{GIT Server/Client Y}{
-			\draw[kante] (client1) to (server);
-			\draw[kante] (server) to (client1);
-			\draw[kante] (client2) to (server);
-			\draw[kante] (server) to (client2);
-			\draw[innerekante] (client1.80) to (client1.100);
-			\draw[innerekante] (client1.-100) to (client1.-80);
-			\draw[innerekante] (client2.80) to (client2.100);
-			\draw[innerekante] (client2.-100) to (client2.-80);
-		}
-		\begin{definition}{Distributed Version Control Systems}
-			\begin{itemize}
-				\item peer-to-peer architecture
-				\item clients use repository clone to synchronize
-				\item version history available on each client
-				%\item comparing client version with server version / history of repository clone
-				%\item merging files edited by several clients using an updated version of the repository clone
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\only<2|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{~}{~}{
-		}}
-		\only<3|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Repository Clone: 1-10}{Repository Clone: 1-10}{
-				\draw[kante] (server) to (client1);
-				\draw[kante] (server) to (client2);
-		}}
-		\only<4|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw[innerekante] (client1.80) to (client1.100);
-				\draw[innerekante] (client2.80) to (client2.100);
-		}}
-		\only<5|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-		}}
-		\only<6|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-10}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw[innerekante] (client1.-100) to (client1.-80);
-		}}
-		\only<7|handout:1>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw[kante] (client1) to (server);
-		}}
-		\only<8|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
-				\draw[kante] (server) to (client2);
-		}}
-		\only<9|handout:0>{\peertopeer{computer}{tonne}{computer}{computer}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 11\\Repository Clone: 1-11}{
-				\draw[innerekante] (client2.80) to (client2.100);
-		}}
-		\begin{note}{Distributed Version Control Systems}
-			\begin{itemize}
-				\item main repository on one or several servers
-				\item clone of the repository on each client 
-				\item new revision on every change on the clients
-				%\item Revisions used to undo changes and to merge files
-			\end{itemize}
-		\end{note}
-	\end{fancycolumns}
+	\slideDistributedVC
 \end{frame}

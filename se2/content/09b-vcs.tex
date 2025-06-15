@@ -1,5 +1,257 @@
 % !TeX spellcheck = en_US
-\subsection{a}
-\begin{frame}{Test}
-	d
+
+\subsection{git}
+
+\begin{frame}[b]
+	\begin{fancycolumns}[animation=none]
+		\begin{center}
+			\pic[width=.9\linewidth]{people/isaac-wolkerstorfer}
+		\end{center}
+		\vspace{-7mm}
+		
+		\begin{note}{Isaac Wolkerstorfer (2014) \mysource{\href{https://twitter.com/agnoster/status/44636629423497217}{Wolkerstorfer 2014}}}
+			\mycite{git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.}
+		\end{note} \pause
+		\nextcolumn
+		\begin{note}{Why it's false}
+			\begin{itemize}
+				\item The git space is discrete, not continuous
+				\item There is no closeness metric
+				\item Homeomorphic mappings also require continuity
+			\end{itemize}
+		\end{note} \pause
+		\pic[width=\columnwidth]{versioncontrol/git-spatial}
+	\end{fancycolumns}
 \end{frame}
+
+\xkcdframe{1597} % git
+
+\subsection{Distributed Version Control}
+\begin{frame}{Recap -- \insertsubsection}
+	\slideDistributedVC
+\end{frame}
+
+\subsection{Recap -- Common Operations}
+
+\slideCloneFetch{}
+
+\slideCommitPush{}
+
+\xkcdframe{1296} % commit messages
+
+\slideMergePull{}
+
+\slideIgnore{}
+
+\begin{frame}{Branching and Merging}
+	\slideBranchingAndMerging{}
+\end{frame}
+
+\begin{frame}[fragile]{Automatic Merge} %copied from se1-versioncontrol, command does not work with fragile
+	\begin{columns}[onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+									print("\n");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Foo");
+									print("Bar");
+									print("\n");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Foo");
+									print("Bar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision, automatically merged
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Merge Conflicts}	%copied from se1-versioncontrol, command does not work with fragile
+	\begin{columns}[T, onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar\n");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {		
+									<<<<<<< .mine
+									print("Bar\n");
+									=======
+									print("FooBar");
+									>>>>>>> .r11
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("FooBar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision results in conflict
+					\item<4-> Automatic merge fails: user has to provide a fix
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Patching, Cherry-Picking, and Rebasing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Patch}
+			%TODO
+		\end{definition}\pause
+		\begin{definition}{Cherry-Picking}
+			%TODO
+		\end{definition}\pause
+		\nextcolumn
+		\begin{definition}{Rebase}
+			content
+		\end{definition}\pause
+	\end{fancycolumns}
+\end{frame}
+
+
+\subsection{Branching Strategies}
+\begin{frame}{\insertsubsection \mytitlesource{\href{https://gitlab.com/gitlab-org/gitlab-foss/-/blob/0fdb03ee16f0ccd7f122a4f0af23ee628d1de3c9/doc/workflow/gitlab\_flow.md}{GitLab Documentation}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Git Flow}
+			%TODO
+		\end{definition}\pause
+		\nextcolumn
+		\centering\pic[width=\columnwidth]{versioncontrol/git-flow}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Branching Strategies}
+\begin{frame}{\insertsubsection \mytitlesource{\href{https://docs.github.com/en/get-started/using-github/github-flow}{GitHub Documentation}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{GitHub Flow}
+			%TODO
+		\end{definition}\pause
+		\nextcolumn
+		\centering\pic[width=\columnwidth]{versioncontrol/github-flow}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Merge Algorithms}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{}
+			%TODO
+		\end{definition}\pause
+		\nextcolumn
+		\begin{definition}{}
+			content
+		\end{definition}\pause
+	\end{fancycolumns}
+\end{frame}
+
+       	
