@@ -43,7 +43,7 @@
 
 \slideIgnore{}
 
-\begin{frame}{Branching and Merging}
+\begin{frame}{Branching and Merging} %TODO add git dags (see rebase) for other frames
 	\slideBranchingAndMerging{}
 \end{frame}
 
@@ -202,19 +202,150 @@
 	\end{columns}
 \end{frame}
 
+\subsection{Merge Algorithms}
+\begin{frame}[fragile]{\insertsubsection}
+	\begin{fancycolumns}[animation=none, widths={30}]
+		
+		\begin{lstlisting}[language=bash, basicstyle=\small, breaklines=true, numbers=none, escapechar=*]
+git checkout main
+>> Switched to branch 'main'
+git merge feature
+>> Merge made by the 'ost' strategy.
+>> example.file 20 +
+>> 1 file changed, 20 insertion(+)
+
+git merge feature
+>> Auto-merging example.file
+>> CONFLICT (content): Merge conflict in example.file
+>> Automatic merge failed; fix conflicts and then commit the result.
+		\end{lstlisting}
+		
+		\nextcolumn
+		\begin{center}
+			\begin{tikzpicture}
+				\gitDAG[grow right sep = 2em]{
+					A -- B -- { 
+						C -- D -- E,
+						{ F -- G },
+					} -- M
+				};
+				% Tag reference
+				\gittag
+				[ca]       % node name
+				{Common Ancestor}       % node text
+				{above=of B} % node placement
+				{B}          % target
+				% Remote branch
+				% Branch
+				\gitbranch
+				{main}      % node name and text 
+				{above=of M} % node placement
+				{M}          % target
+				\gitbranch
+				{feature}      % node name and text 
+				{below=of G} % node placement
+				{G}          % target
+				% HEAD reference
+				\gitHEAD
+				{above=of main} % node placement
+				{main}          % target
+			\end{tikzpicture}
+		\end{center}
+	\end{fancycolumns}
+\end{frame}
+
 \subsection{Patching, Cherry-Picking, and Rebasing}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}[animation=none]
+		{\small 
 		\begin{definition}{Patch}
-			%TODO
+			\begin{itemize}
+				\item Text file containing code changes and git metadata
+				\item Can be applied to a codebase
+				\item Create patch: \texttt{git format-patch}
+				\item Apply patch as commit: \texttt{git am}
+			\end{itemize}
 		\end{definition}\pause
 		\begin{definition}{Cherry-Picking}
-			%TODO
+			\begin{itemize}
+				\item Take commit and apply as patch
+				\item Multiple commits $\rightarrow$ sequentially applied
+				\item Transfers single changes between branches
+			\end{itemize}
 		\end{definition}\pause
-		\nextcolumn
 		\begin{definition}{Rebase}
-			content
+			\begin{itemize}
+				\item Transfer sequence of commits to a new base 
+				\item Internal: applies every commit to new base as new commit
+				\item Creates a linear project history
+			\end{itemize}
 		\end{definition}\pause
+		}
+		\nextcolumn
+		\begin{center}
+			\begin{tikzpicture}
+			% Commit DAG
+			\gitDAG[grow right sep = 2em]{
+				A -- B -- { 
+					C,
+					D -- E,
+				}
+			};
+			% Tag reference
+			\gittag
+			[v0p1]       % node name
+			{v0.1}       % node text
+			{above=of A} % node placement
+			{A}          % target
+			% Remote branch
+			\gitremotebranch
+			[origmaster]    % node name
+			{origin/master} % node text
+			{above=of C}    % node placement
+			{C}             % target
+			% Branch
+			\gitbranch
+			{master}     % node name and text 
+			{above=of E} % node placement
+			{E}          % target
+			% HEAD reference
+			\gitHEAD
+			{above=of master} % node placement
+			{master}          % target
+		\end{tikzpicture}
+		
+		\pause
+				
+		\begin{tikzpicture}
+			\gitDAG[grow right sep = 2em]{
+				A -- B -- { 
+					C -- D' -- E',
+					{[nodes=unreachable] D -- E },
+				}
+			};
+			% Tag reference
+			\gittag
+			[v0p1]       % node name
+			{v0.1}       % node text
+			{above=of A} % node placement
+			{A}          % target
+			% Remote branch
+			\gitremotebranch
+			[origmaster]    % node name
+			{origin/master} % node text
+			{above=of C}    % node placement
+			{C}             % target
+			% Branch
+			\gitbranch
+			{master}      % node name and text 
+			{above=of E'} % node placement
+			{E'}          % target
+			% HEAD reference
+			\gitHEAD
+			{above=of master} % node placement
+			{master}          % target
+		\end{tikzpicture}
+		\end{center}
 	\end{fancycolumns}
 \end{frame}
 
@@ -223,10 +354,28 @@
 \begin{frame}{\insertsubsection \mytitlesource{\href{https://gitlab.com/gitlab-org/gitlab-foss/-/blob/0fdb03ee16f0ccd7f122a4f0af23ee628d1de3c9/doc/workflow/gitlab\_flow.md}{GitLab Documentation}}}
 	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Git Flow}
-			%TODO
+			\begin{itemize}
+				\item First approach to use branches
+				\item Different branches for different aims
+				\begin{itemize}
+					\item Main
+					\item Development
+					\item Individual features
+					\item Individual releases
+					\item Hotfixes
+				\end{itemize}
+				\item Feature $\rightarrow$ Dev $\rightarrow$ Release $\rightarrow$ Main
+			\end{itemize}
 		\end{definition}\pause
+		\begin{note}{Problems}
+			\begin{itemize}
+				\item Very complex
+				\item Does not work with shorter release cycles
+				\item Many long diverging branches $\rightarrow$ many merge conflicts
+			\end{itemize}
+		\end{note}
 		\nextcolumn
-		\centering\pic[width=\columnwidth]{versioncontrol/git-flow}
+		\onslide<1->{\centering\pic[width=.7\columnwidth]{versioncontrol/git-flow}}
 	\end{fancycolumns}
 \end{frame}
 
@@ -234,24 +383,27 @@
 \begin{frame}{\insertsubsection \mytitlesource{\href{https://docs.github.com/en/get-started/using-github/github-flow}{GitHub Documentation}}}
 	\begin{fancycolumns}[animation=none]
 		\begin{definition}{GitHub Flow}
-			%TODO
+			\begin{itemize}
+				\item Easier alternative for agile development
+				\item Main for deployment
+				\item Small feature branches for development
+				\item Tags for releases
+				\item Hotfixes are also feature branches
+			\end{itemize}
 		\end{definition}\pause
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item Frequent merges $\rightarrow$ small merge conflicts
+				\item Supports fast release cycles
+				\item Minimizes complexity: less branches, Main most important
+				\item Code fast in Main $\rightarrow$ minimizes \enquote{dead} code
+			\end{itemize}
+		\end{note}
 		\nextcolumn
-		\centering\pic[width=\columnwidth]{versioncontrol/github-flow}
+		\onslide<1->{\centering\pic[width=.7\columnwidth]{versioncontrol/github-flow}}
 	\end{fancycolumns}
 \end{frame}
+	
 
-\subsection{Merge Algorithms}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[animation=none]
-		\begin{definition}{}
-			%TODO
-		\end{definition}\pause
-		\nextcolumn
-		\begin{definition}{}
-			content
-		\end{definition}\pause
-	\end{fancycolumns}
-\end{frame}
 
        	

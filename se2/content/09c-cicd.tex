@@ -5,6 +5,10 @@
 	\frameDevOps
 \end{frame}
 
+\begin{frame}{\insertsubsection}
+	\centering\picDark[width=.75\linewidth]{versioncontrol/devops}
+\end{frame}
+
 \subsection{System Building}
 \begin{frame}{Recap -- \insertsubsection \mytitlesource{\sommerville}}
 	\frameSystemBuilding
@@ -17,9 +21,158 @@
 
 %TODO add Diagramm Sommerville 828
 
+\subsection{CI/CD Pipelines}
+\begin{frame}[fragile]{\insertsubsection}
+	\begin{fancycolumns}
+		\textbf{GitHub Actions:}
+	\begin{lstlisting}[language={}, basicstyle=\tiny, breaklines=true, numbers=none]	
+name: Java CI with Maven
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-\begin{frame}{\insertsubsection}
-	\centering\picDark[width=.75\linewidth]{versioncontrol/devops}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: Update dependency graph
+        uses: advanced-security/maven-dependency-submission-action@
+		\end{lstlisting}
+		\nextcolumn
+		\textbf{GitLab Pipelines:}
+		\begin{lstlisting}[language={}, basicstyle=\tiny, breaklines=true, numbers=none]
+image: maven:latest
+stages:
+  - build
+  - test
+  - run
+
+variables:
+  MAVEN\_CLI\_OPTS: ``-s .m2/settings.xml --batch-mode''
+  MAVEN\_OPTS: ``-Dmaven.repo.local=.m2/repository''
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+build:
+  stage: build
+  script:
+    - mvn \$MAVEN\_CLI\_OPTS compile
+test:
+  stage: test
+  script:
+    - mvn \$MAVEN\_CLI\_OPTS test
+run:
+  stage: run
+  script:
+    - mvn \$MAVEN\_CLI\_OPTS package
+    - mvn \$MAVEN\_CLI\_OPTS exec:java -Dexec.mainClass=``com.example.app.App''
+
+		\end{lstlisting}
+	\end{fancycolumns}
 \end{frame}
 
-%TODO pipelines, docker,  feature flags?, test-driven dev + anhang
+\subsection{Containerization}
+\begin{frame}[fragile]{\insertsubsection}
+	\begin{fancycolumns}[widths={30}]
+		\begin{definition}{Containerization}
+			\begin{itemize}
+				\item If it only runs on your computer, ship your computer!
+				\item Bundles all files and configuration into a isolated bundle
+				\item Advantages in automated deployment
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Docker}
+			\begin{itemize}
+				\item Most common containerization option
+				\item Configuration: Docker-File
+				\item Execution: Docker-Daemon
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{lstlisting}[language={}, basicstyle=\tiny, breaklines=true, numbers=none]
+FROM eclipse-temurin:21-jdk-jammy as deps
+WORKDIR /build
+
+COPY --chmod=0755 mvnw mvnw
+COPY .mvn/ .mvn/
+
+RUN --mount=type=bind,source=pom.xml,target=pom.xml \
+      --mount=type=cache,target=/root/.m2 ./mvnw dependency:go-offline -DskipTests
+[...]
+FROM eclipse-temurin:21-jre-jammy AS final
+
+ARG UID=10001
+RUN adduser \
+   --disabled-password \
+   --gecos "" \
+   --home "/nonexistent" \
+   --shell "/sbin/nologin" \
+   --no-create-home \
+   --uid "${UID}" \
+   appuser
+USER appuser
+
+COPY --from=extract build/target/extracted/dependencies/ ./
+COPY --from=extract build/target/extracted/spring-boot-loader/ ./
+COPY --from=extract build/target/extracted/snapshot-dependencies/ ./
+COPY --from=extract build/target/extracted/application/ ./
+
+EXPOSE 8080
+ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
+		\end{lstlisting}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Test-driven Development}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Test-driven Development}
+			\begin{itemize}
+				\item Common: Regression Tests $\rightarrow$ Tests are executed after every change
+				\item Extension: tests are written first
+				\item White-Box approach $\rightarrow$ based on feature request
+			\end{itemize}
+		\end{definition} \pause
+		\begin{note}{Problems}
+			\begin{itemize}
+				\item High initial effort
+				\item High maintenance
+				\item High execution effort
+			\end{itemize}
+		\end{note} \pause
+		\nextcolumn
+		\begin{note}{Test Suite Minimization}
+			\begin{itemize}
+				\item Elimination of redundant tests
+				\item Coverage criteria used for decision
+			\end{itemize}
+		\end{note} \pause
+		\begin{note}{Test Case Selection}
+			\begin{itemize}
+				\item Creation of fast sub-set 
+				\item Modification-aware
+			\end{itemize}
+		\end{note} \pause
+		\begin{note}{Test Case Prioritization}
+			\begin{itemize}
+				\item Tests that probably find bugs are executed first
+				\item Based on history, changes, \dots
+			\end{itemize}
+		\end{note} 
+	\end{fancycolumns}
+\end{frame}
+
+%TODO feature flags?
