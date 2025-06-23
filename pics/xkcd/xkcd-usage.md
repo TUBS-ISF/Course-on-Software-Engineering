@@ -98,6 +98,10 @@ se1: ![1667](1667.png)
 
 9. Configuration Management
 
+duplicate in se2: ![1172](1172.png)
+
+se1: ![1597](1597.png)
+
 10. Open-Source Software
 
 ![1810](1810.png)
