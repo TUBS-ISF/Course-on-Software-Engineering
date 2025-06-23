@@ -1,0 +1,207 @@
+\subsection{MIT License}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://fossa.com/blog/open-source-licenses-101-mit-license/}{fossa.com}}} % copied from se1
+	\begin{fancycolumns}
+		\begin{definition}{Profile}
+			\begin{itemize}
+				\item released: about 1987
+				\item publisher: Massachusetts Institute of Technology
+				\item classification: permissive
+				\item most popular license % TODO provide evidence https://en.wikipedia.org/wiki/MIT_License
+				\item prominent use: Ruby on Rails (server-side web application framework), Node.js (JavaScript runtime environment)
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Selected Terms and Conditions}
+			\begin{itemize}
+				\item permits reuse within proprietary software
+				\item license shipped with distribution or relicensing (even to proprietary licenses)
+				\item \mycite{provided as-is, without warranty}
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/mit-logo}
+		\end{exampletight}
+		\begin{note}{The Full License Text}
+			\tiny\mycite{Copyright (c) \textless year\textgreater \textless copyright holders\textgreater
+				
+				Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+				
+				The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+				
+				THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{GPL: GNU General Public License}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.gnu.org/licenses/gpl-3.0.html}{gnu.org}}} % copied from se1
+	\begin{fancycolumns}
+		\begin{definition}{Profile}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item releases: 1989 (GPLv1), 1991 (GPLv2), 2007 (GPLv3)
+				\item author/publisher: Richard Stallman, Free Software Foundation
+				\item classification: strong copyleft
+				\item prominent use: Linux kernel (GPL-2.0-only), GNU Compiler Collection (GCC)
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Selected Terms and Conditions}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item software using (modified) GPL software must be released under GPL (copyleft) % TODO find better formulation
+				\item for any sale or distribution: binaries must be accompanied by source code
+				\item for private/interal use: no obligations
+				\item commercial redistribution allowed
+				\item GPL software (Linux/GCC) may be used for commercial purposes
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/gplv3-logo}
+		\end{exampletight}
+		\begin{note}{Three Main Versions}
+			\begin{itemize}
+				\item GPL-1.0-only and GPL-1.0-or-later
+				\begin{itemize}
+					\item publishing binary only was allowed
+					\item applies to whole distributable
+				\end{itemize}
+				\item GPL-2.0-only and GPL-2.0-or-later
+				\begin{itemize}
+					\item fixed above problems
+					\item relaxed version LGPL, motivated by C standard library (libc)
+				\end{itemize}
+				\item GPL-3.0-only and GPL-3.0-or-later
+				\begin{itemize}
+					\item improved compatibility with other licenses (e.g., Apache)
+				\end{itemize}
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{LGPL: GNU Lesser General Public License}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.gnu.org/licenses/lgpl-3.0.html}{gnu.org}}} % copied from se1
+	\begin{fancycolumns}
+		\begin{definition}{Profile}
+			\begin{itemize}
+				\item releases: 1991 (LGPLv2), 1999 (LGPLv2.1), 2007 (LGPLv3)
+				\item formerly known as: GNU Library General Public License
+				\item publisher: Free Software Foundation
+				\item classification: weak copyleft
+				%\item prominent use: 
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Selected Terms and Conditions}
+			\begin{itemize}
+				\item similar to GPL, but less restrictive
+				\item software using (modified) LGPL software components \emph{does not have to} be released under LGPL
+				\item modifications of LGPL software components \emph{must} be released under LGPL % TODO does not have to be released!
+				\item freedom only for LGPL components
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{exampletight}{}
+			\centering\pic[width=.55\linewidth]{opensource/lgplv3-logo}
+		\end{exampletight}
+		\begin{note}{Three Main Versions}
+			\begin{itemize}
+				\item LGPL-2.0-only and LGPL-2.0-or-later
+				%				\begin{itemize}
+					%					\item publishing binary only was allowed
+					%					\item applies to whole distributable
+					%				\end{itemize}
+				\item LGPL-2.1-only and LGPL-2.1-or-later
+				%				\begin{itemize}
+					%					\item fixed above problems
+					%					\item relaxed version LGPL, motivated by C standard library (libc)
+					%				\end{itemize}
+				\item LGPL-3.0-only and LGPL-3.0-or-later
+				%				\begin{itemize}
+					%					\item improved compaitibility with other licenses (e.g., Apache)
+					%				\end{itemize}
+			\end{itemize}
+		\end{note}
+		\begin{example}{What's the main problem of LGPL?}
+			\centering It contains \mycite{GPL}!\\[2mm]LGPL often confused with GPL in industry.
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{225}
+
+\subsection{Compatibility of Software Licenses}
+\begin{frame}{\insertsubsection}% TODO \ \mytitlesource{\href{}{}}}}
+\begin{fancycolumns}
+\begin{note}{Problem}
+	\begin{itemize}
+		\item most licenses have similar goals
+		\item still: sometimes legally impossible to combine software with different licenses
+		\item incompatibilities often arise from copyleft clauses
+	\end{itemize}
+\end{note}
+\begin{example}{Desired Incompatibilities}
+	\begin{itemize}
+		\item proprietary licenses are typically specific to a program and incompatible to each other
+		\item copyleft licenses are incompatible to proprietary and permissive licenses
+		\item software licensed with \emph{GPL} cannot be used within \emph{MIT}-licensed software
+	\end{itemize}
+\end{example}
+\nextcolumn
+\begin{example}{Undesired Incompatibilities}
+	\begin{itemize}
+		\item software licensed with \emph{GPL-2.0-only} cannot be used within \emph{GPLv3}- or \emph{LGPLv3}-licensed software (cf.\ Linux kernel) $\Rightarrow$ most projects use \emph{GPL-2.0-or-later} instead
+		\item software licensed with \emph{GPLv3} cannot be used in material licsensed as creative commons \emph{BY-SA 4.0} \mysource{\href{https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses/}{creativecommons.org}}
+	\end{itemize}
+\end{example}
+\begin{exampletight}{Overview on Compatibilities}
+	\centering\pic[width=\linewidth]{opensource/compatibility} % TODO nachzeichnen mit Tikz? oder ersetzen durch https://commons.wikimedia.org/wiki/File:Software_licensing_spectrum.png
+\end{exampletight}
+\end{fancycolumns}
+\end{frame}
+%     compatible: MIT->GPL
+%     incompatible: GPL->MIT
+
+\subsection{Re-Licensing and Dual Licensing}
+\begin{frame}{\insertsubsection}
+\begin{fancycolumns}
+\begin{note}{How to solve a license incompatibility?}
+	\begin{itemize}
+		\item remove the software everywhere
+		\item re-implement (parts thereof)
+		\item give it a new license (as replacement or in addition to the old license)
+	\end{itemize}
+\end{note}
+\begin{definition}{Re-Licensing}
+	\begin{itemize}
+		\item changing the license to another license
+		\item requires consent by all developers
+		\item in practice 100\% often not feasible: 80--95\%
+	\end{itemize}
+\end{definition}
+\begin{example}{{Re-Licensing of the VLC Project\hfill\tikz[overlay] \node[anchor=30,xshift=2mm] {\pic[height=12mm]{opensource/vlc}};}} % TODO add references and double check years https://en.wikipedia.org/wiki/License_compatibility
+	\begin{itemize}
+		\item removed from the Apple App Store
+		\item re-licensed from GPLv2 to LGPLv2
+		\item later re-licensed to Mozilla Public License
+	\end{itemize}
+\end{example}
+\nextcolumn
+\begin{definition}{Dual Licensing}
+	\begin{itemize}
+		\item owner is not bound to the own copyleft/license
+		\item a software can have multiple licenses
+		\item same rules as for re-licensing
+		\item term also used for 3 and more licenses
+	\end{itemize}
+\end{definition}
+\pic[height=12mm]{opensource/netscape}\hfill\pic[height=12mm]{opensource/firefox}
+\begin{example}{Mozilla's Firefox Browser} % TODO add references and double check years https://en.wikipedia.org/wiki/License_compatibility https://en.wikipedia.org/wiki/Software_relicensing
+	\begin{itemize}
+		\item Netscape's Communicator 4.0 released under the Mozilla Public License
+		\item incompatilibility to GPL
+		\item dual licensing as MPLv1.1/GPLv2/LGPLv2.1
+	\end{itemize}
+\end{example}
+\end{fancycolumns}
+\end{frame}

@@ -1,0 +1,134 @@
+\subsection{Rights and Duties}
+\begin{frame}{\insertsubsection} % copied from se1
+	\begin{fancycolumns}
+		\begin{definition}{Who owns the code? \mysource{\sommerville}}
+			\mycite{Although a fundamental principle of open-source development is that source code should be freely available, this does not mean that anyone can do as they wish with that code. Legally, the developer of the code (either a company or an individual) owns the code. They can place restrictions on how it is used by including legally binding conditions in an \emph{open-source software license}.} % St. Laurent 2004
+		\end{definition}
+		\begin{note}{What if there is no license?}
+			\begin{itemize}
+				\item you are allowed to read the code
+				\item you are \emph{not allowed} to use, modify, distribute it
+				\item you need to contact the owners to negotiate
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Understanding Software Licenses \mysource{\href{https://fossa.com/blog/open-source-licenses-101-mit-license/}{fossa.com}}}
+			\mycite{Anyone who works with open-source software (OSS), whether as a developer, a contributor, or a business, has to know at least a little bit about open source licenses. In a nutshell, an open source license tells you what you can and can’t do with the open source code. And if using the code comes with any requirements and/or responsibilities, the license outlines those as well.}
+		\end{definition}
+		\begin{example}{What's Next?}
+			\begin{itemize}
+				\item principles of software licenses
+				\item examples of famous software licenses
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Collective Ownership}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\centering\pic[width=\linewidth,trim=800 0 100 0,clip]{people/sercan-leylek}
+		\vspace{-7mm}
+		
+		\begin{note}{Sercan Leylek (2016) \mysource{\href{https://storksnestblog.wordpress.com/2016/10/19/every-programmer-is-an-author/}{wordpress.com}}}
+			\mycite{Every programmer is an author.}
+		\end{note}
+		% author, programmer, blogger
+		\nextcolumn
+		\begin{note}{Mosher’s Law of Software Engineering \mysource{\href{https://twitter.com/codewisdom/status/777924969221226501}{twitter.com}}}
+			\mycite{Don’t worry if it doesn’t work right. If everything did, you’d be out of a job.}
+		\end{note}
+		% TODO find out who Mosher is/was
+	\end{fancycolumns}
+\end{frame}
+
+\widexkcdframe{306} % orphaned projects % copied from se1
+
+\subsection{Recommendations for Companies}
+\begin{frame}{\insertsubsection} % copied from se1
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item basically every company needs software
+				\item even non-software companies need software
+				\item more and more companies even transition into software companies (e.g., car manufacturers)
+				\item large amounts of money spend on software licenses (e.g., Microsoft Windows and Office, Adobe Acrobat)
+				\item even if open-source software is for free, resources are necessary to prevent license violations within a company
+				\item and who does the maintenance? who pays for it?
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Bayersdorfer 2007: \mysource{\sommerville}}
+			\begin{itemize}
+				\item track information about downloaded and used open-source components (e.g., storing licenses)
+				\item understand how a component is licensed before it is used
+				\item study the open-source project to predict its future evolution
+				\item educate developers about open source and open-source licensing \correct
+				\item auditing of open-source software to detect violations
+				\item if you rely on open-source products, support their development
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Copyleft and Copyright}
+\begin{frame}{\insertsubsection} % copied from se1
+	\begin{fancycolumns}[reverse,T]
+		\begin{definition}{{Copyleft \hfill\tikz[overlay] \node[anchor=-10,xshift=2mm] {\pic[width=.13\linewidth]{opensource/copyleft}};}}
+			\begin{itemize}
+				\item right to freely distribute and modify intellectual property
+				\item obligation that the same rights (license) apply to derivative work
+				\begin{itemize}
+					\item \emph{weak copyleft}: only applies to formerly-licensed parts (e.g., a library)
+					\item \emph{strong copyleft}: applies to the complete software (deprecatory: viral effect)
+				\end{itemize}
+				\item license without copyleft is called \emph{permissive}
+				\item implemented with copyright laws
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Examples for Copyleft Licenses}
+			\small
+			\begin{itemize}
+				\item GNU General Public License (GPL) for software
+				\item Creative Commons share-alike license for documents and pictures
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{definition}{{\tikz[overlay] \node[anchor=190,xshift=-2mm] {\pic[width=.13\linewidth]{opensource/copyright}};\hfill Copyright \deutsch{Urheberrecht}}}
+			\begin{itemize}
+				\item kind of intellectual property, such as patents and trademarks \deutsch{gestiges Eigentum, Patent, Marke}
+				\item owner of creative work has exclusive right over copies for a limited time
+				\item includes distribution, reproduction, public performance, derivative work
+				\item copyright is often granted by national laws
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Decision for copyleft is independent of:}
+			\begin{itemize}
+				\item decision to allow/forbid commercial use
+				\item decision about the fee to get the source code
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{The Impact of Licensing Issues}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.heise.de/news/Ruby-on-Rails-Durch-Lizenzproblem-entfallene-Library-erzeugt-Dominoeffekt-5999197.html}{heise.de}}} % copied from se1
+	\begin{fancycolumns}
+		\begin{exampletight}{}
+			\pic[width=\linewidth]{opensource/heise-ruby-on-rails-license-problem} % TODO in German. translate? replace?
+		\end{exampletight}
+		\nextcolumn
+		\begin{example}{March 2021: The Story of mimemagic}
+			\begin{itemize}
+				\item Ruby library mimemagic is part of Ruby on Rails and was licensed under MIT license
+				\item 580,000 repositories on Github use Ruby on Rails under the same license
+				\item mimemagic is using another library under GPL license
+				\item GPL has a copyleft: mimemagic must be published under GPL too
+				\item old versions of mimemagic have been removed
+				\item new versions use GPL license
+				\item 580,000 projects would need to change from MIT to GPL and upgrade to the new version
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+

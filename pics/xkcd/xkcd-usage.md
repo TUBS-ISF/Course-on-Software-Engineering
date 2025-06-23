@@ -100,6 +100,12 @@ se1: ![1667](1667.png)
 
 10. Open-Source Software
 
+![1810](1810.png)
+
+se1: ![306](306.png)
+
+![225](225.png)
+
 11. Software Product Lines
 
 12. Automotive Software
@@ -111,6 +117,8 @@ se1: ![1667](1667.png)
 1. Introduction
 
 ![2369](2369.png)
+
+![3102](3102.png)
 
 2. Runtime Variability and Design Patterns
 
@@ -146,8 +154,6 @@ se1: ![1667](1667.png)
 
 ![221](221.png)
 
-![225](225.png)
-
 ![323](323.png)
 
 ![763](763.png)
@@ -157,8 +163,6 @@ se1: ![1667](1667.png)
 ![1328](1328.png)
 
 ![1690](1690.png)
-
-![1810](1810.png)
 
 ![2025](2025.png)
 
@@ -203,4 +207,3 @@ se1: ![1667](1667.png)
 ![3062](3062.png)
 
 ![3064](3064.png)
-

@@ -1,0 +1,144 @@
+\subsection{Open-Source Development}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}} % copied from se1
+	\begin{fancycolumns}
+		\begin{definition}{Open-Source Development}
+			\mycite{\emph{Open-source development} is an approach to software development in which the source code of a software system is published and volunteers are invited to participate in the development process.} % Raymond 2001
+		\end{definition}
+		\begin{note}{Open-Source Development}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item assumption in the early days: code developed by small core group
+				\item today: Internet to recruit volunteer developers (often users)
+				\item volunteers contribute with bug reports, feature requests, changes to the software (cf.\ pull requests)
+				\item core group controls changes to main repo
+				\item opposite: proprietary software / closed-source development
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{note}{Internet iff Open Source}
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item Internet used to distribute source code and recruit developers
+				\item Internet builds on open-source software
+			\end{itemize}
+		\end{note}
+		\begin{example}{Examples} % TODO separate slides with images?
+			\begin{itemize}
+				\setlength\itemsep{.0em}
+				\item operating system Linux (for most servers)
+				\item operating system Android (for most clients)
+				\item web server Apache
+				\item database management system mySQL
+				\item browser Firefox
+				% TODO \item e-mail client Thunderbird
+				\item image editor GIMP
+				\item media player VLC
+				\item screen recording software OBS
+				\item video editing software Shotcut
+				\item runtime env.\ and standard library OpenJDK
+				\item development environment Eclipse
+			\end{itemize} % 
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Central Questions for Each Software Project}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}} % copied from se1
+	\begin{fancycolumns}
+		\begin{note}{First Question}
+			\mycite{Should the product that is being developed make use of open-source components?}
+		\end{note}
+		\begin{example}{Example Criteria}
+			\begin{itemize}
+				\item are related open-source components available?
+				\item is their quality sufficient?
+				\item will they be maintained?
+				\item what is the effort to integrate them?
+				\item is it cheaper to modify or redevelop them?
+				\item how are they licensed?
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{note}{Second Question}
+			\mycite{Should an open-source approach be used for its own software development?}
+		\end{note}
+		\begin{example}{Example Criteria}
+			\begin{itemize}
+				\item business model: how to earn money then? % TODO does not mean it is free
+				\item support? consulting? proprietary extensions? -- \textit{rich relatives or friends? unconditional basic income \deutsch{bedingungsloses Grundeinkommen}?}
+				\item what additional value do you have from opening the source?
+				\item more customers, recognition, collaborations?
+				\item does it reveal confidential business knowledge?
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{1810} % chat clients
+
+\subsection{Richard Stallman's Four Freedoms}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.youtube.com/watch?v=Ag1AKIl_2GM}{Stallman's 2014 TEDx Talk}}}
+	\begin{fancycolumns}
+		\centering\pic[width=.6\linewidth,trim=0 0 0 0,clip]{people/richard-stallman}
+		\vspace{-7mm}
+		
+		\begin{note}{}
+			Richard Matthew Stallman aka.\ RMS (born 1953)
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Four Freedoms by Richard Stallman}
+			\begin{itemize}
+				\item 0. freedom to run it for whatever purpose
+				\item 1. freedom to study and modify the program (source code is available)
+				\item 2. freedom to redistribute it (needed for non-programmers)
+				\item 3. freedom to redistribute or even sell modified versions
+				\item all four needed that the user controls the program
+				\item otherwise the program controls the users
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Free Software}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.youtube.com/watch?v=Ag1AKIl_2GM}{Stallman's 2014 TEDx Talk}}}
+	\begin{fancycolumns}
+		\begin{definition}{Free Software}
+			\begin{itemize}
+				\item free stands for freedom (often confused with \mycite{free of charge})
+				\item free software: demand for freedom
+				\item open-source software: better code quality (promoted by Eric S.\ Raymond)
+				\item today largely replaced with term open-source software
+				\item more inclusive term?\\free and open-source software (FOSS) % TODO wikipedia defines this term to be the subset of both worlds https://en.wikipedia.org/wiki/Free_and_open-source_software
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Free Software vs Freeware}
+			\begin{itemize}
+				\item free software: free as in free speech
+				\item freeware: free as in free beer
+			\end{itemize}
+			free software can be adware or shareware
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Free Software Foundation \mysource{\href{https://www.fsf.org/}{fsf.org}}}
+			\begin{itemize}
+				\item founded by Richard Stallman in 1985
+				\item first ten years: employ developers for the operating system GNU
+				
+				Linux = GNU + Linux kernel
+				\item later: promoting free software, working on legal issues
+			\end{itemize}
+		\end{definition}
+		\begin{exampletight}{}
+			\centering\pic[width=.5\linewidth]{opensource/gnu-logo}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Buying Free Software}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\centering\pic[height=65mm,trim=0 500 0 600,clip]{opensource/buying-free-software-gimp}
+		\nextcolumn
+		\centering\pic[height=65mm,trim=0 500 0 600,clip]{opensource/buying-free-software-vlc}
+	\end{fancycolumns}
+\end{frame}
