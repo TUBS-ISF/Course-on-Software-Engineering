@@ -1,0 +1,408 @@
+% !TeX spellcheck = en_US
+
+\subsection{git}
+
+\begin{frame}[b]
+	\begin{fancycolumns}[animation=none]
+		\begin{center}
+			\pic[width=.9\linewidth]{people/isaac-wolkerstorfer}
+		\end{center}
+		\vspace{-7mm}
+		
+		\begin{note}{Isaac Wolkerstorfer (2014) \mysource{\href{https://twitter.com/agnoster/status/44636629423497217}{Wolkerstorfer 2014}}}
+			\mycite{git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.}
+		\end{note} \pause
+		\nextcolumn
+		\begin{note}{Why it's false}
+			\begin{itemize}
+				\item The git space is discrete, not continuous
+				\item There is no closeness metric
+				\item Homeomorphic mappings also require continuity
+			\end{itemize}
+		\end{note} \pause
+		\pic[width=\columnwidth]{versioncontrol/git-spatial}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{1597} % git
+
+\subsection{Distributed Version Control}
+\begin{frame}{Recap -- \insertsubsection}
+	\slideDistributedVC
+\end{frame}
+
+\subsection{Recap -- Common Operations}
+
+\slideCloneFetch{}
+
+\slideCommitPush{}
+
+\xkcdframe{1296} % commit messages
+
+\slideMergePull{}
+
+\slideIgnore{}
+
+\begin{frame}{Branching and Merging} %TODO add git dags (see rebase) for other frames
+	\slideBranchingAndMerging{}
+\end{frame}
+
+\begin{frame}[fragile]{Automatic Merge} %copied from se1-versioncontrol, command does not work with fragile
+	\begin{columns}[onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+									print("\n");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Foo");
+									print("Bar");
+									print("\n");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Foo");
+									print("Bar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision, automatically merged
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Merge Conflicts}	%copied from se1-versioncontrol, command does not work with fragile
+	\begin{columns}[T, onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar\n");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {		
+									<<<<<<< .mine
+									print("Bar\n");
+									=======
+									print("FooBar");
+									>>>>>>> .r11
+								}
+							}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("Bar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+							class Foo {
+								void bar() {
+									print("FooBar");
+								}
+							}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision results in conflict
+					\item<4-> Automatic merge fails: user has to provide a fix
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Merge Algorithms}
+\begin{frame}[fragile]{\insertsubsection}
+	\begin{fancycolumns}[animation=none, widths={30}]
+		
+		\begin{lstlisting}[language=bash, basicstyle=\small, breaklines=true, numbers=none, escapechar=*]
+git checkout main
+>> Switched to branch 'main'
+git merge feature
+>> Merge made by the 'ost' strategy.
+>> example.file 20 +
+>> 1 file changed, 20 insertion(+)
+
+git merge feature
+>> Auto-merging example.file
+>> CONFLICT (content): Merge conflict in example.file
+>> Automatic merge failed; fix conflicts and then commit the result.
+		\end{lstlisting}
+		
+		\nextcolumn
+		\begin{center}
+			\begin{tikzpicture}
+				\gitDAG[grow right sep = 2em]{
+					A -- B -- { 
+						C -- D -- E,
+						{ F -- G },
+					} -- M
+				};
+				% Tag reference
+				\gittag
+				[ca]       % node name
+				{Common Ancestor}       % node text
+				{above=of B} % node placement
+				{B}          % target
+				% Remote branch
+				% Branch
+				\gitbranch
+				{main}      % node name and text 
+				{above=of M} % node placement
+				{M}          % target
+				\gitbranch
+				{feature}      % node name and text 
+				{below=of G} % node placement
+				{G}          % target
+				% HEAD reference
+				\gitHEAD
+				{above=of main} % node placement
+				{main}          % target
+			\end{tikzpicture}
+		\end{center}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Patching, Cherry-Picking, and Rebasing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		{\small 
+		\begin{definition}{Patch}
+			\begin{itemize}
+				\item Text file containing code changes and git metadata
+				\item Can be applied to a codebase
+				\item Create patch: \texttt{git format-patch}
+				\item Apply patch as commit: \texttt{git am}
+			\end{itemize}
+		\end{definition}\pause
+		\begin{definition}{Cherry-Picking}
+			\begin{itemize}
+				\item Take commit and apply as patch
+				\item Multiple commits $\rightarrow$ sequentially applied
+				\item Transfers single changes between branches
+			\end{itemize}
+		\end{definition}\pause
+		\begin{definition}{Rebase}
+			\begin{itemize}
+				\item Transfer sequence of commits to a new base 
+				\item Internal: applies every commit to new base as new commit
+				\item Creates a linear project history
+			\end{itemize}
+		\end{definition}\pause
+		}
+		\nextcolumn
+		\begin{center}
+			\begin{tikzpicture}
+			% Commit DAG
+			\gitDAG[grow right sep = 2em]{
+				A -- B -- { 
+					C,
+					D -- E,
+				}
+			};
+			% Tag reference
+			\gittag
+			[v0p1]       % node name
+			{v0.1}       % node text
+			{above=of A} % node placement
+			{A}          % target
+			% Remote branch
+			\gitremotebranch
+			[origmain]    % node name
+			{origin/main} % node text
+			{above=of C}    % node placement
+			{C}             % target
+			% Branch
+			\gitbranch
+			{main}     % node name and text 
+			{above=of E} % node placement
+			{E}          % target
+			% HEAD reference
+			\gitHEAD
+			{above=of main} % node placement
+			{main}          % target
+		\end{tikzpicture}
+		
+		\pause
+				
+		\begin{tikzpicture}
+			\gitDAG[grow right sep = 2em]{
+				A -- B -- { 
+					C -- D' -- E',
+					{[nodes=unreachable] D -- E },
+				}
+			};
+			% Tag reference
+			\gittag
+			[v0p1]       % node name
+			{v0.1}       % node text
+			{above=of A} % node placement
+			{A}          % target
+			% Remote branch
+			\gitremotebranch
+			[origmain]    % node name
+			{origin/main} % node text
+			{above=of C}    % node placement
+			{C}             % target
+			% Branch
+			\gitbranch
+			{main}      % node name and text 
+			{above=of E'} % node placement
+			{E'}          % target
+			% HEAD reference
+			\gitHEAD
+			{above=of main} % node placement
+			{main}          % target
+		\end{tikzpicture}
+		\end{center}
+	\end{fancycolumns}
+\end{frame}
+
+
+\subsection{Branching Strategies}
+\begin{frame}{\insertsubsection \mytitlesource{\href{https://gitlab.com/gitlab-org/gitlab-foss/-/blob/0fdb03ee16f0ccd7f122a4f0af23ee628d1de3c9/doc/workflow/gitlab\_flow.md}{GitLab Documentation}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Git Flow}
+			\begin{itemize}
+				\item First approach to use branches
+				\item Different branches for different aims
+				\begin{itemize}
+					\item Main
+					\item Development
+					\item Individual features
+					\item Individual releases
+					\item Hotfixes
+				\end{itemize}
+				\item Feature $\rightarrow$ Dev $\rightarrow$ Release $\rightarrow$ Main
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Problems}
+			\begin{itemize}
+				\item Very complex
+				\item Does not work with shorter release cycles
+				\item Many long diverging branches $\rightarrow$ many merge conflicts
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\onslide<1->{\centering\pic[width=.7\columnwidth]{versioncontrol/git-flow}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection \mytitlesource{\href{https://docs.github.com/en/get-started/using-github/github-flow}{GitHub Documentation}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{GitHub Flow}
+			\begin{itemize}
+				\item Easier alternative for agile development
+				\item Main for deployment
+				\item Small feature branches for development
+				\item Tags for releases
+				\item Hotfixes are also feature branches
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item Frequent merges $\rightarrow$ small merge conflicts
+				\item Supports fast release cycles
+				\item Minimizes complexity: less branches, Main most important
+				\item Code fast in Main $\rightarrow$ minimizes \enquote{dead} code
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\onslide<1->{\centering\pic[width=.7\columnwidth]{versioncontrol/github-flow}}
+	\end{fancycolumns}
+\end{frame}
+	
+
+
+       	

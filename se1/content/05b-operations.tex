@@ -1,87 +1,7 @@
 \subsection{Clone, Fetch, Commit, and Push}
-\begin{frame}{Clone and Fetch}
-	\begin{fancycolumns}[animation=none,T]
-		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{empty}{empty}{Repository: Revision 1-10}{~}{~}{}}%
-		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{empty}{empty}{Repository: Revision 1-10}{Repository Clone: 1-10}{Repository Clone: 1-10}{
-				\draw[kante] (server) to node[swap] {Clone Repository} (client1);
-				\draw[kante, bend right, <-] (client2) to node[swap] {Clone Repository} (server);
-		}}%
-		\only<3|handout:0>{\peertopeer{ordner1}{tonne}{ordner1}{ordner1}{Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw [innerekante, <-, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Working Copy: 10} ([xshift = -10pt] client1.north east);
-				
-				\draw [innerekante, <-, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Working Copy: 5} ([xshift = -10pt] client2.north east);
-		}}%
-		\only<4-|handout:0>{\peertopeer{ordner1}{tonne}{ordner1}{ordner1}{Repository: Revision 1-10}{Working Copy: 10\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-		}}%
-		\only<1-|handout:1>{
-			\begin{note}{Clone}
-				\begin{itemize}
-					\setlength{\itemsep}{.1em}
-					\item create a local repository clone 
-					\item use local repository to create a working copy
-					\item specify folders for the clone
-					\item specify revision or head (latest revision)
-				\end{itemize}
-			\end{note}
-		}
-		\nextcolumn
-		\only<5|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{}}	
-		\only<6|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw[kante, ->] (server) to node[swap, above right] {Fetch Repository} (client2);
-		}}
-		\only<7|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-\emph{11}}{
-		}}
-		\only<5-7|handout:1>{
-			\begin{note}{Fetch}
-				\begin{itemize}
-					\setlength{\itemsep}{.1em}
-					\item download the remote repository
-					\item note: working copy remains unchanged
-				\end{itemize}
-			\end{note}
-		}
-	\end{fancycolumns}
-\end{frame}
+\slideCloneFetch
 
-\begin{frame}{Commit and Push}
-	\begin{fancycolumns}[animation=none,T]
-		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: 10 \emph{(changed)}\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-		}}
-		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw [innerekante, ->, in = 135, out = 90]  ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Commit "Change message"} ([xshift = -10pt] client1.north east);
-		}}
-		\only<3-|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Working Copy: \emph{11}\\Repository Clone: 1-\emph{11}}{Working Copy: 5\\Repository Clone: 1-10}{
-		}}
-		
-		\only<1-|handout:1>{
-			\begin{note}{Commit}
-				\begin{itemize}
-					\setlength{\itemsep}{.1em}
-					\item commit changes to local repository
-					\item commits are atomic (all or nothing)
-					\item specify changed folders and files
-					\item mandatory message describing your change
-				\end{itemize}
-			\end{note}
-		}
-		\nextcolumn
-		\only<4|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Repository Clone: 1-\emph{11}}{Working Copy: 5}{}}%
-		\only<5|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Repository: Revision 1-10}{Repository Clone: 1-11}{Working Copy: 5}{
-				\draw[kante, <-] (server) to node[swap] {Push Repository} (client1);
-		}}%
-		\only<6|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Repository: Revision 1-\emph{11}}{Repository Clone: 1-11}{Working Copy: 5}{
-		}}%
-		\only<4-6|handout:1>{
-			\begin{note}{Push}		
-				\begin{itemize}
-					\setlength{\itemsep}{.1em}
-					\item push local repository to server
-					\item condition: local repository is up to date (might require previous pull)
-				\end{itemize}
-			\end{note}
-		}
-	\end{fancycolumns}
-\end{frame}
+\slideCommitPush
 
 \subsection{Commit Messages}
 \xkcdframe{1296} % commit messages
@@ -132,81 +52,16 @@
 \end{frame}
 
 \subsection{Merge, Pull, and Ignore}
-\begin{frame}{Merge and Pull}
-	\vspace{-1.5mm}
-	\begin{fancycolumns}[animation=none,T]
-		\only<1|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
-				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
-		}}%
-		\only<2-|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repositoy Clone: 1-11}{
-		}}%
-		\only<1-|handout:1>{
-			\begin{note}{Merge}
-				\begin{itemize}
-					\item update working copy with local repository
-					\item integrate new commits from other branch
-					\item fast forward / automatic merge / manual merge
-				\end{itemize}
-			\end{note}
-		}
-		\nextcolumn
-		\only<3|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-\emph{11}}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw[kante, ->] (server) to node[swap] {Fetch Repository} (client2);
-		}}
-		\only<4|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-\emph{11}}{
-		}}
-		\only<5|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-11}{
-				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
-		}}
-		\only<6|handout:0>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repository Clone: 1-11}{
-		}}	
-		\only<-0|handout:1>{\peertopeer{ordner2}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-11}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: \emph{11}\\Repository Clone: 1-\emph{11}}{
-				\draw[kante, ->] (server) to node[swap] {Fetch Repository} (client2);
-				\draw [innerekante, <-, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client2.north west) to node[swap, above] {Merge to 11} ([xshift = -10pt]client2.north east);
-		}}
-		\only<3-6|handout:1>{
-			\begin{note}{Pull}
-				\begin{itemize}
-					\item pull = fetch + merge
-					\item download and merge in one step!
-				\end{itemize}
-			\end{note}
-		}
-	\end{fancycolumns}
-\end{frame}
+\slideMergePull
 
-\begin{frame}
-	\frametitle{Ignore}
-	\begin{fancycolumns}[widths={55},animation=none]
-		\only<1|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 10 \emph{(changed)}\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-		}}
-		\only<2|handout:1>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 10 (changed)\\Repository Clone: 1-10}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw [innerekante, ->, in = 135, out = 90] ([xshift = 20pt, yshift = 5pt]client1.north west) to node[swap, above] {Ignore Foo.class + Commit} ([xshift=-10pt]client1.north east);
-		}}
-		\only<3|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy \emph{11}\\Repository Clone: 1-\emph{11}}{Working Copy: Revision 5\\Repository Clone: 1-10}{
-		}}
-		\only<4|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-10}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
-				\draw[kante, <-] (server) to node[swap] {Push repository} (client1);
-		}}
-		\only<5|handout:0>{\peertopeer{ordner1}{tonne}{ordner2}{ordner1}{Remote Repository: Revision 1-\emph{11}}{Working Copy: 11\\Repository Clone: 1-11}{Working Copy: 5\\Repository Clone: 1-10}{
-		}}		
-		\begin{note}{.gitignore}
-			\begin{itemize}
-				\item resources will be ignored on commit
-				\item user-specific files or derived/generated resources
-				\item specify files and folders (e.g., *.log files)
-			\end{itemize}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
+\slideIgnore
 
 \subsection{Branching and Merging}
 \begin{frame}{\insertsubsection}
 	\slideBranchingAndMerging
 \end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Automatic Merge}	
+\begin{frame}[fragile]{Automatic Merge}
 	\begin{columns}[onlytextwidth]
 		\begin{column}{0.6\linewidth}
 			\begin{columns}[T]
@@ -295,8 +150,7 @@ class Foo {
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Merge Conflicts}	
+\begin{frame}[fragile]{Merge Conflicts}	
 	\begin{columns}[T, onlytextwidth]
 		\begin{column}{0.6\linewidth}
 			\begin{columns}[T]

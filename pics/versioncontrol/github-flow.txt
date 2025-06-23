@@ -1,0 +1,1 @@
+https://gitlab.com/gitlab-org/gitlab-foss/-/raw/0fdb03ee16f0ccd7f122a4f0af23ee628d1de3c9/doc/workflow/github_flow.png

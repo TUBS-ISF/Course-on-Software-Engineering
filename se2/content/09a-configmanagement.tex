@@ -1,0 +1,117 @@
+% !TeX spellcheck = en_US
+
+\subsection{Motivation}
+
+\xkcdframe{1172} % version/workflow
+
+\subsection{Configuration Management}
+\begin{frame}{Recap -- \insertsubsection \mytitlesource{\sommerville}}
+	\slideConfigManagement
+\end{frame}
+
+\subsection{Version Control}
+\begin{frame}<1-4>{Recap -- \insertsubsection  \mytitlesource{\sommerville}}
+	\slideVersionControl
+\end{frame}
+
+\subsection{System Building}
+\begin{frame}{\insertsubsection  \mytitlesource{\sommerville}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{System Building}
+			Creation of a \textbf{complete executable system} through the \textbf{compilation and linking} of \textbf{system components, external libraries, configuration files}, \dots
+		\end{definition}\pause
+		
+		\begin{note}{Common Functionalities}
+			\begin{itemize}
+				\item Automated build script creation
+				\item VCS integration
+				\item Minimal re-compilation
+				\item Build process automation
+				\item Test automation
+				\item Report creation
+				\item Document creation (commonly documentation, \dots)
+			\end{itemize}
+		\end{note} \pause
+		\nextcolumn
+		\centering\pic[width=\columnwidth]{configmanagement/system-building}% Diagramm Sommerville 826
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Change Management}
+\begin{frame}{\insertsubsection  \mytitlesource{\sommerville}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Change Management}
+			\textbf{Handling, documentation, and prioritization} of \textbf{desired changes} to a software product, as well their \textbf{structured  realization}
+		\end{definition}\pause
+		
+		\begin{note}{Assessment criteria for change requests}
+			\begin{itemize}
+				\item Impact of non-acceptance
+				\item Advantages of change
+				\item Number of impacted users
+				\item Costs of change
+				\item Impact on product release cycle
+			\end{itemize}
+		\end{note} \pause
+		\nextcolumn
+		\begin{note}{Exemplary Change Management Process in Open Source Projects}
+			\begin{enumerate}[<+->]
+				\item Issue creation by user or developer
+				\item Issue replication, categorization, and prioritization
+				\item Issue assignment
+				\item Implementation in feature branch
+				\item Merge request opened
+				\item Review of merge request by core developers
+				\item Possibly multiple change/review cycles
+				\item Merging of changes, closing issue
+				\item Documentation for later release notes
+			\end{enumerate}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Release Management}
+\begin{frame}{\insertsubsection  \mytitlesource{\sommerville}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Release Management}
+			\textbf{Preparation} of software product for \textbf{external release} and  \textbf{monitoring} of \textbf{already released} software versions
+		\end{definition}\pause
+		
+		\begin{note}{Typical content of a release}
+			\begin{itemize}
+				\item Executable system (e.g., code, \dots)
+				\item Configuration files
+				\item Resources (e.g., data, localization files, \dots)
+				\item Installation wizard
+				\item System documentation
+				\item (sometimes) packaging and advertisement
+			\end{itemize}
+		\end{note}\pause
+		\begin{note}{CI/CD}
+			different: frequent, small releases
+		\end{note}
+		\nextcolumn
+		\vspace{-7mm}
+		\begin{note}{Factors for release date planning}
+			\begin{itemize}
+				\item Competition
+				\item Marketing
+				\item Platform changes
+				\item Technical quality of system
+			\end{itemize}
+		\end{note} \pause
+		
+		\begin{note}{Exemplary release process}
+			\begin{enumerate}
+				\item Selection of built systems to release
+				\item Creation of configurations for relevant hardware/software environments
+				\item User documentation for user-sided release deployment and migration
+				\item Creation of installation scripts
+				\item Creation of documentation and advertisement (e.g., new release website, \dots)
+				\item Creation of physical copies or deployment over internet
+			\end{enumerate}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+%Irgendwann Parallel Development
