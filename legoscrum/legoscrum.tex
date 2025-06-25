@@ -1,0 +1,147 @@
+\input{../se1/template/options}
+
+\documentclass[
+	aspectratio=169, % default is 43
+	8pt, % font size, default is 11pt
+]{beamer}
+
+\input{../se1/template/lecture}
+
+\begin{document}
+
+\ifuniversity{tubs}{\date{June 25, 2025}}
+\author{Thomas Thüm, Ruben Dunkel, Raphael Dunkel, Joschka Weikum}
+\title{Lego Scrum}
+\subtitle{1. Braunschweiger Lego-Scrum}
+
+\ifdefined\thepicture
+\maketitle[\thepicture][\thepictureoffset]
+\else
+\maketitle[]
+\fi
+
+\subsection{Agile Software Development}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Manifesto \mysource{\href{https://agilemanifesto.org/}{agilemanifesto.org}}} % copied from se1
+			\mycite{We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:
+				\begin{itemize}
+					\item {\large individuals and interactions}\\\hfill over processes and tools
+					\item {\large working software}\\\hfill over comprehensive documentation
+					\item {\large customer collaboration}\\\hfill over contract negotiation
+					\item {\large responding to change}\\\hfill over following a plan
+				\end{itemize}
+				That is, while there is value in the items on the right, we value the items on the left more.}
+		\end{note}
+	\nextcolumn
+		\definitionuserstory{}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Scrum}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={58}]
+		\begin{exampletight}{}
+			\diagramScrum
+		\end{exampletight}
+	\nextcolumn
+		\begin{definition}{Scrum \mysource{\sommerville}}
+			\begin{itemize}
+				\item \emph{development team}: self-organizing group ($\leq 7$ people), selects user stories for sprint in \emph{sprint backlog}
+				\item \emph{product owner}: continuously reviews \emph{product backlog}, main contact for customers and in \emph{sprint review}
+				\item \emph{scrum master}: ensures that team effectively uses scrum, moderates \emph{retrospective}
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Planning Poker and Definition of Done}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[t]
+		\begin{note}{Planning Poker}
+			\begin{itemize}
+				\item used to estimate effort for new user stories arriving in the \emph{product backlog}
+				\item estimation relative to the team's \emph{velocity}
+			\end{itemize}
+		\end{note}
+		\centering\pic[width=.8\linewidth]{management/planning-poker}
+		\nextcolumn
+		\begin{definition}{Definition of Done \deutsch{Fertigstellungskriterien}}
+			\begin{itemize}
+				\item tells the development team and the customer when the work is finished
+				\item has to be fulfilled before the product goes to review
+				\item contains general acceptance criteria
+				\item is usually defined by the development team
+			\end{itemize}
+		\end{definition}
+		\begin{center}
+			\uncover<2->{\huge What is your\\Definition of Done?}
+		\end{center}	
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Lego Scrum}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns} 
+		\begin{definition}{Goal}
+			\begin{itemize}
+				\item simulate four sprints
+				\item speed-up with Lego
+				\item build Lego city in one hour
+			\end{itemize}
+		\end{definition}
+		\begin{definition}{Schedule}
+			\begin{itemize}
+				\item opening: introduction + planning poker
+				\item Sprint 1
+			\end{itemize}
+			break
+			\begin{itemize}
+				\item Sprint 2
+				\item Sprint 3
+			\end{itemize}
+			break
+			\begin{itemize}
+				\item Sprint 4
+				\item closing: feedback + photos + disassembly
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{note}{Sprint}
+			\begin{enumerate}
+				\item select user stories to work on
+				\item break the user stories down into tasks and refine them!
+				\item design the architecture to achieve the user stories
+				\item implement and test
+				\item integrate with external systems
+				\item Sprint Review
+				\item Sprint Retrospectives
+			\end{enumerate}
+			\emph{time frame} for steps 1 -- 5 is \emph{15 minutes} (music!)
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Boy Scouts Rule}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=800 700 800 600,clip]{people/robert-martin}
+		\vspace{-7mm}
+		
+		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
+			Boy Scouts Rule: \mycite{Leave the campground cleaner than the way you found it.} \mysource{\href{https://learning.oreilly.com/library/view/97-things-every/9780596809515/ch08.html}{oreilly.com}}
+		\end{note}
+		\nextcolumn
+		\begin{example}{Application to Lego Scrum}
+			\begin{itemize}
+				\item you build it, you disassembly it
+				\item extra box for: dirt, broken pieces, everything that is not Lego
+				\item pick up any Lego that you see on the floor
+				\item help in diassembling pieces that are still connected
+				\item disassembly tools stored separately (2 per table)
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\end{document}

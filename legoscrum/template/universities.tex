@@ -1,0 +1,54 @@
+% UNIVERSITY-SPECIFIC ADJUSTMENTS
+% usage: \def\university{ulm}
+
+\ifdefined\university
+\else
+\def\university{}
+\fi
+
+\newcommand{\ifuniversity}[3][]{\ifthenelse{\equal{\university}{#2}}{#3}{#1}}
+\newcommand{\unlessuniversity}[3][]{\ifuniversity[#3]{#2}{#1}}
+\newcommand{\inputuniversity}[1]{\IfFileExists{#1-\university}{\input{#1-\university}}{}}
+
+\ifuniversity{tubs}{
+	\setpaths{
+		{../pics/tubs/}
+	}
+	
+	\usepackage{tubscolors}
+	% redefine colors used in fancybeamer
+	% Orange, OrangeLight (Yellow), OrangeDark (tubsRed)
+	% Green, GreenLight, GreenDark
+	% Blue, BlueLight, BlueDark
+	% Violet, VioletLight, VioletDark
+	% tubsGray (tubsGray60), tubsLightGray (tubsGray20)
+	% tubsSecondaryLight, tubsSecondaryMedium, tubsSecondary, tubsSecondaryDark
+	% x20, x40, x60, x80, x100
+
+	\AtEndPreamble{
+		\colorlet{red}{tubsRed}
+		\colorlet{accent}{background}
+		\colorlet{accenttwo}{red}
+		\setbeamercolor{logobox}{bg=background}
+		\setbeamercolor{myfooter}{fg=foreground,bg=accent}
+		\setbeamercolor{subtitlebox}{fg=foreground,bg=accent}
+		\fancylogos{tubs,isf}
+		\ifdarkmode
+			\colorlet{red}{red!90!white}
+			\colorlet{green}{green!90!white}
+			\colorlet{blue}{blue!90!white}
+			\colorlet{orange}{orange!90!white}
+			\colorlet{accenttwo}{accenttwo!25!darkgray}
+			\setbeamercolor{mypagenumber}{fg=foreground,bg=accenttwo}
+			\setbeamercolor{titlebox}{fg=foreground,bg=accenttwo}
+			\fancylogos{tubs-black,isf}
+		\fi
+
+		% hack to force use of changed colors
+		\UpdateBoxColor{definition}{orange}
+		\UpdateBoxColor{example}{blue}
+		\UpdateBoxColor{note}{red}
+	}
+
+	\setpicture[150]{campus/04-25-iz1} % default picture
+}

@@ -16,6 +16,7 @@
 *.listing
 /se1/*.pdf
 /se2/*.pdf
+/legoscrum/*.pdf
 build
 
 # emacs auctex
