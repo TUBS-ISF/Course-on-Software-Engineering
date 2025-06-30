@@ -1,0 +1,193 @@
+\subsection{Motivation and Recap}
+%\begin{frame}{Greenfield Development?\ \deutsch{Auf der grünen Wiese?}}
+%	\pic[width=.6\linewidth,trim=0 0 0 0,clip]{may21-ulm}
+%\end{frame}
+
+\begin{frame}{Who Produces Only One Product?}
+	\pic[width=.6\linewidth,trim=0 0 0 0,clip]{productlines/car-tower}
+\end{frame}
+
+% TODO zoo of animals/tools
+
+% TODO 30 printers per year, more examples
+
+\begin{frame}<8>{Recap: Process Models}
+	\begin{fancycolumns}
+		\begin{exampletight}{Waterfall Model}
+			\centering
+			\diagramWaterfallModel
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Scrum}
+			\diagramScrum
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Software Product Lines}
+\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
+	\begin{fancycolumns}
+		\begin{definition}{Mass Customization}
+			\begin{itemize}
+				\item opposed to mass production
+				\item opposed to individual customization
+				\item idea: produce customized goods as efficient as with mass production
+			\end{itemize}
+		\end{definition}
+		\pic[width=\linewidth,trim=0 50 0 240,clip]{productlines/car-manufacturing}
+		\nextcolumn
+		\begin{definition}{Software Product Line}
+			\begin{itemize}
+				\item set of software-intensive systems (aka. products)
+				\item sharing a common, managed set of features
+				\item satisfying the needs of a domain
+				\item developed from a common set of core assets (reuse)
+			\end{itemize}
+		\end{definition}
+		\begin{definition}{Feature}
+			\begin{itemize}
+				\item domain abstraction
+				\item used for communication by stakeholders (e.g., manager, developer, tester, customer, marketing)
+				\item specifies differences between products
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{2369} % paper processor 25s
+
+\subsection{Dependencies Between Features}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={70},animation=none]
+		\begin{exampletight}{Thomas Configuring a Notebook}
+			\only<1,3->{\picDark[width=\linewidth]{productlines/configurators/thinkpad-x1-yoga-display}}\only<2|handout:0>{\picDark[width=\linewidth]{productlines/configurators/thinkpad-x1-yoga-display-invalidconf}}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={70},animation=none]
+		\begin{exampletight}{Thomas Still Configuring a Notebook}
+			\picDark[width=\linewidth]{productlines/configurators/thinkpad-x1-yoga-office}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={35},animation=none]
+		\nextcolumn
+		\begin{exampletight}{Thomas Configuring a Car}
+			\pic[width=\linewidth]{productlines/configurators/toyota-aygo-wheels}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={35},animation=none]
+		\nextcolumn
+		\begin{exampletight}{Thomas Configuring a Car with a Weird Price}
+			\centering\picDark[width=.55\linewidth]{productlines/configurators/toyota-aygo-costs}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={35},animation=none]
+		\nextcolumn
+		\begin{exampletight}{Thomas Configuring a Car with 8 Wheels!}
+			\picDark[width=\linewidth]{productlines/configurators/toyota-aygo-costs3}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={35},animation=none]
+		\nextcolumn
+		\begin{exampletight}{Thomas Configuring a German Car}
+			\picDark[width=\linewidth]{productlines/configurators/bmw-series1-confassistant-bluetooth}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Feature Models and Configurations}
+\begin{frame}{Feature Modeling\ \mytitlesource{\fospl}}
+	\begin{fancycolumns}
+		\begin{definition}{Feature Model}	%TODO: Features haben einzigartige Namen
+			\begin{itemize}
+				\item hierarchy of features
+				\item dependencies between features modeled by tree and cross-tree constraints
+				\item \emph{tree constraints}: defined by the hierarchy
+				\item \emph{cross-tree constraints}: propositional formulas over features
+				\item \emph{concrete features} have an implementation
+				\item \emph{abstract features} are used to group other features
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\vspace{-12mm}
+		\begin{exampletight}{A Database Management Product Line}
+			\centering\pic[width=\linewidth]{productlines/featuremodels/db-constraint}
+		\end{exampletight}
+		\begin{definition}{Tree Constraints}
+			\begin{itemize}
+				\item each feature requires its parent
+				\item an \emph{optional feature} has no further constraints % TODO rephrase
+				\item a \emph{mandatory feature} is required by its parent
+				\item \emph{or group}: at least one feature must be selected when the parent is selected
+				\item \emph{alternative group}: exactly one feature must be selected when the parent is selected
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+% TODO translate Basis into Base
+
+% TODO add other example showing groups/mandator/optional at other positions
+
+\begin{frame}{Enumerating All Configurations of a Feature Model}
+	\begin{fancycolumns}
+		\begin{exampletight}{}
+			\centering\pic[width=.75\textwidth]{productlines/featuremodels/db-constraint}
+		\end{exampletight}
+		\begin{example}{26 Valid Configurations}
+			\footnotesize
+			\leftandright{ % TODO transform to new template (deprecated) once nested fancycolumns work
+				$\{B,G,W\}$\\
+				$\{B,P,W\}$\\
+				$\{B,G,P,W\}$\\
+				$\{B,D,W\}$\\
+				$\{B,G,D,W\}$\\
+				$\{B,P,D,W\}$\\
+				$\{B,G,P,D,W\}$\\
+				$\{B,P,T,W\}$\\
+				$\{B,G,P,T,W\}$\\
+				$\{B,D,T,W\}$\\
+				$\{B,G,D,T,W\}$\\
+				$\{B,P,D,T,W\}$\\
+				$\{B,G,P,D,T,W\}$
+			}{
+				$\{B,G,U\}$\\
+				$\{B,P,U\}$\\
+				$\{B,G,P,U\}$\\
+				$\{B,D,U\}$\\
+				$\{B,G,D,U\}$\\
+				$\{B,P,D,U\}$\\
+				$\{B,G,P,D,U\}$\\
+				$\{B,P,T,U\}$\\
+				$\{B,G,P,T,U\}$\\
+				$\{B,D,T,U\}$\\
+				$\{B,G,D,T,U\}$\\
+				$\{B,P,D,T,U\}$\\
+				$\{B,G,P,D,T,U\}$
+			}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+%\subsection{Feature Modeling in Practice}
+%\begin{frame}{A Feature Model for the Linux Kernel}
+%	%\slideLinuxFeatureModel
+%\end{frame}
+%
+%\begin{frame}{Dependencies Modeled in Excel}
+%	\picDark[width=.7\linewidth,trim=10 10 0 10,clip]{productlines/variabilitymodels/constraints-in-excel}
+%\end{frame}
+

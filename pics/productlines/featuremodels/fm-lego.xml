@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Head">
+				<feature name="Brush"/>
+				<alt mandatory="true" name="Shirt">
+					<feature mandatory="true" name="RedPants"/>
+					<feature mandatory="true" name="BluePants"/>
+				</alt>
+				<feature name="Phone"/>
+				<alt name="Headpiece">
+					<feature mandatory="true" name="Helmet"/>
+					<feature mandatory="true" name="Hat"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>Helmet</var>
+					<not>
+						<var>Phone</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

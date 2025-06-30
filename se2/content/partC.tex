@@ -82,46 +82,57 @@
 \author{Thomas Thüm}
 \lecture{Software Product Lines}{productlines}
 
-\section{Part 1}
-%\input{content/a-}
+\section{Modeling of Product Lines}
+\input{content/11a-modeling-spl}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Motivation for mass customization
+	\item Software product lines, features, dependencies between features, configurators
+	\item Feature models: abstract and concrete features, tree and cross-tree constraints
+	\item Tree constraints: optional, mandatory, or group, alternative group
+	\item Next: How to implement the variability specified in a feature model?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \fospl, Chapter~1 Software Product Lines and Section~2.3 Feature Modeling
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Model the domain of USB cables and adapters as a feature model (cf. examples show in the lecture)
+		\item Ask a fellow student to check whether your model is correct (syntax of feature model + examples are valid configurations)
+		\item Make corrections to your feature model if needed
+		\item (Keep feature model for later task)
 	\end{enumerate}
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Implementation of Product Lines}
+\input{content/11b-implementing-spl}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Branches, runtime parameters
+	\item Preprocessors: in-place or not, feature traceability
+	\item Frameworks with plug-ins
+	\item Next: How to test the modeled and implemented variability?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \featureide\ Chapter~9 Conditional Compilation with FeatureIDE and Chapter~17 Tool Support Beyond Preprocessors and Feature Modules
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Give your feature model to a fellow student
+		\item Check the feature model of a fellow student:\\how many example products are modeled?
 	\end{enumerate}
 }
 
-\section{Part 3}
-%\input{content/c-}
+\section{Testing of Product Lines}
+\input{content/11c-testing-spl}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item All configurations? one configuration? feature interactions!
+	\item Combinatorial interaction testing:\\pairwise and t-wise
+	\item Trade-off between:\\sample coverage (effectiveness) vs\\ sample size (testing efficiency) vs\\ time to compute sample (sampling efficiency)
+	\item Next: Why is automotive software so challenging?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \icpl --- famous ICPL algorithm
+	\item \href{https://dl.acm.org/doi/10.1145/3712193}{Krupke~et~al.} --- first algorithm that can compute the smallest sample
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Quiz in \StudIP
+
+	~
+	
+	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421054}
 }
 
 %\faq{

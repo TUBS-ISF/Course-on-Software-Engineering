@@ -1,0 +1,118 @@
+\subsection{Motivation and Recap}
+\begin{frame}<3>{Recap: Branching \& Merging}
+	\slideBranchingAndMerging
+\end{frame}
+% clone-and-own
+% “ Copy and paste is a design error. ” - David Parnas
+
+\begin{frame}{The Value of Feature Modeling}
+	\begin{fancycolumns}
+		\begin{note}{Interview with Practitioners \mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}}
+			\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer’s point of view. But it’s also, we can see that from the, say project development, it’s also important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven’t realized that. They implemented the same features.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Runtime Parameters and Runtime Properties}
+\begin{frame}{Runtime Parameters}
+	\begin{fancycolumns}
+		\pic[width=\linewidth]{productlines/runtime-parameters-win10-cmd-dir}
+		\nextcolumn
+		\pic[width=\linewidth]{productlines/runtime-parameters-win10-cmd-dir2}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\featureide}}
+	\begin{fancycolumns}
+		\picDark[width=\linewidth]{productlines/implementation/runtime-parameters}
+		\nextcolumn
+		\picDark[width=\linewidth]{productlines/implementation/runtime-properties}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{619} % linux features 20s
+
+\subsection{Preprocessors for C and Java}
+\begin{frame}{The C Preprocessor\ \mytitlesource{\featureide}}
+	\begin{fancycolumns}
+		\begin{exampletight}{Example Input to the Preprocessor}
+			\picDark[scale=.3]{productlines/implementation/preprocessor-c}
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Example Output (Simplified)}
+			\picDark[scale=.15]{productlines/implementation/preprocessor-c-output}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Munge -- A Preprocessor for Java\ \mytitlesource{\featureide}}
+	\begin{fancycolumns}
+		\begin{exampletight}{Example Input and Output}
+			\picDark[width=\linewidth]{productlines/implementation/preprocessor-munge}
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Calling the Preprocessor}
+			\centering
+			\picDark[width=\linewidth]{productlines/implementation/preprocessor-munge-call}
+			
+			~
+			
+			\picDark[width=.7\linewidth]{productlines/implementation/preprocessor-munge-idea}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Antenna -- An In-Place Preprocessor\ \mytitlesource{\featureide}}
+	\begin{fancycolumns}
+		\begin{exampletight}{Example Input and Output}
+			\picDark[width=\linewidth]{productlines/implementation/preprocessor-antenna}
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Calling the Preprocessor}
+			\centering
+			\picDark[width=\linewidth]{productlines/implementation/preprocessor-antenna-call}
+			
+			~
+			
+			\picDark[width=.7\linewidth]{productlines/implementation/preprocessor-antenna-idea}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{Discussion of Preprocessors\ \mytitlesource{\featureide}}
+	\begin{fancycolumns}
+		\begin{exampletight}{A Slightly More Complex Example}
+			\picDark[width=\linewidth]{productlines/implementation/preprocessor-antenna-elevator}
+		\end{exampletight}
+		\nextcolumn
+		\begin{exampletight}{Tool Support for Feature Traceability}
+			\picDark[width=\linewidth]{productlines/implementation/feature-traceability}
+		\end{exampletight}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Frameworks with Plug-Ins}
+\begin{frame}{\insertsubsection\ \mytitlesource{\featureide}}
+	\begin{fancycolumns}
+		\picDark[width=\linewidth]{productlines/implementation/framework-with-plugins}
+		\nextcolumn
+		\picDark[width=\linewidth]{productlines/implementation/framework-a-plugin}
+	\end{fancycolumns}
+\end{frame}
+
+% car configurator: they will not build each car from scratch!
+
+% “ Before software can be reusable it first has to be usable. ” - Ralph Johnson
+% \sommerville, Chapter 7.3.1 Reuse
+% Reuse Most modern software is constructed by reusing existing components or systems. When you are developing software, you should make as much use as possible of existing code. \sommerville
+% \sommerville, Chapter 15--17
+
+% meta: implementation technique, example/illustration, characteristics, typical examples
+
+% use picture from legoland
+
+% components/services: was kam schon dran? pointer zu standardisierung im sopra, show component diagram for the current sopra, illustrate extensibility
+
+% micro services?
+
+% android: preprocessors, plugins (apps), forks

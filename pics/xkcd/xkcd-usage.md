@@ -112,6 +112,12 @@ se1: ![306](306.png)
 
 11. Software Product Lines
 
+spl: ![2369](2369.png)
+
+spl: ![619](619.png)
+
+![974](974.png)
+
 12. Automotive Software
 
 ![2948](2948.png)
@@ -161,8 +167,6 @@ se1: ![306](306.png)
 ![323](323.png)
 
 ![763](763.png)
-
-![974](974.png)
 
 ![1328](1328.png)
 
