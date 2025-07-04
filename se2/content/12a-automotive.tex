@@ -1,0 +1,242 @@
+\subsection{Software for Automotive Systems}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
+	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=2,trim=50 385 60 150,clip]{automotive/EF-Software17}}
+\end{frame}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
+	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=3,trim=220 415 50 145,clip]{automotive/EF-Software17}}
+\end{frame}
+%\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
+%	\staronlink{\includegraphics[width=\linewidth,page=7,trim=60 450 60 60,clip]{S21}}
+%\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Characteristics}
+			\begin{itemize}
+				\item more software than in any other consumer product
+				\item functionality distributed over different software/hardware components
+				\item sometimes even more than 100 embedded systems (ECUs)
+				\item some real-time systems (e.g., engine control)
+				\item automous system: car-2-car and car-2-infrastructure communication
+				\item over-the-air updates/upgrades (planned)
+				\item global development of OEMs (Original Equipment Manufacturer) and tiers \deutsch{Automobilhersteller und Zulieferer}
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\myexampletight{ECU for Engine Control in the 90s}{\staronlink{\pic[width=\linewidth,page=22,trim=55 330 55 160,clip]{automotive/S21}}}
+		\uncover<2->{\begin{note}{The Impact of Software Architecture}
+				\begin{itemize}
+					\item Which functions are realised by which software components?
+					\item Which software components interact with each other?
+				\end{itemize}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Automotive Software Systems}
+\begin{frame}{\insertsubsection\ \mytitlesource{\broy}}
+	\begin{fancycolumns}
+		\myexampletight{}{\centering\broylink{\pic[width=.8\linewidth,page=2,trim=50 380 320 265,clip]{automotive/B-ICSE06}}}
+		\begin{definition}{Challenges\mysource{\staron}}
+			\begin{itemize}
+				\item embedded, distributed systems
+				\item cyberphysical, safety-critical, security-critical
+				\item application and system software
+				\item autonomous system with artificial intelligence
+				\item (re-)configurable systems
+				% TODO \cite{WC:SPLC15,CR:IJAST14,CCG+:REMODD11,FRU:MS99}
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Complexity of Automotive Software\mysource{\antinyan}}
+			\begin{itemize}
+				\item 2000: about 1\,MLOC
+				\item 2010: about 10\,MLOC
+				\item 2020: about 100\,MLOC for Volvo\\comparable to 6,000 books\\comparable to a library
+				\item 2030?
+				\item also 2020:\\10\,m branches\\30\,m function calls\\3\,m functions\\120\,ECUs with 7,000 external signals\\100,000 functional requirements
+				\item despite skilled developers: enourmous complexity makes failures inevitable
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+% B:ICSE06
+% F:DATE10
+
+\subsection{Structure of Automotive Software}
+\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
+	\begin{fancycolumns}[widths={65}]
+		%\mydefinitiontight{Konzeptioneller Aufbau}{\staronlink{\includegraphics[width=\linewidth,page=28,trim=55 420 55 60,clip]{S21}}} % complete image
+		\mydefinitiontight{Conceptional Structure}{\staronlink{\pic[width=\linewidth,page=28,trim=55 497 160 60,clip]{automotive/S21}}} % cropped image
+		\nextcolumn
+		\begin{example}{Examples}
+			\begin{itemize}
+				\item domain:\\infotainment, powertrain \deutsch{Antriebsystem}
+				\item subsystem:\\active safety, extended driver assistance
+				\item function:\\adaptive cruise control, lane assist
+				\item component:\\network, encryption
+				% TODO Komponente, Modul, Software-Komponente
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+	\uncover<3->{\begin{note}{Typical Architectures in Automotive Software}
+			electric/electronic (E/E) architecture and ECU architecture (local architecture of an ECU)
+	\end{note}}
+\end{frame}
+
+\xkcdframe{2948}
+
+\subsection{Insufficient Quality of Automotive Software}
+
+% TODO recap former example
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={60},animation=none]
+		\pic[width=\linewidth]{automotive/RamPickup2011}
+		\nextcolumn
+		\begin{example}{May 2017: Fiat Chrysler\mysource{\href{https://www.nytimes.com/2017/05/12/business/ram-pickup-truck-recall-fiat-chrysler.html}{nytimes.com}}}
+			\begin{itemize}
+				\item 1,200,000 Ram Pickups manufactured 2013--2016
+				\item faulty software disables airbags and seatbelt tension devices \deutsch{Gurtstraffer}
+				\item \ldots if underbody was struck
+				\item \ldots generates error codes that temporarily disable safety equipment
+				\uncover<2->{\item work around: turn ignition off and on
+					\item at least one death and two injured persons}
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={60},animation=none]
+		\pic[width=\linewidth]{automotive/CollisionWarningBrakeSupport}
+		\nextcolumn
+		\begin{example}{June 2015: Honda Acura\mysource{\href{http://www.wtsp.com/story/news/2015/06/11/software-glitch-prompts-acura-recall/71104030/}{wtsp.com}}} % TODO server temporarily down or permanently? was down on 2023-06-19
+			\begin{itemize}
+				\item 48,000 MDX SUVs and RLX sedans manufactured 2014--2015
+				\item Collision Mitigation Braking System can accidentally apply the break
+				\uncover<2->{\item radar scans conditions in front
+					\item system is confused by an accelerating vehicle in front and an metal guardrail or iron fence along the road
+					\item cause of a rear-end collision \deutsch{Auffahrunfall}}
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+% use as last example because of the long list of SE principles named as cause
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www.safetyresearch.net/toyota-unintended-acceleration-and-the-big-bowl-of-spaghetti-code/}{safetyresearch.net}}}
+	\begin{fancycolumns}[widths={33},animation=none]
+		\begin{example}{September 2007: Toyota}
+			\begin{itemize}
+				\item Unintended acceleration of a Toyota Camry manufactured 2005
+				\item Service brakes did not help
+				\item Parking brake produced a 150-foot skid mark
+				\item Crash while exiting the highway
+				\item Driver injured, passenger dead
+				\item In 2013, Toyota paid $\$3$ million compensation
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\pic[width=\linewidth]{automotive/Camry}
+		\uncover<2->{\begin{example}{Two software experts analyzed the source code for 20 months:}
+				spaghetti code, $>10,000$ global variables, single-fault containment regions, inadequate protection against stack/buffer overflow, single-point failures, memory corruption, defects that disable failsafe, no bit flip protection, no code review, \ldots
+		\end{example}}
+	\end{fancycolumns}
+\end{frame}
+
+%\begin{frame}{July 2015: Chrysler}
+%	\begin{columns}
+	%		\column{.5\textwidth}
+	%		\begin{itemize}
+		%			\item \textasciitilde471,000 Jeep Cherokees
+		%			\item Vehicle were hackable
+		%			\begin{itemize}
+			%				\item Two hackers could control the complete car with a zero-day exploit
+			%				\item Access over the entertainment system
+			%			\end{itemize}
+		%		\end{itemize}
+	%		\column{.5\textwidth}	\href{https://upload.wikimedia.org/wikipedia/commons/2/27/Rexton_inside.jpg}{\includegraphics[width=\textwidth,center]{../pics/cars/JeepMultimediaSystem}}
+	%	\end{columns}
+%	\source{\href{http://www.wired.com/2015/07/hackers-remotely-kill-jeep-highway/}{wired.com}}
+%\end{frame}
+
+%\begin{frame}{July 2015: Ford}
+%	\begin{columns}
+	%		\column{.5\textwidth}
+	%		\begin{itemize}
+		%			\item \textasciitilde433,000 Focus, C-MAX, and Escape manufactured 2014--2015
+		%			\item Preventing drivers from turning off the engines
+		%			\begin{itemize}
+			%				\item Key could be in 'off' position
+			%				\item Key could be removed
+			%				\item Start/Stop-Button could be pressed
+			%			\end{itemize}
+		%			\item Flaw in the body control module
+		%			\item Conflict in theft protection and rollaway prevention
+		%		\end{itemize}
+	%		\column{.4\textwidth}	\href{https://upload.wikimedia.org/wikipedia/commons/9/90/2006_Ford_Escape_interior.jpg}{\includegraphics[width=\textwidth,center]{../pics/cars/FordEscapeInterior}}
+	%	\end{columns}
+%	\source{\href{http://www.theregister.co.uk/2015/07/02/ford_recall_software_bug/}{theregister.co.uk}}
+%\end{frame}
+
+%\begin{frame}{July 2015: Jaguar Land Rover}
+%	\begin{columns}
+	%		\column{.45\textwidth}
+	%		\begin{itemize}
+		%			\item \textasciitilde65,000 Range Rover and Range Rover Sport SUVs sold 2013--2015
+		%			\item Unlocks car doors without notifying drivers
+		%			
+		%		\end{itemize}
+	%		\column{.45\textwidth}	\href{https://upload.wikimedia.org/wikipedia/commons/8/82/LR3_Key_002.jpg}{\includegraphics[width=\textwidth,center]{../pics/cars/LandRoverKey}}
+	%	\end{columns}
+%	\source{\href{http://www.bbc.com/news/technology-33506486}{bbc.com}, \href{http://fortune.com/2015/07/13/jaguar-recall-software-glitch/}{fortune.com}}
+%\end{frame}
+
+%\begin{frame}{February 2015: Jaguar Land Rover}
+%	\begin{columns}
+	%		\column{.45\textwidth}
+	%		\begin{itemize}
+		%			\item 61,793 Range Rover (Sport) manufactured 2012--2015
+		%			\item Airbag software glitch
+		%			\item Passenger-side airbags not deploying
+		%			\item Lightweight adult can be held for children
+		%			\item Recall was planned for April
+		%			\item In mid 90s: children decapitated due to side airbags in cars
+		%		\end{itemize}
+	%		\column{.45\textwidth}	\href{https://upload.wikimedia.org/wikipedia/commons/a/ac/Seitenairbag_Porsche.jpg}{\includegraphics[width=\textwidth,center]{../pics/cars/AirbagSide}}
+	%	\end{columns}
+%	\source{\href{http://www.bloomberg.com/news/articles/2015-02-21/land-rover-to-recall-61-793-vehicles-on-airbag-software}{bloomberg.com}}
+%\end{frame}
+
+%\begin{frame}{February 2014: Toyota}
+%	\begin{columns}
+	%		\column{.6\textwidth}
+	%		\begin{itemize}
+		%			\item \textasciitilde1,900,000 Prius hybrid 3rd generation manufactured 2009--2014
+		%			\item Hybrid control unit has a glitch
+		%			\item First reported in May 2011 in the US
+		%			\item Shutdown automatically and entering a limp-home failsafe mode
+		%			\item Drastically limiting the speed
+		%			\item Software update takes 40 minutes, if it fails control unit is to be replaced taking 3 hours
+		%		\end{itemize}
+	%		\column{.3\textwidth}	\href{https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Antilock_Braking_System.svg/1280px-Antilock_Braking_System.svg.png}{\includegraphics[width=\textwidth,center]{../pics/cars/AntilockBrakingSystem}}
+	%	\end{columns}
+%	\source{\href{http://www.greencarreports.com/news/1042269_update-braking-issue-in-2010-toyota-prius-hybrid-recall-tbd}{greencarreports.com}, \href{http://www.autonews.com/article/20140212/COPY01/302129954/toyota-recalls-prius-models-to-update-software}{autonews.com}}
+%\end{frame}
+
+%\begin{frame}{November 2013: Honda}
+%	\begin{columns}
+	%		\column{.45\textwidth}
+	%		\begin{itemize}
+		%			\item \textasciitilde344,000 Odyssey minivans manufactured 2007--2008
+		%			\item Vehicle brakes suddenly and harshly without
+		%			\item \ldots pressing brake pedal
+		%			\item \ldots illuminating brake lights
+		%			\item Vehicle Stability Assist can malfunction if the minivan is driven in a certain way
+		%			\item Fix took more than half a year
+		%		\end{itemize}
+	%		\column{.45\textwidth}	\href{https://upload.wikimedia.org/wikipedia/commons/6/66/2008-04-17_ECU.jpg}{\includegraphics[width=\textwidth,center]{../pics/cars/ECU}}
+	%	\end{columns}
+%	\source{\href{http://www.autonews.com/article/20131102/OEM11/131109934/honda-to-recall-344000-minivans-in-u.s.-due-to-braking-glitch}{autonews.com}}
+%\end{frame}
+
