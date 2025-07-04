@@ -1,9 +1,13 @@
+\input{../se1/content/code}
+
 % TODO L10 Open-Source Software
 
 \ifuniversity{tubs}{\date{June 23, 2025}}
 
 \author{Thomas Thüm}
 \lecture{Open-Source Software}{opensource}
+
+% TODO add example: https://www.computing.co.uk/news/2025/open-source/denmark-to-replace-microsoft-office-with-open-source-alternatives
 
 \section{Open-Source Software}
 \input{content/10a-opensource}
@@ -94,7 +98,7 @@
 	\item \fospl, Chapter~1 Software Product Lines and Section~2.3 Feature Modeling
 }{
 	\begin{enumerate}
-		\item Model the domain of USB cables and adapters as a feature model (cf. examples show in the lecture)
+		\item Model the domain of USB cables and adapters as a feature model (cf. examples shown in the lecture)
 		\item Ask a fellow student to check whether your model is correct (syntax of feature model + examples are valid configurations)
 		\item Make corrections to your feature model if needed
 		\item (Keep feature model for later task)
@@ -152,48 +156,59 @@
 \author{Thomas Thüm}
 \lecture{Automotive Software}{automotive}
 
-\xkcdframe{2948}
+\begin{frame}[plain]{Book Used for this Lecture \mytitlesource{\staron}}
+	\centering\staronlink{\pic[height=\textheightwithtitle,page=1]{automotive/S21}}
+\end{frame}
 
-\section{Part 1}
-%\input{content/a-}
+\section{Automotive Systems}
+\input{content/12a-automotive}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Software in automotive systems
+	\item with insufficient quality
+	\item with its characteristics and complexity
+	\item Next: How can software architecture help?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \staronlink{Miroslaw Staron, Automotive Software Architectures, Chapter~1 (p.~vii--18)}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students
+		\item How have software failures in cars affected you?
+		\item How were the issues solved?
 	\end{enumerate}
 }
 
-\section{Part 2}
-%\input{content/b-}
+\section{Automotive Software Architectures}
+\input{content/12b-automotivearchitectures}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item Federated and centralized software architectures
+	\item Standardization of architectures with AUTOSAR
+	\item Example application of software architectures
+	\item Next: What were the topics of this course?
 }{
-	\item \sommerville\mychapter{?} 
+	\item \staronlink{Miroslaw Staron, Automotive Software Architectures, Chapter~2 (p.~19--53)}
+	\item \staronlink{Miroslaw Staron, Automotive Software Architectures, Chapter~3 (p.~55--66)}
 }{
 	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
+		\item Form groups of 2--3 students
+		\item Are federated or centralized architectures better suited \ldots{}
+		\begin{itemize}
+			\item to implement autonomous driving?
+			\item for over-the-air updates?
+		\end{itemize}
 	\end{enumerate}
 }
 
-\section{Part 3}
-%\input{content/c-}
+\section{Course Summary}
+\input{content/12c-summary}
 \lessonslearned{
-	\item ?
-	\item Next: ?
+	\item How to \emph{change} software?
+	\item How to \emph{verify} software?
+	\item How to \emph{reuse} software?
+	\item Next: What are experiences of applying SE principles in practice?
 }{
-	\item \sommerville\mychapter{?} 
+	\item see other lectures
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2--3 students
-		\item<+-> ?
-	\end{enumerate}
+	Questions?
 }
 
 %\faq{
