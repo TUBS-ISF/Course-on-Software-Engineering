@@ -1,94 +1,8 @@
-\subsection{Software for Automotive Systems}
-\begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
-	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=2,trim=50 385 60 150,clip]{automotive/EF-Software17}}
-\end{frame}
-\begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
-	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=3,trim=220 415 50 145,clip]{automotive/EF-Software17}}
-\end{frame}
-%\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
-%	\staronlink{\includegraphics[width=\linewidth,page=7,trim=60 450 60 60,clip]{S21}}
-%\end{frame}
-
-\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
-	\begin{fancycolumns}[animation=none]
-		\begin{definition}{Characteristics}
-			\begin{itemize}
-				\item more software than in any other consumer product
-				\item functionality distributed over different software/hardware components
-				\item sometimes even more than 100 embedded systems (ECUs)
-				\item some real-time systems (e.g., engine control)
-				\item automous system: car-2-car and car-2-infrastructure communication
-				\item over-the-air updates/upgrades (planned)
-				\item global development of OEMs (Original Equipment Manufacturer) and tiers \deutsch{Automobilhersteller und Zulieferer}
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\myexampletight{ECU for Engine Control in the 90s}{\staronlink{\pic[width=\linewidth,page=22,trim=55 330 55 160,clip]{automotive/S21}}}
-		\uncover<2->{\begin{note}{The Impact of Software Architecture}
-				\begin{itemize}
-					\item Which functions are realised by which software components?
-					\item Which software components interact with each other?
-				\end{itemize}
-		\end{note}}
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{Automotive Software Systems}
-\begin{frame}{\insertsubsection\ \mytitlesource{\broy}}
-	\begin{fancycolumns}
-		\myexampletight{}{\centering\broylink{\pic[width=.8\linewidth,page=2,trim=50 380 320 265,clip]{automotive/B-ICSE06}}}
-		\begin{definition}{Challenges\mysource{\staron}}
-			\begin{itemize}
-				\item embedded, distributed systems
-				\item cyberphysical, safety-critical, security-critical
-				\item application and system software
-				\item autonomous system with artificial intelligence
-				\item (re-)configurable systems
-				% TODO \cite{WC:SPLC15,CR:IJAST14,CCG+:REMODD11,FRU:MS99}
-			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\begin{definition}{Complexity of Automotive Software\mysource{\antinyan}}
-			\begin{itemize}
-				\item 2000: about 1\,MLOC
-				\item 2010: about 10\,MLOC
-				\item 2020: about 100\,MLOC for Volvo\\comparable to 6,000 books\\comparable to a library
-				\item 2030?
-				\item also 2020:\\10\,m branches\\30\,m function calls\\3\,m functions\\120\,ECUs with 7,000 external signals\\100,000 functional requirements
-				\item despite skilled developers: enourmous complexity makes failures inevitable
-			\end{itemize}
-		\end{definition}
-	\end{fancycolumns}
-\end{frame}
-% B:ICSE06
-% F:DATE10
-
-\subsection{Structure of Automotive Software}
-\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
-	\begin{fancycolumns}[widths={65}]
-		%\mydefinitiontight{Konzeptioneller Aufbau}{\staronlink{\includegraphics[width=\linewidth,page=28,trim=55 420 55 60,clip]{S21}}} % complete image
-		\mydefinitiontight{Conceptional Structure}{\staronlink{\pic[width=\linewidth,page=28,trim=55 497 160 60,clip]{automotive/S21}}} % cropped image
-		\nextcolumn
-		\begin{example}{Examples}
-			\begin{itemize}
-				\item domain:\\infotainment, powertrain \deutsch{Antriebsystem}
-				\item subsystem:\\active safety, extended driver assistance
-				\item function:\\adaptive cruise control, lane assist
-				\item component:\\network, encryption
-				% TODO Komponente, Modul, Software-Komponente
-			\end{itemize}
-		\end{example}
-	\end{fancycolumns}
-	\uncover<3->{\begin{note}{Typical Architectures in Automotive Software}
-			electric/electronic (E/E) architecture and ECU architecture (local architecture of an ECU)
-	\end{note}}
-\end{frame}
-
-\xkcdframe{2948}
-
 \subsection{Insufficient Quality of Automotive Software}
 
-% TODO recap former example
+\begin{frame}{Recap: Xiaomi SU7 Crash}
+	\slideXiaomiCrash
+\end{frame}
 
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}[widths={60},animation=none]
@@ -239,4 +153,90 @@
 	%	\end{columns}
 %	\source{\href{http://www.autonews.com/article/20131102/OEM11/131109934/honda-to-recall-344000-minivans-in-u.s.-due-to-braking-glitch}{autonews.com}}
 %\end{frame}
+
+
+
+\xkcdframe{2948}
+
+\subsection{Software for Automotive Systems}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
+	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=2,trim=50 385 60 150,clip]{automotive/EF-Software17}}
+\end{frame}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
+	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=3,trim=220 415 50 145,clip]{automotive/EF-Software17}}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Characteristics}
+			\begin{itemize}
+				\item more software than in any other consumer product
+				\item functionality distributed over different software/hardware components
+				\item sometimes even more than 100 embedded systems (ECUs)
+				\item some real-time systems (e.g., engine control)
+				\item automous system: car-2-car and car-2-infrastructure communication
+				\item over-the-air updates/upgrades (planned)
+				\item global development of OEMs (Original Equipment Manufacturer) and tiers \deutsch{Automobilhersteller und Zulieferer}
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\myexampletight{ECU for Engine Control in the 90s}{\staronlink{\pic[width=\linewidth,page=22,trim=55 330 55 160,clip]{automotive/S21}}}
+		\uncover<2->{\begin{note}{The Impact of Software Architecture}
+				\begin{itemize}
+					\item Which functions are realised by which software components?
+					\item Which software components interact with each other?
+				\end{itemize}
+		\end{note}}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\broy}}
+	\begin{fancycolumns}
+		\myexampletight{}{\centering\broylink{\pic[width=.8\linewidth,page=2,trim=50 380 320 265,clip]{automotive/B-ICSE06}}}
+		\begin{definition}{Challenges\mysource{\staron}}
+			\begin{itemize}
+				\item embedded, distributed systems
+				\item cyberphysical, safety-critical, security-critical
+				\item application and system software
+				\item autonomous system with artificial intelligence
+				\item (re-)configurable systems
+				% TODO \cite{WC:SPLC15,CR:IJAST14,CCG+:REMODD11,FRU:MS99}
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Complexity of Automotive Software\mysource{\antinyan}}
+			\begin{itemize}
+				\item 2000: about 1\,MLOC
+				\item 2010: about 10\,MLOC
+				\item 2020: about 100\,MLOC for Volvo\\comparable to 6,000 books\\comparable to a library
+				\item 2030?
+				\item also 2020:\\10\,m branches\\30\,m function calls\\3\,m functions\\120\,ECUs with 7,000 external signals\\100,000 functional requirements
+				\item despite skilled developers: enourmous complexity makes failures inevitable
+			\end{itemize}
+		\end{definition}
+	\end{fancycolumns}
+\end{frame}
+% B:ICSE06
+% F:DATE10
+
+\subsection{Structure of Automotive Software}
+\begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
+	\begin{fancycolumns}[widths={65}]
+		%\mydefinitiontight{Konzeptioneller Aufbau}{\staronlink{\includegraphics[width=\linewidth,page=28,trim=55 420 55 60,clip]{S21}}} % complete image
+		\mydefinitiontight{Conceptional Structure}{\staronlink{\pic[width=\linewidth,page=28,trim=55 497 160 60,clip]{automotive/S21}}} % cropped image
+		\nextcolumn
+		\begin{example}{Examples}
+			\begin{itemize}
+				\item domain:\\infotainment, powertrain \deutsch{Antriebsystem}
+				\item subsystem:\\active safety, extended driver assistance
+				\item function:\\adaptive cruise control, lane assist
+				\item component:\\network, encryption
+				% TODO Komponente, Modul, Software-Komponente
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+	\uncover<3->{\begin{note}{Typical Architectures in Automotive Software}
+			electric/electronic (E/E) architecture and ECU architecture (local architecture of an ECU)
+	\end{note}}
+\end{frame}
 
