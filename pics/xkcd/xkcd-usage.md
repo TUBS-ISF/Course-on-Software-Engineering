@@ -218,3 +218,5 @@ se1: ![2212](2212.png)
 ![3062](3062.png)
 
 ![3064](3064.png)
+
+scientific writing (replication crisis): ![3117](3117.png)
