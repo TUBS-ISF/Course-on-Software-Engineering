@@ -596,14 +596,14 @@ int d = c - b; |\tikzmark{n@d1}|
 
 \begin{frame}{Soundness and Completeness}
    \onslide<2->{\textbf{Soundness}}\vspace*{-2mm}
-   \begin{itemize}
+   \begin{itemize} %TODO maybe adapt definitions
       \item<3-> All properties we derive are true (but we may miss some)
       \item<4-> If we report bugs for violated properties, we produce no false negative
    \end{itemize}
    \bigskip
 
    \onslide<5->{\textbf{Completeness}}\vspace*{-2mm}
-   \begin{itemize}
+   \begin{itemize} %TODO maybe adapt definitions
       \item<6-> We are able to infer all interesting properties in the program
       \item<7-> If we report bugs for violated properties, we produce no false positive
    \end{itemize}
