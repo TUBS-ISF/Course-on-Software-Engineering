@@ -72,14 +72,14 @@
 	\item What are examples for successful open-source projects?
 	\item What are the central questions on the usage of open-source software in a software project?
 	\item What are Stallman's four freedoms?
-	\item What is free software and how does it differs to freeware?
-	\item What is the FSF?
+	\item What is free software and how does it differ to freeware?
+	\item What is the Free Software Foundation?
 }{
 	\item With whom lies code ownership and why does this necessitate software licenses?
 	\item What should companies keep in mind when using open-source software?
 	\item What can companies do to keep used open-source projects alive?
 	\item What is the difference between copyleft and copyright? 
-	\item What can erroneous software licenses cause?
+	\item What can mistakes on software licenses cause?
 }{
 	\item What are examples for common open-source licenses?
 	\item Which restrictions does the MIT license have?
@@ -87,7 +87,7 @@
 	\item Why are some licenses incompatible and others not?
 	\item Which license is usable in which usage scenario?
 	\item What is re-licensing and which requirements does it have?
-	\item What is dual-licensing and why is it used?
+	\item What is dual-licensing (used for)?
 }
 
 \input{../se1/template/footer}
@@ -153,34 +153,29 @@
 }
 
 \faq{
-	\item How is software typically developed and what are common software development processes?
-	\item What is a software product line?
-	\item Which advantages do software product lines offer and which problems do they solve?
+	\item What is mass customization, a software product line, a feature?
+	%\item Which advantages do software product lines offer and which problems do they solve?
 	\item Why are there dependencies between features?
 	\item What is feature modeling?
 	\item How are feature models defined?
-	\item How can we use feature models to model software variability?
-	\item How does one enumerate all valid configurations of a software product line?
+	\item How can we use feature models to model (software) variability?
+	\item What is the problem when enumerating all valid configurations of a software product line?
 }{
 	\item What are the advantages of feature modeling in software development? 
-	\item How can we configure runtime-variable software?
-	\item How can we implement software variability?
-	\item How can we achieve static variability?
+	\item How can we configure and implement runtime variability, runtime parameters, runtime properties?
+	\item How can we implement static variability?
 	\item What kind of preprocessors are there and how do they differ?
-	\item What are advantages and disadvantages of preprocessors?
-	\item How can we help developers during product line development?
-	\item What are alternative approaches to dynamic variability?
+	\item What are (dis)advantages of preprocessors?
+	\item How to implement variability with frameworks/plug-ins?
 }{
 	\item How can we test variable software?
-	\item What are the advantages and disadvantages of testing all software configurations?
-	\item What are the advantages and disadvantages of testing only one software configuration?
-	\item What is pairwise interaction testing?
-	\item What are the advantages and disadvantages of pairwise interaction testing?
-	\item How do we compute pairwise interaction coverage?
-	\item What is t-wise interaction testing?
+	\item What are (dis)advantages of testing all configurations or only one configuration?
+	\item What are feature interactions and why are they challenging?
+	\item What is pairwise and t-wise interaction testing?
+	\item What are (dis)advantages of pairwise interaction testing?
+	\item What is the fundamental trade-off in t-wise interaction testing?
 	\item How does t-wise interaction testing scale, in both sample size and computation time?
-	\item Which feature should we add to our software?
-	\item Why should we also remove features from our software?
+	\item How to reduce the potential for feature interactions?
 }
 
 \input{../se1/template/footer}
