@@ -1,6 +1,6 @@
 % TODO L01 INTRODUCTION
 
-\ifuniversity{tubs}{\date{October 15, 2024}}
+\ifuniversity{tubs}{\date{October 21, 2025}}
 
 \author{Thomas Thüm}
 \lecture{Introduction}{introduction}
@@ -88,7 +88,7 @@
 
 % TODO L02 IMPLEMENTATION
 
-\ifuniversity{tubs}{\date{October 22, 2024}}
+\ifuniversity{tubs}{\date{October 28, 2025}}
 
 \author{Thomas Thüm}
 \lecture{Implementation}{implementation}
@@ -126,26 +126,35 @@
 	\item Historical perspective on programming
 	\item Criteria for choosing languages
 	\item Popularity of programming languages
+	\item Tool support for numerous activities
+	\item By means of tools, environments, and IDEs
 	\item Next: What has programming to do with reading?
 }{
 	\item \jonesbestpractice\mychapter{8 Programming and Code Development}
 	\item \handbuch\mychapter{2.4 Programming Languages}
+	\item \ghezzi\mychapter{9 Software Engineering Tools and Environments}
 }{
-	\begin{enumerate}
-		\item Enter 1+2*3 into the calculator app of your mobile device or laptop
-		\item Compare the results with your colleagues
-		\item Discuss why results (could) differ
-	\end{enumerate}
+%	\begin{enumerate}
+%		\item Enter 1+2*3 into the calculator app of your mobile device or laptop
+%		\item Compare the results with your colleagues
+%		\item Discuss why results (could) differ
+%	\end{enumerate}
+
+	%	\begin{enumerate}
+	%		\item<+-> Form groups of 2-3 students
+	%		\item<+-> What tools have you used already?
+	%		\item<+-> How does development profit from those tools?
+	%	\end{enumerate}
 }
 
-\slideWindowsCalculator
+%\slideWindowsCalculator
 
 \section{Coding Conventions}
 \input{content/02b-conventions}
 \lessonslearned{
 	\item Coding conventions \deutsch{Programmierrichtlinien}
 	\item Formatting, naming, comments, and documentation
-	\item Next: What tools are available for programming?
+	\item Next: What is the most-used tool for programming?
 }{
 	\item[] \javastyleguide
 	% TODO add literature? \refactoring \codecomplete \javascript
@@ -157,20 +166,22 @@
 	\end{enumerate}
 }
 
-\section{Tools and Environments}
-\input{content/02c-tooling}
+\section{Version Control}
+\input{content/02c-versioncontrol}
 \lessonslearned{
-	\item Tool support for numerous activities
-	\item By means of tools, environments, and IDEs
+	\item Version control: goals, centralized and distributed
+	\item Version control with clone, fetch, commit, push, merge, pull, ignore
+	\item Commit messages
+	\item Branching, merging, merge conflicts
 	\item Next: How to find errors beyond compiler errors?
 }{
-	\item[] \ghezzi\mychapter{9 Software Engineering Tools and Environments}
+	\item[] \sommerville\mychapter{25} Configuration Management % TODO replace with better literature pointer?
 }{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-		\item<+-> What tools have you used already?
-		\item<+-> How does development profit from those tools?
-	\end{enumerate}
+%	\begin{enumerate}
+%		\item<+-> Form groups of 2-3 students
+%		\item<+-> Why does it matter whether developers use conventional commits or not?
+%		\item<+-> Should commits be rejected if they do not comply with the conventions?
+%	\end{enumerate}
 }
 
 %\faq{
@@ -181,9 +192,9 @@
 %	\item
 %}
 
-% TODO L03 Testing
+% TODO L03 TESTING
 
-\ifuniversity{tubs}{\date{October 29, 2024}}
+\ifuniversity{tubs}{\date{November 4, 2025}}
 
 \author{Thomas Thüm}
 \lecture{Testing}{testing}
@@ -193,14 +204,14 @@
 		\projectcartoon{01}{how the customer explained it}
 		\projectcartoon{02}{how the project leader understood it}
 		\projectcartoon{03}{how the analyst designed it}
-		\projectcartoon{04}{how the programmer implemented it}
+		\projectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
 	}{
 		\hprojectcartoon{01}{how the customer explained it}
 		\hprojectcartoon{02}{how the project leader understood it}
 		\hprojectcartoon{03}{how the analyst designed it}
-		\hprojectcartoon{04}{how the programmer implemented it}
+		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
 	}%
-	\hprojectcartoon{05}{what the beta testers received}
+	\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
 \end{frame}
 
 \section{Quality Assurance}
@@ -288,26 +299,22 @@
 %	\item
 %}
 
-% TODO L04 SOFTWARE CHANGES
+% TODO L04 MAINTENANCE
 
-\ifuniversity{tubs}{\date{November 5, 2024}}
+\ifuniversity{tubs}{\date{November 11, 2025}}
 
 \author{Thomas Thüm}
-\lecture{Software Changes}{changes}
+\lecture{Maintenance}{maintenance}
 
 \begin{frame}{\insertsubtitle}
 	\alt<3->{
-		\projectcartoon{01}{how the customer explained it}
-		\projectcartoon{02}{how the project leader understood it}
-		\projectcartoon{03}{how the analyst designed it}
-		\projectcartoon{04}{how the programmer implemented it}
+		\projectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+		\projectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
 	}{
-		\hprojectcartoon{01}{how the customer explained it}
-		\hprojectcartoon{02}{how the project leader understood it}
-		\hprojectcartoon{03}{how the analyst designed it}
-		\hprojectcartoon{04}{how the programmer implemented it}
+		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
 	}%
-	\uncover<2->{\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}}}
+	\uncover<2->{\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}}} % se04 maintenance
 \end{frame}
 
 \section{Software Maintenance}
@@ -333,19 +340,6 @@
 	\end{enumerate}
 }
 
-% TODO skipped lecture part to make room for black-box testing
-%\section{}
-%%\input{content/}
-%\lessonslearned{
-%	\item Next: ...
-%}{
-%	\item ...
-%}{
-%	\begin{enumerate}
-%		\item<+-> Form groups of 2-3 students
-%	\end{enumerate}
-%}
-
 \section{Software Evolution}
 \input{content/04b-evolution}
 \lessonslearned{
@@ -358,7 +352,7 @@
 		mysterious name, duplicated code, long method
 	\item Refactorings: %clean-up of structures before and after every change \item Examples: 
 		rename X refactoring, extract/pull-up method refactoring
-	\item Next: Why is it not sufficient to store the latest version of each software?
+	\item Next: ?%Why is it not sufficient to store the latest version of each software?
 }{
 	\item \sommerville, 2.3 Coping with Change and 3.2.2 Refactoring and 4.6 Requirements Change
 	\item \ludewiglichter, 23.1 \deutsch{Software-Evolution}
@@ -382,75 +376,10 @@
 %	\end{enumerate}
 }
 
-%\faq{
-%	\item
-%}{
-%	\item
-%}{
-%	\item
-%}
-
-% TODO L05 VERSION CONTROL
-
-\ifuniversity{tubs}{\date{November 12, 2024}}
-
-\author{Thomas Thüm}
-\lecture{Version Control}{versioncontrol}
-
-\begin{frame}{\insertsubtitle}
-	\hfill%
-	\alt<3->{%
-		\projectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-		\projectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
-		\projectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
-	}{%
-		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
-		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
-	}%
-	\uncover<2->{\hprojectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}}} % se05 version control
-\end{frame}
-
-\section{Introduction to Version Control}
-\input{content/05a-versioncontrol}
+\section{Configuration Management}
+\input{content/04c-configurationmanagement}
 \lessonslearned{
 	\item Configuration management: 4 activities and 3 development stages
-	\item Version control: goals, centralized and distributed
-	\item Next: What are typical operations for version control?
-}{
-	\item[] \sommerville\mychapter{25} Configuration Management
-}{
-	\begin{enumerate}
-		%\item Form groups of 2-3 students
-		\item Choose a project on Github\\ (link to famous projects in Stud.IP)
-		\item What is the main programming language?
-		\item What is the number of commits?
-		\item What is the number of branches?
-		\item Share your insights in the questionaire\\ (link in Stud.IP)
-		\lectureqr{05}
-	\end{enumerate}
-}
-
-\section{Operations of Version Control}
-\input{content/05b-operations}
-\lessonslearned{
-	\item Version control with clone, fetch, commit, push, merge, pull, ignore
-	\item Commit messages
-	\item Branching, merging, merge conflicts
-	\item Next: How can version control speed up release cycles?
-}{
-	\item[] \sommerville\mychapter{25} Configuration Management % TODO replace with better literature pointer?
-}{
-	\begin{enumerate}
-		\item<+-> Form groups of 2-3 students
-		\item<+-> Why does it matter whether developers use conventional commits or not?
-		\item<+-> Should commits be rejected if they do not comply with the conventions?
-	\end{enumerate}
-}
-
-\section{Continuous Integration}
-\input{content/05c-ci}
-\lessonslearned{
 	\item System building: 3 platforms, requirements on tooling
 	\item Continuous integration: tools, steps
 	\item DevOps
@@ -459,10 +388,18 @@
 	\item \sommerville\mychapter{25} Configuration Management
 	\item \handbuch\mychapter{9.3} DevOps
 }{
-	Quiz in Stud.IP
-	\lectureqr{05}
-	%	\item What is better? if test fail (a) reject commits or (b) notify developers via email asynchronously
-	%	\item Discuss the two options and share experiences
+%	\begin{enumerate}
+%			%\item Form groups of 2-3 students
+%			\item Choose a project on Github\\ (link to famous projects in Stud.IP)
+%			\item What is the main programming language?
+%			\item What is the number of commits?
+%			\item What is the number of branches?
+%			\item Share your insights in the questionaire\\ (link in Stud.IP)
+%			\lectureqr{05}
+%		\end{enumerate}
+
+%	Quiz in Stud.IP
+%	\lectureqr{05}
 }
 
 %\faq{
