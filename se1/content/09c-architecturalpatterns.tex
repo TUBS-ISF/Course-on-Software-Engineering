@@ -95,29 +95,30 @@
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Model-View-Controller Architecture}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[animation=none]
-		\begin{definition}{Model-View-Controller Architecture \mysource{\sommerville}}
-			\begin{itemize}
-				\item \emph{Context}: data is presented and manipulated over several views
-				\item \emph{Problem}: data inconsistent and new views hard to add
-				\item \emph{Idea}: separation into three components
-				\item model: stores the relevant data independent of their presentation
-				\item view: shows (a part of) the data independent of manipulations
-				\item controller: user interface for the manipulation of data
-			\end{itemize}
-		\end{definition}
-		\vspace{-1mm}
-		\uncover<2->{
-			\begin{example}{Example}
-				In a spreadsheet, data is presented in tables and diagrams. Changing values in a table leads to an update of affected diagrams and tables.
-			\end{example}
-		}
-		\nextcolumn
-		\uncover<3->{\posthandout{\pic[page=29,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/architecture}}}
-	\end{fancycolumns}
-\end{frame}
+% TODO move to dedicated lecture part in SE2
+%\subsection{Model-View-Controller Architecture}
+%\begin{frame}{\insertsubsection}
+%	\begin{fancycolumns}[animation=none]
+%		\begin{definition}{Model-View-Controller Architecture \mysource{\sommerville}}
+%			\begin{itemize}
+%				\item \emph{Context}: data is presented and manipulated over several views
+%				\item \emph{Problem}: data inconsistent and new views hard to add
+%				\item \emph{Idea}: separation into three components
+%				\item model: stores the relevant data independent of their presentation
+%				\item view: shows (a part of) the data independent of manipulations
+%				\item controller: user interface for the manipulation of data
+%			\end{itemize}
+%		\end{definition}
+%		\vspace{-1mm}
+%		\uncover<2->{
+%			\begin{example}{Example}
+%				In a spreadsheet, data is presented in tables and diagrams. Changing values in a table leads to an update of affected diagrams and tables.
+%			\end{example}
+%		}
+%		\nextcolumn
+%		\uncover<3->{\posthandout{\pic[page=29,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/architecture}}}
+%	\end{fancycolumns}
+%\end{frame}
 % TODO selection update not well explained in the video: https://youtu.be/nfbsaGvQ7n4?t=2042
 % not only to update the selection after a deletion, but also to find out which elements to delete when pressing the button
 

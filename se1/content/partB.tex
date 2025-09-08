@@ -1,6 +1,6 @@
-% TODO L06 PROJECT MANAGEMENT
+% TODO L05 PROJECT MANAGEMENT
 
-\ifuniversity{tubs}{\date{November 19, 2024}}
+\ifuniversity{tubs}{\date{November 18, 2025}}
 
 \author{Thomas Thüm}
 \lecture{Project Management}{management}
@@ -8,20 +8,18 @@
 \begin{frame}{\insertsubtitle}
 	\alt<3->{%
 		\projectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-		\projectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
-		\projectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
-		\projectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}} % se05 version control
+		\projectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
+		\projectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
 	}{%
 		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
-		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
-		\hprojectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}} % se05 version control
+		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
+		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
 	}%
 	\uncover<2->{\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}}} 
 \end{frame}
 
 \section{Introduction to Project Management}
-\input{content/06a-projectmanagement}
+\input{content/05a-projectmanagement}
 \lessonslearned{
 	\item Software development projects
 	\item Project management: goals, influences, activities
@@ -40,7 +38,7 @@
 }
 
 \section{Project Planning and Scheduling}
-\input{content/06b-planning}
+\input{content/05b-planning}
 \lessonslearned{
 	\item Project planning and software pricing
 	\item Project scheduling with Gantt charts and network diagrams
@@ -54,7 +52,7 @@
 }
 
 \section{Cost Estimation}
-\input{content/06c-costestimation}
+\input{content/05c-costestimation}
 \lessonslearned{
 	\item Manageable units with \emph{user stories}
 	\item Effort/cost estimation with \emph{planning poker}
@@ -83,9 +81,9 @@
 
 \input{template/footer}
 
-% TODO L07 DEVELOPMENT PROCESS
+% TODO L06 DEVELOPMENT PROCESS
 
-\ifuniversity{tubs}{\date{November 26, 2024}}
+\ifuniversity{tubs}{\date{November 25, 2025}}
 
 \author{Thomas Thüm}
 \lecture{Development Process}{process}
@@ -93,15 +91,13 @@
 \begin{frame}{\insertsubtitle{} \deutsch{Vorgehensmodelle}}
 	\alt<2->{%
 		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
-		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
-		\hprojectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}} % se05 version control
-		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se06 project management
+		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
+		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
+		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
 	}{%
-		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{software\\changes}} % se04 changes
-		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se06 project management
-		\hprojectcartoon{12}{when it was delivered\\~\\~\\\textbf{version control}} % se05 version control
-		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{software\\testing}} % se03 testing
+		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintance}} % se04 maintenance
+		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
+		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
 		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
 	}%
 \end{frame}
@@ -117,7 +113,7 @@
 \end{frame}
 
 \section{Development Processes: The Waterfall Model}
-\input{content/07a-waterfall}
+\input{content/06a-waterfall}
 \lessonslearned{
 	\item Software development process: motivation and goal
 	\item Waterfall model: phases, results, example domains, advantages and disadvantages
@@ -130,7 +126,7 @@
 }
 
 \section{V-Model for Extensive Testing}
-\input{content/07b-vmodel}
+\input{content/06b-vmodel}
 \lessonslearned{
 	\item V-model
 	\item Testing stages: unit testing, integration testing, system testing, acceptance testing
@@ -148,7 +144,7 @@
 }
 
 \section{Scrum for Agile Testing}
-\input{content/07c-scrum}
+\input{content/06c-scrum}
 \lessonslearned{
 	\item Motivation for agile development
 	\item Agile Manifesto (four values, twelve principles)

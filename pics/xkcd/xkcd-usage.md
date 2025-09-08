@@ -6,53 +6,53 @@
 
 ![2212](2212.png)
 
-![2021](2021.png)
+![2961](2961.png)
 
-![1197](1197.png)
+![2385](2385.png)
 
 2. Implementation
 
 ![378](378.png)
 
-3. Testing
-
-![2200](2200.png)
-
-4. Software Changes
-
-![2266](2266.png)
-
-![1667](1667.png)
-
-5. Version Control
+![2021](2021.png)
 
 ![1597](1597.png)
 
 ![1296](1296.png)
 
+3. Testing
+
+![2200](2200.png)
+
+4. Maintenance
+
+![2266](2266.png)
+
+![1667](1667.png)
+
 ![2224](2224.png)
 
-6. Project Management
+5. Project Management
 
 ![1319](1319.png)
 
 ![1425](1425.png)
 
-7. Development Process
+6. Development Process
 
-8. Requirements
+7. Requirements
 
-9. System Modeling
+8. System Modeling
 
 ![927](927.png)
 
 ![844](844.png)
 
-10. Software Architecture
+9. Software Architecture
 
 ![2347](2347.png)
 
-11. Software Design
+10. Software Design
 
 ![1673](1673.png)
 
@@ -60,7 +60,7 @@
 
 ![2309](2309.png)
 
-12. Software Reuse
+11. Software Reuse
 
 ![306](306.png)
 
@@ -68,9 +68,9 @@
 
 1. Introduction
 
-![2961](2961.png)
+se1: ![2961](2961.png)
 
-![2385](2385.png)
+se1: ![2385](2385.png)
 
 2. Evolution
 
@@ -170,6 +170,8 @@ se1: ![2212](2212.png)
 ![323](323.png)
 
 ![763](763.png)
+
+formerly se1: ![1197](1197.png)
 
 ![1328](1328.png)
 
