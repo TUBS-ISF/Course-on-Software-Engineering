@@ -15,13 +15,25 @@
 \begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
 	\begin{fancycolumns}[columns=3,widths={5,90,5},animation=none]
 		\nextcolumn
-		\myexampletight{}{\centering\staronlink{\pic[width=\linewidth,page=75,trim=60 430 60 60,clip]{automotive/S21}}}
+		\myexampletight{}{\centering\pic[width=\linewidth]{automotive/federated_architecture}}
 		\nextcolumn
 	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\insertsubsection\ \mytitlesource{\vdovic}}
-	\mydefinitiontight{Bus Systems for Automotive Systems}{\vdoviclink{\pic[width=\linewidth,page=3,trim=40 530 40 85,clip]{automotive/VBP-Access19}}}
+	\mydefinition{Bus Systems for Automotive Systems}{
+		\small \centering
+		\begin{tabular}{
+				>{\columncolor[HTML]{EFEFEF}}l |l|l|l|l}
+			\textbf{Bus System}       & \cellcolor[HTML]{EFEFEF}\textbf{CAN}           & \cellcolor[HTML]{EFEFEF}\textbf{FlexRay} & \cellcolor[HTML]{EFEFEF}\textbf{LIN} & \cellcolor[HTML]{EFEFEF}\textbf{MOST} \\ \hline
+			\textbf{Type}             & event-triggered                                & time-triggered                           & subbus                               & multimedia                            \\ \hline
+			\textbf{Application}      & \makecell[lc]{ABS, battery management \\ system, engine control} & \makecell[lc]{drive-by-wire \\ systems}                   & \makecell[lc]{door locking, \\ powered windows}        & \makecell[lc]{entertainment, \\ navigation}             \\ \hline
+			\textbf{Bandwidth}        & up to 1 Mbit/s                                 & up to 10 Mbit/s                          & up to 20 kbit/s                      & up to 24.8 Mbit/s                     \\ \hline
+			\textbf{Access Control}   & CMSA/CD                                        & TDMA                                     & Polling                              & TDM, CMSA/CA                          \\ \hline
+			\textbf{Error protection} & CRC, parity bits                               & CRC, bus guardian                        & checksum, parity bits                & \makecell[lc]{CRC, checksum, \\ parity bits}           
+		\end{tabular}
+		
+	}
 \end{frame}
 
 \xkcdframe{2212}
@@ -30,7 +42,7 @@
 \begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
 	\begin{fancycolumns}[columns=3,widths={5,90,5},animation=none]
 		\nextcolumn
-		\myexampletight{}{\centering\staronlink{\pic[width=\linewidth,page=78,trim=50 480 50 60,clip]{automotive/S21}}}
+		\myexampletight{}{\centering\pic[width=\linewidth]{automotive/centralized_architecture}}
 		\uncover<2->{\mynote{}{redundancy still needed for the fail safe mode}}
 		\nextcolumn
 	\end{fancycolumns}
@@ -38,8 +50,29 @@
 
 \begin{frame}{\insertsubsection\ \mytitlesource{\vdovic}}
 	\myexampletight{Bus Systems in Use}{
-		\vdoviclink{\pic[width=\linewidth,page=8,trim=40 670 40 85,clip]{automotive/VBP-Access19}}
-		\vdoviclink{\pic[width=\linewidth,page=8,trim=40 402 40 217,clip]{automotive/VBP-Access19}}
+		\centering \footnotesize
+%		\begin{tabular}{
+%				>{\columncolor[HTML]{EFEFEF}}l 
+%				>{\columncolor[HTML]{EFEFEF}}l |l|l|l}
+%			\multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}}                                                            & \cellcolor[HTML]{EFEFEF}\textbf{2018 Nissan Leaf}                       & \cellcolor[HTML]{EFEFEF}\textbf{2018 Checrolet Bolt}               & \cellcolor[HTML]{EFEFEF}\textbf{Tesla Model S P100D} \\ \hline
+%			\multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{Price}}                                              & \$29,990                                                                & \$36,620                                                           & \$135,000                                            \\ \hline
+%			\multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}}                                        & \textbf{Number of ECUs}                & 3 - 8                                                                   & 3 - 8                                                              & 3 - 4                                                \\ \cline{2-5}
+%			\multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}}                                       & \textbf{Bus Systems}                   & \makecell[lc]{multiple CAN buses, \\ multiple LIN buses, \\ FlexRay }                        & \makecell[lc]{multiple CAN buses, \\ multiple LIN buses, \\ FlexRay }                   & \makecell[lc]{multiple CAN buses, \\ multiple LIN buses, \\ Ethernet}     \\ \cline{2-5}
+%			\multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}}                                         & \textbf{\makecell[lc]{Infotainment \\ Panel}}            & \makecell[lc]{vehicle information display, \\ 7-inch touchscreen}                         & \makecell[lc]{8-inch driver information center, \\ 10.2-inch touchscreen }           & \makecell[lc]{driver display, \\ 17-inch touchscreen }                 \\ \cline{2-5}
+%			\multicolumn{1}{l|}{\multirow{-4}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Softwarized}}} & \makecell[lc]{\textbf{Infotainment \\ Operating System}} & \makecell[lc]{Windows Embedded Automotive, \\ support for Android Auto \\ and Apple CarPlay } & \makecell[lc]{MyLink based on QNX OS, \\ support for Android Auto \\ and Apple CarPlay} & \makecell[lc]{ modified version of \\ Ubuntu Linux }                   
+%		\end{tabular}
+
+	\begin{tabular}{
+			>{\columncolor[HTML]{EFEFEF}}l 
+			>{\columncolor[HTML]{EFEFEF}}l |l|l|l}
+		\multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}}                                                                                & \cellcolor[HTML]{EFEFEF}\textbf{2018 Nissan Leaf}                       & \cellcolor[HTML]{EFEFEF}\textbf{2018 Checrolet Bolt}               & \cellcolor[HTML]{EFEFEF}\textbf{Tesla Model S P100D} \\ \hline
+		\multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{Price}}                                                                  & \$29,990                                                                & \$36,620                                                           & \$135,000                                            \\ \hline
+		\multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}}                                       & \textbf{Number of ECUs}                & 3 - 8                                                                   & 3 - 8                                                              & 3 - 4                                                \\ \cline{2-5} 
+		\multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}}                                       & \textbf{Bus Systems}                   & \makecell[lc]{multiple CAN buses, \\ multiple LIN buses, \\ FlexRay}                         & \makecell[lc]{multiple CAN buses, \\ multiple LIN buses, \\ FlexRay}                    & \makecell[lc]{multiple CAN buses, \\ multiple LIN buses, \\ Ethernet}     \\ \cline{2-5} 
+		\multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}}                                       & \bfseries\makecell[lc]{ Infotainment \\ Panel}            & \makecell[lc]{vehicle information display, \\ 7-inch touchscreen}                         & \makecell[lc]{8-inch driver information center, \\ 10.2-inch touchscreen  }          & \makecell[lc]{ driver display, \\ 17-inch touchscreen }                 \\ \cline{2-5} 
+		\multicolumn{1}{l|}{\multirow{-4}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Softwarized}}} & \bfseries\makecell[lc]{ Infotainment \\ Operating System } & \makecell[lc]{Windows Embedded Automotive, \\ support for Android Auto \\ and Apple CarPlay} & \makecell[lc]{MyLink based on QNX OS, \\ support for Android Auto \\ and Apple CarPlay} & \makecell[lc]{modified version of \\ Ubuntu Linux }                   
+	\end{tabular}
+
 	}
 \end{frame}
 
@@ -91,20 +124,12 @@
 
 \subsubsection{Layered Architecture}
 \begin{frame}{\insertsubsubsection\ \mytitlesource{\staron}}
-	\begin{fancycolumns}[animation=none]
-		\nextcolumn
-		\vspace{-10mm}
-		\myexampletight{Reference Architecture for Autonomous Driving}{\centering\staronlink{\pic[width=.9\linewidth,page=55,trim=75 250 75 60,clip]{automotive/S21}}}
-	\end{fancycolumns}
+		\myexampletight{Reference Architecture for Autonomous Driving}{\centering\pic[width=.65\linewidth]{automotive/layered_architecture}}
 \end{frame}
 
 \subsubsection{Pipe-and-Filter Architecture}
 \begin{frame}{\insertsubsubsection\ \mytitlesource{\staron}}
-	\begin{fancycolumns}[columns=3,widths={5,90,5},animation=none]
-		\nextcolumn
-		\myexampletight{Image Processing}{\centering\staronlink{\pic[width=\linewidth,page=59,trim=65 250 65 285,clip]{automotive/S21}}}
-		\nextcolumn
-	\end{fancycolumns}
+		\myexampletight{Image Processing}{\centering\pic[width=\linewidth]{automotive/pipe_filter_architecture}}
 \end{frame}
 
 %\subsubsection{Client-Server Architecture}
@@ -119,12 +144,10 @@
 
 \subsubsection{Publisher-Subscriber Architecture}
 \begin{frame}{\insertsubsubsection\ \mytitlesource{\staron}}
-	\begin{fancycolumns}[columns=3,widths={5,75,5},animation=none]
-		\nextcolumn
-		\myexampletight{Speed Control}{\centering\staronlink{\pic[width=\linewidth,page=61,trim=65 285 75 250,clip]{automotive/S21}}}
+		
+		\myexampletight{Speed Control}{\centering\pic[width=.8\linewidth]{automotive/publish_subscribe_architecture}}
 		\mynote{Publisher-Subscriber Architecture}{similar to observer pattern but on architectural level}
-		\nextcolumn
-	\end{fancycolumns}
+	
 \end{frame}
 
 \begin{frame}[b]{Recap: Gordon Bell}

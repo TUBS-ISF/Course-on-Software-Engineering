@@ -25,7 +25,7 @@
 	\begin{fancycolumns}[widths={60},animation=none]
 		\pic[width=\linewidth]{automotive/CollisionWarningBrakeSupport}
 		\nextcolumn
-		\begin{example}{June 2015: Honda Acura\mysource{\href{http://www.wtsp.com/story/news/2015/06/11/software-glitch-prompts-acura-recall/71104030/}{wtsp.com}}} % TODO server temporarily down or permanently? was down on 2023-06-19
+		\begin{example}{June 2015: Honda Acura\mysource{\href{http://www.wtsp.com/story/news/2015/06/11/software-glitch-prompts-acura-recall/71104030/}{wtsp.com}}} % TODO server temporarily down or permanently? was down on 2023-06-19, 2025-09-10
 			\begin{itemize}
 				\item 48,000 MDX SUVs and RLX sedans manufactured 2014--2015
 				\item Collision Mitigation Braking System can accidentally apply the break
@@ -159,11 +159,34 @@
 \xkcdframe{2948}
 
 \subsection{Software for Automotive Systems}
-\begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
-	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=2,trim=50 385 60 150,clip]{automotive/EF-Software17}}
+\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://doi.org/10.1007/s42452-019-1069-0}{Hick~SNAS'19}}}
+	\centering\pic[width=.8\linewidth]{automotive/Complexity}
 \end{frame}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ebertfavaro}}
-	\centering\ebertfavarolink{\pic[height=\textheightwithtitle,page=3,trim=220 415 50 145,clip]{automotive/EF-Software17}}
+	\begin{fancycolumns}[columns={3}, widths={35,40,25}]
+		\begin{itemize}
+			\item Autonomous driving with sensor fusion and car2x communication
+			\item Efficient energy usage and grid communication
+			\item Smart charging for ecars
+			\item Black-box data collector for insurance
+			\item Secure software updates, over the air
+			\item Predictive remote diagnostics and self-repairing devices
+			\item Passenger internet, fleet management, \dots
+		\end{itemize}
+		\nextcolumn
+		
+		\pic[width=\columnwidth]{automotive/car_modern}
+		
+		\nextcolumn
+		\begin{itemize}
+			\item OEM backbone
+			\item eCall
+			\item LTE, WLAN
+			\item NFC, Bluetooth
+			\item ITS roadside station
+			\item \dots
+		\end{itemize}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
@@ -180,7 +203,7 @@
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
-		\myexampletight{ECU for Engine Control in the 90s}{\staronlink{\pic[width=\linewidth,page=22,trim=55 330 55 160,clip]{automotive/S21}}}
+		\myexampletight{ECU for Engine Control in the 90s}{\centering\pic[width=.8\columnwidth]{automotive/Rover_MEMS_16_board}}
 		\uncover<2->{\begin{note}{The Impact of Software Architecture}
 				\begin{itemize}
 					\item Which functions are realised by which software components?
@@ -192,7 +215,7 @@
 
 \begin{frame}{\insertsubsection\ \mytitlesource{\broy}}
 	\begin{fancycolumns}
-		\myexampletight{}{\centering\broylink{\pic[width=.8\linewidth,page=2,trim=50 380 320 265,clip]{automotive/B-ICSE06}}}
+		\myexampletight{}{\centering\broylink{\pic[width=.8\linewidth]{automotive/car_sensors}}}
 		\begin{definition}{Challenges\mysource{\staron}}
 			\begin{itemize}
 				\item embedded, distributed systems
@@ -223,7 +246,7 @@
 \begin{frame}{\insertsubsection\ \mytitlesource{\staron}}
 	\begin{fancycolumns}[widths={65}]
 		%\mydefinitiontight{Konzeptioneller Aufbau}{\staronlink{\includegraphics[width=\linewidth,page=28,trim=55 420 55 60,clip]{S21}}} % complete image
-		\mydefinitiontight{Conceptional Structure}{\staronlink{\pic[width=\linewidth,page=28,trim=55 497 160 60,clip]{automotive/S21}}} % cropped image
+		\mydefinitiontight{Conceptional Structure}{\pic[width=\linewidth]{automotive/conceptional_structure}}
 		\nextcolumn
 		\begin{example}{Examples}
 			\begin{itemize}
