@@ -24,14 +24,14 @@
 	%text width=20mm,align=flush center,
 	level 1/.append style={level distance=27mm,sibling angle=360/8}]
 	\node {Characteristics of Software}
-	child { node {abstract\\(no physical\\laws)} }
-	child { node {intangible \deutsch{immateriell}} }
-	child { node {hard to measure} }
-	child { node {aging} }
-	child { node {no \phantom{abc}deterioration} }
-	child { node {no spare parts} }
-	child { node {easier to adapt than hardware} }
-	child { node {frequent adaptation\phantom{;}} }
+	child[visible on={<2->}] { node {abstract\\(no physical\\laws)} }
+	child[visible on={<3->}] { node {intangible \deutsch{immateriell}} }
+	child[visible on={<4->}] { node {hard to measure} }
+	child[visible on={<5->}] { node {aging} }
+	child[visible on={<6->}] { node {no \phantom{abc}deterioration} }
+	child[visible on={<7->}] { node {no spare parts} }
+	child[visible on={<8->}] { node {easier to adapt than hardware} }
+	child[visible on={<9->}] { node {frequent adaptation\phantom{;}} }
 	;
 \end{frame}
 %   abstract and intagible (immatriell): not constrained by the properties of materials, nor are they governed by physical laws or by manufacturing processes. [\sommerville]
@@ -78,6 +78,7 @@
 		\end{example}
 	\end{fancycolumns}	
 \end{frame}
+% TODO more up-to-date data available?
 % hardware getting smaller and smaller, portable even for bees https://www.bbc.com/news/articles/cj9jzv27lv2o
 
 \begin{frame}{Application Software}
@@ -112,10 +113,13 @@
 \begin{frame}{Android Apps with 5 Billion Downloads \deutschertitel{5 Milliarden}}
 	\centering\picDark[height=65mm]{diagrams/android-downloads-5b}
 \end{frame}
+% TODO more up-to-date data available?
+
 
 \begin{frame}{Non-Preinstalled Android Apps with 5 Billion Downloads \deutschertitel{5 Milliarden}}
 	\centering\picDark[height=65mm]{diagrams/android-downloads-5b-np}
 \end{frame}
+
 % TODO add facebook,whatsapp,instagram outtage from October 2021?
 
 %\begin{frame}{Android Apps with 1 Billion Downloads \deutschertitel{1 Milliarde}}
@@ -137,17 +141,16 @@
 	%text width=20mm,align=flush center,
 	level 1/.append style={level distance=27mm,sibling angle=360/8}]
 	\node {Categories of Software}
-	child { node {system vs\phantom{;} application software\phantom{ab}} }
-	child { node {generic vs customized} }
-	child { node {proprietary\\vs open-source} }
-	child { node {freeware\\vs commercial} }
-	child { node {data-intensive vs computation-intensive} }
-	child { node {monolithic vs distributed} }
-	child { node {stand-alone vs integrated} }
-	child { node {user interface vs API\phantom{ab}} }
+	child[visible on={<2->}] { node {system vs\phantom{;} application software\phantom{ab}} }
+	child[visible on={<3->}] { node {generic vs customized} }
+	child[visible on={<4->}] { node {proprietary\\vs open-source} }
+	child[visible on={<5->}] { node {freeware\\vs commercial} }
+	child[visible on={<6->}] { node {data-intensive vs computation-intensive} }
+	child[visible on={<7->}] { node {monolithic vs distributed} }
+	child[visible on={<8->}] { node {stand-alone vs integrated} }
+	child[visible on={<9->}] { node {user interface vs API\phantom{ab}} }
 	;
 \end{frame}
-% TODO parts of this diagram not readible
 
 % software is eating the world: https://a16z.com/2011/08/20/why-software-is-eating-the-world/
 % data is the new oil
