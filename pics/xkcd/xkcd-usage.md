@@ -222,3 +222,5 @@ formerly se1: ![1197](1197.png)
 ![3064](3064.png)
 
 scientific writing (replication crisis): ![3117](3117.png)
+
+scientific writing (puntuation) ![3143](3143.png)
