@@ -34,7 +34,7 @@
 				\item indentation: typically 4 characters per level
 				\item length of a line: often 80 or 100 characters
 				\item extra indentation: typically 8 characters when breaking extra long lines
-				\item empty lines between methods and attributes
+				\item empty lines between members (e.g., methods and attributes)
 			\end{itemize}
 		\end{definition} % TODO add citation
 	\nextcolumn
@@ -65,10 +65,11 @@
 			\begin{itemize}
 				\item nouns for class names: Calculator
 				\item nouns for attribute names: calculateButton
-				\item verbs for method names: getCalculator(), evaluate(), isZero(), hasChildren(), setValue() % TODO consistent use of "method" opposed to "operation"?
-				\item CamelCaseNotation for classes, attributes, methods, local variables, parameters
-				\item UPPER\_CASE\_NOTATION for constants
-				\item lowercasenotation for package names
+				\item verbs for method names: getCalculator(), evaluate(), isZero(), hasChildren(), setValue()
+				\item PascalCaseNotation for classes, interfaces (not consistent in C/C++)
+				\item camelCaseNotation for attributes, methods, local variables, parameters (exception: Python)
+				\item UPPER\_SNAKE\_CASE\_NOTATION for constants (exception: Go)
+				\item lowercasenotation for package names (exception: C\#)
 			\end{itemize}
 		\end{definition} % TODO add citation
 	\end{fancycolumns}
