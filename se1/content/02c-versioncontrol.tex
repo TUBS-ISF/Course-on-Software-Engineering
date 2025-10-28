@@ -105,9 +105,8 @@
 				\item \textbf{fix:} patches a bug (\textbf{patch})
 				\item \textbf{feat:} introduces a new feature (\textbf{minor} change)
 				\item \textbf{BREAKING CHANGE:} introduces a breaking API change (\textbf{major} change)
-				\item \textbf{refactor:} applies a refactoring
+				\item \textbf{refactor:} applies a refactoring (patch)
 				\item \ldots
-				\item semantic versioning: major.minor.patch (e.g., v2.6.0)
 			\end{itemize}
 		\end{definition}
 	\end{fancycolumns}
@@ -116,6 +115,83 @@
 \begin{frame}{Examples for Conventional Commit Messages}
 	\centering\picDark[width=.8\linewidth,trim={.05\width} {0\height} {0\width} {.25\height},clip]{versioncontrol/profcalc-commits}
 \end{frame}
+
+
+\begin{frame}{Semantic Versioning}
+	\begin{fancycolumns}
+		
+		
+		\begin{note}{Motivation} 
+			\begin{itemize}
+				\item many different versioning schemes
+				\item unclear which software versions are compatible with others
+			\end{itemize}
+		\end{note}
+		
+		\begin{definition}{Semantic Versioning \mysource{\href{https://semver.org/}{semver.org}}} 
+			\begin{itemize}
+				\item proposes a simple rule set for versions
+				\item differentiation based on changes:
+				\begin{itemize}
+					\item breaking changes (major)
+					\item added features (minor)
+					\item fixes / refactorings (patch)
+				\end{itemize}
+				\item version scheme: major.minor.patch
+				\item 0.x.y versions for initial development
+				\item common initial version: 0.1.0
+			\end{itemize}
+		\end{definition}
+		\vspace{-1mm}
+		
+		\nextcolumn
+		\vspace{-5mm}
+		\begin{note}{Versioning Rules \mysource{\href{https://semver.org/}{semver.org}}}
+			A version is changed after a set of commits:
+			\begin{table}[]
+				\begin{tabular}{lrrr}
+					Breaking changes & $\geq$ 1 & ?        & ?      \\
+					Added features  & 0        & $\geq$ 1 & ?   \\
+					Fixes / Refactorings            & 0        & 0        & $\geq$ 1   \\[1mm]
+					& \vspace{-4mm}& & \\[1mm]
+					\hline
+					& \vspace{-4mm}& & \\[1mm]
+					\textbf{Major}                & +1       & 0        & 0         \\
+					\textbf{Minor}                & =        & +1       & 0     \\
+					\textbf{Patch}                & =        & =        & +1    
+				\end{tabular}
+			\end{table}
+			%			\begin{table}[]
+				%				\begin{tabular}{ccc|ccc}
+					%					\rotatebox{90}{Incompatible Changes} & \rotatebox{90}{Added functionality} & \rotatebox{90}{Bug fixes} & Major & Minor & Patch \\ \hline
+					%					$\geq$ 1             & ?                   & ?         & +1    & 0     & 0     \\
+					%					0                    & $\geq$ 1            & ?         & =     & +1    & 0     \\
+					%					0                    & 0                   & $\geq$ 1  & =     & =     & +1   
+					%				\end{tabular}
+				%			\end{table}
+		\end{note}
+		
+		\begin{example}{Examples}
+			
+			\begin{itemize}
+				
+				\item \textbf{major} 2.3.2 $\rightarrow$ 3.0.0
+				
+				\textit{Changed supported database}
+				
+				\item \textbf{minor} 1.2.0 $\rightarrow$ 1.3.0
+				
+				\textit{Added functionality to upload files}
+				
+				\item \textbf{patch} 1.12.0 $\rightarrow$ 1.12.1
+				
+				\textit{Fixed a bug when downloading large files}
+				
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
 
 \subsection{Merge, Pull, and Ignore}
 \slideMergePull
