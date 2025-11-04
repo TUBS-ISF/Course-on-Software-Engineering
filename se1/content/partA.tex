@@ -236,7 +236,7 @@
 		\item<+-> Form in groups of 2--3 students
 		\item<+-> Discuss own examples for insufficient product quality
 		\item<+-> Can you assign the right kind of product quality for each example?\\~\\functional suitability, security, reliability, usability, compatibility, performance efficiency, maintainability, portability (see Slide~\ref{slide:productquality})
-			\lectureqr{03}
+			%\lectureqr{03}
 	\end{enumerate}
 }
 	%	\item Open your favorite IDE and write a small example program illustrating one error detected by the Java compiler
@@ -266,9 +266,22 @@
 	\item[] \ludewiglichter, Chapter 19 \deutsch{Programmtest}
 }{
 	\pic[width=\linewidth]{testing/modulo}
-	\vspace*{-1ex}
-	Determine the coverage of a test suite.
-	\lectureqr{03}
+
+	\begin{enumerate}
+		\item Determine the coverage of this test suite:
+%			\begin{enumerate} % 2024wt
+%				\item a = 5, b = -5, m = 0
+%				\item a = 5, b = 5, m = 0
+%				\item a = 10, b = 5, m = 0
+%			\end{enumerate}
+			\begin{itemize} % 2025wt, no coverage
+				\item TC1: a = 3, b = -5, m = 3
+				\item TC2: a = 3, b = 5, m = 3
+			\end{itemize}
+		\item Is the method correct?
+	\end{enumerate}
+	
+	%\lectureqr{03}
 }
 	%	\item See \href{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=3867}{Moodle} % TODO in 2023 update link
 	%	\item Watch screencast on how to do white-box testing with JUnit
@@ -286,8 +299,9 @@
 }{
 	\item[] \ludewiglichter, Chapter 19 \deutsch{Programmtest}
 }{
-	Quiz in Stud.IP
-	\lectureqr{03}
+	Questions?
+%	Quiz in Stud.IP
+%	\lectureqr{03}
 }
 	%	\item See \href{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=3868}{Moodle} % TODO in 2023 update link
 	%	\item Watch screencast on how to do black-box testing with JUnit
