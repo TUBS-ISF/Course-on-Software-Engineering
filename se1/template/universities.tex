@@ -67,15 +67,6 @@
 % COLOR SCHEME, LOGOS, PICTURES
 \newcommand*{\lectureqr}[2][]{} % as default there is no qr code
 
-\ifuniversity{recording}{
-	\renewcommand{\deutsch}[1]{} % no German in English recordings
-	\mode<beamer>{\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}} % avoid annoying tool tips during the recording
-%	\setpicture[550]{jun22-clouds3} % default picture
-}{
-	\hypersetup{linkcolor=foreground, citecolor=red, filecolor=red, runcolor=red, urlcolor=red, colorlinks=true} % emphasizing links, but not when recording
-	% TODO links do not work, find color for links in darkmode and lightmode
-}
-
 \ifuniversity{tubs}{
 	\setpaths{
 		{../pics/tubs/}
@@ -131,4 +122,14 @@
 	\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}
 	\renewcommand{\deutsch}[1]{}
 	\renewcommand{\deutschertitel}[1]{}
+}
+
+\ifuniversity{recording}{
+	\renewcommand{\deutsch}[1]{} % no German in English recordings
+	\mode<beamer>{\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}} % avoid annoying tool tips during the recording
+	%	\setpicture[550]{jun22-clouds3} % default picture
+}{
+	\AtEndPreamble{
+		\hypersetup{colorlinks=true, linkcolor=red, urlcolor=red} % emphasizing links, but not when recording
+	}
 }

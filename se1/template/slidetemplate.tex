@@ -24,11 +24,13 @@
 
 		\addtocounter{framenumber}{-1}
 		\begin{frame}{\inserttitle} % TODO avoid this page for first lecture?
+	   	    \hypersetup{linkcolor = foreground}
 			\lectureseriesoverview[\insertlecturenumber]
 		\end{frame}
 
 		\addtocounter{framenumber}{-1}
 		\begin{frame}{\insertsubtitle}
+	   	    \hypersetup{linkcolor = foreground}
 	        \vfill
 			\setbeamerfont{section in toc}{size=\LARGE}
 			\tableofcontents[hideallsubsections]
@@ -39,6 +41,7 @@
 \AtBeginSection{
 	\mode<handout>{
 	    \begin{frame}{\insertsubtitle}
+	   	    \hypersetup{linkcolor = foreground}
 	        \linespread{.5}
 	        \vfill
 	        \tableofcontents[currentsection,hideothersubsections,subsubsectionstyle=show/show/show/hide]
@@ -46,6 +49,7 @@
 	}
 	\mode<beamer>{
 		\begin{frame}{\insertsubtitle}
+	   	    \hypersetup{linkcolor = foreground}
 	        \vfill
 			\setbeamerfont{section in toc}{size=\LARGE}
 			\tableofcontents[currentsection,hideallsubsections]
@@ -98,6 +102,7 @@
 \makeatletter
 \renewcommand{\contentoverview}{
     \begin{frame}[plain]
+   	    \hypersetup{linkcolor = foreground}
 		\label{lecture\insertlecturenumber}
         \setbeamerfont{section in toc}{size=\small}\setbeamerfont{subsection in toc}{size=\footnotesize}
 		\begin{beamercolorbox}[wd=.95\paperwidth,ht=28ex,dp=2ex]{lectureseries}
