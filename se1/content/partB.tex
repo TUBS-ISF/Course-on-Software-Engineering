@@ -89,31 +89,31 @@
 \author{Thomas Thüm}
 \lecture{Development Process}{process}
 
-\begin{frame}{\insertsubtitle{} \deutsch{Vorgehensmodelle}}
-	\alt<2->{%
-		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
-		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
-		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
-	}{%
-		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintance}} % se04 maintenance
-		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
-		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
-		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-	}%
-\end{frame}
-
 \begin{frame}{The Process of Food Delivery}
 	\begin{fancycolumns}
 		\pic[width=\linewidth]{process/food-delivery}
-	\nextcolumn
+		\nextcolumn
 		\begin{example}{Phases of Food Delivery}
 			eat, deliver, order, pay, choose, wait?
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
-\section{Development Processes: The Waterfall Model}
+\begin{frame}{\insertsubtitle{} \deutsch{Vorgehensmodelle}}
+%	\alt<2->{%
+		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
+		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
+		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
+%	}{%
+%		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintance}} % se04 maintenance
+%		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
+%		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
+%		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+%	}%
+\end{frame}
+
+\section{Development Processes: The~Waterfall~Model}
 \input{content/06a-waterfall}
 \lessonslearned{
 	\item Software development process: motivation and goal
@@ -123,7 +123,7 @@
 	\item[] \sommerville\mychapter{2} Software Processes
 }{
 	Quiz in Stud.IP
-	\lectureqr{07}
+	%\lectureqr{06}
 }
 
 \section{V-Model for Extensive Testing}
@@ -140,11 +140,11 @@
 	\begin{enumerate}
 		\item<+-> Form groups of 2-3 students
 		\item<+-> 2 minutes of silence: Choose one of the four testing stages and think of an example of a fault that can be detected in that testing stage.
-		\item<+-> 5--10 minutes in groups of 2--3 students: Discuss those faults and whether they could and should have been found in the other stages.
+		\item<+-> 5--10 minutes of group discussions: Discuss those faults and whether they could and should have been found in the other stages.
 	\end{enumerate}
 }
 
-\section{Scrum for Agile Testing}
+\section{Scrum for Agile Development}
 \input{content/06c-scrum}
 \lessonslearned{
 	\item Motivation for agile development
@@ -154,7 +154,13 @@
 }{
 	\item[] \sommerville\mychapter{3} Agile Software Development
 }{
-	Questions?
+	\centering Want to learn how software is developed in practice? Lego-Scrum will take place on December 11, 2025 from 1--5pm!
+	
+	~
+	
+	\only<3|handout:0>{\pic[width=\linewidth,trim={0\width} {.1111\height} {0\width} {0\height},clip]{legoscrum/legoscrum2025-06-25result}}% translate from 4:3 into 3:2 format
+	\only<4|handout:0>{\pic[width=\linewidth]{legoscrum/legoscrum2025-06-25table}}%
+	\only<5->{\pic[width=\linewidth,trim={0\width} {0\height} {.2\width} {.2\height},clip]{legoscrum/legoscrum2025-06-25meeting}}%
 }
 
 %\faq{
