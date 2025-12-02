@@ -5,6 +5,39 @@
 \author{Thomas Thüm}
 \lecture{Requirements}{requirements}
 
+\begin{frame}{November 28, 2025: Airbus A320 Failure}
+	\begin{fancycolumns}[widths={40}]
+			\pic[width=\linewidth]{failures/airbus-a320}
+			\begin{note}{}
+				\begin{itemize}
+					\item flight control software of 6,000 Airbus A320 affected
+					\item quick fix: install old version of the software
+				\end{itemize}
+			\end{note}
+		\nextcolumn
+			\picDark[width=\linewidth]{failures/airbus-solar-radiation}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}<3>{Recap: Reasons for Positive Test Cases} % copied from 03c-blackboxtesting
+	\begin{fancycolumns}
+		\begin{note}{Reasons for Positive Test Cases}
+			\begin{itemize}
+				\item actual fault
+				\uncover<2->{\item wrong test case (input and expected results do not match)}
+				\uncover<3->{\item interaction with other programs/libraries
+					\item fault in the compiler
+					\item fault in the operating system / device drivers
+					\item fault in the hardware or hardware defect
+					\item not enough memory
+					\item does not halt (cf.\ undecidability of the halting problem)
+					\item \emph{bitflip due to cosmic ray}
+					\item \ldots}
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
 \begin{frame}{\insertsubtitle}
 	\hprojectcartoon{01}{how the customer explained it}
 	\hprojectcartoon{02}{how the project leader understood it}
@@ -69,7 +102,7 @@
 	\item \umlspec\mychapter{18}
 }{
 	Quiz in Stud.IP
-	\lectureqr{08}
+	\lectureqr{07}
 }
 
 %\faq{
@@ -152,7 +185,7 @@
 	% less suited introduction: \sommerville, Chapter 5.4.2 (p.\ 156--158)
 }{
 	Quiz in Stud.IP
-	\lectureqr{09}
+	\lectureqr{08}
 }
 
 %\faq{
@@ -204,7 +237,7 @@
 		\item[] Invest five minutes trying to understand the Signal messenger by inspecting the \href{https://github.com/signalapp/Signal-Android}{source code of the Android client}
 		%\item Answer questionnaire
 	\end{enumerate}
-	\lectureqr{10}
+	\lectureqr{09}
 }
 %\only<3->{
 %  \item[A] Ich habe ein gutes Verständnis wie die App funktioniert.
@@ -240,7 +273,7 @@
 	\item \sommerville\mychapter{6.3}\mypages{175--184}
 }{
 	Quiz in Stud.IP
-	\lectureqr{10}
+	\lectureqr{09}
 }
 
 %\faq{
@@ -295,7 +328,7 @@
 	\item \umluserguide\mychapter{19}
 }{
 	Quiz in Stud.IP % identify syntactically wrong sequence diagrams
-	\lectureqr{11}
+	\lectureqr{10}
 }
 
 \section{Modeling Structure with Class Diagrams}
@@ -376,7 +409,7 @@
 	Link to teaching evaluation in Stud.IP
 	
 	(group names without letters, e.g., 5A/5B as 5)
-	\lectureqr{12}
+	\lectureqr{11}
 }
 
 \section{Open-Source Software}
