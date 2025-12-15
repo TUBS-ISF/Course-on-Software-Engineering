@@ -20,7 +20,7 @@
 		}
 		\nextcolumn
 		\nextcolumn
-		\uncover<3>{
+		\uncover<3->{
 			\begin{note}{}
 				\mycite{Weeks of coding can save you hours of planning.}\mysource{anon}
 			\end{note}
@@ -28,7 +28,7 @@
 	\end{fancycolumns}
 	\begin{tikzpicture}[xscale=4.95]
 		\node[label=below:Requirements] (req) at (0,0) {\pic[height=2.5cm]{architecture/requirements}};
-		\only<2-3,6->{\node[label=below:Implementation] (code) at (2,0) {\pic[height=2.5cm]{architecture/source-code}};}
+		\only<2->{\node[label=below:Implementation] (code) at (2,0) {\pic[height=2.5cm]{architecture/source-code}};}
 		%\only<2>{\node[label=below:Softwarearchitektur] (swa) at (.95,0) {\includegraphics[height=1.9cm]{component-diagram}};}
 		\only<5->{
 			\draw[->,line width=5pt,gray] (req) -- (code);
@@ -69,15 +69,15 @@
 \subsection{3 Goals of Software Architecture}
 \begin{frame}{\insertsubsection\ \normalsize[\sommerville]}
 	\begin{fancycolumns}[columns=1] % hack to make mindmap visible in dark mode
-		{\tikz[grow cyclic,
+		\centering{\tikz[grow cyclic,
 			mindmap, every node/.style=concept,concept color=red!20!background,
 			%text width=20mm,align=flush center,
 			level 1/.append style={level distance=27mm,sibling angle=360/3}]
 			\node {Goals of Software Architectures}
-			[clockwise from=90]
-			child { node {communication of stakeholders} }
-			child { node {meet critical requirements} }
-			child { node {support software reuse} }
+			[clockwise from=210]
+			child[visible on=<2->] { node {meet critical requirements} }
+			child[visible on=<3->] { node {communication of stakeholders} }
+			child[visible on=<4->] { node {support software reuse} }
 			;}
 	\end{fancycolumns}
 \end{frame}
@@ -90,10 +90,11 @@
 			%text width=20mm,align=flush center,
 			level 1/.append style={level distance=27mm,sibling angle=360/4}]
 			\node {Architectural Views}
-			child { node {logical view} }
-			child { node {process view} }
-			child { node {development view} }
-			child { node {physical view} }
+			[clockwise from=225]
+			child[visible on=<2->] { node {logical view} }
+			child[visible on=<3->] { node {process view} }
+			child[visible on=<4->] { node {development view} }
+			child[visible on=<5->] { node {physical view} }
 			;}
 		\nextcolumn
 		\begin{definition}{\sommerville:}
