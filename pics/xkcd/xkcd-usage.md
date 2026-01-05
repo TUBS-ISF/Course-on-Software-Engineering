@@ -236,3 +236,5 @@ metrics / misleading migration ![3164](3164.png)
 SUVs ![3167](3167.png)
 
 service outtage (positive and negative consequences of bad operations/software quality)  ![3170](3170.png)
+
+universal outlet ![3186](3186.png)
