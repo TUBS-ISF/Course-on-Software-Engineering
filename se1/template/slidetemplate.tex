@@ -178,9 +178,15 @@
 
 % ENVIRONMENTS FOR PICTURES NOT READY FOR DARKMODE
 
-\newcommand{\picWhite}[2][]{\pic[#1]{#2}}
+\newcommand{\picWhite}[2][]{%
+	\hypersetup{urlcolor=black}% workaround to fix red color in diagrams.net diagrams
+	\pic[#1]{#2}%
+}
 \ifdarkmode
-\renewcommand{\picWhite}[2][]{\mywhite{}{\pic[#1]{#2}}}
+\renewcommand{\picWhite}[2][]{\mywhite{}{%
+	\hypersetup{urlcolor=black}% workaround to fix red color in diagrams.net diagrams
+	\pic[#1]{#2}%
+}}
 \fi
 
 \newcommand{\mywhite}[2]{

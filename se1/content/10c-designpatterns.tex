@@ -39,7 +39,7 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}}
+\begin{frame}[t]{\insertsubsection{}}% \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}
 	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=4}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
 	
 	\vspace{-70mm}
@@ -71,7 +71,7 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}}
+\begin{frame}[t]{\insertsubsection{}}% \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}
 	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=2}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
 	
 	\vspace{-75mm}
@@ -95,18 +95,12 @@
 				intent & \mycite{Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.}\\
 				aka. & dependents, publish-subscribe\\
 				motivation & avoid coupling of classes (i.e., explicit references such as imports)\\
-				example & no coupling between model and view in model-view-controller architectures\\
-				idea & data object (model) has a list of observers (views) that are notified about changes
+				%example & no coupling between model and view in model-view-controller architectures\\ % MVC moved to SE2
+				example & multiple diagrams (e.g., views) shall be updated whenever data in a table (e.g., model) changes\\
+				idea & data object (e.g., model) has a list of observers (e.g., views) that are notified about changes
 			\end{tabularx}
 		\end{definition}
 		\nextcolumn
 		\observer{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
-
-%\subsection{Overview on Design Patterns}
-%\begin{frame}{\insertsubsection{} \mytitlesource{\gof}}
-%	\only<-4|handout:0>{\tikzset{notTaughtDesignPatterns/.style={}}}%
-%	\slideMindmapDesignPatterns{}{notTaughtDesignPatterns}{notTaughtDesignPatterns}{}{notTaughtDesignPatterns}{}{visible on={<1,4,5->}}{visible on={<2,4->}}{visible on={<3->}}
-%\end{frame}
-
