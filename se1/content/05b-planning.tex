@@ -74,22 +74,22 @@
 
 \subsection{Network Diagram}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter, \sommerville}}
-	\begin{fancycolumns}
+	\begin{fancycolumns}[widths={55}]
 		\begin{definition}{Network Diagram \deutsch{Netzplan}}
 			\begin{itemize}
 				\item aka.\ PERT charts
 				\item directed, acyclic graph
-				\item nodes represent tasks
-				\item edges represent dependencies
+				\item nodes represent tasks, edges represent dependencies
 			\end{itemize}
 		\end{definition}
 		\pause
 		\begin{definition}{Metra Potential Method}
 			Given project start date and \emph{duration} of each activity we can compute:
 			\begin{itemize}
-				\item \emph{earliest start} and \emph{earliest finish} time with \emph{forward pass}
-				\item \emph{latest start} and \emph{latest finish} time with \emph{backwards pass}
-				\item \emph{buffer} (time span between earliest and latest start/finish)
+				\item \emph{earliest start} and \emph{earliest finish} time calculated with \emph{forward pass}
+				\item \emph{latest start} and \emph{latest finish} time calculated with \emph{backwards pass}
+				\item \emph{buffer}: time span between earliest and latest start/finish
+				\item \emph{critical path}: longest path(s) of tasks without buffer
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
