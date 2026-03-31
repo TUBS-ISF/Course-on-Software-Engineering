@@ -238,3 +238,10 @@ SUVs ![3167](3167.png)
 service outtage (positive and negative consequences of bad operations/software quality)  ![3170](3170.png)
 
 universal outlet ![3186](3186.png)
+
+approximate formula of the universe ![3200](3200.png)
+
+the empty proof ![3201](3201.png)
+
+car out of batery ![3214](3214.png)
+
