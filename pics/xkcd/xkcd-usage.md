@@ -219,8 +219,29 @@ formerly se1: ![1197](1197.png)
 
 ![3062](3062.png)
 
-![3064](3064.png)
+cloning considered harmful ![3064](3064.png)
+
+the need for software updates ![3109](3109.png)
 
 scientific writing (replication crisis): ![3117](3117.png)
 
+off-by-one-error ![3127](3127.png)
+
+plagiarism ![3132](3132.png)
+
 scientific writing (puntuation) ![3143](3143.png)
+
+metrics / misleading migration ![3164](3164.png)
+
+SUVs ![3167](3167.png)
+
+service outtage (positive and negative consequences of bad operations/software quality)  ![3170](3170.png)
+
+universal outlet ![3186](3186.png)
+
+approximate formula of the universe ![3200](3200.png)
+
+the empty proof ![3201](3201.png)
+
+car out of batery ![3214](3214.png)
+
