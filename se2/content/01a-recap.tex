@@ -10,7 +10,7 @@
 \begin{frame}[10]{How to structure software development?}
 	\begin{fancycolumns}[widths={45}]
 		\diagramWaterfallModel
-	\nextcolumn
+		\nextcolumn
 		\diagramVModel
 	\end{fancycolumns}
 \end{frame}
@@ -25,16 +25,15 @@
 
 \subsection{Design}
 \begin{frame}{What is the high-level structure?}
-	\begin{fancycolumns}[animation=none]
-		\pic[page=16,width=\linewidth,trim=225 20 25 40,clip]{printedslides/2021wt/architecture}
-	\nextcolumn
-		\pic[page=26,width=\linewidth,trim=225 20 25 40,clip]{printedslides/2021wt/architecture}
-	\end{fancycolumns}
+	\begin{figure}
+		\includegraphics[width=0.8\textwidth]{uml/componentdiagram.pdf}
+	\end{figure}
 \end{frame}
+
 \begin{frame}{What is the low-level structure?}
-	\begin{fancycolumns}[animation=none]
-		\pic[page=13,width=\linewidth,trim=225 20 20 40,clip]{printedslides/2021wt/design}
-	\nextcolumn
+	\begin{fancycolumns}[animation=none, widths={60,40}]
+		\pic[width=\columnwidth]{uml/classdiagram.pdf}
+		\nextcolumn
 		\objectadapter{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
