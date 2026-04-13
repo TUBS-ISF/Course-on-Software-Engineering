@@ -3,7 +3,7 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=800 800 800 600,clip]{people/robert-martin}
 		\vspace{-7mm}
-		
+
 		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
 			\mycite{So if you want to go fast, if you want to get done quickly, if you want your code to be easy to write, make it easy to read.} \mysource{\href{https://learning.oreilly.com/library/view/clean-code-a/9780136083238/}{oreilly.com}}
 		\end{note}
@@ -11,7 +11,7 @@
 		\nextcolumn
 		\pic[width=\linewidth,trim=100 0 250 0,clip]{architecture/source-code2}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Eagleson's Law \mysource{\href{https://www.comp.nus.edu.sg/~damithch/pages/SE-quotes.htm?type=maintenanceQuotes}{nus.edu.sg}}}
 			\mycite{Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.}
 		\end{note}
@@ -53,7 +53,7 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=0 500 0 150,clip]{people/edsger-dijkstra}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Edsger W. Dijkstra (1968) \mysource{\href{https://dl.acm.org/doi/pdf/10.1145/362929.362947}{acm.org}}}
 			\mycite{Go-To Statement Considered Harmful}\\(today known as spaghetti code)
 		\end{note}
@@ -61,7 +61,7 @@
 		\nextcolumn
 		\pic[width=\linewidth,trim=0 240 0 310,clip]{emotions/lasagne}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Roberto Waltman \mysource{\href{https://twitter.com/codewisdom/status/1105462704947580928}{twitter.com}}}
 			\mycite{In the one and only true way. The object-oriented version of 'Spaghetti code' is, of course, 'Lasagna code'. (Too many layers).} % TODO check citation within https://www.google.de/books/edition/Introduction_to_Programming_Using_Proces/el2jBgAAQBAJ?hl=en&gbpv=0
 		\end{note}
@@ -73,7 +73,7 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=0 35 0 40,clip]{people/grady-booch}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Grady Booch (born 1955) \mysource{\href{https://twitter.com/Grady_Booch/status/1035409406068813824}{twitter.com}}}
 			\mycite{The function of good software is to make the complex appear to be simple.}
 		\end{note}
@@ -81,7 +81,7 @@
 		\nextcolumn
 		\pic[width=\linewidth,trim=800 700 800 600,clip]{people/robert-martin}
 		\vspace{-7mm}
-		
+
 		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
 			Boy Scouts Rule: \mycite{Leave the campground cleaner than the way you found it.} \mysource{\href{https://learning.oreilly.com/library/view/97-things-every/9780596809515/ch08.html}{oreilly.com}}
 		\end{note}
@@ -123,15 +123,65 @@
 \end{frame}
 
 \subsection{Smells and Refactorings} % TODO add examples for refactorings and smells
-\begin{frame}{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
 	\begin{fancycolumns}
 		\begin{definition}{Mysterious Name}
-			\mycite{Puzzling over some text to understand what’s going on is a great thing if you’re reading a detective novel, but not when you’re reading code. [...] One of the most important parts of clear code is good names, so we put a lot of thought into naming functions, modules, variables, classes, so they clearly communicate what they do and how to use them.}\\--- Rename Method/Field/Variable Refactoring
+			\mycite{Puzzling over some text to understand what’s going on is a great thing if you’re reading a detective novel, but not when you’re reading code. [...] One of the most important parts of clear code is good names, so we put a lot of thought into naming functions, modules, variables, classes, so they clearly communicate what they do and how to use them.}
+		\end{definition}
+		\begin{definition}{Refactoring}
+			\begin{itemize}
+				\item Rename Method/Field/Variable Refactoring
+			\end{itemize}
 		\end{definition}
 		\nextcolumn
+		\begin{example}{Example}
+			\begin{lstlisting}[language=Java]
+				int a = 2;
+				float number = 3.14;
+			\end{lstlisting}
+		\end{example}
+		\begin{example}{Example Refactoring}
+			\begin{lstlisting}[language=Java]
+				int numberOfApples = 2;
+				float pi = 3.14;
+			\end{lstlisting}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
 		\begin{definition}{Duplicated Code (aka.\ Code Clones)}
-			\mycite{If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them. Duplication means that every time you read these copies, you need to read them carefully to see if there’s any difference. If you need to change the duplicated code, you have to find and catch each duplication.}\\--- Extract/Pull-Up Method Refactoring
+			\mycite{If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them. Duplication means that every time you read these copies, you need to read them carefully to see if there’s any difference. If you need to change the duplicated code, you have to find and catch each duplication.}
 		\end{definition}
+		\begin{definition}{Refactoring}
+			\begin{itemize}
+				\item Extract Method
+				\item Pull-Up Method
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{example}{Example}
+			\begin{lstlisting}[language=Java,basicstyle=\small]
+String id = "STAFF-" + member.Name;
+id = id + "-" + member.Office + "-" + member.Phone;
+...
+String newId = "STAFF-" + newMember.Name;
+newId = newId + "-" + newMember.Office + "-" + newMember.Phone;
+			\end{lstlisting}
+		\end{example}
+
+		\begin{example}{Example -- Extract Method}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+private String getId(Member member) {
+	String id = "STAFF-" + member.Name;
+	id = id + "-" + member.Office + "-" + member.Phone;
+	return id;
+}
+			\end{lstlisting}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
@@ -144,7 +194,7 @@
 		%\mydefinition{}{\mycite{}\\---  Refactoring}
 		\pic[width=\linewidth,trim=800 800 800 600,clip]{people/robert-martin}
 		\vspace{-7mm}
-		
+
 		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
 			\mycite{Functions should do one thing. They should do it well. They should do it only.} \mysource{\href{https://learning.oreilly.com/library/view/clean-code-a/9780136083238/}{oreilly.com}}
 		\end{note}
