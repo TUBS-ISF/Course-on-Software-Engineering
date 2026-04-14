@@ -1,0 +1,118 @@
+
+\ifuniversity{tubs}{\date{May 19, 2025}}
+
+\author{Florian Sihler}
+\lecture{Static Analysis}{staticanalysis}
+
+\begin{refsection}[references/06-sa-references.bib]
+\begingroup
+\setcounter{tocdepth}{2}
+\section{A Primer in Static Analysis}
+%\input{content/a-}
+\input{content/06a-sa-intro}
+\lessonslearned{
+	\item What is the basic idea of static analysis?
+	\item How do the approaches differ?
+	\item Next: How does static analysis work?
+}{
+	\item \fullcite{rival2020introduction}
+	\item \fullcite{DBLP:journals/ftpl/Mine17}
+}{
+	So far:
+	\begin{enumerate}
+		\item<+-> Feedback, comments, or questions?
+		\item<+-> Which perspective do you think is used for what? 
+	\end{enumerate}
+}
+
+
+% \lessonslearned{
+% 	\item ?
+% 	\item Next: ?
+% }{
+% 	\item \sommerville\mychapter{?} 
+% }{
+% 	\begin{enumerate}
+% 		\item<+-> Form groups of 2--3 students
+% 		\item<+-> ?
+% 	\end{enumerate}
+% }
+
+\section{Theoretical Foundations}
+\input{content/06b-sa-theory}
+\lessonslearned{
+	\item What is a property, a lattice, a domain?
+	\item Why are we interested in fixpoints?
+	\item What is Rice's theorem?
+	\item What are soundness and completeness?
+	\item Next: What are static analyses in the real world?
+}{
+	\item \fullcite{cousout2021principles}
+}{
+	\begin{enumerate}
+		\item<+-> Let's derive the Interval Lattice! \begin{itemize}
+			\item What are \(\top\) and \(\bot\)?
+			\item How can we define the partial order \(\sqsubseteq\)?
+			\item How to define \(\sqcup\) and \(\sqcap\)?
+		\end{itemize}
+	\end{enumerate}
+}
+
+\section{Static Analysis in the Real-World}
+\input{content/06c-sa-real-world}
+\lessonslearned{
+	\item What is static analysis used for in the real world?
+	\item How do theory and practice differ?
+	\item Next: What are dynamic analyses?
+}{
+	\item \fullcite{10.5555/1592955}
+	\item \fullcite{DBLP:conf/pldi/FerraraNAC21}
+}{
+	\begin{enumerate}
+		\item<+-> What tools do you use?
+		\item<+-> Have you experienced problems with false positives?
+		\item<+-> How to handle false positives? In what scenarios are they harmful?
+	\end{enumerate}
+}
+
+\begin{frame}[allowframebreaks]{References --- Static Analysis}
+\renewcommand*{\bibfont}{\tiny}%
+\urlstyle{same}
+\printbibliography[heading=none]
+\end{frame}
+\endgroup
+\end{refsection}
+
+\faq{
+	\item What is static analysis and what does it do?
+	%\item What is the central mathematical background of static analysis?
+	\item What is Rice's theorem and why is it critical for static analysis?
+	\item What are common types of static analyses?
+	\item What are common perspectives of software programs used in static analysis? 
+	%\item What are commonly used analyses used for static analysis?
+}{
+	\item What is abstract interpretation?
+	\item What are (examples for) dataflow, safety, and numerical properties of programs?
+	\item What is trace abstraction and why is it necessary?
+	%\item What is a property and how can we describe it?
+	%\item What are partial orders on sets and why are they important for static analyses?
+	\item What is (an example for) an abstract domain or a lattice?
+	\item Given an abstract domain (or lattice), what is the corresponding lattice (or abstract domain)?
+	%\item What is a chain and why are greatest lower bounds and least upper bounds important?
+	%\item What are abstract domains and what do they have to do with lattices?
+	\item What is a sign analysis and how does it work?
+	%\item What are common abstract domains and what are they used for?
+	\item Given a couple of assignments, what is their value in an abstract domain?
+	%\item How does one use a abstract domain for a simple program analysis?
+	%\item What are fixpoints and why are they helpful for abstract interpretation?
+	\item What is the confusion matrix of static analyses?
+	\item What are precision, recall, soundness, completeness? 
+}{
+	%\item What are common capabilities offered by static analysis tools?
+	%\item How do static analysis tools operate?
+	\item What are examples of common static analysis tools?
+	%\item How do exemplary static analysis tools (e.g., SonarLint, flowR) operate?
+	%\item What advantages does the LiSA framework offer and how does one use it?
+	\item What is an analysis for unused assignments, hardcoded credentials, intervals?
+	\item How does it work?
+}
