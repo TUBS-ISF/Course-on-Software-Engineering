@@ -1,3 +1,185 @@
+\ifuniversity{tubs}{\date{April 14, 2026}}
+
+\author{Thomas Thüm}
+\lecture{Evolution}{evolution}
+
+\section{Laws on Software Evolution}
+\input{content/02a-laws}
+\lessonslearned{
+	\item Incremental development and changed requirements cause evolution
+	\item Lehman's laws: software is modified and gets more complex\\
+	Continuing Change, Increasing Complexity, Conservation of Familiarity, Continuing Growth, Declining Quality, Feedback System
+	\item Next: How to reduce the complexity?
+}{
+	\item \sommerville\mychapter{2.3 Coping with Change}
+	\item \sommerville\mychapter{4.6 Requirements Change}
+	\item \sommerville\mychapter{9 Software Evolution}
+	\item \lehmanslaws
+	%\item \ludewiglichter, 23.1 \deutsch{Software-Evolution}
+}{
+	\begin{enumerate}
+		\item Form groups of 2--3 students
+		\item Try to find a (counter) example for each of Lehman's laws
+		\item Discuss the example with your colleagues -- does it fulfill further laws?
+	\end{enumerate}
+}
+
+\section{Smells and Refactorings}
+\input{content/02b-debt}
+\lessonslearned{
+	\item Smells / antipatterns: structures to avoid
+	\item Examples: mysterious name, duplicated code, long method
+	\item Refactorings: clean-up of structures before and after every change
+	\item Examples: rename X refactoring, extract/pull-up method refactoring
+	\item Next: What are principles against smells?
+}{
+	\item \refactoring
+	\item \cleancode
+	% book on antipatterns
+}{
+	\begin{enumerate}
+		\item Form groups of 2--3 students
+		\item What further smells and refactorings do you know?
+		\item Enter these smells and refactorings using the link in \StudIP
+
+		      ~
+
+		      \centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/plugins.php/vipsplugin/sheets/show_assignment?cid=635f5186b364a369979d0f45ab2ace1d&assignment_id=63485}
+	\end{enumerate}
+}
+
+\section{Principles for Software Evolution}
+\input{content/02c-principles}
+\lessonslearned{
+	\item KISS --- Keep It Simple, Stupid!
+	\item DRY --- Don't Repeat Yourself
+	\item RERO --- Release Early, Release Often
+	\item Next: How to maintain software?
+}{
+	\item \thepragmaticprogrammer
+}{
+	Quiz in \StudIP
+
+	~
+
+	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/plugins.php/vipsplugin/sheets/show_assignment?cid=635f5186b364a369979d0f45ab2ace1d&assignment_id=63474}
+}
+
+\faq{
+	\item What are reasons to change existing software?
+	\item What are alternative to software changes?
+	\item What activities are involved when changing software?
+	\item What is the law of \ldots continuing change, increasing complexity, conservation of familiarity, continuing growth, decling quality, feedback system?
+	\item What follows from Lehman's laws?
+	\item What are (counter) examples for Lehman's laws?
+}{
+	\item Why does the readibility of code matter?
+	\item What is Eagleson's law?
+	\item Why are go-to's problematic?
+	\item What is spaghetti or lasagna code?
+	\item What is the boy scouts rule and what are its implications for software engineering?
+	\item How does a child-rearing philosophy help with software development?
+	\item What is the motivation for refactorings?
+	\item What are (examples for) refactorings and code smells?
+	\item What is a mysterious name, code clone, duplicated code, or long method?
+	\item What is a rename, extract method, or pull-up method refactoring?
+}{
+	\item Why can it be productive to remove code?
+	\item What is the KISS, DRY, RERO principle?
+	\item Which refactorings or smells are related to those principles and why?
+	\item Which principle is violated in a given example code?
+	\item What is better? Correct or clean or consise or fast code?
+}
+
+\input{../se1/template/footer}
+
+% TODO L03 Maintenance
+
+\ifuniversity{tubs}{\date{April 20, 2026}}
+
+\author{Thomas Thüm}
+\lecture{Maintenance}{maintenance}
+
+\section{Kinds of Maintenance}
+\input{content/03a-maintenance}
+\lessonslearned{
+	\item Maintenance (Phase)
+	\item Kinds: adaptive, corrective, perfective, preventive
+	\item Examples for maintenance
+	\item Maintenance vs evolution
+	\item Next: What are common reengineering task?
+}{
+	\item \ludewiglichter\mychapter{22 \deutsch{Software-Wartung}}
+}{
+	\begin{enumerate}
+		\item Form groups of 2--3 students for Think-Pair-Share
+		\item Think (2 min): find examples for two maintenance categories
+		\item Pair (5 min): explain example to your group and let colleagues guess its category
+		\item Share: what examples were hard to classify?
+	\end{enumerate}
+}
+
+\section{Reengineering}
+\input{content/03b-reengineering}
+\lessonslearned{
+	\item Reengineering =
+	\item reverse engineering +
+	\item refactoring +
+	\item forward engineering
+	\item Next: How to migrate legacy software?
+}{
+	\item \ludewiglichter\mychapter{23 \deutsch{Reengineering}}
+}{
+	\begin{enumerate}
+		\item Form groups of 2--3 students for Think-Pair
+		\item Think (2 min): find examples for two reengineering categories
+		\item Pair (5 min): explain example to your group and let colleagues guess its category
+	\end{enumerate}
+}
+
+\section{Migration of Legacy Systems}
+\input{content/03c-migration}
+\lessonslearned{
+	\item Legacy software: typical properties, examples
+	\item Software migration
+	\item Migration strategies: big bang migration, incremental migration, wrapping, redevelopment
+	\item Next: How to design systems simplifying particular future changes?
+}{
+	\item \ludewiglichter\mychapter{23 \deutsch{Reengineering}}
+}{
+	Quiz in \StudIP
+
+	~
+
+	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421046}
+}
+
+\faq{
+	\item What is the operations and maintenance phase?
+	\item What is software maintenance and how is it different from evolution?
+	\item What are the different kinds of maintenance?
+	\item What are (examples for) corrective, perfective, adaptive, preventive maintenance?
+	\item Given an example maintenance activity, what kind(s) of maintenance is it?
+	\item Give examples that belong to several kinds of maintenance!
+}{
+	\item What is forward engineering, reverse engineering, restructuring, reengineering?
+	\item Give examples for the above mentioned reengineering task!
+	\item Given an example, classify what kind of reengineering it is!
+	\item Explain the difference between X and Y by means of examples!
+}{
+	\item What is legacy software?
+	\item What are typical properties of legacy software?
+	\item Given an example description, argue whether it is legacy software or not!
+	\item What is software migration?
+	\item What are migration strategies?
+	\item Given an example migration, identify which migration strategy was applied!
+	\item Give an example where migration X is better suited than Y!
+	\item What is the end of service/life?
+	\item What are reasons to discontinue software projects?
+}
+
+\input{../se1/template/footer}
+
 
 \ifuniversity{tubs}{\date{May 19, 2025}}
 
