@@ -3,14 +3,14 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=0 360 0 50,clip]{people/karolina-szczur}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Karolina Szczur \mysource{\href{https://twitter.com/codewisdom/status/1141686386103332864}{twitter.com}}}
 			\mycite{Writing software as if we are the only person that ever has to comprehend it is one of the biggest mistakes and false assumptions that can be made.}
 		\end{note}
 		\nextcolumn
 		\pic[width=\linewidth,trim=450 235 450 120,clip]{changes/psychopath}
 		\vspace{-7mm}
-		
+
 		\begin{note}{John F. Woods \mysource{\href{https://groups.google.com/g/comp.lang.c++/c/rYCO5yn4lXw/m/oITtSkZOtoUJ}{google.com}}}
 			\mycite{Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.}
 		\end{note}
@@ -27,15 +27,15 @@
 			\end{itemize}
 		\end{note}
 		\uncover<2->{\begin{definition}{Operation and Maintenance Phase \mysource{\ieeesixten}}
-			\mycite{The period of time in the software life cycle during which a software product is employed in its operational environment, monitored for satisfactory performance, and modified as necessary to correct problems or to respond to changing requirements.}
-		\end{definition}}
+				\mycite{The period of time in the software life cycle during which a software product is employed in its operational environment, monitored for satisfactory performance, and modified as necessary to correct problems or to respond to changing requirements.}
+			\end{definition}}
 		\nextcolumn
 		\uncover<3->{\begin{definition}{Maintenance \mysource{\ieeesixten}}
-			\mycite{The process of modifying a software system or component after delivery to correct faults, improve performance or other attributes, or adapt to a changed environment.}
-		\end{definition}}
+				\mycite{The process of modifying a software system or component after delivery to correct faults, improve performance or other attributes, or adapt to a changed environment.}
+			\end{definition}}
 		\uncover<3->{\begin{note}{Kinds of Maintenance \mysource{\ludewiglichter}}
-			corrective maintanance, perfective maintenance, adaptive maintenance, preventive maintenance
-		\end{note}}
+				corrective maintanance, perfective maintenance, adaptive maintenance, preventive maintenance
+			\end{note}}
 	\end{fancycolumns}
 \end{frame}
 
@@ -59,7 +59,7 @@
 			\end{itemize}
 			\centering\pic[width=.7\linewidth]{automotive/xiaomi-su7}
 		\end{example}
-	\nextcolumn
+		\nextcolumn
 		\begin{example}{Ariane 5 Software Failure\mysource{\href{https://doi.ieeecomputersociety.org/10.1109/2.562936}{J{\'e}z{\'e}quel and Meyer, 1997}}}
 			\begin{itemize}
 				\item explosion about 40 seconds after takeoff
@@ -87,15 +87,15 @@
 			\end{itemize}
 		\end{example}
 		\uncover<2->{\begin{example}{Meltdown/Spectre}
-			\begin{itemize}
-				\item January 2018 discovered
-				\item caused by branch prediction in microprocessors
-				\item fixed by software patches
-				\item performance loss of up-to 30\%
-			\end{itemize}
-		\end{example}}
+				\begin{itemize}
+					\item January 2018 discovered
+					\item caused by branch prediction in microprocessors
+					\item fixed by software patches
+					\item performance loss of up-to 30\%
+				\end{itemize}
+			\end{example}}
 		\nextcolumn
-			\uncover<3->{\begin{example}{CrowdStrike Outage\mysource{\href{https://en.wikipedia.org/wiki/CrowdStrike}{wikipedia.org}, \href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
+		\uncover<3->{\begin{example}{CrowdStrike Outage\mysource{\href{https://en.wikipedia.org/wiki/CrowdStrike}{wikipedia.org}, \href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
 				\begin{itemize}
 					\item CrowdStrike's Falcon received update to improve \emph{security}
 					\item update on July 19, 2024 affected 8.5 million devices running Windows 10 or 11
@@ -137,15 +137,15 @@
 			\end{itemize}
 		\end{definition}
 		\centering\picDark[width=.8\linewidth]{failures/y2k-javascript}
-	\nextcolumn
+		\nextcolumn
 		\vspace{-15mm}
-		
+
 		\uncover<3->{\centering\pic[width=.5\linewidth]{failures/y2k}}
 		\begin{example}{Selected Y2K Failures}
 			\begin{itemize}
 				\item<4-> 1999-01-01: computers for temporary passports in Sweden crashed
 				\item<5-> 1999-12-28: credit and debit card transactions rejected because they could not be completed within four working days
-				%\item 2000-01-01: date 2036-02-06 shown in nuclear power plant in Fukushima
+					%\item 2000-01-01: date 2036-02-06 shown in nuclear power plant in Fukushima
 				\item<2-> 2000-01-01: German bank accidentially transferred 6 million euro issued 1899-12-30
 				\item<3-> 2000-01-03: french school showing wrong date
 				\item<6-> 2020-01-01: New York City parking meters refuse credit cards
@@ -166,7 +166,7 @@
 			\end{itemize}
 		\end{definition}
 		\centering\picDark[width=\linewidth]{failures/y2038}
-	\nextcolumn
+		\nextcolumn
 		\begin{example}{Y2038 Failures}
 			2006-05-13: AOL server software crashed
 			\begin{itemize}
@@ -189,7 +189,7 @@
 		\begin{example}{Y2038 Problem}
 			first failures already happen, will be expensive
 		\end{example}
-	\nextcolumn
+		\nextcolumn
 		\begin{example}{Leap Years in Gregorian Calendar}
 			\begin{itemize}
 				\item solar year is 365.24 days
@@ -241,7 +241,7 @@
 		\begin{note}{Essence}
 			combination of reverse engineering, refactoring, and forward engineering
 		\end{note}
-	\nextcolumn
+		\nextcolumn
 		\begin{example}{Examples}
 			\begin{itemize}
 				\item reimplementing C programs in Rust
@@ -257,15 +257,15 @@
 			\mycite{Forward engineering is the traditional process of moving from high-level abstractions and logical, implementation-independent designs to the physical implementation of a system.}
 		\end{definition}
 		\uncover<2->{\begin{example}{Examples}
-			\begin{itemize}
-				\item modeling a system with activity diagrams or state machines \emph{based on} the requirements specification
-				\item<3-> architecting a system with architectural patterns and component diagrams \emph{based on} the system specification
-				\item<4-> designing a system with design patterns, class diagrams, sequence diagrams \emph{based on} the architecture specification
-				\item<5-> implement a system in a particular programming language \emph{based on} the design specification
-				\item<6-> \ldots
-			\end{itemize}
-		\end{example}}
-	\nextcolumn
+				\begin{itemize}
+					\item modeling a system with activity diagrams or state machines \emph{based on} the requirements specification
+					\item<3-> architecting a system with architectural patterns and component diagrams \emph{based on} the system specification
+					\item<4-> designing a system with design patterns, class diagrams, sequence diagrams \emph{based on} the architecture specification
+					\item<5-> implement a system in a particular programming language \emph{based on} the design specification
+					\item<6-> \ldots
+				\end{itemize}
+			\end{example}}
+		\nextcolumn
 		\diagramForwardEngineering
 	\end{fancycolumns}
 \end{frame}
@@ -273,19 +273,19 @@
 \begin{frame}{Reverse Engineering\ \mytitlesource{\ludewiglichter}}
 	\begin{fancycolumns}[widths={40},animation=none]
 		\diagramReverseEngineering
-	\nextcolumn
+		\nextcolumn
 		\begin{definition}{Reverse Engineering \mysource{Chikofsky und Cross}}
 			\mycite{Reverse engineering is the process of analyzing a system to identify the system’s components and their interrelationships and create representations of the system in another form or at a higher level of abstraction.}
 		\end{definition}
 		\uncover<2->{\begin{example}{Examples}
-			\begin{itemize}
-				\item recovering which requirements have already been implemented
-				\item<3-> exploring what classes are in the implementation and what is their purpose
-				\item<4-> creating UML models for legacy software that was not modeled before
-				\item<5-> adapting a UML model \emph{based on} changes in the implementation
-				\item<6-> \ldots
-			\end{itemize}
-		\end{example}}
+				\begin{itemize}
+					\item recovering which requirements have already been implemented
+					\item<3-> exploring what classes are in the implementation and what is their purpose
+					\item<4-> creating UML models for legacy software that was not modeled before
+					\item<5-> adapting a UML model \emph{based on} changes in the implementation
+					\item<6-> \ldots
+				\end{itemize}
+			\end{example}}
 	\end{fancycolumns}
 \end{frame}
 
@@ -298,28 +298,53 @@
 		\begin{definition}{Refactoring \mysource{\refactoring}}
 			\mycite{Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure. It is a disciplined way to clean up code that minimizes the chances of introducing bugs. In essence when you refactor you are improving the design of the code after it has been written.}
 		\end{definition}
-	\nextcolumn
+		\nextcolumn
 		\begin{example}{Refactorings}
 			\begin{itemize}
 				\item rename X refactoring
 				\item extract/pull-up method refactoring
 			\end{itemize}
 		\end{example}
-		\begin{example}{Smells and Refactorings (see \reflecture{2}\partb)}
-			Smells and refactorings that (some of) you know:
-			
-			~
-			
+		\begin{example}{Smells and Refactorings (Examples from last year SE2)}
 			\pic[width=\linewidth]{2025st/wordcloud-smells-refactorings}
 		\end{example}
 	\end{fancycolumns}
+\end{frame}
+
+% TODO: styling
+\begin{frame}
+	\frametitle{Reengineering Exemplary Process \mytitlesource{\sommerville}}
+	\tikzstyle{ioblock} = [rectangle, draw]
+	\tikzstyle{processblock} = [rectangle, rounded corners, draw]
+	\begin{figure}[htbp]
+		\centering
+		\begin{tikzpicture}[node distance=2cm and 0.8cm]
+			\node[ioblock] (ori) at (0,0) {Original Software};
+			\node[ioblock, above right = of ori] (documentation) {Documentation};
+			\draw[->] (ori) -- node[sloped, above, midway] {\footnotesize Reverse Engineering} (documentation);
+			\node[ioblock, below right = of ori] (refactored) {Refactored Software};
+			\draw[->] (ori) -- node[sloped, above, midway] {\footnotesize Refactoring} (refactored);
+
+			\node[processblock, below = of documentation] (modularization) {Modularization};
+			\draw[->] (documentation) -- node[sloped, above, midway] {\footnotesize Forward Engineering} (modularization);
+			\draw[->] (refactored) -- node[sloped, above, midway] {\footnotesize Forward Engineering} (modularization);
+
+			\node[ioblock, right = 1.5cm of modularization] (updatedprogram) {Updated Program};
+			\draw[->] (modularization) -- node[sloped, above, midway] {\footnotesize Forward Engineering} (updatedprogram);
+			\node[ioblock, right = 1cm of updatedprogram] (newdata) {Updated Data};
+			\node[ioblock, above = of newdata] (olddata) {Original Data};
+			\draw[->] (olddata) -- node[sloped, above, midway] {\footnotesize Data Reengineering} (newdata);
+			\draw[->] (updatedprogram) -- node[sloped, above, midway] {\footnotesize Data Reengineering} (newdata);
+		\end{tikzpicture}
+
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Wisdom on Reengineering}
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=50 0 0 0,clip]{people/kyle-simpson}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Kyle Simpson \mysource{\href{https://twitter.com/codewisdom/status/857988273674883072}{twitter.com}}}
 			\mycite{There's nothing more permanent than a temporary hack.} \deutsch{Sprichwort: Nichts ist so beständig wie das Provisorium.} % TODO Quelle für deutsches Sprichwort suchen
 		\end{note}
@@ -327,7 +352,7 @@
 		\vspace{11mm}
 		\centering\pic[width=.5\linewidth,trim=0 0 0 0,clip]{people/jeff-sickel}
 		\vspace{-3mm}
-		
+
 		\begin{note}{Jeff Sickel \mysource{\href{https://twitter.com/codewisdom/status/710046205317873664}{twitter.com}}}
 			\mycite{Deleted code is debugged code.}
 		\end{note}
@@ -360,7 +385,7 @@
 	\end{fancycolumns}
 \end{frame}
 
-\xkcdframe{2221} % emulated software, long-living
+% \xkcdframe{2221} % emulated software, long-living
 
 \subsection{Software Migration}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
@@ -389,6 +414,107 @@
 \end{frame}
 
 % TODO separate slides for migration strategies
+
+\begin{frame}
+	\frametitle{Big Bang Migration}
+	\begin{fancycolumns}[widths={50,50}]
+		\begin{definition}{Idea}
+			\begin{itemize}
+				\item Redevelop whole software
+				\item Replace legacy software with new software in a single step
+				\item No parallel operation of legacy and new software
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Advantages}
+			\begin{itemize}
+				\item Simple
+				\item No overhead of maintaining two systems in parallel
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Disadvantages}
+			\begin{itemize}
+				\item Risk of failure
+				\item Potential downtime
+				\item Harder to identify and fix issues
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Incremental Migration}
+		\begin{fancycolumns}[widths={50,50}]
+			\begin{definition}{Idea}
+				\begin{itemize}
+					\item Stepwise renewal and replacement of legacy software
+					\item Parallel operation of legacy and new software
+					\item Replace functionality on subsystem or module level 
+				\end{itemize}
+			\end{definition}
+			\nextcolumn
+			\begin{definition}{Advantages}
+				\begin{itemize}
+					\item Lower risk of failure
+					\item Easier to identify and fix issues
+					\item Not a single potentially long downtime
+					\item Can already extend redeveloped parts with new features
+				\end{itemize}
+			\end{definition}
+			\begin{note}{Disadvantages}
+				\begin{itemize}
+					\item More complex
+					\item Higher overhead of maintaining two systems in parallel
+					\item Requires careful planning and coordination
+				\end{itemize}
+			\end{note}
+		\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Migration by Wrapping}
+	\begin{fancycolumns}[widths={50,50}]
+		\begin{definition}{Idea}
+			\begin{itemize}
+				\item Build a new software around a stable version of the legacy software
+				\item New software provides an interface to the legacy software
+				\item Call legacy functions from new software
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Example}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java,basicstyle=\footnotesize]
+// Invoke legacy operations A, B from new software
+output = doSomeNewOperations(input);
+invokeLegacyOperationA(convertToLegacyFormat(output));
+invokeLegacyOperationB(convertToLegacyFormat(output));
+
+// Update after Incremental migration
+output = doSomeNewOperations(input);
+doNewA(output);
+invokeLegacyOperationB(convertToLegacyFormat(output));
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\nextcolumn
+		\begin{definition}{Advantages}
+			\begin{itemize}
+				\item Lower reverse engineering effort
+				\item Old functionality is preserved
+				\item Can be performed step-wise
+				\item New features can be added in the new software
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Disadvantages}
+			\begin{itemize}
+				\item Old systems are still running
+				\item Maintenance of two systems in parallel
+				\item Changes may still require editing the legacy software
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
 
 %\subsection{Big Bang Migration}
 %

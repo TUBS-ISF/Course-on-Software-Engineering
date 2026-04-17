@@ -16,7 +16,7 @@ GREEN='\033[0;32m'
 NOCOLOR='\033[0m'
 
 university=tubs
-semester=2025s
+semester=2026s
 lecture_short_name=se2
 
 template_path="../se1/template/"
