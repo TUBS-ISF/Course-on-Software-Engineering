@@ -318,7 +318,7 @@
 	\tikzstyle{processblock} = [rectangle, rounded corners, draw]
 	\begin{figure}[htbp]
 		\centering
-		\begin{tikzpicture}[node distance=2cm and 0.8cm]
+		\begin{tikzpicture}[node distance=2cm and 1.2cm]
 			\node[ioblock] (ori) at (0,0) {Original Software};
 			\node[ioblock, above right = of ori] (documentation) {Documentation};
 			\draw[->] (ori) -- node[sloped, above, midway] {\footnotesize Reverse Engineering} (documentation);
@@ -329,9 +329,9 @@
 			\draw[->] (documentation) -- node[sloped, above, midway] {\footnotesize Forward Engineering} (modularization);
 			\draw[->] (refactored) -- node[sloped, above, midway] {\footnotesize Forward Engineering} (modularization);
 
-			\node[ioblock, right = 1.5cm of modularization] (updatedprogram) {Updated Program};
+			\node[ioblock, right = 2cm of modularization] (updatedprogram) {Updated Program};
 			\draw[->] (modularization) -- node[sloped, above, midway] {\footnotesize Forward Engineering} (updatedprogram);
-			\node[ioblock, right = 1cm of updatedprogram] (newdata) {Updated Data};
+			\node[ioblock, right = 2cm of updatedprogram] (newdata) {Updated Data};
 			\node[ioblock, above = of newdata] (olddata) {Original Data};
 			\draw[->] (olddata) -- node[sloped, above, midway] {\footnotesize Data Reengineering} (newdata);
 			\draw[->] (updatedprogram) -- node[sloped, above, midway] {\footnotesize Data Reengineering} (newdata);
