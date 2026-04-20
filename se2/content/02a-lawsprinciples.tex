@@ -1,8 +1,17 @@
 \subsection{Change is Inevitable}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}[animation=none]
-		\begin{definition}{\sommerville:}
+		\begin{definition}{Why? -- \sommerville:}
+			\footnotesize
 			\mycite{Change is inevitable in all large software projects. The \textbf{system requirements change} as businesses respond to external pressures, competition, and changed management priorities. As \textbf{new technologies become available}, new approaches to design and implementation become possible. Therefore whatever software process model is used, it is essential that it can \textbf{accommodate changes} to the software being developed. [...] It may then be necessary to \textbf{redesign} the system to deliver the new requirements, \textbf{change any programs} that have been developed, and \textbf{retest} the system.}
+		\end{definition}
+		\begin{definition}{Why? -- Overview}
+			\begin{itemize}
+				\item Requirements change
+				\item Technology advances
+				\item Environment changes
+				\item \ldots
+			\end{itemize}
 		\end{definition}
 		\nextcolumn
 		\pic[width=\linewidth]{failures/swu-evolution}
@@ -32,7 +41,7 @@
 				\item \ldots
 			\end{itemize}
 		\end{definition}
-	\nextcolumn
+		\nextcolumn
 		\begin{note}{Alternatives to Changes}
 			\begin{itemize}
 				\item stick to old version (e.g., feature freeze)
@@ -83,7 +92,7 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=0 200 0 600,clip]{people/tony-hoare}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Tony Hoare (born 1934) \mysource{\href{https://twitter.com/CodeWisdom/status/893532377586302977}{twitter.com}}}
 			\mycite{Inside every large program, there is a small program trying to get out.}
 		\end{note}
@@ -91,7 +100,7 @@
 		\nextcolumn
 		\pic[width=\linewidth,trim=50 85 200 120,clip]{people/manny-lehman}
 		\vspace{-7mm}
-		
+
 		\begin{note}{{Meir \mycite{Manny} Lehman (1925--2010) \mysource{\href{https://twitter.com/CodeWisdom/status/921139649661284352}{twitter.com}}}}
 			\mycite{An evolving system increases its complexity unless work is done to reduce it.}
 		\end{note}
@@ -155,7 +164,7 @@
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
 		\begin{definition}{Law of Conservation of Familiarity\mysource{\lehmanslaws}}
-			 \deutsch{Gesetz der Bewahrung der Vertrautheit}
+			\deutsch{Gesetz der Bewahrung der Vertrautheit}
 			\begin{itemize}
 				\item satisfactory evolution excludes excessive growth %As an E-type system evolves all associated with it, developers, sales personnel, users, for example, must maintain mastery of its content and behaviour to achieve satisfactory evolution. Excessive growth diminishes that mastery. Hence the average incremental growth remains invariant as the system evolves.
 				\item explanation: users are familiar with the system and only small changes can be applied without breaking this familiarity
@@ -173,7 +182,7 @@
 		\end{example}
 		\nextcolumn
 		\begin{definition}{Law of Continuing Growth\mysource{\lehmanslaws}}
-			 \deutsch{Gesetz des kontinuierlichem Wachstums}
+			\deutsch{Gesetz des kontinuierlichem Wachstums}
 			\begin{itemize}
 				\item functionality must be continually increased to maintain user satisfaction %The functional content of E-type systems must be continually increased to maintain user satisfaction over their lifetime.
 				\item explanation: users are unhappy when features are removed as this breaks their workflow + users are willing to accept obstacles if there is a chance for improvements in the future
@@ -181,14 +190,14 @@
 		\end{definition}
 		\begin{example}{WhatsApp Messenger}
 			What about removing support for \ldots
-			
+
 			\begin{fancycolumns}[animation=none]
 				\begin{itemize}
 					\item group chats?
 					\item status?
 					\item location sharing?
 				\end{itemize}
-			\nextcolumn
+				\nextcolumn
 				\begin{itemize}
 					\item voice messages?
 					\item video calls?
@@ -251,7 +260,7 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=10 0 10 0,clip]{people/richard-pattis}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Richard E.\ Pattis \mysource{\href{https://www.cs.cmu.edu/~pattis/quotations.html}{cmu.edu}}}
 			\mycite{When debugging, novices insert corrective code; experts remove defective code.}
 		\end{note}
@@ -259,7 +268,7 @@
 		\nextcolumn
 		\pic[width=\linewidth,trim=0 120 0 30,clip]{people/ken-thompson}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Ken Thompson (born 1943) \mysource{\href{https://twitter.com/CodeWisdom/status/1386049811800109056}{twitter.com}}}
 			\mycite{One of my most productive days was throwing away 1,000 lines of code.}
 		\end{note}
@@ -272,11 +281,11 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=0 0 0 0,clip]{people/kelly-johnson}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Kelly Johnson (1910--1990)\mysource{\href{https://www.nasonline.org/wp-content/uploads/2024/06/johnson-clarence.pdf}{nasaonline.org}}}
 			\mycite{KISS --- Keep it simple, stupid!}
 		\end{note}
-	\nextcolumn
+		\nextcolumn
 		\begin{definition}{\insertsubsection}
 			\begin{itemize}
 				\item Johnson leading engineers building jets
@@ -285,8 +294,8 @@
 			\end{itemize}
 		\end{definition}
 		\uncover<3->{\begin{example}{Russian Invasion of Ukraine (since 2022)}
-			German weapons hard to repair; broken for long time before they can be used again \mysource{\href{https://www.tagesschau.de/multimedia/video/video-1454812.html}{tagesschau.de}}
-		\end{example}}
+				German weapons hard to repair; broken for long time before they can be used again \mysource{\href{https://www.tagesschau.de/multimedia/video/video-1454812.html}{tagesschau.de}}
+			\end{example}}
 	\end{fancycolumns}
 \end{frame}
 
@@ -299,21 +308,21 @@
 			\mycite{Every piece of knowledge must have a single, unambiguous, authoritative, representation within a system.}
 		\end{note}
 		\uncover<2->{\begin{definition}{\insertsubsection}
-			\begin{itemize}
-				\item knowledge documented in specifications, code, and tests
-				\item knowledge not stable, changes frequently
-				\item duplicate representations are altered inconsistently
-				\item means: extract method refactoring
-			\end{itemize}
-		\end{definition}}
+				\begin{itemize}
+					\item knowledge documented in specifications, code, and tests
+					\item knowledge not stable, changes frequently
+					\item duplicate representations are altered inconsistently
+					\item means: extract method refactoring
+				\end{itemize}
+			\end{definition}}
 		\uncover<3->{\begin{example}{Reasons for Duplication}
-			\begin{itemize}
-				\item imposed duplication: devs feel that they have no other choice
-				\item inadvertent duplication: devs do not realize that they duplicate
-				\item impatient duplication: duplication seems easier
-				\item interdeveloper duplication: multiple devs duplicate
-			\end{itemize}
-		\end{example}}
+				\begin{itemize}
+					\item imposed duplication: devs feel that they have no other choice
+					\item inadvertent duplication: devs do not realize that they duplicate
+					\item impatient duplication: duplication seems easier
+					\item interdeveloper duplication: multiple devs duplicate
+				\end{itemize}
+			\end{example}}
 	\end{fancycolumns}
 \end{frame}
 
@@ -322,7 +331,7 @@
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=0 200 0 125,clip]{people/eric-raymond}
 		\vspace{-7mm}
-		
+
 		\begin{note}{Eric Raymond (born 1957)\mysource{\href{https://link.springer.com/article/10.1007/s12130-999-1026-0}{The Cathedral and the Bazaar}}}
 			\mycite{RERO --- Release early. Release often. And listen to your customers.}
 		\end{note}

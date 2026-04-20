@@ -1,21 +1,4 @@
 \subsection{Software Maintenance}
-\begin{frame}{Wisdom on Maintenance} % slided copied from se1-04a. reuse?
-	\begin{fancycolumns}
-		\pic[width=\linewidth,trim=0 360 0 50,clip]{people/karolina-szczur}
-		\vspace{-7mm}
-
-		\begin{note}{Karolina Szczur \mysource{\href{https://twitter.com/codewisdom/status/1141686386103332864}{twitter.com}}}
-			\mycite{Writing software as if we are the only person that ever has to comprehend it is one of the biggest mistakes and false assumptions that can be made.}
-		\end{note}
-		\nextcolumn
-		\pic[width=\linewidth,trim=450 235 450 120,clip]{changes/psychopath}
-		\vspace{-7mm}
-
-		\begin{note}{John F. Woods \mysource{\href{https://groups.google.com/g/comp.lang.c++/c/rYCO5yn4lXw/m/oITtSkZOtoUJ}{google.com}}}
-			\mycite{Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
 
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}} % slided copied from se1-04a. reuse?
 	\begin{fancycolumns}
@@ -72,8 +55,6 @@
 	\end{fancycolumns}
 \end{frame}
 
-\xkcdframe{1172} % No more CPU heating as breaking change
-
 \begin{frame}{Perfective Maintenance}
 	\begin{fancycolumns}
 		\begin{definition}{\insertsubsection\mysource{\lientzswanson}}
@@ -86,14 +67,14 @@
 				\item reduction of smells by means of refactorings
 			\end{itemize}
 		\end{example}
-		\uncover<2->{\begin{example}{Meltdown/Spectre}
-				\begin{itemize}
-					\item January 2018 discovered
-					\item caused by branch prediction in microprocessors
-					\item fixed by software patches
-					\item performance loss of up-to 30\%
-				\end{itemize}
-			\end{example}}
+		% \uncover<2->{\begin{example}{Meltdown/Spectre}
+		% 		\begin{itemize}
+		% 			\item January 2018 discovered
+		% 			\item caused by branch prediction in microprocessors
+		% 			\item fixed by software patches
+		% 			\item performance loss of up-to 30\%
+		% 		\end{itemize}
+		% 	\end{example}}
 		\nextcolumn
 		\uncover<3->{\begin{example}{CrowdStrike Outage\mysource{\href{https://en.wikipedia.org/wiki/CrowdStrike}{wikipedia.org}, \href{https://www.bbc.com/news/articles/c23k4yyjxp3o}{bbc.com}}}
 				\begin{itemize}
@@ -106,6 +87,8 @@
 			\end{example}}
 	\end{fancycolumns}
 \end{frame}
+
+\xkcdframe{1172} % No more CPU heating as breaking change
 % TODO it is annoying that perfective maintenance has an overlap with preventive maintenance, as better maintainability typically also results in fewer problems
 
 % TODO software aging (see Parnas-SoftwareAging, GodfreyGerman-LehmansLaws)
@@ -233,6 +216,25 @@
 
 \subsection{Reengineering}
 
+\begin{frame}{Wisdom on Reengineering}
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=50 0 0 0,clip]{people/kyle-simpson}
+		\vspace{-7mm}
+
+		\begin{note}{Kyle Simpson \mysource{\href{https://twitter.com/codewisdom/status/857988273674883072}{twitter.com}}}
+			\mycite{There's nothing more permanent than a temporary hack.} \deutsch{Sprichwort: Nichts ist so beständig wie das Provisorium.} % TODO Quelle für deutsches Sprichwort suchen
+		\end{note}
+		\nextcolumn
+		\vspace{11mm}
+		\centering\pic[width=.5\linewidth,trim=0 0 0 0,clip]{people/jeff-sickel}
+		\vspace{-3mm}
+
+		\begin{note}{Jeff Sickel \mysource{\href{https://twitter.com/codewisdom/status/710046205317873664}{twitter.com}}}
+			\mycite{Deleted code is debugged code.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
 	\begin{fancycolumns}
 		\begin{definition}{Reengineering \mysource{Chikofsky und Cross}}
@@ -305,7 +307,7 @@
 				\item extract/pull-up method refactoring
 			\end{itemize}
 		\end{example}
-		\begin{example}{Smells and Refactorings (Examples from last year SE2)}
+		\begin{example}{Smells and Refactorings (Examples SE2-2025)}
 			\pic[width=\linewidth]{2025st/wordcloud-smells-refactorings}
 		\end{example}
 	\end{fancycolumns}
@@ -340,24 +342,6 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Wisdom on Reengineering}
-	\begin{fancycolumns}
-		\pic[width=\linewidth,trim=50 0 0 0,clip]{people/kyle-simpson}
-		\vspace{-7mm}
-
-		\begin{note}{Kyle Simpson \mysource{\href{https://twitter.com/codewisdom/status/857988273674883072}{twitter.com}}}
-			\mycite{There's nothing more permanent than a temporary hack.} \deutsch{Sprichwort: Nichts ist so beständig wie das Provisorium.} % TODO Quelle für deutsches Sprichwort suchen
-		\end{note}
-		\nextcolumn
-		\vspace{11mm}
-		\centering\pic[width=.5\linewidth,trim=0 0 0 0,clip]{people/jeff-sickel}
-		\vspace{-3mm}
-
-		\begin{note}{Jeff Sickel \mysource{\href{https://twitter.com/codewisdom/status/710046205317873664}{twitter.com}}}
-			\mycite{Deleted code is debugged code.}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
 
 \subsection{Legacy Software}
 \begin{frame}{\insertsubsection\ \deutsch{Altsysteme}}
@@ -428,7 +412,7 @@
 		\nextcolumn
 		\begin{definition}{Advantages}
 			\begin{itemize}
-				\item Simple
+				\item Simple: No planning and coordination required for parallel operation
 				\item No overhead of maintaining two systems in parallel
 			\end{itemize}
 		\end{definition}

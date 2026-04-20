@@ -1,4 +1,23 @@
 \subsection{Writing Requires Reading}
+
+\begin{frame}{Someone (Else) Needs to Keep Working With It} % slided copied from se1-04a. reuse?
+	\begin{fancycolumns}
+		\pic[width=\linewidth,trim=0 360 0 50,clip]{people/karolina-szczur}
+		\vspace{-7mm}
+
+		\begin{note}{Karolina Szczur \mysource{\href{https://twitter.com/codewisdom/status/1141686386103332864}{twitter.com}}}
+			\mycite{Writing software as if we are the only person that ever has to comprehend it is one of the biggest mistakes and false assumptions that can be made.}
+		\end{note}
+		\nextcolumn
+		\pic[width=\linewidth,trim=450 235 450 120,clip]{changes/psychopath}
+		\vspace{-7mm}
+
+		\begin{note}{John F. Woods \mysource{\href{https://groups.google.com/g/comp.lang.c++/c/rYCO5yn4lXw/m/oITtSkZOtoUJ}{google.com}}}
+			\mycite{Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
 		\pic[width=\linewidth,trim=800 800 800 600,clip]{people/robert-martin}
@@ -104,23 +123,24 @@
 		\end{definition}
 		\nextcolumn
 		\begin{definition}{Structure of the Software}
-			\mycite{A fundamental problem of incremental development is that local changes tend to \textbf{degrade the software structure}. Consequently, further changes to the software become harder and harder to implement. Essentially, the development proceeds by finding workarounds to problems, with the result that code is often duplicated, parts of the software are reused in inappropriate ways, and the overall structure degrades as code is added to the system. \textbf{Refactoring improves the software structure and readability and so avoids the structural deterioration that naturally occurs when software is changed.}}
+			\mycite{A fundamental problem of incremental development is that local changes tend to \textbf{degrade the software structure}. Consequently, further changes to the software become harder and harder to implement. Essentially, the development proceeds by finding workarounds to problems, with the result that code is often duplicated, parts of the software are reused in inappropriate ways, and the overall structure degrades as code is added to the system. \textbf{Refactoring improves the software structure and readability and so avoids the structural deterioration that naturally occurs when software is changed.}} \\
+			\textbf{TLDR}: Software degrades when changed, tackle negative effects by refactoring.
 		\end{definition}
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Refactoring in Practice}
-\begin{frame}{\insertsubsection} % slided copied from se1-04b. reuse?
-	\begin{fancycolumns}
-		\begin{example}{Theory vs Practice \mysource{\sommerville}}
-			\mycite{In principle, when refactoring is part of the development process, the software should always be easy to understand and change as new requirements are proposed. In practice, this is not always the case. Sometimes \textbf{development pressure means that refactoring is delayed} because the time is devoted to the implementation of new functionality. Some new features and changes cannot readily be accommodated by code-level refactoring and \textbf{require that the architecture of the system be modified}.}
-		\end{example}
-		\nextcolumn
-		\begin{note}{{Grandma Beck's Child-Rearing Philosophy}}
-			\mycite{If it stinks, change it.} \mysource{\href{https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/ch03.xhtml}{oreilly.com}}
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
+% \subsection{Refactoring in Practice}
+% \begin{frame}{\insertsubsection} % slided copied from se1-04b. reuse?
+% 	\begin{fancycolumns}
+% 		\begin{example}{Theory vs Practice \mysource{\sommerville}}
+% 			\mycite{In principle, when refactoring is part of the development process, the software should always be easy to understand and change as new requirements are proposed. In practice, this is not always the case. Sometimes \textbf{development pressure means that refactoring is delayed} because the time is devoted to the implementation of new functionality. Some new features and changes cannot readily be accommodated by code-level refactoring and \textbf{require that the architecture of the system be modified}.}
+% 		\end{example}
+% 		\nextcolumn
+% 		\begin{note}{{Grandma Beck's Child-Rearing Philosophy}}
+% 			\mycite{If it stinks, change it.} \mysource{\href{https://learning.oreilly.com/library/view/refactoring-improving-the/9780134757681/ch03.xhtml}{oreilly.com}}
+% 		\end{note}
+% 	\end{fancycolumns}
+% \end{frame}
 
 \subsection{Smells and Refactorings} % TODO add examples for refactorings and smells
 \begin{frame}[fragile]
@@ -137,14 +157,16 @@
 		\nextcolumn
 		\begin{example}{Example}
 			\begin{lstlisting}[language=Java]
-				int a = 2;
-				float number = 3.14;
+int t = 2;
+void sendMail(String mail1, String mail2, String payload1, Strinng payload2) {}
 			\end{lstlisting}
+float balance;
 		\end{example}
 		\begin{example}{Example Refactoring}
 			\begin{lstlisting}[language=Java]
-				int numberOfApples = 2;
-				float pi = 3.14;
+int numberOfThreads = 2;
+void sendMail(String senderMail, String recipientMail, String mailBody, String mailSubject) {}
+float balanceInEuro;
 			\end{lstlisting}
 		\end{example}
 	\end{fancycolumns}
@@ -152,14 +174,14 @@
 
 \begin{frame}[fragile]
 	\frametitle{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
-	\begin{fancycolumns}
+	\begin{fancycolumns}[animation=keep]
 		\begin{definition}{Duplicated Code (aka.\ Code Clones)}
 			\mycite{If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them. Duplication means that every time you read these copies, you need to read them carefully to see if there’s any difference. If you need to change the duplicated code, you have to find and catch each duplication.}
 		\end{definition}
 		\begin{definition}{Refactoring}
 			\begin{itemize}
 				\item Extract Method
-				\item Pull-Up Method
+				\item Pull-Up Method (Move method to superclass)
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
@@ -172,22 +194,21 @@ String newId = "STAFF-" + newMember.Name;
 newId = newId + "-" + newMember.Office + "-" + newMember.Phone;
 			\end{lstlisting}
 		\end{example}
-
-		\begin{example}{Example -- Extract Method}
-			\begin{lstlisting}[language=Java, basicstyle=\small]
+			\begin{example}{Example -- Extract Method}
+				\begin{lstlisting}[language=Java, basicstyle=\small]
 private String getId(Member member) {
 	String id = "STAFF-" + member.Name;
 	id = id + "-" + member.Office + "-" + member.Phone;
 	return id;
 }
 			\end{lstlisting}
-		\end{example}
+			\end{example}
 	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{\insertsubsection\ \mytitlesource{\refactoring}}
-	\begin{fancycolumns}
+	\begin{fancycolumns}[animation=keep]
 		\begin{note}{{Robert C.\ Martin (Uncle Bob, born 1952)}}
 			\mycite{Functions should do one thing. They should do it well. They should do it only.} \mysource{\href{https://learning.oreilly.com/library/view/clean-code-a/9780136083238/}{oreilly.com}}
 		\end{note}
@@ -219,15 +240,93 @@ public static void order(Customer customer) {
 }
 			\end{lstlisting}
 		\end{example}
+		\pause
 		\begin{example}{Example Refactoring}
 			\vspace{-3mm}
-			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+				\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
 public static void order(Customer customer) {
 	List<Order> orders = collectOrders(customer);
 	double totalPrice = calculateTotalPrice(orders);
 	...
 }
 			\end{lstlisting}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Divergent Change}
+			\small
+			\mycite{Divergent change occurs when one class is commonly changed in different ways for different reasons. If you look at a class and say, "Well, I will have to change these three methods every time I get a new database; I have to change these four methods every time there is a new financial instrument," you likely have a situation in which two objects are better than one}
+		\end{definition}
+		\begin{definition}{Refactoring}
+			\begin{itemize}
+				\item Extract class
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{example}{Example}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public class Student {
+	public void registerForCourse(Course course) { ... }
+	public void enterGrades(Course course, Grade grade) { ... }
+	// ...
+	public void addToMensaBalance(double amount) { ... }
+	public void payInMensa(double amount) { ... }
+	public void extendMensaCardValidationDate(Date newDate) { ... }
+}
+			\end{lstlisting}
+		\end{example}
+
+		\begin{example}{Example}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public class Student {
+	StudentCourseManagement courseManagement;
+	StudentMensaManagement mensaManagement;
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection\ \mytitlesource{\refactoring}} % slided copied from se1-04b. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Shotgun Surgery}
+			\small
+			\mycite{Shotgun surgery is similar to divergent change but is the opposite. You whiff this when every time you make a kind of change, you have to make a lot of little changes to a lot of different classes. When the changes are all over the place, they are hard to find, and it's easy to miss an important change.}
+		\end{definition}
+		\begin{definition}{Refactoring}
+			\begin{itemize}
+				\item Move method/field
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{example}{Example}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public class RoomBooking { generateInvoice(...); }
+public class BikeRental { generateInvoice(...); }
+public class SpaService { generateInvoice(...); }
+public class Restaurant { generateInvoice(...); }
+			\end{lstlisting}
+		\end{example}
+
+		\begin{example}{Example -- Move Method}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public class InvoiceGenerator {
+	public void generateInvoice(RoomBooking booking) { ... }
+	public void generateInvoice(BikeRental rental) { ... }
+	// ...
+}
+public class RoomBooking { InvoiceGenerator invoiceGenerator; }
+// ...
+			\end{lstlisting}
+			\vspace{-3mm}
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
