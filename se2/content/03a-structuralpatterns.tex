@@ -14,11 +14,11 @@
 	\begin{fancycolumns}
 		\begin{definition}{Object Adapter \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				intent & \mycite{Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.}\\
-				aka. & wrapper\\
-				motivation & enable reuse of classes even though incompatible interfaces cannot be made compatible\\
-				idea & create a new class with a compatible interface that forwards all requests
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.} \\
+				aka.       & wrapper                                                                                                                                                                         \\
+				motivation & enable reuse of classes even though incompatible interfaces cannot be made compatible                                                                                           \\
+				idea       & create a new class with a compatible interface that forwards all requests
 			\end{tabularx}
 		\end{definition}
 		\nextcolumn
@@ -26,27 +26,138 @@
 	\end{fancycolumns}
 \end{frame}
 
+\begin{frame}{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={35,65}]
+		\begin{example}{Example -- Logger Variants}
+			\begin{itemize}
+				\item Basic logger can be extended to various variants
+				\item Decorator pattern allows use to use arbitrary combinations of logger features
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{figure}[htbp]
+			\centering
+
+			\includegraphics[width=\columnwidth]{uml/decoratorexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+\end{frame}
+
+% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+% 	\centering\decoratorexample{height=60mm}
+% \end{frame}
+
+\begin{frame}
+	\frametitle{\insertsubsection -- vs Naive}
+
+
+
+\end{frame}
+
 \subsection{Composite Pattern}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
 		\begin{definition}{Composite \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				intent & \mycite{Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.}\\
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.} \\
 				% aka. & \\
-				motivation & avoid case distinctions for primitive and compound objects\\
-				idea & create a common abstract super class enabling a unified access
+				motivation & avoid case distinctions for primitive and compound objects                                                                                                                \\
+				idea       & create a common abstract super class enabling a unified access
 			\end{tabularx}
 		\end{definition}
 		\uncover<3->{\begin{example}{Java GUIs with Swing\mysource{\href{https://docs.oracle.com/javase/8/docs/api/javax/swing/JComponent.html}{oracle.com}}}
-			\begin{itemize} % TODO graphical visualization of the different elements
-				\item Component: javax.swing.JComponent
-				\item Leaf: JLabel, JButton, JTextField, \ldots
-				\item Composite: JPanel, JTable, JTree, \ldots
-			\end{itemize}
-		\end{example}}
+				\begin{itemize} % TODO graphical visualization of the different elements
+					\item Component: javax.swing.JComponent
+					\item Leaf: JLabel, JButton, JTextField, \ldots
+					\item Composite: JPanel, JTable, JTree, \ldots
+				\end{itemize}
+			\end{example}}
 		\nextcolumn
 		\composite{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={35,65}]
+		\begin{example}{Example -- Formula Tree}
+			\begin{itemize}
+				\item Components are formula parts
+				\item Leaves are literals/numbers
+				\item Operators (sum, product) are composites
+				\item Formula parts can be arbitrarily nested
+				\item Parents can always assume that children provide subresult in compute()
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{figure}[htbp]
+			\centering
+
+			\includegraphics[width=\columnwidth]{uml/compositeexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection{} -- vs Naive}
+
+	\begin{fancycolumns}[widths={50,50}, t]
+		\centering \textbf{Composite Pattern}
+		\begin{example}{Class}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public class Product extends FormulaComponent { ... }
+
+public class Literal extends FormulaComponent { ... }
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Compute Method}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+@Override
+public int compute() {
+	int product = 1;
+	for (FormulaComponent component : getChildren()) {
+		product = product * component.compute();
+	}
+	return product;
+}
+			\end{lstlisting}
+		\end{example}
+		\nextcolumn
+		\centering \textbf{Naive}
+		\begin{example}{Class}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public class Product { ... }
+
+public class Literal { ... }
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Compute Method}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public int compute() {
+	int product = 1;
+	for (Object element : getChildren()) {
+		if (element instanceof Product) {
+			product = product * ((Product) element).compute();
+		} else if (element instanceof Sum) {
+			product = product * ((Sum) element).compute();
+		} else if (element instanceof Literal) {
+			product = product * ((Literal) element).value;
+		}
+	}
+	return product;
+}
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
@@ -60,11 +171,11 @@
 	\begin{fancycolumns}
 		\begin{definition}{Decorator \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				intent & \mycite{Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.}\\
-				aka. & wrapper (again)\\
-				motivation & avoid explosion of static classes when combining all additional behaviors with all applicable classes\\
-				idea & create decorators and components with the same interface, whereas decorators forward behavior whenever feasible
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.} \\
+				aka.       & wrapper (again)                                                                                                                                             \\
+				motivation & avoid explosion of static classes when combining all additional behaviors with all applicable classes                                                       \\
+				idea       & create decorators and components with the same interface, whereas decorators forward behavior whenever feasible
 			\end{tabularx}
 		\end{definition}
 		\nextcolumn
@@ -72,13 +183,90 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
-	\centering\decoratorexample{height=60mm}
+\begin{frame}{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={35,65}]
+		\begin{example}{Example -- Logger Variants}
+			\begin{itemize}
+				\item Basic logger can be extended to various variants
+				\item Decorator pattern allows use to use arbitrary combinations of logger features
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{figure}[htbp]
+			\centering
+
+			\includegraphics[width=\columnwidth]{uml/decoratorexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+\end{frame}
+
+% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+% 	\centering\decoratorexample{height=60mm}
+% \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection -- vs Naive}
+	\begin{fancycolumns}[widths={50,50}, t]
+		\centering \textbf{Decorator Pattern}
+		\begin{example}{Class}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public CauseLogger(AbstractLogger wrappedLogger) {
+	super(wrappedLogger);
+	this.wrappedLogger = wrappedLogger;
+}
+// Instantiate a variant
+AbstractLogger motivationalCauseLogger = new MotivationalLogger(new CauseLogger(new BaseLogger()));
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Creating Messages}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+@Override
+public String createMessage(Exception e) {
+	return wrappedLogger.createMessage(e) + " " + e.getStackTrace().toString();
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\nextcolumn
+		\centering \textbf{Naive}
+		\begin{example}{Class}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public Logger(boolean beMotivational, boolean printCause, boolean printTrace) {
+	this.beMotivational = beMotivational;
+	this.printCause = printCause;
+	this.printTrace = printTrace;
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Creating Messages}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public String createMessage(Exception e) {
+	String message = e.getMessage();
+	if (beMotivational) {
+		message = "Come on. You got this! " + message;
+	}
+	if (printCause) {
+		message = message + " " + e.getCause() == null ? "Root cause" : e.getCause().toString();
+	}
+	if (printTrace) {
+		message = message + " " + e.getStackTrace().toString();
+	}
+	return message;
+}
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+	\end{fancycolumns}
 \end{frame}
 
 \againframe{structuralpatterns}
 
-\slideWindowsCalculator
 
 %\begin{frame}[t]{\insertsubsection{} \mytitlesource{\umlrefman\mypages{91--92,198--199,387--388}; \umluserguide\mypages{318--323}; \umlspec\mypages{217--218}}} % TODO copied from SE1. reuse?
 %	\alt<2->{\profcalculatorcollaboration{width=\linewidth,page=2}}{\profcalculatorcollaboration{width=\linewidth,page=6}}
