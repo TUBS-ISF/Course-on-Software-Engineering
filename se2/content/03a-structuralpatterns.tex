@@ -9,51 +9,6 @@
 	\centering\slideMindmapDesignPatterns{}{}{}{}{}{}{}{visible on={<-0|handout:0>}}{visible on={<-0|handout:0>}}
 \end{frame}
 
-\subsection{Object Adapter Pattern}
-\begin{frame}{\insertsubsection} % TODO copied from SE1. reuse?
-	\begin{fancycolumns}
-		\begin{definition}{Object Adapter \mysource{\gof}}
-			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}
-				intent     & \mycite{Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.} \\
-				aka.       & wrapper                                                                                                                                                                         \\
-				motivation & enable reuse of classes even though incompatible interfaces cannot be made compatible                                                                                           \\
-				idea       & create a new class with a compatible interface that forwards all requests
-			\end{tabularx}
-		\end{definition}
-		\nextcolumn
-		\objectadapter{width=\linewidth}
-	\end{fancycolumns}
-\end{frame}
-
-\begin{frame}{\insertsubsection{} -- Example}
-	\begin{fancycolumns}[widths={35,65}]
-		\begin{example}{Example -- Logger Variants}
-			\begin{itemize}
-				\item Basic logger can be extended to various variants
-				\item Decorator pattern allows use to use arbitrary combinations of logger features
-			\end{itemize}
-		\end{example}
-		\nextcolumn
-		\begin{figure}[htbp]
-			\centering
-
-			\includegraphics[width=\columnwidth]{uml/decoratorexample.pdf}
-		\end{figure}
-	\end{fancycolumns}
-\end{frame}
-
-% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
-% 	\centering\decoratorexample{height=60mm}
-% \end{frame}
-
-\begin{frame}
-	\frametitle{\insertsubsection -- vs Naive}
-
-
-
-\end{frame}
-
 \subsection{Composite Pattern}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
@@ -160,6 +115,111 @@ public int compute() {
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
+
+\subsection{Object Adapter Pattern}
+\begin{frame}{\insertsubsection} % TODO copied from SE1. reuse?
+	\begin{fancycolumns}
+		\begin{definition}{Object Adapter \mysource{\gof}}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.} \\
+				aka.       & wrapper                                                                                                                                                                         \\
+				motivation & enable reuse of classes even though incompatible interfaces cannot be made compatible                                                                                           \\
+				idea       & create a new class with a compatible interface that forwards all requests
+			\end{tabularx}
+		\end{definition}
+		\nextcolumn
+		\objectadapter{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={45,55}]
+		\begin{example}{Example -- Orders as Formula Components}
+			\begin{itemize}
+				\item Goal: Use orders in calculations
+				\item With adapter pattern, we can treat orders as formula components without changing their implementation
+				\item Problems with alternatives
+				\begin{itemize}
+					\item Make order implement formula component: Confusing, required to adapt (possibly external) class, violates single responsibility principle
+					\item External utility functions for conversion: Considerable overhead when using orders especially for larger interfaces, error-prone
+				\end{itemize}
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{figure}[htbp]
+			\centering
+
+			\includegraphics[width=\columnwidth]{uml/adapterexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+\end{frame}
+
+% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+% 	\centering\decoratorexample{height=60mm}
+% \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection{} -- vs Naive}
+	\begin{fancycolumns}[widths={50,50}, t]
+		\centering \textbf{Object Adapter Pattern}
+		\begin{example}{Wrapper}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public class OrderFormulaWrapper extends FormulaComponent {
+
+public OrderFormulaWrapper(Order order) {
+        this.internalOrder = order;
+}
+
+@Override
+    public int compute() {
+        ... // compute based on internal order
+    }
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Formula with Orders}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+FormulaComponent formulaRoot = new Sum(
+	new OrderFormulaWrapper(new Order(ORDER_ONE, "Ba Sing Se", 3)),
+	new Product(new Literal(3), new OrderFormulaWrapper(new Order(ORDER_THREE, "Zaofu", 1))));
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\nextcolumn
+		\centering \textbf{Naive}
+		\begin{example}{Single Conversion Method}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public class Order implements WarehouseRequest {...}
+
+private static int getOrderCost(Order order) {
+	int sum = 0;
+	for (String item : order.orderListWithQuantities.keySet()) {
+		sum += CATALOGUE.get(item) * order.orderListWithQuantities.get(item);
+	}
+	return sum;
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Formula with Orders}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+        FormulaComponent formulaRoot = new Sum(
+                new Literal(getOrderCost(new Order(ORDER_ONE, "Ba Sing Se", 3))),
+                new Product(new Literal(3), new Literal(getOrderCost(new Order(ORDER_THREE, "Zaofu", 1)))));
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+	\end{fancycolumns}
+
+
+\end{frame}
+
 
 % TODO better composite example? JComponent enough?
 %\begin{frame}{Example of the Composite Pattern}

@@ -3,7 +3,7 @@ package order;
 import java.util.Map;
 
 public class Order implements WarehouseRequest {
-    Map<String, Integer> orderListWithQuantities;
+    public Map<String, Integer> orderListWithQuantities;
     String recipientAddress;
     private int customerId;
 
