@@ -11,11 +11,11 @@
 	\begin{fancycolumns}
 		\begin{definition}{Singleton \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				intent & \mycite{Ensure a class [has only] one instance, and provide a global point of access to it.}\\
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Ensure a class [has only] one instance, and provide a global point of access to it.}                                  \\
 				% aka. & \\
-				motivation & avoid the uncontrolled creation of multiple instances\\
-				idea & a private constructor is called on class initialization and a public static method is used for access to that single instance
+				motivation & avoid the uncontrolled creation of multiple instances                                                                         \\
+				idea       & a private constructor is called on class initialization and a public static method is used for access to that single instance
 			\end{tabularx}
 		\end{definition}
 		\nextcolumn
@@ -24,15 +24,92 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}{\insertsubsection: Example} % TODO copied from SE1. reuse?
-	\begin{fancycolumns}
-		\begin{definitiontight}{Pattern}
-			\centering\singleton{width=.5\linewidth}		
-		\end{definitiontight}
+\begin{frame}{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={50,50}]
+		\begin{example}{Example -- Singleton Database}
+			\begin{itemize}
+				\item Same database should be used across the whole application
+				\item Unintended usage of multiple databases may lead to inconsistent states
+				\item Prevent creation of multiple databases with singleton pattern
+			\end{itemize}
+		\end{example}
 		\nextcolumn
-		\begin{exampletight}{Example Application}
-			\centering\singletonexample{width=.5\linewidth}
-		\end{exampletight}
+		\begin{figure}[htbp]
+			\centering
+
+			\includegraphics[width=\columnwidth]{uml/singletonexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+\end{frame}
+
+% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+% 	\centering\decoratorexample{height=60mm}
+% \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection{} -- vs Naive}
+	\begin{fancycolumns}[widths={50,50}, t]
+		\centering \textbf{Singleton Pattern}
+		\begin{example}{Singleton Class}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public class Database {
+    List<String> entries;
+    private Database instance;
+
+    private Database() {
+        this.entries = new ArrayList<>();
+    }
+
+    public Database getDatabase() {
+        if (instance == null) {
+            instance = new Database();
+        }
+        return instance;
+    }    
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Usage Singleton Database}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+public class Worker {
+	public Worker() {
+        this.dbToUse = Database.getDatabase();
+    }
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\nextcolumn
+		\centering \textbf{Naive}
+		\begin{example}{Non-Singleton Class}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public class Database {
+    List<String> entries;
+
+    public Database() {
+        this.entries = new ArrayList<>();
+    }
+}
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Usage Database}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public Worker() {
+	this.dbToUse = new Database();
+}
+
+// ...
+Worker workerOne = new Worker();
+Worker workerTwo = new Worker(); // uses different database
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
@@ -51,15 +128,100 @@
 	\begin{fancycolumns}
 		\begin{definition}{Abstract Factory \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				intent & \mycite{Provide an interface for creating families of related or dependent objects without specifying their concrete classes.}\\
-				aka. & kit\\
-				motivation & avoid case distinctions when creating objects of certain kind, consistently create objects of a particular kind\\
-				idea & create classes for the consistent creation of objects
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Provide an interface for creating families of related or dependent objects without specifying their concrete classes.} \\
+				aka.       & kit                                                                                                                            \\
+				motivation & avoid case distinctions when creating objects of certain kind, consistently create objects of a particular kind                \\
+				idea       & create classes for the consistent creation of objects
 			\end{tabularx}
 		\end{definition}
 		\nextcolumn
 		\abstractfactory{width=\linewidth}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={35,65}]
+		\begin{example}{Example -- Games from Different Libraries}
+			\begin{itemize}
+				\item Software that connects with your video game library
+				\item Games from different libraries have different properties
+				\item Decision on how to initialize game instances should be centralized
+				\item Otherwise: case distinctions everywhere in the code when creating game instances
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{figure}[htbp]
+			\centering
+
+			\includegraphics[width=\columnwidth]{uml/abstractfactoryexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+\end{frame}
+
+% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+% 	\centering\decoratorexample{height=60mm}
+% \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection -- vs Naive}
+	\begin{fancycolumns}[widths={50,50}, t]
+		\centering \textbf{Abstract Factory Pattern}
+		\begin{example}{Factories}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+public abstract class AbstractGameEntryFactory {
+    public IGame createGame(String title) {
+        return new DefaultGame(title);
+    }
+}
+
+public class UbisoftGameEntryFactory extends AbstractGameEntryFactory {
+    
+    @Override
+    public IGame createGame(String title) {
+        return new UbisoftGame(title, ID_MAP.get(title), "Ubisoft/" + title);
+    }
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Instantiate Objects}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\small]
+IGame gameOne = instance.factory.createGame("Among Us");
+// ...
+IGame gameTwo = instance.factory.createGame("It Takes Two");
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\nextcolumn
+		\centering \textbf{Naive}
+		\begin{example}{Instantiate Objects}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+IGame gameOne;
+if (CURRENT_GAME_LIBRARY == GAME_LIBRARY.STEAM) {
+	gameOne = new SteamGame("Among Us");
+} else if (CURRENT_GAME_LIBRARY == GAME_LIBRARY.UBISOFT) {
+	gameOne = new UbisoftGame("Among Us");
+} else {
+	gameOne = new DefaultGame("Among Us");
+}
+
+
+// ...
+IGame gameTwo;
+if (CURRENT_GAME_LIBRARY == GAME_LIBRARY.STEAM) {
+	gameTwo = new SteamGame("It Takes Two");
+} else if (CURRENT_GAME_LIBRARY == GAME_LIBRARY.UBISOFT) {
+	gameTwo = new UbisoftGame("It Takes Two");
+} else {
+	gameTwo = new DefaultGame("It Takes Two");
+}
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
