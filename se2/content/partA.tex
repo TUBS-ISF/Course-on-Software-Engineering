@@ -249,19 +249,19 @@
 \lecture{Design Patterns}{designpatterns}
 
 \newcommand{\userstoriesA}{
-	\item User Story 1: Implement subtraction and division as two new operations.
-	\item User Story 2: Fix that the error label does not disappear after wrong followed by correct input.
-	\item User Story 3: Replace first occurrence of existing value (e.g., 3) in the formula by a new value (e.g., 5).
+	\item User Story 1: Unify access to the legacy IO system.
+	\item User Story 2: File loading should be easily exchangable. The interface should be indistinguishable from the \texttt{App} class.
+	\item User Story 3: Add another file standard of your choice.
 }
 \newcommand{\userstoriesB}{
-	\item User Story 4: Enable or disable debug outputs with an enum constant (no debug output, only warnings, all debug output).
-	\item User Story 5: Layout all buttons in the GUI horizontally instead of vertically.
-	\item User Story 6: Implement a dark mode of the calculator by means of a feature flag.
+	\item User Story 4: Centralize the creation of new \texttt{Kontakt} objects.
+	\item User Story 5: Add support for other \texttt{Kontakt} implementations.
+	\item User Story 6: Ensure that the instantiation logic can be easily replaced or extended in the future without modifying the adapter.
 }
 \newcommand{\userstoriesC}{
-	\item User Story 7: Display brackets only when needed.
-	\item User Story 8: If there is no error message, show seconds elapsed since last input.
-	\item User Story 9: Toggle in GUI to let users choose between brackets and evaluation of subterms.
+	\item User Story 7: User need to be informed of special events, e.g., the birthday of a contact.
+	\item User Story 8: Hooks for notification should be dynamically modifiable.
+	\item User Story 9: Print a warning if contacts have their birthday today.
 }
 
 \section{Structural Patterns}
@@ -274,8 +274,8 @@
 	\item \gof\mychapter{4}
 }{
 	\begin{itemize}
-		\item Download the FancyCalculator from \StudIP
-		\item Install Java and IDE (Eclipse recommended)
+		\item Download the Kontaktbuch from \StudIP
+		\item Install Java and an IDE 
 		      \userstoriesA
 		\item Hint: Apply knowledge on coding conventions, smells, refactorings, and design patterns where applicable.
 	\end{itemize}
@@ -290,7 +290,7 @@
 }{
 	\item \gof\mychapter{3}
 }{
-	Continue implementing the FancyCalculator:
+	Continue implementing the Kontaktbuch:
 	\begin{itemize}
 		{\color{gray} \userstoriesA }
 		\userstoriesB
@@ -306,12 +306,12 @@
 }{
 	\item \sommerville\mychapter{5}
 }{
-	Continue implementing the FancyCalculator:\\see next slide
+	Continue implementing the Kontaktbuch:\\see next slide
 }
 
 \begin{frame}
 	\begin{fancycolumns}[widths={65}]
-		\begin{example}{FancyCalculator - 3rd Exercise on Design Patterns}
+		\begin{example}{Kontaktbuch - 3rd Exercise on Design Patterns}
 			\begin{itemize}
 				\userstoriesA
 				\userstoriesB
@@ -326,13 +326,6 @@
 				\item Behavioral patterns:\\observer, visitor
 			\end{itemize}
 		\end{definition}
-		\begin{note}{Hints}
-			\begin{itemize}
-				\item User Story 1/2: fix DRY first
-				\item User Story 3: try composite
-				\item User Story 4: try singleton
-			\end{itemize}
-		\end{note}
 	\end{fancycolumns}
 \end{frame}
 
