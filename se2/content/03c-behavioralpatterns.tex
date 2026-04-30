@@ -11,12 +11,12 @@
 	\begin{fancycolumns}
 		\begin{definition}{Observer \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				intent & \mycite{Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.}\\
-				aka. & dependents, publish-subscribe\\
-				motivation & avoid coupling of classes (i.e., explicit references such as imports)\\
-				example & no coupling between model and view in model-view-controller architectures\\
-				idea & data object (model) has a list of observers (views) that are notified about changes
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.} \\
+				aka.       & dependents, publish-subscribe                                                                                                                              \\
+				motivation & avoid coupling of classes (i.e., explicit references such as imports)                                                                                      \\
+				example    & no coupling between model and view in model-view-controller architectures                                                                                  \\
+				idea       & data object (model) has a list of observers (views) that are notified about changes
 			\end{tabularx}
 		\end{definition}
 		\nextcolumn
@@ -24,23 +24,241 @@
 	\end{fancycolumns}
 \end{frame}
 
+\begin{frame}{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={35,65}]
+		\begin{example}{Example -- Different Modules in a Running Tracker}
+			\begin{itemize}
+				\item Running tracker with various different features (e.g., social media, long time process)
+				\item Many modules that need to be updated when a run is finished
+				\item Adding new modules should not require changes to the existing modules
+				\item Make main run list observable and let other modules observe it
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{figure}[htbp]
+			\centering
+
+			\includegraphics[width=\columnwidth]{uml/observerexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+\end{frame}
+
+% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+% 	\centering\decoratorexample{height=60mm}
+% \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection{} -- vs Naive}
+	\begin{fancycolumns}[widths={50,50}, t]
+		\centering \textbf{Observer Pattern}
+		\begin{example}{Observable}
+			\vspace{-3mm}
+			\makeatletter
+			\lst@AddToHook{OnEmptyLine}{\vspace{-0.7\baselineskip}}
+			\makeatother
+			\begin{lstlisting}[language=Java, basicstyle=\scriptsize]
+public class RunTracker {
+    List<IRunObserver> observers;
+    RunlistState state;
+
+    public void addObserver(IRunObserver observerToAdd) {
+        this.observers.add(observerToAdd);
+    }
+
+    public void removeObserver(IRunObserver observerToRemove) {
+        this.observers.remove(observerToRemove);
+    }
+
+    public void notifyObservers() {
+        for (IRunObserver observer : observers) {
+            observer.update(state);
+        }
+    }
+
+    public void addRun(Run run) {
+        state.runList.add(run);
+        notifyObservers();
+    }
+
+}
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{Initialize Observers}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+RunTracker tracker = new RunTracker();
+SocialNotifier socialNotifier = new SocialNotifier();
+tracker.addObserver(socialNotifier);
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\nextcolumn
+		\centering \textbf{Naive}
+		\begin{example}{Instantiate Objects}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\scriptsize]
+public class RunTracker {
+    RunlistState state;
+
+    LongTimeTracker longTimeTracker;
+    SocialNotifier socialNotifier;
+
+    public RunTracker(LongTimeTracker longTimeTracker, SocialNotifier socialNotifier) {
+        this.state = new RunlistState();
+        this.longTimeTracker = longTimeTracker;
+        this.socialNotifier = socialNotifier;
+    }
+
+
+    public void processNewRun(Run run) {
+        state.runList.add(run);
+        longTimeTracker.printLongTimeUpdate(state.runList);
+        socialNotifier.sendRunUpdateToFollowers(state.runList);
+    }
+
+}
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+				\begin{example}{Instantiate Objects}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+LongTimeTracker longTimeTracker = new LongTimeTracker();
+SocialNotifier socialNotifier = new SocialNotifier();
+
+RunTracker tracker = new RunTracker(longTimeTracker, socialNotifier);
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+
 \subsection{Visitor Pattern}
 \begin{frame}{\insertsubsection}
 	\begin{fancycolumns}
 		\begin{definition}{Visitor \mysource{\gof}}
 			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				intent & \mycite{Represent an operation to be performed on the elements of an object structure.}\\
+			\begin{tabularx}{\textwidth}{rX}
+				intent     & \mycite{Represent an operation to be performed on the elements of an object structure.}                                                \\
 				%aka. & \\
-				motivation & avoid that the implementation of an operation is spread over several classes\\
-				example & compiler operates on code in a tree structure, but has numerous operations (e.g., code generation, checking for names and type errors)\\
-				idea & each data object has a generic method to pass a visitor object and each operation is implemented in a dedicated visitor
+				motivation & avoid that the implementation of an operation is spread over several classes                                                           \\
+				example    & compiler operates on code in a tree structure, but has numerous operations (e.g., code generation, checking for names and type errors) \\
+				idea       & each data object has a generic method to pass a visitor object and each operation is implemented in a dedicated visitor
 			\end{tabularx}
 		\end{definition}
 		\nextcolumn
 		\visitor{width=\linewidth}
 	\end{fancycolumns}
 \end{frame}
+
+\begin{frame}{\insertsubsection{} -- Example}
+	\begin{fancycolumns}[widths={35,65}]
+		\begin{example}{Example -- Visiting a Formula Tree}
+			\begin{itemize}
+				\item Various operations could be required on a formula (e.g., compute, print)
+				\item External traversal requires case many case distinctions
+				\item Embedding operations in formula components violates separation of concerns
+				\item Use visitor pattern to separate operations from formula elements
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{figure}[htbp]
+			\centering
+			\vspace{-0.5cm}
+			\includegraphics[width=0.85\textwidth]{uml/visitorexample.pdf}
+		\end{figure}
+	\end{fancycolumns}
+\end{frame}
+
+% \begin{frame}{Example of the Decorator Pattern \mytitlesource{\href{https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/FilterInputStream.html}{Java 21}}}
+% 	\centering\decoratorexample{height=60mm}
+% \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection{} -- vs Naive}
+	\begin{fancycolumns}[widths={50,50}, t]
+		\centering \textbf{\insertsubsection{}}
+		\begin{example}{\small Classes}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\scriptsize]
+public abstract class FormulaVisitor {
+    public abstract Object visitLiteral(Literal literal);
+    public abstract Object visitSum(Sum sum);
+    public abstract Object visitProduct(Product product);
+}
+
+public class ComputeVisitor extends FormulaVisitor {
+	// ...
+    @Override
+    public Integer visitSum(Sum sum) {
+        // ...
+        return result;
+    }    
+}
+
+public class Product extends FormulaComponent {
+	// ...
+    @Override
+    public Object accept(FormulaVisitor visitor) {
+        return visitor.visitProduct(this);
+    }
+}
+
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\begin{example}{\small Usage}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\scriptsize]
+FormulaComponent formulaRoot = new Sum(new Product(new Literal(3), new Literal(5)), new Literal(10));
+ComputeVisitor computer = new ComputeVisitor();
+PrintVisitor printer = new PrintVisitor();
+
+System.out.println(formulaRoot.accept(computer));
+System.out.println(formulaRoot.accept(printer));
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+		\nextcolumn
+		\centering \textbf{Naive}
+		\begin{example}{Operations attached to Objects}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java, basicstyle=\scriptsize]
+public abstract class FormulaComponent {
+    public abstract int compute();
+    public abstract String print();
+    public abstract FormulaComponent[] getChildren();
+}
+
+public class Sum extends FormulaComponent {
+	// ...
+    @Override
+    public int compute() {
+        int sum = 0;
+        for (FormulaComponent element : getChildren()) {
+            sum += element.compute();
+        }
+        return sum;
+    }
+
+    @Override
+    public String print() {
+        String print = "+(";
+        for (FormulaComponent child : getChildren()) {
+            print += (String) child.print() + ",";
+        }
+        print = print.substring(0, print.length() - 1) + ")";
+        return print;
+    }   
+}
+		\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
 
 \againframe{behavioralpatterns}
 
