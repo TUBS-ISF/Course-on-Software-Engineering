@@ -1,6 +1,10 @@
 \subsection{Recap: Design Patterns}
 \slideDesignPatterns
 
+
+% TODO: Add iterator as an example that is often supported by the programming language
+% TODO: Add slides describing illustrating the use case before introducing the pattern
+
 \subsection{Behavioral Design Patterns}
 \begin{frame}[label=behavioralpatterns]{Overview on Design Patterns \mytitlesource{\gof}}
 	\centering\slideMindmapDesignPatterns{}{}{}{}{}{}{}{}{visible on={<2->}}
@@ -189,17 +193,14 @@ public abstract class FormulaVisitor {
     public abstract Object visitProduct(Product product);
 }
 
-public class ComputeVisitor extends FormulaVisitor {
-	// ...
+public class ComputeVisitor extends FormulaVisitor { // ...
     @Override
-    public Integer visitSum(Sum sum) {
-        // ...
+    public Integer visitSum(Sum sum) { // ...
         return result;
     }    
 }
 
-public class Product extends FormulaComponent {
-	// ...
+public class Product extends FormulaComponent { // ...
     @Override
     public Object accept(FormulaVisitor visitor) {
         return visitor.visitProduct(this);
