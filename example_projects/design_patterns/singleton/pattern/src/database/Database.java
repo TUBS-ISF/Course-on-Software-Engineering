@@ -6,13 +6,13 @@ import java.util.List;
 public class Database {
     List<String> entries;
 
-    private Database instance;
+    private static Database instance;
 
     private Database() {
         this.entries = new ArrayList<>();
     }
 
-    public Database getDatabase() {
+    public static Database getDatabase() {
         if (instance == null) {
             instance = new Database();
         }
