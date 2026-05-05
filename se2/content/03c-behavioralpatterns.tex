@@ -57,9 +57,6 @@
 		\centering \textbf{Observer Pattern}
 		\begin{example}{Observable}
 			\vspace{-3mm}
-			\makeatletter
-			\lst@AddToHook{OnEmptyLine}{\vspace{-0.7\baselineskip}}
-			\makeatother
 			\begin{lstlisting}[language=Java, basicstyle=\scriptsize]
 public class RunTracker {
     List<IRunObserver> observers;
@@ -85,12 +82,7 @@ public class RunTracker {
     }
 
 }
-			\end{lstlisting}
-			\vspace{-3mm}
-		\end{example}
-		\begin{example}{Initialize Observers}
-			\vspace{-3mm}
-			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+// Initialize observers
 RunTracker tracker = new RunTracker();
 SocialNotifier socialNotifier = new SocialNotifier();
 tracker.addObserver(socialNotifier);
@@ -122,12 +114,7 @@ public class RunTracker {
     }
 
 }
-		\end{lstlisting}
-			\vspace{-3mm}
-		\end{example}
-				\begin{example}{Instantiate Objects}
-			\vspace{-3mm}
-			\begin{lstlisting}[language=Java, basicstyle=\footnotesize]
+// Initialize naive tracker
 LongTimeTracker longTimeTracker = new LongTimeTracker();
 SocialNotifier socialNotifier = new SocialNotifier();
 
@@ -214,11 +201,9 @@ public class Product extends FormulaComponent { // ...
 			\vspace{-3mm}
 			\begin{lstlisting}[language=Java, basicstyle=\scriptsize]
 FormulaComponent formulaRoot = new Sum(new Product(new Literal(3), new Literal(5)), new Literal(10));
-ComputeVisitor computer = new ComputeVisitor();
-PrintVisitor printer = new PrintVisitor();
 
+ComputeVisitor computer = new ComputeVisitor();
 System.out.println(formulaRoot.accept(computer));
-System.out.println(formulaRoot.accept(printer));
 			\end{lstlisting}
 			\vspace{-3mm}
 		\end{example}

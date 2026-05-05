@@ -1,50 +1,197 @@
 \subsection{Model-View-Controller (MVC)} % Example for separating data and presentation
 
-\begin{frame}
-    \frametitle{\insertsubsection{} -- Targeted Problem}
+\newcommand{\mvcdefault}{%
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \node (model) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Model};
+            \node (view) at (6,0) [draw, minimum width=2cm, minimum height=1cm] {View};
+            \node (controller) at (3,-4.5) [draw, minimum width=2cm, minimum height=1cm] {Controller};
 
+            \draw[->] (controller) to node[above, midway, sloped] {Manipulates} (model);
 
-\end{frame}
+            \draw[->, bend left=12] (controller) to node[ above, midway, sloped] {Select Presentation} (view);
+            \draw[->, bend left=12] (view) to node[below, midway, sloped] {(User) Input} (controller);
+
+            \draw[->, bend left=12] (model) to node[above, midway, sloped] {Notify change} (view);
+        \end{tikzpicture}
+    \end{figure}%
+}
 
 \begin{frame}
     \frametitle{\insertsubsection{}}
-        \begin{fancycolumns}[widths={45,55}]
-            \begin{definition}{Model-View-Controller}
-                \begin{itemize}
-                    \item Model: 
-                    \item View:
-                    \item Controller:
-                \end{itemize}
-            \end{definition}
-            \nextcolumn
-                \begin{figure}
-                    \centering
-                    \begin{tikzpicture}
-                        \node (model) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Model};
-                        \node (view) at (6,0) [draw, minimum width=2cm, minimum height=1cm] {View};
-                        \node (controller) at (3,-4.5) [draw, minimum width=2cm, minimum height=1cm] {Controller};
-                        
-                        \draw[->] (controller) to node[above, midway, sloped] {Manipulates} (model);
-
-                        \draw[->, bend left=12] (controller) to node[ above, midway, sloped] {Select Presentation} (view);
-                        \draw[->, bend left=12] (view) to node[below, midway, sloped] {(User) Input} (controller);
-
-                        \draw[->, bend left=12] (model) to node[above, midway, sloped] {Notify change} (view);
-                    \end{tikzpicture}
-                \end{figure}
-        \end{fancycolumns}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Goal}
+            \begin{itemize}
+                \item Separate data and presentation
+            \end{itemize}
+        \end{motivation}
+        \begin{definition}{Model-View-Controller (MVC)}
+            \begin{itemize}
+                \item Model: Hold data, provide query operations on it, and notify changes to view
+                \item View: Present data to the user, and capture user input
+                \item Controller: React to user input $\rightarrow$ manipulate the model and select what to present to the user
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \mvcdefault{}
+    \end{fancycolumns}
 \end{frame}
 
 \begin{frame}
     \frametitle{\insertsubsection{} -- Example}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{definition}{MVC for a To-Do List Application}
+            \begin{itemize}
+                \item Model: Holds list of tasks, and provides operations to add, remove, and query tasks
+                \item View: Presents the list of tasks to the user, and captures user input for adding/removing tasks
+                \item Controller: Update model according to user input, alter view (e.g., focus on incomplete tasks)
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}
+                \node (model) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Todo List};
+                \node (view) at (6,0) [draw, minimum width=2cm, minimum height=1cm] {Todo App GUI};
+                \node (controller) at (3,-4.5) [draw, minimum width=2cm, minimum height=1cm] {Controller};
 
+                \draw[->] (controller) to node[above, midway, sloped] {Manipulates} (model);
+
+                \draw[->, bend left=12] (controller) to node[ above, midway, sloped] {Select Presentation} (view);
+                \draw[->, bend left=12] (view) to node[below, midway, sloped] {(User) Input} (controller);
+
+                \draw[->, bend left=12] (model) to node[above, midway, sloped] {Notify change} (view);
+            \end{tikzpicture}
+        \end{figure}
+    \end{fancycolumns}
 \end{frame}
 
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Considerations}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Advantages}
+            \begin{itemize}
+                \item Separation of concerns $\rightarrow$ easier to maintain and extend
+                \item Parallel development of model, view, and controller
+                \item Reusability of components (e.g., different views for the same model)
+            \end{itemize}
+        \end{motivation}
+        \begin{note}{Disadvantages}
+            \begin{itemize}
+                \item Initial design effort
+                \item Overhead especially for simple applications
+            \end{itemize}
+        \end{note}
+        
+        \nextcolumn
+        \mvcdefault{}
+    \end{fancycolumns}
+\end{frame}
+
+
+
 \subsection{Repository Architecture} % Example for organizing data storage and access
+
+\newcommand{\repositorydefault}{
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}
+                \node (repo) at (2,0) [draw, rounded corners, minimum width=7cm, minimum height=1.2cm] {Repository};
+
+                \node (c1) at (0,2) [draw, minimum width=2.4cm, minimum height=1cm] {Component A};
+                \node (c2) at (4,2) [draw, minimum width=2.4cm, minimum height=1cm] {Component B};
+                \node (c3) at (0,-2) [draw, minimum width=2.4cm, minimum height=1cm] {Component C};
+                \node (c4) at (4,-2) [draw, minimum width=2.4cm, minimum height=1cm] {Component D};
+
+                \draw[<->] (c1.south) -- node[right, midway] {Read/Write} (c1 |- repo.north);
+                \draw[<->] (c2.south) -- node[right, midway] {Read/Write} (c2 |- repo.north);
+                \draw[<->] (c3.north) -- node[right, midway] {Read/Write} (c3 |- repo.south);
+                \draw[<->] (c4.north) -- node[right, midway] {Read/Write} (c4 |- repo.south);
+            \end{tikzpicture}
+        \end{figure}
+}
+
+\begin{frame}
+    \frametitle{\insertsubsection{}}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Goal}
+            \begin{itemize}
+                \item Encapsulate data management in a central repository
+                \item Communication over shared data
+            \end{itemize}
+        \end{motivation}
+        \begin{definition}{Repository Architecture}
+            \begin{itemize}
+                \item Repository = central data storage
+                \item Unified interface for data management
+                \item Components communicate by reading/writing to repository
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \repositorydefault{}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Example}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{definition}{Repository Architecture for a University Information System}
+            \begin{itemize}
+                \item Repository holds all student data (e.g., personal information, course enrollments, grades)
+                \item Components all interact with the repository to read/write student data (e.g., register grades or enroll in courses)
+                \item Communication between components only via the means of data stored in the repository (e.g, examiner updates grade $\rightarrow$ student portal can read updated grade from repository)
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}
+                \node (repo) at (2,0) [draw, rounded corners, minimum width=7cm, minimum height=1.2cm] {Student Data Repository};
+
+                \node (c1) at (0,2) [draw, minimum width=2.7cm, minimum height=1cm, font=\footnotesize] {Examination Office};
+                \node (c2) at (4,2) [draw, minimum width=2.7cm, minimum height=1cm, font=\footnotesize] {Examiners View};
+                \node (c3) at (0,-2) [draw, minimum width=2.7cm, minimum height=1cm, font=\footnotesize] {Course Management};
+                \node (c4) at (4,-2) [draw, minimum width=2.7cm, minimum height=1cm, font=\footnotesize] {Student Portal};
+
+                \draw[<->] (c1.south) -- node[right, midway] {Read/Write} (c1 |- repo.north);
+                \draw[<->] (c2.south) -- node[right, midway] {Read/Write} (c2 |- repo.north);
+                \draw[<->] (c3.north) -- node[right, midway] {Read/Write} (c3 |- repo.south);
+                \draw[<->] (c4.north) -- node[right, midway] {Read/Write} (c4 |- repo.south);
+            \end{tikzpicture}
+        \end{figure}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Considerations}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Advantages}
+            \begin{itemize}
+                \item Separate business logic from data management
+                \item Components are independent of each other
+                \item Data is centralized $\rightarrow$ easier to persist and share
+            \end{itemize}
+        \end{motivation}
+        \begin{note}{Disadvantages}
+            \begin{itemize}
+                \item Potentially inefficient way of interaction between components
+                \item Repository is single point of failure
+                \item Realization in distributed systems can be complex (e.g., how to ensure correct synchronization?)
+            \end{itemize}
+        \end{note}
+        \nextcolumn
+        \repositorydefault{}
+    \end{fancycolumns}
+\end{frame}
+
+
 
 \subsection{Pipes and Filters} % Example for organizing data processing
 
 \subsection{Microservices} % Example for organizing distributed systems
+
+\subsection{Actor Model} % Example for 
 
 \subsection{Service-Oriented Architecture (SOA)} % Example for separating concerns in distributed systems
 
