@@ -83,7 +83,7 @@
                 \item Overhead especially for simple applications
             \end{itemize}
         \end{note}
-        
+
         \nextcolumn
         \mvcdefault{}
     \end{fancycolumns}
@@ -94,22 +94,22 @@
 \subsection{Repository Architecture} % Example for organizing data storage and access
 
 \newcommand{\repositorydefault}{
-        \begin{figure}
-            \centering
-            \begin{tikzpicture}
-                \node (repo) at (2,0) [draw, rounded corners, minimum width=7cm, minimum height=1.2cm] {Repository};
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \node (repo) at (2,0) [draw, rounded corners, minimum width=7cm, minimum height=1.2cm] {Repository};
 
-                \node (c1) at (0,2) [draw, minimum width=2.4cm, minimum height=1cm] {Component A};
-                \node (c2) at (4,2) [draw, minimum width=2.4cm, minimum height=1cm] {Component B};
-                \node (c3) at (0,-2) [draw, minimum width=2.4cm, minimum height=1cm] {Component C};
-                \node (c4) at (4,-2) [draw, minimum width=2.4cm, minimum height=1cm] {Component D};
+            \node (c1) at (0,2) [draw, minimum width=2.4cm, minimum height=1cm] {Component A};
+            \node (c2) at (4,2) [draw, minimum width=2.4cm, minimum height=1cm] {Component B};
+            \node (c3) at (0,-2) [draw, minimum width=2.4cm, minimum height=1cm] {Component C};
+            \node (c4) at (4,-2) [draw, minimum width=2.4cm, minimum height=1cm] {Component D};
 
-                \draw[<->] (c1.south) -- node[right, midway] {Read/Write} (c1 |- repo.north);
-                \draw[<->] (c2.south) -- node[right, midway] {Read/Write} (c2 |- repo.north);
-                \draw[<->] (c3.north) -- node[right, midway] {Read/Write} (c3 |- repo.south);
-                \draw[<->] (c4.north) -- node[right, midway] {Read/Write} (c4 |- repo.south);
-            \end{tikzpicture}
-        \end{figure}
+            \draw[<->] (c1.south) -- node[right, midway] {Read/Write} (c1 |- repo.north);
+            \draw[<->] (c2.south) -- node[right, midway] {Read/Write} (c2 |- repo.north);
+            \draw[<->] (c3.north) -- node[right, midway] {Read/Write} (c3 |- repo.south);
+            \draw[<->] (c4.north) -- node[right, midway] {Read/Write} (c4 |- repo.south);
+        \end{tikzpicture}
+    \end{figure}
 }
 
 \begin{frame}
@@ -189,11 +189,320 @@
 
 \subsection{Pipes and Filters} % Example for organizing data processing
 
+\newcommand{\pipesfiltersdefault}{
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \node (f1) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Filter 1};
+            \node (f2) at (4,0) [draw, minimum width=2cm, minimum height=1cm] {Filter 2};
+            \node (f3) at (4,-3) [draw, minimum width=2cm, minimum height=1cm] {Filter 3};
+
+            \draw[->] (f1) to node[above, midway, sloped] {Pipe} (f2);
+            \draw[->] (f2) to node[above, midway, sloped] {Pipe} (f3);
+        \end{tikzpicture}
+    \end{figure}
+}
+
+\begin{frame}
+    \frametitle{\insertsubsection{}}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Goal}
+            \begin{itemize}
+                \item Reusability of transformation steps
+            \end{itemize}
+        \end{motivation}
+        \begin{definition}{Pipes and Filters}
+            \begin{itemize}
+                \item Filter = transformation step
+                \item Pipe = data flow between filters
+                \item Filters are independent of each other
+                \item Filters rely on specific input and output data formats
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \pipesfiltersdefault{}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Example}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{definition}{Abstract Compiler as Pipes and Filters}
+            \begin{itemize}
+                \item Filter 1: Parser $\rightarrow$ transforms source code into an abstract syntax tree (AST)
+                \item Filter 2: Code Generator $\rightarrow$ transforms AST intomachine language
+                \item Filter 3: Compiler optimization on machine language
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}
+                \node (f1) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Parser};
+                \node (f2) at (4,0) [draw, minimum width=2cm, minimum height=1cm] {Code Generator};
+                \node (f3) at (4,-3.5) [draw, minimum width=2cm, minimum height=1cm] {Optimizer};
+
+                \draw[->] (-3,0) to node[above, midway, sloped] {\small Source Code} (f1);
+                \draw[->] (f1) to node[above, midway, sloped] {AST} (f2);
+                \draw[->] (f2) to node[above, midway, sloped] {\small Machine Language} (f3);
+                \draw[->] (f3) to node[above, midway, sloped] {\small Machine Language} (0.5, -3.5);
+            \end{tikzpicture}
+        \end{figure}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Considerations}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Advantages}
+            \begin{itemize}
+                \item Isolated testing of filters
+                \item Simple Reusability, exchangeability and extension of filters
+            \end{itemize}
+        \end{motivation}
+        \begin{note}{Disadvantages}
+            \begin{itemize}
+                \item Potential overhead caused by restrictions on input/output of filters
+            \end{itemize}
+        \end{note}
+        \nextcolumn
+        \pipesfiltersdefault{}
+    \end{fancycolumns}
+\end{frame}
+
+
 \subsection{Microservices} % Example for organizing distributed systems
 
-\subsection{Actor Model} % Example for 
+\newcommand{\microservicesdefault}{
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=0.8, transform shape]
+            \node (c1) at (3.5,3) [draw, minimum width=2cm, minimum height=1cm] {Client 1};
+            \node (gw) at (3.5,1.5) [draw, minimum width=3cm, minimum height=1cm] {API Gateway};
 
-\subsection{Service-Oriented Architecture (SOA)} % Example for separating concerns in distributed systems
+            \node (s1) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Service 1};
+            \node (s2) at (3.5,0) [draw, minimum width=2cm, minimum height=1cm] {Service 2};
+            \node (s3) at (7,0) [draw, minimum width=2cm, minimum height=1cm] {Service 3};
+            \node (s4) at (1.75,-1.5) [draw, minimum width=2cm, minimum height=1cm] {Service 4};
+            \node (s5) at (5.25,-1.5) [draw, minimum width=2cm, minimum height=1cm] {Service 5};
+
+            \draw[dashed, rounded corners, blue!30] (-1.2,-2.3) rectangle (8.2,0.8);
+            \node[anchor=west,blue!30] at (-1,1.2) {\small Microservices};
+
+            \draw[->] (c1) -- (gw);
+
+            \draw[->] (gw) -- (s1);
+            \draw[->] (gw) -- (s3);
+            \draw[->] (gw) -- (s2);
+
+            \draw[->] (s1) -- (s2);
+            \draw[->] (s2) -- (s4);
+            \draw[->] (s3) -- (s5);
+        \end{tikzpicture}
+    \end{figure}
+}
+
+\begin{frame}
+    \frametitle{\insertsubsection{}}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Goal}
+            \begin{itemize}
+                \item Distribute functionalities into independent, independently deployable services
+            \end{itemize}
+        \end{motivation}
+        \begin{definition}{Microservices}
+            \begin{itemize}
+                \item Independent services for different functionalities
+                \item Each service can be developed, deployed, and scaled independently
+                \item Communication via well-defined APIs (e.g., REST)
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \microservicesdefault{}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Example}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{definition}{Webshop as Microservices}
+            \begin{itemize}
+                \item Services for different functionalities (e.g., shopping cart or login)
+                \item Gateway distributes customer requests to different services
+                \item Services can interact with each other (e.g., adding item in the shop is stored in the shopping cart)
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}[scale=0.8, transform shape]
+                \node (c1) at (3.5,3) [draw, minimum width=2cm, minimum height=1cm] {Shop Customer};
+                \node (gw) at (3.5,1.5) [draw, minimum width=3cm, minimum height=1cm] {API Gateway};
+
+                \node (s1) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Shop};
+                \node (s2) at (3.5,0) [draw, minimum width=2cm, minimum height=1cm] {\small Shopping Cart};
+                \node (s3) at (7,0) [draw, minimum width=2cm, minimum height=1cm] {Login Service};
+                \node (s4) at (1.75,-1.5) [draw, minimum width=2cm, minimum height=1cm] {\small Order Placement};
+                \node (s5) at (5.25,-1.5) [draw, minimum width=2cm, minimum height=1cm] {Loyalty Program};
+
+                \draw[dashed, rounded corners, blue!30] (-1.2,-2.3) rectangle (8.2,0.8);
+                \node[anchor=west,blue!30] at (-1,1.2) {\small Microservices};
+
+                \draw[->] (c1) -- (gw);
+
+                \draw[->] (gw) -- (s1);
+                \draw[->] (gw) -- (s3);
+                \draw[->] (gw) -- (s2);
+
+                \draw[->] (s1) -- (s2);
+                \draw[->] (s2) -- (s4);
+                \draw[->] (s3) -- (s5);
+                \draw[->] (s4) -- (s5);
+            \end{tikzpicture}
+        \end{figure}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Considerations}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Advantages}
+            \begin{itemize}
+                \item Independent development and deployment of services
+                \item Scalability of individual services
+                \item Flexibility in technology choices for different services
+                \item Explicit interfaces
+            \end{itemize}
+        \end{motivation}
+        \begin{note}{Disadvantages}
+            \begin{itemize}
+                \item Less efficient communication
+                \item Interactions only over coarse-grained APIs
+                \item Complex setup and orchestration
+            \end{itemize}
+        \end{note}
+        \nextcolumn
+        \microservicesdefault{}
+    \end{fancycolumns}
+\end{frame}
+
+
+% \subsection{Actor Model} % Example for 
+
+\subsection{Event-Driven Architecture} % Example for 
+
+\newcommand{\eventdrivendefault}{
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \node (p1) at (0,1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Producer 1};
+            \node (p2) at (0,0) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Producer 2};
+            \node (p3) at (0,-1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Producer 3};
+            \node (b) at (3.2,0) [draw, minimum width=2.4cm, minimum height=0.8cm] {\small Event Broker};
+            \node (c1) at (6.4,1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Consumer 1};
+            \node (c2) at (6.4,0) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Consumer 2};
+            \node (c3) at (6.4,-1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Consumer 3};
+
+            \draw[dashed, orange] (-0.9,-1.8) rectangle (0.9,1.8);
+            \node[anchor=south, orange] at (0, 1.9) {\small Producers};
+            \draw[dashed, yellow] (5.45,-1.8) rectangle (7.25,1.8);
+            \node[anchor=south, yellow] at (6.375, 1.9) {\small Consumers};
+
+            \draw[->] (p1) to (b.west);
+            \draw[->] (p2) to (b.west);
+            \draw[->] (p3) to (b.west);
+            \draw[->] (b.east) to (c1.west);
+            \draw[->] (b.east) to (c2.west);
+            \draw[->] (b.east) to (c3.west);
+        \end{tikzpicture}
+    \end{figure}
+}
+
+\begin{frame}
+    \frametitle{\insertsubsection{}}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Goal}
+            \begin{itemize}
+                \item Efficient communication between components
+            \end{itemize}
+        \end{motivation}
+        \begin{definition}{Event-Driven Architecture (EDA)}
+            \begin{itemize}
+                \item \textit{Event} = significant change in state
+                \item \textit{Producers} generate events
+                \item \textit{Consumers} react to events
+                \item \textit{Broker} manages event distribution
+                \item There may be components that are both producers and consumers
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \eventdrivendefault{}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Example}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{definition}{Webshop as Microservices}
+            \begin{itemize}
+                \item Services for different functionalities (e.g., shopping cart or login)
+                \item Gateway distributes customer requests to different services
+                \item Services can interact with each other (e.g., adding item in the shop is stored in the shopping cart)
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}
+                \node (p1) at (0,1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Run Tracker};
+                \node (p2) at (0,0) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Heart Monitor};
+                \node (p3) at (0,-1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Sleep Tracker};
+                \node (b) at (3.2,0) [draw, minimum width=2.4cm, minimum height=0.8cm] {\small Event Broker};
+                \node (c1) at (6.4,1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\scriptsize Achievement System};
+                \node (c2) at (6.4,0) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Health Analysis};
+                \node (c3) at (6.4,-1.2) [draw, minimum width=1.5cm, minimum height=1cm] {\footnotesize Sleep Analysis};
+
+                \draw[dashed, orange] (-0.9,-1.8) rectangle (0.9,1.8);
+                \node[anchor=south, orange] at (0, 1.9) {\small Producers};
+                \draw[dashed, yellow] (5.45,-1.8) rectangle (7.25,1.8);
+                \node[anchor=south, yellow] at (6.375, 1.9) {\small Consumers};
+
+                \draw[->] (p1) to node[midway,sloped,above] {r} (b.west);
+                \draw[->] (p2) to node[midway,sloped,above] {h} (b.west);
+                \draw[->] (p3) to node[midway,sloped,below] {s} (b.west);
+                \draw[->] (b.east) to node[midway,sloped,above] {r} (c1.west);
+                \draw[->] (b.east) to node[midway,sloped, above] {r,h,s} (c2.west);
+                \draw[->] (b.east) to node[midway,sloped,below] {h,s} (c3.west);
+            \end{tikzpicture}
+        \end{figure}
+    \end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\insertsubsection{} -- Considerations}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Advantages}
+            \begin{itemize}
+                \item Real-time response to events
+                \item Loose coupling between components
+                \item Adding new components does not affect existing ones
+                      \begin{itemize}
+                          \item Consumers can subscribe to already produced events
+                          \item Producing new events does not affect existing consumers
+                      \end{itemize}
+            \end{itemize}
+        \end{motivation}
+        \begin{note}{Disadvantages}
+            \begin{itemize}
+                \item Complexity of event management
+                \item Asynchronous communication introduces challenges (e.g., race conditions)
+                \item Events may not be suitable for all types of interactions between components
+            \end{itemize}
+        \end{note}
+        \nextcolumn
+        \eventdrivendefault{}
+    \end{fancycolumns}
+\end{frame}
 
 
 % Possible further architectures (obviously not exhaustive): Event-Driven Architecture (EDA), Space-Based Architecture, Client-Server, Peer-to-Peer, Publish-Subscribe, Blackboard Architecture
