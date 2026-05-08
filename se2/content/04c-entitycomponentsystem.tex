@@ -8,50 +8,50 @@
 
 \newcommand{\defaultentitycomponentsystem}{
     \begin{figure}
-            \centering
-            \begin{tikzpicture}
-                \tikzset{
-                    entity/.style={draw, rounded corners, minimum width=2.3cm, minimum height=0.75cm, align=center, fill=black!30, font=\small},
-                    system/.style={draw, rounded corners, minimum width=2.7cm, minimum height=0.8cm, align=center, fill=black!30, font=\small\bfseries},
-                    comp/.style={draw, rounded corners, minimum width=2.4cm, minimum height=0.7cm, align=center, font=\small\bfseries}
-                }
+        \centering
+        \begin{tikzpicture}
+            \tikzset{
+                entity/.style={draw, rounded corners, minimum width=2.3cm, minimum height=0.75cm, align=center, fill=black!30, font=\small},
+                system/.style={draw, rounded corners, minimum width=2.7cm, minimum height=0.8cm, align=center, fill=black!30, font=\small\bfseries},
+                comp/.style={draw, rounded corners, minimum width=2.4cm, minimum height=0.7cm, align=center, font=\small\bfseries}
+            }
 
-                % Entities
-                \node[entity] (e1) at (0,2.2) {Entity A};
-                \node[entity, below=2mm of e1] (e2) {Entity: B};
-                \node[entity, below=2mm of e2] (e3) {Entity: C};
+            % Entities
+            \node[entity] (e1) at (0,2.2) {Entity A};
+            \node[entity, below=2mm of e1] (e2) {Entity: B};
+            \node[entity, below=2mm of e2] (e3) {Entity: C};
 
-                % Components
-                \node[comp, draw=ecsWeightColor, fill=ecsWeightColor!18, text=ecsWeightColor] (c1) at (3.2,2.8) {Component 1};
-                \node[comp, draw=ecsPositionColor, fill=ecsPositionColor!18, text=ecsPositionColor, below=2mm of c1] (c2) {Component 2};
-                \node[comp, draw=ecsFlyColor, fill=ecsFlyColor!18, text=ecsFlyColor, below=2mm of c2] (c3) {Component 3};
-                \node[comp, draw=ecsEatColor, fill=ecsEatColor!18, text=ecsEatColor, below=2mm of c3] (c4) {Component 4};
-                \node[comp, draw=ecsRefuelColor, fill=ecsRefuelColor!18, text=ecsRefuelColor, below=2mm of c4] (c5) {Component 5};
+            % Components
+            \node[comp, draw=ecsWeightColor, fill=ecsWeightColor!18, text=ecsWeightColor] (c1) at (3.2,2.8) {Component 1};
+            \node[comp, draw=ecsPositionColor, fill=ecsPositionColor!18, text=ecsPositionColor, below=2mm of c1] (c2) {Component 2};
+            \node[comp, draw=ecsFlyColor, fill=ecsFlyColor!18, text=ecsFlyColor, below=2mm of c2] (c3) {Component 3};
+            \node[comp, draw=ecsEatColor, fill=ecsEatColor!18, text=ecsEatColor, below=2mm of c3] (c4) {Component 4};
+            \node[comp, draw=ecsRefuelColor, fill=ecsRefuelColor!18, text=ecsRefuelColor, below=2mm of c4] (c5) {Component 5};
 
-                % Systems
-                \node[system] (s1) at (6.3,1.8) {System $\delta$};
-                \node[system, below=5mm of s1] (s2) {System $\phi$};
+            % Systems
+            \node[system] (s1) at (6.3,1.8) {System $\delta$};
+            \node[system, below=5mm of s1] (s2) {System $\phi$};
 
-                % Entity -> Component membership
-                \draw[-latex, thick] (e1.east) -- (c1.west);
-                \draw[-latex, thick] (e1.east) -- (c3.west);
-                \draw[-latex, thick] (e1.east) -- (c4.west);
+            % Entity -> Component membership
+            \draw[-latex, thick] (e1.east) -- (c1.west);
+            \draw[-latex, thick] (e1.east) -- (c3.west);
+            \draw[-latex, thick] (e1.east) -- (c4.west);
 
-                \draw[-latex, thick] (e2.east) -- (c1.west);
-                \draw[-latex, thick] (e2.east) -- (c2.west);
-                \draw[-latex, thick] (e2.east) -- (c4.west);
+            \draw[-latex, thick] (e2.east) -- (c1.west);
+            \draw[-latex, thick] (e2.east) -- (c2.west);
+            \draw[-latex, thick] (e2.east) -- (c4.west);
 
-                \draw[-latex, thick] (e3.east) -- (c2.west);
-                \draw[-latex, thick] (e3.east) -- (c5.west);
+            \draw[-latex, thick] (e3.east) -- (c2.west);
+            \draw[-latex, thick] (e3.east) -- (c5.west);
 
-                % Systems operating on components
-                \draw[-latex, thick, dashed] (s1.west) -- (c2.east);
-                \draw[-latex, thick, dashed] (s1.west) -- (c3.east);
-                \draw[-latex, thick, dashed] (s2.west) -- (c1.east);
-                \draw[-latex, thick, dashed] (s2.west) -- (c4.east);
-                \draw[-latex, thick, dashed] (s2.west) -- (c5.east);
-            \end{tikzpicture}
-        \end{figure}
+            % Systems operating on components
+            \draw[-latex, thick, dashed] (s1.west) -- (c2.east);
+            \draw[-latex, thick, dashed] (s1.west) -- (c3.east);
+            \draw[-latex, thick, dashed] (s2.west) -- (c1.east);
+            \draw[-latex, thick, dashed] (s2.west) -- (c4.east);
+            \draw[-latex, thick, dashed] (s2.west) -- (c5.east);
+        \end{tikzpicture}
+    \end{figure}
 }
 
 \subsection{Targeted Problem}
@@ -188,68 +188,118 @@
 
 \begin{frame}
     \frametitle{\insertsection{} -- \insertsubsection{}}
-\begin{figure}
-            \centering
-            \begin{tikzpicture}
-                \tikzset{
-                    entity/.style={draw, rounded corners, minimum width=2.3cm, minimum height=0.75cm, align=center, fill=black!30, font=\small},
-                    system/.style={draw, rounded corners, minimum width=2.7cm, minimum height=0.8cm, align=center, fill=black!30, font=\small\bfseries},
-                    comp/.style={draw, rounded corners, minimum width=2.4cm, minimum height=0.7cm, align=center, font=\small\bfseries}
-                }
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \tikzset{
+                entity/.style={draw, rounded corners, minimum width=2.3cm, minimum height=0.75cm, align=center, fill=black!30, font=\small},
+                system/.style={draw, rounded corners, minimum width=2.7cm, minimum height=0.8cm, align=center, fill=black!30, font=\small\bfseries},
+                comp/.style={draw, rounded corners, minimum width=2.4cm, minimum height=0.7cm, align=center, font=\small\bfseries}
+            }
 
-                % Entities
-                \node[entity] (e1) at (0,2.2) {Entity: Bird};
-                \node[entity, below=2mm of e1] (e2) {Entity: Dog};
-                \node[entity, below=2mm of e2] (e3) {Entity: Plane};
-                \node[entity, below=2mm of e3] (e4) {Entity: Car};
+            % Entities
+            \node[entity] (e1) at (0,2.2) {Entity: Bird};
+            \node[entity, below=2mm of e1] (e2) {Entity: Dog};
+            \node[entity, below=2mm of e2] (e3) {Entity: Plane};
+            \node[entity, below=2mm of e3] (e4) {Entity: Car};
 
-                % Components
-                \node[comp, draw=ecsWeightColor, fill=ecsWeightColor!18, text=ecsWeightColor] (c1) at (5,2.8) {WeightComponent};
-                \node[comp, draw=ecsPositionColor, fill=ecsPositionColor!18, text=ecsPositionColor, below=2mm of c1] (c2) {PositionComponent};
-                \node[comp, draw=ecsFlyColor, fill=ecsFlyColor!18, text=ecsFlyColor, below=2mm of c2] (c3) {FlyComponent};
-                \node[comp, draw=ecsEatColor, fill=ecsEatColor!18, text=ecsEatColor, below=2mm of c3] (c4) {EatComponent};
-                \node[comp, draw=ecsRefuelColor, fill=ecsRefuelColor!18, text=ecsRefuelColor, below=2mm of c4] (c5) {RefuelComponent};
-                \node[comp, draw=ecsRunColor, fill=ecsRunColor!18, text=ecsRunColor, below=2mm of c5] (c6) {RunComponent};
-                \node[comp, draw=ecsWarningColor, fill=ecsWarningColor!18, text=ecsWarningColor, below=2mm of c6] (c7) {WarningComponent};
+            % Components
+            \node[comp, draw=ecsWeightColor, fill=ecsWeightColor!18, text=ecsWeightColor] (c1) at (5,2.8) {WeightComponent};
+            \node[comp, draw=ecsPositionColor, fill=ecsPositionColor!18, text=ecsPositionColor, below=2mm of c1] (c2) {PositionComponent};
+            \node[comp, draw=ecsFlyColor, fill=ecsFlyColor!18, text=ecsFlyColor, below=2mm of c2] (c3) {FlyComponent};
+            \node[comp, draw=ecsEatColor, fill=ecsEatColor!18, text=ecsEatColor, below=2mm of c3] (c4) {EatComponent};
+            \node[comp, draw=ecsRefuelColor, fill=ecsRefuelColor!18, text=ecsRefuelColor, below=2mm of c4] (c5) {RefuelComponent};
+            \node[comp, draw=ecsRunColor, fill=ecsRunColor!18, text=ecsRunColor, below=2mm of c5] (c6) {RunComponent};
+            \node[comp, draw=ecsWarningColor, fill=ecsWarningColor!18, text=ecsWarningColor, below=2mm of c6] (c7) {WarningComponent};
 
-                % Systems
-                \node[system] (s1) at (10,1.8) {MovementSystem};
-                \node[system, below=5mm of s1] (s2) {ResourceSystem};
+            % Systems
+            \node[system] (s1) at (10,1.8) {MovementSystem};
+            \node[system, below=5mm of s1] (s2) {ResourceSystem};
 
-                % Entity -> Component membership
-                \draw[-latex, thick] (e1.east) -- (c1.west);
-                \draw[-latex, thick] (e1.east) -- (c2.west);
-                \draw[-latex, thick] (e1.east) -- (c3.west);
-                \draw[-latex, thick] (e1.east) -- (c4.west);
-                \draw[-latex, thick] (e1.east) -- (c6.west);
+            % Entity -> Component membership
+            \draw[-latex, thick] (e1.east) -- (c1.west);
+            \draw[-latex, thick] (e1.east) -- (c2.west);
+            \draw[-latex, thick] (e1.east) -- (c3.west);
+            \draw[-latex, thick] (e1.east) -- (c4.west);
+            \draw[-latex, thick] (e1.east) -- (c6.west);
 
-                \draw[-latex, thick] (e2.east) -- (c1.west);
-                \draw[-latex, thick] (e2.east) -- (c2.west);
-                \draw[-latex, thick] (e2.east) -- (c4.west);
-                \draw[-latex, thick] (e2.east) -- (c6.west);
-                \draw[-latex, thick] (e2.east) -- (c7.west);
+            \draw[-latex, thick] (e2.east) -- (c1.west);
+            \draw[-latex, thick] (e2.east) -- (c2.west);
+            \draw[-latex, thick] (e2.east) -- (c4.west);
+            \draw[-latex, thick] (e2.east) -- (c6.west);
+            \draw[-latex, thick] (e2.east) -- (c7.west);
 
-                \draw[-latex, thick] (e3.east) -- (c1.west);
-                \draw[-latex, thick] (e3.east) -- (c2.west);
-                \draw[-latex, thick] (e3.east) -- (c3.west);
-                \draw[-latex, thick] (e3.east) -- (c5.west);
+            \draw[-latex, thick] (e3.east) -- (c1.west);
+            \draw[-latex, thick] (e3.east) -- (c2.west);
+            \draw[-latex, thick] (e3.east) -- (c3.west);
+            \draw[-latex, thick] (e3.east) -- (c5.west);
 
-                \draw[-latex, thick] (e4.east) -- (c1.west);
-                \draw[-latex, thick] (e4.east) -- (c2.west);
-                \draw[-latex, thick] (e4.east) -- (c5.west);
-                \draw[-latex, thick] (e4.east) -- (c7.west);
+            \draw[-latex, thick] (e4.east) -- (c1.west);
+            \draw[-latex, thick] (e4.east) -- (c2.west);
+            \draw[-latex, thick] (e4.east) -- (c5.west);
+            \draw[-latex, thick] (e4.east) -- (c7.west);
 
-                % Systems operating on components
-                \draw[-latex, thick, dashed] (s1.west) -- (c2.east);
-                \draw[-latex, thick, dashed] (s1.west) -- (c3.east);
-                \draw[-latex, thick, dashed] (s1.west) -- (c6.east);
-                \draw[-latex, thick, dashed] (s2.west) -- (c1.east);
-                \draw[-latex, thick, dashed] (s2.west) -- (c4.east);
-                \draw[-latex, thick, dashed] (s2.west) -- (c5.east);
-                \draw[-latex, thick, dashed] (s2.west) -- (c7.east);
-            \end{tikzpicture}
-        \end{figure}
-    
+            % Systems operating on components
+            \draw[-latex, thick, dashed] (s1.west) -- (c2.east);
+            \draw[-latex, thick, dashed] (s1.west) -- (c3.east);
+            \draw[-latex, thick, dashed] (s1.west) -- (c6.east);
+            \draw[-latex, thick, dashed] (s2.west) -- (c1.east);
+            \draw[-latex, thick, dashed] (s2.west) -- (c4.east);
+            \draw[-latex, thick, dashed] (s2.west) -- (c5.east);
+            \draw[-latex, thick, dashed] (s2.west) -- (c7.east);
+        \end{tikzpicture}
+    \end{figure}
+
+
+\end{frame}
+
+\subsection{Performance Benefits}
+
+\begin{frame}[fragile]
+    \frametitle{\insertsection{} -- \insertsubsection{}}
+    \begin{example}{Example: Run Operation on All Flyable Objects}
+        \begin{fancycolumns}[widths={50,50}]
+            \textbf{OOP}
+            \begin{lstlisting}[language=Java, basicstyle=\footnotesize,frame=single,backgroundcolor=\color{gray}]
+List<GameObject> gameObjects;
+for (GameObject obj : gameObjects) {
+    if (obj instanceof Flyer) {
+        ((Flyer)flyComp).fly();
+    } else if (obj instanceof Runner) {
+        ((Runner)runComp).run();
+    }
+}
+            \end{lstlisting}
+            \nextcolumn
+            \textbf{ECS}
+            \begin{lstlisting}[language=Java, basicstyle=\footnotesize,backgroundcolor=\color{gray},frame=single]
+List<FlyComponent> flyComponents;
+List<RunComponent> runComponents;
+for (FlyComponent flyComp : flyComponents) {
+    flyComp.fly();
+}
+for (RunComponent runComp : runComponents) {
+    runComp.run();
+}
+
+                \end{lstlisting}
+        \end{fancycolumns}
+    \end{example}
+    \begin{fancycolumns}[widths={50,50}]
+        \begin{motivation}{Advantage: No Runtime Polymorphism}
+            \begin{itemize}
+                \item OOP: Runtime polymorphism $\rightarrow$ Overhead of dynamic dispatch
+                \item ECS: Systems operate on specific component types $\rightarrow$ No overhead caused by dynamic dispatch and case distinctions
+            \end{itemize}
+        \end{motivation}
+        \nextcolumn
+        \begin{motivation}{Advantage: Cache-Friendly Access Patterns}
+            \begin{itemize}
+                \item OOP: Data storage is guided by object structure $\rightarrow$ Scattered memory access, poor cache performance
+                \item ECS: Components of the same type are stored contiguously $\rightarrow$ Cache locality
+            \end{itemize}
+        \end{motivation}
+    \end{fancycolumns}
 
 \end{frame}
 
@@ -258,23 +308,23 @@
 \begin{frame}
     \frametitle{\insertsection{} -- \insertsubsection{}}
 
-        \begin{fancycolumns}[widths={40,60}]
-            \begin{motivation}{Advantages}
-                \begin{itemize}
-                    \item Flexible composition of properties and behaviors
-                    \item Improved code reuse and separation of concerns
-                    \item Improved memory layout $\rightarrow$ performance benefits
-                \end{itemize}
-            \end{motivation}
-            \begin{note}{Disadvantages}
-                \begin{itemize}
-                    \item More complex design
-                \end{itemize}
-            \end{note}
-            \nextcolumn
-            \defaultentitycomponentsystem{}
-        \end{fancycolumns}
+    \begin{fancycolumns}[widths={40,60}]
+        \begin{motivation}{Advantages}
+            \begin{itemize}
+                \item Flexible composition of properties and behaviors
+                \item Improved code reuse and separation of concerns
+                \item Performance benefits due to data-oriented design and cache-friendly access patterns
+            \end{itemize}
+        \end{motivation}
+        \begin{note}{Disadvantages}
+            \begin{itemize}
+                \item More complex design
+            \end{itemize}
+        \end{note}
+        \nextcolumn
+        \defaultentitycomponentsystem{}
+    \end{fancycolumns}
 
-    
+
 
 \end{frame}
