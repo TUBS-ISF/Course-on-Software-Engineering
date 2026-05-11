@@ -355,8 +355,11 @@
 \input{../se1/template/footer}
 
 
+\ifuniversity{tubs}{\date{May 11, 2026}}
+
 \author{Chico Sundermann}
 \lecture{Software Architecture}{architecture}
+
 
 
 \section{Motivation \& Considerations}
@@ -368,8 +371,13 @@
 	\item How to design architecture of software?
 }{
 	\item \sommerville\mychapter{6}
+	\item \href{https://www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf}{Kruchten's 4+1 Views}
 }{
-	
+	\begin{enumerate}
+		\item Form small groups
+		\item Which software architecture do you know (e.g. from SE1)?
+		\item How can they help with presented properties to consider?
+	\end{enumerate}
 }
 
 \section{Architectural Patterns}
@@ -384,7 +392,7 @@
 }{
 	\begin{enumerate}
 		\item Form small groups
-		\item Discuss further examples where the above-mentioned architectural patterns could be applied
+		% \item Discuss further examples where the above-mentioned architectural patterns could be applied % TODO: maybe swap this with the next task in another semester?
 		\item Discuss whether some of the architectural patterns could be combined in a single software system % TODO: Maybe remove this task for time reasons
 	\end{enumerate}
 }
@@ -399,7 +407,34 @@
 }{
 	\item \sommerville\mychapter{5}
 }{
-	Continue implementing the Kontaktbuch:\\see next slide
+	Interested in ECS? Checkout its application in game development (Unity)
+	\begin{itemize}
+		\item Overview (Ad-esque): \url{https://unity.com/ecs}
+		\item Docs: \url{https://docs.unity3d.com/Packages/com.unity.entities@0.17/}
+	\end{itemize}
+}
+
+\faq{
+	\item Why is software architecture important?
+	\item What is software architecture?
+	\item Which properties of software can be tackled with architecture design?
+	\item What are architectural views?
+}{
+	\item What is a architectural pattern?
+	\item Why should you care about architectural patterns?
+	\item Explain and illustrate the \ldots
+	\item model view controller (MVC) architecture!
+	\item the repository architecture!
+	\item the pipes and filters architecture!
+	\item the microservices architecture!
+	\item the event-driven architecture!
+}{
+	\item What is the Entity Component System (ECS) architectural pattern?
+	\item What are entity, component, and system in the context of ECS?
+	\item What is the problem targeted with ECS?
+	\item What are the drawbacks of a naive implementation via inheritance?
+	\item How does ECS solve these problems?
+	\item What are advantages and disadvantages of the ECS architectural pattern?
 }
 
 \input{../se1/template/footer}
