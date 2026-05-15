@@ -71,21 +71,21 @@
 		\begin{note}{Mockito}%----LIVE DEMONSTRATION---- https://github.com/TUBS-ISF/SE2-liveDemo-Dynamic
 			Mocking Framework for Java
 		\end{note}
-		\begin{minted}[]{java}
-@Test
-public void shouldReturnGivenValue() {
-	Flower flowerMock = mock(Flower.class); 
-	when(flowerMock.getNumberOfLeafs()).thenReturn(TEST_NUMBER_OF_LEAFS);
-	assertEquals(flowerMock.getNumberOfLeafs(), TEST_NUMBER_OF_LEAFS);
-}
-		\end{minted} \vspace{-2mm}
-		\begin{minted}[]{java}
-@Test
-void PersonSearch() {
-	PersonDB personsDB = mock(PersonDB.class);
-	when(personsDB.searchPersonByAll(contains("Alex"),anyInt()).getAge()).thenReturn(43);
-}
-		\end{minted}
+% 		\begin{minted}[]{java}
+% @Test
+% public void shouldReturnGivenValue() {
+% 	Flower flowerMock = mock(Flower.class); 
+% 	when(flowerMock.getNumberOfLeafs()).thenReturn(TEST_NUMBER_OF_LEAFS);
+% 	assertEquals(flowerMock.getNumberOfLeafs(), TEST_NUMBER_OF_LEAFS);
+% }
+% 		\end{minted} \vspace{-2mm}
+% 		\begin{minted}[]{java}
+% @Test
+% void PersonSearch() {
+% 	PersonDB personsDB = mock(PersonDB.class);
+% 	when(personsDB.searchPersonByAll(contains("Alex"),anyInt()).getAge()).thenReturn(43);
+% }
+% 		\end{minted}
 	\end{fancycolumns}
 \end{frame}
 

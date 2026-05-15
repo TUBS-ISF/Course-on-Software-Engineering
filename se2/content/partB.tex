@@ -2,7 +2,7 @@
 
 % TODO L05 Compilation
 
-\ifuniversity{tubs}{\date{May 12, 2025}}
+\ifuniversity{tubs}{\date{May 17, 2026}}
 
 \author{Thomas Thüm}
 \lecture{Compilation}{compilation}
@@ -41,46 +41,46 @@
 
 	\centering\fancyqr{color=black,height=30mm}{https://studip.tu-braunschweig.de/dispatch.php/course/courseware/courseware/18333?cid=635f5186b364a369979d0f45ab2ace1d\#/structural\_element/421048}
 }
-\begin{frame}[fragile]{Illustration of Compiler Optimizations}
-	\begin{fancycolumns}
-		\begin{example}{Example Java Program}
-			\begin{lstlisting}[style=java]
-class A {
-	public static void main(String[] args) {
-		A x = new B();
-		Object y = new String();
-		System.out.print(x.m(y));
-	}
-	int m(Object o) { return 1; }
-	int m(String s) { return 2; }
-}
-class B extends A {
-	int m(Object o) { return 3; }
-	int m(String s) { return 4; }
-}
-			\end{lstlisting}
-		\end{example}
-		\nextcolumn
-		\uncover<2->{\begin{example}{What is the output?}
-			\begin{enumerate}
-				\item program as shown left % 3
-				\item if we change type of x to B % 3
-				\item if we change type of y to String % 4
-				\item if we remove method m(Object o) in class B % 1
-				\item if we remove method m(Object o) in class A % undefined
-			\end{enumerate}
-		\end{example}}
-		\uncover<3->{\begin{note}{Hint}
-			Java uses dynamic dispatch for overriding (e.g., x)\\ and static dispatch for overloading (e.g., y)
+% \begin{frame}[fragile]{Illustration of Compiler Optimizations}
+% 	\begin{fancycolumns}
+% 		\begin{example}{Example Java Program}
+% 			\begin{lstlisting}[style=java]
+% class A {
+% 	public static void main(String[] args) {
+% 		A x = new B();
+% 		Object y = new String();
+% 		System.out.print(x.m(y));
+% 	}
+% 	int m(Object o) { return 1; }
+% 	int m(String s) { return 2; }
+% }
+% class B extends A {
+% 	int m(Object o) { return 3; }
+% 	int m(String s) { return 4; }
+% }
+% 			\end{lstlisting}
+% 		\end{example}
+% 		\nextcolumn
+% 		\uncover<2->{\begin{example}{What is the output?}
+% 			\begin{enumerate}
+% 				\item program as shown left % 3
+% 				\item if we change type of x to B % 3
+% 				\item if we change type of y to String % 4
+% 				\item if we remove method m(Object o) in class B % 1
+% 				\item if we remove method m(Object o) in class A % undefined
+% 			\end{enumerate}
+% 		\end{example}}
+% 		\uncover<3->{\begin{note}{Hint}
+% 			Java uses dynamic dispatch for overriding (e.g., x)\\ and static dispatch for overloading (e.g., y)
 			
-			~
+% 			~
 			
-			the former is required for inheritance, the latter a design decision of Java
-		\end{note}}
-	\end{fancycolumns}
-\end{frame}
+% 			the former is required for inheritance, the latter a design decision of Java
+% 		\end{note}}
+% 	\end{fancycolumns}
+% \end{frame}
 
-\section{Misunderstandings on Performance}
+\section{Compiler Optimizations}
 \input{content/05c-misunderstandings}
 \lessonslearned{
 	\item What are common misunderstandings about performance?
