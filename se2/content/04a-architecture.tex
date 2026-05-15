@@ -48,15 +48,6 @@
 	\end{fancycolumns}
 \end{frame}
 
-% Clone and own from SE1 09a
-\begin{frame}[10]{Architecture Design in the Software Development Process}
-	\begin{fancycolumns}[widths={45}]
-		\diagramWaterfallModel
-		\nextcolumn
-		\diagramVModel
-	\end{fancycolumns}
-\end{frame}
-
 \subsection{What is Software Architecture?}
 
 % TODO: replace this
@@ -73,7 +64,18 @@
 		\pause
 		\begin{example}{In Practice:}
 			\mycite{You might propose an abstract system architecture where you associate groups of system functions or features with large-scale components or subsystems. You then use this decomposition to discuss the requirements and more detailed features of the system with stakeholders.}
+
+			$\rightarrow$ Architecture as tool for communication and design decisions
 		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+% Clone and own from SE1 09a
+\begin{frame}[10]{Architecture Design in the Software Development Process}
+	\begin{fancycolumns}[widths={45}]
+		\diagramWaterfallModel
+		\nextcolumn
+		\diagramVModel
 	\end{fancycolumns}
 \end{frame}
 
@@ -97,6 +99,13 @@
 			\end{itemize}
 		\end{definition}
 		\nextcolumn
+		\begin{definition}{Availability}
+			Tackling availability via architecture design:
+			\begin{itemize}
+				\item Redundancy via replication of components
+				\item Backup strategy
+			\end{itemize}
+		\end{definition}
 		\begin{definition}{Safety}
 			Tackling safety via architecture design:
 			\begin{itemize}
@@ -107,13 +116,6 @@
 			Tackling security via architecture design:
 			\begin{itemize}
 				\item Critical assets in low layers $\rightarrow$ not accessible to outer layers
-			\end{itemize}
-		\end{definition}
-		\begin{definition}{Availability}
-			Tackling availability via architecture design:
-			\begin{itemize}
-				\item Redundancy via replication of components
-				\item Backup strategy
 			\end{itemize}
 		\end{definition}
 

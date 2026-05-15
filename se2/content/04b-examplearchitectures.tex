@@ -4,7 +4,7 @@
     \frametitle{\insertsection{} -- \insertsubsection{}}
 
     \begin{motivation}{Targeted Problem}
-        How to reuse architectures for reoccurring problems in software design?
+        How to reuse software architectures for reoccurring problems?
     \end{motivation}
 
     \begin{motivation}{Idea}
@@ -211,10 +211,12 @@
         \begin{tikzpicture}
             \node (f1) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Filter 1};
             \node (f2) at (4,0) [draw, minimum width=2cm, minimum height=1cm] {Filter 2};
-            \node (f3) at (4,-3) [draw, minimum width=2cm, minimum height=1cm] {Filter 3};
-
+            \node (f3) at (4,-3.5) [draw, minimum width=2cm, minimum height=1cm] {Filter 3};
+            
+            \draw[->] (-3,0) to node[above, midway, sloped] {Pipe} (f1);
             \draw[->] (f1) to node[above, midway, sloped] {Pipe} (f2);
             \draw[->] (f2) to node[above, midway, sloped] {Pipe} (f3);
+            \draw[->] (f3) to node[above, midway, sloped] {Pipe} (0.5, -3.5);
         \end{tikzpicture}
     \end{figure}
 }
