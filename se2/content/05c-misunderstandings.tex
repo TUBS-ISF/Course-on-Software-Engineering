@@ -53,7 +53,7 @@
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Common Optimizations}
+\subsection{Common Optimizations \& Considerations for Software Development}
 
 \begin{frame}[fragile]
 	\frametitle{Loop Unrolling}
@@ -78,7 +78,7 @@
 		\nextcolumn
 		\begin{example}{Example Loop}
 			\begin{lstlisting}[language=Java,basicstyle=\normalsize]
-				// before loop unrolling
+// before loop unrolling
 for (int i = 0; i++; i < 3) { 
 	a[i] = i; 
 }
@@ -86,30 +86,42 @@ for (int i = 0; i++; i < 3) {
 a[0] = 0; 
 a[1] = 1; 
 a[2] = 2;
-			\end{lstlisting}			
+			\end{lstlisting}
 		\end{example}
-		\begin{note}{Consideration for SE}
-			\textbf{smells}: duplicated code, long method\\\textbf{compiler optimization}: loop unrolling (if number of runs is statically known and small enough)
+		\begin{note}{Considerations for Developing Software}
+			\textbf{smells to avoid}: duplicated code, long method\\\textbf{compiler optimization}: loop unrolling (if number of runs is statically known and small enough)
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}{No Method Calls?}
+\begin{frame}[fragile]
+	\frametitle{Method Inlining}
 	\begin{fancycolumns}
-		\begin{example}{Misunderstanding \#3}
-			\mycite{I've heard method calls are slow.\\Now I try to avoid them.}
-		\end{example}
-		\begin{definition}{Tasks for Each Method Call}
+		\begin{motivation}{Problem Tackled}
+			Overhead of preparing and executing method calls:%
 			\begin{itemize}
 				\item pass parameters and return address
 				\item save registers
-				\item run method body, pass return value
 				\item restore registers, return to caller
 			\end{itemize}
-		\end{definition}
-		\begin{note}{Do Not Avoid Method Calls!}
-			\textbf{smells}: duplicated code, long method\\\textbf{refactoring}: extract method\\\textbf{compiler optimization}: method inlining
+		\end{motivation}
+		\begin{note}{Considerations for Developing Software}
+			\textbf{smells to avoid}: duplicated code, long method \\
+			\textbf{compiler optimization}: method inlining
 		\end{note}
+		\begin{example}{Example Method Inlining}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+// before method inlining
+int sum = add(1,2);
+int add(int a, int b) {
+	return a + b;
+}
+// after method inlining
+int sum = 1 + 2;	
+			\end{lstlisting}
+			\vspace{-3mm}
+		\end{example}
 		\nextcolumn
 		\begin{exampletight}{Memory Layout: The Method Stack}
 			\begin{tikzpicture}[every node/.style = {outer sep = 0pt, minimum width = 2cm, text depth = 0pt, draw}]
@@ -147,63 +159,166 @@ a[2] = 2;
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Objects and Garbage Collection}
-\begin{frame}{No Objects?}
+\begin{frame}[fragile]
+	\frametitle{Arithmetic Optimizations}
 	\begin{fancycolumns}
-		\begin{example}{Misunderstanding \#4}
-			\mycite{I've heard objects are slow.\\Now I try to avoid them.}
-		\end{example}
-		\begin{definition}{Memory Layout for Objects}
+		\begin{motivation}{Problem Tackled}
+			Equivalent expressions with different costs:
 			\begin{itemize}
-				\item if life time not bound to a method, cannot be stored on method stack
-				\item stored in free position on the heap
-				\item pointer and derefence required
-				\item need to store class information
-				\item pointer to virtual method table for dynamic dispatch
-				\item all fields, even inherited fields
+				\item Operators with different costs $\rightarrow$ Strength reduction
+				\item Operations on constants $\rightarrow$ Constant folding
+				\item Common subexpressions $\rightarrow$ Common subexpression elimination
+				\item Superfluous computation steps $\rightarrow$ Dead code elimination
 			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\begin{note}{Do Not Avoid Objects!}
-			unless performance or memory consumption is a problem, then identify which objects (a) consume most memory and (b) have the shortest life time
+		\end{motivation}
+		\begin{note}{Considerations for Developing Software}
+			\textbf{principles to consider}: KISS \\\textbf{compiler optimizations}: strength reduction, constant folding, common sub-expression elimination, dead code elimination
 		\end{note}
-		\begin{example}{Thomas' Experience with LinkedList in Java}
-			LinkedList can be problematic, as there is a list object for every entry in the list and list manipulations lead to new list objects\\~\\solution: use arrays or ArrayList instead\\~\\large speed-ups in FeatureIDE: \href{https://github.com/FeatureIDE/FeatureIDE/blob/b7732df29da1652c74b4342cd087bba436919815/plugins/de.ovgu.featureide.fm.core/src/org/prop4j/Node.java\#L46}{github.com}\\~\\also reported by others: \href{https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist-in-java}{stackoverflow.com}
+		\nextcolumn
+		\begin{example}{Example Arithmetic Optimizations}
+			\begin{lstlisting}[language=Java,basicstyle=\footnotesize]
+// strength reduction
+int x = i * 4; // before
+int x = i << 2; // after
+
+// constant folding
+int x = 3 * 4; // before
+int x = 12; // after
+
+// common subexpression elimination
+int b = a;
+int x = a * 2;
+int y = b * 2;
+// after
+int x = a * 2; // b and y are not needed
+			\end{lstlisting}
 		\end{example}
-		% TODO search for link to commit removing linked lists in prop4j
 	\end{fancycolumns}
 \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Code Motion}
+	\begin{fancycolumns}
+		\begin{motivation}{Problem Tackled}
+			Unnecessary execution of code:
+			\begin{itemize}
+				\item Invariant code in loops
+				\item Code only needed in one branch of a condition
+			\end{itemize}
+		\end{motivation}
+		\begin{definition}{{Code Motion}}
+			Move code to prevent unnecessary execution:
+			\begin{itemize}
+				\item Move invariant code out of loops
+				\item Move code into relevant branches
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Considerations for Developing Software}
+			\textbf{smells to avoid}: duplicated code, long method\\\textbf{compiler optimization}: loop unrolling (if number of runs is statically known and small enough)
+		\end{note}
+		\nextcolumn
+		\begin{example}{Example Loop}
+			\begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+// Loop invariant
+for (int i = 0; i++; i < 3) {
+	int factor = 2;
+	a[i] =  factor * i; 
+}
+// after
+int factor = 2;
+for (int i = 0; i++; i < 3) {
+	a[i] =  factor * i;
+}
+// Code only needed in one branch
+int a = 2;
+int b = 4;
+if (condition) {
+	int c = a * 2;
+} else {
+	int d = b * 2;
+}
+// after
+if (condition) {
+	int a = 2;
+	int c = a * 2;
+} else {
+	int b = 4;
+	int d = b * 2;
+}
+
+			\end{lstlisting}
+		\end{example}
+	\end{fancycolumns}
+
+
+\end{frame}
+
+% \subsection{Objects and Garbage Collection}
+% \begin{frame}{No Objects?}
+% 	\begin{fancycolumns}
+% 		\begin{example}{Misunderstanding \#4}
+% 			\mycite{I've heard objects are slow.\\Now I try to avoid them.}
+% 		\end{example}
+% 		\begin{definition}{Memory Layout for Objects}
+% 			\begin{itemize}
+% 				\item if life time not bound to a method, cannot be stored on method stack
+% 				\item stored in free position on the heap
+% 				\item pointer and derefence required
+% 				\item need to store class information
+% 				\item pointer to virtual method table for dynamic dispatch
+% 				\item all fields, even inherited fields
+% 			\end{itemize}
+% 		\end{definition}
+% 		\nextcolumn
+% 		\begin{note}{Do Not Avoid Objects!}
+% 			unless performance or memory consumption is a problem, then identify which objects (a) consume most memory and (b) have the shortest life time
+% 		\end{note}
+% 		\begin{example}{Thomas' Experience with LinkedList in Java}
+% 			LinkedList can be problematic, as there is a list object for every entry in the list and list manipulations lead to new list objects\\~\\solution: use arrays or ArrayList instead\\~\\large speed-ups in FeatureIDE: \href{https://github.com/FeatureIDE/FeatureIDE/blob/b7732df29da1652c74b4342cd087bba436919815/plugins/de.ovgu.featureide.fm.core/src/org/prop4j/Node.java\#L46}{github.com}\\~\\also reported by others: \href{https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist-in-java}{stackoverflow.com}
+% 		\end{example}
+% 		% TODO search for link to commit removing linked lists in prop4j
+% 	\end{fancycolumns}
+% \end{frame}
 
 \begin{frame}[b]{No Garbage Collection?}
 	\vspace{-10mm}
 	\begin{fancycolumns}[b]
-		\begin{example}{Misunderstanding \#5}
-			\mycite{I've heard garbage collection is slow.\\Now I try to avoid it.}
-		\end{example}
-		\begin{definition}{Garbage Collection}
+		\begin{motivation}{Automatic vs Manual Memory Management}
+			\begin{itemize}
+				\item Automatic
+				      \begin{itemize}
+					      \item simplified programming, programs
+					      \item fewer memory leaks
+					      \item improved safety, security, reliability
+				      \end{itemize}
+				\item Manual
+				      \begin{itemize}
+					      \item more control over memory management
+					      \item tailored memory allocation to specific use case $\rightarrow$ potentially better performance
+				      \end{itemize}
+			\end{itemize}
+		\end{motivation}
+		\begin{definition}{Manual Memory Management (e.g., C/C++)}
+			\begin{itemize}
+				\item allocate memory when needed, free when not needed anymore
+				\item point to allocated memory and dereference pointer to access memory
+				\item can lead to memory leaks and dangling pointers
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Garbage Collection (e.g., Java)}
 			\begin{itemize}
 				\item find objects not referenced anymore
 				\item free memory space assigned by them
 				\item algorithms: reference counting, mark-and-sweep, copying collection
-				\item causes random delays
+				\item causes random delays (can be improved by e.g., waiting ofr idle time)
 			\end{itemize}
 		\end{definition}
-		\begin{note}{Reasons for Automatic Memory Management}
+		\begin{example}{Ownership and Borrowing (e.g., Rust)}
 			\begin{itemize}
-				\item simplified programming, programs
-				\item fewer memory leaks
-				\item improved safety, security, reliability
-			\end{itemize}
-		\end{note}
-		\nextcolumn
-		\hfill
-		\pic[width=.6\linewidth]{emotions/fridge}\pause
-		\begin{example}{Avoiding Garbage Collection}
-			\begin{itemize}
-				\item switch to a language with manual memory allocation (e.g., C/C++)
-				\item use ownership and borrowing as in Rust
-				\item deactivate garbage collection completely (only for programs with short runtime and low memory consumption)
-				\item web services: do garbage collection when service is idle
+				\item Each value has a single owner $\rightarrow$ dropped when owner goes out of scope
+				\item Ownership can be transferred or temporarily lent (borrowing)
+				\item Complex rules to ensure memory safety when borrowing
 			\end{itemize}
 		\end{example}
 	\end{fancycolumns}
@@ -235,6 +350,6 @@ a[2] = 2;
 % 	\end{fancycolumns}
 % \end{frame}
 
-% \begin{frame}<2>{Simplicity over Performance}
-% 	\slideSimplicityOverPerformance
-% \end{frame}
+\begin{frame}<2>{Simplicity over Performance}
+	\slideSimplicityOverPerformance
+\end{frame}

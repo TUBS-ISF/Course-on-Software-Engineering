@@ -1,7 +1,42 @@
 \subsection{Recap: Pipe-and-Filter Architecture}
-\begin{frame}<3>{\insertsubsection}
-	\slidePipeAndFilter
+% TODO: very crude clone and own from 04b
+\newcommand{\pipesfiltersdefault}{
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \node (f1) at (0,0) [draw, minimum width=2cm, minimum height=1cm] {Filter 1};
+            \node (f2) at (4,0) [draw, minimum width=2cm, minimum height=1cm] {Filter 2};
+            \node (f3) at (4,-3.5) [draw, minimum width=2cm, minimum height=1cm] {Filter 3};
+            
+            \draw[->] (-3,0) to node[above, midway, sloped] {Pipe} (f1);
+            \draw[->] (f1) to node[above, midway, sloped] {Pipe} (f2);
+            \draw[->] (f2) to node[above, midway, sloped] {Pipe} (f3);
+            \draw[->] (f3) to node[above, midway, sloped] {Pipe} (0.5, -3.5);
+        \end{tikzpicture}
+    \end{figure}
+}
+
+\begin{frame}
+    \frametitle{\insertsubsection{}}
+    \begin{fancycolumns}[widths={45,55}]
+        \begin{motivation}{Goal}
+            \begin{itemize}
+                \item Reusability of transformation steps
+            \end{itemize}
+        \end{motivation}
+        \begin{definition}{Pipes and Filters}
+            \begin{itemize}
+                \item Filter = transformation step
+                \item Pipe = data flow between filters
+                \item Filters are independent of each other
+                \item Filters rely on specific input and output data formats
+            \end{itemize}
+        \end{definition}
+        \nextcolumn
+        \pipesfiltersdefault{}
+    \end{fancycolumns}
 \end{frame}
+
 
 \subsection{Compiler Architecture}
 \begin{frame}{\insertsubsection}
@@ -169,7 +204,32 @@
 
 \begin{frame}
 	\frametitle{\insertsubsection}
+	\begin{fancycolumns}[widths={50,50}]
+		\begin{definition}{Code Generation from Syntax Tree}
+			\begin{itemize}
+				\item Traverse syntax tree and generate code for each node
+				\item Generate code in intermediate language or target language
+				\item Open question (for dedicated lecture): \\ How to generate code for different constructs?
+				\begin{itemize}
+					\item Flow control
+					\item Method calls
+					\item ...
+				\end{itemize}
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{example}{Vastly Simplified Example Code Generation}
+				\begin{figure}
+					\centering
+					\begin{tikzpicture}[node distance=10mm and 8mm, every node/.style={draw, rounded corners=2pt, align=left, inner sep=4pt, font=\footnotesize, fill=background}, >=latex]
+						\node (b1) {\textbf{int pi = computePi()} \\\texttt{LOAD int pi}\\[0.5cm]\texttt{CALL computePi}\\\texttt{STORE pi, r0}};
+						\node[below=of b1] (b2) {\textbf{String password = hack()}\\[0.5cm]\texttt{LOAD string password}\\\texttt{CALL hack}\\\texttt{STORE password, r0}};
 
+						\draw[->,thick] (b1) -- (b2);
+					\end{tikzpicture}
+				\end{figure}
+		\end{example}
+	\end{fancycolumns}
 	
 
 \end{frame}
