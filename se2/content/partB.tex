@@ -10,9 +10,9 @@
 \section{Fundamentals on Compilation}
 \input{content/05a-compilation}
 \lessonslearned{
-	\item 2020 Turing Award for high-level programming languages
 	\item Compilation vs interpretation
-	\item Type safety and correctness
+	\item Analysis results of compilers and interpreters
+	\item Error types
 	\item Next: How do compilers work?
 }{
 	\item \dragonbook
@@ -27,9 +27,7 @@
 \input{content/05b-compilerarchitecture}
 \lessonslearned{
 	\item Compiler architecture
-	\item Compile time vs run time: goals of optimizations
-	\item Just-in-time compilation
-	\item Compiler optimizations
+	\item Main concepts for scanning, parsing, and code generation
 	\item Intermediate languages
 	\item Next: What are common misunderstandings of developers related to compilation?
 }{
@@ -83,6 +81,8 @@
 \section{Compiler Optimizations}
 \input{content/05c-misunderstandings}
 \lessonslearned{
+	\item Compile time vs run time: goals of optimizations
+	\item Just-in-time compilation
 	\item What is the connection between compiler optimizations, smells, and refactorings?
 	\item What is the impact of compiler optimizations on software design and development?
 	\item How to manage memory? What to consider when choosing approach for memory management?
@@ -240,14 +240,14 @@
 }{
 	\item \lessonsofariane % TODO more literature pointers would be helpful
 }{
-	\begin{enumerate}
-		\item Form groups of 2--3 students
-		\item Student explains a column to their group, repeat with other students/columns
-		\item Try to answer the three questions (resulting in new columns)
-	\end{enumerate}
+		\begin{enumerate}
+			\item Form groups of 2--3 students
+			\item Student explains a column to their group, repeat with other students/columns
+			\item Try to answer the three questions (resulting in new columns)
+		\end{enumerate}
 }
 
-\section{Design by Contract with JML}
+\section{Design by Contract}
 \input{content/07b-designbycontract}
 \lessonslearned{
 	\item Design by contract
@@ -270,23 +270,25 @@
 	\end{itemize}
 }
 
-\section{Design by Contract with SPARK}
-\input{content/07c-spark}
-\lessonslearned{
-	\item Ada vs SPARK
-	\item Design by contract with SPARK
-	\item Live demo with examples
-	\item Next: How is quality assurance embedded in continuous integration?
-}{
-	\item \introtoada
-	\item \introtospark
-}{
-	Modify, run, and formally verify example programs with SPARK contracts
+\section{Exercise -- Design by Contract with JML}
 
-	~
+% \section{Design by Contract with SPARK}
+% \input{content/07c-spark}
+% \lessonslearned{
+% 	\item Ada vs SPARK
+% 	\item Design by contract with SPARK
+% 	\item Live demo with examples
+% 	\item Next: How is quality assurance embedded in continuous integration?
+% }{
+% 	\item \introtoadas
+% 	\item \introtospark
+% }{
+% 	Modify, run, and formally verify example programs with SPARK contracts
 
-	\centering\fancyqr{color=black,height=30mm}{https://learn.adacore.com/courses/intro-to-spark/chapters/03_Proof_Of_Program_Integrity.html\#contracts}
-}
+% 	~
+
+% 	\centering\fancyqr{color=black,height=30mm}{https://learn.adacore.com/courses/intro-to-spark/chapters/03_Proof_Of_Program_Integrity.html\#contracts}
+% }
 
 \faq{
 	\item What is the Ariane 5 software failure?
@@ -301,17 +303,12 @@
 	\item What is (the motivation for) behavioral interface specification language(s)?
 	\item What are examples for behavioral interface speciﬁcation languages?
 	\item What is the Java Modeling Language (used for)?
-	\item Translate a given assumption into JML!
-	\item Understand a given JML specification!
 	\item How to automatically check JML specifications?
 	\item How does the JML compare to other assumption documentation techniques?
 }{
-	\item What is the Ada programming language (used for)?
-	\item What is SPARK?
-	\item Why are language features added/removed compared to Ada?
-	\item Which tools does SPARK offer for development and verification?
-	\item How is design by contract implemented in SPARK?
-	\item How can we specify and analyze code contracts in SPARK?
+	\item How to model assumptions with JML?
+	\item Translate a given assumption into JML!
+	\item Understand a given JML specification!
 }
 
 \input{../se1/template/footer}

@@ -17,13 +17,13 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}<2>{Recap: Programming Languages Today}
-	\slideProgrammingLanguagesToday
-\end{frame}
+% \begin{frame}<2>{Recap: Programming Languages Today}
+% 	\slideProgrammingLanguagesToday
+% \end{frame}
 
-\begin{frame}{Recap: Popularity of Programming Languages}
-	\slideTiobeDiagram
-\end{frame}
+% \begin{frame}{Recap: Popularity of Programming Languages}
+% 	\slideTiobeDiagram
+% \end{frame}
 
 \subsection{Compilation vs Interpretation}
 \begin{frame}{\insertsubsection}
@@ -185,33 +185,33 @@
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Type Safety and Type Correctness}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[widths={45}]
-		\begin{definition}{Type Safety}
-			A \emph{type} characterizes properties of program elements, for example:
-			\begin{itemize}
-				\item a variable can only store particular values
-				\item an expression returns particular values
-				\item an object has a method with a certain signature (name and parameter types)
-			\end{itemize}
+% \subsection{Type Safety and Type Correctness}
+% \begin{frame}{\insertsubsection}
+% 	\begin{fancycolumns}[widths={45}]
+% 		\begin{definition}{Type Safety}
+% 			A \emph{type} characterizes properties of program elements, for example:
+% 			\begin{itemize}
+% 				\item a variable can only store particular values
+% 				\item an expression returns particular values
+% 				\item an object has a method with a certain signature (name and parameter types)
+% 			\end{itemize}
 			
-			A \emph{type error} occurs if properties are not met. A program is \emph{type safe} if its execution cannot lead to type errors.
-		\end{definition}
-		\begin{example}{Type Errors}
-			undefined identifier, assignment of incompatible type, method call with incompatible parameter
-		\end{example}
-		\nextcolumn
-		\begin{definition}{Type Correctness}
-			\begin{itemize}
-				\item The language specification defines type rules checked by the compiler (\emph{statically typed language} such as Java or Rust) or by the interpreter (\emph{dynamically typed language} such as Python or JavaScript).
-				\item All type rules together constitute the \emph{type system}.
-				\item A program is \emph{type correct} if it satisfies the type rules.
-				\item A programming language is \emph{strongly typed} if every type correct program is type safe (\emph{weakly typed} otherwise).
-			\end{itemize}
-		\end{definition}
-		\begin{example}{In Practice}
-			continuum between strongly (e.g., Java, Python) and weakly typed (e.g., JavaScript, C) languages
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
+% 			A \emph{type error} occurs if properties are not met. A program is \emph{type safe} if its execution cannot lead to type errors.
+% 		\end{definition}
+% 		\begin{example}{Type Errors}
+% 			undefined identifier, assignment of incompatible type, method call with incompatible parameter
+% 		\end{example}
+% 		\nextcolumn
+% 		\begin{definition}{Type Correctness}
+% 			\begin{itemize}
+% 				\item The language specification defines type rules checked by the compiler (\emph{statically typed language} such as Java or Rust) or by the interpreter (\emph{dynamically typed language} such as Python or JavaScript).
+% 				\item All type rules together constitute the \emph{type system}.
+% 				\item A program is \emph{type correct} if it satisfies the type rules.
+% 				\item A programming language is \emph{strongly typed} if every type correct program is type safe (\emph{weakly typed} otherwise).
+% 			\end{itemize}
+% 		\end{definition}
+% 		\begin{example}{In Practice}
+% 			continuum between strongly (e.g., Java, Python) and weakly typed (e.g., JavaScript, C) languages
+% 		\end{example}
+% 	\end{fancycolumns}
+% \end{frame}

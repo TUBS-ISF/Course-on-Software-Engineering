@@ -214,7 +214,7 @@ int x = a * 2; // b and y are not needed
 			\end{itemize}
 		\end{definition}
 		\begin{note}{Considerations for Developing Software}
-			\textbf{smells to avoid}: duplicated code, long method\\\textbf{compiler optimization}: loop unrolling (if number of runs is statically known and small enough)
+			\textbf{principles to conisder}: KISS (what is easier to understand), DRY (multiple affected branches) \\\textbf{compiler optimization}: code motion
 		\end{note}
 		\nextcolumn
 		\begin{example}{Example Loop}
@@ -280,7 +280,7 @@ if (condition) {
 % 	\end{fancycolumns}
 % \end{frame}
 
-\begin{frame}[b]{No Garbage Collection?}
+\begin{frame}[b]{Memory Management}
 	\vspace{-10mm}
 	\begin{fancycolumns}[b]
 		\begin{motivation}{Automatic vs Manual Memory Management}

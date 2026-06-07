@@ -4,37 +4,65 @@
 		\centering\renewcommand{\arraystretch}{1.5}
 		\begin{tabular}{cccccc}
 			\toprule
-			Technique & Accessible & Unambiguous & Automated Checks & Overhead / Side-Effects \\
+			Technique             & Accessible & Unambiguous & Automated Checks & Overhead / Side-Effects \\
 			\midrule
-			Code Documentation & yes & no & no & no \\
-			Defensive Programming & no & yes & yes & yes \\
-			Runtime Assertions & no & yes & yes & only debugging \\
-			Unit Testing & no & yes & yes & no \\
-			??? & yes & yes & \only<2->{yes & no} \\
+			Code Documentation    & yes        & no          & no               & no                      \\
+			Defensive Programming & no         & yes         & yes              & yes                     \\
+			Runtime Assertions    & no         & yes         & yes              & only debugging          \\
+			Unit Testing          & no         & yes         & yes              & no                      \\
+			???                   & yes        & yes         & \only<2->{yes    & no}                     \\
 			\bottomrule
 		\end{tabular}
 	\end{definition}
 	\begin{note}{Motivation}
-			\begin{itemize}
-				\item no technique that is accessible during development and unambiguous
-				\item<2-> further wanted: automated checks, no runtime overhead, no (or controllable) side-effects
-			\end{itemize}
+		\begin{itemize}
+			\item no technique that is accessible during development and unambiguous
+			\item<2-> further wanted: automated checks, no runtime overhead, no (or controllable) side-effects
+		\end{itemize}
 	\end{note}
 \end{frame}
 
 \subsection{Design by Contract}
-\begin{frame}{\insertsubsection}
+\begin{frame}[fragile]
+	\frametitle{\insertsubsection}
 	\begin{fancycolumns}
+		\begin{motivation}{Goal}
+			Specify conditions for caller and callee $\rightarrow$ Immediate report of contract violation
+		\end{motivation}
+		\begin{motivation}{Metaphor}
+			\begin{itemize}
+				\item Contract between class and its clients
+				\item Client must deliver preconditions
+				\item Class must guarantee postconditions and invariants if preconditions are met
+			\end{itemize}
+		\end{motivation}
 		\begin{definition}{\insertsubsection\mysource{\lessonsofariane}}
 			\mycite{Design by contract [\ldots] is the principle that interfaces between modules of a software system---especially a mission-critical one---should be governed by precise specifications, similar to contracts between humans or companies.}
 		\end{definition}
 		\nextcolumn
-		\begin{example}{Gentlemen in the Bathroom by Loriot\mysource{\href{https://de.wikipedia.org/wiki/Herren_im_Bad}{wikipedia.org}}}
-			\centering
-			\pic[width=\linewidth,trim=0 500 0 0,clip]{designbycontract/herren-im-bad}
-			
-			Mr. Müller-Lüdenscheidt to Dr. Klöbner:\\
-			\mycite{If you let the duck in, I'll let the water out.}
+		\begin{definition}{Assertion Types}
+			\begin{itemize}
+				\item Preconditions: Assumptions that are expected to hold when a method is called
+				\item Postconditions: Guarantees on state after method returns, assuming preconditions hold
+				\item Invariants: Properties that hold in each program state visible to client
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Example in JML}
+			\vspace{-3mm}
+			\begin{lstlisting}[language=Java,basicstyle=\ttfamily\footnotesize]
+public class StudentRecord {
+	//@ invariant studentId != null;
+	private String studentId;
+	private int credits;
+
+	//@ requires creditsToAdd >= 0;
+	//@ ensures credits == \old(credits) + creditsToAdd;
+	public void addCredits(int creditsToAdd) {
+		credits += creditsToAdd;
+	}
+}
+			\end{lstlisting}
+			\vspace{-3mm}
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
@@ -45,13 +73,13 @@
 		\begin{note}{Motivation}
 			\begin{itemize}
 				\item software systems typically composed of reusable components (e.g., libraries)
-				%\item software contracts can be used to specify the interfaces of those components
+				      %\item software contracts can be used to specify the interfaces of those components
 				\item increasing scale of software leads to multiple teams and more reuse
 				\item increase reuse comes with challenges when updating libraries
 				\item safety-critical systems need intended behavior for verification %and blame assignment
 			\end{itemize}
 		\end{note}
-	\nextcolumn
+		\nextcolumn
 		\begin{definition}{\insertsubsection}
 			\begin{itemize}
 				\item behavorial specification: \mycite{precise description of the intended behavior of some computing system or its components}
@@ -118,29 +146,61 @@
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}{\insertsubsection}
+\begin{frame}
+	\frametitle{\insertsubsection{} -- Verification}
+		\begin{fancycolumns}[widths={40,60}]
+			\begin{motivation}{Goal}
+				Verify that code fulfills its specification
+			\end{motivation}
+			\begin{definition}{Strategies -- Overview}
+				\begin{itemize}
+					\item \emph{Runtime assertion checks}: Translates JML specifications into Java assertions
+					\item \emph{Test-case generation}: translates JML specifications into JUnit tests
+					\item \emph{Deductive verification}: verifies that code fulfills its specification (e.g., given any valid input, a method produces a valid output)
+				\end{itemize}
+			\end{definition}
+			\nextcolumn
+			\begin{definition}{Runtime assertion checks}
+				\begin{itemize}
+					\item translates JML specifications into Java assertions
+					\item Compile translated assertions and original code together
+					\item Run compiled code and check assertions at runtime
+					\item Typically only in debug mode
+				\end{itemize}
+			\end{definition}
+			\begin{definition}{Test-case generation}
+				\begin{itemize}
+					\item Generate JUnit test cases from JML specifications
+					\item Tailor tests to branches in assertions (e.g., for \@ requires x $>$ 0, generate test with x = 1 and x = -1)
+				\end{itemize}
+			\end{definition}
+			\begin{definition}{Deductive Verification}
+				\begin{itemize}
+					\item Generate static proofs from JML and method code
+					\item Realized by different tools (e.g., KeY, OpenJML) with different underlying logics and proof strategies 
+				\end{itemize}
+			\end{definition}
+		\end{fancycolumns}
+	
+
+\end{frame}
+
+\begin{frame}{\insertsubsection{} -- Comparison}
 	\begin{definition}{Summary on Techniques to Document Developers' Assumptions}
 		\centering\renewcommand{\arraystretch}{1.5}
 		\begin{tabular}{cccccc}
 			\toprule
-			Technique & Accessible & Unambiguous & Automated Checks & Overhead / Side-Effects \\
+			Technique                    & Accessible     & Unambiguous    & Automated Checks                    & Overhead / Side-Effects         \\
 			\midrule
-			Code Documentation & yes & no & no & no \\
-			Defensive Programming & no & yes & yes & yes \\
-			Runtime Assertions & no & yes & yes & only debugging \\
-			Unit Testing & no & yes & yes & no \\
-			\only<1|handout:0>{??? & yes & yes & yes & no}
+			Code Documentation           & yes            & no             & no                                  & no                              \\
+			Defensive Programming        & no             & yes            & yes                                 & yes                             \\
+			Runtime Assertions           & no             & yes            & yes                                 & only debugging                  \\
+			Unit Testing                 & no             & yes            & yes                                 & no                              \\
+			\only<1|handout:0>{???       & yes            & yes            & yes                                 & no}
 			\only<2->{Design by Contract & \only<3->{yes} & \only<4->{yes} & \only<5|handout:0>{?}\only<6->{yes} & \only<7->{only debugging / no}} \\
 			\bottomrule
 		\end{tabular}
 	\end{definition}
-	\uncover<5->{\begin{note}{Automatically Checking Contracts?}
-			\begin{itemize}
-				\item JML compiler: translates JML specifications into Java assertions
-				\item JML test-case generation: translates JML specifications into JUnit test cases
-				\item formal verification: verifies that code fulfills its specification (e.g., given any valid input, a method produces a valid output)
-			\end{itemize}
-	\end{note}}
 \end{frame}
 
 % TODO add slides on blame assignement?

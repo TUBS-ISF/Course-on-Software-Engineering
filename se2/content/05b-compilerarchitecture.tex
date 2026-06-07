@@ -81,8 +81,8 @@
 				\item Define token classes with regular expressions:
 				      \begin{itemize}
 					      \small
-					      \item int : \texttt{[1..9][0..9]*}
-					      \item double : \texttt{[1..9][0..9]*.[0..9]*}
+					      \item int : \texttt{[1..9][0..9]* | 0}
+					      \item double : \texttt{([1..9][0..9]* | 0).[0..9]*}
 					      \item string: \texttt{"[a-zA-Z][a-zA-Z0..9]*"}
 					      \item identifier: \texttt{[a-zA-Z][a-zA-Z0..9]*}
 					      \item Keywords
@@ -112,6 +112,7 @@
 
 				\node[state] (s) at (0,0) {$q_0$};
 				\node[accept] (i1) at (2,0.8) {$int$};
+				\node[accept] (i2) at (2,-0.4) {$int$};
 				\node[state] (q4) at (4.5,0.8) {$q_4$};
 				\node[accept] (d2) at (6.5,0.8) {\small double};
 				\node[state] (str1) at (2,-1.6) {$q_1$};
@@ -120,12 +121,14 @@
 
 				\draw[-latex, very thick] (0,1) to (s.north);
 				\draw[-latex,thick] (s) edge[bend left=12] node[above] {[1..9]} (i1);
+				\draw[-latex,thick] (s) edge[bend right=12] node[above] {0} (i2);
 				\draw[-latex,thick] (s) edge[bend right=12] node[below] {\texttt{"}} (str1);
 				\draw[-latex,thick] (str1) edge node[above] {[a..z A..Z 0..9]} (str3);
 				\draw[-latex,thick] (str3) to[loop below] node[below] {[a..z A..Z 0..9]} (str3);
 				\draw[-latex,thick] (str3) edge node[above] {\texttt{"}} (str2);
 				\draw[-latex,thick] (i1) to[loop above] node[above] {[0..9]} (i1);
 				\draw[-latex,thick] (i1) edge node[above] {\texttt{.}} (q4);
+				\draw[-latex,thick] (i2) edge node[above] {\texttt{.}} (q4);
 				\draw[-latex,thick] (q4) edge node[above] {[0..9]} (d2);
 				\draw[-latex,thick] (d2) to[loop above] node[above] {[0..9]} (d2);
 			\end{tikzpicture}
@@ -222,7 +225,7 @@
 				\begin{figure}
 					\centering
 					\begin{tikzpicture}[node distance=10mm and 8mm, every node/.style={draw, rounded corners=2pt, align=left, inner sep=4pt, font=\footnotesize, fill=background}, >=latex]
-						\node (b1) {\textbf{int pi = computePi()} \\\texttt{LOAD int pi}\\[0.5cm]\texttt{CALL computePi}\\\texttt{STORE pi, r0}};
+						\node (b1) {\textbf{int pi = computePi()} \\[0.5cm]\texttt{LOAD int pi}\\\texttt{CALL computePi}\\\texttt{STORE pi, r0}};
 						\node[below=of b1] (b2) {\textbf{String password = hack()}\\[0.5cm]\texttt{LOAD string password}\\\texttt{CALL hack}\\\texttt{STORE password, r0}};
 
 						\draw[->,thick] (b1) -- (b2);
