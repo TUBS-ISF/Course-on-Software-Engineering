@@ -27,16 +27,17 @@
 	\frametitle{\insertsubsection}
 	\begin{fancycolumns}
 		\begin{motivation}{Goal}
-			Specify conditions for caller and callee $\rightarrow$ Immediate report of contract violation
+			Precise specification of intended behavior by specifying assumptions and guarantees
 		\end{motivation}
 		\begin{motivation}{Metaphor}
 			\begin{itemize}
 				\item Contract between class and its clients
-				\item Client must deliver preconditions
+				\item Client must deliver preconditions to receive promised behavior
 				\item Class must guarantee postconditions and invariants if preconditions are met
 			\end{itemize}
 		\end{motivation}
 		\begin{definition}{\insertsubsection\mysource{\lessonsofariane}}
+			\small
 			\mycite{Design by contract [\ldots] is the principle that interfaces between modules of a software system---especially a mission-critical one---should be governed by precise specifications, similar to contracts between humans or companies.}
 		\end{definition}
 		\nextcolumn
@@ -70,7 +71,7 @@ public class StudentRecord {
 \subsection{Behavioral Interface Specification Languages}
 \begin{frame}{\insertsubsection{} \mytitlesource{\hatcliff}}
 	\begin{fancycolumns}[widths={30}]
-		\begin{note}{Motivation}
+		\begin{motivation}{Motivation}
 			\begin{itemize}
 				\item software systems typically composed of reusable components (e.g., libraries)
 				      %\item software contracts can be used to specify the interfaces of those components
@@ -78,7 +79,7 @@ public class StudentRecord {
 				\item increase reuse comes with challenges when updating libraries
 				\item safety-critical systems need intended behavior for verification %and blame assignment
 			\end{itemize}
-		\end{note}
+		\end{motivation}
 		\nextcolumn
 		\begin{definition}{\insertsubsection}
 			\begin{itemize}
