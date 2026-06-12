@@ -20,7 +20,7 @@
 		\begin{definition}{System Building}
 			Creation of a \textbf{complete executable system} through the \textbf{compilation and linking} of \textbf{system components, external libraries, configuration files}, \dots
 		\end{definition}\pause
-		
+
 		\begin{note}{Common Functionalities}
 			\begin{itemize}
 				\item Automated build script creation
@@ -37,13 +37,98 @@
 	\end{fancycolumns}
 \end{frame}
 
+\begin{frame}
+	\frametitle{\insertsubsection{} for Java -- Maven}
+	\tikzstyle{pomcontent} = [->,dashed,green]
+	\tikzstyle{storeaction} = [->,dashed,orange]
+
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[node distance=0.5cm, auto]
+			\node[draw,ellipse] (maven) {\textbf{Maven}};
+
+			\node[draw, rectangle, above left =1cm and 2cm of maven, minimum width=2.5cm, minimum height=0.7cm] (sourcecode) {Source Code};
+			\node[draw, rectangle, below=0.5cm of sourcecode, minimum width=2.5cm, minimum height=0.7cm] (pomxml) {pom.xml};
+			\node[draw, rectangle, below=0.5cm of pomxml, minimum width=2.5cm, minimum height=0.7cm] (resources) {Data/Resources};
+
+			\node[draw, rounded corners, align=left, font=\footnotesize\ttfamily, left=0.7cm of pomxml] (dependency) {
+				<dependency> \\
+				<groupId>junit</groupId> \\
+				<artifactId>junit</artifactId> \\
+				<version>5.11</version> \\
+				</dependency>%
+			};%
+
+			\node[draw, rounded corners, align=left, font=\footnotesize\ttfamily, above=0.2cm of dependency] (pomproject) {
+				<project> \\
+				<modelVersion>4.0.0</modelVersion> \\
+				<groupId>org.tubs</groupId> \\
+				<artifactId>my-app</artifactId> \\
+				<version>0.1.0</version> \\
+				</project>%
+			};%
+
+			\node[draw, rounded corners, align=left, font=\footnotesize\ttfamily, below=0.2cm of dependency] (pomconfig) {
+				<configuration> \\
+				<archive> \\
+				<manifest> \\
+					<mainClass> \\
+						org.tubs.Main \\
+					</mainClass> \\
+				</manifest> \\
+				</archive> \\
+				</configuration>%
+			};%
+
+
+			\node[draw, dashed, fit=(sourcecode) (pomxml) (resources), inner sep=0.3cm, label=above:\textbf{Project}] (project) {};
+
+			\node[draw, rectangle, above= 1cm of maven, minimum width=2cm, minimum height=1.2cm] (localrepo) {
+				MVN Local Repo
+			};
+
+			\node[draw, rectangle, below= 1cm of maven, minimum width=2cm, minimum height=1.2cm] (remoterepo) {
+				MVN Remote Repo
+			};
+
+			\node[draw, rectangle, above right= 1cm and 2cm of maven, minimum width=2.5cm, minimum height=0.7cm] (compile) {Compile};
+			\node[draw, rectangle, below=0.5cm of compile, minimum width=2.5cm, minimum height=0.7cm] (test) {Test};
+			\node[draw, rectangle, below =0.5cm of test, minimum width=2.5cm, minimum height=0.7cm] (install) {Install};
+			\node[draw, rectangle, below =0.5cm of install, minimum width=2.5cm, minimum height=0.7cm] (deploy) {Deploy};
+
+			% Dashed grouping box for lifecycle
+			\node[draw, dashed, fit=(compile) (test) (install) (deploy), inner sep=0.3cm, label=above:\textbf{Lifecycle}] (lifecycle) {};
+
+			% Dashed grouping box for repositories
+
+			% Arrows
+			\draw[->, thick] (project.east |- maven.west) -- (maven.west);
+			\draw[->, thick] (localrepo) -- (maven);
+			\draw[->, thick] (remoterepo) -- (maven);
+			\draw[->, thick] (maven.east) -- (lifecycle.west |- maven.east);
+
+
+			% pom arrows
+			\draw[pomcontent] (dependency.east) -- (pomxml.west);
+			\draw[pomcontent] (pomproject.east) -- (pomxml.north west);
+			\draw[pomcontent] (pomconfig.east) -- (pomxml.south west);
+			\draw[pomcontent, bend left=30] (pomxml.east) -- (remoterepo.west);
+
+			% action arrows
+			\draw[storeaction] (deploy.west) -- (remoterepo.east);
+			\draw[storeaction] (install.north west) to[bend right=30] (localrepo.south east);
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
 \subsection{Change Management}
 \begin{frame}{\insertsubsection  \mytitlesource{\sommerville}}
 	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Change Management}
 			\textbf{Handling, documentation, and prioritization} of \textbf{desired changes} to a software product, as well their \textbf{structured  realization}
 		\end{definition}\pause
-		
+
 		\begin{note}{Assessment criteria for change requests}
 			\begin{itemize}
 				\item Impact of non-acceptance
@@ -76,7 +161,7 @@
 		\begin{definition}{Release Management}
 			\textbf{Preparation} of software product for \textbf{external release} and  \textbf{monitoring} of \textbf{already released} software versions
 		\end{definition}\pause
-		
+
 		\begin{note}{Typical content of a release}
 			\begin{itemize}
 				\item Executable system (e.g., code, \dots)
@@ -100,7 +185,7 @@
 				\item Technical quality of system
 			\end{itemize}
 		\end{note} \pause
-		
+
 		\begin{note}{Exemplary release process}
 			\begin{enumerate}
 				\item Selection of built systems to release
