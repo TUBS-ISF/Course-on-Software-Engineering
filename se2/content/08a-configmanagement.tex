@@ -72,9 +72,9 @@
 				<configuration> \\
 				<archive> \\
 				<manifest> \\
-					<mainClass> \\
-						org.tubs.Main \\
-					</mainClass> \\
+				<mainClass> \\
+				org.tubs.Main \\
+				</mainClass> \\
 				</manifest> \\
 				</archive> \\
 				</configuration>%
@@ -112,7 +112,7 @@
 			\draw[pomcontent] (dependency.east) -- (pomxml.west);
 			\draw[pomcontent] (pomproject.east) -- (pomxml.north west);
 			\draw[pomcontent] (pomconfig.east) -- (pomxml.south west);
-			\draw[pomcontent, bend left=30] (pomxml.east) -- (remoterepo.west);
+			\draw[pomcontent] (remoterepo.west) -- (pomxml.east);
 
 			% action arrows
 			\draw[storeaction] (deploy.west) -- (remoterepo.east);
@@ -155,6 +155,22 @@
 	\end{fancycolumns}
 \end{frame}
 
+\begin{frame}
+	\frametitle{\insertsubsection{} -- Extension Proposals in Erlang \mytitlesource{https://github.com/erlang/eep}}
+		\begin{fancycolumns}[widths={50,50}]
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\columnwidth]{configmanagement/eep1.png}
+			\end{figure}
+			\nextcolumn
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.8\columnwidth]{configmanagement/eep2.png}
+			\end{figure}
+		\end{fancycolumns}
+
+\end{frame}
+
 \subsection{Release Management}
 \begin{frame}{\insertsubsection{}  \mytitlesource{\sommerville}}
 	\begin{fancycolumns}[animation=none]
@@ -177,24 +193,24 @@
 		\begin{note}{Factors for release date planning}
 			\begin{itemize}
 				\item Competition
-				\begin{itemize}
-					\item Provide same/more features than competitors
-					\item Market position dependent on faster release than competitors (e.g., Corona app)
-				\end{itemize}
+				      \begin{itemize}
+					      \item Provide same/more features than competitors
+					      \item Market position dependent on faster release than competitors (e.g., Corona app)
+				      \end{itemize}
 				\item Marketing
-				\begin{itemize}
-					\item Advertised release
-					\item Convince to update
-				\end{itemize}
+				      \begin{itemize}
+					      \item Advertised release
+					      \item Convince to update
+				      \end{itemize}
 				\item Platform changes
-				\begin{itemize}
-					\item e.g., OS update
-				\end{itemize}
+				      \begin{itemize}
+					      \item e.g., OS update
+				      \end{itemize}
 				\item Technical quality of system
-				\begin{itemize}
-					\item Detected exploits
-					\item Critical bugs
-				\end{itemize}
+				      \begin{itemize}
+					      \item Detected exploits
+					      \item Critical bugs
+				      \end{itemize}
 			\end{itemize}
 		\end{note}
 	\end{fancycolumns}

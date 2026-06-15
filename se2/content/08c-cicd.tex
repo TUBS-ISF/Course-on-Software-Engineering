@@ -1,23 +1,92 @@
 % !TeX spellcheck = en_US
 
-\subsection{DevOps}
-\begin{frame}{Recap -- \insertsubsection \mytitlesource{\handbuch}}
+\subsection{Recap}
+\begin{frame}{\insertsubsection{} -- DevOps \mytitlesource{\handbuch}}
 	\frameDevOps
 \end{frame}
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\insertsubsection{} -- DevOps}
 	\centering\picDark[width=.75\linewidth]{versioncontrol/devops}
 \end{frame}
 
-\subsection{System Building}
-\begin{frame}{Recap -- \insertsubsection \mytitlesource{\sommerville}}
+\begin{frame}{\insertsubsection{} -- System Building \mytitlesource{\sommerville}}
 	\frameSystemBuilding
 \end{frame}
 
 \subsection{Continuous Integration}
-\begin{frame}{Recap -- \insertsubsection \mytitlesource{\sommerville}}
+\begin{frame}{\insertsubsection{} \mytitlesource{\sommerville}}
 	\frameContinousIntegration
 \end{frame}
+
+\begin{frame}
+	\frametitle{Continuous Integration, Delivery, Deployment}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[
+				node distance=1.2cm and 1.7cm,
+				smallbox/.style={draw, rounded corners, align=center, minimum width=1.5cm, minimum height=0.6cm, font=\tiny},
+				groupbox/.style={draw, rounded corners, align=center, minimum width=2.2cm, minimum height=1.8cm, font=\small, dashed},
+				line/.style={->, thick}
+			]
+				% Developers visualization (smiley faces)
+				\node[draw, circle, minimum size=0.7cm] (dev1) at (0, 0) {};
+				\node[font=\large\bfseries, rotate=270] at (dev1.center) {:)};
+				\node[draw, circle, minimum size=0.7cm] (dev2) at (1.0, 0) {};
+				\node[font=\large\bfseries, rotate=270] at (dev2.center) {:)};
+				\node[draw, circle, minimum size=0.7cm] (dev3) at (2.0, 0) {};
+				\node[font=\large\bfseries, rotate=270] at (dev3.center) {:)};
+				\node[draw, dashed, rounded corners, fit=(dev1)(dev2)(dev3), inner sep=0.15cm] (devgroup) {};
+				\node[font=\tiny, above=0.5cm of devgroup] {Developers};
+				
+				% Repository visualization
+				\node[draw, rectangle, minimum width=1.2cm, minimum height=1.2cm, fill=white] (repo1) at (4.1, 0) {};
+				\node[draw, rectangle, minimum width=1.2cm, minimum height=1.2cm, fill=white, xshift=0.2cm, yshift=-0.2cm] (repo2) at (4.1, 0) {};
+				\node[draw, rectangle, minimum width=1.2cm, minimum height=1.2cm, fill=white, xshift=0.4cm, yshift=-0.4cm] (repo3) at (4.1, 0) {};
+				\node[font=\tiny, below=0.8cm of repo2] {Repository};
+				
+				% CI group
+				\node[groupbox] (cigroup) at (7.1, 0) {};
+				\node[font=\tiny, above=0.2cm of cigroup] {Continuous Integration};
+				\node[smallbox] (cibuild) at (7.1, 0.3) {build};
+				\node[smallbox, below=0.2cm of cibuild] (citest) {test};
+				\draw[line] (cibuild) -- (citest);
+				
+				% Continuous Delivery group (upper)
+				\node[groupbox, minimum height=2.5cm] (cdelgroup) at (10.5, 1) {};
+				\node[font=\tiny, above=0.2cm of cdelgroup] {Continuous Delivery};
+				\node[smallbox, below=0.1cm of cdelgroup.north] (cdelacc) {acceptance test};
+				\node[smallbox, below=0.2cm of cdelacc] (cdelcheck) {Manual checks};
+				\node[smallbox, below=0.2cm of cdelcheck] (cdeldeploy) {Manual deploy};				
+				\draw[line] (cdelacc) -- (cdelcheck);
+				\draw[line] (cdelcheck) -- (cdeldeploy);
+
+				
+				% Continuous Deployment group (lower)
+				\node[groupbox] (cdepgroup) at (10.5, -2) {};
+				\node[font=\tiny, above=0.1cm of cdepgroup] {Continuous Deployment};
+				\node[smallbox, below=0.1cm of cdepgroup.north] (cdepacc) {acceptance test};
+				\node[smallbox, below=0.2cm of cdepacc] (cdepprod) {Auto deploy};
+				\draw[line] (cdepacc) -- (cdepprod);
+				
+				% Connections: devs to repo
+				\draw[line] (dev3.east) -- (repo1.west);
+				% repo to CI
+				\draw[line] (repo3.east |- cigroup.west) -- node[above, font=\scriptsize] {triggers} (cigroup.west);
+				
+				% CI to Continuous Delivery and Deployment
+				\draw[line] (cigroup.east) -- (cdelgroup.west);
+				\draw[line] (cigroup.east) -- (cdepgroup.west);
+				
+				% Report arrows back to developers
+				\draw[line, bend right=30] (cdelgroup.north) to node[above, font=\scriptsize] {report} (devgroup.north);
+				\draw[line, bend left=30] (cdepgroup.south) to node[below, font=\scriptsize] {report} (devgroup.south);
+				\draw[line] (cigroup.north) to[bend right=20] node[above, font=\scriptsize] {report} (devgroup.north);
+			\end{tikzpicture}
+		\end{figure}
+\end{frame}
+
+\subsection{Continuous Deployment}
+
 
 %TODO add Diagramm Sommerville 828
 
@@ -84,8 +153,21 @@ run:
 	\end{fancycolumns}
 \end{frame}
 
+\begin{frame}
+	\frametitle{CI/CD at GitHub -- ddnnife \mysource{https://github.com/SoftVarE-Group/d-dnnf-reasoner}}
+
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}
+				\node (check) at (0,0) {\includegraphics[width=4cm]{cicd/githubactionddnnifecheck.png}};
+				\node[right=0.5cm of check] (main) {\includegraphics[width=0.6\textwidth]{cicd/githubactionddnnife.png}};
+			\end{tikzpicture}
+		\end{figure}
+
+\end{frame}
+
 \subsection{Containerization}
-\begin{frame}[fragile]{\insertsubsection}
+\begin{frame}[fragile]{What else in CI/CD? \insertsubsection{}}
 	\begin{fancycolumns}[widths={30}]
 		\begin{definition}{Containerization}
 			\begin{itemize}
@@ -137,7 +219,7 @@ ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
 \end{frame}
 
 \subsection{Test-Driven Development}
-\begin{frame}{\insertsubsection}
+\begin{frame}{What else in CI/CD? \insertsubsection{}}
 	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Test-Driven Development}
 			\begin{itemize}

@@ -2,27 +2,27 @@
 
 \subsection{git}
 
-\begin{frame}[b]
-	\begin{fancycolumns}[animation=none]
-		\begin{center}
-			\pic[width=.9\linewidth]{people/isaac-wolkerstorfer}
-		\end{center}
-		\vspace{-7mm}
-		
-		\begin{note}{Isaac Wolkerstorfer (2014) \mysource{\href{https://twitter.com/agnoster/status/44636629423497217}{Wolkerstorfer 2014}}}
-			\mycite{git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.}
-		\end{note} \pause
-		\nextcolumn
-		\begin{note}{Why it's false}
-			\begin{itemize}
-				\item The git space is discrete, not continuous
-				\item There is no closeness metric
-				\item Homeomorphic mappings also require continuity
-			\end{itemize}
-		\end{note} \pause
-		\pic[width=\columnwidth]{versioncontrol/git-spatial}
-	\end{fancycolumns}
-\end{frame}
+% \begin{frame}[b]
+% 	\begin{fancycolumns}[animation=none]
+% 		\begin{center}
+% 			\pic[width=.9\linewidth]{people/isaac-wolkerstorfer}
+% 		\end{center}
+% 		\vspace{-7mm}
+
+% 		\begin{note}{Isaac Wolkerstorfer (2014) \mysource{\href{https://twitter.com/agnoster/status/44636629423497217}{Wolkerstorfer 2014}}}
+% 			\mycite{git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.}
+% 		\end{note} \pause
+% 		\nextcolumn
+% 		\begin{note}{Why it's false}
+% 			\begin{itemize}
+% 				\item The git space is discrete, not continuous
+% 				\item There is no closeness metric
+% 				\item Homeomorphic mappings also require continuity
+% 			\end{itemize}
+% 		\end{note} \pause
+% 		\pic[width=\columnwidth]{versioncontrol/git-spatial}
+% 	\end{fancycolumns}
+% \end{frame}
 
 \xkcdframe{1597} % git
 
@@ -53,7 +53,7 @@
 			\begin{columns}[T]
 				\begin{column}{0.5\linewidth}
 					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
-					
+
 					\begin{onlyenv}<1|handout:0>
 						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
 class Foo {
@@ -85,9 +85,9 @@ class Foo {
 						\end{lstlisting}
 					\end{onlyenv}
 				\end{column}
-				\begin{column}{0.5\linewidth}					
+				\begin{column}{0.5\linewidth}
 					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
-					
+
 					\begin{onlyenv}<1-2|handout:0>
 						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
 class Foo {
@@ -109,14 +109,14 @@ class Foo {
 					\end{onlyenv}
 				\end{column}
 			\end{columns}
-			
+
 			\begin{example}{}
 				\begin{itemize}
 					\item<1-> Checkout of or update to revision 10
 					\item<2-> Changing the working copy (\emph{10$^*$})
 					\item<3-> In the meantime: New commit to repository (\emph{11})
 					\item<4-> Update to head revision, automatically merged
-				\end{itemize}			
+				\end{itemize}
 			\end{example}
 		\end{column}
 		\begin{column}{0.5\linewidth}
@@ -130,7 +130,7 @@ class Foo {
 			\begin{columns}[T]
 				\begin{column}{0.5\linewidth}
 					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
-					
+
 					\begin{onlyenv}<1|handout:0>
 						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
 class Foo {
@@ -163,9 +163,9 @@ class Foo {
 						\end{lstlisting}
 					\end{onlyenv}
 				\end{column}
-				\begin{column}{0.5\linewidth}					
+				\begin{column}{0.5\linewidth}
 					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
-					
+
 					\begin{onlyenv}<1-2|handout:0>
 						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
 class Foo {
@@ -186,7 +186,7 @@ class Foo {
 					\end{onlyenv}
 				\end{column}
 			\end{columns}
-			
+
 			\begin{example}{}
 				\begin{itemize}
 					\item<1-> Checkout of or update to revision 10
@@ -194,7 +194,7 @@ class Foo {
 					\item<3-> In the meantime: New commit to repository (\emph{11})
 					\item<4-> Update to head revision results in conflict
 					\item<4-> Automatic merge fails: user has to provide a fix
-				\end{itemize}			
+				\end{itemize}
 			\end{example}
 		\end{column}
 		\begin{column}{0.5\linewidth}
@@ -204,9 +204,17 @@ class Foo {
 
 \subsection{Merge Algorithms}
 \begin{frame}[fragile]{\insertsubsection}
+	\begin{definition}{Merging Two Branches}
+		\begin{enumerate}
+			\item Identify common ancestor commit
+			\item Create merge commit that combines both histories after common ancestor
+			\item Automatic merge for artifacts only touched by one history
+			\item Manual merge for conflicts
+		\end{enumerate}
+
+	\end{definition}
 	\begin{fancycolumns}[animation=none, widths={30}]
-		
-		\begin{lstlisting}[language=bash, basicstyle=\small, breaklines=true, numbers=none, escapechar=*]
+		\begin{lstlisting}[language=bash, basicstyle=\scriptsize, breaklines=true, numbers=none, escapechar=*]
 git checkout main
 >> Switched to branch 'main'
 git merge feature
@@ -219,32 +227,159 @@ git merge feature
 >> CONFLICT (content): Merge conflict in example.file
 >> Automatic merge failed; fix conflicts and then commit the result.
 		\end{lstlisting}
-		
+		\nextcolumn
+		\only<1|handout:0>{
+			\begin{center}
+				\begin{tikzpicture}
+					\gitDAG[grow right sep = 2em]{
+					A -- B -- {
+					C -- D -- E,
+					{ F -- G },
+					}
+					};
+					% Tag reference
+					\gittag
+					[ca]       % node name
+					{Common Ancestor}       % node text
+					{above=of B} % node placement
+					{B}          % target
+					% Remote branch
+					% Branch
+					\gitbranch
+					{main}      % node name and text 
+					{above=of E} % node placement
+					{E}          % target
+					\gitbranch
+					{feature}      % node name and text 
+					{below=of G} % node placement
+					{G}          % target
+					% HEAD reference
+					\gitHEAD
+					{above=of main} % node placement
+					{main}          % target
+				\end{tikzpicture}
+			\end{center}
+		}
+		\only<2|handout:1>{
+			\begin{center}
+				\begin{tikzpicture}
+					\gitDAG[grow right sep = 2em]{
+					A -- B -- {
+					C -- D -- E,
+					{ F -- G },
+					} -- M
+					};
+					% Tag reference
+					\gittag
+					[ca]       % node name
+					{Common Ancestor}       % node text
+					{above=of B} % node placement
+					{B}          % target
+					% Remote branch
+					% Branch
+					\gitbranch
+					{main}      % node name and text 
+					{above=of M} % node placement
+					{M}          % target
+					\gitbranch
+					{feature}      % node name and text 
+					{below=of G} % node placement
+					{G}          % target
+					% HEAD reference
+					\gitHEAD
+					{above=of main} % node placement
+					{main}          % target
+				\end{tikzpicture}
+			\end{center}
+		}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Patching, Cherry-Picking, and Rebasing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		{\small
+			\begin{definition}{Patch}
+				\begin{itemize}
+					\item Text file containing code changes and git metadata
+					\item Can be applied to a codebase
+					\item Create patch: \texttt{git format-patch}
+					\item Apply patch as commit: \texttt{git am}
+				\end{itemize}
+			\end{definition}\pause
+			\begin{definition}{Cherry-Picking}
+				\begin{itemize}
+					\item Take commit and apply as patch
+					\item Multiple commits $\rightarrow$ sequentially applied
+					\item Transfers single changes between branches
+				\end{itemize}
+			\end{definition}\pause
+			\begin{definition}{Rebase}
+				\begin{itemize}
+					\item Transfer sequence of commits to a new base
+					\item Creates a linear project history
+				\end{itemize}
+			\end{definition}\pause
+		}
 		\nextcolumn
 		\begin{center}
 			\begin{tikzpicture}
+				% Commit DAG
 				\gitDAG[grow right sep = 2em]{
-					A -- B -- { 
-						C -- D -- E,
-						{ F -- G },
-					} -- M
+				A -- B -- {
+				C,
+				D -- E,
+				}
 				};
 				% Tag reference
 				\gittag
-				[ca]       % node name
-				{Common Ancestor}       % node text
-				{above=of B} % node placement
-				{B}          % target
+				[v0p1]       % node name
+				{v0.1}       % node text
+				{above=of A} % node placement
+				{A}          % target
 				% Remote branch
+				\gitremotebranch
+				[origmain]    % node name
+				{origin/main} % node text
+				{above=of C}    % node placement
+				{C}             % target
+				% Branch
+				\gitbranch
+				{main}     % node name and text 
+				{above=of E} % node placement
+				{E}          % target
+				% HEAD reference
+				\gitHEAD
+				{above=of main} % node placement
+				{main}          % target
+			\end{tikzpicture}
+
+			\pause
+
+			\begin{tikzpicture}
+				\gitDAG[grow right sep = 2em]{
+				A -- B -- {
+				C -- D' -- E',
+				{[nodes=unreachable] D -- E },
+				}
+				};
+				% Tag reference
+				\gittag
+				[v0p1]       % node name
+				{v0.1}       % node text
+				{above=of A} % node placement
+				{A}          % target
+				% Remote branch
+				\gitremotebranch
+				[origmain]    % node name
+				{origin/main} % node text
+				{above=of C}    % node placement
+				{C}             % target
 				% Branch
 				\gitbranch
 				{main}      % node name and text 
-				{above=of M} % node placement
-				{M}          % target
-				\gitbranch
-				{feature}      % node name and text 
-				{below=of G} % node placement
-				{G}          % target
+				{above=of E'} % node placement
+				{E'}          % target
 				% HEAD reference
 				\gitHEAD
 				{above=of main} % node placement
@@ -254,116 +389,21 @@ git merge feature
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Patching, Cherry-Picking, and Rebasing}
-\begin{frame}{\insertsubsection}
-	\begin{fancycolumns}[animation=none]
-		{\small 
-		\begin{definition}{Patch}
-			\begin{itemize}
-				\item Text file containing code changes and git metadata
-				\item Can be applied to a codebase
-				\item Create patch: \texttt{git format-patch}
-				\item Apply patch as commit: \texttt{git am}
-			\end{itemize}
-		\end{definition}\pause
-		\begin{definition}{Cherry-Picking}
-			\begin{itemize}
-				\item Take commit and apply as patch
-				\item Multiple commits $\rightarrow$ sequentially applied
-				\item Transfers single changes between branches
-			\end{itemize}
-		\end{definition}\pause
-		\begin{definition}{Rebase}
-			\begin{itemize}
-				\item Transfer sequence of commits to a new base 
-				\item Internal: applies every commit to new base as new commit
-				\item Creates a linear project history
-			\end{itemize}
-		\end{definition}\pause
-		}
-		\nextcolumn
-		\begin{center}
-			\begin{tikzpicture}
-			% Commit DAG
-			\gitDAG[grow right sep = 2em]{
-				A -- B -- { 
-					C,
-					D -- E,
-				}
-			};
-			% Tag reference
-			\gittag
-			[v0p1]       % node name
-			{v0.1}       % node text
-			{above=of A} % node placement
-			{A}          % target
-			% Remote branch
-			\gitremotebranch
-			[origmain]    % node name
-			{origin/main} % node text
-			{above=of C}    % node placement
-			{C}             % target
-			% Branch
-			\gitbranch
-			{main}     % node name and text 
-			{above=of E} % node placement
-			{E}          % target
-			% HEAD reference
-			\gitHEAD
-			{above=of main} % node placement
-			{main}          % target
-		\end{tikzpicture}
-		
-		\pause
-				
-		\begin{tikzpicture}
-			\gitDAG[grow right sep = 2em]{
-				A -- B -- { 
-					C -- D' -- E',
-					{[nodes=unreachable] D -- E },
-				}
-			};
-			% Tag reference
-			\gittag
-			[v0p1]       % node name
-			{v0.1}       % node text
-			{above=of A} % node placement
-			{A}          % target
-			% Remote branch
-			\gitremotebranch
-			[origmain]    % node name
-			{origin/main} % node text
-			{above=of C}    % node placement
-			{C}             % target
-			% Branch
-			\gitbranch
-			{main}      % node name and text 
-			{above=of E'} % node placement
-			{E'}          % target
-			% HEAD reference
-			\gitHEAD
-			{above=of main} % node placement
-			{main}          % target
-		\end{tikzpicture}
-		\end{center}
-	\end{fancycolumns}
-\end{frame}
-
 
 \subsection{Branching Strategies}
-\begin{frame}{\insertsubsection \mytitlesource{\href{https://gitlab.com/gitlab-org/gitlab-foss/-/blob/0fdb03ee16f0ccd7f122a4f0af23ee628d1de3c9/doc/workflow/gitlab\_flow.md}{GitLab Documentation}}}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://gitlab.com/gitlab-org/gitlab-foss/-/blob/0fdb03ee16f0ccd7f122a4f0af23ee628d1de3c9/doc/workflow/gitlab\_flow.md}{GitLab Documentation}}}
 	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Git Flow}
 			\begin{itemize}
-				\item First approach to use branches
+				\item First proposal to use branches
 				\item Different branches for different aims
-				\begin{itemize}
-					\item Main
-					\item Development
-					\item Individual features
-					\item Individual releases
-					\item Hotfixes
-				\end{itemize}
+				      \begin{itemize}
+					      \item Main
+					      \item Development
+					      \item Individual features
+					      \item Individual releases
+					      \item Hotfixes
+				      \end{itemize}
 				\item Feature $\rightarrow$ Dev $\rightarrow$ Release $\rightarrow$ Main
 			\end{itemize}
 		\end{definition}\pause
@@ -379,7 +419,7 @@ git merge feature
 	\end{fancycolumns}
 \end{frame}
 
-\begin{frame}{\insertsubsection \mytitlesource{\href{https://docs.github.com/en/get-started/using-github/github-flow}{GitHub Documentation}}}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://docs.github.com/en/get-started/using-github/github-flow}{GitHub Documentation}}}
 	\begin{fancycolumns}[animation=none]
 		\begin{definition}{GitHub Flow}
 			\begin{itemize}
@@ -388,6 +428,7 @@ git merge feature
 				\item Small feature branches for development
 				\item Tags for releases
 				\item Hotfixes are also feature branches
+				\item Extensions with deployment branches
 			\end{itemize}
 		\end{definition}\pause
 		\begin{note}{Advantages}
@@ -402,7 +443,6 @@ git merge feature
 		\onslide<1->{\centering\pic[width=.7\columnwidth]{versioncontrol/github-flow}}
 	\end{fancycolumns}
 \end{frame}
-	
 
 
-       	
+
