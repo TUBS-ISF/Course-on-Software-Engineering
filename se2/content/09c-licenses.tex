@@ -23,11 +23,11 @@
 		\end{exampletight}
 		\begin{note}{The Full License Text}
 			\tiny\mycite{Copyright (c) \textless year\textgreater \textless copyright holders\textgreater
-				
+
 				Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-				
+
 				The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-				
+
 				THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}
 		\end{note}
 	\end{fancycolumns}
@@ -62,19 +62,19 @@
 		\begin{note}{Three Main Versions}
 			\begin{itemize}
 				\item GPL-1.0-only and GPL-1.0-or-later
-				\begin{itemize}
-					\item publishing binary only was allowed
-					\item applies to whole distributable
-				\end{itemize}
+				      \begin{itemize}
+					      \item publishing binary only was allowed
+					      \item applies to whole distributable
+				      \end{itemize}
 				\item GPL-2.0-only and GPL-2.0-or-later
-				\begin{itemize}
-					\item fixed above problems
-					\item relaxed version LGPL, motivated by C standard library (libc)
-				\end{itemize}
+				      \begin{itemize}
+					      \item fixed above problems
+					      \item relaxed version LGPL, motivated by C standard library (libc)
+				      \end{itemize}
 				\item GPL-3.0-only and GPL-3.0-or-later
-				\begin{itemize}
-					\item improved compatibility with other licenses (e.g., Apache)
-				\end{itemize}
+				      \begin{itemize}
+					      \item improved compatibility with other licenses (e.g., Apache)
+				      \end{itemize}
 			\end{itemize}
 		\end{note}
 	\end{fancycolumns}
@@ -89,7 +89,7 @@
 				\item formerly known as: GNU Library General Public License
 				\item publisher: Free Software Foundation
 				\item classification: weak copyleft
-				%\item prominent use: 
+				      %\item prominent use: 
 			\end{itemize}
 		\end{definition}
 		\begin{example}{Selected Terms and Conditions}
@@ -107,19 +107,19 @@
 		\begin{note}{Three Main Versions}
 			\begin{itemize}
 				\item LGPL-2.0-only and LGPL-2.0-or-later
-				%				\begin{itemize}
-					%					\item publishing binary only was allowed
-					%					\item applies to whole distributable
-					%				\end{itemize}
+				      %				\begin{itemize}
+				      %					\item publishing binary only was allowed
+				      %					\item applies to whole distributable
+				      %				\end{itemize}
 				\item LGPL-2.1-only and LGPL-2.1-or-later
-				%				\begin{itemize}
-					%					\item fixed above problems
-					%					\item relaxed version LGPL, motivated by C standard library (libc)
-					%				\end{itemize}
+				      %				\begin{itemize}
+				      %					\item fixed above problems
+				      %					\item relaxed version LGPL, motivated by C standard library (libc)
+				      %				\end{itemize}
 				\item LGPL-3.0-only and LGPL-3.0-or-later
-				%				\begin{itemize}
-					%					\item improved compaitibility with other licenses (e.g., Apache)
-					%				\end{itemize}
+				      %				\begin{itemize}
+				      %					\item improved compaitibility with other licenses (e.g., Apache)
+				      %				\end{itemize}
 			\end{itemize}
 		\end{note}
 		\begin{example}{What's the main problem of LGPL?}
@@ -128,80 +128,145 @@
 	\end{fancycolumns}
 \end{frame}
 
-\xkcdframe{225}
+% \xkcdframe{225}
 
 \subsection{Compatibility of Software Licenses}
 \begin{frame}{\insertsubsection}% TODO \ \mytitlesource{\href{}{}}}}
-\begin{fancycolumns}
-\begin{note}{Problem}
-	\begin{itemize}
-		\item most licenses have similar goals
-		\item still: sometimes legally impossible to combine software with different licenses
-		\item incompatibilities often arise from copyleft clauses
-	\end{itemize}
-\end{note}
-\begin{example}{Desired Incompatibilities}
-	\begin{itemize}
-		\item proprietary licenses are typically specific to a program and incompatible to each other
-		\item copyleft licenses are incompatible to proprietary and permissive licenses
-		\item software licensed with \emph{GPL} cannot be used within \emph{MIT}-licensed software
-	\end{itemize}
-\end{example}
-\nextcolumn
-\begin{example}{Undesired Incompatibilities}
-	\begin{itemize}
-		\item software licensed with \emph{GPL-2.0-only} cannot be used within \emph{GPLv3}- or \emph{LGPLv3}-licensed software (cf.\ Linux kernel) $\Rightarrow$ most projects use \emph{GPL-2.0-or-later} instead
-		\item software licensed with \emph{GPLv3} cannot be used in material licsensed as creative commons \emph{BY-SA 4.0} \mysource{\href{https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses/}{creativecommons.org}}
-	\end{itemize}
-\end{example}
-\begin{exampletight}{Overview on Compatibilities}
-	\centering\pic[width=\linewidth]{opensource/compatibility} % TODO nachzeichnen mit Tikz? oder ersetzen durch https://commons.wikimedia.org/wiki/File:Software_licensing_spectrum.png
-\end{exampletight}
-\end{fancycolumns}
+	\begin{fancycolumns}
+		\begin{note}{Problem}
+			\begin{itemize}
+				\item most licenses have similar goals
+				\item still: sometimes legally impossible to combine software with different licenses
+				\item incompatibilities often arise from copyleft clauses
+			\end{itemize}
+		\end{note}
+		\begin{example}{Desired Incompatibilities}
+			\begin{itemize}
+				\item proprietary licenses are typically specific to a program and incompatible to each other
+				\item copyleft licenses are incompatible to proprietary and permissive licenses
+				\item software licensed with \emph{GPL} cannot be used within \emph{MIT}-licensed software
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{example}{Undesired Incompatibilities}
+			\begin{itemize}
+				\item software licensed with \emph{GPL-2.0-only} cannot be used within \emph{GPLv3}- or \emph{LGPLv3}-licensed software (cf.\ Linux kernel) $\Rightarrow$ most projects use \emph{GPL-2.0-or-later} instead
+				\item software licensed with \emph{GPLv3} cannot be used in material licsensed as creative commons \emph{BY-SA 4.0} \mysource{\href{https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses/}{creativecommons.org}}
+			\end{itemize}
+		\end{example}
+		\begin{exampletight}{Overview on Compatibilities}
+			\centering\pic[width=\linewidth]{opensource/compatibility} % TODO nachzeichnen mit Tikz? oder ersetzen durch https://commons.wikimedia.org/wiki/File:Software_licensing_spectrum.png
+		\end{exampletight}
+	\end{fancycolumns}
 \end{frame}
 %     compatible: MIT->GPL
 %     incompatible: GPL->MIT
 
 \subsection{Re-Licensing and Dual Licensing}
 \begin{frame}{\insertsubsection}
-\begin{fancycolumns}
-\begin{note}{How to solve a license incompatibility?}
-	\begin{itemize}
-		\item remove the software everywhere
-		\item re-implement (parts thereof)
-		\item give it a new license (as replacement or in addition to the old license)
-	\end{itemize}
-\end{note}
-\begin{definition}{Re-Licensing}
-	\begin{itemize}
-		\item changing the license to another license
-		\item requires consent by all developers
-		\item in practice 100\% often not feasible: 80--95\%
-	\end{itemize}
-\end{definition}
-\begin{example}{{Re-Licensing of the VLC Project\hfill\tikz[overlay] \node[anchor=30,xshift=2mm] {\pic[height=12mm]{opensource/vlc}};}} % TODO add references and double check years https://en.wikipedia.org/wiki/License_compatibility
-	\begin{itemize}
-		\item removed from the Apple App Store
-		\item re-licensed from GPLv2 to LGPLv2
-		\item later re-licensed to Mozilla Public License
-	\end{itemize}
-\end{example}
-\nextcolumn
-\begin{definition}{Dual Licensing}
-	\begin{itemize}
-		\item owner is not bound to the own copyleft/license
-		\item a software can have multiple licenses
-		\item same rules as for re-licensing
-		\item term also used for 3 and more licenses
-	\end{itemize}
-\end{definition}
-\pic[height=12mm]{opensource/netscape}\hfill\pic[height=12mm]{opensource/firefox}
-\begin{example}{Mozilla's Firefox Browser} % TODO add references and double check years https://en.wikipedia.org/wiki/License_compatibility https://en.wikipedia.org/wiki/Software_relicensing
-	\begin{itemize}
-		\item Netscape's Communicator 4.0 released under the Mozilla Public License
-		\item incompatilibility to GPL
-		\item dual licensing as MPLv1.1/GPLv2/LGPLv2.1
-	\end{itemize}
-\end{example}
-\end{fancycolumns}
+	\begin{fancycolumns}
+		\begin{note}{How to solve a license incompatibility?}
+			\begin{itemize}
+				\item remove the software everywhere
+				\item re-implement (parts thereof)
+				\item give it a new license (as replacement or in addition to the old license)
+			\end{itemize}
+		\end{note}
+		\begin{definition}{Re-Licensing}
+			\begin{itemize}
+				\item changing the license to another license
+				\item requires consent by all developers
+				\item in practice 100\% often not feasible: 80--95\%
+			\end{itemize}
+		\end{definition}
+		\begin{example}{{Re-Licensing of the VLC Project\hfill\tikz[overlay] \node[anchor=30,xshift=2mm] {\pic[height=12mm]{opensource/vlc}};}} % TODO add references and double check years https://en.wikipedia.org/wiki/License_compatibility
+			\begin{itemize}
+				\item removed from the Apple App Store
+				\item re-licensed from GPLv2 to LGPLv2
+				\item later re-licensed to Mozilla Public License
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\begin{definition}{Dual Licensing}
+			\begin{itemize}
+				\item owner is not bound to the own copyleft/license
+				\item a software can have multiple licenses
+				\item same rules as for re-licensing
+				\item term also used for 3 and more licenses
+			\end{itemize}
+		\end{definition}
+		\pic[height=12mm]{opensource/netscape}\hfill\pic[height=12mm]{opensource/firefox}
+		\begin{example}{Mozilla's Firefox Browser} % TODO add references and double check years https://en.wikipedia.org/wiki/License_compatibility https://en.wikipedia.org/wiki/Software_relicensing
+			\begin{itemize}
+				\item Netscape's Communicator 4.0 released under the Mozilla Public License
+				\item incompatilibility to GPL
+				\item dual licensing as MPLv1.1/GPLv2/LGPLv2.1
+			\end{itemize}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Creative Commons Licenses}
+
+\begin{frame}
+	\frametitle{\insertsubsection{} -- Overview}
+
+	\begin{fancycolumns}[widths={50,50}]
+		\begin{definition}{Concepts}
+			\begin{itemize}
+				\item \emph{Attribution (BY)}: Attribute the creator
+				\item \emph{Non-Commercial (NC)}: No commercial usage
+				\item \emph{Share-Alike (SA)}: Adaptations require same licensing terms 
+				\item \emph{No-Derivatives (ND)}: Permits adaptations
+			\end{itemize}
+		\end{definition}
+		\begin{definition}{CC Zero (CC0)}
+			\begin{itemize}
+				\item Waive copyright
+				\item Free use for any purposes
+				\item No attribution required
+			\end{itemize}
+		\end{definition}
+		\begin{note}{CC in Software}
+			Generally discouraged for software but may be useful for mixed projects (e.g., icons in GUI)
+		\end{note}
+		\nextcolumn
+			\centering\pic[width=0.7\linewidth]{opensource/cc-guide}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\insertsubsection{} -- Intra Compatibility}
+	\centering\pic[width=0.8\linewidth]{opensource/cc-intra-compatibility}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\insertsubsection{} -- Share Alike Compatibility}
+	\begin{note}{General}
+		\begin{itemize}
+			\item Non-CC share alike licenses generally not compatible with BY-SA
+		\end{itemize}
+	\end{note}
+
+	\begin{definition}{One-Way Compatibility $X \rightarrow Y$}
+		\begin{itemize}
+			\item Existing work under X \textbf{can} be adapted with changes under Y
+			\item Existing work under Y \textbf{cannot} be adapted with changes under X
+			\item Example: Work under \emph{BY} can be adapted under \emph{BY-SA} but not vice versa
+		\end{itemize}
+	\end{definition}
+
+	\begin{definition}{ShareAlike Compatibility Process}
+		\begin{itemize}
+			\item Ensure one-way/two-way compatibility between BY-SA and available relevant copyleft liceneses
+			\item Examine compatibility and adapt if necessary
+			\item Currently compatible
+			\begin{itemize}
+				\item Free Art License v1.3
+				\item GPLv3 (BY-SA $\rightarrow$ GPLv3)
+			\end{itemize}
+		\end{itemize}
+	\end{definition}
+	
+
 \end{frame}
