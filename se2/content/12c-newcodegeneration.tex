@@ -1,45 +1,98 @@
-\subsection{Disadvantages of Current Approaches}
-\begin{frame}{\insertsubsection{}}
-	\begin{fancycolumns}[animation=none]
-		
-		\nextcolumn
-		
-	\end{fancycolumns}
-\end{frame}
+%TODO einfügen?
+%\subsection{Disadvantages of Current Approaches}
+%\begin{frame}{\insertsubsection{}}
+%	\begin{fancycolumns}[animation=none]
+%		
+%		\nextcolumn
+%		
+%	\end{fancycolumns}
+%\end{frame}
 
 \subsection{LLM-based Code Generation}
-\begin{frame}{\insertsubsection{}}
+\begin{frame}{\insertsubsection{}  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3747588}{Jiang et al.}}}
 	\begin{fancycolumns}[animation=none]
-		
+		\begin{definition}{NL2Code}
+			Transformation of natural language (in structured or unstructured form) into executable source code
+		\end{definition} \pause
+		\begin{note}{Common techniques}
+			\begin{itemize}
+				\item Language-specific models
+				\item Providing reference code
+				\item Multi-shot prompting
+				\item Feedback/Iterative development
+			\end{itemize}
+		\end{note} \pause
+		\begin{note}{Limitations}
+			\begin{itemize}
+				\item Context windows limits
+				\item User has to provide context
+				\item No automated validation
+			\end{itemize}
+		\end{note} \pause
 		\nextcolumn
-		
+		\begin{example}{LLM-based code generation in IDEs}
+			\centering\pic[width=\columnwidth]{ml/llm_code}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
 \subsection{Agent-based Code Generation}
-\begin{frame}{\insertsubsection{}}
+\begin{frame}{\insertsubsection{}  \mytitlesource{\href{https://arxiv.org/pdf/2508.00083}{Dong et al.}}}
 	\begin{fancycolumns}[animation=none]
-		
+		\begin{definition}{Agent-based Code Generation}
+			\begin{itemize}
+				\item LLM gets sensor and actors 
+				\item Iterative process is automated/not user-driven
+				\item Perception-Decision-Execution-loop based on user-defined goal
+			\end{itemize}
+		\end{definition} \pause
+		\begin{note}{Common Sensors}
+			\small
+			\begin{itemize}
+				\item Retrieval-augmented generation
+				\item Web search
+				\item Arbitrary file access
+				\item Static analysis tools
+				\item Skills
+				\item LLM-as-a-Judge
+				\item \dots
+			\end{itemize}
+		\end{note} \pause
 		\nextcolumn
-		
+		\begin{note}{Common Actors}
+		\small
+		\begin{itemize}
+			\item Build system: Compiler, testing environment, \dots
+			\item Arbitrary file edits
+			\item Git/Version control
+			\item \dots
+		\end{itemize}
+		\end{note} \pause
+%		\begin{example}{Multi-Agent Systems}
+%			\begin{itemize}
+%				\item Multiple agents with different roles
+%				\item Simulation of development team
+%				\item Interaction for mutual improvement
+%			\end{itemize}
+%		\end{example} \pause
+		\begin{example}{Claude IDE}
+			\centering\pic[width=\columnwidth]{ml/claude}
+		\end{example}
 	\end{fancycolumns}
 \end{frame}
 
 \subsection{Problems of LLM-based Approaches}
 \begin{frame}{\insertsubsection{}}
-	\begin{fancycolumns}[animation=none]
-		
+	\begin{fancycolumns}[animation=none, columns=5]
+		\textbf{Practical?}
 		\nextcolumn
-		
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{Discussion}
-\begin{frame}{\insertsubsection{}}
-	\begin{fancycolumns}[animation=none]
-		
+		\textbf{Ethical?}
 		\nextcolumn
-		
+		\textbf{Legal?}
+		\nextcolumn
+		\textbf{Environmental?}
+		\nextcolumn
+		\textbf{Societal?}
 	\end{fancycolumns}
 \end{frame}
 
