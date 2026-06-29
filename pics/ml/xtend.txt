@@ -1,0 +1,1 @@
+https://eclipse.dev/Xtext/xtend/documentation/203_xtend_expressions.html#templates

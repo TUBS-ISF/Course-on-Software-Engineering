@@ -1,21 +1,181 @@
 \subsection{A Motivating Example}
 
 \begin{frame}{\insertsubsection}
+	\slideWaterfallModel
+\end{frame}
+
+\begin{frame}{\insertsubsection}
 	\begin{fancycolumns}[animation=none]
-		Wie?
+		\begin{tcolorbox}[colback=red!25!white,colframe=red!70!black,title=Bus]
+			As a citizen I would like to take the bus to move around the city so that I can travel without having to drive.
+		\end{tcolorbox}\pause
+		
+		\begin{tcolorbox}[colback=red!25!white,colframe=red!70!black,title=Bus Stop]
+			As a citizen I want to have a simple bus stop so I can get on the bus close to where I life.
+		\end{tcolorbox} \pause
+		
+		\Huge\dots \pause
 		\nextcolumn
+		\begin{note}{Targets}
+			\begin{itemize}
+				\item Design Specification
+				\item Source Code
+				\item Test Code
+				\item Code and Test Documentation
+				\item \dots
+			\end{itemize}
+		\end{note}\pause
+		\begin{note}{Desired Properties}
+			\begin{itemize}
+				\item Human-independent
+				\item Correct
+				\item Maintainable
+				\item Effective
+				\item \dots
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Model-driven Software Engineering}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://link.springer.com/book/10.1007/978-3-031-02549-5}{MDSE}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Model-driven Software Engineering}
+			Software development methodology where domain models are the primary artifact
+		\end{definition} \pause
+		\begin{note}{Central Process}
+			\begin{enumerate}
+				\item Domain experts help create domain model
+				\item Domain model is evaluated/transformed
+				\item Other artifacts are (semi-)automatically created
+			\end{enumerate}
+			
+		\end{note}\pause
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item Model Checking
+				\item Model-to-Model Transformations
+				\item Model-to-Code Transformations
+				\item \dots
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\begin{note}{UML Modelling Layers}
+			\begin{enumerate}
+				\item Originals (Objects in memory)
+				\item Models (Object diagram)
+				\item Meta-Models (Class diagram)
+				\item Meta-Meta-Models (Diagram diagram)
+			\end{enumerate}
+		\end{note}
+		\begin{example}{Exemplary EMF Meta-Model}
+			\centering\pic[width=\columnwidth]{ml/emf}
+		\end{example}
 		
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{}
-\begin{frame}{\insertsubsection}
+\subsection{Model-to-Code Transformation}
+\begin{frame}{\insertsubsection{}}
 	\begin{fancycolumns}[animation=none]
-		
+		\begin{definition}{Model-to-Code Transformation}
+			\begin{itemize}
+				\item Special case of Model-to-Model transformation
+				\item Typically at the end of a chain of model transformations
+				\item Typically not all model information $\Rightarrow$ information loss
+				\item Not necessarily code (e.g., XML files)
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item Manual code generation takes effort
+				\item Manual code generation is error-prune
+				\item Model-code-divergence possible
+			\end{itemize}
+		\end{note} \pause
 		\nextcolumn
+		\begin{note}{Code Generators}
+			\begin{itemize}
+				\item Template-based code generation
+				\item Static parts mixed with dynamic section
+				\item Dynamic sections filled using queries (comparable to SQL)
+				\item Custom-defined for a specific model
+			\end{itemize}
+		\end{note} \pause
+		\begin{example}{Xtend}
+			\centering\pic[width=0.7\columnwidth]{ml/xtend}
+		\end{example}
 		
 	\end{fancycolumns}
 \end{frame}
+
+
+\subsection{Acceleo}
+\begin{frame}{\insertsubsection{}}
+	\begin{fancycolumns}[animation=none, columns=3, widths={25,45}]
+		\begin{example}{Acceleo}
+			Code generator compatible with Eclipse Modeling Framework
+		\end{example} \pause
+		\centering\pic[width=\columnwidth]{ml/acc_input} \pause
+		\nextcolumn
+		\centering\pic[width=\columnwidth]{ml/acc_template} \pause
+		\nextcolumn
+		\centering\pic[width=\columnwidth]{ml/acc_output}
+	\end{fancycolumns}
+\end{frame}
+
+% TODO für die Zukunft
+%\subsection{Abstract State Machines}
+%\begin{frame}{\insertsubsection{}}
+%	\begin{fancycolumns}[animation=none]
+%		
+%		\nextcolumn
+%		
+%	\end{fancycolumns}
+%\end{frame}
+
+\subsection{Code Completion}
+\begin{frame}{\insertsubsection{}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Code Completion}
+			\begin{itemize}
+				\item Suggestion of code lines
+				\item Typically during typing at marker characters
+				\item Typically as popups
+				\item Typically multiple options
+				\item Part of almost all modern IDEs
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Goal}
+			\begin{itemize}
+				\item Improve developer speed
+				\item Reduce cognitive load
+				\item Prevent errors
+			\end{itemize}
+		\end{note}\pause
+		\nextcolumn
+		\begin{note}{Commonly used techniques}
+			\begin{itemize}
+				\item Static analysis
+				\item Adaptive database of source code
+				\item User behavior analysis
+			\end{itemize}
+		\end{note}\pause
+		\begin{example}{Code Completion in Visual Studio}
+			\centering\pic[width=.9\columnwidth]{ml/code_completion}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Code Completion with ML}
+\begin{frame}{\insertsubsection{}  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/1882362.1882374}{Bruch et al.}}}
+		\begin{fancycolumns}[widths={66}]
+			\centering\pic[width=\columnwidth]{ml/code_completion_ml}
+			\nextcolumn
+			\centering\pic[width=\columnwidth]{ml/code_completion_ml_sol}
+		\end{fancycolumns}
+\end{frame}
+
 
 %Motivation
 
