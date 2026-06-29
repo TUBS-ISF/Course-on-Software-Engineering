@@ -1,5 +1,157 @@
-\subsection{A Motivating Example}
-
+\subsection{AI, ML, and Deep Learning}
 \begin{frame}{\insertsubsection}
-	content
+	\centering\pic[width=.5\linewidth]{ml/AI_relations} %TODO build with tikz
+\end{frame}
+
+
+\subsection{Artificial Intelligence}
+\begin{frame}{\insertsubsection{}  \mytitlesource{\href{https://www.pearson.de/artificial-intelligence-a-modern-approach-global-edition-9781292401133}{Russel-Norvig}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Artificial Intelligence}
+			Area of study that develops methods to allow machines to perceive their environment and take actions that maximize the chance of achieving defined goals
+		\end{definition} \pause
+		\begin{note}{Common Tasks}
+			\begin{itemize}
+				\item Reasoning
+				\item Knowledge Representation
+				\item Planning
+				\item Natural Language Processing
+				\item Perception
+				\item Support for robotics
+				\item \dots
+			\end{itemize}
+		\end{note} \pause
+		\nextcolumn
+		\begin{definition}{Automated Planning}
+			Automated creation of strategies or action sequences to achieve a predefined goal
+		\end{definition} \pause
+		\begin{example}{Keywords}
+			\begin{itemize}
+				\item State: collection of currently active fluents
+				\item Action: changes state
+				\item Precondition: fluents necessary to apply action
+				\item Effect: changes to state after action is applied
+			\end{itemize}
+		\end{example} \pause
+		\begin{note}{Solution Strategies}
+			\begin{itemize}
+				\item Forward state-space search
+				\item Backward relevant-states search
+				\item Heuristic search
+			\end{itemize}
+		\end{note} 
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Machine Learning}
+
+\xkcdframe{1838}
+
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://www.statlearning.com/}{Statistical Learning}}}
+	\begin{fancycolumns}[animation=none]
+		\onslide<1->{
+		\begin{definition}{Machine Learning}
+			Area of research of estimating an unknown target function from multiple predictors based on example data
+		\end{definition}}
+		\onslide<3->{
+		\begin{example}{Common Models}
+			\small
+			\begin{itemize}
+				\item Decision trees (often with gradient-boosting or bootstrap aggregating)
+				\item Support vector machines
+				\item Regression
+				\item Bayesian networks
+				\item Gaussian processes
+				\item Rule-based models
+				\item \dots
+			\end{itemize}
+		\end{example}}
+		\nextcolumn
+		\onslide<2->{\begin{note}{Common Steps}
+				\small
+			\begin{enumerate}
+				\item Feature extraction
+				\item Feature transformation
+				\item Feature selection
+				\item ML model training
+			\end{enumerate}
+		\end{note}} 
+		\onslide<4->{\begin{example}{Support Vector Machines}
+			\centering\pic[width=.6\columnwidth]{ml/svm}
+		\end{example}}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Neural Networks}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://www.statlearning.com/}{Statistical Learning}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Perceptron}
+			$$f(\mathbf{x}) = h(\mathbf{w} \cdot \mathbf{x} + b)$$
+			Weights $\mathbf{w}$, input $\mathbf{x}$, bias $b$
+		\end{definition} \pause
+		\begin{definition}{Neuron}
+			$$y_k = \varphi \left(\sum_{j=0}^m w_{kj} x_j \right)$$
+			Activation function $\varphi$, bias $w_{k0}$
+		\end{definition} \pause
+		\begin{definition}{Neural Network}
+			System of layered neurons with varying interconnections, activation functions, and weights
+		\end{definition} \pause
+		\nextcolumn
+		\begin{example}{Exemplary Neural Network}
+			\centering\pic[width=.75\columnwidth]{ml/neural_network}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Large Language Models}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://web.stanford.edu/~jurafsky/slp3/ed3book_jan72023.pdf}{Introduction to NLP}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Large Language Models}
+			Neural network specialized on language processing
+			\vspace{-1em}
+			\begin{itemize}
+				\item vast textual training data set
+				\item word-wise output prediction
+				\item uses transformer architecture
+			\end{itemize} 
+		\end{definition} \pause
+		\begin{note}{Transformer Architecture}
+			\begin{enumerate}
+				\item Tokenization
+				\item Embedding
+				\item Positional Encoding
+				\item Transformer Blocks (Attention)
+				\item Softmax-Layer
+			\end{enumerate}
+		\end{note} \pause
+		\nextcolumn
+		\begin{example}{Transformer Architecture}
+			\centering\pic[width=.8\columnwidth]{ml/full_transformer}
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Agents}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://www.statlearning.com/}{Statistical Learning}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{Traditional AI Agent}
+			\begin{itemize}
+				\item Perceives environment through sensors
+				\item Acts upon environment through actors
+				\item Tries to achieve a given goal
+			\end{itemize}
+		\end{definition} \pause
+		\begin{definition}{LLM-based Agents}
+			\begin{itemize}
+				\item Uses LLM as core reasoning engine
+				\item Additional perception, memory, decision-making, and action modules
+				\item Perception - Decision - Execution
+				\item Multi-agent systems
+			\end{itemize}
+		\end{definition} \pause
+		\nextcolumn
+		\begin{example}{Traditional Reflex Agent}
+			\centering\pic[width=\columnwidth]{ml/trad_agent}
+		\end{example}
+	\end{fancycolumns}
 \end{frame}
