@@ -83,16 +83,39 @@
 
 \subsection{Problems of LLM-based Approaches}
 \begin{frame}{\insertsubsection{}}
-	\begin{fancycolumns}[animation=none, columns=5]
+	\begin{fancycolumns}[animation=none, columns=4, t]
 		\textbf{Practical?}
-		\nextcolumn
-		\textbf{Ethical?}
+		\begin{itemize}
+			\item No correctness guarantees 
+			\item Code quality
+			\item Code maintainability
+			\item Code safety \& security unclear
+			\item \dots
+		\end{itemize}
 		\nextcolumn
 		\textbf{Legal?}
+		\begin{itemize}
+			\item Critical data to external vendor
+			\item Source of training data?
+			\item Accountability in case of damages
+			\item \dots
+		\end{itemize}
 		\nextcolumn
 		\textbf{Environmental?}
+		\begin{itemize}
+			\item Energy usage
+			\item Water usage
+			\item Local air quality
+			\item \dots
+		\end{itemize}
 		\nextcolumn
 		\textbf{Societal?}
+		\begin{itemize}
+			\item Replaces junior developers
+			\item Isolation of developers
+			\item Development hastening $\Rightarrow$ Higher demands
+			\item \dots
+		\end{itemize}
 	\end{fancycolumns}
 \end{frame}
 
