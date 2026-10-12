@@ -30,24 +30,24 @@
 	\vspace{-20mm}\small\renewcommand{\projectcartoonwidth}{.18}
 	\begin{fancycolumns}[widths={30},animation=none]
 		\uncover<11->{\begin{definition}{Why Do Software Projects Fail?}
-			\begin{itemize}
-				\item many stakeholders with different background each
-				\item miscommunication
-				\item implicit or wrong assumptions
-				\item time pressure
-				\item high complexity
-				\item \ldots
-				\item numerous reasons specific to certain phases and roles
-			\end{itemize}
-		\end{definition}}
+				\begin{itemize}
+					\item many stakeholders with different background each
+					\item miscommunication
+					\item implicit or wrong assumptions
+					\item time pressure
+					\item high complexity
+					\item \ldots
+					\item numerous reasons specific to certain phases and roles
+				\end{itemize}
+			\end{definition}}
 		\uncover<12->{\begin{note}{}\centering{}software engineering aims to\\reduce such problems\end{note}}
-	\nextcolumn
+		\nextcolumn
 		\centering\hprojectcartoon{01}{how the customer explained it} % se02-10 requirements
 		\uncover<2->{\hprojectcartoon{02}{how the project leader understood it}} % se02-07 modeling
 		\uncover<3->{\hprojectcartoon{03}{how the analyst designed it}} % se04-10 architecture anddesign
 		\uncover<4->{\hprojectcartoon{04}{how the programmer implemented it}} % se02-10 implementation
 		\uncover<5->{\hprojectcartoon{05}{what the beta testers received}} % se08-09 testing
-	
+
 		\uncover<6->{\hprojectcartoon{06}{how the business consultant described it}} % se02-03 process
 		\uncover<7->{\hprojectcartoon{09}{how the customer was billed}} % se10 management and pricing
 		\uncover<8->{\hprojectcartoon{10}{how it was supported}} % se12 maintenance
@@ -88,12 +88,135 @@
 		\begin{definition}{Computer Science \mysource{\sommerville}}
 			\mycite{Computer science focuses on theory and fundamentals; software engineering is concerned with the practicalities of developing and delivering useful software. [...] Computer science theory, however, is often most applicable to relatively small programs. Elegant theories of computer science are rarely relevant to large, complex problems that require a software solution.}
 		\end{definition}
-	\nextcolumn
+		\nextcolumn
 		\begin{definition}{System Engineering \mysource{\sommerville}}
 			\mycite{System engineering is concerned with all aspects of computer-based systems development including hardware, software and process engineering. Software engineering is part of this more general process.}
 		\end{definition}
 		% "System engineering is therefore concerned with hardware development, policy and process design, and system deployment, as well as software engineering." [\sommerville]
 		\pic[width=\linewidth]{misc/lawn-mower-cropped} % copied to process lecture
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Software Engineering in the Age of AI}
+
+\begin{frame}
+	\frametitle{\insertsubsection}
+	\begin{motivation}{}
+		\centering What is the impact of AI on software engineering?
+	\end{motivation}
+	\begin{definition}{Vision of Software Engineering with AI \mysource{Terragni}}
+		\centering
+		\begin{tikzpicture}[
+				x=.62cm,y=.62cm,
+				every node/.style={font=\scriptsize,inner sep=1pt},
+				every path/.style={draw=black},
+				flow/.style={<->,>=stealth,semithick},
+				feedback/.style={<->,>=stealth,thin},
+			]
+			% Lifecycle phases and the AI-supported work area
+			\node[font=\footnotesize\bfseries] at (5.4,4.55) {Requirements Engineering};
+			\node[font=\footnotesize\bfseries] at (9.8,4.55) {Software Design};
+			\node[font=\footnotesize\bfseries] at (14.1,4.55) {Development and Testing};
+			\node[font=\footnotesize\bfseries] at (18.3,4.55) {Maintenance};
+			\fill[black!18,draw=none] (3.1,2.35) rectangle (17.1,4.25);
+			\node[font=\footnotesize\bfseries] at (10,3.95) {Artificial Intelligence (AI)};
+
+			% Work products
+			\fill[white,draw=none] (4.0,2.35) rectangle (7.0,3.6);
+			\fill[white,draw=none] (8.25,2.35) rectangle (11.3,3.6);
+			\fill[white,draw=none] (12.2,2.35) rectangle (15.9,3.6);
+			\node[font=\footnotesize\bfseries] at (5.5,2.48) {Requirements};
+			\node[font=\footnotesize\bfseries] at (9.8,2.48) {Design};
+			\node[font=\tiny\bfseries] at (14.05,2.5) {Source Code -- Test Cases};
+
+			% Requirements document
+			\draw[fill=black!8,thick] (5.0,2.7) rectangle (5.9,3.35);
+			\draw[thick] (5.15,3.2) -- (5.7,3.2) (5.15,3.08) -- (5.7,3.08)
+			(5.15,2.96) -- (5.7,2.96) (5.15,2.84) -- (5.65,2.84);
+			\draw[thick] (5.68,3.35) -- (5.68,3.2) -- (5.9,3.2);
+			\draw[flow] (4.2,3.0) -- (4.85,3.0);
+			\draw[flow] (6.05,3.0) -- (6.8,3.0);
+
+			% Design hierarchy
+			\draw[thick] (9.8,3.25) -- (9.8,3.1) -- (9.35,3.1) -- (9.35,2.92);
+			\draw[thick] (9.8,3.1) -- (10.25,3.1) -- (10.25,2.92);
+			\draw[thick] (9.35,2.92) -- (9.15,2.78);
+			\draw[thick] (9.35,2.92) -- (9.55,2.78);
+			\draw[thick] (10.25,2.92) -- (10.05,2.78);
+			\draw[thick] (10.25,2.92) -- (10.45,2.78);
+			\foreach \x/\y in {9.8/3.3,9.35/3.0,10.25/3.0,9.15/2.75,9.55/2.75,10.05/2.75,10.45/2.75} {
+					\fill[black!35] (\x,\y) circle (0.09);
+				}
+			\draw[flow] (8.4,3.0) -- (9.0,3.0);
+			\draw[flow] (10.6,3.0) -- (11.15,3.0);
+
+			% Source code and test cases
+			\draw[fill=black!8,thick] (12.9,2.72) rectangle (13.7,3.35);
+			\draw[thick] (13.05,3.2) -- (13.55,3.2) (13.05,3.08) -- (13.55,3.08)
+			(13.05,2.96) -- (13.55,2.96);
+			\node[draw,fill=white,thick,inner sep=1pt,font=\tiny] at (13.7,2.78) {/};
+			\draw[fill=black!5,thick] (14.55,2.72) rectangle (15.1,3.35);
+			\foreach \y in {3.2,3.05,2.9} {
+					\draw[thick] (14.65,\y) -- (14.72,\y-0.05) -- (14.82,\y+0.06);
+					\draw[thick] (14.88,\y) -- (15.02,\y);
+				}
+			\draw[flow] (12.3,3.0) -- (12.8,3.0);
+			\draw[flow] (15.25,3.0) -- (15.75,3.0);
+
+			% Stakeholders, elicitation, and maintenance feedback
+			\node[align=center] at (1.45,4.0) {requirements\\elicitation};
+			\foreach \x/\y in {1.05/3.45,1.4/3.5,1.75/3.45} {
+					\fill[black] (\x,\y) circle (0.13);
+					\fill[black] (\x,\y-0.28) ellipse (0.2 and 0.15);
+				}
+			\node[font=\footnotesize\bfseries] at (1.45,2.82) {Stakeholders};
+			\draw[feedback] (2.15,3.25) -- (3.0,3.25);
+
+			% Maintenance reports: checklist and discussion
+			\draw[fill=white,thick] (17.55,3.45) rectangle (18.0,4.05);
+			\foreach \y in {3.9,3.75,3.6} {
+					\draw[thick] (17.62,\y) -- (17.68,\y-0.04) -- (17.75,\y+0.05);
+					\draw[thick] (17.79,\y) -- (17.94,\y);
+				}
+			\draw[rounded corners=2pt,thick,fill=white] (18.3,3.52) rectangle (18.95,3.94);
+			\draw[thick] (18.45,3.52) -- (18.38,3.42);
+			\foreach \x in {18.48,18.7,18.86} \fill[black!50] (\x,3.75) circle (0.04);
+			\node[align=center] at (18.25,3.12) {Bug reports\\and forums};
+			\draw[feedback] (17.5,3.25) -- (17.1,3.25);
+
+			% Software engineer lane
+			\fill[orange!18,draw=none] (3.1,0.15) rectangle (17.1,1.05);
+			\draw[black!45,thick] (8.35,0.6) circle (0.38);
+			\fill[black] (8.35,0.79) circle (0.16);
+			\fill[black,rounded corners=2pt] (8.18,0.15) rectangle (8.52,0.55);
+			\node[anchor=west,font=\footnotesize\bfseries] at (8.9,0.58) {Software Engineer};
+
+			% Continuous human review and contribution across the lifecycle
+			\draw[->] (3.15,2.35) -- node[midway,left] {explain} (3.15,1.1);
+			\draw[->] (3.75,1.1) -- node[midway,right] {instruct} (3.75,2.35);
+			\draw[<-] (7.45,1.1) --  (7.45,2.35);
+			\draw[->] (8.05,1.1) -- (8.05,2.35);
+			\draw[<-] (11.4,1.1) -- (11.4,2.35);
+			\draw[->] (12,1.1) -- (12,2.35);
+			\draw[feedback] (16.3,1.1) -- (16.3,2.35);
+			\draw[flow] (5.5,1.1) -- node[midway, right] {tune} (5.5,2.35);
+			\draw[flow] (9.8,1.1) -- (9.8,2.35);
+			\draw[flow] (13.3,1.1) -- (13.3,2.35);
+			\draw[flow] (15.0,1.1) -- (15.0,2.35);
+		\end{tikzpicture}
+	\end{definition}
+	\begin{fancycolumns}
+		\begin{note}{Handle with a Grain of Salt}
+			Usage of AI changes rapidly, information may already be outdated in few weeks/months.
+		\end{note}
+		\nextcolumn
+		\begin{definition}{Topics Covered}
+			\begin{itemize}
+				\item Basic terminology
+				\item AI-capabilities for SE
+				\item Human tasks in the context of AI
+			\end{itemize}
+		\end{definition}
 	\end{fancycolumns}
 \end{frame}
 
