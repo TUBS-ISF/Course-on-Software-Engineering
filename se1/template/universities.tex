@@ -18,7 +18,7 @@
 \makeatletter
 \let\author@old\author
 \renewcommand{\author}[1]{
-	\ifuniversity{tubs}{\author@old{Thomas Thüm, Christopher Rau}}
+	\ifuniversity{tubs}{\author@old{Chico Sundermann, Christopher Rau}}
 	\ifuniversity{recording}{\author@old{#1}}
 	\ifuniversity{anonymous}{\author@old{Anonymous Authors}}
 	\ifuniversity{}{\author@old{#1}}
@@ -29,7 +29,7 @@
 \newcommand{\lectureseriesoverview}[1][]{ % shown at the start and end of each lecture
 	\setlength{\leftmargini}{3.5ex}\hypersetup{linkcolor=foreground}
 	\begin{fancycolumns}[t,columns=3,animation=none]
-		\mydefinition{\emphifequal{#1}{I}{Part A: Development of \mbox{\emph{Correct} Software}}}{
+		\mydefinition{\emphifequal{#1}{I}{Part A: \emph{Correct} Software Development}}{
 			\begin{enumerate}
 				\item {\emphifequal{#1}{1}{Introduction}}
 				\item {\emphifequal{#1}{2}{Implementation}}
@@ -40,28 +40,28 @@
 			\end{enumerate}
 		}
 		\nextcolumn
-		\mydefinition{\emphifequal{#1}{II}{Part B: Development in \emph{Schedule} \& \emph{Budget}}}{
+		\mydefinition{\emphifequal{#1}{II}{Part B: \emph{Planning} Software Development}}{
 			\begin{enumerate}
 				\setcounter{enumi}{4}
 				\item {\emphifequal{#1}{5}{Project Management}}
-				\item {\emphifequal{#1}{6}{Development Process}}
+				\item {\emphifequal{#1}{6}{Requirements}}
+				\item {\emphifequal{#1}{7}{System Modeling}}
+				\item {\emphifequal{#1}{8}{System \& Software Design}}
 			\end{enumerate}
 		}
 		\nextcolumn
-		\mydefinition{\emphifequal{#1}{III}{Part C: Development of \mbox{\emph{Needed} Software}}}{
+		\mydefinition{\emphifequal{#1}{III}{Part C: Advanced Software Development}}{
 			\begin{enumerate}
-				\setcounter{enumi}{6}
-				\item {\emphifequal{#1}{7}{Requirements}}
-				\item {\emphifequal{#1}{8}{System Modeling}}
-				\item {\emphifequal{#1}{9}{Software Architecture}}
-				\item {\emphifequal{#1}{10}{Software Design}}
-				\item {\emphifequal{#1}{11}{Software Reuse}}
+				\setcounter{enumi}{8}
+				\item {\emphifequal{#1}{9}{Software Reuse}}
+				\item {\emphifequal{#1}{10}{AI for Software Engineering \Romannum{1}}}
+				\item {\emphifequal{#1}{11}{AI for Software Engineering \Romannum{2}}}
 				\item {\emphifequal{#1}{12}{Guest Lecture}}
 			\end{enumerate}
 		}
 	\end{fancycolumns}
 }
-\newcommand{\lectureseriesexplanation}{
+\newcommand{\oldlonglectureseriesexplanation}{
 	\small
 	\begin{fancycolumns}[columns=3,t,widths={26,34,38},animation=none]
 		\begin{definition}{Part A: How to develop \emph{correct} software?}
@@ -75,6 +75,38 @@
 		\nextcolumn
 		\begin{definition}{Part C: How to develop \emph{needed} software?}
 			Even if software is of high quality and its development has met its time and budget constraints, it does not necessarily mean that the software is useful at all. Software is supposed to solve a problem of its users and it is far from trivial to develop software that is actually needed. The project cartoon illustrates common problems, which we distinguish into whether the problem to be solved is understood (\emph{requirements} and \emph{system modeling} aka. analysis) and whether the envisioned solution fits its purpose (\emph{software architecture} and \emph{software design} aka. design). Finally, software engineering is not only about developing software from scratch but also about \emph{reusing existing software} where appropriate, with the potential to drastically reduce costs and time-to-market.
+		\end{definition}
+	\end{fancycolumns}
+}
+
+\newcommand{\lectureseriesexplanation}{
+	\small
+	\begin{fancycolumns}[columns=3,t,animation=none]
+		\begin{definition}{Part A: How to develop \emph{correct} software?}
+			\begin{itemize}
+				\item Why should we care about software engineering?
+				\item What to consider for implementation/coding?
+				\item How to specify and invoke tests?
+				\item What to consider after initial shipping?
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Part B: How to \emph{plan} software development to meet quality criteria?}
+			\begin{itemize}
+				\item How to organize work in SE teams?
+				\item How to understand and finally realize the actual needs?
+				\item How to specify the behavior of a system beyond natural language?
+				\item How to orchestrate interplay between (software) components?
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{definition}{Part C: How to incoporate \emph{advanced} SE techniques?}
+			\begin{itemize}
+				\item How to reuse software? How to develop for reusability? What to consider when reusing?
+				\item What are the capabilities of AI for SE? What are limitations?
+				\item How to use AI tools effectively?
+				\item What is happening in software engineering practice?
+			\end{itemize}
 		\end{definition}
 	\end{fancycolumns}
 }
