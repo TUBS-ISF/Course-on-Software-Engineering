@@ -1,73 +1,164 @@
-\subsection{Version Control}
-\begin{frame}{\insertsubsection}
-	\slideVersionControl
-\end{frame}
 
-\subsection{Git vs Mercurial}
-\begin{frame}{\insertsubsection}
+
+\usetikzlibrary{arrows.meta}
+% GitHub flow: main with two feature branches and a release flag on the last main commit
+\newcommand{\githubflow}{%
+	\begin{tikzpicture}[x=1.5cm, y=1.6cm,
+			commit/.style={circle, draw=##1, fill=##1!25, line width=1.2pt, minimum size=7mm, inner sep=0pt},
+			branch/.style={line width=2pt, color=##1, -{Stealth[length=3mm]}},
+			lbl/.style={font=\sffamily\bfseries}]
+		\definecolor{mainc}{HTML}{2E7D32}
+		\definecolor{featA}{HTML}{1565C0}
+		\definecolor{featB}{HTML}{EF6C00}
+		\draw[branch=mainc] (-0.6,0) -- (9.1,0);
+		\foreach \i/\x in {m1/0, m2/1.5, m3/4, m4/6.5, m5/8.5}
+		\node[commit=mainc] (\i) at (\x,0) {};
+		% feature A: from m2 to m4
+		\foreach \i/\x in {a1/2.5, a2/3.75, a3/5}
+		\node[commit=featA] (\i) at (\x,1.2) {};
+		\draw[branch=featA] (m2) to[out=60,in=180] (a1);
+		\draw[branch=featA] (a1) -- (a2);
+		\draw[branch=featA] (a2) -- (a3);
+		\draw[branch=featA] (a3) to[out=0,in=120] (m4);
+		% feature B: from m3 to m5
+		\foreach \i/\x in {b1/5.5, b2/7}
+		\node[commit=featB] (\i) at (\x,-1.2) {};
+		\draw[branch=featB] (m3) to[out=-60,in=180] (b1);
+		\draw[branch=featB] (b1) -- (b2);
+		\draw[branch=featB] (b2) to[out=0,in=-120] (m5);
+		\node[lbl, mainc, anchor=south west] at (-0.6,0.5) {main};
+		\node[lbl, featA, anchor=south] at (a2.north) {feature-a};
+		\node[lbl, featB, anchor=north] at (6.25,-1.7) {feature-b};
+		\node[font=\sffamily\scriptsize, featA, anchor=south west] at (m4.north east) {merge PR};
+		\node[font=\sffamily\scriptsize, featB, anchor=north west] at (m5.south east) {merge PR};
+		% release flag
+		\draw[line width=1.5pt] (m5.north) -- ++(0,1.6cm);
+		\fill[red!80!black] ([yshift=1.6cm]m5.north) -- ++(1.8cm,-0.4cm) -- ++(-1.8cm,-0.4cm) -- cycle;
+		\node[font=\sffamily\scriptsize\bfseries, white, anchor=west] at ([shift={(0.1cm,1.2cm)}]m5.north) {v1.0};
+	\end{tikzpicture}%
+}
+
+% GitLab flow: feature branches merge into develop, develop is merged downstream into production
+\newcommand{\gitlabflow}{%
+	\begin{tikzpicture}[x=1.5cm, y=1.4cm,
+			commit/.style={circle, draw=##1, fill=##1!25, line width=1.2pt, minimum size=7mm, inner sep=0pt},
+			branch/.style={line width=2pt, color=##1, -{Stealth[length=3mm]}},
+			lbl/.style={font=\sffamily\bfseries}]
+		\definecolor{prodc}{HTML}{2E7D32}
+		\definecolor{devc}{HTML}{6A1B9A}
+		\definecolor{featA}{HTML}{1565C0}
+		\definecolor{featB}{HTML}{EF6C00}
+		\draw[branch=devc] (-0.6,0) -- (8.1,0);
+		\draw[branch=prodc] (-0.6,-2) -- (8.1,-2);
+		\foreach \i/\x in {d1/0, d2/3, d3/6}
+		\node[commit=devc] (\i) at (\x,0) {};
+		\foreach \i/\x in {p1/0, p2/3.5, p3/7}
+		\node[commit=prodc] (\i) at (\x,-2) {};
+		% feature A: from d1 to d2
+		\foreach \i/\x in {a1/1, a2/2}
+		\node[commit=featA] (\i) at (\x,1.3) {};
+		\draw[branch=featA] (d1) to[out=60,in=180] (a1);
+		\draw[branch=featA] (a1) -- (a2);
+		\draw[branch=featA] (a2) to[out=0,in=120] (d2);
+		% feature B: from d2 to d3
+		\foreach \i/\x in {b1/4, b2/5}
+		\node[commit=featB] (\i) at (\x,1.3) {};
+		\draw[branch=featB] (d2) to[out=60,in=180] (b1);
+		\draw[branch=featB] (b1) -- (b2);
+		\draw[branch=featB] (b2) to[out=0,in=120] (d3);
+		% downstream merges
+		\draw[branch=devc] (d2) to[out=-90,in=120] (p2);
+		\draw[branch=devc] (d3) to[out=-90,in=120] (p3);
+		\node[lbl, devc, anchor=north west] at (-0.6,-0.3) {develop};
+		\node[lbl, prodc, anchor=north west] at (-0.6,-2.3) {production};
+		\node[lbl, featA, anchor=south] at (1.5,1.6) {feature-a};
+		\node[lbl, featB, anchor=south] at (4.5,1.6) {feature-b};
+		\node[font=\sffamily\scriptsize, devc, anchor=west] at ([xshift=2mm]$(d2)!.5!(p2)$) {merge request};
+		\node[font=\sffamily\scriptsize, devc, anchor=west] at ([xshift=2mm]$(d3)!.5!(p3)$) {merge request};
+		% release flag
+		\draw[line width=1.5pt] (p3.north) -- ++(0,1.0cm);
+		\fill[red!80!black] ([yshift=1.0cm]p3.north) -- ++(1.4cm,-0.3cm) -- ++(-1.4cm,-0.3cm) -- cycle;
+		\node[font=\sffamily\scriptsize\bfseries, white, anchor=west] at ([shift={(0.1cm,0.7cm)}]p3.north) {v1.0};
+	\end{tikzpicture}%
+}
+
+\subsection{Branching Strategies}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://blog.prateekjain.dev/the-ultimate-guide-to-git-branching-strategies-6324f1aceac2?sk=738af8bd3ffaae39788923bbedf771ca}{GitLab Documentation}}}
 	\begin{fancycolumns}[animation=none]
-		\picDark[width=\linewidth]{versioncontrol/bitbucket-mercurial1}
-		\nextcolumn
-		\picDark[width=\linewidth]{versioncontrol/bitbucket-mercurial2}
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{Centralized Version Control}
-\begin{frame}{\insertsubsection}
-	\vspace{-5mm}
-	\begin{fancycolumns}
-		\clientserver{computer}{computer}{computer}{Server}{Client X}{Client Y}{
-			\draw[kante] (client1) to (server);
-			\draw[kante] (server) to (client1);
-			\draw[kante] (client2) to (server);
-			\draw[kante] (server) to (client2);
-		}
-		\begin{definition}{Centralized Version Control Systems}
+		\begin{definition}{Git Flow}
 			\begin{itemize}
-				\item client-server architecture
-				\item server manages the main copy
-				\item clients use server to synchronize files/folders
+				\item First proposal to use branches
+				\item Different branches for different aims
+				      \begin{itemize}
+					      \item Main
+					      \item Development
+					      \item Individual features
+					      \item Individual releases
+					      \item Hotfixes
+				      \end{itemize}
+				\item Feature $\rightarrow$ Dev $\rightarrow$ Release $\rightarrow$ Main
 			\end{itemize}
-		\end{definition}
-		\nextcolumn
-		\only<-2|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{}{}{
-		}}
-		\only<3|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{Working Copy: Revision 10}{}{
-				\draw[kante] (server) to (client1);
-		}}
-		\only<4|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{Working Copy: Revision 10}{Working Copy: Revision 5}{
-				\draw[kante] (server) to (client2);
-		}}
-		\only<5|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{Working Copy: 10 (changed)}{Working Copy: Revision 5}{
-		}}
-		\only<6>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-11}{Working Copy: Revision 11}{Working Copy: Revision 5}{
-				\draw[kante] (client1) to (server);
-		}}
-		\only<7|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-11}{Working Copy: Revision 11}{Working Copy: Revision 11}{
-				\draw[kante] (server) to (client2);
-		}}
-		\begin{note}{Centralized Version Control Systems}
+		\end{definition}\pause
+		\begin{note}{Problems}
 			\begin{itemize}
-				\item repository on server
-				\item working copy on each client
-				\item new revision for every change on the server
-				\item revisions used to undo changes, merge files
+				\item Very complex
+				\item Does not work with shorter release cycles
+				\item Many long diverging branches $\rightarrow$ many merge conflicts
 			\end{itemize}
 		\end{note}
+		\nextcolumn
+		\onslide<1->{\centering\pic[width=.7\columnwidth]{versioncontrol/git-flow}}
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Distributed Version Control}
-\begin{frame}{\insertsubsection}
-	\slideDistributedVC
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://docs.github.com/en/get-started/using-github/github-flow}{GitHub Documentation}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{GitHub Flow}
+			\begin{itemize}
+				\item Easier alternative for agile development
+				\item Main for deployment
+				\item Small feature branches for development
+				\item Tags for releases
+				\item Hotfixes are also feature branches
+				\item Extensions with deployment branches
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item Frequent merges $\rightarrow$ small merge conflicts
+				\item Supports fast release cycles
+				\item Minimizes complexity: less branches, Main most important
+				\item Code fast in Main $\rightarrow$ minimizes "dead" code
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\onslide<1->{\centering\resizebox{\columnwidth}{!}{\githubflow}}
+	\end{fancycolumns}
 \end{frame}
 
-\xkcdframe{1597} % git
 
-\subsection{Clone, Fetch, Commit, and Push}
-\slideCloneFetch
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://docs.gitlab.com/ee/topics/gitlab_flow.html}{GitLab Documentation}}}
+	\begin{fancycolumns}[animation=none]
+		\begin{definition}{GitLab Flow}
+			\begin{itemize}
+				\item Extends GitHub Flow with environment branches
+				\item Environment branches can reflect different deploy targets
+				\item Production reflects the deployed state
+				\item Changes flow only downstream: Feature $\rightarrow$ Develop $\rightarrow$ Production
+			\end{itemize}
+		\end{definition}\pause
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item Less complex than Git flow
+				\item More flexible that GitHub flow
+				\item Clear rules for deploying
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\onslide<1->{\centering\resizebox{\columnwidth}{!}{\gitlabflow}}
+	\end{fancycolumns}
+\end{frame}
 
-\slideCommitPush
 
 \subsection{Commit Messages}
 \xkcdframe{1296} % commit messages
@@ -170,182 +261,4 @@
 			\end{itemize}
 		\end{example}
 	\end{fancycolumns}
-\end{frame}
-
-
-\subsection{Merge, Pull, and Ignore}
-\slideMergePull
-
-\slideIgnore
-
-\subsection{Branching and Merging}
-\begin{frame}{\insertsubsection}
-	\slideBranchingAndMerging
-\end{frame}
-
-\begin{frame}[fragile]{Automatic Merge}
-	\begin{columns}[onlytextwidth]
-		\begin{column}{0.6\linewidth}
-			\begin{columns}[T]
-				\begin{column}{0.5\linewidth}
-					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
-					
-					\begin{onlyenv}<1|handout:0>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Bar");
-	}
-}	
-						\end{lstlisting}
-					\end{onlyenv}
-					\begin{onlyenv}<2-3|handout:0>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Bar");
-		print("\n");
-	}
-}	
-						\end{lstlisting}
-					\end{onlyenv}
-					\begin{onlyenv}<4-|handout:1>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Foo");
-		print("Bar");
-		print("\n");
-	}
-}	
-						\end{lstlisting}
-					\end{onlyenv}
-				\end{column}
-				\begin{column}{0.5\linewidth}					
-					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
-					
-					\begin{onlyenv}<1-2|handout:0>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Bar");
-	}
-}
-						\end{lstlisting}
-					\end{onlyenv}
-					\begin{onlyenv}<3-|handout:1>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Foo");
-		print("Bar");
-	}
-}
-						\end{lstlisting}
-					\end{onlyenv}
-				\end{column}
-			\end{columns}
-			
-			\begin{example}{}
-				\begin{itemize}
-					\item<1-> Checkout of or update to revision 10
-					\item<2-> Changing the working copy (\emph{10$^*$})
-					\item<3-> In the meantime: New commit to repository (\emph{11})
-					\item<4-> Update to head revision, automatically merged
-				\end{itemize}			
-			\end{example}
-		\end{column}
-		\begin{column}{0.5\linewidth}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Git Merge in Pictures}
-	\begin{fancycolumns}[animation=none]
-		\only<1|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge1}}%
-		\only<2|handout:1>{\pic[width=\linewidth]{versioncontrol/gitmerge2}}%
-		\only<3|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge3}}%
-		\only<4|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge4}}%
-		\only<5|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge5}}%
-		\nextcolumn
-		\only<-0>{\pic[width=\linewidth]{versioncontrol/gitmerge5}}%
-	\end{fancycolumns}
-\end{frame}
-
-\begin{frame}[fragile]{Merge Conflicts}	
-	\begin{columns}[T, onlytextwidth]
-		\begin{column}{0.6\linewidth}
-			\begin{columns}[T]
-				\begin{column}{0.5\linewidth}
-					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
-					
-					\begin{onlyenv}<1|handout:0>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Bar");
-	}
-}	
-						\end{lstlisting}
-					\end{onlyenv}
-					\begin{onlyenv}<2-3|handout:0>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Bar\n");
-	}
-}
-						\end{lstlisting}
-					\end{onlyenv}
-					\begin{onlyenv}<4-|handout:1>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {		
-		<<<<<<< .mine
-		print("Bar\n");
-		=======
-		print("FooBar");
-		>>>>>>> .r11
-	}
-}	
-						\end{lstlisting}
-					\end{onlyenv}
-				\end{column}
-				\begin{column}{0.5\linewidth}					
-					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
-					
-					\begin{onlyenv}<1-2|handout:0>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("Bar");
-	}
-}
-						\end{lstlisting}
-					\end{onlyenv}
-					\begin{onlyenv}<3-|handout:1>
-						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
-class Foo {
-	void bar() {
-		print("FooBar");
-	}
-}
-						\end{lstlisting}
-					\end{onlyenv}
-				\end{column}
-			\end{columns}
-			
-			\begin{example}{}
-				\begin{itemize}
-					\item<1-> Checkout of or update to revision 10
-					\item<2-> Changing the working copy (\emph{10$^*$})
-					\item<3-> In the meantime: New commit to repository (\emph{11})
-					\item<4-> Update to head revision results in conflict
-					\item<4-> Automatic merge fails: user has to provide a fix
-				\end{itemize}			
-			\end{example}
-		\end{column}
-		\begin{column}{0.5\linewidth}
-		\end{column}
-	\end{columns}
 \end{frame}

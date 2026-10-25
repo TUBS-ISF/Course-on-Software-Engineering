@@ -1,0 +1,344 @@
+\subsection{Version Control}
+\begin{frame}{\insertsubsection}
+	\slideVersionControl
+\end{frame}
+
+\subsection{Git vs Mercurial}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		\picDark[width=\linewidth]{versioncontrol/bitbucket-mercurial1}
+		\nextcolumn
+		\picDark[width=\linewidth]{versioncontrol/bitbucket-mercurial2}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Centralized Version Control}
+\begin{frame}{\insertsubsection}
+	\vspace{-5mm}
+	\begin{fancycolumns}
+		\clientserver{computer}{computer}{computer}{Server}{Client X}{Client Y}{
+			\draw[kante] (client1) to (server);
+			\draw[kante] (server) to (client1);
+			\draw[kante] (client2) to (server);
+			\draw[kante] (server) to (client2);
+		}
+		\begin{definition}{Centralized Version Control Systems}
+			\begin{itemize}
+				\item client-server architecture
+				\item server manages the main copy
+				\item clients use server to synchronize files/folders
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\only<-2|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{}{}{
+		}}
+		\only<3|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{Working Copy: Revision 10}{}{
+				\draw[kante] (server) to (client1);
+		}}
+		\only<4|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{Working Copy: Revision 10}{Working Copy: Revision 5}{
+				\draw[kante] (server) to (client2);
+		}}
+		\only<5|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-10}{Working Copy: 10 (changed)}{Working Copy: Revision 5}{
+		}}
+		\only<6>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-11}{Working Copy: Revision 11}{Working Copy: Revision 5}{
+				\draw[kante] (client1) to (server);
+		}}
+		\only<7|handout:0>{\clientserver{computer}{computer}{computer}{Repository: Revision 1-11}{Working Copy: Revision 11}{Working Copy: Revision 11}{
+				\draw[kante] (server) to (client2);
+		}}
+		\begin{note}{Centralized Version Control Systems}
+			\begin{itemize}
+				\item repository on server
+				\item working copy on each client
+				\item new revision for every change on the server
+				\item revisions used to undo changes, merge files
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Distributed Version Control}
+\begin{frame}{\insertsubsection}
+	\slideDistributedVC
+\end{frame}
+
+\xkcdframe{1597} % git
+
+\subsection{Clone, Fetch, Commit, and Push}
+\slideCloneFetch
+
+\slideCommitPush
+
+
+
+\subsection{Merge, Pull, and Ignore}
+\slideMergePull
+
+\slideIgnore
+
+\subsection{Branching and Merging}
+\begin{frame}{\insertsubsection}
+	\slideBranchingAndMerging
+\end{frame}
+
+\begin{frame}[fragile]{Automatic Merge}
+	\begin{columns}[onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+		print("\n");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Foo");
+		print("Bar");
+		print("\n");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Foo");
+		print("Bar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision, automatically merged
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Git Merge in Pictures}
+	\begin{fancycolumns}[animation=none]
+		\only<1|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge1}}%
+		\only<2|handout:1>{\pic[width=\linewidth]{versioncontrol/gitmerge2}}%
+		\only<3|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge3}}%
+		\only<4|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge4}}%
+		\only<5|handout:0>{\pic[width=\linewidth]{versioncontrol/gitmerge5}}%
+		\nextcolumn
+		\only<-0>{\pic[width=\linewidth]{versioncontrol/gitmerge5}}%
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}[fragile]{Merge Conflicts}	
+	\begin{columns}[T, onlytextwidth]
+		\begin{column}{0.6\linewidth}
+			\begin{columns}[T]
+				\begin{column}{0.5\linewidth}
+					Working Copy: Revision \only<1|handout:0>{10}\only<2-3|handout:0>{\emph{10$^*$}}\only<4>{\emph{11$^*$}}\\[2mm]
+					
+					\begin{onlyenv}<1|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<2-3|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar\n");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<4-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {		
+		<<<<<<< .mine
+		print("Bar\n");
+		=======
+		print("FooBar");
+		>>>>>>> .r11
+	}
+}	
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+				\begin{column}{0.5\linewidth}					
+					Repository: Revision \only<1-2|handout:0>{10}\only<3->{\emph{11}}
+					
+					\begin{onlyenv}<1-2|handout:0>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("Bar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+					\begin{onlyenv}<3-|handout:1>
+						\begin{lstlisting}[style=java,basicstyle=\fontfamily{pcr}\small\selectfont,numbers=none,escapechar=|]
+class Foo {
+	void bar() {
+		print("FooBar");
+	}
+}
+						\end{lstlisting}
+					\end{onlyenv}
+				\end{column}
+			\end{columns}
+			
+			\begin{example}{}
+				\begin{itemize}
+					\item<1-> Checkout of or update to revision 10
+					\item<2-> Changing the working copy (\emph{10$^*$})
+					\item<3-> In the meantime: New commit to repository (\emph{11})
+					\item<4-> Update to head revision results in conflict
+					\item<4-> Automatic merge fails: user has to provide a fix
+				\end{itemize}			
+			\end{example}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Patching, Cherry-Picking, and Rebasing}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[animation=none]
+		{\small
+			\begin{definition}{Patch}
+				\begin{itemize}
+					\item Text file containing code changes and git metadata
+					\item Can be applied to a codebase
+					\item Create patch: \texttt{git format-patch}
+					\item Apply patch as commit: \texttt{git am}
+				\end{itemize}
+			\end{definition}\pause
+			\begin{definition}{Cherry-Picking}
+				\begin{itemize}
+					\item Take commit and apply as patch
+					\item Multiple commits $\rightarrow$ sequentially applied
+					\item Transfers single changes between branches
+				\end{itemize}
+			\end{definition}\pause
+			\begin{definition}{Rebase}
+				\begin{itemize}
+					\item Transfer sequence of commits to a new base
+					\item Creates a linear project history
+				\end{itemize}
+			\end{definition}\pause
+		}
+		\nextcolumn
+		\begin{center}
+			\begin{tikzpicture}
+				% Commit DAG
+				\gitDAG[grow right sep = 2em]{
+				A -- B -- {
+				C,
+				D -- E,
+				}
+				};
+				% Tag reference
+				\gittag
+				[v0p1]       % node name
+				{v0.1}       % node text
+				{above=of A} % node placement
+				{A}          % target
+				% Remote branch
+				\gitremotebranch
+				[origmain]    % node name
+				{origin/main} % node text
+				{above=of C}    % node placement
+				{C}             % target
+				% Branch
+				\gitbranch
+				{main}     % node name and text 
+				{above=of E} % node placement
+				{E}          % target
+				% HEAD reference
+				\gitHEAD
+				{above=of main} % node placement
+				{main}          % target
+			\end{tikzpicture}
+
+			\pause
+
+			\begin{tikzpicture}
+				\gitDAG[grow right sep = 2em]{
+				A -- B -- {
+				C -- D' -- E',
+				{[nodes=unreachable] D -- E },
+				}
+				};
+				% Tag reference
+				\gittag
+				[v0p1]       % node name
+				{v0.1}       % node text
+				{above=of A} % node placement
+				{A}          % target
+				% Remote branch
+				\gitremotebranch
+				[origmain]    % node name
+				{origin/main} % node text
+				{above=of C}    % node placement
+				{C}             % target
+				% Branch
+				\gitbranch
+				{main}      % node name and text 
+				{above=of E'} % node placement
+				{E'}          % target
+				% HEAD reference
+				\gitHEAD
+				{above=of main} % node placement
+				{main}          % target
+			\end{tikzpicture}
+		\end{center}
+	\end{fancycolumns}
+\end{frame}
+
