@@ -159,6 +159,52 @@
 	\end{fancycolumns}
 \end{frame}
 
+\subsection{Pull Requests \& Code Reviews}
+
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://about.gitlab.com/topics/version-control/what-is-code-review/}{GitLab Documentation}}}
+
+\begin{fancycolumns}[t,widths={60,40}]
+	\begin{definition}{Pull/Merge Request}
+		\begin{itemize}
+			\item Change proposal
+			\item Request merge from source to target branch
+			\item Opportunity to review changes before merge
+			\begin{itemize}
+				\item Code review: approve/comment/request changes/close
+			\end{itemize}
+			\item Merging feature branches
+			\item Changes from external collaborators (fork)
+		\end{itemize}
+	\end{definition}
+	\begin{figure}
+		\includegraphics[width=0.8\columnwidth]{versioncontrol/example-pr.png}		
+	\end{figure}
+	\nextcolumn
+	\begin{definition}{Code Review}
+		\begin{itemize}
+			\item Goals
+			\begin{itemize}
+				\item Recognize issues before merge
+				\item Improve code quality
+				\item Share knowledge
+			\end{itemize}
+			\item Typical tasks	
+			\begin{itemize}
+				\item Test changes locally
+				\item Check conventions and smells
+				\item Evaluate design
+			\end{itemize}
+		\end{itemize}
+	\end{definition}
+	\vspace{-0.3cm}
+	\begin{figure}
+		\includegraphics[width=0.8\columnwidth]{versioncontrol/reviewsummary.png}
+	\end{figure}
+\end{fancycolumns}
+
+
+\end{frame}
+
 
 \subsection{Commit Messages}
 \xkcdframe{1296} % commit messages
