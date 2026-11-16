@@ -145,3 +145,212 @@
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
+
+
+\subsection{Project Planning}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{{Anonymous}} % TODO add citation?
+			\mycite{A goal without a plan is just a wish.}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{At the Proposal Stage}
+			\begin{itemize}
+				\item when bidding for a contract
+				\item enough resources?
+				\item price for the bidding?
+				\item not all requirements known (i.e., system requirements) $\Rightarrow$ inevitable speculative
+			\end{itemize}
+		\end{note}
+		\pause
+		\begin{example}{Software Pricing}
+			\begin{itemize}
+				\item effort costs (software engineers / managers)
+				\item hardware and software costs (incl.\ hardware maintenance and software support)
+				\item travel and training costs
+				\item price = estimated costs + profit + contingency (extra effort, 30--50\%)
+			\end{itemize}
+		\end{example}
+		\nextcolumn
+		\pause
+		\begin{note}{On Project Startup}
+			\begin{itemize}
+				\item who will work on the project?
+				\item how to split into increments?
+				\item refine initial estimates
+			\end{itemize}
+		\end{note}
+		\pause
+		\begin{note}{Throughout the Project}
+			\begin{itemize}
+				\item update plan based on new insights
+				\item learn about the software and team capabilities
+				\item estimates get more accurate
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\xkcdframe{1425} % cost estimation
+
+\subsection{Gantt Chart}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter, \sommerville}}
+	\begin{fancycolumns}[widths={40,58}]
+		\begin{definition}{Gantt Chart}
+			\begin{itemize}
+				\item named after Henry L. Gantt (1861--1919)
+				\item bar chart with timeline on x axis and activities on the y axis
+				\item optional: progress bars and marker for observation date
+				\item optional: dependencies between tasks
+				\item optional, not shown: highlight dependencies on the critical path
+				\item \emph{critical path}: tasks whose delay also delays the project
+			\end{itemize}
+		\end{definition}
+		\nextcolumn
+		\begin{exampletight}{}
+			\picDark[width=\linewidth]{management/gantt-chart}
+		\end{exampletight}
+		\pause[3]
+		\begin{example}{}\centering
+			What is wrong in the above picture?
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+% \subsection{Network Diagram}
+% \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter, \sommerville}}
+% 	\begin{fancycolumns}[widths={55}]
+% 		\begin{definition}{Network Diagram \deutsch{Netzplan}}
+% 			\begin{itemize}
+% 				\item aka.\ PERT charts
+% 				\item directed, acyclic graph
+% 				\item nodes represent tasks, edges represent dependencies
+% 			\end{itemize}
+% 		\end{definition}
+% 		\pause
+% 		\begin{definition}{Metra Potential Method}
+% 			Given project start date and \emph{duration} of each activity we can compute:
+% 			\begin{itemize}
+% 				\item \emph{earliest start} and \emph{earliest finish} time calculated with \emph{forward pass}
+% 				\item \emph{latest start} and \emph{latest finish} time calculated with \emph{backwards pass}
+% 				\item \emph{buffer}: time span between earliest and latest start/finish
+% 				\item \emph{critical path}: longest path(s) of tasks without buffer
+% 			\end{itemize}
+% 		\end{definition}
+% 		\nextcolumn
+% 		\pause
+% 		\begin{exampletight}{Example Network for a Bachelor's Thesis}
+% 			\centering\vspace{1mm}
+% 			\only<-3|handout:0>{\renewcommand{\forwardpass}[1]{}}
+% 			\only<-4|handout:0>{\renewcommand{\backwardpass}[1]{}}
+% 			\only<-5|handout:0>{\renewcommand{\buffer}[1]{}}
+% 			\only<-6|handout:0>{\tikzset{emph/.style={}}}
+% 			\only<7->{\tikzset{emph/.style={draw=red}}}
+% 			\begin{tikzpicture}[xscale=3,yscale=-2.1,inner sep=0,edge/.style={->,>={Stealth[round]},semithick}]
+% 				\node[fill=red!30!background,font=\tiny] (legend) at (1,0) {\networknode{\normalsize Task}{earliest start}{duration}{earliest finish}{latest start}{buffer}{latest finish}};
+% 				\node (intro) at (1,1) {\networknode{Introduction}{0}{1}{1}{10}{10}{11}};
+% 				\node (background) at (0,0) {\networknode{Background}{0}{3}{3}{0}{0}{3}};
+% 				\node (concept) at (0,1) {\networknode{Concept}{3}{4}{7}{3}{0}{7}};
+% 				\node (eval) at (0,2) {\networknode{Evaluation}{7}{4}{11}{7}{0}{11}};
+% 				\node (summary) at (1,2) {\networknode{Summary}{11}{1}{12}{11}{0}{12}};
+% 				\draw[edge,emph] (background) to (concept);
+% 				\draw[edge,emph] (concept) to (eval);
+% 				\draw[edge,emph] (eval) to (summary);
+% 				\draw[edge] (intro) to (summary);
+% 			\end{tikzpicture}
+% 			\vspace{1mm}
+% 		\end{exampletight}
+% 		% TODO fix example: thesis over 13 weeks, no critical path if spread over 12 weeks (only summary is critical)
+% 		% TODO include network-bachelor-thesis.pdf? separate version for dark mode?
+% 	\end{fancycolumns}
+% \end{frame}
+
+% \subsection{Gantt Charts vs Network Diagrams}
+% \begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}} % TODO check source
+% 	\slideGanttAndNetwork
+% \end{frame}
+
+\subsection{Costs of the Corona-Warn-App}
+\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://dip.bundestag.de/vorgang/kosten-f\%C3\%BCr-die-corona-warn-app-im-vergleich-zu-\%C3\%A4hnlichen-anwendungen-in/294397?f.deskriptor=App\&rows=25\&pos=21}{bundestag.de}}}
+	\centering\picDark[width=.6\linewidth]{management/cwa-welt}
+\end{frame}
+
+\subsection{User Stories}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}
+		\begin{note}{Motivation for User Stories}
+			\begin{itemize}
+				\item split development\\ into manageable parts
+				\item split cost estimation\\ into manageable parts
+				\item unit of change used in change/release management (cf.~Lecture~5)
+				\item keep track of progress / schedule
+			\end{itemize}
+		\end{note}
+		\nextcolumn
+		\definitionuserstory{}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Corona-Warn-App User Stories}
+\begin{frame}{\insertsubsection}
+	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue65}
+\end{frame}
+\begin{frame}{\insertsubsection}
+	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue24}
+\end{frame}
+\begin{frame}{\insertsubsection}
+	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue235}
+\end{frame}
+
+% \subsection{Planning Poker}
+% \begin{frame}{\insertsubsection}
+% 	\begin{fancycolumns}
+% 		\begin{definition}{Planning Poker \mysource{\href{https://dl.acm.org/doi/abs/10.5555/1036751}{Cohn 2005}}}
+% 			\emph{Purpose} Estimate the relative effort required to complete user stories.
+% 			\begin{itemize}
+% 				\item introduce the user story
+% 				\item each team member puts down a card with their estimate (face down)
+% 				\item all team members reveal a card at the same time
+% 				\item outliers justify their estimate
+% 				\item repeat until consensus is reached
+% 			\end{itemize}
+% 			Cards use a \emph{modified Fibonacci sequence}: forces developers to take into account the uncertainty of the estimate
+% 		\end{definition}
+% 	\nextcolumn
+% 		\pic[width=\linewidth]{management/planning-poker}
+% 		\pause
+% 		\begin{note}{Why not using \ldots}
+% 			\begin{itemize}
+% 				\item the numbers from 0 to 10?
+% 				\item concrete time intervals (e.g., days)?
+% 			\end{itemize}
+% 		\end{note}
+% 	\end{fancycolumns}
+% \end{frame}
+
+\subsection{Burndown Chart}
+\begin{frame}{\insertsubsection}
+	\begin{fancycolumns}[widths={70}]
+		\begin{exampletight}{}
+			\picDark[width=\linewidth]{management/burndown-chart}
+		\end{exampletight}
+	\nextcolumn
+		\begin{definition}{Burndown Chart}
+			\begin{itemize}
+				\item visualization of the development progress
+				\item used by project management to track progress
+			\end{itemize}
+		\end{definition}
+		\begin{note}{How to estimate effort per task?}
+			\begin{itemize}
+				\item Generally hard
+				\item Dependent on various factors (e.g., inherent complexity, QA requirements, developer familiarity)
+				\item e.g., with planning poker
+			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}

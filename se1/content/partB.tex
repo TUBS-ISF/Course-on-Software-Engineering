@@ -15,15 +15,18 @@
 		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
 		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
 	}%
-	\uncover<2->{\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}}} 
+	\uncover<2->{\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}}}
 \end{frame}
 
 \section{Introduction to Project Management}
 \input{content/05a-projectmanagement}
 \lessonslearned{
-	\item Software development projects
-	\item Project management: goals, influences, activities
-	\item Risk and people management
+	\item Project management: goals, influences, activities, risk, people, planning, pricing
+	\item Project scheduling with \emph{Gantt charts}
+	\item Manageable units with \emph{user stories}
+	\item Effort/cost estimation with \emph{planning poker}
+	\item Tracking progress with \emph{burndown charts}
+	\item Cost estimation is an iterative process
 	\item Next: How to create realistic project plans?
 }{
 	\item \sommerville\mychapter{22} Project Management
@@ -33,43 +36,35 @@
 		\item<+-> Form groups of 2-3 students
 		\item<+-> Risk identification and analysis: Give an example for a risk of a messenger app and specify probability, severity, and classification
 		\item<+-> Risk planning and monitoring: How to address the risk mentioned by one of your colleagues? What could change during the project?
-		\item<+-> Repeat 2. and 3. with other examples
 	\end{enumerate}
 }
 
-\section{Project Planning and Scheduling}
-\input{content/05b-planning}
+\section{Process Models}
+\input{content/05b-processmodels}
 \lessonslearned{
-	\item Project planning and software pricing
-	\item Project scheduling with Gantt charts and network diagrams
-	\item Next: How to estimate the project costs?
+	\item Software development process: motivation and goal
+	\item Waterfall model: phases, results, example domains, advantages and disadvantages
+	\item V-model
+	\item Testing stages: unit testing, integration testing, system testing, acceptance testing
 }{
 	\item \sommerville\mychapter{23} Project Planning
 	\item \ludewiglichter\mychapter{8.3.2} \deutsch{Projektphasen}
 }{
-	Fill out the network diagram in Stud.IP
+	TODO
 	%\lectureqr{06}
 }
 
-\section{Cost Estimation}
-\input{content/05c-costestimation}
+\section{Agile Development}
+\input{content/05c-scrum}
 \lessonslearned{
-	\item Manageable units with \emph{user stories}
-	\item Effort/cost estimation with \emph{planning poker}
-	\item Tracking progress with \emph{burndown charts}
-	\item Cost estimation is an iterative process
-	\item Next: How to manage the process beyond implementation (e.g., testing)?
+	\item Motivation for agile development
+	\item Agile Manifesto (four values, twelve principles)
+	\item Scrum: roles, terms, discussion
+	\item Next: Are we developing the right product?
 }{
 	\item[] \sommerville\mychapter{23} Project Planning % TODO check citation
 }{
-	Questions?
-%	\begin{enumerate}
-%		\item<+-> Form groups of 3-4 students
-%		\item<+-> Choose a feature of an app of your choice
-%		\item<+-> In isolation: estimate effort in weeks to develop that feature
-%		\item<+-> In group: name your estimate and discuss outliers
-%		\item<+-> Repeat 3--4 until consensus is reached
-%	\end{enumerate}
+	\centering Want to learn how software is developed in practice? Lego-Scrum will take place on December 09, 2026 from 1--5pm!
 }
 
 %\faq{
@@ -100,17 +95,17 @@
 \end{frame}
 
 \begin{frame}{\insertsubtitle{} \deutsch{Vorgehensmodelle}}
-%	\alt<2->{%
-		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
-		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
-		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
-%	}{%
-%		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintance}} % se04 maintenance
-%		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
-%		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
-%		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
-%	}%
+	%	\alt<2->{%
+	\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+	\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
+	\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintenance}} % se04 maintenance
+	\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
+	%	}{%
+	%		\hprojectcartoon{18}{how patches were applied\\~\\\textbf{maintance}} % se04 maintenance
+	%		\hprojectcartoon{09}{how the customer was billed\\~\\\textbf{project management}} % se05 project management
+	%		\hprojectcartoon{05}{what the beta testers received\\~\\\textbf{testing}} % se03 testing
+	%		\hprojectcartoon{04}{how the programmer implemented it\\~\\\textbf{implementation}} % se02 implementation
+	%	}%
 \end{frame}
 
 \section{Development Processes: The~Waterfall~Model}
@@ -129,8 +124,7 @@
 \section{V-Model for Extensive Testing}
 \input{content/06b-vmodel}
 \lessonslearned{
-	\item V-model
-	\item Testing stages: unit testing, integration testing, system testing, acceptance testing
+
 	\item Next: What is the most frequently used process model?
 }{
 	\item \ludewiglichter\mychapter{10.3} \deutsch{Das V-Modell}
@@ -154,21 +148,21 @@
 }{
 	\item[] \sommerville\mychapter{3} Agile Software Development
 }{
-	\centering Want to learn how software is developed in practice? Lego-Scrum will take place on December 11, 2025 from 1--5pm!
 	
+
 	~
-	
+
 	\only<3|handout:0>{\pic[width=\linewidth,trim={0\width} {.1111\height} {0\width} {0\height},clip]{legoscrum/legoscrum2025-06-25result}}% translate from 4:3 into 3:2 format
 	\only<4|handout:0>{\pic[width=\linewidth]{legoscrum/legoscrum2025-06-25table}}%
 	\only<5->{\pic[width=\linewidth,trim={0\width} {0\height} {.2\width} {.2\height},clip]{legoscrum/legoscrum2025-06-25meeting}}%
 }
 
 %\faq{
-	%	\item
-	%}{
-	%	\item
-	%}{
-	%	\item
-	%}
+%	\item
+%}{
+%	\item
+%}{
+%	\item
+%}
 
 \input{template/footer}
