@@ -51,101 +51,52 @@
 	\end{fancycolumns}
 \end{frame}
 
-\xkcdframe{1319} % planning
+% \xkcdframe{1319} % planning
 
 \subsection{Activities in Project Management}
 \begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
 	\small
 	\begin{fancycolumns}
 		\begin{definition}{Project Planning \deutsch{Projektplanung}}
-			\mycite{Project managers are responsible for \emph{planning, estimating, and scheduling} project development and assigning people to tasks. They supervise the work to ensure that it is carried out to the required standards, and they \emph{monitor progress} to check that the development is on time and within budget.}
+			\begin{itemize}
+				\item Plan, estimate, and schedule development
+				\item Assign people to tasks and ensure work meets standards
+				\item Monitor progress, budget, and schedule
+			\end{itemize}
 		\end{definition}
 		\pause
 		\begin{definition}{Risk Management \deutsch{Risikomanagement}}
-			\mycite{Project managers have to \emph{assess the risks} that may affect a project, monitor these risks, and take action when problems arise.}
+			\begin{itemize}
+				\item Assess and monitor risks that may affect the project
+				\item Take action when problems arise
+			\end{itemize}
 		\end{definition}
 		\pause
 		\begin{definition}{People Management \deutsch{Mitarbeiterführung}}
-			\mycite{Project managers are responsible for \emph{managing a team} of people. They have to choose people for their team and establish ways of working that lead to effective team performance.}
+			\begin{itemize}
+				\item Select team members
+				\item Establish framework for effective teamwork
+			\end{itemize}
 		\end{definition}
 		\nextcolumn
 		\pause
 		\begin{definition}{Reporting \deutsch{Berichterstattung}}
-			\mycite{Project managers are usually responsible for \emph{reporting on the progress} of a project to customers and to the managers of the company developing the software. They have to be able to communicate at a range of levels, from detailed technical information to management summaries.}% They have to write concise, coherent documents that abstract critical information from detailed project reports. They must be able to present this information during progress reviews.
+			\begin{itemize}
+				\item Report project progress to customers and company managers
+				\item Communicate at different levels, from technical detail to management summaries
+			\end{itemize}
 		\end{definition}
 		\pause
 		\begin{definition}{Proposal Writing \deutsch{Projektbeantragung}}
-			\mycite{The first stage in a software project may involve writing a proposal to \emph{win a contract} to carry out an item of work. The proposal describes the objectives of the project and how it will be carried out. It usually includes \emph{cost and schedule estimates} and justifies why the project contract should be awarded to a particular organization or team. Proposal writing is a critical task as the survival of many software companies depends on having enough proposals accepted and contracts awarded.}
+			\begin{itemize}
+				\item Acquisition of finances
+				\item Describe project objectives and how the work will be carried out
+				\item Cost and schedule estimates
+				\item Justify why the contract should be awarded to them
+			\end{itemize}
 		\end{definition}
 	\end{fancycolumns}
 \end{frame}
-
-\subsection{Risk Management}
-\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
-	\begin{fancycolumns}
-		%\mynote{Motivation}{\mycite{Risk management is one of the most important jobs for a project manager. You can think of a risk as something that you’d prefer not to have happen.}}
-		\begin{definition}{Risk}
-			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				\emph{Probability} & insignificant, low, moderate, high, very high\\
-				\emph{Severity} & insignificant, tolerable, serious, catastrophic
-			\end{tabularx}
-		\end{definition}
-		\pause
-		\setlength\tabcolsep{1mm}
-		\begin{note}{Classification of Risks}
-			\begin{tabularx}{\textwidth}{rX}				
-				\emph{Project Risks} & affect project schedule or resources: loss of an experienced system architect may result in longer development time\\
-				\emph{Product Risks} & affect software quality: purchased component may not scale\\
-				\emph{Business Risks} & affect organization / company: product of a competitor may reduce number of sales
-			\end{tabularx}
-		\end{note}
-		\nextcolumn
-		\pause
-		\begin{definition}{Stages in Risks Management}
-			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}				
-				\emph{1. Risk Identification} & identify possible project, product, and business risks\\
-				\emph{2. Risk Analysis} & assess likelihood and consequences\\
-				\emph{3. Risk Planning} & plan how to address risks: avoidance or minimization of effects\\
-				\emph{4. Risk Monitoring} & regularly assess risks and revise plans if needed
-			\end{tabularx}
-		\end{definition}
-		\pause
-		\begin{example}{Risks in Agile Development}
-			reduced risks for requirements changes, increased risks for loss of staff due to fewer documentation
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
-
-\subsection{People Management}
-\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
-	\begin{fancycolumns}
-		\begin{note}{Motivation}
-			\mycite{The people working in a software organization are its \emph{greatest assets}. It is expensive to recruit and retain good people, and it is up to software managers to ensure that the engineers working on a project are as \emph{productive} as possible. In successful companies and economies, this productivity is achieved when people are respected by the organization and are assigned responsibilities that reflect their skills and experience.}
-		\end{note}
-		\pause
-		\begin{example}{In Practice}
-			\mycite{Software engineers often have strong \emph{technical skills} but may lack the softer skills that enable them to \emph{motivate and lead a project development team}.}
-		\end{example}
-		\nextcolumn
-		\pause
-		\begin{definition}{Critical Factors}
-			\setlength\tabcolsep{1mm}
-			\begin{tabularx}{\textwidth}{rX}
-				\emph{1. Consistency} & treat people comparably with similar rewards\\
-				\emph{2. Respect} & let all people contribute and respect their differences in skills\\
-				\emph{3. Inclusion} & consider views of least experienced peoples\\
-				\emph{4. Honesty} & manager is honest about own skills and team performance
-			\end{tabularx}
-		\end{definition}
-		\pause
-		\begin{note}{Teamwork}
-			\small\mycite{Most professional software is developed by project teams that range in size from two to several hundred people. However, as it is impossible for everyone in a large group to work together on a single problem, \emph{large teams are usually split} into a number of smaller groups. Each group is responsible for developing part of the overall system.}% The best size for a software engineering group is 4 to 6 members, and they should never have more than 12 members. When groups are small, communication problems are reduced. Everyone knows everyone else, and the whole group can get around a table for a meeting to discuss the project and the software that they are developing.
-		\end{note}
-	\end{fancycolumns}
-\end{frame}
-
 
 \subsection{Project Planning}
 \begin{frame}{\insertsubsection}
@@ -194,8 +145,6 @@
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
-
-\xkcdframe{1425} % cost estimation
 
 \subsection{Gantt Chart}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter, \sommerville}}
@@ -274,8 +223,11 @@
 % 	\slideGanttAndNetwork
 % \end{frame}
 
-\subsection{Costs of the Corona-Warn-App}
-\begin{frame}{\insertsubsection{} \mytitlesource{\href{https://dip.bundestag.de/vorgang/kosten-f\%C3\%BCr-die-corona-warn-app-im-vergleich-zu-\%C3\%A4hnlichen-anwendungen-in/294397?f.deskriptor=App\&rows=25\&pos=21}{bundestag.de}}}
+\xkcdframe{1425} % cost estimation
+
+
+% \subsection{Costs of the Corona-Warn-App}
+\begin{frame}{Costs of the Corona-Warn-App \mytitlesource{\href{https://dip.bundestag.de/vorgang/kosten-f\%C3\%BCr-die-corona-warn-app-im-vergleich-zu-\%C3\%A4hnlichen-anwendungen-in/294397?f.deskriptor=App\&rows=25\&pos=21}{bundestag.de}}}
 	\centering\picDark[width=.6\linewidth]{management/cwa-welt}
 \end{frame}
 
@@ -295,14 +247,14 @@
 	\end{fancycolumns}
 \end{frame}
 
-\subsection{Corona-Warn-App User Stories}
-\begin{frame}{\insertsubsection}
+% \subsection{Corona-Warn-App User Stories}
+\begin{frame}{\insertsubsection{} Example: Corona-Warn-App}
 	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue65}
 \end{frame}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\insertsubsection{} Example: Corona-Warn-App}
 	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue24}
 \end{frame}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\insertsubsection{} Example: Corona-Warn-App}
 	\centering\picDark[height=\textheightwithtitle]{management/cwa-issue235}
 \end{frame}
 
@@ -351,6 +303,72 @@
 				\item Dependent on various factors (e.g., inherent complexity, QA requirements, developer familiarity)
 				\item e.g., with planning poker
 			\end{itemize}
+		\end{note}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{Risk Management}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		%\mynote{Motivation}{\mycite{Risk management is one of the most important jobs for a project manager. You can think of a risk as something that you’d prefer not to have happen.}}
+		\begin{definition}{Risk}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				\emph{Probability} & insignificant, low, moderate, high, very high\\
+				\emph{Severity} & insignificant, tolerable, serious, catastrophic
+			\end{tabularx}
+		\end{definition}
+		\pause
+		\setlength\tabcolsep{1mm}
+		\begin{note}{Classification of Risks}
+			\begin{tabularx}{\textwidth}{rX}				
+				\emph{Project Risks} & affect project schedule or resources: loss of an experienced system architect may result in longer development time\\
+				\emph{Product Risks} & affect software quality: purchased component may not scale\\
+				\emph{Business Risks} & affect organization / company: product of a competitor may reduce number of sales
+			\end{tabularx}
+		\end{note}
+		\nextcolumn
+		\pause
+		\begin{definition}{Stages in Risks Management}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}				
+				\emph{1. Risk Identification} & identify possible project, product, and business risks\\
+				\emph{2. Risk Analysis} & assess likelihood and consequences\\
+				\emph{3. Risk Planning} & plan how to address risks: avoidance or minimization of effects\\
+				\emph{4. Risk Monitoring} & regularly assess risks and revise plans if needed
+			\end{tabularx}
+		\end{definition}
+		\pause
+		\begin{example}{Risks in Agile Development}
+			reduced risks for requirements changes, increased risks for loss of staff due to fewer documentation
+		\end{example}
+	\end{fancycolumns}
+\end{frame}
+
+\subsection{People Management}
+\begin{frame}{\insertsubsection\ \mytitlesource{\sommerville}}
+	\begin{fancycolumns}
+		\begin{note}{Motivation}
+			\mycite{The people working in a software organization are its \emph{greatest assets}. It is expensive to recruit and retain good people, and it is up to software managers to ensure that the engineers working on a project are as \emph{productive} as possible. In successful companies and economies, this productivity is achieved when people are respected by the organization and are assigned responsibilities that reflect their skills and experience.}
+		\end{note}
+		\pause
+		\begin{example}{In Practice}
+			\mycite{Software engineers often have strong \emph{technical skills} but may lack the softer skills that enable them to \emph{motivate and lead a project development team}.}
+		\end{example}
+		\nextcolumn
+		\pause
+		\begin{definition}{Critical Factors}
+			\setlength\tabcolsep{1mm}
+			\begin{tabularx}{\textwidth}{rX}
+				\emph{1. Consistency} & treat people comparably with similar rewards\\
+				\emph{2. Respect} & let all people contribute and respect their differences in skills\\
+				\emph{3. Inclusion} & consider views of least experienced peoples\\
+				\emph{4. Honesty} & manager is honest about own skills and team performance
+			\end{tabularx}
+		\end{definition}
+		\pause
+		\begin{note}{Teamwork}
+			\small\mycite{Most professional software is developed by project teams that range in size from two to several hundred people. However, as it is impossible for everyone in a large group to work together on a single problem, \emph{large teams are usually split} into a number of smaller groups. Each group is responsible for developing part of the overall system.}% The best size for a software engineering group is 4 to 6 members, and they should never have more than 12 members. When groups are small, communication problems are reduced. Everyone knows everyone else, and the whole group can get around a table for a meeting to discuss the project and the software that they are developing.
 		\end{note}
 	\end{fancycolumns}
 \end{frame}
